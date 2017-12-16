@@ -1,0 +1,104 @@
+
+
+// my fixes
+.container {
+  height: inherit;
+}
+.row{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+a {
+  color: @white;
+  text-decoration: none;
+}
+
+
+//fonts
+@font-face {
+  font-family: "Bebas Neue Bold";
+  src: url("/assets/fonts/BebasNeueBold.otf");
+  src: url("/assets/fonts/BebasNeueBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+.bebas {
+  font-family: 'Bebas Neue Bold';
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&subset=cyrillic');
+
+
+
+
+
+
+
+// colors
+@black: #000;
+@gray: #bdbdbd;
+@dark-gray: #303030;
+@dark-orange: #fe5704;
+@orange: #ff682a;
+@hover-orange: @orange - #333;
+@white: #fff;
+@transparent: rgba(0,0,0,0);
+
+
+
+
+
+
+
+//transition
+.transition-duration {
+  transition-duration: .2s;
+}
+.tr-bg {
+  transition-property: background-color;
+  .transition-duration;
+}
+.tr-color {
+  transition-property: color;
+  .transition-duration
+}
+.tr-bg-clr {
+  transition-property: background-color, color;
+  .transition-duration;
+}
+.tr-all{
+  transition-property: all;
+  .transition-duration;
+}
+
+
+
+
+
+
+
+// object
+html {
+  font-size: 16px;
+}
+
+.inline-link {
+  color: @orange;
+  text-decoration: underline;
+  .tr-color;
+
+  &:hover {
+    color: @hover-orange;
+  }
+
+  &:focus {
+    color: @hover-orange;
+  }
+
+  &:active {
+    color: @hover-orange;
+  }
+
+}
+

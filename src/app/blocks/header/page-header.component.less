@@ -1,0 +1,108 @@
+:host {
+
+  @import (less) '../base.less';
+
+
+  .header {
+    background-color: @dark-gray;
+    height: 84px;
+
+    .row {
+      align-items: center;
+      height: inherit;
+
+      .menu {
+        width: 816px;
+        height:inherit;
+
+        .header-menu {
+          width: 400px;
+          height:inherit;
+
+
+          .header-menu-item {
+            display: flex;
+            width: auto;
+            padding: 0 10px;
+            height: inherit;
+            text-align: center;
+            font-family: Roboto;
+            font-size: 1rem;
+            font-weight: 700;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            &.active {
+              color: @orange;
+
+              &:after {
+                width: 100%;
+                height: 5px;
+                background-color: @orange;
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                content: '';
+              }
+
+            }
+            &:hover {
+              color: @orange;
+
+              &:after {
+                width: 100%;
+                height: 5px;
+                background-color: @orange;
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                content: '';
+              }
+
+            }
+          }
+
+        }
+
+        .personal-area {
+          font-family: Roboto;
+          font-size: 1rem;
+          font-weight: 700;
+          line-height: 1;
+          padding: 20px 70px;
+          border-radius: 0.313rem;
+          border: 0.063rem solid @white;
+          .tr-bg-clr;
+
+          &:hover {
+            background-color: @white;
+            color: @dark-gray;
+          }
+
+        }
+
+        .languages {
+          color: @white;
+          font-family: Roboto;
+          font-size: 1.125rem;
+          font-weight: 700;
+          line-height: 1.875rem;
+          text-transform: uppercase;
+
+          .active {
+            color: @dark-orange;
+          }
+
+          .change-language:hover {
+            .tr-color;
+            color: @dark-orange;
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
