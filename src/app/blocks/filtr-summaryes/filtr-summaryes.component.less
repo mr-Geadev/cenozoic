@@ -1,0 +1,115 @@
+:host {
+
+  @import (less) '../base.less';
+
+  .filtr-summaryes {
+    padding: 32px 0 21px;
+    box-shadow: 0 0.625rem 0.625rem rgba(0, 0, 0, 0.06);
+    background-color: @white;
+
+    .search-field {
+      position: relative;
+
+      input {
+        width: 100%;
+        border-radius: 0.188rem 0.063rem 0.063rem 0.188rem;
+        border: 0.063rem solid #dadada;
+        background-color: @white;
+        height: 48px;
+        color: @black;
+        font-family: Roboto;
+        font-size: 0.875rem;
+        font-weight: 400;
+        padding: 17px 51px;
+        transition-property: border-color;
+        .transition-duration;
+
+        &:focus{
+          outline: none;
+          border-color: @dark-orange;
+        }
+      }
+
+      .button-search {
+        border-radius: 0 0.188rem 0.188rem 0;
+        width: 180px;
+        height: 48px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: @white;
+        font-family: Roboto;
+        font-size: 0.875rem;
+        font-weight: 700;
+        background-color: @orange;
+        .tr-bg;
+
+        &:hover, &:focus {
+          outline: none;
+          background-color: @hover-orange;
+        }
+
+      }
+
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+
+
+      select {
+        width: 264px;
+        height: 34px;
+        background-color: transparent;
+        border: 0.063rem solid #dadada;
+        color: @black;
+        font-family: Roboto;
+        font-size: 0.875rem;
+        font-weight: 400;
+        margin-right: 18px;
+        margin-top: 18px;
+        padding-left: 22px;
+
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
+      }
+
+    }
+
+    .reset {
+      margin-top: 26px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .tr-color;
+
+      a {
+        color: @gray;
+        font-family: Roboto;
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 3.375rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover, &:focus {
+          color: @black;
+        }
+
+        svg {
+          margin-right: 7px;
+        }
+      }
+
+    }
+  }
+
+}

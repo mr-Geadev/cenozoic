@@ -1,6 +1,6 @@
 export const ROUTES = [
     '/',
-    '/product/',
+    '/list-vacancy/',
     '/product/book-leksikon',
     '/product/book-childrens-dictionary',
     '/product/book-circus-secret',
