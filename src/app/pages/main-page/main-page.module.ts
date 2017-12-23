@@ -10,6 +10,7 @@ import { LastNewsModule } from "../../blocks/last-news/last-news.module";
 import { MainBannerModule } from "../../blocks/main-banner/main-banner.module";
 import { MainContentModule } from "../../blocks/main-content/main-content.module";
 import { MainPartnersModule } from "../../blocks/main-partners/main-partners.module";
+import { HeaderMainModule } from "../../blocks/header-main/header-main.module";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { MainPartnersModule } from "../../blocks/main-partners/main-partners.mod
         LastNewsModule,
         MainBannerModule,
         MainContentModule,
-        MainPartnersModule
+        MainPartnersModule,
+        HeaderMainModule
         // Blocks
     ],
     exports: [MainPageComponent]

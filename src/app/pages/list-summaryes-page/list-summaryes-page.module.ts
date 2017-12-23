@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import {  ListSummaryesPageComponent } from "./list-summaryes-page.component";
 import { FiltrSummaryesModule } from "../../blocks/filtr-summaryes/filtr-summaryes.module";
 import { ListSummaryesModule } from "../../blocks/list-summaryes/list-summaryes.module";
+import { PageHeaderModule } from "../../blocks/header";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ListSummaryesModule } from "../../blocks/list-summaryes/list-summaryes.
         FormsModule,
         MatDialogModule,
         FiltrSummaryesModule,
-        ListSummaryesModule
+        ListSummaryesModule,
+        PageHeaderModule
         // Blocks
     ],
     exports: [ ListSummaryesPageComponent]

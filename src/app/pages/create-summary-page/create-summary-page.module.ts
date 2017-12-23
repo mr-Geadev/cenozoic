@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { CreateSummaryPageComponent } from "./create-summary-page.component";
 import { CreateSummaryModule } from "../../blocks/create-summary/create-summary.module";
 import { BreadcrumbsModule } from "../../blocks/breadcrumbs/breadcrumbs.module";
+import { PageHeaderModule } from "../../blocks/header/page-header.module";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { BreadcrumbsModule } from "../../blocks/breadcrumbs/breadcrumbs.module";
         FormsModule,
         MatDialogModule,
         CreateSummaryModule,
-        BreadcrumbsModule
+        BreadcrumbsModule,
+        PageHeaderModule
         // Blocks
     ],
     exports: [CreateSummaryPageComponent]
