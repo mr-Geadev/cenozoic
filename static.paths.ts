@@ -1,5 +1,5 @@
 export const ROUTES = [
     '/',
-    '/create-summary',
-    '/list-summaryes'
+    '/create-resume',
+    '/list-resume'
 ];
