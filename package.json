@@ -18,7 +18,7 @@
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "generate:prerender": "cd dist && node prerender",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
-    "serve:prerender": "cd dist/browser && http-server -p 3000 --proxy http://194.58.120.150:8080",
+    "serve:prerender": "cd dist/browser && http-server -p 3000 --proxy http://134.0.119.98:8080",
     "serve:ssr": "node dist/server",
     "dev": "npm run build:ssr && npm run serve:ssr",
     "prod": "npm run build:prerender && npm run serve:prerender"
@@ -51,6 +51,7 @@
     "cpy-cli": "^1.0.1",
     "express": "^4.15.2",
     "http-server": "^0.10.0",
+    "less": "^2.7.3",
     "node-sass": "^4.7.2",
     "reflect-metadata": "^0.1.10",
     "ts-loader": "^2.3.7",

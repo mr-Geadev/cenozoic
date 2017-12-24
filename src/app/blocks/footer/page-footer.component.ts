@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'page-footer',
   templateUrl: './page-footer.component.html',
-  styleUrls: ['./page-footer.component.scss']
+  styleUrls: ['./page-footer.component.less']
 })
 export class PageFooterComponent {
 

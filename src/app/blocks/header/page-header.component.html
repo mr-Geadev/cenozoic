@@ -1,0 +1,19 @@
+<header class="header">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <a [routerLink]="['/']"><img class="logo" src="/assets/images/header-logo.png" alt=""></a>
+            <div class="menu row align-items-center justify-content-between">
+                <nav class="header-menu row col-md-auto justify-content-between">
+                    <a class="header-menu-item" href="#">Соискателям</a>
+                    <a class="header-menu-item" [routerLink]="['/list-resume']">Работодателям</a>
+                    <a class="header-menu-item" href="#">FAQ</a>
+                </nav>
+                <a [routerLink]="['/create-resume']" class="personal-area col-md-auto">Личный кабинет</a>
+                <div class="languages col-md-auto">
+                    <a href="#" class="change-language active">RU&nbsp;&nbsp;</a> |
+                    <a href="#" class="change-language">&nbsp;&nbsp;EN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
