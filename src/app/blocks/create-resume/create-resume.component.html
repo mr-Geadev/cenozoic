@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col form">
-                <form id="create-summary">
+                <form id="create-summary" (submit)="send()">
 
                     <div class="main-fields part">
 
@@ -14,7 +14,7 @@
                                 <label for="job">Желаемая должность</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="job" id="job">
+                                <input type="text" name="job" id="job" [(ngModel)]="resumeForm.job">
                             </div>
                         </div>
 
@@ -26,7 +26,7 @@
                                 <div class="word from">
                                     от
                                 </div>
-                                <input type="text" name="salary-from" id="salary-from" >
+                                <input type="text" name="salary" id="salary-from" [(ngModel)]="resumeForm.salary">
                                 <div class="word rub">
                                     руб.
                                 </div>
@@ -38,7 +38,7 @@
                                 <label for="age">Возраст</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="age" id="age"  class="short-input">
+                                <input type="text" name="age" id="age"  class="short-input" [(ngModel)]="resumeForm.age">
                             </div>
                         </div>
 
@@ -46,10 +46,10 @@
                             <div class="left">
                                 <label for="gender">Пол</label>
                             </div>
-                            <div class="right radio">
-                                <input type="radio" name="gender" id="man" checked/>
+                            <div class="right radio" id="gender">
+                                <input type="radio" name="gender" id="man" value="Мужчина" [(ngModel)]="resumeForm.gender"  checked/>
                                 <label for="man">муж</label>
-                                <input type="radio" name="gender" id="female"/>
+                                <input type="radio" name="gender" id="female" value="Женщина" [(ngModel)]="resumeForm.gender"/>
                                 <label for="female">жен</label>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                 <label for="family-position">Семейное положение</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="family-position" id="family-position"  class="short-input">
+                                <input type="text" name="family" id="family-position"  class="short-input" [(ngModel)]="resumeForm.family">
                             </div>
                         </div>
 
@@ -69,44 +69,46 @@
                             </div>
                             <div class="place">
                                 <div class="left">
-                                    <input type="checkbox" name="" value="" id="in-oil-gas">
+                                    <input type="checkbox" name="experience" value="в нефтегазовой" id="in-oil-gas" [(ngModel)]="resumeForm.experience">
                                     <label class="where" for="in-oil-gas">в нефтегазовой</label>
                                 </div>
                                 <div class="right">
-                                    <input type="text" name="experience-year" id="experience-year" class="shortest-input" > <div class="word">лет</div>  <input type="text" name="experience-months" id="experience-months" class="shortest-input"> <div class="word">месяцев</div>
+                                    <input type="text" name="oil-experience-year" class="shortest-input"   [(ngModel)]="resumeForm.oilExperienceYear"> <div class="word">лет</div>
+                                    <input type="text" name="oil-experience-months" class="shortest-input" [(ngModel)]="resumeForm.oilExperienceMonths"> <div class="word">месяцев</div>
                                 </div>
                             </div>
                             <div class="place">
                                 <div class="left">
-                                    <input type="checkbox" name="" value="" id="in-mining">
+                                    <input type="checkbox" name="experience" value="в горнодобывающей" id="in-mining" [(ngModel)]="resumeForm.experienceMining">
                                     <label class="where" for="in-mining">в горнодобывающей</label>
                                 </div>
                                 <div class="right">
-                                    <input type="text" name="experience-year" id="experience-year" class="shortest-input" > <div class="word">лет</div>  <input type="text" name="experience-months" id="experience-months" class="shortest-input"> <div class="word">месяцев</div>
+                                    <input type="text" name="mining-experience-year" class="shortest-input"  [(ngModel)]="resumeForm.miningExperienceYear"> <div class="word">лет</div>
+                                    <input type="text" name="mining-experience-months" class="shortest-input" [(ngModel)]="resumeForm.miningExperienceMonths"> <div class="word">месяцев</div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="parameter business-trips">
                             <div class="left">
-                                <label for="business-trips">Готовность к командировкам</label>
+                                <label for="business-trips-yes">Готовность к командировкам</label>
                             </div>
                             <div class="right radio">
-                                <input type="radio" name="business-trips" id="business-trips-yes"/>
+                                <input type="radio" name="business-trips" id="business-trips-yes" value="да" [(ngModel)]="resumeForm.businessTrips" />
                                 <label for="business-trips-yes">да</label>
-                                <input type="radio" name="business-trips" id="business-trips-no" checked/>
+                                <input type="radio" name="business-trips" id="business-trips-no" value="нет" [(ngModel)]="resumeForm.businessTrips" checked/>
                                 <label for="business-trips-no">нет</label>
                             </div>
                         </div>
 
                         <div class="parameter relocation">
                             <div class="left">
-                                <label for="relocation">Переезд</label>
+                                <label for="relocation-yes">Переезд</label>
                             </div>
                             <div class="right radio">
-                                <input type="radio" name="relocation" id="relocation-yes"/>
+                                <input type="radio" name="relocation" id="relocation-yes" value="да" [(ngModel)]="resumeForm.relocation"/>
                                 <label for="relocation-yes">да</label>
-                                <input type="radio" name="relocation" id="relocation-no" checked/>
+                                <input type="radio" name="relocation" id="relocation-no" value="нет" [(ngModel)]="resumeForm.relocation" checked/>
                                 <label for="relocation-no">нет</label>
                             </div>
                         </div>
@@ -117,7 +119,7 @@
                                 <label for="schedule">Желаемый график работы</label>
                             </div>
                             <div class="right">
-                                <select name="schedule" id="schedule">
+                                <select name="schedule" id="schedule" [(ngModel)]="resumeForm.schedule">
                                     <option value="Вахтовый">Вахтовый</option>
                                 </select>
                             </div>
@@ -128,7 +130,7 @@
                                 <label for="employment">Занятость</label>
                             </div>
                             <div class="right">
-                                <select name="employment" id="employment">
+                                <select name="employment" id="employment" [(ngModel)]="resumeForm.employment">
                                     <option value="Полная">Полная</option>
                                     <option value="Частичная">Частичная</option>
                                 </select>
@@ -144,10 +146,10 @@
 
                         <div class="parameter start">
                             <div class="left">
-                                <label for="employment">Начало работы</label>
+                                <label for="employment-start">Начало работы</label>
                             </div>
                             <div class="right">
-                                <select name="start" id="" class="shortest-select">
+                                <select name="start" id="employment-start" class="shortest-select" [(ngModel)]="resumeForm.employmentStart">
                                     <option value="Январь">Январь</option>
                                     <option value="Февраль">Февраль</option>
                                     <option value="Март">Март</option>
@@ -162,16 +164,16 @@
                                     <option value="Ноябрь">Ноябрь</option>
                                     <option value="Декабрь">Декабрь</option>
                                 </select>
-                                <input type="text" name="start" id="start" class="shortest-input" >
+                                <input type="text" name="start" id="start" class="shortest-input" [(ngModel)]="resumeForm.employmentStartNumber">
                             </div>
                         </div>
 
                         <div class="parameter end">
                             <div class="left">
-                                <label for="employment">Окончание</label>
+                                <label for="employment-end">Окончание</label>
                             </div>
                             <div class="right">
-                                <select name="end" id="" class="shortest-select">
+                                <select name="end" id="employment-end" class="shortest-select" [(ngModel)]="resumeForm.employmentEnd">
                                     <option value="Январь">Январь</option>
                                     <option value="Февраль">Февраль</option>
                                     <option value="Март">Март</option>
@@ -186,8 +188,8 @@
                                     <option value="Ноябрь">Ноябрь</option>
                                     <option value="Декабрь">Декабрь</option>
                                 </select>
-                                <input type="text" name="end" id="end" class="shortest-input" >
-                                <input type="checkbox" name="end" value="" id="present">
+                                <input type="text" name="end" id="end" class="shortest-input" [(ngModel)]="resumeForm.employmentEndNumber">
+                                <input type="checkbox" name="end" value="По настоящее время" id="present" [(ngModel)]="resumeForm.employmentPresent">
                                 <label for="present" class="word">По настоящее время</label>
                             </div>
                         </div>
@@ -197,7 +199,7 @@
                                 <label for="company">Организация</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="company" id="company">
+                                <input type="text" name="company" id="company" [(ngModel)]="resumeForm.companyName">
                             </div>
                         </div>
 
@@ -206,16 +208,16 @@
                                 <label for="was-job">Должность</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="was-job" id="was-job">
+                                <input type="text" name="was-job" id="was-job" [(ngModel)]="resumeForm.wasJob">
                             </div>
                         </div>
 
-                        <div class="parameter company">
+                        <div class="parameter duties">
                             <div class="left">
-                                <label for="company">Ваши обязанности</label>
+                                <label for="duties">Ваши обязанности</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="company" id="company">
+                                <input type="text" name="duties" id="duties" [(ngModel)]="resumeForm.duties">
                             </div>
                         </div>
 
@@ -235,103 +237,106 @@
                         </div>
 
                         <div class="parameter education">
-                            <input type="checkbox" name="russian" id="russian" value="Российское">
+                            <input type="checkbox" name="education" id="russian" value="true" [(ngModel)]="resumeForm.educationCountryRussian">
                             <label for="russian">Российское</label>
-                            <input type="checkbox" name="overseas" id="overseas" value="Зарубежное">
+                            <input type="checkbox" name="education" id="overseas" value="true" [(ngModel)]="resumeForm.educationCountryOverseas">
                             <label for="overseas">Зарубежное</label>
                         </div>
 
-                        <div class="mini-title">
-                            Учебные заведения
-                        </div>
+                         <div class="education-place"  >
+                             <!--*ngFor="let education of educations; "-->
+                            <div class="mini-title">
+                                Учебное заведение
+                            </div>
 
-                        <div class="parameter stage">
-                            <div class="left">
-                                <label for="stage">Степень образования</label>
+                            <div class="parameter stage">
+                                <div class="left">
+                                    <label for="stage">Степень образования</label>
+                                </div>
+                                <div class="right">
+                                    <select name="stage" id="stage" class="short-select" [(ngModel)]="resumeForm.educationStage">
+                                        <option value="Высшее">Высшее</option>
+                                        <option value="Неоконченное высшее">Неоконченное высшее</option>
+                                        <option value="Среднее">Среднее</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="right">
-                                <select name="end" id="stage" class="short-select">
-                                    <option value="Неоконченное высшее">Неоконченное высшее</option>
-                                    <option value="Высшее">Высшее</option>
-                                    <option value="Среднее">Среднее</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="parameter start-education">
-                            <div class="left">
-                                <label for="start-education">Начало обучения</label>
+                            <div class="parameter start-education">
+                                <div class="left">
+                                    <label for="start-education">Начало обучения</label>
+                                </div>
+                                <div class="right">
+                                    <input type="text" name="start-education" id="start-education"  class="short-input" [(ngModel)]="resumeForm.educationStart">
+                                    <div class="word">год</div>
+                                </div>
                             </div>
-                            <div class="right">
-                                <input type="text" name="start-education" id="start-education"  class="short-input">
-                                <div class="word">год</div>
-                            </div>
-                        </div>
 
-                        <div class="parameter end-education">
-                            <div class="left">
-                                <label for="end-education">Окончание</label>
+                            <div class="parameter end-education">
+                                <div class="left">
+                                    <label for="end-education">Окончание</label>
+                                </div>
+                                <div class="right">
+                                    <input type="text" name="end-education" id="end-education"  class="short-input" [(ngModel)]="resumeForm.educationEnd">
+                                    <div class="word">год</div>
+                                </div>
                             </div>
-                            <div class="right">
-                                <input type="text" name="end-education" id="end-education"  class="short-input">
-                                <div class="word">год</div>
-                            </div>
-                        </div>
 
-                        <div class="parameter country-eductation">
-                            <div class="left">
-                                <label for="country-eductation">Страна</label>
+                            <div class="parameter country-eductation">
+                                <div class="left">
+                                    <label for="country-eductation">Страна</label>
+                                </div>
+                                <div class="right">
+                                    <select name="country-eductation" id="country-eductation " class="short-select" [(ngModel)]="resumeForm.educationCountry">
+                                        <option value="Россия">Россия</option>
+                                        <option value="Англия">Англия</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="right">
-                                <select name="country-eductation" id="country-eductation " class="short-select">
-                                    <option value="Россия">Россия</option>
-                                    <option value="Англия">Англия</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="parameter city-eductation">
-                            <div class="left">
-                                <label for="city-eductation">Город</label>
+                            <div class="parameter city-eductation">
+                                <div class="left">
+                                    <label for="city-eductation">Город</label>
+                                </div>
+                                <div class="right">
+                                    <select name="city-eductation" id="city-eductation" class="short-select" [(ngModel)]="resumeForm.educationCity">
+                                        <option value="Саратов">Саратов</option>
+                                        <option value="Москва">Москва</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="right">
-                                <select name="city-eductation" id="city-eductation" class="short-select">
-                                    <option value="Саратов">Саратов</option>
-                                    <option value="Москва">Москва</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="parameter university">
-                            <div class="left">
-                                <label for="university">Учебное заведение</label>
+                            <div class="parameter university">
+                                <div class="left">
+                                    <label for="university">Учебное заведение</label>
+                                </div>
+                                <div class="right">
+                                    <input type="text" name="university" id="university" [(ngModel)]="resumeForm.educationUniversity">
+                                </div>
                             </div>
-                            <div class="right">
-                                <input type="text" name="university" id="university">
-                            </div>
-                        </div>
 
-                        <div class="parameter faculty">
-                            <div class="left">
-                                <label for="faculty">Факультет</label>
+                            <div class="parameter faculty">
+                                <div class="left">
+                                    <label for="faculty">Факультет</label>
+                                </div>
+                                <div class="right">
+                                    <input type="text" name="faculty" id="faculty" [(ngModel)]="resumeForm.educationFaculty">
+                                </div>
                             </div>
-                            <div class="right">
-                                <input type="text" name="faculty" id="faculty">
-                            </div>
-                        </div>
 
-                        <div class="parameter specialty">
-                            <div class="left">
-                                <label for="specialty">Специальность</label>
-                            </div>
-                            <div class="right">
-                                <input type="text" name="specialty" id="specialty">
+                            <div class="parameter specialty">
+                                <div class="left">
+                                    <label for="specialty">Специальность</label>
+                                </div>
+                                <div class="right">
+                                    <input type="text" name="specialty" id="specialty" [(ngModel)]="resumeForm.educationSpecialty">
+                                </div>
                             </div>
                         </div>
 
                         <div class="add">
                             +
-                            <a  class="add-university">
+                            <a class="add-university" (click)="addEducation()">
                                 Добавить учебное заведение
                             </a>
                         </div>
@@ -343,16 +348,16 @@
                         </div>
                         <div class="parameter language">
                             <div class="left">
-                                <label for="language">Начало работы</label>
+                                <label for="language">Язык</label>
                             </div>
                             <div class="right">
-                                <select name="language" id="" class="language" placeholder="язык">
+                                <select name="language" class="language" placeholder="язык" [(ngModel)]="resumeForm.language">
                                     <option>Язык</option>
                                     <option value="Русский">Русский</option>
                                     <option value="Английский">Английский</option>
                                     <option value="Немецкий">Немецкий</option>
                                 </select>
-                                <input type="text" name="level" placeholder="Уровень владения" id="level" class="short-input">
+                                <input type="text" name="level" placeholder="Уровень владения" id="level" class="short-input" [(ngModel)]="resumeForm.languageLevel">
                             </div>
                         </div>
                         <div class="add">
@@ -373,7 +378,7 @@
                                 <label for="year-training">Год прохождения</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="year-training" id="year-training"  class="shortest-input">
+                                <input type="text" name="year-training" id="year-training"  class="shortest-input" [(ngModel)]="resumeForm.trainingYear">
                                 <div class="word">год</div>
                             </div>
                         </div>
@@ -383,7 +388,7 @@
                                 <label for="city-training">Город</label>
                             </div>
                             <div class="right">
-                                <select name="city-training" id="" class="city-training">
+                                <select name="city-training" id="" class="city-training" [(ngModel)]="resumeForm.trainingCity">
                                     <option value="Саратов">Саратов</option>
                                     <option value="Москва">Москва</option>
                                 </select>
@@ -395,7 +400,7 @@
                                 <label for="name-training">Название</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="name-training" id="name-training">
+                                <input type="text" name="name-training" id="name-training" [(ngModel)]="resumeForm.trainingName">
                             </div>
                         </div>
 
@@ -411,17 +416,17 @@
                         <div class="parameter">
                             <label for="additionally-info">Дополнительная информация</label>
                             <div class="description">Добавьте всю информацию, которая поможет работодателю выбрать вас в качестве сотрудника.</div>
-                            <input type="text" name="additionally-info" id="additionally-info">
+                            <input type="text" name="additionally-info" id="additionally-info" [(ngModel)]="resumeForm.additionallyInfo">
                         </div>
                         <div class="parameter">
                             <label for="personal-property">Личные качества</label>
                             <div class="description">Например: целеустремленность, пунктуальность, аккуратнсть</div>
-                            <input type="text" name="personal-property" id="personal-property">
+                            <input type="text" name="personal-property" id="personal-property" [(ngModel)]="resumeForm.personalProperty">
                         </div>
                         <div class="parameter">
                             <label for="hobbies">Увлечения</label>
                             <div class="description">Чем вы занимаетесь в свободное время</div>
-                            <input type="text" name="hobbies" id="hobbies">
+                            <input type="text" name="hobbies" id="hobbies" [(ngModel)]="resumeForm.hobbies">
                         </div>
                     </div>
 
@@ -435,7 +440,7 @@
                                 <label for="age">E-mail</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="email" id="email"  class="">
+                                <input type="text" name="email" id="email"  class="" [(ngModel)]="resumeForm.email">
                             </div>
                         </div>
 
@@ -444,7 +449,7 @@
                                 <label for="age">Телефон</label>
                             </div>
                             <div class="right">
-                                <input type="text" name="phone-number" id="phone-number"  class="">
+                                <input type="text" name="phone-number" id="phone-number"  [(ngModel)]="resumeForm.number">
                             </div>
                         </div>
 
