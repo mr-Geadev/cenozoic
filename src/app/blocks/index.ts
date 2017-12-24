@@ -11,5 +11,5 @@ export * from './filtr';
 export * from './list-vacancy';
 export * from './create-vacancy';
 export * from './filtr-summaryes';
-export * from './create-summary';
-export * from './list-summaryes';
+export * from './create-resume';
+export * from './list-resume';
