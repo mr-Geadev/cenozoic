@@ -28,7 +28,6 @@ export class CreateResumeComponent {
     };
 
 
-
     constructor(private http: HttpClient) {
 
     }
@@ -38,6 +37,7 @@ export class CreateResumeComponent {
         this.http.post(CREATE_RESUME, this.resumeForm)
             .subscribe((res: any) => {
                 this.confirmed = res.code === 200;
+                console.log(res);
             });
     }
 
