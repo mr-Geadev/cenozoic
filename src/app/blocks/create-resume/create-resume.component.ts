@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { CREATE_RESUME } from "../../constants";
+import { HttpClient } from "@angular/common/http";
+
 
 
 
@@ -29,12 +30,12 @@ export class CreateResumeComponent {
 
 
     constructor(private http: HttpClient) {
-        // console.log(this.educationExample);
+
     }
 
     send() {
         console.log(this.resumeForm);
-        this.http.get(CREATE_RESUME, this.resumeForm)
+        this.http.post(CREATE_RESUME, this.resumeForm)
             .subscribe((res: any) => {
                 this.confirmed = res.code === 200;
             });
@@ -54,6 +55,14 @@ export class CreateResumeComponent {
         console.log(this.educations);
         this.educations = Array.from(this.educations);
 
+    }
+
+    public loadingFile: string = "Загрузить фото";
+
+    fileChange(event) {
+        console.log(this.loadingFile);
+        let fileList: FileList = event.target.files;
+        this.loadingFile = fileList[0].name;
     }
 
 }
