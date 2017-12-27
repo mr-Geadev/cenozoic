@@ -52,10 +52,12 @@ export class CreateResumeComponent {
         family:null,
         experienceAll: {
             oil: {
+                exist: false,
                 years: null,
                 month: null
             },
             mining: {
+                exist: false,
                 years: null,
                 month: null
             }
@@ -78,7 +80,7 @@ export class CreateResumeComponent {
         email: null,
         phoneNumber: null
     };
-
+    public cleanResumeForm = Object.assign({}, this.resumeForm);
 
     constructor(private http: HttpClient) {
 
@@ -89,7 +91,15 @@ export class CreateResumeComponent {
         this.http.post(CREATE_RESUME, this.resumeForm)
             .subscribe((res: any) => {
                 this.confirmed = res.code === 200;
-            });
+
+                if (res.code === 200) {
+                    this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                    alert('Ваше резюме отправлено!')
+                } else {
+                    alert('Отправка не удалась');
+                }
+
+            })
     }
 
 

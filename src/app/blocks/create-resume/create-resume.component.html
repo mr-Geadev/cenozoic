@@ -69,7 +69,7 @@
                             </div>
                             <div class="place">
                                 <div class="left">
-                                    <input type="checkbox" name="experience" value="в нефтегазовой" id="in-oil-gas" [(ngModel)]="resumeForm.experienceAll.oil">
+                                    <input type="checkbox" name="experience" value="в нефтегазовой" id="in-oil-gas" [(ngModel)]="resumeForm.experienceAll.oil.exist">
                                     <label class="where" for="in-oil-gas">в нефтегазовой</label>
                                 </div>
                                 <div class="right">
@@ -79,7 +79,7 @@
                             </div>
                             <div class="place">
                                 <div class="left">
-                                    <input type="checkbox" name="experience" value="в горнодобывающей" id="in-mining" [(ngModel)]="resumeForm.experienceAll.mining">
+                                    <input type="checkbox" name="experience" value="в горнодобывающей" id="in-mining" [(ngModel)]="resumeForm.experienceAll.mining.exist">
                                     <label class="where" for="in-mining">в горнодобывающей</label>
                                 </div>
                                 <div class="right">
@@ -338,8 +338,8 @@
 
                         <div class="add">
                             +
-                            <a class="add-university" (click)="addEducation()">
-                                Добавить учебное заведение
+                            <a class="add-university" href="#" >
+                                    Добавить учебное заведение
                             </a>
                         </div>
                     </div>
@@ -458,7 +458,7 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" onclick="alert('Ваше резюме отправлено!')" id="save">
+                        <button type="submit" id="save">
                             Сохранить резюме
                         </button>
                         <div class="message">

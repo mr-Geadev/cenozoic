@@ -4,7 +4,9 @@ import { ListResumeComponent } from "./list-resume.component";
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [ListResumeComponent],
+    declarations: [
+        ListResumeComponent
+    ],
     exports: [ListResumeComponent]
 })
 export class ListResumeModule {}

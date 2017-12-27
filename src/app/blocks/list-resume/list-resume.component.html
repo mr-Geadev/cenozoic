@@ -14,14 +14,14 @@
 
         <div class="row list">
 
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
+            <a href="#" class="item" *ngFor="let item of listResume; let i = index" >
+                <div class="job">{{item.job}}</div>
                 <div class="experience">
                     <div class="title">
                         Стаж работы
                     </div>
                     <div class="value">
-                        4 года 3 месяца
+                        {{ item.experienceAll.oil.years }} лет {{ item.experienceAll.oil.month }} месяцев
                     </div>
                 </div>
                 <div class="last-work-place">
@@ -29,171 +29,12 @@
                         Последнее место работы
                     </div>
                     <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
+                        {{item.experience[0].job}}, <br /> {{item.experience[0].organization}}
                     </div>
                 </div>
                 <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
             </a>
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
-                <div class="experience">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        4 года 3 месяца
-                    </div>
-                </div>
-                <div class="last-work-place">
-                    <div class="title">
-                        Последнее место работы
-                    </div>
-                    <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
-                    </div>
-                </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
-            </a>
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
-                <div class="experience">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        4 года 3 месяца
-                    </div>
-                </div>
-                <div class="last-work-place">
-                    <div class="title">
-                        Последнее место работы
-                    </div>
-                    <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
-                    </div>
-                </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
-            </a>
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
-                <div class="experience">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        4 года 3 месяца
-                    </div>
-                </div>
-                <div class="last-work-place">
-                    <div class="title">
-                        Последнее место работы
-                    </div>
-                    <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
-                    </div>
-                </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
-            </a>
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
-                <div class="experience">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        4 года 3 месяца
-                    </div>
-                </div>
-                <div class="last-work-place">
-                    <div class="title">
-                        Последнее место работы
-                    </div>
-                    <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
-                    </div>
-                </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
-            </a>
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
-                <div class="experience">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        4 года 3 месяца
-                    </div>
-                </div>
-                <div class="last-work-place">
-                    <div class="title">
-                        Последнее место работы
-                    </div>
-                    <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
-                    </div>
-                </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
-            </a>
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
-                <div class="experience">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        4 года 3 месяца
-                    </div>
-                </div>
-                <div class="last-work-place">
-                    <div class="title">
-                        Последнее место работы
-                    </div>
-                    <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
-                    </div>
-                </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
-            </a>
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
-                <div class="experience">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        4 года 3 месяца
-                    </div>
-                </div>
-                <div class="last-work-place">
-                    <div class="title">
-                        Последнее место работы
-                    </div>
-                    <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
-                    </div>
-                </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
-            </a>
-            <a href="#" class="item">
-                <div class="job">Инженер техники безопасности </div>
-                <div class="experience">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        4 года 3 месяца
-                    </div>
-                </div>
-                <div class="last-work-place">
-                    <div class="title">
-                        Последнее место работы
-                    </div>
-                    <div class="value">
-                        Машинист цементных мельниц, <br /> ООО ХайдельбергЦементРус
-                    </div>
-                </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
-            </a>
+
 
 
         </div>
