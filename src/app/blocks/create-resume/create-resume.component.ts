@@ -12,19 +12,71 @@ import { HttpClient } from "@angular/common/http";
 })
 export class CreateResumeComponent {
     public confirmed: boolean = false;
-    public educationExample: any = {
-        start: null,
+
+    private experienceItem: any = {
+        time: {
+            startMonth: null,
+            startYear: null,
+            endMonth: null,
+            endYear: null,
+            present: null
+        },
+        organization: null,
+        job: null,
+        duties: null
+    };
+    private educationItem: any = {
         stage: null,
+        start: null,
         end: null,
-        countries: null,
+        country: null,
         city: null,
         university: null,
         faculty: null,
         specialty: null
+    }
+    private languageItem: any = {
+        name: null,
+        level: null
     };
-    public educations = [ Object.assign({}, this.educationExample) ];
+    private trainingItem: any = {
+        year: null,
+        city: null,
+        name: null
+    };
     public resumeForm: any = {
-
+        job: null,
+        salary:null,
+        age:null,
+        gender: "Мужчина",
+        family:null,
+        experienceAll: {
+            oil: {
+                years: null,
+                month: null
+            },
+            mining: {
+                years: null,
+                month: null
+            }
+        },
+        businessTrips: "да",
+        relocation: "да",
+        schedule: null,
+        employmentType: null,
+        experience: [ this.experienceItem ],
+        educationCountries: {
+            russian: false,
+            foreign: false
+        },
+        education: [ this.educationItem ],
+        languages: [ this.languageItem ],
+        trainings: [ this.trainingItem ],
+        additionalInformation: null,
+        personalQualities: null,
+        hobbies: null,
+        email: null,
+        phoneNumber: null
     };
 
 
@@ -37,32 +89,15 @@ export class CreateResumeComponent {
         this.http.post(CREATE_RESUME, this.resumeForm)
             .subscribe((res: any) => {
                 this.confirmed = res.code === 200;
-                console.log(res);
             });
     }
 
-    addEducation () {
-        // var a = {};
-        // for (let key in this.educationExample) {
-        //     a[key] = null;
-        // }
-        // console.log(this.resumeForm.education);
-        // const b = Array.from(this.resumeForm.education);
-        // b.push(a);
-        // this.resumeForm.education = b;
 
-        this.educations.push(Object.assign({}, this.educationExample));
-        console.log(this.educations);
-        this.educations = Array.from(this.educations);
-
-    }
-
-    public loadingFile: string = "Загрузить фото";
+    public loadingPhotoButton: string = "Загрузить фото";
 
     fileChange(event) {
-        console.log(this.loadingFile);
         let fileList: FileList = event.target.files;
-        this.loadingFile = fileList[0].name;
+        this.loadingPhotoButton = fileList[0].name;
     }
 
 }
