@@ -10,7 +10,7 @@ import { LastNewsModule } from "../../blocks/last-news/last-news.module";
 import { MainBannerModule } from "../../blocks/main-banner/main-banner.module";
 import { MainContentModule } from "../../blocks/main-content/main-content.module";
 import { MainPartnersModule } from "../../blocks/main-partners/main-partners.module";
-import { HeaderMainModule } from "../../blocks/header-main/header-main.module";
+import { LoginModalModule } from "../../modals/login/login.module";
 
 @NgModule({
     declarations: [
@@ -25,12 +25,14 @@ import { HeaderMainModule } from "../../blocks/header-main/header-main.module";
         ReactiveFormsModule,
         FormsModule,
         MatDialogModule,
+        LoginModalModule,
+
+        //blocks
         LastAddedModule,
         LastNewsModule,
         MainBannerModule,
         MainContentModule,
         MainPartnersModule,
-        HeaderMainModule
         // Blocks
     ],
     exports: [MainPageComponent]
