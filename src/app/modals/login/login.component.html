@@ -1,50 +1,156 @@
-<form (submit)="sent()">
+<div class="wrap">
 
     <div class="title">
         Личный кабинет
     </div>
 
-    <div class="wrap">
+    <div class="type">
 
-        <div class="type">
+        <input type="radio" id="sign-in" name="type" value="entry" [(ngModel)]="type">
+        <label for="sign-in">Войти</label>
 
-            <input type="radio" id="sign-in" name="login-type" value="true" [(ngModel)]="entry">
-            <label (click)="entry = !entry" for="sign-in">Войти</label>
-
-            <input type="radio" id="sign-up" name="login-type" value="false" [(ngModel)]="entry">
-            <label (click)="entry = !entry" for="sign-up">Зарегестрироваться</label>
-
-        </div>
-
-        <div class="type-account" *ngIf="!entry">
-
-            <input type="radio" id="aspirant" name="type-account">
-            <label for="aspirant">Соискатель</label>
-
-            <input type="radio" id="employer" name="type-account">
-            <label for="employer">Работодатель</label>
-
-        </div>
-
-        <label for="email">E-MAIL</label>
-        <input id="email" type="email">
-
-        <label for="password">Пароль</label>
-        <input id="password" type="password">
-
-        <label for="password-return" *ngIf="!entry" >Повторите пароль</label>
-        <input id="password-return" *ngIf="!entry" type="password">
-
-        <a href="#" class="forgot" *ngIf="entry">Забыли пароль?</a>
-
-        <button type="submit" *ngIf="entry">
-            Войти
-        </button>
-        <button type="submit" *ngIf="!entry">
-            Зарегестрироваться
-        </button>
-
+        <input type="radio" id="sign-up" name="type" value="register" [(ngModel)]="type">
+        <label for="sign-up">Зарегестрироваться</label>
 
     </div>
 
-</form>
+    <!-- вход -->
+    <form [formGroup]="loginForm" *ngIf="type === 'entry'" (submit)="login()">
+
+        <div class="field first">
+            <label for="login-email" >E-MAIL</label>
+            <input id="login-email" type="email" name="email" formControlName="email" >
+        </div>
+        <div class="field">
+            <label for="password">Пароль</label>
+            <input id="password" type="password" name="password" formControlName="password">
+            <a href="#" class="forgot">Забыли пароль?</a>
+        </div>
+
+        <button class="button "type="submit" [disabled]="loginForm.invalid" >
+            Войти
+        </button>
+
+    </form>
+
+    <!--регистрация-->
+    <form [formGroup]="registerForm" (submit)="register()" *ngIf="type !== 'entry'">
+
+        <div class="type-account">
+            <div class="description">Вы регистрируетесь как: </div>
+
+            <input type="radio" id="aspirant" value="aspirant" name="typeAccount"  formControlName="typeAccount">
+            <label for="aspirant"><div class="checkbox"></div>Соискатель</label>
+
+            <input type="radio" id="employer" value="employer" name="typeAccount"  formControlName="typeAccount">
+            <label for="employer"><div class="checkbox"></div>Работодатель</label>
+
+        </div>
+
+        <div class="field first">
+            <label for="register-email" >E-MAIL</label>
+            <input id="register-email" type="email" name="email" formControlName="email" >
+            <div class="error" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty">Не корректный e-mail</div>
+        </div>
+        <div class="field">
+            <label for="register-password">Пароль</label>
+            <input id="register-password" type="password" name="password" formControlName="password">
+            <div class="error" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].dirty">Меньше 8 символов</div>
+        </div>
+        <div class="field">
+            <label for="password-return" >Повторите пароль</label>
+            <input id="password-return" type="password"  name="confirm-password" formControlName="confirmPassword" class="ng-undirty" [ngClass]="((registerForm.controls['password'].value !== registerForm.controls['confirmPassword'].value) && registerForm.controls['password'].dirty && registerForm.controls['confirmPassword'].dirty) === true ? { 'ng-invalid':true , 'ng-valid':false } : {'ng-invalid':false , 'ng-valid':true } ">
+            <div class="error" *ngIf="(registerForm.controls['password'].value !== registerForm.controls['confirmPassword'].value) && registerForm.controls['password'].dirty && registerForm.controls['confirmPassword'].dirty">Пароли не совпадают</div>
+        </div>
+
+        <button class="button" type="submit"  [disabled]="(registerForm.invalid) || (registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value)" >
+            Зарегестрироваться
+        </button>
+
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<form (submit)="sent()">-->
+
+    <!--<div class="title">-->
+        <!--Личный кабинет-->
+    <!--</div>-->
+
+    <!--<div class="type">-->
+
+        <!--<input type="radio" id="sign-in" name="login-type" value="entry" [(ngModel)]="login.type">-->
+        <!--<label for="sign-in">Войти</label>-->
+
+        <!--<input type="radio" id="sign-up" name="login-type" value="register" [(ngModel)]="login.type">-->
+        <!--<label for="sign-up">Зарегестрироваться</label>-->
+
+    <!--</div>-->
+
+    <!--<div class="type-account" *ngIf="login.type !== 'entry' "  >-->
+        <!--<div class="description">Вы регистрируетесь как: </div>-->
+
+        <!--<input type="radio" id="aspirant" value="aspirant" name="type-account"  [(ngModel)]="login.account" required>-->
+        <!--<label for="aspirant"><div class="checkbox"></div>Соискатель</label>-->
+
+        <!--<input type="radio" id="employer" value="employer" name="type-account"  [(ngModel)]="login.account" required>-->
+        <!--<label for="employer"><div class="checkbox"></div>Работодатель</label>-->
+
+    <!--</div>-->
+
+    <!--<div class="field first">-->
+        <!--<label for="login-email">E-MAIL</label>-->
+        <!--<input id="login-email" type="email" [(ngModel)]="login.email" #email="ngModel" name="email" required email>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+        <!--<label for="password">Пароль</label>-->
+        <!--<input id="password" type="password" [(ngModel)]="login.password" name="password" required>-->
+        <!--<a href="#" class="forgot" *ngIf="login.type === 'entry' ">Забыли пароль?</a>-->
+    <!--</div>-->
+    <!--<div class="field" *ngIf="login.type !== 'entry' ">-->
+        <!--<label for="password-return"  >Повторите пароль</label>-->
+        <!--<input id="password-return" type="password" [(ngModel)]="confirmPassword" name="confirm-password" required>-->
+        <!--<div class="confirmPassword" *ngIf="(login.password !== confirmPassword)  && (login.password != null) && (confirmPassword != null)">Пароли не совпадают</div>-->
+    <!--</div>-->
+
+
+
+
+    <!--<button class="button "type="submit" *ngIf="login.type === 'entry' " [disabled]="email.invalid">-->
+        <!--Войти-->
+    <!--</button>-->
+    <!--<button class="button "type="submit" *ngIf="login.type !== 'entry' " [disabled]="email.invalid">-->
+        <!--Зарегестрироваться-->
+    <!--</button>-->
+
+
+<!--</form>-->

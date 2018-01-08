@@ -12,7 +12,7 @@ export class LoginModalService {
     public openModal(): void {
         this.dialog.open(LoginModalComponent, {
             width: '600px',
-            height: '270px'
+            height: '400px'
         } as MatDialogConfig);
     };
 }
