@@ -7,8 +7,6 @@ import { RouterModule } from "@angular/router";
 import { CreateResumePageComponent } from "./create-resume-page.component";
 import { CreateResumeModule } from "../../blocks";
 import { BreadcrumbsModule } from "../../blocks";
-import { PageHeaderModule } from "../../blocks";
-
 
 @NgModule({
     declarations: [
@@ -25,7 +23,6 @@ import { PageHeaderModule } from "../../blocks";
         MatDialogModule,
         CreateResumeModule,
         BreadcrumbsModule,
-        PageHeaderModule
         // Blocks
     ],
     exports: [CreateResumePageComponent]

@@ -1,5 +1,4 @@
 export * from './header';
-export * from './header-main';
 export * from './footer';
 export * from './last-added';
 export * from './last-news';

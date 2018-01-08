@@ -1,11 +1,13 @@
 :host {
 
-  @import (less) '../base.less';
+
+  @import (less) '../../../assets/styles/base.less';
 
 
   .header {
     background-color: @dark-gray;
     height: 84px;
+    z-index: 10;
 
     .row {
       align-items: center;
@@ -61,6 +63,7 @@
               }
 
             }
+
           }
 
         }
@@ -73,6 +76,7 @@
           padding: 20px 70px;
           border-radius: 0.313rem;
           border: 0.063rem solid @white;
+          cursor: pointer;
           .tr-bg-clr;
 
           &:hover {
@@ -105,5 +109,24 @@
 
   }
 
+  .mainPage.header {
+
+      background-color: transparent !important;
+      position: absolute;
+      width: 100%;
+
+    .container > .row {
+      justify-content: flex-end !important;
+    }
+
+    .logo {
+      display: none;
+    }
+
+     .header-menu-item:hover:after {
+      display: none !important;
+    }
+
+  }
 
 }

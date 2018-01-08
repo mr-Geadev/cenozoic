@@ -7,5 +7,8 @@ import { ViewEncapsulation } from '@angular/core';
     styleUrls: ['./app.component.less'],
     encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent{
+
+    constructor() {}
+
 }

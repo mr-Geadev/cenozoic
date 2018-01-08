@@ -36,4 +36,5 @@ const ROUTES = [
     bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

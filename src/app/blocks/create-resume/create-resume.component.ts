@@ -11,7 +11,7 @@ import { HttpClient } from "@angular/common/http";
     styleUrls: ['./create-resume.component.less']
 })
 export class CreateResumeComponent {
-    public confirmed: boolean = false;
+    private confirmed: boolean = false;
 
     private experienceItem: any = {
         time: {
@@ -92,7 +92,7 @@ export class CreateResumeComponent {
             .subscribe((res: any) => {
                 this.confirmed = res.code === 200;
 
-                if (res.code === 200) {
+                if (res.success === true) {
                     this.resumeForm = Object.assign({}, this.cleanResumeForm);
                     alert('Ваше резюме отправлено!')
                 } else {

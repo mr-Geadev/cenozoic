@@ -7,7 +7,6 @@ import { RouterModule } from "@angular/router";
 import { ListResumePageComponent } from "./list-resume-page.component";
 import { FiltrSummaryesModule } from "../../blocks/filtr-summaryes/filtr-summaryes.module";
 import { ListResumeModule } from "../../blocks/list-resume";
-import { PageHeaderModule } from "../../blocks/header";
 
 
 @NgModule({
@@ -25,7 +24,6 @@ import { PageHeaderModule } from "../../blocks/header";
         MatDialogModule,
         FiltrSummaryesModule,
         ListResumeModule,
-        PageHeaderModule
         // Blocks
     ],
     exports: [ ListResumePageComponent]
