@@ -13,7 +13,16 @@
                     <a class="header-menu-item" href="#">FAQ</a>
                 </nav>
 
-                <a (click)="openLoginModal()" class="personal-area col-md-auto">Личный кабинет</a>
+                <a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">Личный кабинет</a>
+                <div  class="authorize col-md-auto" *ngIf="isAuthorized">
+                    <div class="blank-avatar"></div>
+                    <img src="/assets/images/headerMenuStatus.png" class="status">
+                    <ul class="little-menu">
+                        <li class="item"><a class="link" [routerLink]="['/']">Личный кабинет</a></li>
+                        <li class="item"><a class="link" [routerLink]="['/']">Настройки</a></li>
+                        <li class="item"><a class="link" [routerLink]="['/']" (click)="login.logOut()">Выйти</a></li>
+                    </ul>
+                </div>
 
                 <div class="languages col-md-auto">
                     <a href="#" class="change-language active">RU&nbsp;</a>&nbsp;|&nbsp;

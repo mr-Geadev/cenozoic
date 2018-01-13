@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
+import { UserService } from "./services/user.service";
 
 @Component({
     selector: 'app-root',
@@ -7,8 +8,12 @@ import { ViewEncapsulation } from '@angular/core';
     styleUrls: ['./app.component.less'],
     encapsulation: ViewEncapsulation.None
 })
-export class AppComponent{
+export class AppComponent implements OnInit {
 
-    constructor() {}
+    constructor(private userService: UserService) {
+    }
 
+    ngOnInit(): void {
+        this.userService.getUserInfo();
+    }
 }

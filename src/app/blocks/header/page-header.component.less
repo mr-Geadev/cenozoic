@@ -83,7 +83,76 @@
             background-color: @white;
             color: @dark-gray;
           }
+        }
 
+        .authorize {
+          position: relative;
+          width: 200px;
+          height: inherit;
+          display: flex;
+          padding: 10px;
+          justify-content: flex-end;
+          align-items: center;
+
+          .blank-avatar {
+            width: 48px;
+            height: 48px;
+            background-image: url("/assets/images/userBlank.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+          }
+
+          .status {
+            margin: 10px;
+            transition-property: transform;
+            .transition-duration;
+          }
+
+          .little-menu {
+            height: 0;
+            overflow: hidden;
+            position: absolute;
+            background-color: @white;
+            width: 200px;
+            right: 0;
+            top: 100%;
+            transition-property: height;
+            .transition-duration;
+            z-index: 5;
+
+            .item:last-child .link {
+              border-bottom: none;
+            }
+
+            .link {
+              display: block;
+              font-family: Roboto;
+              color: black;
+              font-size: 1rem;
+              width: 100%;
+              height:50px;
+              line-height: 30px;
+              padding: 10px 20px;
+              .tr-color;
+              border-bottom: 1px solid @light-gray;
+
+
+              &:hover {
+                color: @orange;
+              }
+            }
+          }
+
+          &:hover {
+
+            .little-menu {
+              height: 150px;
+            }
+
+            .status {
+              transform: rotate(-180deg);
+            }
+          }
         }
 
         .languages {
