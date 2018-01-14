@@ -124,18 +124,18 @@ export class CreateResumeComponent implements OnInit{
 
     send() {
         console.log(this.resumeForm);
-        // this.http.post(CREATE_RESUME, this.resumeForm)
-        //     .subscribe((res: any) => {
-        //         this.confirmed = res.code === 200;
-        //
-        //         if (res.success === true) {
-        //             this.resumeForm = Object.assign({}, this.cleanResumeForm);
-        //             alert('Ваше резюме отправлено!')
-        //         } else {
-        //             alert('Отправка не удалась');
-        //         }
-        //
-        //     })
+        this.http.post(CREATE_RESUME, this.resumeForm)
+            .subscribe((res: any) => {
+                this.confirmed = res.code === 200;
+
+                if (res.success === true) {
+                    this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                    alert('Ваше резюме отправлено!')
+                } else {
+                    alert('Отправка не удалась');
+                }
+
+            })
     };
 
 }
