@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CREATE_RESUME } from "../../constants";
 import { HttpClient } from "@angular/common/http";
+import { UserService } from "../../services/user.service";
 
 
 
@@ -10,17 +11,15 @@ import { HttpClient } from "@angular/common/http";
     templateUrl: './create-resume.component.html',
     styleUrls: ['./create-resume.component.less']
 })
-export class CreateResumeComponent {
+export class CreateResumeComponent implements OnInit{
     private confirmed: boolean = false;
 
     private experienceItem: any = {
-        time: {
-            startMonth: null,
-            startYear: null,
-            endMonth: null,
-            endYear: null,
-            present: null
-        },
+        startMonth: null,
+        startYear: null,
+        endMonth: null,
+        endYear: null,
+        present: null,
         organization: null,
         job: null,
         duties: null
@@ -62,44 +61,56 @@ export class CreateResumeComponent {
                 month: null
             }
         },
-        businessTrips: "да",
-        relocation: "да",
+        businessTrips: "нет",
+        relocation: "нет",
         schedule: null,
         employmentType: null,
-        experience: [ this.experienceItem ],
+        experience: [ Object.assign({},this.experienceItem) ],
         educationCountries: {
             russian: false,
             foreign: false
         },
-        education: [ this.educationItem ],
-        languages: [ this.languageItem ],
-        trainings: [ this.trainingItem ],
+        education: [ Object.assign({},this.educationItem) ],
+        languages: [ Object.assign({},this.languageItem) ],
+        trainings: [ Object.assign({},this.trainingItem) ],
         additionalInformation: null,
         personalQualities: null,
         hobbies: null,
         email: null,
         phoneNumber: null
     };
+
     public cleanResumeForm = Object.assign({}, this.resumeForm);
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private userService: UserService) {
 
     }
 
-    send() {
-        console.log(this.resumeForm);
-        this.http.post(CREATE_RESUME, this.resumeForm)
-            .subscribe((res: any) => {
-                this.confirmed = res.code === 200;
+    public isAuthorized: boolean = false;
 
-                if (res.success === true) {
-                    this.resumeForm = Object.assign({}, this.cleanResumeForm);
-                    alert('Ваше резюме отправлено!')
-                } else {
-                    alert('Отправка не удалась');
+    ngOnInit(): void {
+        this.userService.user$
+            .subscribe((user) => {
+                this.isAuthorized = !!user;
+                if (user) {
+                    console.log(user);
                 }
+            });
+    }
 
-            })
+
+    public addWorkplace(): void {
+        this.resumeForm.experience.push(Object.assign({},this.experienceItem));
+    }
+    public addEducation(): void {
+        this.resumeForm.education.push(Object.assign({},this.educationItem));
+    }
+    public addLanguage(): void {
+        this.resumeForm.languages.push(Object.assign({},this.languageItem));
+    }
+    public addTraining(): void {
+        this.resumeForm.trainings.push(Object.assign({},this.trainingItem));
     }
 
 
@@ -108,6 +119,23 @@ export class CreateResumeComponent {
     fileChange(event) {
         let fileList: FileList = event.target.files;
         this.loadingPhotoButton = fileList[0].name;
+        console.log(fileList[0]);
     }
+
+    send() {
+        console.log(this.resumeForm);
+        // this.http.post(CREATE_RESUME, this.resumeForm)
+        //     .subscribe((res: any) => {
+        //         this.confirmed = res.code === 200;
+        //
+        //         if (res.success === true) {
+        //             this.resumeForm = Object.assign({}, this.cleanResumeForm);
+        //             alert('Ваше резюме отправлено!')
+        //         } else {
+        //             alert('Отправка не удалась');
+        //         }
+        //
+        //     })
+    };
 
 }
