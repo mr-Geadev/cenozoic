@@ -1,0 +1,63 @@
+<div class="manage">
+    <div class="container">
+
+        <div class="row">
+            <div class="title">
+                Личный кабинет
+            </div>
+
+            <ul class="list">
+
+                <li class="item">
+                    <input type="radio"
+                           id="responses"
+                           name="manager"
+                           [(ngModel)]="activeTab"
+                           value="Отклики">
+                    <label for="responses">Отклики</label>
+                </li>
+
+                <li class="item">
+                    <input type="radio"
+                           id="suggestions"
+                           name="manager"
+                           [(ngModel)]="activeTab"
+                           value="Предложения">
+                    <label for="suggestions">Предложения</label>
+                </li>
+
+                <li class="item">
+                    <input type="radio"
+                           id="archive"
+                           name="manager"
+                           [(ngModel)]="activeTab"
+                           value="Архив">
+                    <label for="archive">Архив</label>
+                </li>
+
+                <li class="item">
+                    <input type="radio"
+                           id="summary"
+                           name="manager"
+                           [(ngModel)]="activeTab"
+                           value="Резюме">
+                    <label for="summary">Резюме</label>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="side-title" *ngIf="activeTab !== 'Архив'" >Мои {{ activeTab }}</div>
+        <div class="side-title" *ngIf="activeTab === 'Архив'" >Мой {{ activeTab }}</div>
+    </div>
+</div>
+
+<list-resume class="item resume"
+             [ngClass]="{ 'active': activeTab === 'Резюме' }"
+             [config]="'resume'"></list-resume>
