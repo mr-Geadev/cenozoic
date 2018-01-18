@@ -9,6 +9,7 @@ import { PageFooterModule, PageHeaderModule } from "./blocks";
 import { NotFoundPageComponent, MainPageModule } from "./pages";
 import { CreateResumePageModule } from "./pages/create-resume-page/create-resume-page.module";
 import { ListResumePageModule } from "./pages/list-resume-page/list-resume-page.module";
+import { PersonalAccountPageModule } from "./pages/personal-account-page/personal-account-page.module";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -27,6 +28,7 @@ const ROUTES = [
         MainPageModule,
         CreateResumePageModule,
         ListResumePageModule,
+        PersonalAccountPageModule,
 
         // Block
         PageHeaderModule,

@@ -1,17 +1,6 @@
 <section class="list-summaryes">
     <div class="container">
 
-        <div class="row head">
-            <div class="title">Резюме</div>
-            <form class="sort">
-                <label for="">Сортировать</label>
-                <select name="" id="">
-                    <option value="date">По дате добавления</option>
-                </select>
-            </form>
-        </div>
-
-
         <div class="row list">
 
             <a href="#" class="item" *ngFor="let item of listResume; let i = index" >
@@ -21,7 +10,7 @@
                         Стаж работы
                     </div>
                     <div class="value">
-                        {{ item.experienceAll.oil.years }} лет {{ item.experienceAll.oil.month }} месяцевц
+                        {{ item.experienceAll.oil.years }} лет {{ item.experienceAll.oil.month }} месяцев
                     </div>
                 </div>
                 <div class="last-work-place">
@@ -33,6 +22,18 @@
                     </div>
                 </div>
                 <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
+            </a>
+
+
+            <a [routerLink]="['/create-resume']" class="add item" *ngIf="config === 'resume'" >
+                <div class="inner">
+                    <div class="circle">
+                        <div class="plus">
+                            +
+                        </div>
+                    </div>
+                </div>
+                <div class="more-info">Добавить новое резюме</div>
             </a>
 
 

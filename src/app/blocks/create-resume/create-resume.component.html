@@ -14,22 +14,22 @@
 
                         <div class="parameter job">
                             <div class="left">
-                                <label for="job">Желаемая должность</label>
+                                <label for="job">Желаемая должность<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <input type="text" name="job" id="job" [(ngModel)]="resumeForm.job">
+                                <input type="text" name="job" id="job" [(ngModel)]="resumeForm.job" required >
                             </div>
                         </div>
 
                         <div class="parameter salary">
                             <div class="left">
-                                <label for="salary-from">Оклад</label>
+                                <label for="salary-from">Оклад<span class="required">*</span></label>
                             </div>
                             <div class="right">
                                 <div class="word from">
                                     от
                                 </div>
-                                <input type="text" name="salary" id="salary-from" [(ngModel)]="resumeForm.salary">
+                                <input type="text" name="salary" id="salary-from" [(ngModel)]="resumeForm.salary" required>
                                 <div class="word rub">
                                     руб.
                                 </div>
@@ -457,19 +457,19 @@
 
                         <div class="parameter email">
                             <div class="left">
-                                <label for="age">E-mail</label>
+                                <label for="age">E-mail<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <input type="text" name="email" id="email"  class="" [(ngModel)]="resumeForm.email">
+                                <input type="text" name="email" id="email"  class="" [(ngModel)]="resumeForm.email" required>
                             </div>
                         </div>
 
                         <div class="parameter phone-number">
                             <div class="left">
-                                <label for="age">Телефон</label>
+                                <label for="age">Телефон<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <input type="text" name="phone-number" id="phone-number"  [(ngModel)]="resumeForm.number">
+                                <input type="text" name="phone-number" id="phone-number"  [(ngModel)]="resumeForm.number" required>
                             </div>
                         </div>
 
@@ -479,6 +479,9 @@
                         <button type="submit" id="save">
                             Сохранить резюме
                         </button>
+                        <div class="message" id="alert">
+                            Заполнены не все обязательные поля!
+                        </div>
                         <div class="message">
                             Вы всегда сможете отредактировать резюме  в личном кабинете
                         </div>

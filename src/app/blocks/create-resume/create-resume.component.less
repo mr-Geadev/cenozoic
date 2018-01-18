@@ -2,6 +2,8 @@
 
   @import (less) '../../../assets/styles/base.less';
 
+
+
   .create-summary {
     margin-top: 50px;
 
@@ -383,6 +385,12 @@
           font-weight: 400;
           line-height: 1.25rem;
           margin-bottom: 92px;
+
+          &#alert {
+            display: none;
+            margin: 0;
+            color: @alert - #CCCCCC;
+          }
         }
       }
 
@@ -440,4 +448,32 @@
 
   }
 
+
+
+  .required {
+    color: @dark-orange;
+    display: inline-block;
+    transform: translateY(-3px);
+  }
+  form.ng-invalid {
+
+    #save {
+      background-color: @light-gray !important;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    #alert {
+      display: block !important;
+    }
+
+  }
+
+  input.ng-invalid {
+    background-color: @alert;
+  }
+
 }
+
+
+

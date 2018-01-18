@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -8,17 +8,29 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ListResumeComponent implements OnInit {
 
-
-    constructor( private _http: HttpClient ) { }
+    @Input() config: string;
 
     private offset: number = 0;
     public listResume: any [];
 
+    constructor( private _http: HttpClient ) { }
+
+
+
     ngOnInit (): void {
-            this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
-                .subscribe( (res:any) => {
-                    this.listResume = res.resumeList;
-                })
+
+            if (this.config !== "resume") {
+                this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
+                    .subscribe( (res:any) => {
+                        this.listResume = res.resumeList;
+                    });
+            } else {
+                this.offset = 5;
+                this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
+                    .subscribe( (res:any) => {
+                        this.listResume = res.resumeList;
+                    });
+            }
     }
 
     }

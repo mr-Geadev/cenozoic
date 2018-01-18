@@ -21,9 +21,6 @@ export class PageHeaderComponent implements DoCheck, OnInit {
             .subscribe((user) => {
                 this.isAuthorized = !!user;
 
-                if (user) {
-                    console.log(user);
-                }
             });
     }
 
