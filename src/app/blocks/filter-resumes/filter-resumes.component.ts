@@ -19,7 +19,6 @@ export class FilterResumesComponent implements OnInit{
     public showFilters(reset?: boolean):void {
         if (reset) {
             this.filterResumesService.resetFilterParameters();
-            this.filterResumesService.changeForm();
         } else {
             this.showing = !this.showing;
         }

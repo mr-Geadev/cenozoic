@@ -3,14 +3,14 @@
 
         <div class="row list">
 
-            <a href="#" class="item" *ngFor="let item of listResume; let i = index" >
+            <a class="item" *ngFor="let item of listResume; let i = index"  (click)="resumeService.goEdit(item)">
                 <div class="job">{{item.job}}</div>
                 <div class="experience">
                     <div class="title">
                         Стаж работы
                     </div>
                     <div class="value">
-                        {{ item.experienceAll.oil.years }} лет {{ item.experienceAll.oil.month }} месяцев
+                        {{ item.experienceAllTime }} лет
                     </div>
                 </div>
                 <div class="last-work-place">
