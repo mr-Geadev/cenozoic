@@ -35,6 +35,7 @@ export class FilterResumesService {
 
     public resetFilterParameters(): void {
         this.parameters = Object.assign({}, this._parametersTemplate);
+        this.setFilterParameters(null);
     }
 
     public changeForm(): void {

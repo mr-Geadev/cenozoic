@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { FilterResumesService } from "../filter-resumes/filter-resumes.service";
+import { ResumeService } from "../../services/resume.service";
 
 @Component({
     selector: 'list-resume',
@@ -15,7 +16,8 @@ export class ListResumeComponent implements OnInit {
     public listResume: any [];
 
     constructor( private _http: HttpClient,
-                 private _filterResumesService: FilterResumesService) { }
+                 private _filterResumesService: FilterResumesService,
+                 public resumeService: ResumeService) { }
 
 
     ngOnInit (): void {
@@ -27,11 +29,11 @@ export class ListResumeComponent implements OnInit {
                 });
         } else {
 
-            this._filterResumesService.filter$.subscribe((parameters) => {
+            this._filterResumesService.filter$.subscribe((parameters: any) => {
                 if (parameters != null) {
-                    this._http.get(`/api/v1/resume/get/all?filters:${parameters}`)
+                    this._http.get(`/api/v1/resume/get/all?offset=${this.offset}filters:${parameters}`)
                         .subscribe( (res:any) => {
-                            console.log(res);
+                            this.listResume = res.resumeList;
                         });
                 } else {
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)

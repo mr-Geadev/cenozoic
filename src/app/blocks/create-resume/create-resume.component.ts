@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CREATE_RESUME } from "../../constants";
 import { HttpClient } from "@angular/common/http";
 import { UserService } from "../../services/user.service";
+import { ResumeService } from "../../services/resume.service";
 
 
 
@@ -84,18 +85,27 @@ export class CreateResumeComponent implements OnInit{
     public cleanResumeForm = Object.assign({}, this.resumeForm);
 
     constructor(private http: HttpClient,
-                private userService: UserService) {
+                private userService: UserService,
+                private resumeService: ResumeService) {
 
     }
 
     public isAuthorized: boolean = false;
 
     ngOnInit(): void {
+
         this.userService.user$
             .subscribe((user) => {
                 this.isAuthorized = !!user;
                 if (user) {
                     console.log(user);
+                }
+            });
+
+        this.resumeService.resume$
+            .subscribe((resume)=>{
+                for (let key in resume) {
+                    this.resumeForm[key] = resume[key];
                 }
             });
     }
