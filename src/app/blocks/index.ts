@@ -9,6 +9,6 @@ export * from './breadcrumbs';
 export * from './filtr';
 export * from './list-vacancy';
 export * from './create-vacancy';
-export * from './filtr-summaryes';
+export * from './filter-resumes';
 export * from './create-resume';
 export * from './list-resume';

@@ -49,6 +49,7 @@ export class CreateResumeComponent implements OnInit{
         age:null,
         gender: "Мужчина",
         family:null,
+        experienceAllTime: null,
         experienceAll: {
             oil: {
                 exist: false,
@@ -122,8 +123,12 @@ export class CreateResumeComponent implements OnInit{
         console.log(fileList[0]);
     }
 
-    send() {
-        console.log(this.resumeForm);
+    public send():void {
+
+        let months = +this.resumeForm.experienceAll.oil.month + +this.resumeForm.experienceAll.mining.month;
+        let years = +this.resumeForm.experienceAll.oil.years + +this.resumeForm.experienceAll.mining.years + Math.floor(months/12);
+        this.resumeForm.experienceAllTime = `${years};${months % 12}`;
+
         this.http.post(CREATE_RESUME, this.resumeForm)
             .subscribe((res: any) => {
                 this.confirmed = res.code === 200;

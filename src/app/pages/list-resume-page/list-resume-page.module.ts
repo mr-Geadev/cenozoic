@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { ListResumePageComponent } from "./list-resume-page.component";
-import { FiltrSummaryesModule } from "../../blocks/filtr-summaryes/filtr-summaryes.module";
+import { FilterResumesModule } from "../../blocks/filter-resumes/filter-resumes.module";
 import { ListResumeModule } from "../../blocks/list-resume";
 
 
@@ -22,11 +22,12 @@ import { ListResumeModule } from "../../blocks/list-resume";
         ReactiveFormsModule,
         FormsModule,
         MatDialogModule,
-        FiltrSummaryesModule,
+        FilterResumesModule,
         ListResumeModule,
         // Blocks
     ],
     exports: [ ListResumePageComponent]
 })
 export class  ListResumePageModule {
+
 }
