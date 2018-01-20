@@ -84,6 +84,7 @@ export class LoginModalComponent {
 
                 if (res.success === true) {
                     alert('Вы зарегестрированы!');
+                    this.dialog.closeAll();
                 } else {
                     alert(res.errorMessage);
                     console.log(res);

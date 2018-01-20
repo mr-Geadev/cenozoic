@@ -39,6 +39,7 @@ export class ListResumeComponent implements OnInit {
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
                         .subscribe((res: any) => {
                             this.listResume = res.resumeList;
+                            console.log(res);
                         });
                 }
             });

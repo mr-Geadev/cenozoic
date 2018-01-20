@@ -1,0 +1,281 @@
+<div class="container">
+
+    <div class="row main-info">
+
+        <div class="col-7 left">
+
+            <div class="city gray text">Санкт-Петербург</div>
+            <div class="page-title">{{currentResume.job}}</div>
+
+            <div class="salary"><span>от {{currentResume.salary}}</span></div>
+
+            <div class="name">Константинопльский Константин Константинович</div>
+
+            <div class="table">
+                <div class="line">
+                    <div class="parameter gray text">
+                        Возраст
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.age}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        Пол
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.gender}}
+                    </div>
+                </div>
+                <div class="line not-dott">
+                    <div class="parameter gray text">
+                        Опыт  работы
+                    </div>
+                    <div class="line">
+                        <div class="parameter gray text">
+                            в нефтегазовой промышленности
+                        </div>
+                        <div class="value black text">
+                            {{currentResume.experienceAll.oil.years}} года
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="parameter gray text">
+                            в горнодобывающей промышленности
+                        </div>
+                        <div class="value black text">
+                            {{currentResume.experienceAll.mining.years}} года
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        Готовность к командировкам
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.businessTrips}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        Переезд
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.relocation}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        График работы
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.schedule}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        Занятость
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.employmentType}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        Семейное положение
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.family}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-4 offset-1 right">
+            <div class="photo">
+
+            </div>
+            <div class="button" (click)="resumeService.goEdit()">
+                Редактировать резюме
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="row add-info">
+        <div class="col">
+            <div class="title">
+                Опыт работы
+            </div>
+
+            <table class="experience">
+
+                <tr *ngFor="let item of currentResume.experience">
+                    <td class="time-work">
+                        <div class="text black">2 года 5 месяцев                    </div>
+                        <div class="text gray">{{item.startMonth}} {{item.startYear}} — {{item.endMonth}} {{item.endYear}}</div>
+                    </td>
+                    <td class="work">
+                        <div class="job side-title">{{item.job}}</div>
+                        <div class="company text gray">{{item.organization}}</div>
+                        <div class="duties text black">
+                            {{item.duties}}
+                        </div>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+
+    <div class="row add-info education">
+        <div class="col">
+            <div class="title">
+                Учебные заведения
+            </div>
+
+            <table class="experience">
+
+                <tr *ngFor="let item of currentResume.education">
+                    <td class="time-work">
+                        <div class="text gray">{{item.stage}}</div>
+                        <div class="text gray">Год окончания: {{item.end}}</div>
+                        <div class="text gray">{{item.end - item.start}} лет</div>
+                    </td>
+                    <td class="education">
+                        <div class="side-title">{{item.country}}, {{item.city}}</div>
+                        <div class="side-title">{{item.university}}</div>
+                        <div class="text black">{{item.faculty}}</div>
+                        <div class="side-title">{{item.specialty}}</div>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row add-info languages">
+        <div class="col">
+            <div class="title">
+               Знание языков
+            </div>
+
+            <div class="text black" *ngFor="let item of currentResume.languages">{{item.name}} - {{item.level}}</div>
+
+        </div>
+    </div>
+
+    <div class="row add-info trainings">
+        <div class="col">
+            <div class="title">
+                Профессиональные компетенции, Курсы, тренинги, сертификаты
+            </div>
+
+            <table class="experience">
+
+                <tr *ngFor="let item of currentResume.trainings">
+                    <td class="time-work">
+                        <div class="text gray">{{item.year}} год</div>
+                    </td>
+                    <td class="education">
+                        <div class="side-title">{{item.name}}</div>
+                        <div class="text gray">{{item.city}}</div>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row add-info additional">
+        <div class="col">
+            <div class="title">
+                Дополнительная информация
+            </div>
+
+            <div class="text black">
+                {{currentResume.additionalInformation}}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row add-info personal-properties">
+        <div class="col">
+            <div class="title">
+                Личные качества
+            </div>
+
+            <div class="text black">
+                {{currentResume.personalQualities}}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row add-info hobbies">
+        <div class="col">
+            <div class="title">
+                Увлечения
+            </div>
+
+            <div class="text black">
+                {{currentResume.hobbies}}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row add-info contacts">
+        <div class="col">
+            <div class="title">
+                Контактные данные
+            </div>
+
+            <table class="experience">
+
+                <tr>
+                    <td>
+                        <div class="text gray">ФИО</div>
+                    </td>
+                    <td>
+                        <div class="text black">Имя</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="text gray">E-mail</div>
+                    </td>
+                    <td>
+                        <div class="text black">{{currentResume.email}}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="text gray">Телефон</div>
+                    </td>
+                    <td>
+                        <div class="text black">{{currentResume.phoneNumber}}</div>
+                    </td>
+                </tr>
+
+
+            </table>
+
+        </div>
+    </div>
+
+
+
+</div>
+

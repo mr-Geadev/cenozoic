@@ -5,17 +5,16 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { LoginModalModule } from "../../modals/login/login.module";
-import { PersonalAccountPageComponent } from "./personal-account-page.component";
-import { ListResumeModule } from "../../blocks/list-resume/list-resume.module";
 import { ResumeFullModule } from "../../blocks/resume-full/resume-full.module";
+import { ResumeFullPageComponent } from "./resume-full-page.component";
 
 @NgModule({
     declarations: [
-        PersonalAccountPageComponent,
+        ResumeFullPageComponent,
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'personal-account', component: PersonalAccountPageComponent, pathMatch: 'full' },
+            { path: 'resume/:id', component: ResumeFullPageComponent, pathMatch: 'full' },
         ]),
         CommonModule,
         HttpClientModule,
@@ -24,13 +23,11 @@ import { ResumeFullModule } from "../../blocks/resume-full/resume-full.module";
         MatDialogModule,
         LoginModalModule,
 
-
         //blocks
-        ListResumeModule,
         ResumeFullModule
 
     ],
-    exports: [PersonalAccountPageComponent]
+    exports: [ResumeFullPageComponent]
 })
-export class  PersonalAccountPageModule {
+export class  ResumeFullPageModule {
 }
