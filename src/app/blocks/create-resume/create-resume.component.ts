@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CREATE_RESUME } from "../../constants";
 import { HttpClient } from "@angular/common/http";
 import { UserService } from "../../services/user.service";
 import { ResumeService } from "../../services/resume.service";
+import { Subscription } from "rxjs/Subscription";
 
 
 
@@ -12,8 +13,10 @@ import { ResumeService } from "../../services/resume.service";
     templateUrl: './create-resume.component.html',
     styleUrls: ['./create-resume.component.less']
 })
-export class CreateResumeComponent implements OnInit{
+export class CreateResumeComponent implements OnInit, OnDestroy {
     private confirmed: boolean = false;
+
+    private sub: any;
 
     private experienceItem: any = {
         startMonth: null,
@@ -102,12 +105,18 @@ export class CreateResumeComponent implements OnInit{
                 }
             });
 
-        this.resumeService.resume$
+        this.sub = this.resumeService.resume$
             .subscribe((resume)=>{
-                for (let key in resume) {
-                    this.resumeForm[key] = resume[key];
-                }
+               if (resume != null) {
+                   for (let key in resume) {
+                       this.resumeForm[key] = resume[key];
+                   }
+               }
             });
+    }
+
+    ngOnDestroy():void {
+        this.resumeService.setResume(null);
     }
 
 
