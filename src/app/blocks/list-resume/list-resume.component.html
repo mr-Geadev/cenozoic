@@ -3,7 +3,7 @@
 
         <div class="row list">
 
-            <a class="item" *ngFor="let item of listResume; let i = index"  (click)="resumeService.goEdit(item)">
+            <a class="item" *ngFor="let item of listResume; let i = index"  (click)="resumeService.goResume(item)">
                 <div class="job">{{item.job}}</div>
                 <div class="experience">
                     <div class="title">

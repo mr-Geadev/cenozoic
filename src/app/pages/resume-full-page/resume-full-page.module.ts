@@ -14,7 +14,7 @@ import { ResumeFullPageComponent } from "./resume-full-page.component";
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'resume-full', component: ResumeFullPageComponent, pathMatch: 'full' },
+            { path: 'resume/:id', component: ResumeFullPageComponent, pathMatch: 'full' },
         ]),
         CommonModule,
         HttpClientModule,

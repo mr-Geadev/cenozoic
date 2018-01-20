@@ -5,9 +5,9 @@
         <div class="col-7 left">
 
             <div class="city gray text">Санкт-Петербург</div>
-            <div class="page-title">Главный специалист по промышленной безопасности газовых объектов</div>
+            <div class="page-title">{{currentResume.job}}</div>
 
-            <div class="salary"><span>от</span> 32 000 рублей</div>
+            <div class="salary"><span>от {{currentResume.salary}}</span></div>
 
             <div class="name">Константинопльский Константин Константинович</div>
 
@@ -17,7 +17,7 @@
                         Возраст
                     </div>
                     <div class="value black text">
-                        36
+                        {{currentResume.age}}
                     </div>
                 </div>
                 <div class="line">
@@ -25,7 +25,7 @@
                         Пол
                     </div>
                     <div class="value black text">
-                        Мужской
+                        {{currentResume.gender}}
                     </div>
                 </div>
                 <div class="line not-dott">
@@ -37,7 +37,7 @@
                             в нефтегазовой промышленности
                         </div>
                         <div class="value black text">
-                            4,5 года
+                            {{currentResume.experienceAll.oil.years}} года
                         </div>
                     </div>
                     <div class="line">
@@ -45,7 +45,7 @@
                             в горнодобывающей промышленности
                         </div>
                         <div class="value black text">
-                            2,5 года
+                            {{currentResume.experienceAll.mining.years}} года
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         Готовность к командировкам
                     </div>
                     <div class="value black text">
-                        Да
+                        {{currentResume.businessTrips}}
                     </div>
                 </div>
                 <div class="line">
@@ -62,7 +62,7 @@
                         Переезд
                     </div>
                     <div class="value black text">
-                        Не возможен
+                        {{currentResume.relocation}}
                     </div>
                 </div>
                 <div class="line">
@@ -70,7 +70,7 @@
                         График работы
                     </div>
                     <div class="value black text">
-                        Вахтовый
+                        {{currentResume.schedule}}
                     </div>
                 </div>
                 <div class="line">
@@ -78,7 +78,7 @@
                         Занятость
                     </div>
                     <div class="value black text">
-                        Полная
+                        {{currentResume.employmentType}}
                     </div>
                 </div>
                 <div class="line">
@@ -86,7 +86,7 @@
                         Семейное положение
                     </div>
                     <div class="value black text">
-                        Холост
+                        {{currentResume.family}}
                     </div>
                 </div>
             </div>
@@ -97,8 +97,8 @@
             <div class="photo">
 
             </div>
-            <div class="button">
-                Редактировать
+            <div class="button" (click)="resumeService.goEdit()">
+                Редактировать резюме
             </div>
         </div>
 
@@ -114,17 +114,16 @@
 
             <table class="experience">
 
-                <tr>
+                <tr *ngFor="let item of currentResume.experience">
                     <td class="time-work">
-                        <div class="text black">2 года 5 месяцев</div>
-                        <div class="text gray">Ноябрь 2013 — март 2016</div>
+                        <div class="text black">2 года 5 месяцев                    </div>
+                        <div class="text gray">{{item.startMonth}} {{item.startYear}} — {{item.endMonth}} {{item.endYear}}</div>
                     </td>
                     <td class="work">
-                        <div class="job side-title">Инженер по охране труда и технике безопасности</div>
-                        <div class="company text gray">ООО "ДМ- Стройстандарт</div>
+                        <div class="job side-title">{{item.job}}</div>
+                        <div class="company text gray">{{item.organization}}</div>
                         <div class="duties text black">
-                            Координация работ по охране труда и технике безопасности; проведение профилактических работ, предупреждающих производственный травматизм и профзаболевания; проведение вводных инструктажей по технике безопасности; организация проверок по охране труда организации и подразделений; участие в составе комиссий, проверяющих знания по охране труда у работников предприятия; информирование всех сотрудников предприятия о новых нормативно-правовых актах в сфере охраны труда; разработка и внедрение инструкций по охране труда.
-                            Имею "Удостоверение о проверке знаний требований охраны труда", выдано АНО "Комплексный экспертный центр охраны труда" 2013г.
+                            {{item.duties}}
                         </div>
                     </td>
                 </tr>
@@ -143,18 +142,17 @@
 
             <table class="experience">
 
-                <tr>
+                <tr *ngFor="let item of currentResume.education">
                     <td class="time-work">
-                        <div class="text gray">Высшее</div>
-                        <div class="text gray">Год окончания: 2016</div>
-                        <div class="text gray">5 лет</div>
+                        <div class="text gray">{{item.stage}}</div>
+                        <div class="text gray">Год окончания: {{item.end}}</div>
+                        <div class="text gray">{{item.end - item.start}} лет</div>
                     </td>
                     <td class="education">
-                        <div class="side-title">Россия, Саратов</div>
-                        <div class="side-title">СГТУ им. Ю.А. Гагарина</div>
-                        <div class="side-title">Инженер по охране труда и технике безопасности</div>
-                        <div class="text black">Факультет: “Теплогазоснабжение и вентиляция”</div>
-                        <div class="text black">Инженер теплогазоснабжения и вентиляции</div>
+                        <div class="side-title">{{item.country}}, {{item.city}}</div>
+                        <div class="side-title">{{item.university}}</div>
+                        <div class="text black">{{item.faculty}}</div>
+                        <div class="side-title">{{item.specialty}}</div>
                     </td>
                 </tr>
 
@@ -169,8 +167,7 @@
                Знание языков
             </div>
 
-            <div class="text black">Русский - родной</div>
-            <div class="text black">Английский - базовый</div>
+            <div class="text black" *ngFor="let item of currentResume.languages">{{item.name}} - {{item.level}}</div>
 
         </div>
     </div>
@@ -183,13 +180,13 @@
 
             <table class="experience">
 
-                <tr>
+                <tr *ngFor="let item of currentResume.trainings">
                     <td class="time-work">
-                        <div class="text gray">2017 год</div>
+                        <div class="text gray">{{item.year}} год</div>
                     </td>
                     <td class="education">
-                        <div class="side-title">Расчет производственных мощностей и загрузки оборудования. Практикум</div>
-                        <div class="text gray">Москва</div>
+                        <div class="side-title">{{item.name}}</div>
+                        <div class="text gray">{{item.city}}</div>
                     </td>
                 </tr>
 
@@ -205,17 +202,7 @@
             </div>
 
             <div class="text black">
-                - умею находить общий язык с людьми;
-                - ставлю реально выполнимые цели и добиваюсь их выполнения;
-                - умею организовывать работу сотрудников ставить перед ними задачи и контролировать их выполнение в срок;
-                - оценивать уровень пожарной безопасности объектов;
-                - проводить обследование объекта на предмет соответствия объемно-планировочных, конструктивных, инженерно-технических и организационных решений
-                требованиям действующих норм и правил пожарной безопасности;
-                - организовывать на объекте противопожарный режим, проводить проверки противопожарного состояния территории и помещений объекта;
-                - определять необходимость, количество, а также проверять техническое состояние автоматических систем противопожарной защиты объекта, наружного и
-                внутреннего противопожарных водопроводов, первичных средств пожаротушения;
-                - разрабатывать приказы, инструкции, положения и другую документацию в области обеспечения пожарной безопасности;
-                - взаимодействие с надзорными органами.
+                {{currentResume.additionalInformation}}
             </div>
 
         </div>
@@ -228,7 +215,7 @@
             </div>
 
             <div class="text black">
-                Добросовестность, пунктупльность, коммуникабельность
+                {{currentResume.personalQualities}}
             </div>
 
         </div>
@@ -241,7 +228,7 @@
             </div>
 
             <div class="text black">
-                Гитара, книги, спорт, разведение шиншил
+                {{currentResume.hobbies}}
             </div>
 
         </div>
@@ -256,29 +243,29 @@
             <table class="experience">
 
                 <tr>
-                    <td class="time-work">
+                    <td>
                         <div class="text gray">ФИО</div>
                     </td>
-                    <td class="education">
-                        <div class="text black">Москва</div>
+                    <td>
+                        <div class="text black">Имя</div>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="time-work">
+                    <td>
                         <div class="text gray">E-mail</div>
                     </td>
-                    <td class="education">
-                        <div class="text black">konstantinopolskiy_k@gmail.com</div>
+                    <td>
+                        <div class="text black">{{currentResume.email}}</div>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="time-work">
+                    <td>
                         <div class="text gray">Телефон</div>
                     </td>
-                    <td class="education">
-                        <div class="text black">+7 (904) 242 62 30</div>
+                    <td>
+                        <div class="text black">{{currentResume.phoneNumber}}</div>
                     </td>
                 </tr>
 

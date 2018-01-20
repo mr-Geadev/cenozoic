@@ -24,16 +24,14 @@ export class ResumeService {
         this.resumeSubject.next(resume);
     }
 
-    public goEdit(resume: any): void {
+    public goResume(resume: any): void {
 
-        this.userService.user$
-            .subscribe((user) => {
-                this._userId = user.userId;
-            });
+        this.router.navigate(['resume',resume._id]);
+        this.setResume(resume);
 
-        if (this._userId === resume.userId) {
-            this.router.navigate(['create-resume']);
-            this.setResume(resume);
-        }
+    }
+
+    public goEdit(): void {
+        this.router.navigate(['create-resume']);
     }
 }
