@@ -21,7 +21,7 @@ export class FilterResumesService {
         placeResidence: 'Место проживания',
         experienceAllTime: 'Общий стаж',
         languagesResume: 'Язык резюме',
-        schedule: 'Занятость',
+        schedule: 'Метод работы',
         languages: 'Знание языков',
         salary: 'Оклад',
         employmentType: 'Условия работы',

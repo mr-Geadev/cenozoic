@@ -34,4 +34,16 @@ export class ResumeService {
     public goEdit(): void {
         this.router.navigate(['create-resume']);
     }
+
+    public delete(resume: any):void {
+        this.http.get(`/api/v1/user/resume/remove?resumeId=${resume._id}`)
+            .subscribe((res: any) => {
+                if (res.success) {
+                    alert("Успешно удалено!");
+                    this.router.navigate(['list-resume']);
+                } else {
+                    alert(res.errorMessage);
+                }
+            });
+    }
 }

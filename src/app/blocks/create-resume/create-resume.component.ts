@@ -14,7 +14,7 @@ import { Subscription } from "rxjs/Subscription";
     styleUrls: ['./create-resume.component.less']
 })
 export class CreateResumeComponent implements OnInit, OnDestroy {
-    private confirmed: boolean = false;
+    private type:string = "Создание";
 
     private sub: any;
 
@@ -111,6 +111,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                    for (let key in resume) {
                        this.resumeForm[key] = resume[key];
                    }
+                   this.type = "Изменение";
                }
             });
     }
@@ -148,18 +149,38 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         let years = +this.resumeForm.experienceAll.oil.years + +this.resumeForm.experienceAll.mining.years + Math.floor(months/12);
         this.resumeForm.experienceAllTime = `${years};${months % 12}`;
 
-        this.http.post(CREATE_RESUME, this.resumeForm)
-            .subscribe((res: any) => {
-                this.confirmed = res.code === 200;
 
-                if (res.success === true) {
-                    this.resumeForm = Object.assign({}, this.cleanResumeForm);
-                    alert('Ваше резюме отправлено!')
-                } else {
-                    alert('Отправка не удалась');
-                }
 
-            })
+        if (this.type === "Создание") {
+            this.http.post(CREATE_RESUME, this.resumeForm)
+                .subscribe((res: any) => {
+
+                    if (res.success === true) {
+                        this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                        alert('Ваше резюме отправлено!')
+                    } else {
+                        alert('Отправка не удалась');
+                    }
+
+                });
+        } else {
+            delete this.resumeForm.userId;
+            let id = this.resumeForm._id;
+            delete this.resumeForm._id;
+
+            this.http.post('/api/v1/user/resume/edit', {resumeId: id , resume :  this.resumeForm})
+                .subscribe((res: any) => {
+
+                    if (res.success === true) {
+                        this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                        alert('Ваше резюме изменено!')
+                    } else {
+                        alert(res.errorMessage);
+                        console.log({resumeId: this.resumeForm._id , resume :  this.resumeForm});
+                    }
+
+                });
+        }
     };
 
 }

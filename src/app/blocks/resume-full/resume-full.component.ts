@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResumeService } from "../../services/resume.service";
 import { ActivatedRoute } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: 'resume-full',
@@ -10,7 +11,8 @@ import { ActivatedRoute } from "@angular/router";
 export class ResumeFullComponent implements OnInit{
 
     constructor(public resumeService: ResumeService,
-                private activateRoute: ActivatedRoute) {
+                private activateRoute: ActivatedRoute,
+                private http: HttpClient) {
 
         this.id = activateRoute.snapshot.params['id'];
     }
@@ -25,7 +27,14 @@ export class ResumeFullComponent implements OnInit{
                 if (resume != null) {
                     this.currentResume = resume;
                 } else {
-                    console.log('Не готово API');
+                    this.http.get(`/api/v1/resume/get/one?resumeId=${this.id}`)
+                        .subscribe((res: any) => {
+                            if (res.success) {
+                                this.currentResume = res.resume;
+                            } else {
+                                alert(res.errorMessage);
+                            }
+                        })
                 }
             })
     }
