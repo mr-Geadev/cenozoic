@@ -12,3 +12,4 @@ export * from './create-vacancy';
 export * from './filter-resumes';
 export * from './create-resume';
 export * from './list-resume';
+export * from './resume-full';
