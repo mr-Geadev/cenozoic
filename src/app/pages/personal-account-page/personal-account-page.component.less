@@ -2,11 +2,25 @@
 
   @import (less) '../../../assets/styles/base.less';
 
-  .time-message {
-    margin-top: 50px;
-    text-align: center;
-    font-family: Roboto;
-    font-size: 1.2rem;
+  .active {
+    display: block !important;
+  }
+
+  .description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+
+    .message {
+      margin: auto;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-size: 1rem;
+      font-family: Roboto;
+      display: none;
+    }
   }
 
   .manage {
@@ -72,11 +86,7 @@
     text-transform: uppercase;
   }
 
-  & > .item {
+  & > .block {
     display: none;
-
-    &.active {
-      display: block;
-    }
   }
 }

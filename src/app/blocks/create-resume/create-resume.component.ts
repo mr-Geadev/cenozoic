@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { UserService } from "../../services/user.service";
 import { ResumeService } from "../../services/resume.service";
 import { Subscription } from "rxjs/Subscription";
+import { Router, RouterModule } from "@angular/router";
 
 
 
@@ -89,7 +90,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
     constructor(private http: HttpClient,
                 private userService: UserService,
-                private resumeService: ResumeService) {
+                private resumeService: ResumeService,
+                private router: Router) {
 
     }
 
@@ -157,7 +159,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
                     if (res.success === true) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
-                        alert('Ваше резюме отправлено!')
+                        alert('Ваше резюме отправлено!');
+                        this.router.navigate(['personal-account']);
                     } else {
                         alert('Отправка не удалась');
                     }
@@ -173,7 +176,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
                     if (res.success === true) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
-                        alert('Ваше резюме изменено!')
+                        alert('Ваше резюме изменено!');
+                        this.router.navigate(['resume',id]);
                     } else {
                         alert(res.errorMessage);
                         console.log({resumeId: this.resumeForm._id , resume :  this.resumeForm});
@@ -181,6 +185,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
                 });
         }
+
     };
 
 }

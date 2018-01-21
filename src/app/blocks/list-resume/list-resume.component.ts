@@ -26,6 +26,7 @@ export class ListResumeComponent implements OnInit {
             this._http.get(`/api/v1/user/resume/all`)
                 .subscribe( (res:any) => {
                     this.listResume = res.resumeList;
+                    this.formating(this.listResume);
                 });
         } else {
 
@@ -34,17 +35,32 @@ export class ListResumeComponent implements OnInit {
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}filters:${parameters}`)
                         .subscribe( (res:any) => {
                             this.listResume = res.resumeList;
+                            this.formating(this.listResume);
                         });
                 } else {
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
                         .subscribe((res: any) => {
                             this.listResume = res.resumeList;
+                            this.formating(this.listResume);
                             console.log(res);
                         });
                 }
             });
+        };
 
-        }
+
+
+
+    };
+
+    public formating(list: any[]) {
+
+        let answer = list.map((item)=>{
+            let time = item.experienceAllTime.split(';');
+            item.experienceAllTime = `${time[0]} лет и ${time[1]} месяцев`;
+        });
+
+        return answer;
     }
 
 

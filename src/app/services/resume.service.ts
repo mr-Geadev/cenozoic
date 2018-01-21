@@ -25,10 +25,8 @@ export class ResumeService {
     }
 
     public goResume(resume: any): void {
-
         this.router.navigate(['resume',resume._id]);
         this.setResume(resume);
-
     }
 
     public goEdit(): void {

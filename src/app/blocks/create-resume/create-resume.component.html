@@ -272,7 +272,8 @@
                                 <div class="right">
                                     <select [ngModelOptions]="{standalone: true}" id="stage" class="short-select" [(ngModel)]="resumeForm.education[i].stage">
                                         <option value="Высшее">Высшее</option>
-                                        <option value="Неоконченное высшее">Неоконченное высшее </option>
+                                        <option value="Неоконченное высшее">Неоконченное высшее</option>
+                                        <option value="Неоконченное высшее">Учащийся</option>
                                         <option value="Среднее">Среднее</option>
                                     </select>
                                 </div>
@@ -469,7 +470,7 @@
                                 <label for="age">Телефон<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <input type="text" name="phone-number" id="phone-number"  [(ngModel)]="resumeForm.number" required>
+                                <input type="text" name="phone-number" id="phone-number"  [(ngModel)]="resumeForm.phoneNumber" required>
                             </div>
                         </div>
 

@@ -64,8 +64,13 @@ export class LoginModalComponent {
         return null;
     }
 
-    public login(): void {
-        this.http.post(SIGN_IN, this.loginForm.value)
+    public login(loginIn?: any): void {
+        if (loginIn) {
+            var loginProp = loginIn;
+        } else {
+            var loginProp = this.loginForm.value
+        }
+        this.http.post(SIGN_IN, loginProp)
             .subscribe((res: any) => {
                 if (res.success === true) {
                     alert('Вы вошли');
@@ -84,6 +89,7 @@ export class LoginModalComponent {
 
                 if (res.success === true) {
                     alert('Вы зарегестрированы!');
+                    this.login(this.registerForm.value);
                     this.dialog.closeAll();
                 } else {
                     alert(res.errorMessage);
