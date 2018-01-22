@@ -64,38 +64,30 @@ export class LoginModalComponent {
         return null;
     }
 
-    public login(loginIn?: any): void {
-        if (loginIn) {
-            var loginProp = loginIn;
+
+
+    public login(): void {
+
+        console.log(this.userService.loginUser(this.loginForm.value));
+
+        if (this.userService.success) {
+            alert('Вы вошли');
+            this.dialog.closeAll();
         } else {
-            var loginProp = this.loginForm.value
+            alert('Вы не вошли');
         }
-        this.http.post(SIGN_IN, loginProp)
-            .subscribe((res: any) => {
-                if (res.success === true) {
-                    alert('Вы вошли');
-                    this.userService.getUserInfo();
-                    this.dialog.closeAll();
-                } else {
-                    alert(res.errorMessage);
-                }
-            });
+
     }
 
     public register(): void {
-        this.http.post(SIGN_UP, this.registerForm.value)
-            .subscribe((res: any) => {
-                // this.confirmed = res.code === 200;
 
-                if (res.success === true) {
-                    alert('Вы зарегестрированы!');
-                    this.login(this.registerForm.value);
-                    this.dialog.closeAll();
-                } else {
-                    alert(res.errorMessage);
-                    console.log(res);
-                }
+        let success = this.userService.registerUser(this.registerForm.value);
+        alert(success);
+        if (success) {
+            alert('Вы успешно зарегестрированы');
+            this.userService.loginUser(this.registerForm.value)
+            this.dialog.closeAll();
+        }
 
-            })
     }
 }
