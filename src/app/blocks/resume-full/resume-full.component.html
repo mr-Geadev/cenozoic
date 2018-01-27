@@ -28,19 +28,19 @@
                         {{currentResume.gender}}
                     </div>
                 </div>
-                <div class="line not-dott">
+                <div class="line not-dott" *ngIf="currentResume.experienceAll && (currentResume.experienceAll.oil.years || currentResume.experienceAll.mining.years)">
                     <div class="parameter gray text">
                         Опыт  работы
                     </div>
                     <div class="line">
-                        <div class="parameter gray text">
+                        <div class="parameter gray text" *ngIf="currentResume.experienceAll.oil.years">
                             в нефтегазовой промышленности
                         </div>
                         <div class="value black text">
                             {{currentResume.experienceAll.oil.years}} года
                         </div>
                     </div>
-                    <div class="line">
+                    <div class="line" *ngIf="currentResume.experienceAll.mining.years">
                         <div class="parameter gray text">
                             в горнодобывающей промышленности
                         </div>
@@ -93,7 +93,7 @@
 
         </div>
 
-        <div class="col-4 offset-1 right">
+        <div class="col-4 offset-1 right" >
             <div class="photo">
 
             </div>
@@ -175,7 +175,7 @@
         </div>
     </div>
 
-    <div class="row add-info trainings">
+    <div class="row add-info trainings" *ngIf="!currentResume.trainings == null">
         <div class="col">
             <div class="title">
                 Профессиональные компетенции, Курсы, тренинги, сертификаты
@@ -198,7 +198,7 @@
         </div>
     </div>
 
-    <div class="row add-info additional">
+    <div class="row add-info additional" *ngIf="currentResume.additionalInformation">
         <div class="col">
             <div class="title">
                 Дополнительная информация
@@ -211,7 +211,7 @@
         </div>
     </div>
 
-    <div class="row add-info personal-properties">
+    <div class="row add-info personal-properties" *ngIf="currentResume.personalQualities">
         <div class="col">
             <div class="title">
                 Личные качества
@@ -224,7 +224,7 @@
         </div>
     </div>
 
-    <div class="row add-info hobbies">
+    <div class="row add-info hobbies" *ngIf="currentResume.hobbies">
         <div class="col">
             <div class="title">
                 Увлечения

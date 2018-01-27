@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
-import { SIGN_IN, SIGN_UP, USER_INFO } from "../constants/api.constant";
+import { LOG_OUT, SIGN_IN, SIGN_UP, USER_INFO } from "../constants/api.constant";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable()
@@ -18,6 +18,7 @@ export class UserService {
         this.userSubject.next(user);
     }
 
+
     public getUserInfo(): void {
         this.http.get(USER_INFO)
             .subscribe((res: any) => {
@@ -25,23 +26,27 @@ export class UserService {
             });
     }
 
-    public success: boolean  = false;
+    public loginUser(dataUser: any): void {
 
-    public loginUser(dataUser: any): any {
-
-        return this.http.post(SIGN_IN, dataUser)
+        this.http.post(SIGN_IN, dataUser)
             .subscribe((res: any) => {
                 if (res.success) {
-                    this.success = true;
                     this.getUserInfo();
                 } else {
-                    this.success = false;
                     alert(res.errorMessage);
                 }
 
             });
 
+    }
 
+    public logOut(): void {
+        this.http.post(LOG_OUT,{})
+            .subscribe((res: any) => {
+                if (res.success === true) {
+                    this.setUser(null);
+                }
+            });
     }
 
     public registerUser(dataUser: any): void {
@@ -49,16 +54,12 @@ export class UserService {
         this.http.post(SIGN_UP, dataUser)
             .subscribe((res: any) => {
                 if (res.success) {
-                    // this._success = true;_success
+                    this.loginUser(dataUser);
                 } else {
-                    // this._success = false;_success
                     alert(res.errorMessage);
                 }
-
-                // return this._success;_success
             });
 
-        // return this._success;_success
-
     }
+
 }

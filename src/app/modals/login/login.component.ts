@@ -68,26 +68,32 @@ export class LoginModalComponent {
 
     public login(): void {
 
-        console.log(this.userService.loginUser(this.loginForm.value));
+        this.userService.loginUser(this.loginForm.value);
 
-        if (this.userService.success) {
-            alert('Вы вошли');
-            this.dialog.closeAll();
-        } else {
-            alert('Вы не вошли');
-        }
+        this.userService.user$
+            .subscribe((user)=>{
+                if (user) {
+                    alert('Вы вошли');
+                    this.dialog.closeAll();
+                    console.log(user);
+                };
+            });
+
 
     }
 
     public register(): void {
 
-        let success = this.userService.registerUser(this.registerForm.value);
-        alert(success);
-        if (success) {
-            alert('Вы успешно зарегестрированы');
-            this.userService.loginUser(this.registerForm.value)
-            this.dialog.closeAll();
-        }
+        this.userService.registerUser(this.registerForm.value);
 
+        this.userService.user$
+            .subscribe((user)=>{
+                if (user) {
+                    alert("Вы зарегестированы");
+                    this.dialog.closeAll();
+                }
+            });
     }
+
+
 }

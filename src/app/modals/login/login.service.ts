@@ -13,15 +13,6 @@ export class LoginModalService {
                 public user: UserService) {
     }
 
-    public logOut(): void {
-        this._http.post(LOG_OUT,{})
-            .subscribe((res: any) => {
-                if (res.success === true) {
-                    this.user.setUser(null);
-                    // this.user.session = false;
-                }
-            });
-    }
 
     public openModal(): void {
         this.dialog.open(LoginModalComponent, {
