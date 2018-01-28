@@ -39,11 +39,15 @@
 
                         <div class="parameter age">
                             <div class="left">
-                                <label for="age">Возраст<span class="required">*</span></label>
+                                <label>Дата рождения<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <input type="text" name="age" id="age" class="short-input" [(ngModel)]="resumeForm.age"
-                                       required>
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="dp" [(ngModel)]="resumeForm.age"
+                                           [ngModelOptions]="{standalone: true}">
+                                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                    <mat-datepicker touchUi="true" #dp></mat-datepicker>
+                                </mat-form-field>
                             </div>
                         </div>
 
@@ -143,12 +147,14 @@
 
                         <div class="parameter schedule">
                             <div class="left">
-                                <label for="schedule">Метод работы<span class="required">*</span></label>
+                                <label>Метод работы<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <select name="schedule" id="schedule" [(ngModel)]="resumeForm.schedule" required>
-                                    <option value="Вахтовый">Вахтовый</option>
-                                </select>
+                                <mat-form-field>
+                                    <mat-select name="schedule" [(ngModel)]="resumeForm.schedule" required>
+                                        <mat-option value="Вахтовый">Вахтовый</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                                 <div class="line"></div>
                             </div>
                         </div>
@@ -158,11 +164,14 @@
                                 <label for="employment">Занятость<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <select name="employment" id="employment" [(ngModel)]="resumeForm.employmentType"
-                                        required>
-                                    <option value="Полная">Полная</option>
-                                    <option value="Частичная">Частичная</option>
-                                </select>
+                                <mat-form-field>
+                                    <mat-select name="employment" id="employment"
+                                                [(ngModel)]="resumeForm.employmentType"
+                                                required>
+                                        <mat-option value="Полная">Полная</mat-option>
+                                        <mat-option value="Частичная">Частичная</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                                 <div class="line"></div>
                             </div>
                         </div>

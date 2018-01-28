@@ -1,7 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material";
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from "@angular/material-moment-adapter";
 import { Router } from "@angular/router";
-import 'rxjs/add/operator/filter';
+import "rxjs/add/operator/filter";
 
 import { CREATE_RESUME } from "../../constants";
 import { ResumeService, UserService } from "../../services";
@@ -19,7 +21,12 @@ import {
 @Component({
     selector: 'create-resume',
     templateUrl: './create-resume.component.html',
-    styleUrls: ['./create-resume.component.less']
+    styleUrls: ['./create-resume.component.less'],
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' },
+        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    ],
 })
 export class CreateResumeComponent implements OnInit, OnDestroy {
     public resumeForm: any = DEFAULT_RESUME_FORM;
