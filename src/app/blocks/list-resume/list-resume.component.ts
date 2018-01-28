@@ -42,22 +42,34 @@ export class ListResumeComponent implements OnInit {
                         .subscribe((res: any) => {
                             this.listResume = res.resumeList;
                             this.formatting(this.listResume);
+                            console.log(res);
                             console.log(this.listResume);
                         });
                 }
             });
         };
 
-
-
-
     };
 
     public formatting(list: any[]) {
 
         let answer = list.map((item)=>{
-            let time = item.experienceAllTime.split(';');
-            item.experienceAllTime = `${time[0]} лет и ${time[1]} месяцев`;
+
+            if ((!item.experienceAllTime) || (item.experienceAllTime == '0;0'))   {
+                item.experienceAllTime = 'Без опыта';
+            } else {
+                let time = item.experienceAllTime.split(';');
+                item.experienceAllTime = `${time[0]} лет и ${time[1]} месяцев`;
+            }
+
+            if (item.job == undefined) {
+                item.job = 'Нет данных';
+            }
+
+            if (item.experience == undefined) {
+                item.experience = false;
+            }
+
         });
 
         return answer;

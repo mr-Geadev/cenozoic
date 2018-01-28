@@ -24,10 +24,10 @@ export class ResumeService {
         this.resumeSubject.next(resume);
     }
 
-    public goResume(resume: any): void {
-        this.router.navigate(['resume',resume._id]);
-        this.setResume(resume);
-    }
+    // public goResume(resume: any): void {
+    //     this.router.navigate(['resume',resume._id]);
+    //     this.setResume(resume);
+    // }
 
     public goEdit(): void {
         this.router.navigate(['create-resume']);

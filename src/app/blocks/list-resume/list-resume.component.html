@@ -3,9 +3,8 @@
 
         <div class="row list">
 
-            <a class="item" *ngFor="let item of listResume; let i = index"  (click)="resumeService.goResume(item)">
-                <div class="job" *ngIf="item.job">{{item.job}}</div>
-                <div class="job" *ngIf="!item.job">Нет данных</div>
+            <a class="item" *ngFor="let item of listResume; let i = index"  [routerLink]="['/resume',item._id]">
+                <div class="job">{{item.job}}</div>
                 <div class="experience">
                     <div class="title">
                         Стаж работы
@@ -18,10 +17,10 @@
                     <div class="title">
                         Последнее место работы
                     </div>
-                    <div class="value" *ngIf="item.experience[0]">
-                        <!--{{item.experience[0]?.job}}, <br /> {{item.experience[0].organization}}-->
+                    <div class="value" *ngIf="item.experience">
+                        {{item.experience[0].job}}, {{item.experience[0].organization}}
                     </div>
-                    <div class="value" *ngIf="item.experience[0] == undefined">
+                    <div class="value" *ngIf="item.experience == false">
                         Нет данных
                     </div>
                 </div>
