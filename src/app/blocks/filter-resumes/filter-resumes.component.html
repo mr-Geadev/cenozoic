@@ -8,17 +8,24 @@
         </div>
 
         <form (change)="filterResumesService.changeForm()" >
+
             <div class="row">
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.education">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.education">
                     <option value="Образование">Образование</option>
                     <option value="Среднее">Среднее</option>
                     <option value="Высшее">Высшее</option>
                     <option value="Высшее">Не имеет значение</option>
                 </select>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.placeResidence">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.placeResidence">
                     <option value="Место проживания">Место проживания</option>
                 </select>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.experienceAllTime">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.experienceAllTime">
                     <option value="Общий стаж">Общий стаж</option>
                     <option value="без опыта">без опыта</option>
                     <option value="до 1го года">до 1го года</option>
@@ -28,7 +35,9 @@
                     <option value="10-19 лет">10-19 лет</option>
                     <option value="Более 20 лет">Более 20 лет</option>
                 </select>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.languagesResume">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.languagesResume">
                     <option value="Язык резюме">Язык резюме</option>
                     <option value="Русский">Русский</option>
                     <option value="Английский">Английский</option>
@@ -39,7 +48,7 @@
                 <div class="show-filter" *ngIf="showing" (click)="showFilters()">
                     <div class="line">
                         <span class="text">
-                            <svg id="SVGDoc" width="10" height="9" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 10 9"><defs><path d="M1460.00004,245.97416l-3.73764,-5.99852h7.47528z" id="Path-0"/></defs><desc>Generated with Avocode.</desc><g transform="matrix(1,0,0,1,-1455,-238)"><g><title>Polygon 1 copy 2</title><use xlink:href="#Path-0" fill="#dadada" fill-opacity="1"/></g></g></svg>
+                            <img class="button-icon" src="/assets/images/icon-gray-triangle.svg">
                             Скрыть
                         </span>
                     </div>
@@ -47,7 +56,9 @@
             </div>
 
             <div class="row" *ngIf="showing">
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.schedule">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.schedule">
                     <option value="Занятость">Занятость</option>
                     <option value="Не имеет значения">Не имеет значения</option>
                     <option value="Полная занятость">Полная занятость</option>
@@ -55,7 +66,9 @@
                     <option value="Временная работа">Временная работа</option>
                     <option value="Стажировка">Стажировка</option>
                 </select>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.languages">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.languages">
                     <option value="Знание языков">Знание языков</option>
                     <option value="Английский">Английский</option>
                     <option value="Русский">Русский</option>
@@ -67,7 +80,9 @@
                     <option value="Французский">Французский</option>
                     <option value="Немецкий">Немецкий</option>
                 </select>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.salary">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.salary">
                     <option value="Заработная плата">Заработная плата</option>
                     <option value="до 60 000 рублей">до 60 000 рублей</option>
                     <option value="до 120 000 рублей">до 120 000 рублей</option>
@@ -77,42 +92,60 @@
                     <option value="До 600 000 рублей">До 600 000 рублей</option>
                     <option value="Свыше 600 000 рублей">Свыше 600 000 рублей</option>
                 </select>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.family">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.family">
                     <option value="Семейное положение">Семейное положение</option>
                     <option value="Не имеет значение">Не имеет значение</option>
                     <option value="Холост/Не замужем">Холост/Не замужем</option>
                     <option value="В браке">В браке</option>
                     <option value="В разводе">В разводе</option>
                 </select>
+
             </div>
             <div class="row" *ngIf="showing">
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.gender">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.gender">
                     <option value="Пол">Пол</option>
                     <option value="Не имеет значения">Не имеет значения</option>
                     <option value="Мужской">Мужской</option>
                     <option value="Женский">Женский</option>
                 </select>
+
                 <div class="change-age">
                     <div class="text from">от</div>
-                    <input type="number" class="from" (change)="filterResumesService.setAge();" [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.age.from">
+                    <input type="number" class="from"
+                           (change)="filterResumesService.setAge();"
+                           [ngModelOptions]="{standalone: true}"
+                           [(ngModel)]="filterResumesService.age.from">
                     <div class="text before">до</div>
-                    <input type="number" class="before" (change)="filterResumesService.setAge();" [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.age.before">
+                    <input type="number" class="before"
+                           (change)="filterResumesService.setAge();"
+                           [ngModelOptions]="{standalone: true}"
+                           [(ngModel)]="filterResumesService.age.before">
                     <div class="text age">лет</div>
                 </div>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.photo">
+
+                <select [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="filterResumesService.parameters.photo">
                     <option value="Фото">Фото</option>
                 </select>
+
             </div>
         </form>
         <div class="row reset">
-            <span (click)="showFilters();" *ngIf="!showing">
-                <svg id="SVGDoc" width="10" height="9" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 10 9"><defs><path d="M1211.00006,255.97422l-3.73764,-5.99848h7.47528z" id="Path-0"/></defs><desc>Generated with Avocode.</desc><g transform="matrix(1,0,0,1,-1206,-248)"><g><title>Polygon 1 copy 2</title><use xlink:href="#Path-0" fill="#dadada" fill-opacity="1"/></g></g></svg>
+            <div  class="button-text"
+                   (click)="showFilters();"
+                   *ngIf="!showing">
+                <img class="button-icon" src="/assets/images/icon-gray-triangle.svg">
                 Расширенный фильтр&nbsp;&nbsp;|&nbsp;&nbsp;
-            </span>
-            <span (click)="showFilters(true);">
+            </div>
+            <div  class="button-text"
+                   (click)="showFilters(true);">
                 Сбросить фильтры
-                <svg id="SVGDoc" width="15" height="15" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 15 15"><defs><path d="M1530,372.20003l-1.20003,-1.20011l-4.8,4.80009l-4.8,-4.80009l-1.20003,1.20011l4.8,4.79997l-4.8,4.79997l1.20003,1.19999l4.8,-4.79997l4.8,4.79997l1.20003,-1.19999l-4.8,-4.79997z" id="Path-0"/></defs><desc>Generated with Avocode.</desc><g transform="matrix(1,0,0,1,-1516,-369)"><g><title>Forma 1</title><use xlink:href="#Path-0" fill="#dadada" fill-opacity="1"/></g></g></svg>
-            </span>
+                <img class="button-icon" src="/assets/images/icon-gray-cross.svg">
+            </div>
         </div>
     </div>
 </section>

@@ -12,7 +12,7 @@ export class FilterResumesService {
     private filterSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
     public filter$: Observable<any> = this.filterSubject.asObservable();
 
-    private setFilterParameters(parameter: any): void {
+    private _setFilterParameters(parameter: any): void {
         this.filterSubject.next(parameter);
     }
 
@@ -27,7 +27,7 @@ export class FilterResumesService {
         this.age.from == null ? from = 0 : from = this.age.from;
         this.age.before == null ? before = 0 : before = this.age.before;
         this.parameters.age = `${from}-${before}`;
-        alert(this.parameters.age);
+        console.log(this.parameters.age);
     }
 
     private _parametersTemplate: any = {
@@ -48,7 +48,9 @@ export class FilterResumesService {
 
     public resetFilterParameters(): void {
         this.parameters = Object.assign({}, this._parametersTemplate);
-        this.setFilterParameters(null);
+        this._setFilterParameters(null);
+        this.age.from = null;
+        this.age.before == null;
     }
 
     public changeForm(): void {
@@ -61,6 +63,6 @@ export class FilterResumesService {
             }
         }
 
-        this.setFilterParameters(req);
+        this._setFilterParameters(req);
     }
 }

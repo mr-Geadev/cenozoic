@@ -4,29 +4,25 @@
         <div class="row list">
 
             <a class="item" *ngFor="let item of listResume; let i = index"  (click)="resumeService.goResume(item)">
-                <div class="job">{{item.job}}</div>
-                <div class="experience" *ngIf="item.experienceAllTime">
+                <div class="job" *ngIf="item.job">{{item.job}}</div>
+                <div class="job" *ngIf="!item.job">Нет данных</div>
+                <div class="experience">
                     <div class="title">
                         Стаж работы
                     </div>
                     <div class="value">
-                        {{ item.experienceAllTime }}
-                    </div>
-                </div>
-                <div class="experience" *ngIf="!item.experienceAllTime">
-                    <div class="title">
-                        Стаж работы
-                    </div>
-                    <div class="value">
-                        Без опыта
+                        {{item.experienceAllTime}}
                     </div>
                 </div>
                 <div class="last-work-place">
                     <div class="title">
                         Последнее место работы
                     </div>
-                    <div class="value">
-                        {{item.experience[0].job}}, <br /> {{item.experience[0].organization}}
+                    <div class="value" *ngIf="item.experience[0]">
+                        <!--{{item.experience[0]?.job}}, <br /> {{item.experience[0].organization}}-->
+                    </div>
+                    <div class="value" *ngIf="item.experience[0] == undefined">
+                        Нет данных
                     </div>
                 </div>
                 <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
