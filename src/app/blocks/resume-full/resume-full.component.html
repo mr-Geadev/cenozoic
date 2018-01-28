@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="currentResume">
 
     <div class="row main-info">
 
@@ -95,7 +95,7 @@
 
         <div class="col-4 offset-1 right" >
             <div class="photo">
-
+                <img *ngIf="currentResume.photoURL" src="{{currentResume.photoURL}}">
             </div>
             <div class="button" (click)="resumeService.goEdit()" *ngIf="currentResume.userId == currentUser.id">
                 Редактировать резюме
