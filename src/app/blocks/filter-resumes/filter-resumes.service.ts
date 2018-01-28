@@ -16,15 +16,28 @@ export class FilterResumesService {
         this.filterSubject.next(parameter);
     }
 
+    public age: any = {
+        from: null,
+        before: null
+    };
+
+    public setAge():void {
+        let from = null;
+        let before = null;
+        this.age.from == null ? from = 0 : from = this.age.from;
+        this.age.before == null ? before = 0 : before = this.age.before;
+        this.parameters.age = `${from}-${before}`;
+        alert(this.parameters.age);
+    }
+
     private _parametersTemplate: any = {
         education: 'Образование',
         placeResidence: 'Место проживания',
         experienceAllTime: 'Общий стаж',
         languagesResume: 'Язык резюме',
-        schedule: 'Метод работы',
+        schedule: 'Занятость',
         languages: 'Знание языков',
-        salary: 'Оклад',
-        employmentType: 'Условия работы',
+        salary: 'Заработная плата',
         family: 'Семейное положение',
         gender: 'Пол',
         age: 'Возраст',

@@ -97,6 +97,12 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
     public isAuthorized: boolean = false;
 
+    public invalid: boolean = false;
+
+    public showRequired():void {
+        this.invalid = true;
+    }
+
     ngOnInit(): void {
 
         this.userService.user$

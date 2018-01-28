@@ -390,6 +390,11 @@
             display: none;
             margin: 0;
             color: @alert - #CCCCCC;
+
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
           }
         }
       }
@@ -455,13 +460,14 @@
     display: inline-block;
     transform: translateY(-3px);
   }
-  form.ng-invalid {
 
-    #save {
-      background-color: @light-gray !important;
-      pointer-events: none;
-      cursor: default;
-    }
+  #save:disabled {
+    background-color: @light-gray !important;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  form.ng-invalid {
 
     #alert {
       display: block !important;
@@ -469,8 +475,21 @@
 
   }
 
-  input.ng-invalid {
-    background-color: @alert;
+  *:disabled, .disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  *:disabled > .disabled {
+    opacity: 1;
+  }
+
+  *.disabled > *:disabled {
+    opacity: 1;
+  }
+
+  form.invalid .ng-invalid {
+    background-color: @alert !important;
   }
 
 }

@@ -13,15 +13,20 @@
                     <option value="Образование">Образование</option>
                     <option value="Среднее">Среднее</option>
                     <option value="Высшее">Высшее</option>
+                    <option value="Высшее">Не имеет значение</option>
                 </select>
                 <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.placeResidence">
                     <option value="Место проживания">Место проживания</option>
                 </select>
                 <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.experienceAllTime">
                     <option value="Общий стаж">Общий стаж</option>
-                    <option value="от 1 до 5 лет">от 1 до 5 лет</option>
-                    <option value="Менее 1 года">Менее 1 года</option>
-                    <option value="Свыше 5 лет">Свыше 5 лет</option>
+                    <option value="без опыта">без опыта</option>
+                    <option value="до 1го года">до 1го года</option>
+                    <option value="1-3 года">1-3 года</option>
+                    <option value="3-5 лет">3-5 лет</option>
+                    <option value="5-10 лет">5-10 лет</option>
+                    <option value="10-19 лет">10-19 лет</option>
+                    <option value="Более 20 лет">Более 20 лет</option>
                 </select>
                 <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.languagesResume">
                     <option value="Язык резюме">Язык резюме</option>
@@ -44,27 +49,56 @@
             <div class="row" *ngIf="showing">
                 <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.schedule">
                     <option value="Занятость">Занятость</option>
+                    <option value="Не имеет значения">Не имеет значения</option>
+                    <option value="Полная занятость">Полная занятость</option>
+                    <option value="Частичная занятость">Частичная занятость</option>
+                    <option value="Временная работа">Временная работа</option>
+                    <option value="Стажировка">Стажировка</option>
                 </select>
                 <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.languages">
                     <option value="Знание языков">Знание языков</option>
+                    <option value="Английский">Английский</option>
+                    <option value="Русский">Русский</option>
+                    <option value="Китайский">Китайский</option>
+                    <option value="Арабский">Арабский</option>
+                    <option value="Испанский">Испанский</option>
+                    <option value="Португальский">Португальский</option>
+                    <option value="Хинди(индийский)">Хинди(индийский)</option>
+                    <option value="Французский">Французский</option>
+                    <option value="Немецкий">Немецкий</option>
                 </select>
                 <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.salary">
-                    <option value="Оклад">Оклад</option>
+                    <option value="Заработная плата">Заработная плата</option>
+                    <option value="до 60 000 рублей">до 60 000 рублей</option>
+                    <option value="до 120 000 рублей">до 120 000 рублей</option>
+                    <option value="до 180 000 рублей">до 180 000 рублей</option>
+                    <option value="до 300 000 рублей">до 300 000 рублей</option>
+                    <option value="до 420 000 рублей">до 420 000 рублей</option>
+                    <option value="До 600 000 рублей">До 600 000 рублей</option>
+                    <option value="Свыше 600 000 рублей">Свыше 600 000 рублей</option>
                 </select>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.employmentType">
-                    <option value="Условия работы">Условия работы</option>
+                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.family">
+                    <option value="Семейное положение">Семейное положение</option>
+                    <option value="Не имеет значение">Не имеет значение</option>
+                    <option value="Холост/Не замужем">Холост/Не замужем</option>
+                    <option value="В браке">В браке</option>
+                    <option value="В разводе">В разводе</option>
                 </select>
             </div>
             <div class="row" *ngIf="showing">
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.family">
-                    <option value="Семейное положение">Семейное положение</option>
-                </select>
                 <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.gender">
                     <option value="Пол">Пол</option>
+                    <option value="Не имеет значения">Не имеет значения</option>
+                    <option value="Мужской">Мужской</option>
+                    <option value="Женский">Женский</option>
                 </select>
-                <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.age">
-                    <option value="Возраст">Возраст</option>
-                </select>
+                <div class="change-age">
+                    <div class="text from">от</div>
+                    <input type="number" class="from" (change)="filterResumesService.setAge();" [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.age.from">
+                    <div class="text before">до</div>
+                    <input type="number" class="before" (change)="filterResumesService.setAge();" [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.age.before">
+                    <div class="text age">лет</div>
+                </div>
                 <select [ngModelOptions]="{standalone: true}" [(ngModel)]="filterResumesService.parameters.photo">
                     <option value="Фото">Фото</option>
                 </select>
