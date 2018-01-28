@@ -75,45 +75,45 @@
                             </div>
                         </div>
 
-                        <div class="parameter experience">
-                            <div class="head">
-                                Опыт работы в промышленности:
-                            </div>
-                            <div class="place">
-                                <div class="left">
-                                    <input type="checkbox" name="experience" value="в нефтегазовой" id="in-oil-gas"
-                                           [(ngModel)]="resumeForm.experienceAll.oil.exist">
-                                    <label class="where" for="in-oil-gas">в нефтегазовой</label>
-                                </div>
-                                <div class="right" [ngClass]="{disabled:!resumeForm.experienceAll.oil.exist}">
-                                    <input type="text" name="oil-experience-year" class="shortest-input"
-                                           [disabled]="!resumeForm.experienceAll.oil.exist"
-                                           [(ngModel)]="resumeForm.experienceAll.oil.years">
-                                    <div class="word">лет</div>
-                                    <input type="text" name="oil-experience-months" class="shortest-input"
-                                           [disabled]="!resumeForm.experienceAll.oil.exist"
-                                           [(ngModel)]="resumeForm.experienceAll.oil.month">
-                                    <div class="word">месяцев</div>
-                                </div>
-                            </div>
-                            <div class="place">
-                                <div class="left">
-                                    <input type="checkbox" name="experience" value="в горнодобывающей" id="in-mining"
-                                           [(ngModel)]="resumeForm.experienceAll.mining.exist">
-                                    <label class="where" for="in-mining">в горнодобывающей</label>
-                                </div>
-                                <div class="right" [ngClass]="{disabled: !resumeForm.experienceAll.mining.exist}">
-                                    <input type="text" name="mining-experience-year" class="shortest-input"
-                                           [disabled]="!resumeForm.experienceAll.mining.exist"
-                                           [(ngModel)]="resumeForm.experienceAll.mining.years">
-                                    <div class="word">лет</div>
-                                    <input type="text" name="mining-experience-months" class="shortest-input"
-                                           [disabled]="!resumeForm.experienceAll.mining.exist"
-                                           [(ngModel)]="resumeForm.experienceAll.mining.month">
-                                    <div class="word">месяцев</div>
-                                </div>
-                            </div>
-                        </div>
+                        <!--<div class="parameter experience">-->
+                            <!--<div class="head">-->
+                                <!--Опыт работы в промышленности:-->
+                            <!--</div>-->
+                            <!--<div class="place">-->
+                                <!--<div class="left">-->
+                                    <!--<input type="checkbox" name="experience" value="в нефтегазовой" id="in-oil-gas"-->
+                                           <!--[(ngModel)]="resumeForm.experienceAll.oil.exist">-->
+                                    <!--<label class="where" for="in-oil-gas">в нефтегазовой</label>-->
+                                <!--</div>-->
+                                <!--<div class="right" [ngClass]="{disabled:!resumeForm.experienceAll.oil.exist}">-->
+                                    <!--<input type="text" name="oil-experience-year" class="shortest-input"-->
+                                           <!--[disabled]="!resumeForm.experienceAll.oil.exist"-->
+                                           <!--[(ngModel)]="resumeForm.experienceAll.oil.years">-->
+                                    <!--<div class="word">лет</div>-->
+                                    <!--<input type="text" name="oil-experience-months" class="shortest-input"-->
+                                           <!--[disabled]="!resumeForm.experienceAll.oil.exist"-->
+                                           <!--[(ngModel)]="resumeForm.experienceAll.oil.month">-->
+                                    <!--<div class="word">месяцев</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="place">-->
+                                <!--<div class="left">-->
+                                    <!--<input type="checkbox" name="experience" value="в горнодобывающей" id="in-mining"-->
+                                           <!--[(ngModel)]="resumeForm.experienceAll.mining.exist">-->
+                                    <!--<label class="where" for="in-mining">в горнодобывающей</label>-->
+                                <!--</div>-->
+                                <!--<div class="right" [ngClass]="{disabled: !resumeForm.experienceAll.mining.exist}">-->
+                                    <!--<input type="text" name="mining-experience-year" class="shortest-input"-->
+                                           <!--[disabled]="!resumeForm.experienceAll.mining.exist"-->
+                                           <!--[(ngModel)]="resumeForm.experienceAll.mining.years">-->
+                                    <!--<div class="word">лет</div>-->
+                                    <!--<input type="text" name="mining-experience-months" class="shortest-input"-->
+                                           <!--[disabled]="!resumeForm.experienceAll.mining.exist"-->
+                                           <!--[(ngModel)]="resumeForm.experienceAll.mining.month">-->
+                                    <!--<div class="word">месяцев</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
 
                         <div class="parameter business-trips">
                             <div class="left">
@@ -251,6 +251,23 @@
                                 </div>
                             </div>
 
+                            <div class="parameter type">
+                                <div class="left">
+                                    <label for="employment-type">Тип промышеленности</label>
+                                </div>
+                                <div class="right">
+                                    <mat-form-field>
+                                        <mat-select [ngModelOptions]="{standalone: true}" id="employment-type"
+                                                    class="shortest-select" [(ngModel)]="resumeForm.experience[i].type"
+                                                    required>
+                                            <mat-option value="Нефтегазовая">Нефтегазовая</mat-option>
+                                            <mat-option value="Горнодобывающая">Горнодобывающая</mat-option>
+                                            <mat-option value="Другая">Другая</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
                             <div class="parameter company">
                                 <div class="left">
                                     <label for="company">Организация</label>
@@ -298,14 +315,14 @@
                             <span class="required">*</span>
                         </div>
 
-                        <div class="parameter education">
-                            <input type="checkbox" name="education" id="russian" value="true"
-                                   [(ngModel)]="resumeForm.educationCountries.russian" required>
-                            <label for="russian">Российское</label>
-                            <input type="checkbox" name="education" id="overseas" value="true"
-                                   [(ngModel)]="resumeForm.educationCountries.foreign" required>
-                            <label for="overseas">Зарубежное</label>
-                        </div>
+                        <!--<div class="parameter education">-->
+                            <!--<input type="checkbox" name="education" id="russian" value="true"-->
+                                   <!--[(ngModel)]="resumeForm.educationCountries.russian" required>-->
+                            <!--<label for="russian">Российское</label>-->
+                            <!--<input type="checkbox" name="education" id="overseas" value="true"-->
+                                   <!--[(ngModel)]="resumeForm.educationCountries.foreign" required>-->
+                            <!--<label for="overseas">Зарубежное</label>-->
+                        <!--</div>-->
 
                         <div class="education-place" *ngFor="let item of resumeForm.education; let i = index">
 
@@ -352,10 +369,10 @@
 
                             <div class="parameter country-eductation">
                                 <div class="left">
-                                    <label for="country-education">Страна</label>
+                                    <label for="country-eductation">Страна</label>
                                 </div>
                                 <div class="right">
-                                    <select [ngModelOptions]="{standalone: true}" id="country-eductation "
+                                    <select [ngModelOptions]="{standalone: true}" id="country-eductation"
                                             class="short-select" [(ngModel)]="resumeForm.education[i].country" required>
                                         <option value="Россия">Россия</option>
                                         <option value="Англия">Англия</option>
@@ -425,7 +442,7 @@
                             </div>
                             <div class="right">
                                 <select [ngModelOptions]="{standalone: true}" class="language" placeholder="язык"
-                                        [(ngModel)]="resumeForm.languages[i].name" required>
+                                        [(ngModel)]="resumeForm.languages[i].name" id="language" required>
                                     <option>Язык</option>
                                     <option value="Русский">Русский</option>
                                     <option value="Английский">Английский</option>
@@ -451,14 +468,43 @@
                         </div>
 
                         <div class="training" *ngFor="let item of resumeForm.trainings; let i = index">
+
                             <div class="parameter year-training">
                                 <div class="left">
-                                    <label for="year-training">Год прохождения</label>
+                                    <label for="year-training">Год прохождения/окончания</label>
                                 </div>
                                 <div class="right">
                                     <input type="text" [ngModelOptions]="{standalone: true}" id="year-training"
-                                           class="shortest-input" [(ngModel)]="resumeForm.trainings[i].year">
-                                    <div class="word">год</div>
+                                           class="short-input" [(ngModel)]="resumeForm.trainings[i].year">
+                                </div>
+                            </div>
+
+                            <div class="parameter durability-training">
+                                <div class="left">
+                                    <label for="durability-training">Длительность курса</label>
+                                </div>
+                                <div class="right">
+                                    <input type="text" [ngModelOptions]="{standalone: true}" id="durability-training" class="short-input"
+                                           [(ngModel)]="resumeForm.trainings[i].durability">
+                                </div>
+                            </div>
+
+
+                            <div class="parameter country-training">
+                                <div class="left">
+                                    <label for="country-training">Страна</label>
+                                </div>
+                                <div class="right">
+                                   <mat-form-field>
+                                       <mat-select [ngModelOptions]="{standalone: true}" id="country-training" class="country-training"
+                                                   [(ngModel)]="resumeForm.trainings[i].country">
+                                           <mat-option value="Англия">Англия</mat-option>
+                                           <mat-option value="Россия">Россия</mat-option>
+                                           <mat-option value="Швеция">Швеция</mat-option>
+                                           <mat-option value="США">США</mat-option>
+                                       </mat-select>
+                                   </mat-form-field>
+                                    <div class="line"></div>
                                 </div>
                             </div>
 
@@ -467,14 +513,19 @@
                                     <label for="city-training">Город</label>
                                 </div>
                                 <div class="right">
-                                    <select [ngModelOptions]="{standalone: true}" id="" class="city-training"
-                                            [(ngModel)]="resumeForm.trainings[i].city">
-                                        <option value="Саратов">Саратов</option>
-                                        <option value="Москва">Москва</option>
-                                    </select>
+                                    <mat-form-field>
+                                        <mat-select [ngModelOptions]="{standalone: true}" id="city-training" class="city-training"
+                                                    [(ngModel)]="resumeForm.trainings[i].city">
+                                            <mat-option value="Саратов">Саратов</mat-option>
+                                            <mat-option value="Москва">Москва</mat-option>
+                                            <mat-option value="Киев">Киев</mat-option>
+                                            <mat-option value="Лондон">Лондон</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                     <div class="line"></div>
                                 </div>
                             </div>
+
 
                             <div class="parameter name-training">
                                 <div class="left">
@@ -485,6 +536,20 @@
                                            [(ngModel)]="resumeForm.trainings[i].name">
                                 </div>
                             </div>
+
+                            <div class="parameter document-training">
+                                <div class="left">
+                                    <label>Сертификат</label>
+                                </div>
+                                <div class="right">
+                                    <input type="checkbox" [ngModelOptions]="{standalone: true}" id="document-training" value="true"
+                                           [(ngModel)]="resumeForm.trainings[i].document" required>
+                                    <label for="document-training" class="word">Зарубежное</label>
+                                </div>
+                            </div>
+
+
+
                         </div>
 
                         <div class="add">

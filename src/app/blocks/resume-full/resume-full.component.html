@@ -100,7 +100,7 @@
             <div class="button" (click)="resumeService.goEdit()" *ngIf="currentResume.userId == currentUser.id">
                 Редактировать резюме
             </div>
-            <div class="button" (click)="resumeService.delete(currentResume)">
+            <div class="button" (click)="resumeService.delete(currentResume)" *ngIf="currentResume.userId == currentUser.id">
                 Удалить резюме
             </div>
         </div>
