@@ -109,9 +109,27 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public send(): void {
-        let months: number = +this.resumeForm.experienceAll.oil.month + +this.resumeForm.experienceAll.mining.month;
-        let years: number = +this.resumeForm.experienceAll.oil.years + +this.resumeForm.experienceAll.mining.years + Math.floor(months / 12);
-        this.resumeForm.experienceAllTime = `${years};${months % 12}`;
+
+
+        let timeOil: number = 0;
+        let timeMining: number = 0;
+
+        this.resumeForm.experience.forEach((item) => {
+            if (item.type === "Нефтегазовая") {
+                timeOil += this._calculateTime(item);
+            };
+            if (item.type === "Горнодобывающая") {
+                timeMining += this._calculateTime(item);
+            };
+        });
+
+        console.log(timeOil);
+        console.log(timeMining);
+        this.resumeForm.experienceAll.oil.year = Math.floor(timeOil / 12) ;
+        this.resumeForm.experienceAll.oil.month = timeOil % 12;
+        this.resumeForm.experienceAll.mining.year = Math.floor(timeMining / 12);
+        this.resumeForm.experienceAll.mining.month = timeMining % 12;
+        this.resumeForm.experienceAllTime = `${Math.floor(( timeOil + timeMining ) / 12)};${( timeOil + timeMining ) % 12}`;
 
         if (this.type === DEFAULT_TYPE) {
             const formData: FormData = new FormData();
@@ -121,7 +139,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             }
 
             formData.append('resume', JSON.stringify(this.resumeForm));
-
+            console.log(this.resumeForm);
             this.http.post(CREATE_RESUME, formData)
                 .subscribe((res: any) => {
                     if (res.success) {
@@ -146,4 +164,45 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                 });
         }
     };
+
+    private _calculateTime(item: any): number {
+        let months= [
+            'Январь',
+            'Февраль',
+            'Март',
+            'Апрель',
+            'Май',
+            'Июнь',
+            'Июль',
+            'Август',
+            'Сентябрь',
+            'Октябрь',
+            'Ноябрь',
+            'Декабрь'
+        ];
+
+        const startMonth:string = item.startMonth;
+        const startYear:number = item.startYear;
+
+        const endMonth:string = item.endMonth;
+        const endYear:number = item.endYear;
+
+        let allMonths: number = 0;
+
+        if (endYear === startYear) {
+            console.log("a");
+            allMonths = months.indexOf(endMonth) - months.indexOf(startMonth);
+        }else if (months.indexOf(startMonth) > months.indexOf(endMonth)) {
+            console.log("b");
+            allMonths = (endYear - startYear) * months.length + (months.indexOf(endMonth) - months.indexOf(startMonth) + 1);
+        } else if (months.indexOf(startMonth) < months.indexOf(endMonth)) {
+            console.log("c");
+            allMonths = (endYear - startYear) * months.length + months.indexOf(endMonth) - months.indexOf(startMonth);
+        } else {
+            console.log("d");
+            allMonths = (endYear - startYear) * months.length;
+        }
+
+        return allMonths;
+    }
 }
