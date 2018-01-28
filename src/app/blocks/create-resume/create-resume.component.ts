@@ -109,8 +109,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public send(): void {
-        let months = +this.resumeForm.experienceAll.oil.month + +this.resumeForm.experienceAll.mining.month;
-        let years = +this.resumeForm.experienceAll.oil.years + +this.resumeForm.experienceAll.mining.years + Math.floor(months / 12);
+        let months: number = +this.resumeForm.experienceAll.oil.month + +this.resumeForm.experienceAll.mining.month;
+        let years: number = +this.resumeForm.experienceAll.oil.years + +this.resumeForm.experienceAll.mining.years + Math.floor(months / 12);
         this.resumeForm.experienceAllTime = `${years};${months % 12}`;
 
         if (this.type === DEFAULT_TYPE) {
@@ -120,8 +120,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                 formData.append('fileToUpload', this.resumeImage.file);
             }
 
-            formData.append('resumeData', this.resumeForm);
-            // console.log(this.resumeForm);
+            formData.append('resume', JSON.stringify(this.resumeForm));
+
             this.http.post(CREATE_RESUME, formData)
                 .subscribe((res: any) => {
                     if (res.success) {
