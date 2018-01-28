@@ -2,8 +2,6 @@
 
   @import (less) '../../../assets/styles/base.less';
 
-
-
   .create-summary {
     margin-top: 50px;
 
@@ -79,7 +77,6 @@
             font-weight: 400;
             position: relative;
 
-
             &.shortest-select {
               width: 140px;
               border: 0.063rem solid #dadada;
@@ -91,7 +88,7 @@
           }
 
           .line {
-            height:1px;
+            height: 1px;
             background-color: #dadada;
             width: 210px;
             position: absolute;
@@ -180,8 +177,6 @@
               margin-left: 10px;
             }
           }
-
-
 
           .workplace-fix {
             display: flex;
@@ -278,7 +273,7 @@
           }
         }
         &.education-fields {
-          .education label{
+          .education label {
             color: #262626;
             font-family: Roboto;
             font-size: 0.875rem;
@@ -399,20 +394,28 @@
         }
       }
 
-
     }
 
-    .add-foto {
+    .add-photo {
       width: 25%;
 
-      .img {
+      .image {
         width: 261px;
         height: 261px;
-        background-color: @gray;
+
         display: inline-flex;
         justify-content: center;
         align-items: center;
         position: relative;
+
+        &.default {
+          background-color: @gray;
+        }
+
+        img {
+          max-width: 261px;
+          max-height: 261px;
+        }
       }
 
       label {
@@ -436,7 +439,7 @@
         }
       }
 
-      #load-foto {
+      #load-photo {
         display: none;
       }
 
@@ -450,10 +453,7 @@
         margin-top: 15px;
       }
     }
-
   }
-
-
 
   .required {
     color: @dark-orange;
@@ -468,11 +468,9 @@
   }
 
   form.ng-invalid {
-
     #alert {
       display: block !important;
     }
-
   }
 
   *:disabled, .disabled {
@@ -491,8 +489,4 @@
   form.invalid .ng-invalid {
     background-color: @alert !important;
   }
-
 }
-
-
-

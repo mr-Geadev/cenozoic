@@ -10,14 +10,12 @@ export class UserService {
     private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
     public user$: Observable<any> = this.userSubject.asObservable();
 
-
     constructor(private http: HttpClient) {
     }
 
     public setUser(user: any): void {
         this.userSubject.next(user);
     }
-
 
     public getUserInfo(): void {
         this.http.get(USER_INFO)
@@ -27,7 +25,6 @@ export class UserService {
     }
 
     public loginUser(dataUser: any): void {
-
         this.http.post(SIGN_IN, dataUser)
             .subscribe((res: any) => {
                 if (res.success) {
@@ -35,9 +32,7 @@ export class UserService {
                 } else {
                     alert(res.errorMessage);
                 }
-
             });
-
     }
 
     public logOut(): void {
@@ -50,7 +45,6 @@ export class UserService {
     }
 
     public registerUser(dataUser: any): void {
-
         this.http.post(SIGN_UP, dataUser)
             .subscribe((res: any) => {
                 if (res.success) {
@@ -59,7 +53,5 @@ export class UserService {
                     alert(res.errorMessage);
                 }
             });
-
     }
-
 }

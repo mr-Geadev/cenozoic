@@ -1,13 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CREATE_RESUME } from "../../constants";
 import { HttpClient } from "@angular/common/http";
-import { UserService } from "../../services/user.service";
-import { ResumeService } from "../../services/resume.service";
-import { Subscription } from "rxjs/Subscription";
-import { Router, RouterModule } from "@angular/router";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import 'rxjs/add/operator/filter';
 
-
-
+import { CREATE_RESUME } from "../../constants";
+import { ResumeService, UserService } from "../../services";
+import {
+    CHANGES_TYPE,
+    DEFAULT_EDUCATION,
+    DEFAULT_EXPERIENCE,
+    DEFAULT_LANGUAGE,
+    DEFAULT_RESUME_FORM,
+    DEFAULT_RESUME_IMAGE,
+    DEFAULT_TRAINING,
+    DEFAULT_TYPE
+} from "./create-resume.contants";
 
 @Component({
     selector: 'create-resume',
@@ -15,183 +22,120 @@ import { Router, RouterModule } from "@angular/router";
     styleUrls: ['./create-resume.component.less']
 })
 export class CreateResumeComponent implements OnInit, OnDestroy {
-    private type:string = "Создание";
+    public resumeForm: any = DEFAULT_RESUME_FORM;
+    public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
+    public isAuthorized: boolean = false;
+    public invalid: boolean = false;
+    public loadingPhotoButton: string = 'Загрузить фото';
 
     private sub: any;
-
-    private experienceItem: any = {
-        startMonth: null,
-        startYear: null,
-        endMonth: null,
-        endYear: null,
-        present: null,
-        organization: null,
-        job: null,
-        duties: null
-    };
-    private educationItem: any = {
-        stage: null,
-        start: null,
-        end: null,
-        country: null,
-        city: null,
-        university: null,
-        faculty: null,
-        specialty: null
-    }
-    private languageItem: any = {
-        name: null,
-        level: null
-    };
-    private trainingItem: any = {
-        year: null,
-        city: null,
-        name: null
-    };
-    public resumeForm: any = {
-        job: null,
-        salary:null,
-        age:null,
-        gender: "Мужчина",
-        family:null,
-        experienceAllTime: null,
-        experienceAll: {
-            oil: {
-                exist: false,
-                years: null,
-                month: null
-            },
-            mining: {
-                exist: false,
-                years: null,
-                month: null
-            }
-        },
-        businessTrips: "нет",
-        relocation: "нет",
-        schedule: null,
-        employmentType: null,
-        experience: [ Object.assign({},this.experienceItem) ],
-        educationCountries: {
-            russian: false,
-            foreign: false
-        },
-        education: [ Object.assign({},this.educationItem) ],
-        languages: [ Object.assign({},this.languageItem) ],
-        trainings: [ Object.assign({},this.trainingItem) ],
-        additionalInformation: null,
-        personalQualities: null,
-        hobbies: null,
-        email: null,
-        phoneNumber: null
-    };
-
-    public cleanResumeForm = Object.assign({}, this.resumeForm);
+    private type: string = DEFAULT_TYPE;
+    private resumeImage: any = DEFAULT_RESUME_IMAGE;
 
     constructor(private http: HttpClient,
                 private userService: UserService,
                 private resumeService: ResumeService,
                 private router: Router) {
-
-    }
-
-    public isAuthorized: boolean = false;
-
-    public invalid: boolean = false;
-
-    public showRequired():void {
-        this.invalid = true;
     }
 
     ngOnInit(): void {
-
         this.userService.user$
+            .filter(user => !!user)
             .subscribe((user) => {
                 this.isAuthorized = !!user;
-                if (user) {
-                    console.log(user);
-                }
+                console.log(user);
             });
 
         this.sub = this.resumeService.resume$
-            .subscribe((resume)=>{
-               if (resume != null) {
-                   for (let key in resume) {
-                       this.resumeForm[key] = resume[key];
-                   }
-                   this.type = "Изменение";
-               }
+            .subscribe((resume) => {
+                if (resume != null) {
+                    for (let key in resume) {
+                        if (resume.hasOwnProperty(key)) {
+                            this.resumeForm[key] = resume[key];
+                        }
+                    }
+                    this.type = CHANGES_TYPE;
+                }
             });
     }
 
-    ngOnDestroy():void {
+    ngOnDestroy(): void {
         this.resumeService.setResume(null);
     }
 
+    public showRequired(): void {
+        this.invalid = true;
+    }
 
     public addWorkplace(): void {
-        this.resumeForm.experience.push(Object.assign({},this.experienceItem));
+        this.resumeForm.experience.push(Object.assign({}, DEFAULT_EXPERIENCE));
     }
+
     public addEducation(): void {
-        this.resumeForm.education.push(Object.assign({},this.educationItem));
+        this.resumeForm.education.push(Object.assign({}, DEFAULT_EDUCATION));
     }
+
     public addLanguage(): void {
-        this.resumeForm.languages.push(Object.assign({},this.languageItem));
+        this.resumeForm.languages.push(Object.assign({}, DEFAULT_LANGUAGE));
     }
+
     public addTraining(): void {
-        this.resumeForm.trainings.push(Object.assign({},this.trainingItem));
+        this.resumeForm.trainings.push(Object.assign({}, DEFAULT_TRAINING));
     }
 
+    public onImageChange(event): void {
+        const fileList: FileList = event.target.files;
 
-    public loadingPhotoButton: string = "Загрузить фото";
+        if (fileList && fileList.length > 0) {
+            const reader = new FileReader();
+            this.resumeImage.file = fileList[0];
 
-    fileChange(event) {
-        let fileList: FileList = event.target.files;
-        this.loadingPhotoButton = fileList[0].name;
-        console.log(fileList[0]);
+            this.loadingPhotoButton = this.resumeImage.file.name;
+
+            if (event.target.files && event.target.files.length > 0) {
+                reader.readAsDataURL(this.resumeImage.file);
+                reader.onload = () => {
+                    this.resumeImage.data = reader.result;
+                };
+            }
+        }
     }
 
-    public send():void {
-
+    public send(): void {
         let months = +this.resumeForm.experienceAll.oil.month + +this.resumeForm.experienceAll.mining.month;
-        let years = +this.resumeForm.experienceAll.oil.years + +this.resumeForm.experienceAll.mining.years + Math.floor(months/12);
+        let years = +this.resumeForm.experienceAll.oil.years + +this.resumeForm.experienceAll.mining.years + Math.floor(months / 12);
         this.resumeForm.experienceAllTime = `${years};${months % 12}`;
 
+        if (this.type === DEFAULT_TYPE) {
+            const formData: FormData = new FormData();
 
+            if (!!this.resumeImage.file) {
+                formData.append('fileToUpload', this.resumeImage.file);
+            }
 
-        if (this.type === "Создание") {
-            this.http.post(CREATE_RESUME, this.resumeForm)
+            formData.append('resumeData', this.resumeForm);
+            this.http.post(CREATE_RESUME, formData)
                 .subscribe((res: any) => {
-
-                    if (res.success === true) {
+                    if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
-                        alert('Ваше резюме отправлено!');
                         this.router.navigate(['personal-account']);
-                    } else {
-                        alert('Отправка не удалась');
                     }
-
                 });
         } else {
             delete this.resumeForm.userId;
             let id = this.resumeForm._id;
             delete this.resumeForm._id;
 
-            this.http.post('/api/v1/user/resume/edit', {resumeId: id , resume :  this.resumeForm})
+            this.http.post('/api/v1/user/resume/edit', { resumeId: id, resume: this.resumeForm })
                 .subscribe((res: any) => {
-
-                    if (res.success === true) {
+                    if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
-                        alert('Ваше резюме изменено!');
-                        this.router.navigate(['resume',id]);
+                        this.router.navigate(['resume', id]);
                     } else {
-                        alert(res.errorMessage);
-                        console.log({resumeId: this.resumeForm._id , resume :  this.resumeForm});
+                        console.log(res);
+                        console.log({ resumeId: this.resumeForm._id, resume: this.resumeForm });
                     }
-
                 });
         }
-
     };
-
 }
