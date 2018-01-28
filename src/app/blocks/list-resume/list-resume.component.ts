@@ -13,7 +13,7 @@ export class ListResumeComponent implements OnInit {
     @Input() config: string;
 
     private offset: number = 0;
-    public listResume: any [];
+    public listResume: any[];
 
     constructor( private _http: HttpClient,
                  private _filterResumesService: FilterResumesService,
@@ -26,38 +26,50 @@ export class ListResumeComponent implements OnInit {
             this._http.get(`/api/v1/user/resume/all`)
                 .subscribe( (res:any) => {
                     this.listResume = res.resumeList;
-                    this.formating(this.listResume);
+                    this.formatting(this.listResume);
                 });
-        } else {
+        } else if (this.config === "all") {
 
             this._filterResumesService.filter$.subscribe((parameters: any) => {
                 if (parameters != null) {
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}filters:${parameters}`)
                         .subscribe( (res:any) => {
                             this.listResume = res.resumeList;
-                            this.formating(this.listResume);
+                            this.formatting(this.listResume);
                         });
                 } else {
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
                         .subscribe((res: any) => {
                             this.listResume = res.resumeList;
-                            this.formating(this.listResume);
+                            this.formatting(this.listResume);
                             console.log(res);
+                            console.log(this.listResume);
                         });
                 }
             });
         };
 
-
-
-
     };
 
-    public formating(list: any[]) {
+    public formatting(list: any[]) {
 
         let answer = list.map((item)=>{
-            let time = item.experienceAllTime.split(';');
-            item.experienceAllTime = `${time[0]} лет и ${time[1]} месяцев`;
+
+            if ((!item.experienceAllTime) || (item.experienceAllTime == '0;0'))   {
+                item.experienceAllTime = 'Без опыта';
+            } else {
+                let time = item.experienceAllTime.split(';');
+                item.experienceAllTime = `${time[0]} лет и ${time[1]} месяцев`;
+            }
+
+            if (item.job == undefined) {
+                item.job = 'Нет данных';
+            }
+
+            if (item.experience == undefined) {
+                item.experience = false;
+            }
+
         });
 
         return answer;

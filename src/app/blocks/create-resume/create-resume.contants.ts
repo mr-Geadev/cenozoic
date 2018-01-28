@@ -7,6 +7,7 @@ export const DEFAULT_EXPERIENCE = {
     endMonth: null,
     endYear: null,
     present: null,
+    type: null,
     organization: null,
     job: null,
     duties: null
@@ -30,8 +31,11 @@ export const DEFAULT_LANGUAGE = {
 
 export const DEFAULT_TRAINING = {
     year: null,
+    durability: null,
+    country: null,
     city: null,
-    name: null
+    name: null,
+    document: false
 };
 
 export const DEFAULT_RESUME_FORM = {
@@ -43,12 +47,10 @@ export const DEFAULT_RESUME_FORM = {
     experienceAllTime: null,
     experienceAll: {
         oil: {
-            exist: false,
             years: null,
             month: null
         },
         mining: {
-            exist: false,
             years: null,
             month: null
         }
@@ -58,10 +60,6 @@ export const DEFAULT_RESUME_FORM = {
     schedule: null,
     employmentType: null,
     experience: [Object.assign({}, DEFAULT_EXPERIENCE)],
-    educationCountries: {
-        russian: false,
-        foreign: false
-    },
     education: [Object.assign({}, DEFAULT_EDUCATION)],
     languages: [Object.assign({}, DEFAULT_LANGUAGE)],
     trainings: [Object.assign({}, DEFAULT_TRAINING)],
