@@ -26,3 +26,15 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 input, select {
     outline: none;
 }
+
+input.mat-input-element {
+    border-bottom: none !important;
+}
+
+mat-datepicker-toggle {
+    color: #ff682a;
+}
+
+.mat-form-field-ripple {
+    background-color: #ff682a;
+}
