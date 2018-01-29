@@ -29,12 +29,13 @@ export class ResumeService {
     //     this.setResume(resume);
     // }
 
-    public goEdit(): void {
+    public goEdit(resume: any): void {
         this.router.navigate(['create-resume']);
+        this.setResume(resume);
     }
 
-    public delete(resume: any):void {
-        this.http.get(`/api/v1/user/resume/remove?resumeId=${resume._id}`)
+    public delete(id: string):void {
+        this.http.get(`/api/v1/user/resume/remove?resumeId=${id}`)
             .subscribe((res: any) => {
                 if (res.success) {
                     alert("Успешно удалено!");

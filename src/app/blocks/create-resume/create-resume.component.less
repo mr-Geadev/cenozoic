@@ -40,6 +40,27 @@
           .bebas;
           font-size: 1.2rem;
           font-weight: 400;
+          display: flex;
+          justify-content: space-between;
+
+          .remove-block-fields {
+            color: @black;
+            opacity: 0.5;
+            .tr-opacity;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+              opacity: 1;
+            }
+            img {
+              width: 20px;
+              height: 20px;
+              margin-left: 10px;
+              margin-top: -6px;
+            }
+          }
         }
 
         .parameter {
@@ -85,6 +106,10 @@
             &.short-select {
               border: 0.063rem solid #dadada;
             }
+          }
+
+          .mat-form-field-wrapper {
+            padding-bottom: 0;
           }
 
           .radio {
@@ -192,7 +217,8 @@
 
           .right {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
+            //align-items: flex-end;
             width: 100%;
             justify-content: flex-start;
             position: relative;
@@ -280,6 +306,31 @@
           select {
             margin-right: 16px;
           }
+
+          .right {
+            position: relative;
+          }
+
+          .short-input {
+            margin-left: 16px;
+          }
+
+          .remove-language {
+            position: absolute;
+            right: 0;
+            opacity: 0.5;
+            cursor: pointer;
+            .tr-opacity;
+
+            &:hover {
+              opacity: 1;
+            }
+
+            img {
+              width: 20px;
+              height: 20px;
+            }
+          }
         }
         &.trainings-fields {
           .word {
@@ -288,17 +339,18 @@
         }
         .add {
           display: block;
-          margin-top: 50px;
+          margin-top: 20px;
           color: @orange;
           font-size: 14px;
           font-weight: 400;
           line-height: 27.99px;
 
-          a {
+          .add-button {
             font-size: 14px;
             font-weight: 400;
             line-height: 27.99px;
             font-family: Roboto;
+            cursor: pointer;
             .inline-link;
           }
         }
