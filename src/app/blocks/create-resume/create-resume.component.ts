@@ -74,20 +74,36 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         this.invalid = true;
     }
 
-    public addWorkplace(): void {
-        this.resumeForm.experience.push(Object.assign({}, DEFAULT_EXPERIENCE));
+    public manageWorkplace(index?: number): void {
+        if (index === undefined) {
+            this.resumeForm.experience.push(Object.assign({}, DEFAULT_EXPERIENCE));
+        } else {
+            this.resumeForm.experience.splice(index, 1);
+        }
     }
 
-    public addEducation(): void {
-        this.resumeForm.education.push(Object.assign({}, DEFAULT_EDUCATION));
+    public manageEducation(index?: number): void {
+        if (index === undefined) {
+            this.resumeForm.education.push(Object.assign({}, DEFAULT_EDUCATION));
+        } else {
+            this.resumeForm.education.splice(index, 1);
+        }
     }
 
-    public addLanguage(): void {
-        this.resumeForm.languages.push(Object.assign({}, DEFAULT_LANGUAGE));
+    public manageLanguage(index?: number): void {
+        if (index === undefined) {
+            this.resumeForm.languages.push(Object.assign({}, DEFAULT_LANGUAGE));
+        } else {
+            this.resumeForm.languages.splice(index, 1);
+        }
     }
 
-    public addTraining(): void {
-        this.resumeForm.trainings.push(Object.assign({}, DEFAULT_TRAINING));
+    public manageTraining(index?: number): void {
+        if (index === undefined) {
+            this.resumeForm.trainings.push(Object.assign({}, DEFAULT_TRAINING));
+        } else {
+            this.resumeForm.trainings.splice(index, 1);
+        }
     }
 
     public onImageChange(event): void {
@@ -117,15 +133,17 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         this.resumeForm.experience.forEach((item) => {
             if (item.type === "Нефтегазовая") {
                 timeOil += this._calculateTime(item);
-            };
+            }
+            ;
             if (item.type === "Горнодобывающая") {
                 timeMining += this._calculateTime(item);
-            };
+            }
+            ;
         });
 
         console.log(timeOil);
         console.log(timeMining);
-        this.resumeForm.experienceAll.oil.year = Math.floor(timeOil / 12) ;
+        this.resumeForm.experienceAll.oil.year = Math.floor(timeOil / 12);
         this.resumeForm.experienceAll.oil.month = timeOil % 12;
         this.resumeForm.experienceAll.mining.year = Math.floor(timeMining / 12);
         this.resumeForm.experienceAll.mining.month = timeMining % 12;
@@ -166,7 +184,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     };
 
     private _calculateTime(item: any): number {
-        let months= [
+        let months = [
             'Январь',
             'Февраль',
             'Март',
@@ -181,18 +199,18 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             'Декабрь'
         ];
 
-        const startMonth:string = item.startMonth;
-        const startYear:number = item.startYear;
+        const startMonth: string = item.startMonth;
+        const startYear: number = item.startYear;
 
-        const endMonth:string = item.endMonth;
-        const endYear:number = item.endYear;
+        const endMonth: string = item.endMonth;
+        const endYear: number = item.endYear;
 
         let allMonths: number = 0;
 
         if (endYear === startYear) {
             console.log("a");
             allMonths = months.indexOf(endMonth) - months.indexOf(startMonth);
-        }else if (months.indexOf(startMonth) > months.indexOf(endMonth)) {
+        } else if (months.indexOf(startMonth) > months.indexOf(endMonth)) {
             console.log("b");
             allMonths = (endYear - startYear) * months.length + (months.indexOf(endMonth) - months.indexOf(startMonth) + 1);
         } else if (months.indexOf(startMonth) < months.indexOf(endMonth)) {

@@ -25,8 +25,7 @@ export class ListResumeComponent implements OnInit {
         if (this.config === "resume") {
             this._http.get(`/api/v1/user/resume/all`)
                 .subscribe( (res:any) => {
-                    this.listResume = res.resumeList;
-                    this.formatting(this.listResume);
+                    this.listResume = this.formatting(res.resumeList);
                 });
         } else if (this.config === "all") {
 
@@ -34,14 +33,12 @@ export class ListResumeComponent implements OnInit {
                 if (parameters != null) {
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}filters:${parameters}`)
                         .subscribe( (res:any) => {
-                            this.listResume = res.resumeList;
-                            this.formatting(this.listResume);
+                            this.listResume = this.formatting(res.resumeList);
                         });
                 } else {
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
                         .subscribe((res: any) => {
-                            this.listResume = res.resumeList;
-                            this.formatting(this.listResume);
+                            this.listResume = this.formatting(res.resumeList);
                             console.log(res);
                             console.log(this.listResume);
                         });
@@ -62,13 +59,7 @@ export class ListResumeComponent implements OnInit {
                 item.experienceAllTime = `${time[0]} лет и ${time[1]} месяцев`;
             }
 
-            if (item.job == undefined) {
-                item.job = 'Нет данных';
-            }
-
-            if (item.experience == undefined) {
-                item.experience = false;
-            }
+            return item;
 
         });
 

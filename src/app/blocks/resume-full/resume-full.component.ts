@@ -37,9 +37,11 @@ export class ResumeFullComponent implements OnInit{
         this.http.get(`/api/v1/resume/get/one?resumeId=${this.id}`)
             .subscribe((res: any) => {
                 if (res.success) {
+                    // this.currentResume = this._formatting(res.resume);
                     this.currentResume = res.resume;
+                    console.log(this.currentResume);
                 } else {
-                    alert(res.errorMessage);
+                    console.log(res.errorMessage);
                 }
             });
 
@@ -53,6 +55,13 @@ export class ResumeFullComponent implements OnInit{
         //         }
         //     });
 
+
+
     }
+    //
+    // private _formatting(resume: any): any {
+    //     resume.age = resume.age.getFullYear();
+    //     return resume;
+    // }
 
 }

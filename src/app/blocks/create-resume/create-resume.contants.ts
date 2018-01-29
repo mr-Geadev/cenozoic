@@ -59,10 +59,18 @@ export const DEFAULT_RESUME_FORM = {
     relocation: 'нет',
     schedule: null,
     employmentType: null,
-    experience: [Object.assign({}, DEFAULT_EXPERIENCE)],
-    education: [Object.assign({}, DEFAULT_EDUCATION)],
-    languages: [Object.assign({}, DEFAULT_LANGUAGE)],
-    trainings: [Object.assign({}, DEFAULT_TRAINING)],
+    experience: [
+        // Object.assign({}, DEFAULT_EXPERIENCE)
+    ],
+    education: [
+        // Object.assign({}, DEFAULT_EDUCATION)
+    ],
+    languages: [
+        // Object.assign({}, DEFAULT_LANGUAGE)
+    ],
+    trainings: [
+        // Object.assign({}, DEFAULT_TRAINING)
+    ],
     additionalInformation: null,
     personalQualities: null,
     hobbies: null,

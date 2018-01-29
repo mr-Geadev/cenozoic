@@ -9,7 +9,10 @@
     .photo{
       width: 350px;
       height: 350px;
-      background-color: @gray;
+      background-color: @light-gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .button {
@@ -62,11 +65,16 @@
     color: @dark-orange;
     font-family: Roboto;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.376rem;
 
     span {
       font-size: 1rem;
+
+      b {
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
     }
   }
 
@@ -135,7 +143,7 @@
   }
 
   .add-info  {
-    margin-top: 63px;
+    margin-top: 30px;
   }
 
   table.experience {
@@ -158,11 +166,15 @@
         margin-top: 29px;
       }
 
-      &:nth-child(2n) {
-        background-color: #eeeeee;
-      }
     }
 
+  }
+
+  table.contact-data {
+    tr {
+      margin: 15px 0;
+      padding: 0;
+    }
   }
 
   .side-title {
