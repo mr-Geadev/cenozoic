@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material";
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from "@angular/material-moment-adapter";
 import { Router } from "@angular/router";
+import { Moment } from "moment";
 import "rxjs/add/operator/filter";
 
 import { CREATE_RESUME } from "../../constants";
@@ -125,8 +126,6 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public send(): void {
-
-
         let timeOil: number = 0;
         let timeMining: number = 0;
 
@@ -134,15 +133,12 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             if (item.type === "Нефтегазовая") {
                 timeOil += this._calculateTime(item);
             }
-            ;
+
             if (item.type === "Горнодобывающая") {
                 timeMining += this._calculateTime(item);
             }
-            ;
         });
 
-        console.log(timeOil);
-        console.log(timeMining);
         this.resumeForm.experienceAll.oil.year = Math.floor(timeOil / 12);
         this.resumeForm.experienceAll.oil.month = timeOil % 12;
         this.resumeForm.experienceAll.mining.year = Math.floor(timeMining / 12);
@@ -157,7 +153,6 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             }
 
             formData.append('resume', JSON.stringify(this.resumeForm));
-            console.log(this.resumeForm);
             this.http.post(CREATE_RESUME, formData)
                 .subscribe((res: any) => {
                     if (res.success) {
@@ -222,5 +217,9 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         }
 
         return allMonths;
+    }
+
+    public birthdayChanged(date: Moment): void {
+        this.resumeForm.birthday = date.toString();
     }
 }

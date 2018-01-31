@@ -41,7 +41,7 @@ export const DEFAULT_TRAINING = {
 export const DEFAULT_RESUME_FORM = {
     job: null,
     salary: null,
-    age: null,
+    birthday: null,
     gender: 'Мужчина',
     family: null,
     experienceAllTime: null,
