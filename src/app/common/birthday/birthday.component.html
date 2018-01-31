@@ -1,0 +1,13 @@
+<div class="hidden">
+    <input matInput [matDatepicker]="dp">
+    <mat-datepicker #dp
+                    touchUi="true"
+                    (selectedChanged)="dateChanged($event);"></mat-datepicker>
+</div>
+
+<div class="date-picker">
+    <div class="calendar" (click)="dp.open();">
+        <img src="/assets/images/calendar.svg"/>
+    </div>
+    <div class="data" (click)="dp.open();">{{data}}</div>
+</div>

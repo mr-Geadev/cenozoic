@@ -42,12 +42,9 @@
                                 <label>Дата рождения<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <mat-form-field>
-                                    <input matInput [matDatepicker]="dp" [(ngModel)]="resumeForm.age"
-                                           [ngModelOptions]="{standalone: true}">
-                                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                                    <mat-datepicker touchUi="true" #dp></mat-datepicker>
-                                </mat-form-field>
+                                <birthday-date-picker
+                                    (changed)="birthdayChanged($event);">
+                                </birthday-date-picker>
                             </div>
                         </div>
 
@@ -157,7 +154,6 @@
                         </div>
 
                         <div class="workplace" *ngFor="let item of resumeForm.experience; let i = index">
-
 
                             <div class="side-title">
                                 Место работы {{i+1}}

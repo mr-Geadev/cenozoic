@@ -1,16 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { PageFooterModule, PageHeaderModule } from "./blocks";
-import { NotFoundPageComponent, MainPageModule } from "./pages";
-import { CreateResumePageModule } from "./pages/create-resume-page/create-resume-page.module";
-import { ListResumePageModule } from "./pages/list-resume-page/list-resume-page.module";
-import { PersonalAccountPageModule } from "./pages/personal-account-page/personal-account-page.module";
-import { ResumeFullPageModule } from "./pages/resume-full-page/resume-full-page.module";
+import { MainPageModule, NotFoundPageComponent } from "./pages";
+import { CreateResumePageModule } from "./pages/create-resume-page";
+import { ListResumePageModule } from "./pages/list-resume-page";
+import { PersonalAccountPageModule } from "./pages/personal-account-page";
+import { ResumeFullPageModule } from "./pages/resume-full-page";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -22,7 +22,7 @@ const ROUTES = [
         NotFoundPageComponent
     ],
     imports: [
-        NoopAnimationsModule,
+        BrowserAnimationsModule,
         BrowserModule.withServerTransition({ appId: 'my-app' }),
         RouterModule.forRoot(ROUTES),
         // Pages
