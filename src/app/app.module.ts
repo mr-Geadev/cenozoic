@@ -11,6 +11,8 @@ import { CreateResumePageModule } from "./pages/create-resume-page";
 import { ListResumePageModule } from "./pages/list-resume-page";
 import { PersonalAccountPageModule } from "./pages/personal-account-page";
 import { ResumeFullPageModule } from "./pages/resume-full-page";
+import { SystemMessageService } from "./services/system-message.service";
+import { MatSnackBarModule } from "@angular/material";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -25,6 +27,7 @@ const ROUTES = [
         BrowserAnimationsModule,
         BrowserModule.withServerTransition({ appId: 'my-app' }),
         RouterModule.forRoot(ROUTES),
+        MatSnackBarModule,
         // Pages
         MainPageModule,
         CreateResumePageModule,
@@ -36,7 +39,10 @@ const ROUTES = [
         PageHeaderModule,
         PageFooterModule,
     ],
-    providers: [HttpClient],
+    providers: [
+        HttpClient,
+        SystemMessageService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

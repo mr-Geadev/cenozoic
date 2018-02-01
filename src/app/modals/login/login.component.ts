@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { SIGN_IN, SIGN_UP, USER_INFO } from "../../constants/api.constant";
-import { HttpClient } from "@angular/common/http";
 import { UserService } from "../../services/user.service";
 import { MatDialog } from "@angular/material";
+import { SystemMessageService } from "../../services/system-message.service";
 
 @Component({
     selector: 'login-modal',
@@ -19,7 +18,7 @@ export class LoginModalComponent {
     loginForm: FormGroup;
 
     constructor(private dialog: MatDialog,
-                private http: HttpClient,
+                private _systemMessageService: SystemMessageService,
                 private userService: UserService) {
 
         this.loginForm = new FormGroup({
@@ -70,12 +69,12 @@ export class LoginModalComponent {
 
         this.userService.loginUser(this.loginForm.value);
 
+
         this.userService.user$
             .subscribe((user)=>{
                 if (user) {
-                    alert('Вы вошли');
+                    this._systemMessageService.info('Вы вошли');
                     this.dialog.closeAll();
-                    console.log(user);
                 };
             });
 
@@ -89,7 +88,7 @@ export class LoginModalComponent {
         this.userService.user$
             .subscribe((user)=>{
                 if (user) {
-                    alert("Вы зарегестированы");
+                    this._systemMessageService.info('Вы зарегестированы');
                     this.dialog.closeAll();
                 }
             });
