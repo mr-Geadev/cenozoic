@@ -27,7 +27,6 @@ export class FilterResumesService {
         this.age.from == null ? from = 0 : from = this.age.from;
         this.age.before == null ? before = 0 : before = this.age.before;
         this.parameters.age = `${from}-${before}`;
-        console.log(this.parameters.age);
     }
 
     private _parametersTemplate: any = {

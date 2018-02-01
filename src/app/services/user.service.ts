@@ -3,6 +3,7 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 import { LOG_OUT, SIGN_IN, SIGN_UP, USER_INFO } from "../constants/api.constant";
 import { HttpClient } from "@angular/common/http";
+import { SystemMessageService } from "./system-message.service";
 
 @Injectable()
 export class UserService {
@@ -10,7 +11,8 @@ export class UserService {
     private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
     public user$: Observable<any> = this.userSubject.asObservable();
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private _systemMessages: SystemMessageService) {
     }
 
     public setUser(user: any): void {
@@ -30,7 +32,7 @@ export class UserService {
                 if (res.success) {
                     this.getUserInfo();
                 } else {
-                    alert(res.errorMessage);
+                    this._systemMessages.info(res.errorMessage);
                 }
             });
     }
@@ -50,7 +52,7 @@ export class UserService {
                 if (res.success) {
                     this.loginUser(dataUser);
                 } else {
-                    alert(res.errorMessage);
+                    this._systemMessages.info(res.errorMessage);
                 }
             });
     }

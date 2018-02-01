@@ -40,8 +40,6 @@ export class ResumeFullComponent implements OnInit{
                     // this.currentResume = this._formatting(res.resume);
                     this.currentResume = res.resume;
                     console.log(this.currentResume);
-                } else {
-                    console.log(res.errorMessage);
                 }
             });
 
@@ -49,7 +47,6 @@ export class ResumeFullComponent implements OnInit{
         //     .subscribe((resume) => {
         //         if (resume != null) {
         //             this.currentResume = resume;
-        //             console.log(this.currentResume);
         //         } else {
         //
         //         }

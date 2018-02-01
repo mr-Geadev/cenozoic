@@ -4,12 +4,14 @@ import { UserService } from "./user.service";
 import { Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
+import { SystemMessageService } from "./system-message.service";
 
 @Injectable()
 export class ResumeService {
 
     constructor(private http: HttpClient,
                 private userService: UserService,
+                private _systemMessages: SystemMessageService,
                 private router: Router) {
 
     }
@@ -38,10 +40,10 @@ export class ResumeService {
         this.http.get(`/api/v1/user/resume/remove?resumeId=${id}`)
             .subscribe((res: any) => {
                 if (res.success) {
-                    alert("Успешно удалено!");
+                    this._systemMessages.info('Ваше резюме было удалено');
                     this.router.navigate(['list-resume']);
                 } else {
-                    alert(res.errorMessage);
+                    this._systemMessages.info(res.errorMessage);
                 }
             });
     }

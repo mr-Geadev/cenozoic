@@ -13,7 +13,10 @@ import { UserService } from "../../services/user.service";
     ],
     declarations: [LoginModalComponent],
     entryComponents: [LoginModalComponent],
-    providers: [LoginModalService, UserService],
+    providers: [
+        LoginModalService,
+        UserService,
+    ],
     exports: [LoginModalComponent]
 })
 export class LoginModalModule { }

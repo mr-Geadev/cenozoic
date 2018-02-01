@@ -29,7 +29,7 @@ import {
         { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     ],
 })
-export class CreateResumeComponent implements OnInit, OnDestroy {
+export class CreateResumeComponent implements OnInit, OnDestroy{
     public resumeForm: any = DEFAULT_RESUME_FORM;
     public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
     public isAuthorized: boolean = false;
@@ -47,28 +47,40 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+
         this.userService.user$
             .filter(user => !!user)
             .subscribe((user) => {
                 this.isAuthorized = !!user;
-                console.log(user);
             });
 
         this.sub = this.resumeService.resume$
             .subscribe((resume) => {
-                if (resume != null) {
+                if (resume) {
                     for (let key in resume) {
                         if (resume.hasOwnProperty(key)) {
                             this.resumeForm[key] = resume[key];
                         }
                     }
                     this.type = CHANGES_TYPE;
+                } else {
+
+                    this.type = DEFAULT_TYPE;
+                    for (let key in this.cleanResumeForm) {
+                        if (this.resumeForm.hasOwnProperty(key)) {
+                            this.resumeForm[key] = this.cleanResumeForm[key];
+                        }
+                    };
+
                 }
             });
     }
 
+
     ngOnDestroy(): void {
         this.resumeService.setResume(null);
+        this.sub.unsubscribe();
+        this.type = DEFAULT_TYPE;
     }
 
     public showRequired(): void {
@@ -126,6 +138,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public send(): void {
+
         let timeOil: number = 0;
         let timeMining: number = 0;
 
@@ -170,9 +183,6 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                     if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
                         this.router.navigate(['resume', id]);
-                    } else {
-                        console.log(res);
-                        console.log({ resumeId: this.resumeForm._id, resume: this.resumeForm });
                     }
                 });
         }
@@ -203,16 +213,12 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         let allMonths: number = 0;
 
         if (endYear === startYear) {
-            console.log("a");
             allMonths = months.indexOf(endMonth) - months.indexOf(startMonth);
         } else if (months.indexOf(startMonth) > months.indexOf(endMonth)) {
-            console.log("b");
             allMonths = (endYear - startYear) * months.length + (months.indexOf(endMonth) - months.indexOf(startMonth) + 1);
         } else if (months.indexOf(startMonth) < months.indexOf(endMonth)) {
-            console.log("c");
             allMonths = (endYear - startYear) * months.length + months.indexOf(endMonth) - months.indexOf(startMonth);
         } else {
-            console.log("d");
             allMonths = (endYear - startYear) * months.length;
         }
 

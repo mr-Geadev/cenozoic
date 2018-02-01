@@ -110,7 +110,7 @@
 
 
 
-    <div class="row add-info">
+    <div class="row add-info" *ngIf="currentResume.experience.length > 0">
         <div class="col">
             <div class="title">
                 Опыт работы
@@ -138,7 +138,7 @@
     </div>
 
 
-    <div class="row add-info education">
+    <div class="row add-info education" *ngIf="currentResume.education.length > 0">
         <div class="col">
             <div class="title">
                 Учебные заведения
@@ -165,7 +165,7 @@
         </div>
     </div>
 
-    <div class="row add-info languages">
+    <div class="row add-info languages" *ngIf="currentResume.education.languages > 0">
         <div class="col">
             <div class="title">
                Знание языков
@@ -176,7 +176,7 @@
         </div>
     </div>
 
-    <div class="row add-info trainings" *ngIf="!currentResume.trainings == null">
+    <div class="row add-info trainings" *ngIf="currentResume.education.languages > 0">
         <div class="col">
             <div class="title">
                 Профессиональные компетенции, Курсы, тренинги, сертификаты
