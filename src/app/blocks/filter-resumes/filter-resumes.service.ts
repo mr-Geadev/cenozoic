@@ -30,17 +30,17 @@ export class FilterResumesService {
     }
 
     private _parametersTemplate: any = {
-        education: 'Образование',
-        placeResidence: 'Место проживания',
-        experienceAllTime: 'Общий стаж',
-        languagesResume: 'Язык резюме',
-        schedule: 'Занятость',
-        languages: 'Знание языков',
-        salary: 'Заработная плата',
-        family: 'Семейное положение',
-        gender: 'Пол',
-        age: 'Возраст',
-        photo: 'Фото'
+        education: 0,
+        placeResidence: 0,
+        experienceAllTime: 0,
+        languagesResume: 0,
+        schedule: 0,
+        languages: 0,
+        salary: 0,
+        family: 0,
+        gender: 0,
+        age: 0,
+        photo: 0
     };
 
     public parameters = Object.assign({}, this._parametersTemplate);
@@ -56,11 +56,13 @@ export class FilterResumesService {
 
         let req: any = {};
 
-        for (let key in  this.parameters) {
-            if (this.parameters[key] !== this._parametersTemplate[key]) {
+        for (let key in this.parameters) {
+            if (this.parameters[key] !== 0) {
                 req[key] = this.parameters[key];
             }
         }
+
+        console.log(req);
 
         this._setFilterParameters(req);
     }

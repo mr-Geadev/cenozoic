@@ -39,7 +39,6 @@ export class ResumeFullComponent implements OnInit {
             .subscribe((res: any) => {
                 if (res.success) {
                     this.currentResume = res.resume;
-                    console.log(this.currentResume);
                 }
             });
     }

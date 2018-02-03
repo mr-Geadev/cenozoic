@@ -22,6 +22,7 @@ export class ListResumeComponent implements OnInit {
 
     ngOnInit (): void {
 
+        // резюме пользоватля
         if (this.config === "resume") {
             this._http.get(`/api/v1/user/resume/all`)
                 .subscribe( (res:any) => {
@@ -29,13 +30,18 @@ export class ListResumeComponent implements OnInit {
                 });
         } else if (this.config === "all") {
 
+            //фитрованные резюме
             this._filterResumesService.filter$.subscribe((parameters: any) => {
                 if (parameters != null) {
-                    this._http.get(`/api/v1/resume/get/all?offset=${this.offset}filters:${parameters}`)
+                    this._http.get(`/api/v1/resume/get/all?offset=${this.offset}&filters=${JSON.stringify(parameters)}`)
                         .subscribe( (res:any) => {
+                            console.log(res);
                             this.listResume = this.formatting(res.resumeList);
+                            console.log(parameters);
+                            // console.log(this.listResume);
                         });
                 } else {
+                    //все резюме
                     this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
                         .subscribe((res: any) => {
                             this.listResume = this.formatting(res.resumeList);

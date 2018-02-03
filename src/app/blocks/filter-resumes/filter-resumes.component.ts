@@ -5,7 +5,7 @@ import { FilterResumesService } from "./filter-resumes.service";
 @Component({
     selector: 'filter-resumes',
     templateUrl: './filter-resumes.component.html',
-    styleUrls: ['./filter-resumes.component.less']
+    styleUrls: ['./filter-resumes.component.less'],
 })
 export class FilterResumesComponent implements OnInit{
 
