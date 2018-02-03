@@ -8,7 +8,7 @@ import "rxjs/add/operator/filter";
 import "rxjs/add/operator/first";
 
 import { CREATE_RESUME } from "../../constants";
-import { ResumeService, UserService } from "../../services";
+import { ResumeService, SystemMessageService, UserService } from "../../services";
 import {
     CHANGES_TYPE,
     DEFAULT_EDUCATION,
@@ -46,6 +46,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                 private userService: UserService,
                 private resumeService: ResumeService,
                 private router: Router,
+                private _systemMessageService: SystemMessageService,
                 private _dialog: MatDialog) {
     }
 
@@ -65,7 +66,6 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                             this.resumeForm[key] = resume[key];
                         }
                     }
-                    console.log(this.resumeForm);
                     this.type = CHANGES_TYPE;
                 } else {
                     this.type = DEFAULT_TYPE;
@@ -122,18 +122,23 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
     public onImageChange(event): void {
         const fileList: FileList = event.target.files;
+        const file: File = fileList[0];
 
         if (fileList && fileList.length > 0) {
-            const reader = new FileReader();
-            this.resumeImage.file = fileList[0];
+            if (file.size <= 5242880) {
+                const reader = new FileReader();
+                this.resumeImage.file = fileList[0];
 
-            this.loadingPhotoButton = this.resumeImage.file.name;
+                this.loadingPhotoButton = this.resumeImage.file.name;
 
-            if (event.target.files && event.target.files.length > 0) {
-                reader.readAsDataURL(this.resumeImage.file);
-                reader.onload = () => {
-                    this.resumeImage.data = reader.result;
-                };
+                if (event.target.files && event.target.files.length > 0) {
+                    reader.readAsDataURL(this.resumeImage.file);
+                    reader.onload = () => {
+                        this.resumeImage.data = reader.result;
+                    };
+                }
+            } else {
+                this._systemMessageService.info('Размер файла превышает 5мб');
             }
         }
     }
