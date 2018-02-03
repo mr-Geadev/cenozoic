@@ -16,51 +16,62 @@ export class FilterResumesService {
         this.filterSubject.next(parameter);
     }
 
-    public age: any = {
-        from: null,
-        before: null
-    };
-
-    public setAge():void {
-        let from = null;
-        let before = null;
-        this.age.from == null ? from = 0 : from = this.age.from;
-        this.age.before == null ? before = 0 : before = this.age.before;
-        this.parameters.age = `${from}-${before}`;
-    }
-
     private _parametersTemplate: any = {
-        education: 'Образование',
-        placeResidence: 'Место проживания',
-        experienceAllTime: 'Общий стаж',
-        languagesResume: 'Язык резюме',
-        schedule: 'Занятость',
-        languages: 'Знание языков',
-        salary: 'Заработная плата',
-        family: 'Семейное положение',
-        gender: 'Пол',
-        age: 'Возраст',
-        photo: 'Фото'
+        educationStage: 0,
+        schedule: 0,
+        experienceAllTime: 0,
+        languagesResume: 0,
+        employmentType: 0,
+        languages: 0,
+        salary: {
+            from: 0,
+            to: 0
+        },
+        family: 0,
+        gender: 0,
+        age: {
+            from: 0,
+            to: 0
+        },
+        photo: 0
     };
 
     public parameters = Object.assign({}, this._parametersTemplate);
 
     public resetFilterParameters(): void {
         this.parameters = Object.assign({}, this._parametersTemplate);
+        this.parameters.age.from = 0;
+        this.parameters.age.to = 0;
+        this.parameters.salary.from = 0;
+        this.parameters.salary.to = 0;
         this._setFilterParameters(null);
-        this.age.from = null;
-        this.age.before == null;
     }
 
     public changeForm(): void {
 
         let req: any = {};
 
-        for (let key in  this.parameters) {
-            if (this.parameters[key] !== this._parametersTemplate[key]) {
+        for (let key in this.parameters) {
+            if (this.parameters[key] != 0) {
                 req[key] = this.parameters[key];
             }
         }
+
+
+        if (req.salary.to == 'other') {
+            req.salary.from = 600000;
+            delete req.salary.to;
+        }
+
+        if ((req.salary.to == 0) && (req.salary.from == 0)) {
+            delete req.salary;
+        }
+
+        if ((req.age.to == 0) && (req.age.from == 0)) {
+            delete req.age;
+        }
+
+        console.log(req);
 
         this._setFilterParameters(req);
     }

@@ -28,7 +28,6 @@ export class ResumeFullComponent implements OnInit {
 
         this.userService.user$
             .subscribe((user) => {
-                console.log(user);
                 if (user) {
                     this.currentUser = user;
                 }
@@ -39,7 +38,6 @@ export class ResumeFullComponent implements OnInit {
             .subscribe((res: any) => {
                 if (res.success) {
                     this.currentResume = res.resume;
-                    console.log(this.currentResume);
                 }
             });
     }
