@@ -28,9 +28,10 @@
                         {{currentResume.gender}}
                     </div>
                 </div>
-                <div class="line not-dott" *ngIf="currentResume.experienceAll && (currentResume.experienceAll.oil.years || currentResume.experienceAll.mining.years)">
+                <div class="line not-dott"
+                     *ngIf="currentResume.experienceAll && (currentResume.experienceAll.oil.years || currentResume.experienceAll.mining.years)">
                     <div class="parameter gray text">
-                        Опыт  работы
+                        Опыт работы
                     </div>
                     <div class="line">
                         <div class="parameter gray text" *ngIf="currentResume.experienceAll.oil.years">
@@ -93,22 +94,23 @@
 
         </div>
 
-        <div class="col-4 offset-1 right" >
-            <div class="photo">
+        <div class="col-4 offset-1 right">
+            <div class="user-photo">
                 <img *ngIf="currentResume.photoURL" src="{{currentResume.photoURL}}">
-                <img *ngIf="!currentResume.photoURL" src="/assets/images/icon-camera.svg">
             </div>
-            <div class="button" (click)="resumeService.goEdit(currentResume)" *ngIf="currentResume.userId == currentUser?.id">
+            <div class="default-photo" *ngIf="!currentResume.photoURL">
+                <img src="/assets/images/icon-camera.svg">
+            </div>
+            <div class="button" (click)="resumeService.goEdit(currentResume)"
+                 *ngIf="currentResume.userId == currentUser?._id">
                 Редактировать резюме
             </div>
-            <div class="button" (click)="resumeService.delete(currentResume.id)" *ngIf="currentResume.userId == currentUser?.id">
+            <div class="button" (click)="resumeService.delete(currentResume.id)"
+                 *ngIf="currentResume.userId == currentUser?._id">
                 Удалить резюме
             </div>
         </div>
-
     </div>
-
-
 
     <div class="row add-info" *ngIf="currentResume.experience.length > 0">
         <div class="col">
@@ -120,8 +122,10 @@
 
                 <tr *ngFor="let item of currentResume.experience">
                     <td class="time-work">
-                        <div class="text black">2 года 5 месяцев                    </div>
-                        <div class="text gray">{{item.startMonth}} {{item.startYear}} — {{item.endMonth}} {{item.endYear}}</div>
+                        <div class="text black">2 года 5 месяцев</div>
+                        <div class="text gray">{{item.startMonth}} {{item.startYear}} — {{item.endMonth}}
+                            {{item.endYear}}
+                        </div>
                     </td>
                     <td class="work">
                         <div class="job side-title">{{item.job}}</div>
@@ -131,8 +135,6 @@
                         </div>
                     </td>
                 </tr>
-
-
             </table>
         </div>
     </div>
@@ -168,7 +170,7 @@
     <div class="row add-info languages" *ngIf="currentResume.education.languages > 0">
         <div class="col">
             <div class="title">
-               Знание языков
+                Знание языков
             </div>
 
             <div class="text black" *ngFor="let item of currentResume.languages">{{item.name}} - {{item.level}}</div>
@@ -248,7 +250,7 @@
 
                 <tr>
                     <td class="time-work">
-                        <div class="text gray">ФИО: </div>
+                        <div class="text gray">ФИО:</div>
                     </td>
                     <td class="education">
                         <div class="text black">Имя</div>
@@ -257,7 +259,7 @@
 
                 <tr>
                     <td class="time-work">
-                        <div class="text gray">E-mail: </div>
+                        <div class="text gray">E-mail:</div>
                     </td>
                     <td class="education">
                         <div class="text black">{{currentResume.email}}</div>
@@ -266,7 +268,7 @@
 
                 <tr>
                     <td class="time-work">
-                        <div class="text gray">Телефон: </div>
+                        <div class="text gray">Телефон:</div>
                     </td>
                     <td class="education">
                         <div class="text black">{{currentResume.phoneNumber}}</div>
@@ -278,7 +280,6 @@
 
         </div>
     </div>
-
 
 
 </div>

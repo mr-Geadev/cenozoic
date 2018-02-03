@@ -65,6 +65,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                             this.resumeForm[key] = resume[key];
                         }
                     }
+                    console.log(this.resumeForm);
                     this.type = CHANGES_TYPE;
                 } else {
                     this.type = DEFAULT_TYPE;
@@ -177,7 +178,17 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             let id = this.resumeForm._id;
             delete this.resumeForm._id;
 
-            this.http.post('/api/v1/user/resume/edit', { resumeId: id, resume: this.resumeForm })
+            const formData: FormData = new FormData();
+
+            if (!!this.resumeImage.file) {
+                console.log(this.resumeImage.file);
+                formData.append('fileToUpload', this.resumeImage.file);
+            }
+
+            formData.append('resumeId', id);
+            formData.append('resume', JSON.stringify(this.resumeForm));
+
+            this.http.post('/api/v1/user/resume/edit', formData)
                 .subscribe((res: any) => {
                     if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
