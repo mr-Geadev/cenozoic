@@ -1,9 +1,15 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule } from "@angular/material";
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule
+} from "@angular/material";
 
-import { BirthdayModule } from "../../common/birthday/birthday.module";
+import { BirthdayModule } from "../../common";
 import { CreateResumeComponent } from "./create-resume.component";
 
 @NgModule({
@@ -15,6 +21,7 @@ import { CreateResumeComponent } from "./create-resume.component";
         MatInputModule,
         MatSelectModule,
         MatOptionModule,
+        MatButtonModule,
         BirthdayModule
     ],
     declarations: [CreateResumeComponent],
