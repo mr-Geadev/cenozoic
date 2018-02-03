@@ -31,21 +31,18 @@ export class ListResumeComponent implements OnInit {
         } else if (this.config === "all") {
 
             //фитрованные резюме
-            this._filterResumesService.filter$.subscribe((parameters: any) => {
+            this._filterResumesService.filter$
+                .subscribe((parameters: any) => {
                 if (parameters != null) {
                     this._http.post(`/api/v1/resume/get/all`, {offset: this.offset, filters: parameters})
                         .subscribe( (res:any) => {
-                            console.log(res);
                             this.listResume = this.formatting(res.resumeList);
-                            console.log(parameters);
-                            // console.log(this.listResume);
                         });
                 } else {
                     //все резюме
                     this._http.post(`/api/v1/resume/get/all`, {offset: this.offset})
                         .subscribe((res: any) => {
                             this.listResume = this.formatting(res.resumeList);
-                            console.log(this.listResume);
                         });
                 }
             });

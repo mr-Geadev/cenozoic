@@ -186,7 +186,6 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             const formData: FormData = new FormData();
 
             if (!!this.resumeImage.file) {
-                console.log(this.resumeImage.file);
                 formData.append('fileToUpload', this.resumeImage.file);
             }
 
@@ -241,7 +240,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public birthdayChanged(date: Moment): void {
-        this.resumeForm.birthday = date.toString();
+        this.resumeForm.birthday = date.toISOString();
     }
 
     public changeEducationCity(index: number): void {

@@ -7,13 +7,13 @@
             </button>
         </div>
 
-        <form (change)="filterResumesService.changeForm()" id="test" >
+        <form (change)="filterResumesService.changeForm()" >
 
             <div class="row">
 
 
-               <mat-form-field MatFormFieldControl="stateChanges:alert('писал криворукий')">
-                   <mat-select form="test" name="education" placeholder="Образование"
+               <mat-form-field >
+                   <mat-select form="test" name="education" placeholder="Образование" (change)="filterResumesService.changeForm()"
                                [(ngModel)]="filterResumesService.parameters.education">
                        <mat-option value="Среднее">Среднее</mat-option>
                        <mat-option value="Высшее">Высшее</mat-option>
@@ -29,13 +29,13 @@
                 <!--</select>-->
 
                 <mat-form-field>
-                    <mat-select name="place" placeholder="Место проживания"
+                    <mat-select name="place" placeholder="Место проживания" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.placeResidence">
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="experience" placeholder="Общий стаж"
+                    <mat-select name="experience" placeholder="Общий стаж" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.experienceAllTime">
                         <mat-option value="без опыта">без опыта</mat-option>
                         <mat-option value="до 1го года">до 1го года</mat-option>
@@ -48,7 +48,7 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="languages" placeholder="Язык резюме"
+                    <mat-select name="languages" placeholder="Язык резюме" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.languagesResume">
                         <mat-option value="Русский">Русский</mat-option>
                         <mat-option value="Английский">Английский</mat-option>
@@ -70,8 +70,8 @@
             <div class="row" *ngIf="showing">
 
                 <mat-form-field>
-                    <mat-select name="schedule" placeholder="Занятость"
-                                [(ngModel)]="filterResumesService.parameters.schedule">
+                    <mat-select name="schedule" placeholder="Занятость"  (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.employmentType">
                         <mat-option value=0>Не имеет значения</mat-option>
                         <mat-option value="Полная занятость">Полная занятость</mat-option>
                         <mat-option value="Частичная занятость">Частичная занятость</mat-option>
@@ -81,7 +81,7 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="languages" placeholder="Знание языков"
+                    <mat-select name="languages" placeholder="Знание языков"  (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.languages" multiple>
                         <mat-option value="Английский">Английский</mat-option>
                         <mat-option value="Русский">Русский</mat-option>
@@ -96,20 +96,20 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="salary" placeholder="Заработная плата"
-                                [(ngModel)]="filterResumesService.parameters.salary">
-                        <mat-option value="до 60 000 рублей">до 60 000 рублей</mat-option>
-                        <mat-option value="до 120 000 рублей">до 120 000 рублей</mat-option>
-                        <mat-option value="до 180 000 рублей">до 180 000 рублей</mat-option>
-                        <mat-option value="до 300 000 рублей">до 300 000 рублей</mat-option>
-                        <mat-option value="до 420 000 рублей">до 420 000 рублей</mat-option>
-                        <mat-option value="До 600 000 рублей">До 600 000 рублей</mat-option>
-                        <mat-option value="Свыше 600 000 рублей">Свыше 600 000 рублей</mat-option>
+                    <mat-select name="salary" placeholder="Заработная плата"  (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.salary.to">
+                        <mat-option value="60000">до 60 000 рублей</mat-option>
+                        <mat-option value="120000">до 120 000 рублей</mat-option>
+                        <mat-option value="180000">до 180 000 рублей</mat-option>
+                        <mat-option value="300000">до 300 000 рублей</mat-option>
+                        <mat-option value="420000">до 420 000 рублей</mat-option>
+                        <mat-option value="600000">До 600 000 рублей</mat-option>
+                        <mat-option value="other">Свыше 600 000 рублей</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="family" placeholder="Семейное положение"
+                    <mat-select name="family" placeholder="Семейное положение"  (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.family">
                         <mat-option value="0">Не имеет значение</mat-option>
                         <mat-option value="Холост/Не замужем">Холост/Не замужем</mat-option>
@@ -122,7 +122,7 @@
             <div class="row" *ngIf="showing">
 
                 <mat-form-field>
-                    <mat-select name="gender" placeholder="Пол"
+                    <mat-select name="gender" placeholder="Пол"  (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.gender">
                         <mat-option value="0">Не имеет значения</mat-option>
                         <mat-option value="Мужчина">Мужской</mat-option>
@@ -131,21 +131,19 @@
                 </mat-form-field>
 
                 <div class="change-age">
-                    <div class="text from">от</div>
+                    <div class="text from">возраст от</div>
                     <input type="number" class="from" name="from"
-                           (change)="filterResumesService.setAge();"
                            class="test"
-                           [(ngModel)]="filterResumesService.age.from">
+                           [(ngModel)]="filterResumesService.parameters.age.from">
                     <div class="text before">до</div>
                     <input type="number" class="before" name="before"
-                           (change)="filterResumesService.setAge();"
                            class="test"
-                           [(ngModel)]="filterResumesService.age.before">
+                           [(ngModel)]="filterResumesService.parameters.age.to">
                     <div class="text age">лет</div>
                 </div>
 
                 <mat-form-field>
-                    <mat-select name="photo"
+                    <mat-select name="photo"  (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.photo">
                         <mat-option value="Фото">Фото</mat-option>
                     </mat-select>
