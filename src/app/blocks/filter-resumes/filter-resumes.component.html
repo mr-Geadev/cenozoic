@@ -7,18 +7,26 @@
             </button>
         </div>
 
-        <form (change)="filterResumesService.changeForm()" >
+        <form (change)="filterResumesService.changeForm()" id="test" >
 
             <div class="row">
 
-               <mat-form-field>
-                   <mat-select name="education" placeholder="Образование"
+
+               <mat-form-field MatFormFieldControl="stateChanges:alert('писал криворукий')">
+                   <mat-select form="test" name="education" placeholder="Образование"
                                [(ngModel)]="filterResumesService.parameters.education">
                        <mat-option value="Среднее">Среднее</mat-option>
                        <mat-option value="Высшее">Высшее</mat-option>
                        <mat-option value="Высшее">Образование</mat-option>
                    </mat-select>
                </mat-form-field>
+
+                <!--<select form="test" name="education" placeholder="Образование"-->
+                <!--[(ngModel)]="filterResumesService.parameters.education">-->
+                <!--<option value="Среднее">Среднее</option>-->
+                <!--<option value="Высшее">Высшее</option>-->
+                <!--<option value="Высшее">Образование</option>-->
+                <!--</select>-->
 
                 <mat-form-field>
                     <mat-select name="place" placeholder="Место проживания"

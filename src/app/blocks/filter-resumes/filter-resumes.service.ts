@@ -53,6 +53,8 @@ export class FilterResumesService {
     }
 
     public changeForm(): void {
+        
+        alert('хуй');
 
         let req: any = {};
 

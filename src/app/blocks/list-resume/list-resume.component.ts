@@ -33,7 +33,7 @@ export class ListResumeComponent implements OnInit {
             //фитрованные резюме
             this._filterResumesService.filter$.subscribe((parameters: any) => {
                 if (parameters != null) {
-                    this._http.get(`/api/v1/resume/get/all?offset=${this.offset}&filters=${JSON.stringify(parameters)}`)
+                    this._http.post(`/api/v1/resume/get/all`, {offset: this.offset, filters: parameters})
                         .subscribe( (res:any) => {
                             console.log(res);
                             this.listResume = this.formatting(res.resumeList);
@@ -42,9 +42,10 @@ export class ListResumeComponent implements OnInit {
                         });
                 } else {
                     //все резюме
-                    this._http.get(`/api/v1/resume/get/all?offset=${this.offset}`)
+                    this._http.post(`/api/v1/resume/get/all`, {offset: this.offset})
                         .subscribe((res: any) => {
                             this.listResume = this.formatting(res.resumeList);
+                            console.log(this.listResume);
                         });
                 }
             });
