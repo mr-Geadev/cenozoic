@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { Moment } from "moment";
-import moment = require("moment");
+import * as moment from 'moment';
 
 @Component({
     selector: 'birthday-date-picker',
