@@ -201,8 +201,10 @@
                                 <div class="right">
                                     <div [ngClass]="{disabled: resumeForm.experience[i].present}" class="workplace-fix">
                                         <mat-form-field>
-                                            <mat-select name="experience-endMonth-{{i}}" id="employment-end"
+                                            <mat-select name="experience-endMonth-{{i}}"
+                                                        id="employment-end"
                                                         class="shortest-select"
+                                                        [disabled]="resumeForm.experience[i].present"
                                                         [(ngModel)]="resumeForm.experience[i].endMonth"
                                                         required>
                                                 <mat-option value="Январь">Январь</mat-option>
@@ -222,8 +224,10 @@
                                         </mat-form-field>
                                     </div>
                                     <input type="number" name="experience-endYear-{{i}}" id="end"
-                                           class="shortest-input" [(ngModel)]="resumeForm.experience[i].endYear"
-                                           required>
+                                           class="shortest-input"
+                                           [(ngModel)]="resumeForm.experience[i].endYear"
+                                           [disabled]="resumeForm.experience[i].present"
+                                           [required]="!resumeForm.experience[i].present">
                                     <div class="word">года</div>
                                     <input type="checkbox" name="experience-name-{{i}}" value="true"
                                            id="present-{{i}}" [(ngModel)]="resumeForm.experience[i].present">
@@ -614,7 +618,7 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" (submit)="send()" id="save" [disabled]="myForm.invalid">
+                        <button type="submit" (click)="send()" id="save" [disabled]="myForm.invalid">
                             Сохранить резюме
                         </button>
                         <div class="message" id="alert" (click)="showRequired()">
@@ -629,11 +633,11 @@
             </div>
 
             <div class="col-auto add-photo">
-                <div *ngIf="!resumeImage.data" class="image default">
+                <div *ngIf="!resumeImage.data && !resumeForm.photoURL" class="image default">
                     <img src="/assets/images/icon-camera.svg"/>
                 </div>
-                <div *ngIf="resumeImage.data" class="image user">
-                    <img [src]="resumeImage.data">
+                <div *ngIf="resumeImage.data || resumeForm.photoURL" class="image user">
+                    <img [src]="resumeImage.data || resumeForm.photoURL">
                 </div>
                 <input form="create-summary" (change)="onImageChange($event)" id="load-photo" type="file" size="0"
                        accept="image/*,image/jpeg,image/png,image/gif">
