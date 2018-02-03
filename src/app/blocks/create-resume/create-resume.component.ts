@@ -1,10 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material";
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDialog, MatDialogConfig } from "@angular/material";
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from "@angular/material-moment-adapter";
 import { Router } from "@angular/router";
 import { Moment } from "moment";
 import "rxjs/add/operator/filter";
+import "rxjs/add/operator/first";
 
 import { CREATE_RESUME } from "../../constants";
 import { ResumeService, UserService } from "../../services";
@@ -18,6 +19,7 @@ import {
     DEFAULT_TRAINING,
     DEFAULT_TYPE
 } from "./create-resume.contants";
+import { ChangeCityModalComponent } from "../../modals/change-city";
 
 @Component({
     selector: 'create-resume',
@@ -29,7 +31,7 @@ import {
         { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     ],
 })
-export class CreateResumeComponent implements OnInit, OnDestroy{
+export class CreateResumeComponent implements OnInit, OnDestroy {
     public resumeForm: any = DEFAULT_RESUME_FORM;
     public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
     public isAuthorized: boolean = false;
@@ -43,7 +45,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy{
     constructor(private http: HttpClient,
                 private userService: UserService,
                 private resumeService: ResumeService,
-                private router: Router) {
+                private router: Router,
+                private _dialog: MatDialog) {
     }
 
     ngOnInit(): void {
@@ -64,18 +67,15 @@ export class CreateResumeComponent implements OnInit, OnDestroy{
                     }
                     this.type = CHANGES_TYPE;
                 } else {
-
                     this.type = DEFAULT_TYPE;
                     for (let key in this.cleanResumeForm) {
                         if (this.resumeForm.hasOwnProperty(key)) {
                             this.resumeForm[key] = this.cleanResumeForm[key];
                         }
-                    };
-
+                    }
                 }
             });
     }
-
 
     ngOnDestroy(): void {
         this.resumeService.setResume(null);
@@ -88,7 +88,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy{
     }
 
     public manageWorkplace(index?: number): void {
-        if (index === undefined) {
+        if (!index) {
             this.resumeForm.experience.push(Object.assign({}, DEFAULT_EXPERIENCE));
         } else {
             this.resumeForm.experience.splice(index, 1);
@@ -96,7 +96,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy{
     }
 
     public manageEducation(index?: number): void {
-        if (index === undefined) {
+        if (!index) {
             this.resumeForm.education.push(Object.assign({}, DEFAULT_EDUCATION));
         } else {
             this.resumeForm.education.splice(index, 1);
@@ -104,7 +104,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy{
     }
 
     public manageLanguage(index?: number): void {
-        if (index === undefined) {
+        if (!index) {
             this.resumeForm.languages.push(Object.assign({}, DEFAULT_LANGUAGE));
         } else {
             this.resumeForm.languages.splice(index, 1);
@@ -112,7 +112,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy{
     }
 
     public manageTraining(index?: number): void {
-        if (index === undefined) {
+        if (!index) {
             this.resumeForm.trainings.push(Object.assign({}, DEFAULT_TRAINING));
         } else {
             this.resumeForm.trainings.splice(index, 1);
@@ -138,7 +138,6 @@ export class CreateResumeComponent implements OnInit, OnDestroy{
     }
 
     public send(): void {
-
         let timeOil: number = 0;
         let timeMining: number = 0;
 
@@ -227,5 +226,18 @@ export class CreateResumeComponent implements OnInit, OnDestroy{
 
     public birthdayChanged(date: Moment): void {
         this.resumeForm.birthday = date.toString();
+    }
+
+    public changeEducationCity(index: number): void {
+        this._dialog.open(ChangeCityModalComponent, {
+            width: '600px',
+            height: '370px'
+        } as MatDialogConfig)
+            .afterClosed()
+            .first()
+            .filter(city => !!city)
+            .subscribe((city: string) => {
+                this.resumeForm.education[index].city = city;
+            });
     }
 }

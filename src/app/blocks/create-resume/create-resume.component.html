@@ -8,7 +8,7 @@
         </div>
         <div class="row" *ngIf="isAuthorized">
             <div class="col form">
-                <form id="create-summary" (submit)="send()" #myForm="ngForm" [ngClass]="{invalid: invalid}">
+                <form id="create-summary" #myForm="ngForm" [ngClass]="{invalid: invalid}">
 
                     <div class="main-fields part">
 
@@ -44,7 +44,7 @@
                             </div>
                             <div class="right">
                                 <birthday-date-picker
-                                    (changed)="birthdayChanged($event);">
+                                        (changed)="birthdayChanged($event);">
                                 </birthday-date-picker>
                             </div>
                         </div>
@@ -202,7 +202,8 @@
                                     <div [ngClass]="{disabled: resumeForm.experience[i].present}" class="workplace-fix">
                                         <mat-form-field>
                                             <mat-select name="experience-endMonth-{{i}}" id="employment-end"
-                                                        class="shortest-select" [(ngModel)]="resumeForm.experience[i].endMonth"
+                                                        class="shortest-select"
+                                                        [(ngModel)]="resumeForm.experience[i].endMonth"
                                                         required>
                                                 <mat-option value="Январь">Январь</mat-option>
                                                 <mat-option value="Февраль">Февраль</mat-option>
@@ -350,7 +351,7 @@
                                 </div>
                             </div>
 
-                            <div class="parameter country-education">
+                            <!--div class="parameter country-education">
                                 <div class="left">
                                     <label for="country-education">Страна</label>
                                 </div>
@@ -364,21 +365,16 @@
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
-                            </div>
+                            </div-->
 
                             <div class="parameter city-eductation">
                                 <div class="left">
-                                    <label for="city-eductation">Город</label>
+                                    <label>Город</label>
                                 </div>
                                 <div class="right">
-                                    <mat-form-field>
-                                        <mat-select name="education-city-{{i}}" id="city-eductation"
-                                                    class="short-select" [(ngModel)]="resumeForm.education[i].city"
-                                                    required>
-                                            <mat-option value="Саратов">Саратов</mat-option>
-                                            <mat-option value="Москва">Москва</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
+                                    <button mat-raised-button color="primary" (click)="changeEducationCity(i)">
+                                        {{resumeForm.education[i].city ? resumeForm.education[i].city : 'Выберите город'}}
+                                    </button>
                                 </div>
                             </div>
 
@@ -431,8 +427,8 @@
                             </div>
                             <div class="right">
                                 <mat-form-field>
-                                    <mat-select  name="language-{{i}}" class="language"
-                                                 [(ngModel)]="resumeForm.languages[i].name" id="language" required>
+                                    <mat-select name="language-{{i}}" class="language"
+                                                [(ngModel)]="resumeForm.languages[i].name" id="language" required>
                                         <mat-option value="Английский">Английский</mat-option>
                                         <mat-option value="Русский">Русский</mat-option>
                                         <mat-option value="Китайский">Китайский</mat-option>
@@ -618,7 +614,7 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" id="save" [disabled]="myForm.invalid">
+                        <button type="submit" (submit)="send()" id="save" [disabled]="myForm.invalid">
                             Сохранить резюме
                         </button>
                         <div class="message" id="alert" (click)="showRequired()">
@@ -651,6 +647,4 @@
             </div>
         </div>
     </div>
-
-
 </div>
