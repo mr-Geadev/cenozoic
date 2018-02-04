@@ -1,6 +1,7 @@
-import { DoCheck, Component, OnInit } from '@angular/core';
-import { LoginModalService } from "../../modals/login/login.service";
-import { UserService } from "../../services/user.service";
+import { Component, DoCheck, OnInit } from "@angular/core";
+
+import { LoginModalService } from "../../modals/login";
+import { UserService } from "../../services";
 
 @Component({
     selector: 'page-header',

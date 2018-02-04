@@ -3,7 +3,7 @@
 
         <div class="row list">
 
-            <a class="item" *ngFor="let item of listResume; let i = index"  [routerLink]="['/resume',item._id]">
+            <a class="item" *ngFor="let item of listResume; let i = index" [routerLink]="['/resume',item._id]">
                 <div class="job">{{item?.job}}</div>
                 <div class="experience">
                     <div class="title">
@@ -21,14 +21,14 @@
                         {{item?.experience[0]?.job}}, {{item?.experience[0]?.organization}}
                     </div>
                     <div class="value" *ngIf="item?.experience.length == 0">
-                       -
+                        -
                     </div>
                 </div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg" /></div>
+                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg"/></div>
             </a>
 
 
-            <a [routerLink]="['/create-resume']" class="add item" *ngIf="config === 'resume'" >
+            <a [routerLink]="['/create-resume']" class="add item" *ngIf="config === 'resume'">
                 <div class="inner">
                     <div class="circle">
                         <div class="plus">
@@ -38,7 +38,6 @@
                 </div>
                 <div class="more-info">Добавить новое резюме</div>
             </a>
-
 
 
         </div>

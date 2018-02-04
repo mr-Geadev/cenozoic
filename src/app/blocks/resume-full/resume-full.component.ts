@@ -15,7 +15,6 @@ export class ResumeFullComponent implements OnInit {
                 public userService: UserService,
                 private activateRoute: ActivatedRoute,
                 private http: HttpClient) {
-
         this.id = activateRoute.snapshot.params['id'];
     }
 
@@ -32,7 +31,6 @@ export class ResumeFullComponent implements OnInit {
                     this.currentUser = user;
                 }
             });
-
 
         this.http.get(`/api/v1/resume/get/one?resumeId=${this.id}`)
             .subscribe((res: any) => {

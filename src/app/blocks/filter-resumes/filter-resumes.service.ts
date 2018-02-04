@@ -1,16 +1,16 @@
-import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class FilterResumesService {
 
-    constructor(private _http: HttpClient) {
-    }
-
     private filterSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
     public filter$: Observable<any> = this.filterSubject.asObservable();
+
+    constructor(private _http: HttpClient) {
+    }
 
     private _setFilterParameters(parameter: any): void {
         this.filterSubject.next(parameter);
@@ -36,7 +36,7 @@ export class FilterResumesService {
         photo: 0
     };
 
-    public parameters = Object.assign({}, this._parametersTemplate);
+    public parameters: any = Object.assign({}, this._parametersTemplate);
 
     public resetFilterParameters(): void {
         this.parameters = Object.assign({}, this._parametersTemplate);
@@ -58,7 +58,7 @@ export class FilterResumesService {
         }
 
 
-        if (req.salary.to == 'other') {
+        if (req.salary.to === 'other') {
             req.salary.from = 600000;
             delete req.salary.to;
         }
@@ -70,8 +70,6 @@ export class FilterResumesService {
         if ((req.age.to == 0) && (req.age.from == 0)) {
             delete req.age;
         }
-
-        console.log(req);
 
         this._setFilterParameters(req);
     }

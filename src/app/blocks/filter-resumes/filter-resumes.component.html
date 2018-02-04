@@ -7,19 +7,17 @@
             </button>
         </div>
 
-        <form (change)="filterResumesService.changeForm()" >
-
+        <form (change)="filterResumesService.changeForm()">
             <div class="row">
-
-
-               <mat-form-field >
-                   <mat-select form="test" name="education" placeholder="Образование" (change)="filterResumesService.changeForm()"
-                               [(ngModel)]="filterResumesService.parameters.education">
-                       <mat-option value="Среднее">Среднее</mat-option>
-                       <mat-option value="Высшее">Высшее</mat-option>
-                       <mat-option value="Высшее">Образование</mat-option>
-                   </mat-select>
-               </mat-form-field>
+                <mat-form-field>
+                    <mat-select form="test" name="education" placeholder="Образование"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.education">
+                        <mat-option value="Среднее">Среднее</mat-option>
+                        <mat-option value="Высшее">Высшее</mat-option>
+                        <mat-option value="Высшее">Образование</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
                 <!--<select form="test" name="education" placeholder="Образование"-->
                 <!--[(ngModel)]="filterResumesService.parameters.education">-->
@@ -70,7 +68,7 @@
             <div class="row" *ngIf="showing">
 
                 <mat-form-field>
-                    <mat-select name="schedule" placeholder="Занятость"  (change)="filterResumesService.changeForm()"
+                    <mat-select name="schedule" placeholder="Занятость" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.employmentType">
                         <mat-option value=0>Не имеет значения</mat-option>
                         <mat-option value="Полная занятость">Полная занятость</mat-option>
@@ -81,7 +79,8 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="languages" placeholder="Знание языков"  (change)="filterResumesService.changeForm()"
+                    <mat-select name="languages" placeholder="Знание языков"
+                                (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.languages" multiple>
                         <mat-option value="Английский">Английский</mat-option>
                         <mat-option value="Русский">Русский</mat-option>
@@ -96,7 +95,8 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="salary" placeholder="Заработная плата"  (change)="filterResumesService.changeForm()"
+                    <mat-select name="salary" placeholder="Заработная плата"
+                                (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.salary.to">
                         <mat-option value="60000">до 60 000 рублей</mat-option>
                         <mat-option value="120000">до 120 000 рублей</mat-option>
@@ -109,7 +109,8 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="family" placeholder="Семейное положение"  (change)="filterResumesService.changeForm()"
+                    <mat-select name="family" placeholder="Семейное положение"
+                                (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.family">
                         <mat-option value="0">Не имеет значение</mat-option>
                         <mat-option value="Холост/Не замужем">Холост/Не замужем</mat-option>
@@ -122,7 +123,7 @@
             <div class="row" *ngIf="showing">
 
                 <mat-form-field>
-                    <mat-select name="gender" placeholder="Пол"  (change)="filterResumesService.changeForm()"
+                    <mat-select name="gender" placeholder="Пол" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.gender">
                         <mat-option value="0">Не имеет значения</mat-option>
                         <mat-option value="Мужчина">Мужской</mat-option>
@@ -143,7 +144,7 @@
                 </div>
 
                 <mat-form-field>
-                    <mat-select name="photo"  (change)="filterResumesService.changeForm()"
+                    <mat-select name="photo" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.photo">
                         <mat-option value="Фото">Фото</mat-option>
                     </mat-select>
@@ -152,14 +153,14 @@
             </div>
         </form>
         <div class="row reset">
-            <div  class="button-text"
-                   (click)="showFilters();"
-                   *ngIf="!showing">
+            <div class="button-text"
+                 (click)="showFilters();"
+                 *ngIf="!showing">
                 <img class="button-icon" src="/assets/images/icon-gray-triangle.svg">
                 Расширенный фильтр&nbsp;&nbsp;|&nbsp;&nbsp;
             </div>
-            <div  class="button-text"
-                   (click)="showFilters(true);">
+            <div class="button-text"
+                 (click)="showFilters(true);">
                 Сбросить фильтры
                 <img class="button-icon" src="/assets/images/icon-gray-cross.svg">
             </div>

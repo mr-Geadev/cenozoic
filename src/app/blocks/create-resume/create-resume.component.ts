@@ -8,6 +8,7 @@ import "rxjs/add/operator/filter";
 import "rxjs/add/operator/first";
 
 import { CREATE_RESUME } from "../../constants";
+import { ChangeCityModalComponent } from "../../modals/change-city";
 import { ResumeService, SystemMessageService, UserService } from "../../services";
 import {
     CHANGES_TYPE,
@@ -19,7 +20,6 @@ import {
     DEFAULT_TRAINING,
     DEFAULT_TYPE
 } from "./create-resume.contants";
-import { ChangeCityModalComponent } from "../../modals/change-city";
 
 @Component({
     selector: 'create-resume',

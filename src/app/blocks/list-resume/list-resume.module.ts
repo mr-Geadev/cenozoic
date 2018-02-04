@@ -1,8 +1,9 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ListResumeComponent } from "./list-resume.component";
+import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { ResumeService } from "../../services/resume.service";
+
+import { ResumeService } from "../../services";
+import { ListResumeComponent } from "./list-resume.component";
 
 @NgModule({
     imports: [
@@ -15,4 +16,5 @@ import { ResumeService } from "../../services/resume.service";
     exports: [ListResumeComponent],
     providers: [ResumeService]
 })
-export class ListResumeModule {}
+export class ListResumeModule {
+}

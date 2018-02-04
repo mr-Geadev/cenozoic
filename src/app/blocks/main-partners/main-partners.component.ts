@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./main-partners.component.less']
 })
 export class MainPartnersComponent {
-
-    constructor() {}
-
+    constructor() {
+    }
 }

@@ -6,7 +6,6 @@ export * from './main-banner';
 export * from './main-partners';
 export * from './main-content';
 export * from './breadcrumbs';
-export * from './filtr';
 export * from './list-vacancy';
 export * from './create-vacancy';
 export * from './filter-resumes';

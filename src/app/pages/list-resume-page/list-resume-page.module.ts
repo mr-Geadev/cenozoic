@@ -4,9 +4,10 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
-import { ListResumePageComponent } from "./list-resume-page.component";
-import { FilterResumesModule } from "../../blocks/filter-resumes/filter-resumes.module";
+import { FilterResumesModule } from "../../blocks/filter-resumes";
 import { ListResumeModule } from "../../blocks/list-resume";
+
+import { ListResumePageComponent } from "./list-resume-page.component";
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { ListResumeModule } from "../../blocks/list-resume";
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'list-resume', component:  ListResumePageComponent, pathMatch: 'full' },
+            { path: 'list-resume', component: ListResumePageComponent, pathMatch: 'full' },
         ]),
         CommonModule,
         HttpClientModule,
@@ -26,8 +27,7 @@ import { ListResumeModule } from "../../blocks/list-resume";
         ListResumeModule,
         // Blocks
     ],
-    exports: [ ListResumePageComponent]
+    exports: [ListResumePageComponent]
 })
-export class  ListResumePageModule {
-
+export class ListResumePageModule {
 }

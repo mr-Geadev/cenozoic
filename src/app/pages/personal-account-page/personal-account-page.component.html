@@ -53,18 +53,20 @@
 
 <div class="container">
     <div class="row">
-        <div class="side-title" *ngIf="activeTab !== 'Архив'" >Мои {{ activeTab }}</div>
-        <div class="side-title" *ngIf="activeTab === 'Архив'" >Мой {{ activeTab }}</div>
+        <div class="side-title" *ngIf="activeTab !== 'Архив'">Мои {{ activeTab }}</div>
+        <div class="side-title" *ngIf="activeTab === 'Архив'">Мой {{ activeTab }}</div>
     </div>
 </div>
 
 <div class="container description">
     <div class="row">
         <div class="message" [ngClass]="{ 'active': activeTab === 'Отклики' }">
-            В этом разделе показаны результаты всех ваших откликов на вакансии. Вы можете отменить отправленный отклик или переместить в архив отклики, на которые уже дан ответ работодателя.
+            В этом разделе показаны результаты всех ваших откликов на вакансии. Вы можете отменить отправленный отклик
+            или переместить в архив отклики, на которые уже дан ответ работодателя.
         </div>
         <div class="message" [ngClass]="{ 'active': activeTab === 'Предложения' }">
-            В этом разделе показаны предложения, поступившие вам со стороны компаний. Вы можете ответить на них или переместить в архив.
+            В этом разделе показаны предложения, поступившие вам со стороны компаний. Вы можете ответить на них или
+            переместить в архив.
         </div>
         <div class="message" [ngClass]="{ 'active': activeTab === 'Архив' }">
             В этом разделе содержатся ваши старые отклики/предложения
