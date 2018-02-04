@@ -5,15 +5,10 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: './personal-account-page.component.html',
     styleUrls: ['./personal-account-page.component.less']
 })
-export class PersonalAccountPageComponent implements OnInit {
+export class PersonalAccountPageComponent {
 
     public activeTab: string = 'Резюме';
 
     constructor() {
-    }
-
-    ngOnInit() {
-
-
     }
 }

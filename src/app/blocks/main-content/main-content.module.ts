@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+
 import { MainContentComponent } from "./main-content.component";
 
 @NgModule({
@@ -7,4 +8,5 @@ import { MainContentComponent } from "./main-content.component";
     declarations: [MainContentComponent],
     exports: [MainContentComponent]
 })
-export class MainContentModule {}
+export class MainContentModule {
+}

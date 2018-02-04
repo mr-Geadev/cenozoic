@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+
 import { CreateVacancyComponent } from "./create-vacancy.component";
 
 @NgModule({
@@ -7,4 +8,5 @@ import { CreateVacancyComponent } from "./create-vacancy.component";
     declarations: [CreateVacancyComponent],
     exports: [CreateVacancyComponent]
 })
-export class CreateVacancyModule {}
+export class CreateVacancyModule {
+}

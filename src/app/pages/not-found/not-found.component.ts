@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'not-found-page',
-  templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.less']
+    selector: 'not-found-page',
+    templateUrl: './not-found.component.html',
+    styleUrls: ['./not-found.component.less']
 })
 export class NotFoundPageComponent implements OnInit {
-  public message: string;
+    public message: string;
 
-  constructor() {}
+    constructor() {
+    }
 
-  ngOnInit() {
-    this.message = 'Not found';
-  }
+    ngOnInit() {
+        this.message = 'Not found';
+    }
 }

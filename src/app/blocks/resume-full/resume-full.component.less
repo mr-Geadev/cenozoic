@@ -1,208 +1,205 @@
 :host {
-  display: block;
-  margin-top: 20px;
+	display: block;
+	margin-top: 20px;
 
-  @import (less) '../../../assets/styles/base.less';
+	@import (less) '../../../assets/styles/base.less';
 
-  .right {
+	.right {
 
-    .user-photo {
-      display: flex;
-      justify-content: center;
+		.user-photo {
+			display: flex;
+			justify-content: center;
 
-      img {
-        max-height: 400px;
-      }
-    }
+			img {
+				max-height: 400px;
+			}
+		}
 
-    .default-photo{
-      width: 350px;
-      height: 350px;
-      background-color: @light-gray;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+		.default-photo {
+			width: 350px;
+			height: 350px;
+			background-color: @light-gray;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 
-    .button {
-      margin-top: 20px;
-      display: flex;
-      font-family: Roboto;
-      font-size: 0.875rem;
-      font-weight: 700;
-      line-height: 1;
-      width: 350px;
-      height: 46px;
-      color: white;
-      justify-content: center;
-      align-items: center;
-      border-radius: 0.313rem;
-      background-color: @orange;
-      cursor: pointer;
-      .tr-bg;
+		.button {
+			margin-top: 20px;
+			display: flex;
+			font-family: Roboto;
+			font-size: 0.875rem;
+			font-weight: 700;
+			line-height: 1;
+			width: 350px;
+			height: 46px;
+			color: white;
+			justify-content: center;
+			align-items: center;
+			border-radius: 0.313rem;
+			background-color: @orange;
+			cursor: pointer;
+			.tr-bg;
 
-      &:hover {
-        background-color: @hover-orange;
-      }
-    }
-  }
+			&:hover {
+				background-color: @hover-orange;
+			}
+		}
+	}
 
-  .gray {
-    color: @gray;
-  }
+	.gray {
+		color: @gray;
+	}
 
-  .black {
-    color: @black;
-  }
+	.black {
+		color: @black;
+	}
 
-  .text {
-    font-family: Roboto;
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.2rem;
-  }
+	.text {
+		font-family: Roboto;
+		font-size: 0.875rem;
+		font-weight: 400;
+		line-height: 1.2rem;
+	}
 
-  .page-title {
-    color: @black;
-    .bebas;
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 2.25rem;
-  }
+	.page-title {
+		color: @black;
+		.bebas;
+		font-size: 2rem;
+		font-weight: 400;
+		line-height: 2.25rem;
+	}
 
-  .salary {
-    margin-top: 22px;
-    color: @dark-orange;
-    font-family: Roboto;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.376rem;
+	.salary {
+		margin-top: 22px;
+		color: @dark-orange;
+		font-family: Roboto;
+		font-size: 1.5rem;
+		font-weight: 400;
+		line-height: 1.376rem;
 
-    span {
-      font-size: 1rem;
+		span {
+			font-size: 1rem;
 
-      b {
-        font-weight: bold;
-        font-size: 1.3rem;
-      }
-    }
-  }
+			b {
+				font-weight: bold;
+				font-size: 1.3rem;
+			}
+		}
+	}
 
-  .name {
-    margin-top: 53px;
-    color: @black;
-    font-family: Roboto;
-    font-size: 1.125rem;
-    font-weight: 700;
-    line-height: 3.379rem;
-  }
+	.name {
+		margin-top: 53px;
+		color: @black;
+		font-family: Roboto;
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 3.379rem;
+	}
 
-  .table {
-    width: 450px;
-    margin-top: 30px;
+	.table {
+		width: 450px;
+		margin-top: 30px;
 
-    .line {
-      width: inherit;
-      border-bottom: 0.063rem dashed #bcbdbf;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 7px;
-      margin-bottom: 28px;
+		.line {
+			width: inherit;
+			border-bottom: 0.063rem dashed #bcbdbf;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 7px;
+			margin-bottom: 28px;
 
-      &.not-dott {
-        display: block;
-        height: auto;
-        border: none;
-        margin-bottom: 30px;
+			&.not-dott {
+				display: block;
+				height: auto;
+				border: none;
+				margin-bottom: 30px;
 
-        & > .parameter {
-          margin-bottom: 15px;
-        }
+				& > .parameter {
+					margin-bottom: 15px;
+				}
 
-        .line {
-          margin-top: 5px;
+				.line {
+					margin-top: 5px;
 
-          .parameter {
-            padding-left: 10px;
-          }
-        }
-      }
+					.parameter {
+						padding-left: 10px;
+					}
+				}
+			}
 
-      .text {
-        background-color: @white;
-      }
+			.text {
+				background-color: @white;
+			}
 
-      .parameter {
-        padding-right: 10px;
-      }
+			.parameter {
+				padding-right: 10px;
+			}
 
-      .value {
-        padding-left: 10px;
-      }
-    }
-  }
+			.value {
+				padding-left: 10px;
+			}
+		}
+	}
 
+	.title {
+		color: @black;
+		.bebas;
+		font-size: 1.5rem;
+		font-weight: 400;
+		line-height: 1;
+	}
 
-  .title {
-    color: @black;
-    .bebas;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1;
-  }
+	.add-info {
+		margin-top: 30px;
+	}
 
-  .add-info  {
-    margin-top: 30px;
-  }
+	table.experience {
+		margin-top: 20px;
 
-  table.experience {
-    margin-top: 20px;
+		tr {
+			margin: 25px 0;
+			display: block;
+			padding: 10px;
 
-    tr {
-      margin: 25px 0;
-      display: block;
-      padding: 10px;
+			td.work {
+				min-width: 400px;
+			}
 
-      td.work {
-        min-width:400px;
-      }
+			.time-work {
+				width: 250px;
+			}
 
-      .time-work {
-        width: 250px;
-      }
+			.duties {
+				margin-top: 29px;
+			}
 
-      .duties {
-        margin-top: 29px;
-      }
+		}
 
-    }
+	}
 
-  }
+	table.contact-data {
+		tr {
+			margin: 15px 0;
+			padding: 0;
+		}
+	}
 
-  table.contact-data {
-    tr {
-      margin: 15px 0;
-      padding: 0;
-    }
-  }
+	.side-title {
+		font-family: Roboto;
+		font-size: 0.875rem;
+		font-weight: 700;
+		line-height: 1.2;
+		color: @black;
+	}
 
-  .side-title {
-    font-family: Roboto;
-    font-size: 0.875rem;
-    font-weight: 700;
-    line-height: 1.2;
-    color: @black;
-  }
+	.add-info .col > .text.black {
+		margin-top: 20px;
+	}
 
-  .add-info .col > .text.black {
-    margin-top: 20px;
-  }
-
-  .languages .text{
-    margin: 10px 0;
-  }
-
-
+	.languages .text {
+		margin: 10px 0;
+	}
 
 }

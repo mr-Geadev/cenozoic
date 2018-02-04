@@ -4,8 +4,9 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
-import { LoginModalModule } from "../../modals/login/login.module";
-import { ResumeFullModule } from "../../blocks/resume-full/resume-full.module";
+import { ResumeFullModule } from "../../blocks";
+
+import { LoginModalModule } from "../../modals";
 import { ResumeFullPageComponent } from "./resume-full-page.component";
 
 @NgModule({
@@ -23,11 +24,11 @@ import { ResumeFullPageComponent } from "./resume-full-page.component";
         MatDialogModule,
         LoginModalModule,
 
-        //blocks
+        // Blocks
         ResumeFullModule
 
     ],
     exports: [ResumeFullPageComponent]
 })
-export class  ResumeFullPageModule {
+export class ResumeFullPageModule {
 }

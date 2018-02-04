@@ -3,7 +3,8 @@ import { CommonModule } from "@angular/common";
 import { LoginModalComponent } from "./login.component";
 import { LoginModalService } from "./login.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { UserService } from "../../services/user.service";
+
+import { UserService } from "../../services";
 
 @NgModule({
     imports: [
@@ -19,4 +20,5 @@ import { UserService } from "../../services/user.service";
     ],
     exports: [LoginModalComponent]
 })
-export class LoginModalModule { }
+export class LoginModalModule {
+}

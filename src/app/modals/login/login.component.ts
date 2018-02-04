@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
 import { MatDialog } from "@angular/material";
-import { SystemMessageService } from "../../services/system-message.service";
+
+import { SystemMessageService, UserService } from "../../services";
 
 @Component({
     selector: 'login-modal',
@@ -13,9 +13,8 @@ import { SystemMessageService } from "../../services/system-message.service";
 export class LoginModalComponent {
 
     public type: string = 'entry';
-
-    registerForm: FormGroup;
-    loginForm: FormGroup;
+    public registerForm: FormGroup;
+    public loginForm: FormGroup;
 
     constructor(private dialog: MatDialog,
                 private _systemMessageService: SystemMessageService,
@@ -56,7 +55,7 @@ export class LoginModalComponent {
     }
 
 
-    passwordValidator(control: FormControl): { [s: string]: boolean } {
+    public passwordValidator(control: FormControl): { [s: string]: boolean } {
         if (control.value.length < 8) {
             return { "password": true };
         }
@@ -64,35 +63,27 @@ export class LoginModalComponent {
     }
 
 
-
     public login(): void {
-
         this.userService.loginUser(this.loginForm.value);
 
-
         this.userService.user$
-            .subscribe((user)=>{
+            .subscribe((user) => {
                 if (user) {
                     this._systemMessageService.info('Вы вошли');
-                    this.dialog.closeAll();
-                };
-            });
-
-
-    }
-
-    public register(): void {
-
-        this.userService.registerUser(this.registerForm.value);
-
-        this.userService.user$
-            .subscribe((user)=>{
-                if (user) {
-                    this._systemMessageService.info('Вы зарегестированы');
                     this.dialog.closeAll();
                 }
             });
     }
 
+    public register(): void {
+        this.userService.registerUser(this.registerForm.value);
 
+        this.userService.user$
+            .subscribe((user) => {
+                if (user) {
+                    this._systemMessageService.info('Вы зарегистрированы');
+                    this.dialog.closeAll();
+                }
+            });
+    }
 }

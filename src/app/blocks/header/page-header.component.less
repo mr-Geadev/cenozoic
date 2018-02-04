@@ -1,199 +1,197 @@
 :host {
 
-  @import (less) '../../../assets/styles/base.less';
+	@import (less) '../../../assets/styles/base.less';
 
-  .header {
-    background-color: @dark-gray;
-    height: 84px;
-    z-index: 10;
+	.header {
+		background-color: @dark-gray;
+		height: 84px;
+		z-index: 10;
 
-    .row {
-      align-items: center;
-      height: inherit;
+		.row {
+			align-items: center;
+			height: inherit;
 
-      .menu {
-        width: 816px;
-        height: inherit;
+			.menu {
+				width: 816px;
+				height: inherit;
 
-        .header-menu {
-          width: 430px;
-          height: inherit;
+				.header-menu {
+					width: 430px;
+					height: inherit;
 
-          .header-menu-item {
-            display: flex;
-            width: auto;
-            padding: 0 10px;
-            height: inherit;
-            text-align: center;
-            font-family: Roboto;
-            font-size: 1rem;
-            font-weight: 700;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+					.header-menu-item {
+						display: flex;
+						width: auto;
+						padding: 0 10px;
+						height: inherit;
+						text-align: center;
+						font-family: Roboto;
+						font-size: 1rem;
+						font-weight: 700;
+						align-items: center;
+						justify-content: center;
+						position: relative;
 
-            &.active {
-              color: @orange;
+						&.active {
+							color: @orange;
 
-              &:after {
-                width: 100%;
-                height: 5px;
-                background-color: @orange;
-                position: absolute;
-                bottom: 0px;
-                left: 0;
-                content: '';
-              }
+							&:after {
+								width: 100%;
+								height: 5px;
+								background-color: @orange;
+								position: absolute;
+								bottom: 0px;
+								left: 0;
+								content: '';
+							}
 
-            }
-            &:hover {
-              color: @orange;
+						}
+						&:hover {
+							color: @orange;
 
-              &:after {
-                width: 100%;
-                height: 5px;
-                background-color: @orange;
-                position: absolute;
-                bottom: 0px;
-                left: 0;
-                content: '';
-              }
+							&:after {
+								width: 100%;
+								height: 5px;
+								background-color: @orange;
+								position: absolute;
+								bottom: 0px;
+								left: 0;
+								content: '';
+							}
 
-            }
+						}
 
-          }
+					}
 
-        }
+				}
 
-        .personal-area {
-          font-family: Roboto;
-          font-size: 1rem;
-          font-weight: 700;
-          line-height: 1;
-          padding: 20px 70px;
-          border-radius: 0.313rem;
-          border: 0.063rem solid @white;
-          cursor: pointer;
-          .tr-bg-clr;
+				.personal-area {
+					font-family: Roboto;
+					font-size: 1rem;
+					font-weight: 700;
+					line-height: 1;
+					padding: 20px 70px;
+					border-radius: 0.313rem;
+					border: 0.063rem solid @white;
+					cursor: pointer;
+					.tr-bg-clr;
 
-          &:hover {
-            background-color: @white;
-            color: @dark-gray;
-          }
-        }
+					&:hover {
+						background-color: @white;
+						color: @dark-gray;
+					}
+				}
 
-        .authorize {
-          position: relative;
-          width: 200px;
-          height: inherit;
-          display: flex;
-          padding: 10px;
-          justify-content: flex-end;
-          align-items: center;
+				.authorize {
+					position: relative;
+					width: 200px;
+					height: inherit;
+					display: flex;
+					padding: 10px;
+					justify-content: flex-end;
+					align-items: center;
 
-          .blank-avatar {
-            width: 48px;
-            height: 48px;
-            background-image: url("/assets/images/userBlank.png");
-            background-size: 100%;
-            background-repeat: no-repeat;
-          }
+					.blank-avatar {
+						width: 48px;
+						height: 48px;
+						background-image: url("/assets/images/userBlank.png");
+						background-size: 100%;
+						background-repeat: no-repeat;
+					}
 
-          .status {
-            margin: 10px;
-            transform: rotate(-180deg);
-            transition-property: transform;
-            .transition-duration;
-          }
+					.status {
+						margin: 10px;
+						transform: rotate(-180deg);
+						transition-property: transform;
+						.transition-duration;
+					}
 
-          .little-menu {
-            height: 0;
-            overflow: hidden;
-            position: absolute;
-            background-color: @white;
-            width: 200px;
-            right: 0;
-            top: 100%;
-            box-shadow: 0 3px 6.79px 0.21px rgba(0, 0, 0, 0.2);
-            transition-property: height;
-            .transition-duration;
-            z-index: 5;
+					.little-menu {
+						height: 0;
+						overflow: hidden;
+						position: absolute;
+						background-color: @white;
+						width: 200px;
+						right: 0;
+						top: 100%;
+						box-shadow: 0 3px 6.79px 0.21px rgba(0, 0, 0, 0.2);
+						transition-property: height;
+						.transition-duration;
+						z-index: 5;
 
-            .item:last-child .link {
-              border-bottom: none;
-            }
+						.item:last-child .link {
+							border-bottom: none;
+						}
 
-            .link {
-              display: block;
-              font-family: Roboto;
-              color: black;
-              font-size: 1rem;
-              width: 100%;
-              height: 50px;
-              line-height: 30px;
-              padding: 10px 20px;
-              .tr-color;
-              border-bottom: 1px solid @light-gray;
+						.link {
+							display: block;
+							font-family: Roboto;
+							color: black;
+							font-size: 1rem;
+							width: 100%;
+							height: 50px;
+							line-height: 30px;
+							padding: 10px 20px;
+							.tr-color;
+							border-bottom: 1px solid @light-gray;
 
-              &:hover {
-                color: @orange;
-              }
-            }
-          }
+							&:hover {
+								color: @orange;
+							}
+						}
+					}
 
-          &:hover {
+					&:hover {
 
-            .little-menu {
-              height: 150px;
-            }
+						.little-menu {
+							height: 150px;
+						}
 
-            .status {
-              transform: rotate(0deg);
-            }
-          }
-        }
+						.status {
+							transform: rotate(0deg);
+						}
+					}
+				}
 
-        .languages {
-          color: @white;
-          font-family: Roboto;
-          font-size: 1.125rem;
-          font-weight: 700;
-          line-height: 1.875rem;
-          text-transform: uppercase;
+				.languages {
+					color: @white;
+					font-family: Roboto;
+					font-size: 1.125rem;
+					font-weight: 700;
+					line-height: 1.875rem;
+					text-transform: uppercase;
 
-          .active {
-            color: @dark-orange;
-          }
+					.active {
+						color: @dark-orange;
+					}
 
-          .change-language:hover {
-            .tr-color;
-            color: @dark-orange;
-          }
-        }
-      }
+					.change-language:hover {
+						.tr-color;
+						color: @dark-orange;
+					}
+				}
+			}
 
-    }
+		}
 
-  }
+	}
 
-  .mainPage.header {
+	.mainPage.header {
 
-    background-color: transparent !important;
-    position: absolute;
-    width: 100%;
+		background-color: transparent !important;
+		position: absolute;
+		width: 100%;
 
-    .container > .row {
-      justify-content: flex-end !important;
-    }
+		.container > .row {
+			justify-content: flex-end !important;
+		}
 
-    .logo {
-      display: none;
-    }
+		.logo {
+			display: none;
+		}
 
-    .header-menu-item:hover:after {
-      display: none !important;
-    }
-
-  }
-
+		.header-menu-item:hover:after {
+			display: none !important;
+		}
+	}
 }

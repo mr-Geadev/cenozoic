@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./breadcrumbs.component.less']
 })
 export class BreadcrumbsComponent {
-
     constructor() {}
-
 }

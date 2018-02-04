@@ -4,13 +4,10 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
+
+import { LastAddedModule, LastNewsModule, MainBannerModule, MainContentModule, MainPartnersModule } from "../../blocks";
+import { LoginModalModule } from "../../modals";
 import { MainPageComponent } from "./main-page.component";
-import { LastAddedModule } from "../../blocks/last-added/last-added.module";
-import { LastNewsModule } from "../../blocks/last-news/last-news.module";
-import { MainBannerModule } from "../../blocks/main-banner/main-banner.module";
-import { MainContentModule } from "../../blocks/main-content/main-content.module";
-import { MainPartnersModule } from "../../blocks/main-partners/main-partners.module";
-import { LoginModalModule } from "../../modals/login/login.module";
 
 @NgModule({
     declarations: [
@@ -27,15 +24,14 @@ import { LoginModalModule } from "../../modals/login/login.module";
         MatDialogModule,
         LoginModalModule,
 
-        //blocks
+        // Blocks
         LastAddedModule,
         LastNewsModule,
         MainBannerModule,
         MainContentModule,
         MainPartnersModule,
-        // Blocks
     ],
     exports: [MainPageComponent]
 })
-export class  MainPageModule {
+export class MainPageModule {
 }

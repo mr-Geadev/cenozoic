@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./create-vacancy.component.less']
 })
 export class CreateVacancyComponent {
-
     constructor() {}
-
 }

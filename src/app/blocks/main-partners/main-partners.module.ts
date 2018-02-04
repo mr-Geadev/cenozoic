@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+
 import { MainPartnersComponent } from "./main-partners.component";
 
 @NgModule({
@@ -7,4 +8,5 @@ import { MainPartnersComponent } from "./main-partners.component";
     declarations: [MainPartnersComponent],
     exports: [MainPartnersComponent]
 })
-export class MainPartnersModule {}
+export class MainPartnersModule {
+}

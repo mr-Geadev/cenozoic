@@ -14,13 +14,14 @@
                 </nav>
 
                 <a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">Личный кабинет</a>
-                <div  class="authorize col-md-auto" *ngIf="isAuthorized">
+                <div class="authorize col-md-auto" *ngIf="isAuthorized">
                     <div class="blank-avatar"></div>
                     <img src="/assets/images/headerMenuStatus.png" class="status">
                     <ul class="little-menu">
                         <li class="item"><a class="link" [routerLink]="['/personal-account']">Личный кабинет</a></li>
                         <li class="item"><a class="link" [routerLink]="['/']">Настройки</a></li>
-                        <li class="item"><a class="link" [routerLink]="['/']" (click)="userService.logOut()">Выйти</a></li>
+                        <li class="item"><a class="link" [routerLink]="['/']" (click)="userService.logOut()">Выйти</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -28,10 +29,7 @@
                     <a href="#" class="change-language active">RU&nbsp;</a>&nbsp;|&nbsp;
                     <a href="#" class="change-language">&nbsp;EN</a>
                 </div>
-
             </div>
-
         </div>
     </div>
-
 </header>
