@@ -1,0 +1,17 @@
+<div class="title">Выберите город</div>
+<div class="form">
+    <input type="text"
+           class="city"
+           placeholder="Введите название города"
+           #cityInput
+           [(ngModel)]="currentCity"
+           (keyup)="update(cityInput.value)"/>
+    <ul class="presets">
+        <li (click)="selectCity('Москва')">Москва</li>
+        <li (click)="selectCity('Санкт-Петербург')">Санкт-Петербург</li>
+    </ul>
+
+    <div *ngIf="showContextMenu" class="context-menu-cities">
+        <div *ngFor="let city of cities" class="item" (click)="selectCity(city)">{{ city }}</div>
+    </div>
+</div>

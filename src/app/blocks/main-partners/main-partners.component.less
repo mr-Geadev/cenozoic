@@ -1,135 +1,127 @@
 :host {
 
-  @import (less) '../base.less';
+	@import (less) '../../../assets/styles/base.less';
 
+	.main-patners {
+		background-image: url('/assets/images/background-for-steps.png');
+		background-repeat: no-repeat;
+		margin-top: 50px;
+		padding-bottom: 390px;
 
-  .main-patners {
-    background-image: url('/assets/images/background-for-steps.png');
-    background-repeat: no-repeat;
-    margin-top: 50px;
-    padding-bottom: 390px;
+		.row.title {
+			padding-top: 73px;
+			justify-content: center;
+			color: @white;
+			.bebas;
+			font-size: 3rem;
+			font-weight: 400;
+			line-height: 3.375rem;
+		}
 
-    .row.title {
-      padding-top: 73px;
-      justify-content: center;
-      color: @white;
-      .bebas;
-      font-size: 3rem;
-      font-weight: 400;
-      line-height: 3.375rem;
-    }
+		.circle {
+			margin-top: 84px;
+			justify-content: space-between;
+			position: relative;
 
-    .circle {
-      margin-top: 84px;
-      justify-content: space-between;
-      position: relative;
+			.col {
+				width: 22%;
+				text-align: center;
 
-      .col {
-        width: 22%;
-        text-align: center;
+				&:after {
+					content: '';
+					position: absolute;
+					width: 114px;
+					height: 2px;
+					background-image: url(/assets/images/dots.png);
+					margin-left: 82px;
+					top: 70px;
+				}
 
-        &:after {
-          content: '';
-          position: absolute;
-          width: 114px;
-          height: 2px;
-          background-image: url(/assets/images/dots.png);
-          margin-left: 82px;
-          top: 70px;
-        }
+				&:last-child:after {
+					display: none;
+				}
 
-        &:last-child:after {
-          display: none;
-        }
+				.img {
+					position: relative;
+					padding-top: 15px;
 
-        .img {
-          position: relative;
-          padding-top: 15px;
+					.label {
+						position: absolute;
+						opacity: 0.3;
+						color: @white;
+						.bebas;
+						font-size: 4.5rem;
+						font-weight: 400;
+						top: 0;
+						right: 50px;
+					}
+				}
 
+				.description {
+					margin-top: 35px;
+					color: @white;
+					font-family: Roboto;
+					font-size: 1rem;
+					font-weight: 400;
+					line-height: 1.375rem;
+				}
+			}
+		}
 
-          .label {
-            position: absolute;
-            opacity: 0.3;
-            color: @white;
-            .bebas;
-            font-size: 4.5rem;
-            font-weight: 400;
-            top: 0;
-            right: 50px;
-          }
-        }
+		.row.title.partners {
+			margin-top: 123px;
+			justify-content: flex-start;
+		}
 
-        .description {
-          margin-top: 35px;
-          color: @white;
-          font-family: Roboto;
-          font-size: 1rem;
-          font-weight: 400;
-          line-height: 1.375rem;
-        }
+		.partners-list {
+			.row {
+				margin-top: 55px;
+				width: 100%;
+				justify-content: start;
+			}
+			.col {
+				flex-grow: 0;
+				text-align: center;
+				height: 71px;
+				width: 200px;
+				padding: 0;
+				margin-right: 30px;
+				flex-basis: auto;
 
-      }
+				div {
+					height: inherit;
+					margin: auto;
+					background-position-y: center;
+					background-image: url('/assets/images/sprite.png');
+					background-repeat: no-repeat;
+					background-size: cover;
 
-    }
-
-    .row.title.partners {
-      margin-top: 123px;
-      justify-content: flex-start;
-    }
-
-    .partners-list {
-      .row {
-        margin-top: 55px;
-        width: 100%;
-        justify-content: start;
-      }
-      .col {
-        flex-grow: 0;
-        text-align: center;
-        height: 71px;
-        width: 200px;
-        padding: 0;
-        margin-right: 30px;
-        flex-basis: auto;
-
-
-        div {
-          height: inherit;
-          margin: auto;
-          background-position-y: center;
-          background-image: url('/assets/images/sprite.png');
-          background-repeat: no-repeat;
-          background-size: cover;
-
-          &.gazprom {
-            background-position-x: 0;
-            width: 152px;
-          }
-          &.lukoyl {
-            background-position-x: -161px;
-            width: 177px;
-          }
-          &.surgut {
-            background-position-x: -544px;
-            width: 98px;
-          }
-          &.slavneft {
-            background-position-x: -393px;
-            width: 143px;
-          }
-          &.ukos {
-            background-position-x: -642px;
-            width: 69px;
-          }
-          &.bp {
-            background-position-x: -717px;
-            width: 103px;
-          }
-        }
-
-      }
-    }
-
-  }
-
+					&.gazprom {
+						background-position-x: 0;
+						width: 152px;
+					}
+					&.lukoyl {
+						background-position-x: -161px;
+						width: 177px;
+					}
+					&.surgut {
+						background-position-x: -544px;
+						width: 98px;
+					}
+					&.slavneft {
+						background-position-x: -393px;
+						width: 143px;
+					}
+					&.ukos {
+						background-position-x: -642px;
+						width: 69px;
+					}
+					&.bp {
+						background-position-x: -717px;
+						width: 103px;
+					}
+				}
+			}
+		}
+	}
 }

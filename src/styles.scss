@@ -1,0 +1,77 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$cenozoic-custom: (
+        50: #e8eaf6,
+        100: #ff807a,
+        200: #ff807a,
+        300: #ff807a,
+        400: #5c6bc0,
+        500: #ff682a,
+        600: #3949ab,
+        700: #303f9f,
+        800: #283593,
+        900: #1a237e,
+        A100: #8c9eff,
+        A200: #536dfe,
+        A400: #3d5afe,
+        A700: #304ffe,
+        contrast: (
+                50: $black-87-opacity,
+                100: $black-87-opacity,
+                200: $black-87-opacity,
+                300: white,
+                400: white,
+                500: $white-87-opacity,
+                600: $white-87-opacity,
+                700: $white-87-opacity,
+                800: $white-87-opacity,
+                900: $white-87-opacity,
+                A100: $black-87-opacity,
+                A200: white,
+                A400: white,
+                A700: $white-87-opacity,
+        )
+);
+
+$candy-app-primary: mat-palette($cenozoic-custom);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$candy-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($candy-app-theme);
+
+input, select {
+    outline: none;
+}
+
+input.mat-input-element {
+    border-bottom: none !important;
+}
+
+mat-datepicker-toggle {
+    color: #ff682a;
+}
+
+.mat-form-field-ripple {
+    background-color: #ff682a;
+}
+
+body {
+    font-family: Roboto;
+}

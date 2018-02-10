@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./main-banner.component.less']
 })
 export class MainBannerComponent {
-
     constructor() {}
-
 }

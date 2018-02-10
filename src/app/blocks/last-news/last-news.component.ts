@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./last-news.component.less']
 })
 export class LastNewsComponent {
-
-    constructor() {}
-
+    constructor() {
+    }
 }

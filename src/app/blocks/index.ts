@@ -1,5 +1,4 @@
 export * from './header';
-export * from './header-main';
 export * from './footer';
 export * from './last-added';
 export * from './last-news';
@@ -7,9 +6,9 @@ export * from './main-banner';
 export * from './main-partners';
 export * from './main-content';
 export * from './breadcrumbs';
-export * from './filtr';
 export * from './list-vacancy';
 export * from './create-vacancy';
-export * from './filtr-summaryes';
+export * from './filter-resumes';
 export * from './create-resume';
 export * from './list-resume';
+export * from './resume-full';

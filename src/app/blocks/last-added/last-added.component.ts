@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
     selector: 'last-added',
@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./last-added.component.less']
 })
 export class LastAddedComponent {
-
-    constructor() {}
-
+    constructor() {
+    }
 }

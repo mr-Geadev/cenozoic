@@ -4,11 +4,9 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
-import { CreateResumePageComponent } from "./create-resume-page.component";
-import { CreateResumeModule } from "../../blocks";
-import { BreadcrumbsModule } from "../../blocks";
-import { PageHeaderModule } from "../../blocks";
+import { BreadcrumbsModule, CreateResumeModule } from "../../blocks";
 
+import { CreateResumePageComponent } from "./create-resume-page.component";
 
 @NgModule({
     declarations: [
@@ -25,10 +23,9 @@ import { PageHeaderModule } from "../../blocks";
         MatDialogModule,
         CreateResumeModule,
         BreadcrumbsModule,
-        PageHeaderModule
         // Blocks
     ],
     exports: [CreateResumePageComponent]
 })
-export class  CreateResumePageModule {
+export class CreateResumePageModule {
 }

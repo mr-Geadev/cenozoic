@@ -1,17 +1,33 @@
-<header class="header">
+<header class="header" [ngClass]="{mainPage: path}">
     <div class="container">
+
         <div class="row justify-content-between align-items-center">
+
             <a [routerLink]="['/']"><img class="logo" src="/assets/images/header-logo.png" alt=""></a>
+
             <div class="menu row align-items-center justify-content-between">
+
                 <nav class="header-menu row col-md-auto justify-content-between">
-                    <a class="header-menu-item" href="#">Соискателям</a>
+                    <a class="header-menu-item" [routerLink]="['/']">Соискателям</a>
                     <a class="header-menu-item" [routerLink]="['/list-resume']">Работодателям</a>
-                    <a class="header-menu-item" href="#">FAQ</a>
+                    <a class="header-menu-item" [routerLink]="['/']">Поддержка</a>
                 </nav>
-                <a [routerLink]="['/create-resume']" class="personal-area col-md-auto">Личный кабинет</a>
+
+                <a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">Личный кабинет</a>
+                <div class="authorize col-md-auto" *ngIf="isAuthorized">
+                    <div class="blank-avatar"></div>
+                    <img src="/assets/images/headerMenuStatus.png" class="status">
+                    <ul class="little-menu">
+                        <li class="item"><a class="link" [routerLink]="['/personal-account']">Личный кабинет</a></li>
+                        <li class="item"><a class="link" [routerLink]="['/']">Настройки</a></li>
+                        <li class="item"><a class="link" [routerLink]="['/']" (click)="userService.logOut()">Выйти</a>
+                        </li>
+                    </ul>
+                </div>
+
                 <div class="languages col-md-auto">
-                    <a href="#" class="change-language active">RU&nbsp;&nbsp;</a> |
-                    <a href="#" class="change-language">&nbsp;&nbsp;EN</a>
+                    <a href="#" class="change-language active">RU&nbsp;</a>&nbsp;|&nbsp;
+                    <a href="#" class="change-language">&nbsp;EN</a>
                 </div>
             </div>
         </div>
