@@ -4,3 +4,4 @@ export * from './create-resume-page';
 export * from './list-resume-page';
 export * from './personal-account-page';
 export * from './resume-full-page';
+export * from './account-setting-page';

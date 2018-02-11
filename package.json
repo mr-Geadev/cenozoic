@@ -58,6 +58,6 @@
     "node-sass": "^4.7.2",
     "reflect-metadata": "^0.1.12",
     "ts-loader": "^2.3.7",
-    "typescript": "~2.4.2"
+    "typescript": "^2.4.2"
   }
 }

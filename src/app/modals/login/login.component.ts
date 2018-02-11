@@ -33,7 +33,7 @@ export class LoginModalComponent {
         });
         this.registerForm = new FormGroup({
 
-            "typeAccount": new FormControl('aspirant', [
+            "typeAccount": new FormControl('worker', [
                 Validators.required,
             ]),
 

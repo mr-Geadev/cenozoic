@@ -1,0 +1,151 @@
+:host {
+	display: block;
+	margin: 30px auto;
+
+	@import (less) '../../../assets/styles/base.less';
+
+	form {
+		padding: 0;
+
+		.side-title {
+			margin-top: 40px;
+			color: @black;
+			.bebas;
+			font-size: 1.2rem;
+			font-weight: 400;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.parameter {
+			margin-top: 37px;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+
+			input {
+				border-bottom: 1px solid #bcbdbf;
+				width: 400px;
+				color: @black;
+				font-family: Roboto;
+				font-size: 0.813rem;
+				font-weight: 400;
+				line-height: 1.25rem;
+			}
+
+			input[type="checkbox"] {
+				display: none;
+				& + label {
+					display: flex;
+					align-items: center;
+
+				}
+				&#e-mail-notification + label {
+					margin-left: 30px;
+				}
+				& + label:before {
+					margin-right: 10px;
+					content: '';
+					display: inline-block;
+					width: 21px;
+					height: 21px;
+					border-radius: 0.188rem;
+					border: 0.063rem solid #dadada;
+					background-color: @white;
+					.tr-bg;
+				}
+				& + label:hover:before {
+					background-color: @light-gray;
+				}
+
+				&:checked + label:before {
+					background-image: url('/assets/images/checked.png');
+					background-position: center;
+					background-size: 90%;
+					background-repeat: no-repeat;
+				}
+			}
+
+			.word {
+				display: inline;
+				color: @black;
+				font-family: Roboto;
+				font-size: 0.875rem;
+				font-weight: 400;
+				line-height: 1;
+
+				&.present {
+					margin-left: 10px;
+				}
+			}
+
+			.left {
+				width: 230px;
+				margin-right: 40px;
+				display: flex;
+				align-items: flex-end;
+				flex-shrink: 0;
+
+				label {
+					color: @gray;
+					font-family: Roboto;
+					font-size: .875rem;
+					font-weight: 400;
+					line-height: 1;
+				}
+			}
+
+			.right {
+				display: flex;
+				align-items: center;
+				//align-items: flex-end;
+				width: 100%;
+				justify-content: flex-start;
+				position: relative;
+			}
+
+
+			:disabled {
+				opacity: 0.5;
+				cursor: default;
+
+				input, label, select {
+					cursor: default;
+					pointer-events: none;
+				}
+
+			}
+
+		}
+
+		.submit {
+			display: inline-flex;
+			font-family: Roboto;
+			font-size: 0.875rem;
+			font-weight: 700;
+			line-height: 1;
+			width: 150px;
+			height: 40px;
+			color: @orange;
+			justify-content: center;
+			align-items: center;
+			border-radius: 0.313rem;
+			background-color: @white;
+			border: 2px solid @orange;
+			.tr-bg;
+
+			&:enabled:hover {
+				background-color: @orange;
+				color: @white;
+			}
+
+			&:disabled {
+				border-color: @gray;
+				color: @gray;
+			}
+
+
+		}
+	}
+
+}
