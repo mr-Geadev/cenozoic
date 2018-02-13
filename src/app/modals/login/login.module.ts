@@ -10,7 +10,7 @@ import { UserService } from "../../services";
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     declarations: [LoginModalComponent],
     entryComponents: [LoginModalComponent],

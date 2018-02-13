@@ -14,6 +14,7 @@ import { ListResumePageModule } from "./pages/list-resume-page";
 import { PersonalAccountPageModule } from "./pages/personal-account-page";
 import { ResumeFullPageModule } from "./pages/resume-full-page";
 import { SystemMessageService } from "./services";
+import { AccountSettingPageModule } from "./pages/account-setting-page/account-setting-page.module";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -35,6 +36,7 @@ const ROUTES = [
         ListResumePageModule,
         PersonalAccountPageModule,
         ResumeFullPageModule,
+        AccountSettingPageModule,
 
         // Blocks
         PageHeaderModule,
