@@ -12,9 +12,9 @@ import { UserService } from "../../services/user.service";
 })
 export class WorkerSettingComponent {
 
-    public currentUser: any;
-    public passwords: FormGroup;
-    public info: FormGroup;
+    public currentUser: any = {};
+    public passwords: FormGroup = null;
+    public info: FormGroup = null;
 
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
@@ -23,24 +23,40 @@ export class WorkerSettingComponent {
         this.userService.user$
             .subscribe((user) => {
                 if (user) {
-                    this.currentUser = user;
+                    this.currentUser = Object.assign(this.currentUser, user);
+                    if (!this.currentUser.fullName) {
+                        this.currentUser.fullName = '';
+                    }
+                    if (!this.currentUser.phone) {
+                        this.currentUser.phone = '';
+                    };
+                    if (!this.currentUser.notifications) {
+                        this.currentUser.notifications = {
+                            lk: false,
+                            email: false
+                        }
+                    };
                     console.log(this.currentUser);
+                    this.formCreate();
                 }
             });
+    }
 
+    public formCreate():void {
         this.passwords = new FormGroup({
             oldPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
             newPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
         });
         this.info = new FormGroup({
-            fullName: new FormControl('', [Validators.required, Validators.minLength(10)]),
-            phone: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            fullName: new FormControl(this.currentUser.fullName, [Validators.required, Validators.minLength(10)]),
+            phone: new FormControl( this.currentUser.phone, [Validators.required, Validators.minLength(6)]),
             notifications: new FormGroup({
-                lk: new FormControl(false),
-                email: new FormControl(false)
+                lk: new FormControl(this.currentUser.notifications.lk),
+                email: new FormControl(this.currentUser.notifications.email)
             })
         });
     }
+
 
     public changePassword(): void {
         this._http.post(CHANGE_PASSWORD, this.passwords.value)
@@ -62,10 +78,7 @@ export class WorkerSettingComponent {
             .subscribe((res: any) => {
                 this.msg.info('Данные изменены');
             }, (error: any) => {
-                console.log(error);
-                if (error.error.errorCode === "ERROR_CANT_AUTHORIZE") {
-                    this.msg.info('42');
-                }
+                this.msg.info('Поля введены неверно, попробуйте еще раз');
             });
     }
 

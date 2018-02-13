@@ -148,4 +148,85 @@
 		}
 	}
 
+	.rate {
+		width: 364px;
+		box-shadow: 0 0.875rem 1.875rem rgba(0, 0, 0, 0.15);
+		background-color: @white;
+		padding: 31px 29px 77px;
+		display: inline-block;
+		position: relative;
+
+		.short-name {
+			color: @black;
+			.bebas;
+			font-size: 1.375rem;
+			font-weight: 400;
+			line-height: 1.5rem;
+			text-transform: uppercase;
+		}
+
+		.long-name {
+			margin-top: 13px;
+			color: @black;
+			font-family: Roboto;
+			font-size: 0.875rem;
+			font-weight: 700;
+			line-height: 1.5rem;
+		}
+
+		.description {
+			margin-top: 17px;
+			color: @black;
+			font-family: Roboto;
+			font-size: 0.813rem;
+			font-weight: 400;
+			line-height: 1.25rem;
+		}
+
+		.price {
+			margin-top: 22px;
+			color: @dark-orange;
+			font-family: Roboto;
+			font-size: 1rem;
+			font-weight: 400;
+			text-transform: uppercase;
+			line-height: 1.375rem;
+
+			.number {
+				font-size: 1.5rem;
+				line-height: 1.375rem;
+				font-weight: 700;
+			}
+		}
+
+		.all-rates {
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+			height: 46px;
+			background-color: #ff682a;
+			left: 0;
+			padding: 0 29px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			color: @white;
+			font-family: Roboto;
+			font-size: 0.875rem;
+			font-weight: 700;
+			line-height: 1.875rem;
+			.tr-bg;
+
+			svg {
+				position: absolute;
+				left: 31px;
+			}
+
+			&:hover {
+				background-color: @hover-orange;
+			}
+		}
+	}
+
 }
