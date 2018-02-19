@@ -15,6 +15,7 @@ import { PersonalAccountPageModule } from "./pages/personal-account-page";
 import { ResumeFullPageModule } from "./pages/resume-full-page";
 import { SystemMessageService } from "./services";
 import { AccountSettingPageModule } from "./pages/account-setting-page/account-setting-page.module";
+import { CreateResumeGuard } from "./guards/create-resume.guards";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -43,11 +44,15 @@ const ROUTES = [
         PageFooterModule,
 
         // Modals
-        ChangeCityModalModule
+        ChangeCityModalModule,
+
     ],
     providers: [
         HttpClient,
-        SystemMessageService
+        SystemMessageService,
+
+        //Guards
+        CreateResumeGuard
     ],
     bootstrap: [AppComponent]
 })

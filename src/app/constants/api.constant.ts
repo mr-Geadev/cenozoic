@@ -5,3 +5,4 @@ export const LOG_OUT = '/api/v1/logout';
 export const USER_INFO = '/api/v1/user/info';
 export const CHANGE_PASSWORD = '/api/v1/user/password/change';
 export const CHANGE_USER_INFO = '/api/v1/worker/profile/parameters/change';
+export const REMOVE_USER = '/api/v1/user/resume/remove';

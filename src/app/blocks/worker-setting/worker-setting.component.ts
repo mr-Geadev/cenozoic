@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
-import { CHANGE_PASSWORD, CHANGE_USER_INFO } from "../../constants/api.constant";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants/api.constant";
 import { SystemMessageService } from "../../services/system-message.service";
 import { UserService } from "../../services/user.service";
 
@@ -29,27 +29,36 @@ export class WorkerSettingComponent {
                     }
                     if (!this.currentUser.phone) {
                         this.currentUser.phone = '';
-                    };
+                    }
+                    ;
                     if (!this.currentUser.notifications) {
                         this.currentUser.notifications = {
                             lk: false,
                             email: false
                         }
-                    };
+                    }
+                    ;
                     console.log(this.currentUser);
                     this.formCreate();
                 }
             });
     }
 
-    public formCreate():void {
+    public formCreate(): void {
         this.passwords = new FormGroup({
             oldPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
             newPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
         });
         this.info = new FormGroup({
-            fullName: new FormControl(this.currentUser.fullName, [Validators.required, Validators.minLength(10)]),
-            phone: new FormControl( this.currentUser.phone, [Validators.required, Validators.minLength(6)]),
+            fullName: new FormControl(this.currentUser.fullName, [
+                Validators.required,
+                Validators.minLength(10)
+            ]),
+            phone: new FormControl(this.currentUser.phone, [
+                Validators.required,
+                Validators.minLength(6),
+                Validators.pattern(`^(\\+7([0-9]){10})$`)
+            ]),
             notifications: new FormGroup({
                 lk: new FormControl(this.currentUser.notifications.lk),
                 email: new FormControl(this.currentUser.notifications.email)
@@ -60,26 +69,35 @@ export class WorkerSettingComponent {
 
     public changePassword(): void {
         this._http.post(CHANGE_PASSWORD, this.passwords.value)
-            .subscribe((res: any) => {
-                this.msg.info('Пароль изменен');
-                this.passwords.reset({
-                    oldPasswords: '',
-                    newPassword: ''
+            .subscribe(
+                (res: any) => {
+                    this.msg.info('Пароль изменен');
+                    this.passwords.reset({
+                        oldPasswords: '',
+                        newPassword: ''
+                    });
+                }, (error: any) => {
+                    if (error.error.errorCode === "ERROR_CANT_AUTHORIZE") {
+                        this.msg.info('Старый пароль неверный');
+                    }
                 });
-            }, (error: any) => {
-                if (error.error.errorCode === "ERROR_CANT_AUTHORIZE") {
-                    this.msg.info('Старый пароль неверный');
-                }
-            });
     }
 
     public changeUserInfo(): void {
         this._http.post(CHANGE_USER_INFO, this.info.value)
-            .subscribe((res: any) => {
-                this.msg.info('Данные изменены');
-            }, (error: any) => {
-                this.msg.info('Поля введены неверно, попробуйте еще раз');
-            });
+            .subscribe(
+                (res: any) => this.msg.info('Данные изменены'),
+                (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз'))
+    }
+
+    public removeUser(): void {
+        this._http.get(`${REMOVE_USER}?resumeId=${this.currentUser._id}`)
+            .subscribe(
+                (res) => {
+                    this.userService.logOut();
+                    this.msg.info('Аккаунт удален');
+                },
+                (err) => this.msg.info('Данная фича будет добавлена позже'))
     }
 
 }

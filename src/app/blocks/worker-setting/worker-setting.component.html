@@ -52,11 +52,11 @@
                <div class="parameter">
                    <div class="left">
                        <label for="fio">
-                           ФИО
+                           Полное имя
                        </label>
                    </div>
                    <div class="right">
-                       <input type="text" id="fio" formControlName="fullName" placeholder="На латинице">
+                       <input type="text" id="fio" formControlName="fullName" placeholder="Фамилия, имя, отчество">
                    </div>
                </div>
                <div class="parameter">
@@ -66,7 +66,7 @@
                        </label>
                    </div>
                    <div class="right">
-                       <input type="text" name="" id="phone" formControlName="phone" placeholder="Начиная с +7">
+                       <input type="tel" id="phone" formControlName="phone" placeholder="В формате: +79991112233">
                    </div>
                </div>
                <div class="side-title">
@@ -82,6 +82,11 @@
                    <button type="submit" class="submit" [disabled]="info.invalid">
                        Сохранить
                    </button>
+               </div>
+               <div class="parameter">
+                   <a class="delete-account" (click)="removeUser()">
+                       Удалить аккаунт
+                   </a>
                </div>
            </form>
        </div>
