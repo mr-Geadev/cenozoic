@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { BreadcrumbsModule, CreateResumeModule } from "../../blocks";
+import { CreateResumeGuard } from "../../guards/create-resume.guards";
 
 import { CreateResumePageComponent } from "./create-resume-page.component";
 
@@ -14,7 +15,12 @@ import { CreateResumePageComponent } from "./create-resume-page.component";
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'create-resume', component: CreateResumePageComponent, pathMatch: 'full' },
+            {
+                path: 'create-resume',
+                component: CreateResumePageComponent,
+                pathMatch: 'full',
+                canActivate: [CreateResumeGuard]
+            },
         ]),
         CommonModule,
         HttpClientModule,

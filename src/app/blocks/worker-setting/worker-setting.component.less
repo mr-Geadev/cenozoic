@@ -119,32 +119,39 @@
 		}
 
 		.submit {
+			margin-top: 58px;
 			display: inline-flex;
 			font-family: Roboto;
 			font-size: 0.875rem;
 			font-weight: 700;
 			line-height: 1;
-			width: 150px;
-			height: 40px;
-			color: @orange;
+			width: 361px;
+			height: 46px;
+			color: white;
 			justify-content: center;
 			align-items: center;
 			border-radius: 0.313rem;
-			background-color: @white;
-			border: 2px solid @orange;
+			background-color: @orange;
 			.tr-bg;
 
-			&:enabled:hover {
-				background-color: @orange;
-				color: @white;
+			&:hover {
+				background-color: @hover-orange;
 			}
+
 
 			&:disabled {
-				border-color: @gray;
-				color: @gray;
+				background-color: @gray;
 			}
+		}
 
+		.delete-account {
+			color: @light-gray;
+			text-decoration: underline;
+			cursor: pointer;
 
+			&:hover {
+				color: @gray
+			}
 		}
 	}
 

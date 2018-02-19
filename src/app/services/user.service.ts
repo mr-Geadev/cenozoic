@@ -1,8 +1,8 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 import { LOG_OUT, SIGN_IN, SIGN_UP, USER_INFO } from "../constants/api.constant";
-import { HttpClient } from "@angular/common/http";
 import { SystemMessageService } from "./system-message.service";
 
 @Injectable()
@@ -28,17 +28,14 @@ export class UserService {
 
     public loginUser(dataUser: any): void {
         this.http.post(SIGN_IN, dataUser)
-            .subscribe((res: any) => {
-                if (res.success) {
-                    this.getUserInfo();
-                } else {
-                    this._systemMessages.info(res.errorMessage);
-                }
-            });
+            .subscribe(
+                (res) => this.getUserInfo(),
+                (err) => this._systemMessages.info(err.error.errorMessage)
+            );
     }
 
-    public logOut(): void {
-        this.http.post(LOG_OUT,{})
+    logOut(): void {
+        this.http.post(LOG_OUT, {})
             .subscribe((res: any) => {
                 if (res.success === true) {
                     this.setUser(null);
@@ -46,7 +43,7 @@ export class UserService {
             });
     }
 
-    public registerUser(dataUser: any): void {
+    registerUser(dataUser: any): void {
         this.http.post(SIGN_UP, dataUser)
             .subscribe((res: any) => {
                 if (res.success) {
