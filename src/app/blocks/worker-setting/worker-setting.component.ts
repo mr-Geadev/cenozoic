@@ -94,7 +94,7 @@ export class WorkerSettingComponent {
         this._http.get(`${REMOVE_USER}?resumeId=${this.currentUser._id}`)
             .subscribe(
                 (res) => {
-                    this.userService.logOut();
+                    // this.userService.logOut();
                     this.msg.info('Аккаунт удален');
                 },
                 (err) => this.msg.info('Данная фича будет добавлена позже'))
