@@ -23,6 +23,7 @@ export class UserService {
         this.http.get(USER_INFO)
             .subscribe((res: any) => {
                 this.setUser(res.user);
+                console.log(res.user);
             });
     }
 

@@ -573,19 +573,19 @@
                             <div class="description">Добавьте всю информацию, которая поможет работодателю выбрать вас в
                                 качестве сотрудника.
                             </div>
-                            <input type="text" name="additionally-info" id="additionally-info"
-                                   [(ngModel)]="resumeForm.additionalInformation">
+                            <textarea resize="vertical" name="additionally-info" id="additionally-info"
+                                      [(ngModel)]="resumeForm.additionalInformation"></textarea>
                         </div>
                         <div class="parameter">
                             <label for="personal-property">Личные качества</label>
                             <div class="description">Например: целеустремленность, пунктуальность, аккуратность</div>
-                            <input type="text" name="personal-property" id="personal-property"
-                                   [(ngModel)]="resumeForm.personalQualities">
+                            <textarea resize="vertical" name="personal-property" id="personal-property"
+                                      [(ngModel)]="resumeForm.personalQualities"></textarea>
                         </div>
                         <div class="parameter">
                             <label for="hobbies">Увлечения</label>
                             <div class="description">Чем вы занимаетесь в свободное время</div>
-                            <input type="text" name="hobbies" id="hobbies" [(ngModel)]="resumeForm.hobbies">
+                            <textarea resize="vertical" name="hobbies" id="hobbies" [(ngModel)]="resumeForm.hobbies"></textarea>
                         </div>
                     </div>
 

@@ -36,7 +36,26 @@ export class ResumeFullComponent implements OnInit {
             .subscribe((res: any) => {
                 if (res.success) {
                     this.currentResume = res.resume;
+                    this.currentResume.age = this.getAge(this.currentResume.birthday);
+                    console.log(this.currentResume);
                 }
             });
+    }
+
+    public getAge(dateString): number {
+        // 1998-09-23T19:00:00.000Z
+        // 22.05.1990
+        let day = parseInt(dateString.substring(8,10));
+        let month = parseInt(dateString.substring(5,7));
+        let year = parseInt(dateString.substring(0,5));
+
+        let today = new Date();
+        let birthDate = new Date(year, month - 1, day); // 'month - 1' т.к. нумерация месяцев начинается с 0
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())){
+            age--;
+        }
+        return age;
     }
 }

@@ -16,6 +16,7 @@ import { ResumeFullPageModule } from "./pages/resume-full-page";
 import { SystemMessageService } from "./services";
 import { AccountSettingPageModule } from "./pages/account-setting-page/account-setting-page.module";
 import { CreateResumeGuard } from "./guards/create-resume.guards";
+import { UserService } from "./services/user.service";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -50,6 +51,7 @@ const ROUTES = [
     providers: [
         HttpClient,
         SystemMessageService,
+        UserService,
 
         //Guards
         CreateResumeGuard
