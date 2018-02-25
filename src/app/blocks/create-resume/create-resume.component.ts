@@ -20,6 +20,8 @@ import {
     DEFAULT_TRAINING,
     DEFAULT_TYPE
 } from "./create-resume.contants";
+import { Observable } from "rxjs/Observable";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
     selector: 'create-resume',
@@ -38,7 +40,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     public invalid: boolean = false;
     public loadingPhotoButton: string = 'Загрузить фото';
 
-    private sub: any;
+    private subscriptions: Subscription[] = [];
     private type: string = DEFAULT_TYPE;
     private resumeImage: any = DEFAULT_RESUME_IMAGE;
 
@@ -52,13 +54,14 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
 
-        this.userService.user$
+        this.subscriptions.push(this.userService.user$
             .filter(user => !!user)
             .subscribe((user) => {
                 this.isAuthorized = !!user;
-            });
+                this.resumeForm.fullName = user.fullName;
+            }))
 
-        this.sub = this.resumeService.resume$
+        this.subscriptions.push(this.resumeService.resume$
             .subscribe((resume) => {
                 if (resume) {
                     for (let key in resume) {
@@ -75,12 +78,12 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                         }
                     }
                 }
-            });
+            }))
     }
 
     ngOnDestroy(): void {
         this.resumeService.setResume(null);
-        this.sub.unsubscribe();
+        this.subscriptions.forEach(sub=>sub.unsubscribe());
         this.type = DEFAULT_TYPE;
     }
 
@@ -149,11 +152,11 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
         this.resumeForm.experience.forEach((item) => {
             if (item.type === "Нефтегазовая") {
-                timeOil += this._calculateTime(item);
+                timeOil += this._calculateTime(item, item.present);
             }
 
             if (item.type === "Горнодобывающая") {
-                timeMining += this._calculateTime(item);
+                timeMining += this._calculateTime(item, item.present);
             }
         });
 
@@ -202,7 +205,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         }
     };
 
-    private _calculateTime(item: any): number {
+    private _calculateTime(item: any, tillNow?: boolean): number {
         let months = [
             'Январь',
             'Февраль',
@@ -221,8 +224,13 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         const startMonth: string = item.startMonth;
         const startYear: number = item.startYear;
 
-        const endMonth: string = item.endMonth;
-        const endYear: number = item.endYear;
+        let endMonth: string = item.endMonth;
+        let endYear: number = item.endYear;
+
+        if (tillNow) {
+            endMonth = months[new Date().getMonth()];
+            endYear = new Date().getFullYear();
+        }
 
         let allMonths: number = 0;
 

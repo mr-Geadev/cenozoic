@@ -69,6 +69,7 @@
 					justify-content: flex-start;
 					align-items: center;
 
+
 					input {
 						border-bottom: 1px solid #bcbdbf;
 						width: 100%;
@@ -151,7 +152,6 @@
 							}
 						}
 					}
-w
 
 					.word {
 						display: inline;
@@ -351,15 +351,22 @@ w
 						line-height: 1.749rem;
 					}
 
-					input {
-						margin-top: 20px;
+					textarea {
+						outline: none;
 						border-bottom: 1px solid #bcbdbf;
 						width: 100%;
+						min-height: 40px;
 						color: @black;
 						font-family: Roboto;
 						font-size: 0.813rem;
 						font-weight: 400;
 						line-height: 1.25rem;
+						max-width: 600px;
+						.tr-all;
+
+						&:focus {
+							border-bottom: 1px solid @orange;
+						}
 					}
 				}
 			}
