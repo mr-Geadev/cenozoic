@@ -2,6 +2,7 @@ import { Component, DoCheck, OnInit } from "@angular/core";
 
 import { LoginModalService } from "../../modals/login";
 import { UserService } from "../../services";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: 'page-header',
@@ -14,11 +15,12 @@ export class PageHeaderComponent implements DoCheck, OnInit {
     public isAuthorized: boolean = false;
 
     constructor(public login: LoginModalService,
-                public userService: UserService,) {
+                public _userService: UserService,
+                public _authService: AuthService) {
     }
 
     ngOnInit(): void {
-        this.userService.user$
+        this._userService.user$
             .subscribe((user) => {
                 this.isAuthorized = !!user;
             });
@@ -27,6 +29,15 @@ export class PageHeaderComponent implements DoCheck, OnInit {
     ngDoCheck(): void {
         this.path = window.location.pathname;
         this.path = this.path == "/";
+    }
+
+    public logOut() {
+        this._authService.logOut()
+            .subscribe((res)=>{
+                if (res) {
+                    this._userService.setUser(null);
+                }
+            })
     }
 
     public openLoginModal(): void {

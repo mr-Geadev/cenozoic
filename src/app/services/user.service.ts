@@ -26,31 +26,5 @@ export class UserService {
             });
     }
 
-    public loginUser(dataUser: any): void {
-        this.http.post(SIGN_IN, dataUser)
-            .subscribe(
-                (res) => this.getUserInfo(),
-                (err) => this._systemMessages.info(err.error.errorMessage)
-            );
-    }
 
-    logOut(): void {
-        this.http.post(LOG_OUT, {})
-            .subscribe((res: any) => {
-                if (res.success === true) {
-                    this.setUser(null);
-                }
-            });
-    }
-
-    registerUser(dataUser: any): void {
-        this.http.post(SIGN_UP, dataUser)
-            .subscribe((res: any) => {
-                if (res.success) {
-                    this.loginUser(dataUser);
-                } else {
-                    this._systemMessages.info(res.errorMessage);
-                }
-            });
-    }
 }

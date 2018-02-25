@@ -15,7 +15,7 @@
     </div>
 
     <!-- вход -->
-    <form [formGroup]="loginForm" *ngIf="type === 'entry'" (submit)="login()">
+    <form [formGroup]="loginForm" *ngIf="type === 'entry'" (submit)="logIn()">
 
         <div class="field first">
             <label for="login-email">E-MAIL</label>
@@ -34,7 +34,7 @@
     </form>
 
     <!--регистрация-->
-    <form [formGroup]="registerForm" (submit)="register()" *ngIf="type !== 'entry'">
+    <form [formGroup]="registerForm" (submit)="signUp()" *ngIf="type !== 'entry'">
 
         <div class="type-account">
             <div class="description">Вы регистрируетесь как:</div>

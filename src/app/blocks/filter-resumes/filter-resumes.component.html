@@ -15,16 +15,8 @@
                                 [(ngModel)]="filterResumesService.parameters.education">
                         <mat-option value="Среднее">Среднее</mat-option>
                         <mat-option value="Высшее">Высшее</mat-option>
-                        <mat-option value="Высшее">Образование</mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <!--<select form="test" name="education" placeholder="Образование"-->
-                <!--[(ngModel)]="filterResumesService.parameters.education">-->
-                <!--<option value="Среднее">Среднее</option>-->
-                <!--<option value="Высшее">Высшее</option>-->
-                <!--<option value="Высшее">Образование</option>-->
-                <!--</select>-->
 
                 <mat-form-field>
                     <mat-select name="place" placeholder="Место проживания" (change)="filterResumesService.changeForm()"
@@ -143,12 +135,10 @@
                     <div class="text age">лет</div>
                 </div>
 
-                <mat-form-field>
-                    <mat-select name="photo" (change)="filterResumesService.changeForm()"
-                                [(ngModel)]="filterResumesService.parameters.photo">
-                        <mat-option value="Фото">Фото</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <div class="change-class">
+                    <input type="checkbox" id="havePhoto" name="photo" [(ngModel)]="filterResumesService.parameters.photo">
+                    <label for="havePhoto" >Фото профиля</label>
+                </div>
 
             </div>
         </form>
