@@ -8,9 +8,9 @@
             <div class="menu row align-items-center justify-content-between">
 
                 <nav class="header-menu row col-md-auto justify-content-between">
-                    <a class="header-menu-item" [routerLink]="['/']">Соискателям</a>
+                    <a class="header-menu-item" [routerLink]="['/list-vacancy']">Соискателям</a>
                     <a class="header-menu-item" [routerLink]="['/list-resume']">Работодателям</a>
-                    <a class="header-menu-item" [routerLink]="['/']">Поддержка</a>
+                    <a class="header-menu-item" [routerLink]="['/create-vacancy']">Поддержка</a>
                 </nav>
 
                 <a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">Личный кабинет</a>
