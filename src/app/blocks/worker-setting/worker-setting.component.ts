@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants/api.constant";
+import { AuthService } from "../../services/auth.service";
 import { SystemMessageService } from "../../services/system-message.service";
 import { UserService } from "../../services/user.service";
 
@@ -18,7 +19,8 @@ export class WorkerSettingComponent {
 
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
-                private _http: HttpClient) {
+                private _http: HttpClient,
+                private _authService: AuthService) {
 
         this.userService.user$
             .subscribe((user) => {
@@ -30,14 +32,12 @@ export class WorkerSettingComponent {
                     if (!this.currentUser.phone) {
                         this.currentUser.phone = '';
                     }
-                    ;
                     if (!this.currentUser.notifications) {
                         this.currentUser.notifications = {
                             lk: false,
                             email: false
                         }
                     }
-                    ;
                     console.log(this.currentUser);
                     this.formCreate();
                 }
@@ -45,10 +45,12 @@ export class WorkerSettingComponent {
     }
 
     public formCreate(): void {
+
         this.passwords = new FormGroup({
             oldPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
             newPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
         });
+
         this.info = new FormGroup({
             fullName: new FormControl(this.currentUser.fullName, [
                 Validators.required,
@@ -94,7 +96,7 @@ export class WorkerSettingComponent {
         this._http.get(`${REMOVE_USER}?resumeId=${this.currentUser._id}`)
             .subscribe(
                 (res) => {
-                    // this.userService.logOut();
+                    this._authService.logOut();
                     this.msg.info('Аккаунт удален');
                 },
                 (err) => this.msg.info('Данная фича будет добавлена позже'))

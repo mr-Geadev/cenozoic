@@ -79,6 +79,38 @@ html {
 }
 
 
+// стилизация чекбоксов
+input[type="checkbox"] {
+	display: none;
+	& + label {
+		display: flex;
+		align-items: center;
+	}
+	& + label:before {
+		margin-right: 10px;
+		content: '';
+		display: inline-block;
+		width: 21px;
+		height: 21px;
+		border-radius: 0.188rem;
+		border: 0.063rem solid #dadada;
+		background-color: @white;
+		.tr-bg;
+	}
+	& + label:hover:before {
+		background-color: @light-gray;
+	}
+
+	&:checked + label:before {
+		background-image: url('/assets/images/checked.png');
+		background-position: center;
+		background-size: 90%;
+		background-repeat: no-repeat;
+	}
+}
+
+
+
 .inline-link {  // встроенные ссылки
 	color: @orange;
 	text-decoration: underline;
@@ -115,7 +147,7 @@ html {
 	line-height: 2.25rem;
 }
 
-.change_form {
+.change_form { // стили для создания влкадок
 	display: inline-block;
 	color: #363636;
 	font-family: Roboto;
@@ -158,5 +190,4 @@ html {
 			display: block;
 		}
 	}
-
 }

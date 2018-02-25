@@ -89,7 +89,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public manageWorkplace(index?: number): void {
-        if (!index) {
+        if (index === undefined) {
             this.resumeForm.experience.push(Object.assign({}, DEFAULT_EXPERIENCE));
         } else {
             this.resumeForm.experience.splice(index, 1);
@@ -97,7 +97,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public manageEducation(index?: number): void {
-        if (!index) {
+        if (index === undefined) {
             this.resumeForm.education.push(Object.assign({}, DEFAULT_EDUCATION));
         } else {
             this.resumeForm.education.splice(index, 1);
@@ -105,7 +105,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public manageLanguage(index?: number): void {
-        if (!index) {
+        if (index === undefined) {
             this.resumeForm.languages.push(Object.assign({}, DEFAULT_LANGUAGE));
         } else {
             this.resumeForm.languages.splice(index, 1);
@@ -113,7 +113,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public manageTraining(index?: number): void {
-        if (!index) {
+        if (index === undefined) {
             this.resumeForm.trainings.push(Object.assign({}, DEFAULT_TRAINING));
         } else {
             this.resumeForm.trainings.splice(index, 1);
