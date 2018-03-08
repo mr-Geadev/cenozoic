@@ -7,18 +7,20 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { PageFooterModule, PageHeaderModule } from "./blocks";
+import { CreateResumeGuard } from "./guards";
 import { ChangeCityModalModule } from "./modals/change-city";
-import { MainPageModule, NotFoundPageComponent } from "./pages";
+import {
+    AccountSettingPageModule,
+    CreateVacancyPageModule,
+    ListVacancyPageModule,
+    MainPageModule,
+    NotFoundPageComponent
+} from "./pages";
 import { CreateResumePageModule } from "./pages/create-resume-page";
 import { ListResumePageModule } from "./pages/list-resume-page";
 import { PersonalAccountPageModule } from "./pages/personal-account-page";
 import { ResumeFullPageModule } from "./pages/resume-full-page";
-import { SystemMessageService } from "./services";
-import { AccountSettingPageModule } from "./pages/account-setting-page/account-setting-page.module";
-import { CreateResumeGuard } from "./guards/create-resume.guards";
-import { UserService } from "./services/user.service";
-import { CreateVacancyPageModule } from "./pages/create-vacancy-page/create-vacancy-page.module";
-import { ListVacancyPageModule } from "./pages/list-vacancy-page/list-vacancy-page.module";
+import { LocalizationService, SystemMessageService, UserService } from "./services";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -55,10 +57,11 @@ const ROUTES = [
     providers: [
         HttpClient,
         SystemMessageService,
+        LocalizationService,
         UserService,
 
         //Guards
-        CreateResumeGuard
+        CreateResumeGuard,
     ],
     bootstrap: [AppComponent]
 })
