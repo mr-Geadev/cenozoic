@@ -21,10 +21,14 @@ export class UserService {
 
     public getUserInfo(): void {
         this.http.get(USER_INFO)
-            .subscribe((res: any) => {
-                this.setUser(res.user);
-                console.log(res.user);
-            });
+            .subscribe(
+                (res: any) => {
+                    this.setUser(res.user);
+                },
+                (err: any) => {
+                    this.setUser(null);
+                }
+            );
     }
 
 

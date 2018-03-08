@@ -1,46 +1,67 @@
-import { Component, DoCheck, OnInit } from "@angular/core";
+import { Component, DoCheck, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 
 import { LoginModalService } from "../../modals/login";
-import { UserService } from "../../services";
-import { AuthService } from "../../services/auth.service";
+import { AuthService, LocalizationService, UserService } from "../../services";
+import { LANGUAGES } from "../../constants";
 
 @Component({
     selector: 'page-header',
     templateUrl: './page-header.component.html',
     styleUrls: ['./page-header.component.less']
 })
-export class PageHeaderComponent implements DoCheck, OnInit {
-    public path: any;
-
+export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
+    public isMainPage: boolean = false;
     public isAuthorized: boolean = false;
 
-    constructor(public login: LoginModalService,
-                public _userService: UserService,
-                public _authService: AuthService) {
+    // For localization
+    public dictionary: any = null;
+    public language: string = null;
+    public availableLanguages: any = LANGUAGES;
+
+    private _subscriptions: Subscription[] = [];
+
+    constructor(private _login: LoginModalService,
+                private _userService: UserService,
+                private _authService: AuthService,
+                private _localizationService: LocalizationService) {
     }
 
     ngOnInit(): void {
-        this._userService.user$
-            .subscribe((user) => {
-                this.isAuthorized = !!user;
-            });
+        this.dictionary = this._localizationService.currentDictionary;
+        this.language = this._localizationService.currentLanguage;
+
+        this._subscriptions.push(
+            this._userService.user$
+                .subscribe((user) => {
+                    this.isAuthorized = !!user;
+                })
+        );
+    }
+
+    ngOnDestroy(): void {
+        this._subscriptions.forEach(s => s.unsubscribe());
     }
 
     ngDoCheck(): void {
-        this.path = window.location.pathname;
-        this.path = this.path == "/";
+        this.isMainPage = window.location.pathname === "/";
     }
 
     public logOut() {
         this._authService.logOut()
-            .subscribe((res)=>{
+            .first()
+            .subscribe((res) => {
                 if (res) {
                     this._userService.setUser(null);
                 }
-            })
+            });
     }
 
     public openLoginModal(): void {
-        this.login.openModal()
+        this._login.openModal()
+    }
+
+    public changeLanguage(language: string): void {
+        this._localizationService.setLocalization(language);
     }
 }
