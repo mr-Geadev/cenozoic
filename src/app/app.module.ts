@@ -17,6 +17,8 @@ import { SystemMessageService } from "./services";
 import { AccountSettingPageModule } from "./pages/account-setting-page/account-setting-page.module";
 import { CreateResumeGuard } from "./guards/create-resume.guards";
 import { UserService } from "./services/user.service";
+import { CreateVacancyPageModule } from "./pages/create-vacancy-page/create-vacancy-page.module";
+import { ListVacancyPageModule } from "./pages/list-vacancy-page/list-vacancy-page.module";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -39,6 +41,8 @@ const ROUTES = [
         PersonalAccountPageModule,
         ResumeFullPageModule,
         AccountSettingPageModule,
+        CreateVacancyPageModule,
+        ListVacancyPageModule,
 
         // Blocks
         PageHeaderModule,

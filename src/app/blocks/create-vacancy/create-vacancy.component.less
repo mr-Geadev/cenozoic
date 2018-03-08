@@ -5,6 +5,16 @@
 	.create-vacancy {
 		margin-top: 50px;
 
+		input.ng-invalid.ng-touched {
+			border-bottom: 1px solid red !important;
+		}
+
+		.required {
+			color: @dark-orange;
+			display: inline-block;
+			transform: translateY(-3px);
+		}
+
 		.row.title {
 			color: @black;
 			.bebas;
@@ -157,6 +167,7 @@
 					align-items: center;
 					border-radius: 0.313rem;
 					background-color: @orange;
+					color: @white;
 					.tr-bg;
 
 					&:hover {
