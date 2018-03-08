@@ -11,7 +11,7 @@ export class LocalizationService {
     public readonly currentLanguage: string = null;
 
     constructor() {
-        this.currentLanguage = localStorage.getItem(LOCALIZATION) || navigator.language;
+        this.currentLanguage = this._detectLanguage();
 
         switch (this.currentLanguage) {
             case LANGUAGES.RUSSIAN:
@@ -27,6 +27,22 @@ export class LocalizationService {
         if (Object.values(LANGUAGES).indexOf(language) > -1) {
             localStorage.setItem(LOCALIZATION, language);
             window.location.href = String(window.location.href); // Refresh page
+        }
+    }
+
+    private _detectLanguage(): string {
+        const savedData: string = localStorage.getItem(LOCALIZATION);
+
+        if (!savedData) {
+            if (navigator.language.indexOf('ru') > -1) {
+                return LANGUAGES.RUSSIAN;
+            }
+
+            if (navigator.language.indexOf('en') > -1) {
+                return LANGUAGES.ENGLISH;
+            }
+        } else {
+            return savedData;
         }
     }
 }
