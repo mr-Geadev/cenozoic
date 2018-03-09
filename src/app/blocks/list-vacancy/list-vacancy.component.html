@@ -12,7 +12,7 @@
         </div>
 
         <div class="row list">
-            <a href="#" class="item" *ngFor="let vacancy of listVacancy; let i = index">
+            <a [routerLink]="['/vacancy', vacancy._id]" class="item" *ngFor="let vacancy of listVacancy; let i = index">
                 <div class="name-of-company">ООО «Перспектива»</div>
                 <div class="post">{{vacancy.title}}</div>
                 <div class="description">

@@ -5,6 +5,7 @@ export const ROUTES = [
     '/personal-account',
     '/setting',
     '/resume',
+    '/vacancy',
     '/create-vacancy',
     '/list-vacancy'
 ];

@@ -21,6 +21,7 @@ import { ListResumePageModule } from "./pages/list-resume-page";
 import { PersonalAccountPageModule } from "./pages/personal-account-page";
 import { ResumeFullPageModule } from "./pages/resume-full-page";
 import { LocalizationService, SystemMessageService, UserService } from "./services";
+import { VacancyFullPageModule } from "./pages/vacancy-full-page/vacancy-full-page.module";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -45,6 +46,7 @@ const ROUTES = [
         AccountSettingPageModule,
         CreateVacancyPageModule,
         ListVacancyPageModule,
+        VacancyFullPageModule,
 
         // Blocks
         PageHeaderModule,

@@ -1,0 +1,106 @@
+<div class="container" *ngIf="currentVacancy">
+
+    <div class="row main-info">
+        <div class="col-7 left">
+
+            <div class="city gray text">ООО "Перспектива"</div>
+            <div class="page-title">{{currentVacancy.title}}</div>
+
+            <div class="salary"><span>от <b>{{currentVacancy.salaryFrom}} до {{currentVacancy.salaryTo}} ₽</b></span></div>
+
+            <div class="table">
+                <div class="line">
+                    <div class="parameter gray text">
+                        Город
+                    </div>
+                    <div class="value black text">
+                        {{currentVacancy.city || 'нет данных'}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        Требуемый опыт работы
+                    </div>
+                    <div class="value black text">
+                        от {{currentVacancy.expAll}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                       График работы
+                    </div>
+                    <div class="value black text">
+                        {{currentVacancy.schedule}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        Метод работы
+                    </div>
+                    <div class="value black text">
+                        {{currentVacancy.employmentType}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="title row">
+                    Обязанности
+                </div>
+                <div class="row text-wrap">
+                    <ul class="text">
+                        <li *ngFor="let item of currentVacancy.duties">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="title row">
+                    Требования
+                </div>
+                <div class="row text-wrap">
+                    <ul class="text">
+                        <li *ngFor="let item of currentVacancy.demands">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="title row">
+                    Условия
+                </div>
+                <div class="row text-wrap">
+                    <ul class="text">
+                        <li *ngFor="let item of currentVacancy.conditions">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="button">
+                Откликнуться на вакансию
+            </div>
+
+        </div>
+
+        <div class="col-4 offset-1 right">
+            <div class="user-photo">
+                <img *ngIf="currentVacancy.photoURL" src="{{currentVacancy.photoURL}}">
+            </div>
+            <div class="default-photo" *ngIf="!currentVacancy.photoURL">
+                <img src="/assets/images/icon-camera.svg">
+            </div>
+            <div class="button">
+                Откликнуться на вакансию
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
