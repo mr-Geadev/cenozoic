@@ -18,21 +18,66 @@
                             </div>
                         </div>
 
-                        <div class="parameter salary" formGroupName="salary">
+                        <div class="parameter">
                             <div class="left">
-                                <label for="salary-from">Оклад</label>
+                                <label for="name-of-vacancy">Зарплата<span class="required">*</span></label>
+                            </div>
+                            <div class="right">
+                                <mat-form-field>
+                                    <mat-select formControlName="currency">
+                                        <mat-option value="Евро">
+                                            Евро
+                                        </mat-option>
+                                        <mat-option value="Доллары">
+                                            Доллары
+                                        </mat-option>
+                                        <mat-option value="Рубли">
+                                            Рубли
+                                        </mat-option>
+                                        <mat-option value="Фунты стерлингов">
+                                            Фунты стерлингов
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="parameter salary GROSS" formGroupName="salaryGROSS">
+                            <div class="left">
+                                <label>до вычета налогов (GROSS)</label>
                             </div>
                             <div class="right">
                                 <div class="word from">
                                     от
                                 </div>
-                                <input type="number" name="salary-from" id="salary-from"
-                                    formControlName="from">
+                                <input type="number" name="salary-from"
+                                       formControlName="from">
                                 <div class="word before">
                                     до
                                 </div>
                                 <input type="number" name="salary-before"
-                                        formControlName="to">
+                                       formControlName="to">
+                                <div class="word rub">
+                                    руб.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="parameter salary NET" formGroupName="salaryNET">
+                            <div class="left">
+                                <label>после вычета налогов (NET)</label>
+                            </div>
+                            <div class="right">
+                                <div class="word from">
+                                    от
+                                </div>
+                                <input type="number" name="salary-from"
+                                       formControlName="from">
+                                <div class="word before">
+                                    до
+                                </div>
+                                <input type="number" name="salary-before"
+                                       formControlName="to">
                                 <div class="word rub">
                                     руб.
                                 </div>
@@ -67,17 +112,42 @@
                             </div>
                         </div>
 
-                        <div class="parameter experience">
-                            <div class="left">
-                                <label for="experience">Опыт работы в промышленности:<span class="required">*</span></label>
+                        <div class="experience-wrap" formGroupName="experience">
+
+                            <div class="parameter experience">
+                                <div class="left">
+                                    <label>Опыт работы в промышленности:</label>
+                                </div>
                             </div>
-                            <div class="right">
-                                <input type="number" name="experience" id="experience" formControlName="experience">
-                                <div class="word">
-                                    лет
+
+                            <div class="parameter experience in-detail" formGroupName="oil">
+                                <div class="right">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="exp-oil" formControlName="checked" (change)="experienceDiabedChange('oil')">
+                                        <label for="exp-oil">в нефтегазовой </label>
+                                    </div>
+                                    <input type="number" formControlName="years">
+                                    <div class="word">лет</div>
+                                    <input type="number" formControlName="months">
+                                    <div class="word">месяцев</div>
+                                </div>
+                            </div>
+
+                            <div class="parameter experience in-detail" formGroupName="mining">
+                                <div class="right">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="exp-mining" formControlName="checked" (change)="experienceDiabedChange('mining')">
+                                        <label for="exp-mining">в горнодобывающей</label>
+                                    </div>
+                                    <input type="number" formControlName="years">
+                                    <div class="word">лет</div>
+                                    <input type="number" formControlName="months">
+                                    <div class="word">месяцев</div>
                                 </div>
                             </div>
                         </div>
+
+
 
                         <div class="parameter employment">
                             <div class="left">
@@ -115,17 +185,17 @@
                         <div class="parameter duties">
                             <label for="duties">Обязанности</label>
                             <div class="description">Через запятую перечислите все обязанности претендента</div>
-                            <input type="text" name="duties" id="duties" formControlName="duties">
+                            <textarea name="duties" id="duties" formControlName="duties"></textarea>
                         </div>
                         <div class="parameter demands">
                             <label for="demands">Требования</label>
                             <div class="description">Через запятую перечислите, какими навыками должен обладать претендент</div>
-                            <input type="text" name="demands" id="demands" formControlName="demands">
+                            <textarea name="demands" id="demands" formControlName="demands"></textarea>
                         </div>
                         <div class="parameter conditions">
                             <label for="conditions">Условия работы</label>
                             <div class="description">Через запятую перечислите, какими условия предоставляемой должности</div>
-                            <input type="text" name="conditions" id="conditions" formControlName="conditions">
+                            <textarea type="text" name="conditions" id="conditions" formControlName="conditions"></textarea>
                         </div>
                     </div>
 
