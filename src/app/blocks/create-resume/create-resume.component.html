@@ -444,9 +444,16 @@
                                     </mat-select>
                                 </mat-form-field>
                                 <div class="line"></div>
-                                <input type="text" name="language-level-{{i}}" placeholder="Уровень владения"
-                                       id="level" class="short-input" [(ngModel)]="resumeForm.languages[i].level"
-                                       required>
+                                <mat-form-field class="short-input">
+                                    <mat-select name="language-level-{{i}}" class="language"
+                                                [placeholder]="'Уровень владения'"
+                                                [(ngModel)]="resumeForm.languages[i].level" id="level" required>
+                                        <mat-option value="Начальный">Начальный</mat-option>
+                                        <mat-option value="Средний">Средний</mat-option>
+                                        <mat-option value="Высокий">Высокий</mat-option>
+                                        <mat-option value="Носитель">Носитель</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                                 <span class="remove-language" (click)="manageLanguage(i)">
                                     <img src="/assets/images/icon-garbage.svg">
                                 </span>
