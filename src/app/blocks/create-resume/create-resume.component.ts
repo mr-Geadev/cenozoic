@@ -40,6 +40,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     public invalid: boolean = false;
     public loadingPhotoButton: string = 'Загрузить фото';
 
+    public textEditorConfig: any = {};
+
     private subscriptions: Subscription[] = [];
     private type: string = DEFAULT_TYPE;
     private resumeImage: any = DEFAULT_RESUME_IMAGE;
