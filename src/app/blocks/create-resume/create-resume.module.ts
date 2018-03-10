@@ -8,6 +8,7 @@ import {
     MatOptionModule,
     MatSelectModule
 } from "@angular/material";
+import { EditorModule } from "@tinymce/tinymce-angular";
 
 import { BirthdayModule } from "../../common";
 import { CreateResumeComponent } from "./create-resume.component";
@@ -22,7 +23,8 @@ import { CreateResumeComponent } from "./create-resume.component";
         MatSelectModule,
         MatOptionModule,
         MatButtonModule,
-        BirthdayModule
+        BirthdayModule,
+        EditorModule
     ],
     declarations: [CreateResumeComponent],
     exports: [CreateResumeComponent]

@@ -576,23 +576,27 @@
 
                     <div class="long-fields">
                         <div class="parameter">
-                            <label for="additionally-info">Дополнительная информация</label>
+                            <label>Дополнительная информация</label>
                             <div class="description">Добавьте всю информацию, которая поможет работодателю выбрать вас в
                                 качестве сотрудника.
                             </div>
-                            <textarea resize="vertical" name="additionally-info" id="additionally-info"
-                                      [(ngModel)]="resumeForm.additionalInformation"></textarea>
+                            <editor [init]="textEditorConfig"
+                                    [(ngModel)]="resumeForm.additionalInformation"
+                                    [ngModelOptions]="{standalone: true}"></editor>
                         </div>
                         <div class="parameter">
-                            <label for="personal-property">Личные качества</label>
+                            <label>Личные качества</label>
                             <div class="description">Например: целеустремленность, пунктуальность, аккуратность</div>
-                            <textarea resize="vertical" name="personal-property" id="personal-property"
-                                      [(ngModel)]="resumeForm.personalQualities"></textarea>
+                            <editor [init]="textEditorConfig"
+                                    [(ngModel)]="resumeForm.personalQualities"
+                                    [ngModelOptions]="{standalone: true}"></editor>
                         </div>
                         <div class="parameter">
-                            <label for="hobbies">Увлечения</label>
+                            <label>Увлечения</label>
                             <div class="description">Чем вы занимаетесь в свободное время</div>
-                            <textarea resize="vertical" name="hobbies" id="hobbies" [(ngModel)]="resumeForm.hobbies"></textarea>
+                            <editor [init]="textEditorConfig"
+                                    [(ngModel)]="resumeForm.hobbies"
+                                    [ngModelOptions]="{standalone: true}"></editor>
                         </div>
                     </div>
 

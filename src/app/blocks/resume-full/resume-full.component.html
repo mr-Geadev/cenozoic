@@ -207,10 +207,7 @@
                 Дополнительная информация
             </div>
 
-            <div class="text black">
-                {{currentResume.additionalInformation}}
-            </div>
-
+            <div class="text black" [innerHTML]="currentResume.additionalInformation"></div>
         </div>
     </div>
 
@@ -220,10 +217,7 @@
                 Личные качества
             </div>
 
-            <div class="text black">
-                {{currentResume.personalQualities}}
-            </div>
-
+            <div class="text black" [innerHTML]="currentResume.personalQualities"></div>
         </div>
     </div>
 
@@ -233,10 +227,7 @@
                 Увлечения
             </div>
 
-            <div class="text black">
-                {{currentResume.hobbies}}
-            </div>
-
+            <div class="text black" [innerHTML]="currentResume.hobbies"></div>
         </div>
     </div>
 
