@@ -20,7 +20,6 @@ import {
     DEFAULT_TRAINING,
     DEFAULT_TYPE
 } from "./create-resume.contants";
-import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 
 @Component({
@@ -45,6 +44,13 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     private type: string = DEFAULT_TYPE;
     private resumeImage: any = DEFAULT_RESUME_IMAGE;
+
+    public listVisibleElement: any = {
+        experience: [],
+        education: [],
+        languages: [],
+        trainings: []
+    }
 
     constructor(private http: HttpClient,
                 private userService: UserService,
@@ -93,36 +99,26 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         this.invalid = true;
     }
 
-    public manageWorkplace(index?: number): void {
+
+    public manageFields(nameSection: string, index?: number): void {
         if (index === undefined) {
-            this.resumeForm.experience.push(Object.assign({}, DEFAULT_EXPERIENCE));
+            let typeField: any = null;
+            switch (nameSection) {
+                case 'experience': typeField = DEFAULT_EXPERIENCE; break;
+                case 'education': typeField = DEFAULT_EDUCATION; break;
+                case 'languages': typeField = DEFAULT_LANGUAGE; break;
+                case 'trainings': typeField = DEFAULT_TRAINING; break;
+                default: console.log('Error program');
+            }
+            this.resumeForm[nameSection].push(Object.assign({}, typeField));
+            this.listVisibleElement[nameSection].push(true);
         } else {
-            this.resumeForm.experience.splice(index, 1);
+            this.resumeForm[nameSection].splice(index, 1);
         }
     }
 
-    public manageEducation(index?: number): void {
-        if (index === undefined) {
-            this.resumeForm.education.push(Object.assign({}, DEFAULT_EDUCATION));
-        } else {
-            this.resumeForm.education.splice(index, 1);
-        }
-    }
-
-    public manageLanguage(index?: number): void {
-        if (index === undefined) {
-            this.resumeForm.languages.push(Object.assign({}, DEFAULT_LANGUAGE));
-        } else {
-            this.resumeForm.languages.splice(index, 1);
-        }
-    }
-
-    public manageTraining(index?: number): void {
-        if (index === undefined) {
-            this.resumeForm.trainings.push(Object.assign({}, DEFAULT_TRAINING));
-        } else {
-            this.resumeForm.trainings.splice(index, 1);
-        }
+    public manageVisible(nameSection: string, index: number): void {
+        this.listVisibleElement[nameSection][index] = !this.listVisibleElement[nameSection][index];
     }
 
     public onImageChange(event): void {
