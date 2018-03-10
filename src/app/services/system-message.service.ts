@@ -11,7 +11,7 @@ export class SystemMessageService {
         this._snackBar.open(message, action, {
             duration: duration,
             horizontalPosition: 'right',
-            verticalPosition: 'bottom'
+            verticalPosition: 'top'
         } as MatSnackBarConfig);
     }
 }
