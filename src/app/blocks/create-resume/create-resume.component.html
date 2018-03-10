@@ -158,54 +158,22 @@
 
                             <div class="side-title">
                                 Место работы {{i+1}}
-                                <span class="remove-block-fields" (click)="manageWorkplace(i)">
-                                    <img src="/assets/images/icon-garbage.svg" title="Удалить">
+                                <span class="remove-block-fields">
+                                    <img src="/assets/images/icon-hidden.png" title="Свернуть" (click)="manageVisible('experience', i)" [class.hidden]="!listVisibleElement.experience[i]">
+                                    <img src="/assets/images/icon-garbage.svg" title="Удалить"  (click)="manageFields('experience', i)">
                                 </span>
                             </div>
 
-                            <div class="parameter start">
-                                <div class="left">
-                                    <label for="employment-start">Начало работы</label>
-                                </div>
-                                <div class="right">
-                                    <mat-form-field>
-                                        <mat-select name="experience-startMonth-{{i}}" id="employment-start"
-                                                    class="shortest-select"
-                                                    [(ngModel)]="resumeForm.experience[i].startMonth"
-                                                    required>
-                                            <mat-option value="Январь">Январь</mat-option>
-                                            <mat-option value="Февраль">Февраль</mat-option>
-                                            <mat-option value="Март">Март</mat-option>
-                                            <mat-option value="Апрель">Апрель</mat-option>
-                                            <mat-option value="Май">Май</mat-option>
-                                            <mat-option value="Июнь">Июнь</mat-option>
-                                            <mat-option value="Июль">Июль</mat-option>
-                                            <mat-option value="Июнь">Июнь</mat-option>
-                                            <mat-option value="Август">Август</mat-option>
-                                            <mat-option value="Сентябрь">Сентябрь</mat-option>
-                                            <mat-option value="Октябрь">Октябрь</mat-option>
-                                            <mat-option value="Ноябрь">Ноябрь</mat-option>
-                                            <mat-option value="Декабрь">Декабрь</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    <input type="number" name="experience-startYear-{{i}}" id="start"
-                                           class="shortest-input" [(ngModel)]="resumeForm.experience[i].startYear">
-                                    <div class="word">года</div>
-                                </div>
-                            </div>
-
-                            <div class="parameter end">
-                                <div class="left">
-                                    <label for="employment-end">Окончание</label>
-                                </div>
-                                <div class="right">
-                                    <div [ngClass]="{disabled: resumeForm.experience[i].present}" class="workplace-fix">
+                            <div class="hidden-wrapper" [class.hidden]="!listVisibleElement.experience[i]">
+                                <div class="parameter start">
+                                    <div class="left">
+                                        <label for="employment-start">Начало работы</label>
+                                    </div>
+                                    <div class="right">
                                         <mat-form-field>
-                                            <mat-select name="experience-endMonth-{{i}}"
-                                                        id="employment-end"
+                                            <mat-select name="experience-startMonth-{{i}}" id="employment-start"
                                                         class="shortest-select"
-                                                        [disabled]="resumeForm.experience[i].present"
-                                                        [(ngModel)]="resumeForm.experience[i].endMonth"
+                                                        [(ngModel)]="resumeForm.experience[i].startMonth"
                                                         required>
                                                 <mat-option value="Январь">Январь</mat-option>
                                                 <mat-option value="Февраль">Февраль</mat-option>
@@ -222,69 +190,104 @@
                                                 <mat-option value="Декабрь">Декабрь</mat-option>
                                             </mat-select>
                                         </mat-form-field>
+                                        <input type="number" name="experience-startYear-{{i}}" id="start"
+                                               class="shortest-input" [(ngModel)]="resumeForm.experience[i].startYear">
+                                        <div class="word">года</div>
                                     </div>
-                                    <input type="number" name="experience-endYear-{{i}}" id="end"
-                                           class="shortest-input"
-                                           [(ngModel)]="resumeForm.experience[i].endYear"
-                                           [disabled]="resumeForm.experience[i].present"
-                                           [required]="!resumeForm.experience[i].present">
-                                    <div class="word">года</div>
-                                    <input type="checkbox" name="experience-name-{{i}}" value="true"
-                                           id="present-{{i}}" [(ngModel)]="resumeForm.experience[i].present">
-                                    <label for="present-{{i}}" class="word present">По настоящее время</label>
                                 </div>
-                            </div>
 
-                            <div class="parameter type">
-                                <div class="left">
-                                    <label for="employment-type">Тип промышеленности</label>
+                                <div class="parameter end">
+                                    <div class="left">
+                                        <label for="employment-end">Окончание</label>
+                                    </div>
+                                    <div class="right">
+                                        <div [ngClass]="{disabled: resumeForm.experience[i].present}" class="workplace-fix">
+                                            <mat-form-field>
+                                                <mat-select name="experience-endMonth-{{i}}"
+                                                            id="employment-end"
+                                                            class="shortest-select"
+                                                            [disabled]="resumeForm.experience[i].present"
+                                                            [(ngModel)]="resumeForm.experience[i].endMonth"
+                                                            required>
+                                                    <mat-option value="Январь">Январь</mat-option>
+                                                    <mat-option value="Февраль">Февраль</mat-option>
+                                                    <mat-option value="Март">Март</mat-option>
+                                                    <mat-option value="Апрель">Апрель</mat-option>
+                                                    <mat-option value="Май">Май</mat-option>
+                                                    <mat-option value="Июнь">Июнь</mat-option>
+                                                    <mat-option value="Июль">Июль</mat-option>
+                                                    <mat-option value="Июнь">Июнь</mat-option>
+                                                    <mat-option value="Август">Август</mat-option>
+                                                    <mat-option value="Сентябрь">Сентябрь</mat-option>
+                                                    <mat-option value="Октябрь">Октябрь</mat-option>
+                                                    <mat-option value="Ноябрь">Ноябрь</mat-option>
+                                                    <mat-option value="Декабрь">Декабрь</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <input type="number" name="experience-endYear-{{i}}" id="end"
+                                               class="shortest-input"
+                                               [(ngModel)]="resumeForm.experience[i].endYear"
+                                               [disabled]="resumeForm.experience[i].present"
+                                               [required]="!resumeForm.experience[i].present">
+                                        <div class="word">года</div>
+                                        <input type="checkbox" name="experience-name-{{i}}" value="true"
+                                               id="present-{{i}}" [(ngModel)]="resumeForm.experience[i].present">
+                                        <label for="present-{{i}}" class="word present">По настоящее время</label>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <mat-form-field>
-                                        <mat-select name="experience-type-{{i}}" id="employment-type"
-                                                    class="shortest-select" [(ngModel)]="resumeForm.experience[i].type"
-                                                    required>
-                                            <mat-option value="Нефтегазовая">Нефтегазовая</mat-option>
-                                            <mat-option value="Горнодобывающая">Горнодобывающая</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                            </div>
 
-                            <div class="parameter company">
-                                <div class="left">
-                                    <label for="company">Организация</label>
+                                <div class="parameter type">
+                                    <div class="left">
+                                        <label for="employment-type">Тип промышеленности</label>
+                                    </div>
+                                    <div class="right">
+                                        <mat-form-field>
+                                            <mat-select name="experience-type-{{i}}" id="employment-type"
+                                                        class="shortest-select" [(ngModel)]="resumeForm.experience[i].type"
+                                                        required>
+                                                <mat-option value="Нефтегазовая">Нефтегазовая</mat-option>
+                                                <mat-option value="Горнодобывающая">Горнодобывающая</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <input type="text" name="experience-company-{{i}}" id="company"
-                                           [(ngModel)]="resumeForm.experience[i].organization" required>
-                                </div>
-                            </div>
 
-                            <div class="parameter was-job">
-                                <div class="left">
-                                    <label for="was-job">Должность</label>
+                                <div class="parameter company">
+                                    <div class="left">
+                                        <label for="company">Организация</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="text" name="experience-company-{{i}}" id="company"
+                                               [(ngModel)]="resumeForm.experience[i].organization" required>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <input type="text" name="experience-job-{{i}}" id="was-job"
-                                           [(ngModel)]="resumeForm.experience[i].job" required>
-                                </div>
-                            </div>
 
-                            <div class="parameter duties">
-                                <div class="left">
-                                    <label for="duties">Ваши обязанности</label>
+                                <div class="parameter was-job">
+                                    <div class="left">
+                                        <label for="was-job">Должность</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="text" name="experience-job-{{i}}" id="was-job"
+                                               [(ngModel)]="resumeForm.experience[i].job" required>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <input type="text" name="duties-{{i}}" id="duties"
-                                           [(ngModel)]="resumeForm.experience[i].duties" required>
+
+                                <div class="parameter duties">
+                                    <div class="left">
+                                        <label for="duties">Ваши обязанности</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="text" name="duties-{{i}}" id="duties"
+                                               [(ngModel)]="resumeForm.experience[i].duties" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="add">
                             +
-                            <span class="add-button" (click)="manageWorkplace()">
+                            <span class="add-button" (click)="manageFields('experience')">
                                 Добавить место работы
                             </span>
                         </div>
@@ -311,110 +314,113 @@
 
                             <div class="side-title">
                                 Учебное заведение {{i+1}}
-                                <span class="remove-block-fields" (click)="manageEducation(i)">
-                                    <img src="/assets/images/icon-garbage.svg" title="Удалить">
+                                <span class="remove-block-fields">
+                                    <img src="/assets/images/icon-hidden.png" title="Свернуть" (click)="manageVisible('education', i)" [class.hidden]="!listVisibleElement.education[i]">
+                                    <img src="/assets/images/icon-garbage.svg" title="Удалить" (click)="manageFields('education', i)">
                                 </span>
                             </div>
 
-                            <div class="parameter stage">
-                                <div class="left">
-                                    <label for="stage">Степень образования</label>
+                            <div class="hidden-wrapper"  [class.hidden]="!listVisibleElement.education[i]">
+                                <!--*ngIf="listVisibleElement.education[i]"-->
+                                <div class="parameter stage">
+                                    <div class="left">
+                                        <label for="stage">Степень образования</label>
+                                    </div>
+                                    <div class="right">
+                                        <mat-form-field>
+                                            <mat-select name="education-stage-{{i}}" id="stage" class="short-select"
+                                                        [(ngModel)]="resumeForm.education[i].stage" required>
+                                                <mat-option value="Высшее">Высшее</mat-option>
+                                                <mat-option value="Среднее">Среднее</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <mat-form-field>
-                                        <mat-select name="education-stage-{{i}}" id="stage" class="short-select"
-                                                    [(ngModel)]="resumeForm.education[i].stage" required>
-                                            <mat-option value="Высшее">Высшее</mat-option>
-                                            <mat-option value="Среднее">Среднее</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                            </div>
 
-                            <div class="parameter start-education">
-                                <div class="left">
-                                    <label for="start-education">Начало обучения</label>
+                                <div class="parameter start-education">
+                                    <div class="left">
+                                        <label for="start-education">Начало обучения</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="number" name="education-start-{{i}}" id="start-education"
+                                               class="short-input" [(ngModel)]="resumeForm.education[i].start" required>
+                                        <div class="word">год</div>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <input type="number" name="education-start-{{i}}" id="start-education"
-                                           class="short-input" [(ngModel)]="resumeForm.education[i].start" required>
-                                    <div class="word">год</div>
-                                </div>
-                            </div>
 
-                            <div class="parameter end-education">
-                                <div class="left">
-                                    <label for="end-education">Окончание</label>
+                                <div class="parameter end-education">
+                                    <div class="left">
+                                        <label for="end-education">Окончание</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="number" name="education-end-{{i}}" id="end-education"
+                                               class="short-input" [(ngModel)]="resumeForm.education[i].end" required>
+                                        <div class="word">год</div>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <input type="number" name="education-end-{{i}}" id="end-education"
-                                           class="short-input" [(ngModel)]="resumeForm.education[i].end" required>
-                                    <div class="word">год</div>
-                                </div>
-                            </div>
 
-                            <!--div class="parameter country-education">
-                                <div class="left">
-                                    <label for="country-education">Страна</label>
-                                </div>
-                                <div class="right">
-                                    <mat-form-field>
-                                        <mat-select name="education-country-{{i}}" id="country-education"
-                                                    class="short-select" [(ngModel)]="resumeForm.education[i].country"
-                                                    required>
-                                            <mat-option value="Россия">Россия</mat-option>
-                                            <mat-option value="Англия">Англия</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                            </div-->
+                                <!--div class="parameter country-education">
+                                    <div class="left">
+                                        <label for="country-education">Страна</label>
+                                    </div>
+                                    <div class="right">
+                                        <mat-form-field>
+                                            <mat-select name="education-country-{{i}}" id="country-education"
+                                                        class="short-select" [(ngModel)]="resumeForm.education[i].country"
+                                                        required>
+                                                <mat-option value="Россия">Россия</mat-option>
+                                                <mat-option value="Англия">Англия</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div-->
 
-                            <div class="parameter city-eductation">
-                                <div class="left">
-                                    <label>Город</label>
+                                <div class="parameter city-eductation">
+                                    <div class="left">
+                                        <label>Город</label>
+                                    </div>
+                                    <div class="right">
+                                        <button mat-raised-button color="primary" (click)="changeEducationCity(i)">
+                                            {{resumeForm.education[i].city ? resumeForm.education[i].city : 'Выберите город'}}
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <button mat-raised-button color="primary" (click)="changeEducationCity(i)">
-                                        {{resumeForm.education[i].city ? resumeForm.education[i].city : 'Выберите
-                                        город'}}
-                                    </button>
-                                </div>
-                            </div>
 
-                            <div class="parameter university">
-                                <div class="left">
-                                    <label for="university">Учебное заведение</label>
+                                <div class="parameter university">
+                                    <div class="left">
+                                        <label for="university">Учебное заведение</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="text" name="education-university-{{i}}" id="university"
+                                               [(ngModel)]="resumeForm.education[i].university" required>
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <input type="text" name="education-university-{{i}}" id="university"
-                                           [(ngModel)]="resumeForm.education[i].university" required>
-                                </div>
-                            </div>
 
-                            <div class="parameter faculty">
-                                <div class="left">
-                                    <label for="faculty">Факультет</label>
+                                <div class="parameter faculty">
+                                    <div class="left">
+                                        <label for="faculty">Факультет</label>
+                                    </div>
+                                    <div class="right" [ngClass]="{disabled: resumeForm.education[i].stage == 'Среднее'}">
+                                        <input type=`text` name="education-faculty-{{i}}" id="faculty"
+                                               [(ngModel)]="resumeForm.education[i].faculty" required>
+                                    </div>
                                 </div>
-                                <div class="right" [ngClass]="{disabled: resumeForm.education[i].stage == 'Среднее'}">
-                                    <input type=`text` name="education-faculty-{{i}}" id="faculty"
-                                           [(ngModel)]="resumeForm.education[i].faculty" required>
-                                </div>
-                            </div>
 
-                            <div class="parameter specialty">
-                                <div class="left">
-                                    <label for="specialty">Специальность</label>
-                                </div>
-                                <div class="right" [ngClass]="{disabled: resumeForm.education[i].stage == 'Среднее'}">
-                                    <input type="text" id="specialty" name="education-specialty-{{i}}"
-                                           [(ngModel)]="resumeForm.education[i].specialty" required>
+                                <div class="parameter specialty">
+                                    <div class="left">
+                                        <label for="specialty">Специальность</label>
+                                    </div>
+                                    <div class="right" [ngClass]="{disabled: resumeForm.education[i].stage == 'Среднее'}">
+                                        <input type="text" id="specialty" name="education-specialty-{{i}}"
+                                               [(ngModel)]="resumeForm.education[i].specialty" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="add">
                             +
-                            <span class="add-button" (click)="manageEducation()">
+                            <span class="add-button" (click)="manageFields('education')">
                                 Добавить учебное заведение
                             </span>
                         </div>
@@ -454,14 +460,14 @@
                                         <mat-option value="Носитель">Носитель</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <span class="remove-language" (click)="manageLanguage(i)">
+                                <span class="remove-language" (click)="manageFields('languages', i)">
                                     <img src="/assets/images/icon-garbage.svg">
                                 </span>
                             </div>
                         </div>
                         <div class="add">
                             +
-                            <span class="add-button" (click)="manageLanguage()">
+                            <span class="add-button" (click)="manageFields('languages')">
                                 Добавить язык
                             </span>
                         </div>
@@ -476,90 +482,92 @@
 
                             <div class="side-title">
                                 Тренинг {{i+1}}
-                                <span class="remove-block-fields" (click)="manageTraining(i)">
-                                    <img src="/assets/images/icon-garbage.svg" title="Удалить">
+                                <span class="remove-block-fields" >
+                                    <img src="/assets/images/icon-hidden.png" title="Свернуть" (click)="manageVisible('trainings', i)" [class.hidden]="!listVisibleElement.trainings[i]">
+                                    <img src="/assets/images/icon-garbage.svg" title="Удалить" (click)="manageFields('trainings', i)">
                                 </span>
                             </div>
 
-                            <div class="parameter year-training">
-                                <div class="left">
-                                    <label for="year-training">Год прохождения/окончания</label>
+                            <div  class="hidden-wrapper" [class.hidden]="!listVisibleElement.trainings[i]">
+                                <div class="parameter year-training">
+                                    <div class="left">
+                                        <label for="year-training">Год прохождения/окончания</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="text" name="training-year-{{i}}" id="year-training"
+                                               class="short-input" [(ngModel)]="resumeForm.trainings[i].year">
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <input type="text" name="training-year-{{i}}" id="year-training"
-                                           class="short-input" [(ngModel)]="resumeForm.trainings[i].year">
-                                </div>
-                            </div>
 
-                            <div class="parameter durability-training">
-                                <div class="left">
-                                    <label for="durability-training">Длительность курса</label>
+                                <div class="parameter durability-training">
+                                    <div class="left">
+                                        <label for="durability-training">Длительность курса</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="text" name="training-durability-{{i}}" id="durability-training"
+                                               class="short-input"
+                                               [(ngModel)]="resumeForm.trainings[i].durability">
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <input type="text" name="training-durability-{{i}}" id="durability-training"
-                                           class="short-input"
-                                           [(ngModel)]="resumeForm.trainings[i].durability">
+
+                                <div class="parameter country-training">
+                                    <div class="left">
+                                        <label for="country-training">Страна</label>
+                                    </div>
+                                    <div class="right">
+                                        <mat-form-field>
+                                            <mat-select name="training-country-{{i}}" id="country-training"
+                                                        class="country-training"
+                                                        [(ngModel)]="resumeForm.trainings[i].country">
+                                                <mat-option value="Англия">Англия</mat-option>
+                                                <mat-option value="Россия">Россия</mat-option>
+                                                <mat-option value="Швеция">Швеция</mat-option>
+                                                <mat-option value="США">США</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <div class="line"></div>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="parameter city-training">
+                                    <div class="left">
+                                        <label for="city-training">Город</label>
+                                    </div>
+                                    <div class="right">
+                                        <mat-form-field>
+                                            <mat-select name="training-city-{{i}}" id="city-training" class="city-training"
+                                                        [(ngModel)]="resumeForm.trainings[i].city">
+                                                <mat-option value="Саратов">Саратов</mat-option>
+                                                <mat-option value="Москва">Москва</mat-option>
+                                                <mat-option value="Киев">Киев</mat-option>
+                                                <mat-option value="Лондон">Лондон</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <div class="line"></div>
+                                    </div>
+                                </div>
 
 
-                            <div class="parameter country-training">
-                                <div class="left">
-                                    <label for="country-training">Страна</label>
+                                <div class="parameter name-training">
+                                    <div class="left">
+                                        <label for="name-training">Название</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="text" name="training-name-{{i}}" id="name-training"
+                                               [(ngModel)]="resumeForm.trainings[i].name">
+                                    </div>
                                 </div>
-                                <div class="right">
-                                    <mat-form-field>
-                                        <mat-select name="training-country-{{i}}" id="country-training"
-                                                    class="country-training"
-                                                    [(ngModel)]="resumeForm.trainings[i].country">
-                                            <mat-option value="Англия">Англия</mat-option>
-                                            <mat-option value="Россия">Россия</mat-option>
-                                            <mat-option value="Швеция">Швеция</mat-option>
-                                            <mat-option value="США">США</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    <div class="line"></div>
-                                </div>
-                            </div>
 
-                            <div class="parameter city-training">
-                                <div class="left">
-                                    <label for="city-training">Город</label>
-                                </div>
-                                <div class="right">
-                                    <mat-form-field>
-                                        <mat-select name="training-city-{{i}}" id="city-training" class="city-training"
-                                                    [(ngModel)]="resumeForm.trainings[i].city">
-                                            <mat-option value="Саратов">Саратов</mat-option>
-                                            <mat-option value="Москва">Москва</mat-option>
-                                            <mat-option value="Киев">Киев</mat-option>
-                                            <mat-option value="Лондон">Лондон</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    <div class="line"></div>
-                                </div>
-                            </div>
-
-
-                            <div class="parameter name-training">
-                                <div class="left">
-                                    <label for="name-training">Название</label>
-                                </div>
-                                <div class="right">
-                                    <input type="text" name="training-name-{{i}}" id="name-training"
-                                           [(ngModel)]="resumeForm.trainings[i].name">
-                                </div>
-                            </div>
-
-                            <div class="parameter document-training">
-                                <div class="left">
-                                    <label>Сертификат</label>
-                                </div>
-                                <div class="right">
-                                    <input type="checkbox" name="training-document-{{i}}" id="document-training"
-                                           value="true"
-                                           [(ngModel)]="resumeForm.trainings[i].document" required>
-                                    <label for="document-training" class="word">Документально подтвержден</label>
+                                <div class="parameter document-training">
+                                    <div class="left">
+                                        <label>Сертификат</label>
+                                    </div>
+                                    <div class="right">
+                                        <input type="checkbox" name="training-document-{{i}}" id="document-training"
+                                               value="true"
+                                               [(ngModel)]="resumeForm.trainings[i].document" required>
+                                        <label for="document-training" class="word">Документально подтвержден</label>
+                                    </div>
                                 </div>
                             </div>
 
@@ -568,7 +576,7 @@
 
                         <div class="add">
                             +
-                            <span class="add-button" (click)="manageTraining()">
+                            <span class="add-button" (click)="manageFields('trainings')">
                                 Добавить
                             </span>
                         </div>

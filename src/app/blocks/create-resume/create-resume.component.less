@@ -34,6 +34,31 @@
 					font-weight: 400;
 				}
 
+				.hidden-wrapper.hidden .parameter {
+					opacity: 0;
+					position: absolute;
+				}
+				.hidden-wrapper.hidden .parameter:nth-child(8n) {  transition-delay: 0s;  }
+				.hidden-wrapper.hidden .parameter:nth-child(7n) {  transition-delay: 0s;  }
+				.hidden-wrapper.hidden .parameter:nth-child(6n) {  transition-delay: 0s;  }
+				.hidden-wrapper.hidden .parameter:nth-child(5n) {  transition-delay: 0s;  }
+				.hidden-wrapper.hidden .parameter:nth-child(4n) {  transition-delay: 0s;  }
+				.hidden-wrapper.hidden .parameter:nth-child(3n) {  transition-delay: 0s;  }
+				.hidden-wrapper.hidden .parameter:nth-child(2n) {  transition-delay: 0s;  }
+				.hidden-wrapper.hidden .parameter:nth-child(1n) {  transition-delay: 0s;  }
+
+				.hidden-wrapper .parameter {
+					opacity: 1;
+				}
+				.hidden-wrapper .parameter:nth-child(1n) {  transition-delay: .05s;  }
+				.hidden-wrapper .parameter:nth-child(2n) {  transition-delay: .10s;  }
+				.hidden-wrapper .parameter:nth-child(3n) {  transition-delay: .15s;  }
+				.hidden-wrapper .parameter:nth-child(4n) {  transition-delay: .20s;  }
+				.hidden-wrapper .parameter:nth-child(5n) {  transition-delay: .25s;  }
+				.hidden-wrapper .parameter:nth-child(6n) {  transition-delay: .30s;  }
+				.hidden-wrapper .parameter:nth-child(7n) {  transition-delay: .35s;  }
+				.hidden-wrapper .parameter:nth-child(8n) {  transition-delay: .40s;  }
+
 				.side-title {
 					margin-top: 40px;
 					color: @black;
@@ -45,20 +70,25 @@
 
 					.remove-block-fields {
 						color: @black;
-						opacity: 0.5;
-						.tr-opacity;
 						display: flex;
 						align-items: center;
 						cursor: pointer;
 
-						&:hover {
-							opacity: 1;
-						}
 						img {
+							opacity: 0.5;
 							width: 20px;
 							height: 20px;
 							margin-left: 10px;
 							margin-top: -6px;
+							.tr-all;
+
+							&:hover {
+								opacity: 1;
+							}
+
+							&.hidden {
+								transform: rotate(180deg);
+							}
 						}
 					}
 				}
@@ -154,7 +184,7 @@
 					}
 
 					.word {
-						display: inline;
+						display: flex;
 						color: @black;
 						font-family: Roboto;
 						font-size: 0.875rem;
