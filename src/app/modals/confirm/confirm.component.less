@@ -1,0 +1,42 @@
+:host {
+
+	@import (less) '../../../assets/styles/base.less';
+
+	.wrap {
+		position: relative;
+		height: 100%;
+
+		.title {
+			text-align: center;
+		}
+
+		.buttons {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+
+			.button {
+				width: 48%;
+				height: 40px;
+				display: inline-flex;
+				font-family: Roboto;
+				font-size: 0.875rem;
+				font-weight: 700;
+				line-height: 1;
+				color: white;
+				justify-content: center;
+				align-items: center;
+				border-radius: 0.313rem;
+				background-color: @orange;
+				.tr-bg;
+
+				&:hover {
+					background-color: @hover-orange;
+				}
+
+			}
+		}
+	}
+}

@@ -22,6 +22,7 @@ import { PersonalAccountPageModule } from "./pages/personal-account-page";
 import { ResumeFullPageModule } from "./pages/resume-full-page";
 import { LocalizationService, SystemMessageService, UserService } from "./services";
 import { VacancyFullPageModule } from "./pages/vacancy-full-page/vacancy-full-page.module";
+import { ConfirmModule } from "./modals/confirm/confirm.module";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -54,6 +55,7 @@ const ROUTES = [
 
         // Modals
         ChangeCityModalModule,
+        ConfirmModule
 
     ],
     providers: [

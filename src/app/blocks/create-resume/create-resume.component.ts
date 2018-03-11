@@ -21,6 +21,8 @@ import {
     DEFAULT_TYPE
 } from "./create-resume.contants";
 import { Subscription } from "rxjs/Subscription";
+import { ConfirmService } from "../../modals/confirm/confirm.service";
+import { ResConfirmService } from "../../modals/confirm/res-confirm.service";
 
 @Component({
     selector: 'create-resume',
@@ -57,7 +59,9 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                 private resumeService: ResumeService,
                 private router: Router,
                 private _systemMessageService: SystemMessageService,
-                private _dialog: MatDialog) {
+                private _dialog: MatDialog,
+                private _confirm: ConfirmService,
+                private _resConfirm: ResConfirmService) {
     }
 
     ngOnInit(): void {
@@ -113,7 +117,14 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             this.resumeForm[nameSection].push(Object.assign({}, typeField));
             this.listVisibleElement[nameSection].push(true);
         } else {
-            this.resumeForm[nameSection].splice(index, 1);
+            this._confirm.confirm('Вы действительно хотите удалить?');
+            this._resConfirm.answer
+                .subscribe((res)=>{
+                    if (res) {
+                        this.resumeForm[nameSection].splice(index, 1);
+                    }
+                    this._dialog.closeAll();
+                });
         }
     }
 
