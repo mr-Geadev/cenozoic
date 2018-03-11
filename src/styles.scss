@@ -75,3 +75,8 @@ mat-datepicker-toggle {
 body {
     font-family: Roboto;
 }
+
+.mce-notification.mce-notification-warning,
+.mce-branding.mce-widget.mce-label {
+    display: none;
+}
