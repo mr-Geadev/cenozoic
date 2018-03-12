@@ -12,10 +12,16 @@ export class ChangeCityModalService {
     }
 
     public setCity(city: string): void {
-        localStorage.setItem('city', city);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('city', city);
+        }
     }
 
     public getCurrentCity(): string {
-        return localStorage.getItem('city');
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('city');
+        } else {
+            return '';
+        }
     }
 }
