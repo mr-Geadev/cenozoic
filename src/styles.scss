@@ -76,8 +76,15 @@ body {
     font-family: Roboto;
 }
 
+
 .mat-snack-bar-container {
 	background-color: white !important;
 	border: 2px solid #ff682a !important;
 	color: #ff682a !important;
 }
+
+.mce-notification.mce-notification-warning,
+.mce-branding.mce-widget.mce-label {
+    display: none;
+}
+
