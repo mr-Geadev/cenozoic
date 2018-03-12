@@ -19,7 +19,6 @@ export class ListResumePageComponent implements OnInit {
         this._sortService.typeSort
             .subscribe(
                 parameters => {
-                    console.log(parameters);
                     if (parameters) {
                         this.sortParameter = parameters
                     } else {
