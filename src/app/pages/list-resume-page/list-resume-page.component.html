@@ -3,11 +3,22 @@
 <div class="container">
     <div class="row head">
         <div class="title">Резюме</div>
-        <form class="sort">
-            <label for="id">Сортировать</label>
-            <select name="name" id="id">
-                <option value="date">По дате добавления</option>
-            </select>
+        <form class="sort" *ngIf="sortParameter">
+            <label for="typeSort">Сортировать</label>
+            <mat-form-field >
+                <mat-select [ngModelOptions]="{standalone: true}" id="typeSort" [(ngModel)]="sortParameter.type" (change)="updateSortParameters()">
+                    <mat-option value="date">По дате добавления</mat-option>
+                    <mat-option value="salary">По заработной плате</mat-option>
+                    <mat-option value="experience">По опыту</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field >
+                <mat-select  [ngModelOptions]="{standalone: true}" [(value)]="selected" [(ngModel)]="sortParameter.order" (change)="updateSortParameters()">
+                    <mat-option value="1">По возрастанию</mat-option>
+                    <mat-option value="-1">По убыванию</mat-option>
+                </mat-select>
+            </mat-form-field>
         </form>
     </div>
 </div>

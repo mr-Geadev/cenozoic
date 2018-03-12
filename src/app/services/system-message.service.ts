@@ -10,8 +10,8 @@ export class SystemMessageService {
     public info(message: string, duration: number = 2000, action: string = "Закрыть", description?: string): void {
         this._snackBar.open(message, action, {
             duration: duration,
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
+            horizontalPosition: 'left',
+            verticalPosition: 'top',
         } as MatSnackBarConfig);
     }
 }

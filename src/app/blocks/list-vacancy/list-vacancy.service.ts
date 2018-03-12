@@ -11,7 +11,7 @@ export class ListVacancyService {
     }
 
     public getListVancacy(offset: number): Observable<any> {
-        return this._http.post(LIST_VACANCY,{offset: offset})
+        return this._http.post(LIST_VACANCY,{offset: offset, count: 24})
             .map(res => res['vacancyList']);
     }
 

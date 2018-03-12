@@ -69,13 +69,7 @@ export class CreateVacancyComponent implements OnInit {
         this._createVacancyService.createVacancy(this.vacancy.value)
             .subscribe(
                 (res) => { this._msg.info('Ваше резюме сохранено')},
-                (err) =>  {
-                    if(err.error.errorCode.name ===  "ValidationError") {
-                        this._msg.info('Поля заполнены неправильно');
-                    }  else {
-                        this._msg.info(err.error.errorMessage);
-                    }
-                }
+                (err) =>  { this._msg.info(err.error.errorMessage)}
             );
     }
 }
