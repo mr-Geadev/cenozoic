@@ -169,10 +169,10 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             }
         });
 
-        this.resumeForm.experienceAll.oil.year = Math.floor(timeOil / 12);
-        this.resumeForm.experienceAll.oil.month = timeOil % 12;
-        this.resumeForm.experienceAll.mining.year = Math.floor(timeMining / 12);
-        this.resumeForm.experienceAll.mining.month = timeMining % 12;
+        this.resumeForm.experienceAll.oil.years = Math.floor(timeOil / 12);
+        this.resumeForm.experienceAll.oil.months = timeOil % 12;
+        this.resumeForm.experienceAll.mining.years = Math.floor(timeMining / 12);
+        this.resumeForm.experienceAll.mining.months = timeMining % 12;
         this.resumeForm.experienceAllTime = `${Math.floor(( timeOil + timeMining ) / 12)};${( timeOil + timeMining ) % 12}`;
 
         if (this.type === DEFAULT_TYPE) {

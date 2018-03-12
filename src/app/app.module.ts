@@ -23,6 +23,7 @@ import { ResumeFullPageModule } from "./pages/resume-full-page";
 import { LocalizationService, SystemMessageService, UserService } from "./services";
 import { VacancyFullPageModule } from "./pages/vacancy-full-page/vacancy-full-page.module";
 import { ConfirmModule } from "./modals/confirm/confirm.module";
+import { SortService } from "./services/sort.service";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -60,9 +61,12 @@ const ROUTES = [
     ],
     providers: [
         HttpClient,
+
+        // custom services
         SystemMessageService,
         LocalizationService,
         UserService,
+        SortService,
 
         //Guards
         CreateResumeGuard,
