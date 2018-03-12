@@ -7,11 +7,11 @@ export class SystemMessageService {
     constructor(private _snackBar: MatSnackBar) {
     }
 
-    public info(message: string, action: string = "Закрыть", description?: string): void {
+    public info(message: string, duration: number = 2000, action: string = "Закрыть", description?: string): void {
         this._snackBar.open(message, action, {
-            duration: 2000,
-            horizontalPosition: 'right',
-            verticalPosition: 'bottom'
+            duration: duration,
+            horizontalPosition: 'left',
+            verticalPosition: 'top',
         } as MatSnackBarConfig);
     }
 }

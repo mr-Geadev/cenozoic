@@ -5,18 +5,20 @@ import { LoginModalService } from "./login.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { UserService } from "../../services";
+import { AuthService } from "../../services/auth.service";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     declarations: [LoginModalComponent],
     entryComponents: [LoginModalComponent],
     providers: [
         LoginModalService,
         UserService,
+        AuthService
     ],
     exports: [LoginModalComponent]
 })

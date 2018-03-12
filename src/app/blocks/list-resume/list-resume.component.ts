@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from "@angular/core";
 
 import { ResumeService } from "../../services";
 import { FilterResumesService } from "../filter-resumes";
+import { SortService } from "../../services/sort.service";
+import { SortModel } from "../../models/sort.model";
 
 @Component({
     selector: 'list-resume',
@@ -18,11 +20,17 @@ export class ListResumeComponent implements OnInit {
 
     constructor(private _http: HttpClient,
                 private _filterResumesService: FilterResumesService,
-                public resumeService: ResumeService) {
+                public resumeService: ResumeService,
+                private _sortService: SortService) {
     }
 
 
     ngOnInit(): void {
+
+        this._sortService.typeSort
+            .subscribe(
+                (parameters) => this.sorting(parameters)
+            )
 
         // резюме пользоватля
         if (this.config === "resume") {
@@ -36,21 +44,19 @@ export class ListResumeComponent implements OnInit {
             this._filterResumesService.filter$
                 .subscribe((parameters: any) => {
                     if (parameters != null) {
-                        this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, filters: parameters })
+                        this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, filters: parameters, count: 24 })
                             .subscribe((res: any) => {
                                 this.listResume = this.formatting(res.resumeList);
                             });
                     } else {
                         //все резюме
-                        this._http.post(`/api/v1/resume/get/all`, { offset: this.offset })
+                        this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
                             .subscribe((res: any) => {
                                 this.listResume = this.formatting(res.resumeList);
                             });
                     }
                 });
-        }
-        ;
-
+        };
     };
 
     public formatting(list: any[]) {
@@ -69,6 +75,26 @@ export class ListResumeComponent implements OnInit {
         });
 
         return answer;
+    }
+
+    public sorting(parameters: SortModel): void {
+
+        switch(parameters.type) {
+            case 'experience':
+                this.listResume.sort((a, b) => {
+                    if (a.experienceAll > b.experienceAll) {
+                        return 1*parameters.order;
+                    }
+                }); break;
+            case 'salary':
+                this.listResume.sort((a, b) => {
+                    if (a.salary > b.salary) {
+                        return 1*parameters.order;
+                    }
+                }); break;
+            default: break;
+        }
+
     }
 
 

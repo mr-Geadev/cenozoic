@@ -1,26 +1,24 @@
 <section class="banner">
     <img src="/assets/images/main-banner.jpg"/>
     <div class="container">
-        <div class="logo row"><img src="/assets/images/logo-full.png" alt=""></div>
-        <div class="description row">
-            Работа в нефтяной, газовой <br/> и горнодобывающей промышленностях
-        </div>
+        <div class="logo row"><img src="/assets/images/logo.svg" alt=""></div>
+        <div class="description row" [innerHTML]="dictionary.HOME_BANNER_TITLE"></div>
         <div class="search row">
             <div class="search-field">
-                <input type="text" class="search" placeholder="Я ищу..."/>
+                <input type="text" class="search" [placeholder]="dictionary.LOOKING_FOR"/>
                 <div class="border"></div>
                 <ul class="change_form type">
-                    <li class="active">В вакансиях</li>
-                    <li>В резюме</li>
+                    <li class="active">{{ dictionary.IN_VACANCIES }}</li>
+                    <li>{{ dictionary.IN_CV }}</li>
                 </ul>
                 <div class="border"></div>
                 <ul class="change_form city">
-                    <li class="active">В Санкт-Петербурге</li>
-                    <li>В Москве</li>
-                    <li>В Cаратове</li>
+                    <li class="active">{{ dictionary.IN_SBP }}</li>
+                    <li>{{ dictionary.IN_MSK }}</li>
+                    <li>{{ dictionary.IN_SAR }}</li>
                 </ul>
                 <div class="button">
-                    Искать
+                    {{ dictionary.SEARCH }}
                 </div>
             </div>
         </div>

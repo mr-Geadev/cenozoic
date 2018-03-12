@@ -7,13 +7,23 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { PageFooterModule, PageHeaderModule } from "./blocks";
+import { CreateResumeGuard } from "./guards";
 import { ChangeCityModalModule } from "./modals/change-city";
-import { MainPageModule, NotFoundPageComponent } from "./pages";
+import {
+    AccountSettingPageModule,
+    CreateVacancyPageModule,
+    ListVacancyPageModule,
+    MainPageModule,
+    NotFoundPageComponent
+} from "./pages";
 import { CreateResumePageModule } from "./pages/create-resume-page";
 import { ListResumePageModule } from "./pages/list-resume-page";
 import { PersonalAccountPageModule } from "./pages/personal-account-page";
 import { ResumeFullPageModule } from "./pages/resume-full-page";
-import { SystemMessageService } from "./services";
+import { LocalizationService, SystemMessageService, UserService } from "./services";
+import { VacancyFullPageModule } from "./pages/vacancy-full-page/vacancy-full-page.module";
+import { ConfirmModule } from "./modals/confirm/confirm.module";
+import { SortService } from "./services/sort.service";
 
 const ROUTES = [
     //{ path: '**', redirectTo: '/' }
@@ -35,17 +45,31 @@ const ROUTES = [
         ListResumePageModule,
         PersonalAccountPageModule,
         ResumeFullPageModule,
+        AccountSettingPageModule,
+        CreateVacancyPageModule,
+        ListVacancyPageModule,
+        VacancyFullPageModule,
 
         // Blocks
         PageHeaderModule,
         PageFooterModule,
 
         // Modals
-        ChangeCityModalModule
+        ChangeCityModalModule,
+        ConfirmModule
+
     ],
     providers: [
         HttpClient,
-        SystemMessageService
+
+        // custom services
+        SystemMessageService,
+        LocalizationService,
+        UserService,
+        SortService,
+
+        //Guards
+        CreateResumeGuard,
     ],
     bootstrap: [AppComponent]
 })

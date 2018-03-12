@@ -20,6 +20,9 @@ import {
     DEFAULT_TRAINING,
     DEFAULT_TYPE
 } from "./create-resume.contants";
+import { Subscription } from "rxjs/Subscription";
+import { ConfirmService } from "../../modals/confirm/confirm.service";
+import { ResConfirmService } from "../../modals/confirm/res-confirm.service";
 
 @Component({
     selector: 'create-resume',
@@ -38,27 +41,39 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     public invalid: boolean = false;
     public loadingPhotoButton: string = 'Загрузить фото';
 
-    private sub: any;
+    public textEditorConfig: any = {};
+
+    private subscriptions: Subscription[] = [];
     private type: string = DEFAULT_TYPE;
     private resumeImage: any = DEFAULT_RESUME_IMAGE;
+
+    public listVisibleElement: any = {
+        experience: [],
+        education: [],
+        languages: [],
+        trainings: []
+    }
 
     constructor(private http: HttpClient,
                 private userService: UserService,
                 private resumeService: ResumeService,
                 private router: Router,
                 private _systemMessageService: SystemMessageService,
-                private _dialog: MatDialog) {
+                private _dialog: MatDialog,
+                private _confirm: ConfirmService,
+                private _resConfirm: ResConfirmService) {
     }
 
     ngOnInit(): void {
 
-        this.userService.user$
+        this.subscriptions.push(this.userService.user$
             .filter(user => !!user)
             .subscribe((user) => {
                 this.isAuthorized = !!user;
-            });
+                this.resumeForm.fullName = user.fullName;
+            }))
 
-        this.sub = this.resumeService.resume$
+        this.subscriptions.push(this.resumeService.resume$
             .subscribe((resume) => {
                 if (resume) {
                     for (let key in resume) {
@@ -75,12 +90,12 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                         }
                     }
                 }
-            });
+            }))
     }
 
     ngOnDestroy(): void {
         this.resumeService.setResume(null);
-        this.sub.unsubscribe();
+        this.subscriptions.forEach(sub=>sub.unsubscribe());
         this.type = DEFAULT_TYPE;
     }
 
@@ -88,36 +103,33 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         this.invalid = true;
     }
 
-    public manageWorkplace(index?: number): void {
-        if (!index) {
-            this.resumeForm.experience.push(Object.assign({}, DEFAULT_EXPERIENCE));
+
+    public manageFields(nameSection: string, index?: number): void {
+        if (index === undefined) {
+            let typeField: any = null;
+            switch (nameSection) {
+                case 'experience': typeField = DEFAULT_EXPERIENCE; break;
+                case 'education': typeField = DEFAULT_EDUCATION; break;
+                case 'languages': typeField = DEFAULT_LANGUAGE; break;
+                case 'trainings': typeField = DEFAULT_TRAINING; break;
+                default: console.log('Error program');
+            }
+            this.resumeForm[nameSection].push(Object.assign({}, typeField));
+            this.listVisibleElement[nameSection].push(true);
         } else {
-            this.resumeForm.experience.splice(index, 1);
+            this._confirm.confirm('Вы действительно хотите удалить?');
+            this._resConfirm.answer
+                .subscribe((res)=>{
+                    if (res) {
+                        this.resumeForm[nameSection].splice(index, 1);
+                    }
+                    this._dialog.closeAll();
+                });
         }
     }
 
-    public manageEducation(index?: number): void {
-        if (!index) {
-            this.resumeForm.education.push(Object.assign({}, DEFAULT_EDUCATION));
-        } else {
-            this.resumeForm.education.splice(index, 1);
-        }
-    }
-
-    public manageLanguage(index?: number): void {
-        if (!index) {
-            this.resumeForm.languages.push(Object.assign({}, DEFAULT_LANGUAGE));
-        } else {
-            this.resumeForm.languages.splice(index, 1);
-        }
-    }
-
-    public manageTraining(index?: number): void {
-        if (!index) {
-            this.resumeForm.trainings.push(Object.assign({}, DEFAULT_TRAINING));
-        } else {
-            this.resumeForm.trainings.splice(index, 1);
-        }
+    public manageVisible(nameSection: string, index: number): void {
+        this.listVisibleElement[nameSection][index] = !this.listVisibleElement[nameSection][index];
     }
 
     public onImageChange(event): void {
@@ -149,18 +161,18 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
         this.resumeForm.experience.forEach((item) => {
             if (item.type === "Нефтегазовая") {
-                timeOil += this._calculateTime(item);
+                timeOil += this._calculateTime(item, item.present);
             }
 
             if (item.type === "Горнодобывающая") {
-                timeMining += this._calculateTime(item);
+                timeMining += this._calculateTime(item, item.present);
             }
         });
 
-        this.resumeForm.experienceAll.oil.year = Math.floor(timeOil / 12);
-        this.resumeForm.experienceAll.oil.month = timeOil % 12;
-        this.resumeForm.experienceAll.mining.year = Math.floor(timeMining / 12);
-        this.resumeForm.experienceAll.mining.month = timeMining % 12;
+        this.resumeForm.experienceAll.oil.years = Math.floor(timeOil / 12);
+        this.resumeForm.experienceAll.oil.months = timeOil % 12;
+        this.resumeForm.experienceAll.mining.years = Math.floor(timeMining / 12);
+        this.resumeForm.experienceAll.mining.months = timeMining % 12;
         this.resumeForm.experienceAllTime = `${Math.floor(( timeOil + timeMining ) / 12)};${( timeOil + timeMining ) % 12}`;
 
         if (this.type === DEFAULT_TYPE) {
@@ -202,7 +214,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         }
     };
 
-    private _calculateTime(item: any): number {
+    private _calculateTime(item: any, tillNow?: boolean): number {
         let months = [
             'Январь',
             'Февраль',
@@ -221,8 +233,13 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         const startMonth: string = item.startMonth;
         const startYear: number = item.startYear;
 
-        const endMonth: string = item.endMonth;
-        const endYear: number = item.endYear;
+        let endMonth: string = item.endMonth;
+        let endYear: number = item.endYear;
+
+        if (tillNow) {
+            endMonth = months[new Date().getMonth()];
+            endYear = new Date().getFullYear();
+        }
 
         let allMonths: number = 0;
 

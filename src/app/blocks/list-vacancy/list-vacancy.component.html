@@ -12,114 +12,27 @@
         </div>
 
         <div class="row list">
-            <a href="#" class="item">
+            <a [routerLink]="['/vacancy', vacancy._id]" class="item" *ngFor="let vacancy of listVacancy; let i = index">
                 <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
+                <div class="post">{{vacancy.title}}</div>
+                <div class="description">
+                    {{vacancy.duties}}
                 </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
-            </a>
-            <a href="#" class="item">
-                <div class="name-of-company">ООО «Перспектива»</div>
-                <div class="post">Инженер техники безопасности</div>
-                <div class="description">Сварка технологических трубопроводов 32 мм - 530 мм, толщина стенки 3 мм-20 мм.
-                    Опыт сварки труб под просвет. Наличие свидетельства НАКС, НГДО, ОХНВП.
-                </div>
-                <div class="terms">от <span class="number">55 000</span> ₽</div>
-                <div class="more-info">Подробнее <img src="images/arrow.svg"/></div>
+                <div class="terms">от <span class="number">{{vacancy.salary.from}}</span> ₽</div>
+                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg"/></div>
             </a>
         </div>
 
-        <div class="row show-more">
-            <button type="button" name="button">
-                <img src="list-vacancy/dott.png" alt="">
-                <img src="list-vacancy/dott.png" alt="">
-                <img src="list-vacancy/dott.png" alt="">
-                Показать ещё
-            </button>
-        </div>
+
+
+        <!--кнопка "показать еще"-->
+        <!--<div class="row show-more">-->
+            <!--<button type="button" name="button">-->
+                <!--<img src="/assets/images/dott.png" alt="">-->
+                <!--<img src="/assets/images/dott.png" alt="">-->
+                <!--<img src="/assets/images/dott.png" alt="">-->
+                <!--Показать ещё-->
+            <!--</button>-->
+        <!--</div>-->
     </div>
 </section>

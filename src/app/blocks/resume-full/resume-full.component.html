@@ -9,7 +9,7 @@
 
             <div class="salary"><span>от <b>{{currentResume.salary}} ₽</b></span></div>
 
-            <div class="name">Константинопльский Константин Константинович</div>
+            <div class="name">{{currentResume.fullName}}</div>
 
             <div class="table">
                 <div class="line">
@@ -17,7 +17,7 @@
                         Возраст
                     </div>
                     <div class="value black text">
-                        {{currentResume.age}}
+                        {{currentResume.age || 'нет данных'}}
                     </div>
                 </div>
                 <div class="line">
@@ -124,7 +124,7 @@
                     <td class="time-work">
                         <div class="text black">2 года 5 месяцев</div>
                         <div class="text gray">{{item.startMonth}} {{item.startYear}} — {{item.endMonth}}
-                            {{item.endYear}}
+                            {{item.present? 'по настоящее время' : item.endYear}}
                         </div>
                     </td>
                     <td class="work">
@@ -207,10 +207,7 @@
                 Дополнительная информация
             </div>
 
-            <div class="text black">
-                {{currentResume.additionalInformation}}
-            </div>
-
+            <div class="text black" [innerHTML]="currentResume.additionalInformation"></div>
         </div>
     </div>
 
@@ -220,10 +217,7 @@
                 Личные качества
             </div>
 
-            <div class="text black">
-                {{currentResume.personalQualities}}
-            </div>
-
+            <div class="text black" [innerHTML]="currentResume.personalQualities"></div>
         </div>
     </div>
 
@@ -233,10 +227,7 @@
                 Увлечения
             </div>
 
-            <div class="text black">
-                {{currentResume.hobbies}}
-            </div>
-
+            <div class="text black" [innerHTML]="currentResume.hobbies"></div>
         </div>
     </div>
 
