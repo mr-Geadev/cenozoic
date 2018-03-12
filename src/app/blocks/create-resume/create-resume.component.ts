@@ -84,11 +84,12 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                     this.type = CHANGES_TYPE;
                 } else {
                     this.type = DEFAULT_TYPE;
-                    for (let key in this.cleanResumeForm) {
-                        if (this.resumeForm.hasOwnProperty(key)) {
-                            this.resumeForm[key] = this.cleanResumeForm[key];
-                        }
+                    for (let key in this.resumeForm) {
+                        delete this.resumeForm[key];
                     }
+                    this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                    console.log('cleaning for creating');
+                    console.log(this.resumeForm);
                 }
             }))
     }
@@ -208,6 +209,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                 .subscribe((res: any) => {
                     if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                        console.log('saving');
+                        console.log(this.resumeForm);
                         this.router.navigate(['resume', id]);
                     }
                 });

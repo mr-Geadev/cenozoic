@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row head">
         <div class="title">Резюме</div>
-        <form class="sort" *ngIf="sortParameter">
+        <form class="sort" *ngIf="false"> //sortParameter
             <label for="typeSort">Сортировать</label>
             <mat-form-field >
                 <mat-select [ngModelOptions]="{standalone: true}" id="typeSort" [(ngModel)]="sortParameter.type" (change)="updateSortParameters()">

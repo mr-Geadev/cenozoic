@@ -26,7 +26,7 @@ import { ConfirmModule } from "./modals/confirm/confirm.module";
 import { SortService } from "./services/sort.service";
 
 const ROUTES = [
-    //{ path: '**', redirectTo: '/' }
+    { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({
