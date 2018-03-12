@@ -47,39 +47,21 @@
                 <div class="title row">
                     Обязанности
                 </div>
-                <div class="row text-wrap">
-                    <ul class="text">
-                        <li *ngFor="let item of currentVacancy.duties">
-                            {{item}}
-                        </li>
-                    </ul>
-                </div>
+                <div class="row text-wrap" [innerHTML]="currentVacancy.duties"></div>
             </div>
 
             <div class="info">
                 <div class="title row">
                     Требования
                 </div>
-                <div class="row text-wrap">
-                    <ul class="text">
-                        <li *ngFor="let item of currentVacancy.demands">
-                            {{item}}
-                        </li>
-                    </ul>
-                </div>
+                <div class="row text-wrap" [innerHTML]="currentVacancy.demands"></div>
             </div>
 
             <div class="info">
                 <div class="title row">
                     Условия
                 </div>
-                <div class="row text-wrap">
-                    <ul class="text">
-                        <li *ngFor="let item of currentVacancy.conditions">
-                            {{item}}
-                        </li>
-                    </ul>
-                </div>
+                <div class="row text-wrap" [innerHTML]="currentVacancy.conditions"></div>
             </div>
 
             <div class="button">
