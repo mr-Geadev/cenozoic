@@ -38,7 +38,6 @@ export class WorkerSettingComponent {
                             email: false
                         }
                     }
-                    console.log(this.currentUser);
                     this.formCreate();
                 }
             });

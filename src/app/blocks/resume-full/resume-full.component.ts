@@ -37,7 +37,6 @@ export class ResumeFullComponent implements OnInit {
                 if (res.success) {
                     this.currentResume = res.resume;
                     this.currentResume.age = this.getAge(this.currentResume.birthday);
-                    console.log(this.currentResume);
                 }
             });
     }
