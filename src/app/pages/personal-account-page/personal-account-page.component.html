@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="title">
-                Личный кабинет
+                {{ dictionary.ACCOUNT }}
             </div>
 
             <ul class="list">
@@ -13,8 +13,8 @@
                            id="responses"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Отклики">
-                    <label for="responses">Отклики</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_1">
+                    <label for="responses">{{ dictionary.ACCOUNT_PAGE_TAB_1 }}</label>
                 </li>
 
                 <li class="item">
@@ -22,8 +22,8 @@
                            id="suggestions"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Предложения">
-                    <label for="suggestions">Предложения</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_2">
+                    <label for="suggestions">{{ dictionary.ACCOUNT_PAGE_TAB_2 }}</label>
                 </li>
 
                 <li class="item">
@@ -31,8 +31,8 @@
                            id="archive"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Архив">
-                    <label for="archive">Архив</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_3">
+                    <label for="archive">{{ dictionary.ACCOUNT_PAGE_TAB_3 }}</label>
                 </li>
 
                 <li class="item">
@@ -40,8 +40,8 @@
                            id="summary"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Резюме">
-                    <label for="summary">Резюме</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_4">
+                    <label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_4 }}</label>
                 </li>
 
             </ul>
@@ -60,19 +60,17 @@
 
 <div class="container description">
     <div class="row">
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Отклики' }">
-            В этом разделе показаны результаты всех ваших откликов на вакансии. Вы можете отменить отправленный отклик
-            или переместить в архив отклики, на которые уже дан ответ работодателя.
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_1 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_1_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Предложения' }">
-            В этом разделе показаны предложения, поступившие вам со стороны компаний. Вы можете ответить на них или
-            переместить в архив.
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_2 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_2_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Архив' }">
-            В этом разделе содержатся ваши старые отклики/предложения
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_3 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_3_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Резюме' }">
-            В этом разделе показаны все ваши резюме. Вы можежет просмотреть и отредактировать нужное, кликнув по нему
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_4_DESC }}
         </div>
     </div>
 </div>
