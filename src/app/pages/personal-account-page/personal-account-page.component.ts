@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LocalizationService } from "../../services";
+import { UserService } from "../../services/user.service";
 
 @Component({
     selector: 'personal-account-page',
@@ -8,13 +9,20 @@ import { LocalizationService } from "../../services";
 })
 export class PersonalAccountPageComponent implements OnInit {
 
-    public activeTab: string = 'Резюме';
+    public activeTab: string = 'Отклики';
     public dictionary: any = null;
+    public typeCurrentUser: string = null;
 
-    constructor(private _localizationService: LocalizationService) {
+    constructor(private _localizationService: LocalizationService,
+                private _userService: UserService) {
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.dictionary = this._localizationService.currentDictionary;
+        this._userService.user$
+            .subscribe(
+                (user) => user ? this.typeCurrentUser = user.typeAccount : null
+            )
     }
+
 }

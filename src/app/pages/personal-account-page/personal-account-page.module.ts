@@ -8,6 +8,7 @@ import { RouterModule } from "@angular/router";
 import { ListResumeModule, ResumeFullModule } from "../../blocks";
 import { LoginModalModule } from "../../modals";
 import { PersonalAccountPageComponent } from "./personal-account-page.component";
+import { ListVacancyModule } from "../../blocks/list-vacancy/list-vacancy.module";
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { PersonalAccountPageComponent } from "./personal-account-page.component"
 
         // Blocks
         ListResumeModule,
+        ListVacancyModule,
         ResumeFullModule
     ],
     exports: [PersonalAccountPageComponent]
