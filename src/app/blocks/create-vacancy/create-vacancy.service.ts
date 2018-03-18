@@ -12,6 +12,8 @@ export class CreateVacancyService {
     }
 
     public createVacancy(vacancy: any): Observable<any> {
+        if (!vacancy.experience.oil.checked) {vacancy.experience.oil = null}
+        if (!vacancy.experience.mining.checked) {vacancy.experience.mining = null}
         return this._http.post(CREATE_VACANCY, { 'vacancy': vacancy })
             .map(
                 (res) => { res['success'] },
