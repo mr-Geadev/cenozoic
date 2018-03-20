@@ -33,7 +33,7 @@ export class ListResumeComponent implements OnInit {
             )
 
         // резюме пользоватля
-        if (this.config === "resume") {
+        if (this.config === "user") {
             this._http.get(`/api/v1/user/resume/all`)
                 .subscribe((res: any) => {
                     this.listResume = this.formatting(res.resumeList);

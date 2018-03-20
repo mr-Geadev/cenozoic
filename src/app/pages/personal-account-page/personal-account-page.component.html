@@ -35,13 +35,31 @@
                     <label for="archive">{{ dictionary.ACCOUNT_PAGE_TAB_3 }}</label>
                 </li>
 
-                <li class="item">
+                <li class="item" *ngIf="typeCurrentUser === 'employer'">
+                    <input type="radio"
+                           id="interview"
+                           name="manager"
+                           [(ngModel)]="activeTab"
+                           value="Опросные листы">
+                    <label for="interview">Опросные листы</label>
+                </li>
+
+                <li class="item" *ngIf="typeCurrentUser === 'worker'">
                     <input type="radio"
                            id="summary"
                            name="manager"
                            [(ngModel)]="activeTab"
                            [value]="dictionary.ACCOUNT_PAGE_TAB_4">
                     <label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_4 }}</label>
+                </li>
+
+                <li class="item" *ngIf="typeCurrentUser === 'employer'">
+                    <input type="radio"
+                           id="vacancy"
+                           name="manager"
+                           [(ngModel)]="activeTab"
+                           value="Вакансии">
+                    <label for="vacancy">Вакансии</label>
                 </li>
 
             </ul>
@@ -72,11 +90,23 @@
         <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4 }">
             {{ dictionary.ACCOUNT_PAGE_TAB_4_DESC }}
         </div>
+        <div class="message" [ngClass]="{ 'active': activeTab === 'Опросные листы' }">
+            В этом разделе показаны ваши опросные листы
+        </div>
+        <div class="message" [ngClass]="{ 'active': activeTab === 'Вакансии' }">
+            В этом разделе показаны ваши вакансии
+        </div>
     </div>
 </div>
 
+
 <list-resume class="block resume"
              [ngClass]="{ 'active': activeTab === 'Резюме' }"
-             [config]="'resume'"></list-resume>
+             *ngIf="activeTab === 'Резюме'"
+             [config]="'user'"></list-resume>
 
+<list-vacancy class="block vacancy"
+              *ngIf="activeTab === 'Вакансии'"
+              [ngClass]="{ 'active': activeTab === 'Вакансии' }"
+              [config]="'user'"></list-vacancy>
 

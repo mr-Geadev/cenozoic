@@ -17,7 +17,7 @@ export const DEFAULT_EDUCATION = {
     stage: null,
     start: null,
     end: null,
-    country: null,
+    country: 'Россия',
     city: null,
     university: null,
     faculty: null,

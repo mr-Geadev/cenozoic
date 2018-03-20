@@ -1,16 +1,6 @@
 <section class="list-vacancy">
     <div class="container">
 
-        <div class="row head">
-            <div class="title">{{ dictionary.VACANCIES }}</div>
-            <form class="sort">
-                <label for="">{{ dictionary.SORT_BY }}</label>
-                <select name="" id="">
-                    <option value="date">{{ dictionary.SORT_BY_DATA }}</option>
-                </select>
-            </form>
-        </div>
-
         <div class="row list">
             <a [routerLink]="['/vacancy', vacancy._id]" class="item" *ngFor="let vacancy of listVacancy; let i = index">
                 <div class="name-of-company">ООО «Перспектива»</div>
@@ -19,6 +9,17 @@
                 </div>
                 <div class="terms">от <span class="number">{{vacancy.salaryGROSS.from}}</span> ₽</div>
                 <div class="more-info">Подробнее <img src="/assets/images/arrow.svg"/></div>
+            </a>
+
+            <a [routerLink]="['/create-vacancy']" class="add item" *ngIf="config === 'user'">
+                <div class="inner">
+                    <div class="circle">
+                        <div class="plus">
+                            +
+                        </div>
+                    </div>
+                </div>
+                <div class="more-info">Добавить новую вакансию</div>
             </a>
         </div>
 
