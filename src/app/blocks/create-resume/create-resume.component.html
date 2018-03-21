@@ -628,7 +628,10 @@
                                 <label for="age">Телефон<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <input type="tel" name="phone-number" id="phone-number"
+                                <input type="tel"
+                                       name="phone-number"
+                                       id="phone-number"
+                                       (keypress)="onPhoneKeyPress($event)"
                                        [(ngModel)]="resumeForm.phoneNumber" required>
                             </div>
                         </div>
