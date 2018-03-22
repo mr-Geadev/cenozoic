@@ -1,10 +1,10 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants/api.constant";
-import { AuthService } from "../../services/auth.service";
-import { SystemMessageService } from "../../services/system-message.service";
-import { UserService } from "../../services/user.service";
+
+import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants";
+import { AuthService, SystemMessageService, UserService } from "../../services";
+import { isNumber } from "util";
 
 @Component({
     selector: 'worker-setting',
@@ -67,6 +67,12 @@ export class WorkerSettingComponent {
         });
     }
 
+    public onPhoneKeyPress(event: KeyboardEvent): void {
+        if (!((event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode === 43)) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    }
 
     public changePassword(): void {
         this._http.post(CHANGE_PASSWORD, this.passwords.value)

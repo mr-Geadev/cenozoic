@@ -78,7 +78,7 @@ export class CreateVacancyComponent implements OnInit {
     public sentVacancy(): void {
         this._createVacancyService.createVacancy(this.vacancy.value)
             .subscribe(
-                (res) => { this._msg.info('Ваше резюме сохранено')},
+                (res) => { this._msg.info('Ваша вакансия сохранено')},
                 (err) =>  { this._msg.info(err.error.errorMessage)}
             );
     }

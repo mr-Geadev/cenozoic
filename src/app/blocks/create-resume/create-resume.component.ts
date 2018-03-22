@@ -271,4 +271,11 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                 this.resumeForm.education[index].city = city;
             });
     }
+
+    public onPhoneKeyPress(event: KeyboardEvent): void {
+        if (!((event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode === 43)) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    }
 }

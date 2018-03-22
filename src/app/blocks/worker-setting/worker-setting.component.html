@@ -67,7 +67,11 @@
                         </label>
                     </div>
                     <div class="right">
-                        <input type="tel" id="phone" formControlName="phone" placeholder="В формате: +79991112233">
+                        <input type="tel"
+                               id="phone"
+                               (keypress)="onPhoneKeyPress($event)"
+                               formControlName="phone"
+                               placeholder="В формате: +79991112233">
                     </div>
                 </div>
                 <div class="side-title">
