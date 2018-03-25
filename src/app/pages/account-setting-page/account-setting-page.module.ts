@@ -8,6 +8,7 @@ import { BreadcrumbsModule, CreateResumeModule } from "../../blocks";
 
 import { AccountSettingPageComponent } from "./account-setting-page.component"
 import { WorkerSettingModule } from "../../blocks/worker-setting/worker-setting.module";
+import { EmployerSettingModule } from "../../blocks/employer-setting/employer-setting.module";
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { WorkerSettingModule } from "../../blocks/worker-setting/worker-setting.
         MatDialogModule,
 
         //blocks
-        WorkerSettingModule
+        WorkerSettingModule,
+        EmployerSettingModule
     ],
     exports: [AccountSettingPageComponent]
 })

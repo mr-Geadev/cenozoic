@@ -29,24 +29,24 @@
                     </div>
                 </div>
                 <div class="line not-dott"
-                     *ngIf="currentResume.experienceAll && (currentResume.experienceAll.oil.years || currentResume.experienceAll.mining.years)">
+                     *ngIf="currentResume.experienceAll && (currentResume.experienceAll.oil.year || currentResume.experienceAll.mining.year)">
                     <div class="parameter gray text">
                         Опыт работы
                     </div>
                     <div class="line">
-                        <div class="parameter gray text" *ngIf="currentResume.experienceAll.oil.years">
+                        <div class="parameter gray text" *ngIf="currentResume.experienceAll.oil.year">
                             в нефтегазовой промышленности
                         </div>
                         <div class="value black text">
-                            {{currentResume.experienceAll.oil.years}} года
+                            {{currentResume.experienceAll.oil.year}} года
                         </div>
                     </div>
-                    <div class="line" *ngIf="currentResume.experienceAll.mining.years">
+                    <div class="line" *ngIf="currentResume.experienceAll.mining.year">
                         <div class="parameter gray text">
                             в горнодобывающей промышленности
                         </div>
                         <div class="value black text">
-                            {{currentResume.experienceAll.mining.years}} года
+                            {{currentResume.experienceAll.mining.year}} года
                         </div>
                     </div>
                 </div>

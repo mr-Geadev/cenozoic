@@ -14,3 +14,4 @@ export * from './list-resume';
 export * from './resume-full';
 export * from './vacancy-full';
 export * from './worker-setting';
+export * from './employer-setting';

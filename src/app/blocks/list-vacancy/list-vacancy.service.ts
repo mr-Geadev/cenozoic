@@ -10,12 +10,12 @@ export class ListVacancyService {
 
     }
 
-    public getListVancacy(offset: number, config?: string): Observable<any> {
+    public getListVancacy(offset: number, config: string): Observable<any> {
         if (config === 'user') {
-            return this._http.post(LIST_VACANCY,{offset: offset, count: 24})
+            return this._http.get(LIST_VACANCY_USER)
                 .map(res => res['vacancyList']);
         } else {
-            return this._http.get(LIST_VACANCY_USER)
+            return this._http.post(LIST_VACANCY,{offset: offset, count: 24})
                 .map(res => res['vacancyList']);
         }
     }
