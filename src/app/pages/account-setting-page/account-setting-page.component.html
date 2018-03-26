@@ -6,4 +6,9 @@
     </div>
 </div>
 
-<worker-setting></worker-setting>
+<div *ngIf="typeCurrentUser">
+    <worker-setting
+            *ngIf="typeCurrentUser === 'worker'"></worker-setting>
+    <employer-setting
+            *ngIf="typeCurrentUser === 'employer'"></employer-setting>
+</div>

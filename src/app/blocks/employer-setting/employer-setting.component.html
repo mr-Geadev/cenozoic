@@ -12,8 +12,7 @@
                         </label>
                     </div>
                     <div class="right">
-                        <input type="text" id="email" [ngModelOptions]="{standalone: true}" disabled
-                               [(ngModel)]="currentUser.email"> <!--временно выключен-->
+                        <input type="text" id="email" [ngModelOptions]="{standalone: true}" disabled [(ngModel)]="currentUser.email"> <!--временно выключен-->
                     </div>
                 </div>
                 <div class="parameter">
@@ -48,12 +47,12 @@
             </form>
             <form [formGroup]="info" validate (submit)="changeUserInfo()">
                 <div class="side-title">
-                    Личные данные
+                    Данные компании
                 </div>
                 <div class="parameter">
                     <div class="left">
                         <label for="fio">
-                            Полное имя
+                            Название компании
                         </label>
                     </div>
                     <div class="right">
@@ -63,15 +62,11 @@
                 <div class="parameter">
                     <div class="left">
                         <label for="phone">
-                            Телефон
+                            Телефон для связи
                         </label>
                     </div>
                     <div class="right">
-                        <input type="tel"
-                               id="phone"
-                               (keypress)="onPhoneKeyPress($event)"
-                               formControlName="phone"
-                               placeholder="В формате: +79991112233">
+                        <input type="tel" id="phone" formControlName="phone" placeholder="В формате: +79991112233">
                     </div>
                 </div>
                 <div class="side-title">
@@ -82,10 +77,12 @@
                     <label for="inner">Личный кабинет</label>
                     <input id="e-mail-notification" type="checkbox" value="true" formControlName="email">
                     <label for="e-mail-notification">E-mail</label>
+                    <input id="push-notification" type="checkbox" value="true" formControlName="push">
+                    <label for="push-notification">Push</label>
                 </div>
                 <div class="parameter">
                     <button type="submit" class="submit" [disabled]="info.invalid">
-                        Сохранить изменения
+                        Сохранить изменеиния
                     </button>
                 </div>
                 <div class="parameter">
@@ -96,6 +93,20 @@
             </form>
         </div>
         <div class="col-4">
+            <div class="add-photo">
+                <div class="image default">
+                    <img src="/assets/images/icon-camera.svg"/>
+                </div>
+                <input id="load-photo" type="file" size="0"
+                       accept="image/*,image/jpeg,image/png,image/gif">
+                <label for="load-photo">Загрузить логотип</label>
+
+                <div class="message">
+                    Лого должно быть в формате PNG, JPG или GIF., разрешением не меньше 360х360 px.
+                    <br/><br/>
+                    Размер файла не должен<br/> превышать 5 Mb.
+                </div>
+            </div>
             <div class="rate">
                 <div class="short-name">
                     Тариф: базовый
