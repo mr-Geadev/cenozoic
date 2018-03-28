@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants";
 import { AuthService, SystemMessageService, UserService } from "../../services";
-import { isNumber } from "util";
 
 @Component({
     selector: 'worker-setting',
@@ -41,6 +40,7 @@ export class WorkerSettingComponent {
                     this.formCreate();
                 }
             });
+
     }
 
     public formCreate(): void {
