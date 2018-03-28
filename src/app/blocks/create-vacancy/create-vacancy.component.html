@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col form">
-                <form [formGroup]="vacancy" validate (submit)="sentVacancy()">
+                <form [formGroup]="vacancy" validate >
 
                     <div class="short-fields">
                         <div class="parameter name-of-vacancy">
@@ -102,13 +102,9 @@
                                 <label for="city">Город<span class="required">*</span></label>
                             </div>
                             <div class="right">
-                                <mat-form-field>
-                                    <mat-select name="city" id="city" formControlName="city">
-                                        <mat-option value="Санкт-Петербург">Санкт-Петербург</mat-option>
-                                        <mat-option value="Москва">Москва</mat-option>
-                                        <mat-option value="Саратов">Саратов</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                                <button mat-raised-button color="primary" (click)="changeEducationCity()">
+                                    {{vacancy.controls['city'].value ? vacancy.controls['city'].value  : 'Выберите город'}}
+                                </button>
                             </div>
                         </div>
 
@@ -200,7 +196,7 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" id="save" [disabled]="vacancy.invalid">
+                        <button type="submit" id="save" [disabled]="vacancy.invalid" (click)="sentVacancy()">
                             Сохранить вакансию
                         </button>
                         <div class="message">
