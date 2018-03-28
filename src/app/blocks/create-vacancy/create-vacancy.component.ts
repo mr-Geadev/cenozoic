@@ -69,7 +69,7 @@ export class CreateVacancyComponent implements OnInit {
         });
     }
 
-    public changeEducationCity(index: number): void {
+    public changeEducationCity(): void {
         this._dialog.open(ChangeCityModalComponent, {
             width: '600px',
             height: '370px'
