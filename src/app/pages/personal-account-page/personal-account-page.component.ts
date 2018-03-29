@@ -18,7 +18,9 @@ export class PersonalAccountPageComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+
         this.dictionary = this._localizationService.currentDictionary;
+
         this._userService.user$
             .subscribe(
                 (user) => user ? this.typeCurrentUser = user.typeAccount : null

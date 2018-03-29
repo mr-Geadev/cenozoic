@@ -37,8 +37,17 @@ export class ResumeFullComponent implements OnInit {
                 if (res.success) {
                     this.currentResume = res.resume;
                     this.currentResume.age = this.getAge(this.currentResume.birthday);
+                    this.currentResume.birthday = this.setBirthday(this.currentResume.birthday);
                 }
             });
+    }
+
+    public setBirthday(dateString):string {
+        let day = parseInt(dateString.substring(8,10));
+        let month = parseInt(dateString.substring(5,7));
+        let year = parseInt(dateString.substring(0,5));
+
+        return `${day}.${month}.${year}`
     }
 
     public getAge(dateString): number {
