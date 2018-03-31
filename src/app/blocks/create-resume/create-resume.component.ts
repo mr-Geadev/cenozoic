@@ -23,6 +23,7 @@ import {
 import { Subscription } from "rxjs/Subscription";
 import { ConfirmService } from "../../modals/confirm/confirm.service";
 import { ResConfirmService } from "../../modals/confirm/res-confirm.service";
+import { LocalizationService } from "../../services/localization.service";
 
 @Component({
     selector: 'create-resume',
@@ -35,17 +36,20 @@ import { ResConfirmService } from "../../modals/confirm/res-confirm.service";
     ],
 })
 export class CreateResumeComponent implements OnInit, OnDestroy {
+
     public resumeForm: any = DEFAULT_RESUME_FORM;
     public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
     public isAuthorized: boolean = false;
     public invalid: boolean = false;
-    public loadingPhotoButton: string = 'Загрузить фото';
+    public loadingPhotoButton: string = '';
 
     public textEditorConfig: any = {};
 
     private subscriptions: Subscription[] = [];
     private type: string = DEFAULT_TYPE;
-    private resumeImage: any = DEFAULT_RESUME_IMAGE;
+    public resumeImage: any = DEFAULT_RESUME_IMAGE;
+
+    public dictionary: any = null;
 
     public listVisibleElement: any = {
         experience: [],
@@ -61,10 +65,14 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                 private _systemMessageService: SystemMessageService,
                 private _dialog: MatDialog,
                 private _confirm: ConfirmService,
-                private _resConfirm: ResConfirmService) {
+                private _resConfirm: ResConfirmService,
+                private _localizationService: LocalizationService,) {
     }
 
     ngOnInit(): void {
+
+        this.dictionary = this._localizationService.currentDictionary;
+        this.loadingPhotoButton = this.dictionary.LOAD_PHOTO;
 
         this.subscriptions.push(this.userService.user$
             .filter(user => !!user)
