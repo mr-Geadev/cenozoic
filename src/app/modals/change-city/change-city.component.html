@@ -1,8 +1,8 @@
-<div class="title">Выберите город</div>
+<div class="title">{{dictionary.CHANGE_CITY}}</div>
 <div class="form">
     <input type="text"
            class="city"
-           placeholder="Введите название города"
+           placeholder="{{dictionary.CHANGE_CITY_PLACEHOLDER}}"
            #cityInput
            [(ngModel)]="currentCity"
            (keyup)="update(cityInput.value)"/>

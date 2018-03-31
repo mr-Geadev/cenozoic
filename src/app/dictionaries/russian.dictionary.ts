@@ -7,6 +7,8 @@ export const RUSSIAN_DICTIONARY = {
 
     //общее
     YOUR: 'Ваши',
+    CHANGE_CITY: 'Выберете город',
+    CHANGE_CITY_PLACEHOLDER: 'Введите название города',
 
 
     // меню
@@ -85,6 +87,7 @@ export const RUSSIAN_DICTIONARY = {
     YES:'Да',
     NO: 'Нет',
     EXPECTED_POSITION: 'Желаемая должность',
+    CHANGE_BIRTHDAY: 'выберите дату рождения',
     SALARY: 'Оклад',
     BIRTHDAY: 'Дата рождения',
     IRRELEVANT: 'Не имеет значения',
@@ -135,6 +138,7 @@ export const RUSSIAN_DICTIONARY = {
         EDUCATION_YEAR: 'год',
     LANGUAGES: 'Знание языков',
         LANGUAGE: 'Язык',
+        LANGUAGE_PLACEHOLDER: 'Уровень владения',
         LANGUAGE_ADD: 'Добавить язык',
         LANGUAGE_EN: 'Английский',
         LANGUAGE_RU: 'Русский',
@@ -170,6 +174,7 @@ export const RUSSIAN_DICTIONARY = {
     LOAD_PHOTO: 'Загрузить фото',
     LOAD_PHOTO_DESCRIPTION: 'Фото должно быть в формате PNG, JPG или GIF., разрешением не меньше 360х360 px. <br/><br/> Размер файла не должен <br/> превышать 5 Mb.',
     BUTTON_SAVE_DESCRIPTION: 'Вы всегда можете отредактировать резюме в личном кабинете',
+    BUTTON_SAVE_ALERT: 'Заполнены не все обязательные поля!',
     GET_ADVANCED_ACCOUNT: 'Получите улучшенный аккаунт',
     GET_ADVANCED_ACCOUNT_DESCRIPTION: 'Приобретая улучшенный аккаунт вы получаете возможность продвинуть свое резюме в топ',
     VIEW_RATE: 'Посмотреть тарифы',

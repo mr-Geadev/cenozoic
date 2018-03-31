@@ -7,6 +7,8 @@ export const ENGLISH_DICTIONARY = {
 
     //общее
     YOUR: 'Your',
+    CHANGE_CITY: 'Choose a city',
+    CHANGE_CITY_PLACEHOLDER: 'Enter the name of the city',
 
 
     // меню
@@ -85,6 +87,7 @@ export const ENGLISH_DICTIONARY = {
     YES: 'Yes',
     NO: 'No',
     EXPECTED_POSITION: 'Expected Position',
+    CHANGE_BIRTHDAY: 'select birth date',
     SALARY: 'Salary',
     BIRTHDAY: 'Date of birthday',
     IRRELEVANT: 'Does not matter',
@@ -135,6 +138,7 @@ export const ENGLISH_DICTIONARY = {
         EDUCATION_YEAR: 'year',
     LANGUAGES: 'Knowledge of languages',
         LANGUAGE: 'language',
+        LANGUAGE_PLACEHOLDER: 'Ownership level',
         LANGUAGE_ADD: 'Add language',
         LANGUAGE_EN: 'English',
         LANGUAGE_RU: 'Russian',
@@ -169,7 +173,8 @@ export const ENGLISH_DICTIONARY = {
     PHONE: 'Phone',
     LOAD_PHOTO: 'Upload photo',
     LOAD_PHOTO_DESCRIPTION: 'The photo must be in PNG, JPG or GIF., With a resolution of at least 360x360 px. <br/><br/>The file size should not exceed 5 Mb.',
-    BUTTON_SAVE_DESCRIPTION: 'You can always edit your CV via your account\n',
+    BUTTON_SAVE_DESCRIPTION: 'You can always edit your CV via your account',
+    BUTTON_SAVE_ALERT: 'Not all fields are required!',
     GET_ADVANCED_ACCOUNT: 'Get an account with advanced features',
     GET_ADVANCED_ACCOUNT_DESCRIPTION: 'You can use the promotion of your CV by purchasing an account with advanced features (top of CV list).',
     VIEW_RATE: 'View Price list',
