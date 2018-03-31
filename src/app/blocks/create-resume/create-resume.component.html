@@ -74,7 +74,7 @@
                                                 [(ngModel)]="resumeForm.family" required>
                                         <mat-option value="{{dictionary.SINGLE}}">{{dictionary.SINGLE}}</mat-option>
                                         <mat-option value="{{dictionary.MARRIED}}">{{dictionary.MARRIED}}</mat-option>
-                                        <mat-option value="{{dictionary.DIVORCED}}">{{dictionary.DIVORCED}}</mat-option>
+                                        <!--<mat-option value="{{dictionary.DIVORCED}}">{{dictionary.DIVORCED}}</mat-option>-->
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -267,6 +267,9 @@
                                                 </mat-option>
                                                 <mat-option value="{{dictionary.TYPE_WORK_MINING}}">
                                                     {{dictionary.TYPE_WORK_MINING}}
+                                                </mat-option>
+                                                <mat-option value="{{dictionary.TYPE_WORK_OTHER}}">
+                                                    {{dictionary.TYPE_WORK_OTHER}}
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>

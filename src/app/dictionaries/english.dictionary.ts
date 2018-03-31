@@ -33,9 +33,15 @@ export const ENGLISH_DICTIONARY = {
     IN_MSK: 'In Moscow',
     IN_SAR: 'In Saratov',
 
-    HOME_PAGE_CONTENT_1: `We have collected the most <a href="#" class="inline-link"> current vacancies </a> in the Oil&Gas and Mining industries. <br> Compose your CV, send it to employers and you will definitely find a dream job!`,
-    HOME_PAGE_CONTENT_2: `On our portal you can find the most complete <a href="#" class="inline-link"> employee database </a> of the Oil&Gas and Mining industries. Just create vacancies and wait for the response of candidates.`,
-    HOME_PAGE_CONTENT_3: `We invite you to mutually beneficial cooperation. Please fill out the form<a href="#" class="inline-link"> for the desired cooperation  </a> and we will contact you as soon as possible.`,
+    HOME_PAGE_CONTENT_1_1: 'We have collected the most ',
+    HOME_PAGE_CONTENT_1_2: 'current vacancies ',
+    HOME_PAGE_CONTENT_1_3: 'in the Oil&Gas and Mining industries. <br> Compose your CV, send it to employers and you will definitely find a dream job!',
+
+    HOME_PAGE_CONTENT_2_1: 'On our portal you can find the most complete ',
+    HOME_PAGE_CONTENT_2_2: 'employee database ',
+    HOME_PAGE_CONTENT_2_3: 'of the Oil&Gas and Mining industries. Just create vacancies and wait for the response of candidates.',
+
+    HOME_PAGE_CONTENT_3: `We invite you to mutually beneficial cooperation. <!--Please fill out the form<a href="#" class="inline-link"> for the desired cooperation  </a> and we will contact you as soon as possible.-->`,
 
     HOME_PAGE_STEP_1: 'Sign up on the Portal',
     HOME_PAGE_STEP_2: 'Compose and Post your CV',
@@ -118,6 +124,7 @@ export const ENGLISH_DICTIONARY = {
         TYPE_WORK: 'Type of industry',
         TYPE_WORK_OIL: 'Oil and gas',
         TYPE_WORK_MINING: 'Mining',
+        TYPE_WORK_OTHER: 'Other',
         ORGANIZATION_WORK: 'Organization',
         POSITION_WORK: 'Position',
         DUTIES_WORK: 'Job Description',
