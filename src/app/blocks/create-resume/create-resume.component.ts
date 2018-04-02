@@ -37,17 +37,18 @@ import { LocalizationService } from "../../services/localization.service";
 })
 export class CreateResumeComponent implements OnInit, OnDestroy {
 
-    public resumeForm: any = DEFAULT_RESUME_FORM;
-    public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
-    public isAuthorized: boolean = false;
-    public invalid: boolean = false;
-    public loadingPhotoButton: string = '';
+    public resumeForm: any = DEFAULT_RESUME_FORM; // резюме, которое будет заполняться
+    public age: any = 1000;
+    public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM); // схема незаполненнго резюме
+    public isAuthorized: boolean = false; // проверка авторизации текущего пользователя
+    public invalid: boolean = false; // форма валидна/нет
+    public loadingPhotoButton: string = ''; // текст кнопки загрузки фото
 
-    public textEditorConfig: any = {};
+    public textEditorConfig: any = {}; // для RichTextComponent'ы
 
-    private subscriptions: Subscription[] = [];
-    private type: string = DEFAULT_TYPE;
-    public resumeImage: any = DEFAULT_RESUME_IMAGE;
+    private subscriptions: Subscription[] = []; // для горчиях подписок
+    private type: string = DEFAULT_TYPE; // создание/редактирование
+    public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
 
     public dictionary: any = null;
 
