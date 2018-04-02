@@ -6,7 +6,13 @@
             <div class="title">
                 {{ dictionary.FOR_CANDIDATES }}
             </div>
-            <p class="text" [innerHTML]="dictionary.HOME_PAGE_CONTENT_1"></p>
+            <p class="text">
+                {{dictionary.HOME_PAGE_CONTENT_1_1}}
+                <a [routerLink]="['/list-vacancy']" class="inline-link">
+                    {{dictionary.HOME_PAGE_CONTENT_1_2}}
+                </a>
+                {{dictionary.HOME_PAGE_CONTENT_1_3}}
+            </p>
         </div>
     </div>
     <div class="for">
@@ -16,7 +22,13 @@
             <div class="title">
                 {{ dictionary.FOR_EMPLOYER }}
             </div>
-            <p class="text" [innerHTML]="dictionary.HOME_PAGE_CONTENT_2"></p>
+            <p class="text">
+                {{dictionary.HOME_PAGE_CONTENT_2_1}}
+                <a [routerLink]="['/list-resume']" class="inline-link">
+                    {{dictionary.HOME_PAGE_CONTENT_2_2}}
+                </a>
+                {{dictionary.HOME_PAGE_CONTENT_2_3}}
+            </p>
         </div>
     </div>
     <div class="for">

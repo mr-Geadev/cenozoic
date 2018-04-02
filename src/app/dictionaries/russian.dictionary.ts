@@ -7,6 +7,8 @@ export const RUSSIAN_DICTIONARY = {
 
     //общее
     YOUR: 'Ваши',
+    CHANGE_CITY: 'Выберете город',
+    CHANGE_CITY_PLACEHOLDER: 'Введите название города',
 
 
     // меню
@@ -31,9 +33,15 @@ export const RUSSIAN_DICTIONARY = {
     IN_MSK: 'В Москве',
     IN_SAR: 'В Cаратов',
 
-    HOME_PAGE_CONTENT_1: `Мы собрали самые <a href="#" class="inline-link">актуальные вакансии</a> в нефте-газовой и горнодобывающей сферах. <br> Составляйте свое резюме, отправляйте работодателям и вы обязательно найдете работу мечты!`,
-    HOME_PAGE_CONTENT_2: `На нашем портале вы сможете найти самую полную <a href="#" class="inline-link">базу сотрудников</a> нефте-газовой и горнодобывающей промышленностях. Просто создайте вакансии и ждите отклика соискателей.`,
-    HOME_PAGE_CONTENT_3: `Приглашаем Вас к взаимовыгодному сотрудничеству. Для каждого заинтересованного партнера мы подготовим предложение, основанное на анализе Ваших потребностей.​ Если вам интересно сотрудничество <a href="#" class="inline-link">заполните форму</a> и мы свяжемся с вами в ближайшее время.`,
+    HOME_PAGE_CONTENT_1_1: 'Мы собрали самые ',
+    HOME_PAGE_CONTENT_1_2: 'актуальные вакансии ',
+    HOME_PAGE_CONTENT_1_3: 'в нефте-газовой и горнодобывающей сферах. <br> Составляйте свое резюме, отправляйте работодателям и вы обязательно найдете работу мечты!',
+
+    HOME_PAGE_CONTENT_2_1: 'На нашем портале вы сможете найти самую полную ',
+    HOME_PAGE_CONTENT_2_2: 'базу сотрудников ',
+    HOME_PAGE_CONTENT_2_3: 'нефте-газовой и горнодобывающей промышленностях. Просто создайте вакансии и ждите отклика соискателей.',
+
+    HOME_PAGE_CONTENT_3: `Приглашаем Вас к взаимовыгодному сотрудничеству. Для каждого заинтересованного партнера мы подготовим предложение, основанное на анализе Ваших потребностей.​ <!--Если вам интересно сотрудничество <a href="#" class="inline-link">заполните форму</a> и мы свяжемся с вами в ближайшее время.-->`,
 
     HOME_PAGE_STEP_1: 'Зарегистрируйтесь на сайте',
     HOME_PAGE_STEP_2: 'Составьте и Разместите свое резюме',
@@ -85,6 +93,7 @@ export const RUSSIAN_DICTIONARY = {
     YES:'Да',
     NO: 'Нет',
     EXPECTED_POSITION: 'Желаемая должность',
+    CHANGE_BIRTHDAY: 'выберите дату рождения',
     SALARY: 'Оклад',
     BIRTHDAY: 'Дата рождения',
     IRRELEVANT: 'Не имеет значения',
@@ -115,19 +124,20 @@ export const RUSSIAN_DICTIONARY = {
         TYPE_WORK: 'Тип промышленности',
         TYPE_WORK_OIL: 'Нефтегазовая',
         TYPE_WORK_MINING: 'Горнодобывающая',
+        TYPE_WORK_OTHER: 'Другая',
         ORGANIZATION_WORK: 'Организация',
         POSITION_WORK: 'Позиция',
         DUTIES_WORK: 'Ваши обязанности',
         ADD_PLACE_WORK: 'Добавить место работы',
     EDUCATION: 'Образование',
         EDUCATION_PLACE: 'Учебное заведение',
-        EDUCATION_STAGE: 'Степень образованияф',
+        EDUCATION_STAGE: 'Степень образования',
         EDUCATION_STAGE_HIGH: 'Высшее',
         EDUCATION_STAGE_MIDDLE: 'Среднее',
         EDUCATION_START: 'Начало обучения',
         EDUCATION_END: 'Окончание',
         EDUCATION_CITY: 'Город',
-        EDUCATION_CHANGE_CITY: 'Выберити город',
+        EDUCATION_CHANGE_CITY: 'Выберете город',
         EDUCATION_SCHOOL: 'Учебное заведение',
         EDUCATION_FACULTY: 'Факультет',
         EDUCATION_SPECIALTY: 'Специальность',
@@ -135,6 +145,7 @@ export const RUSSIAN_DICTIONARY = {
         EDUCATION_YEAR: 'год',
     LANGUAGES: 'Знание языков',
         LANGUAGE: 'Язык',
+        LANGUAGE_PLACEHOLDER: 'Уровень владения',
         LANGUAGE_ADD: 'Добавить язык',
         LANGUAGE_EN: 'Английский',
         LANGUAGE_RU: 'Русский',
@@ -170,6 +181,7 @@ export const RUSSIAN_DICTIONARY = {
     LOAD_PHOTO: 'Загрузить фото',
     LOAD_PHOTO_DESCRIPTION: 'Фото должно быть в формате PNG, JPG или GIF., разрешением не меньше 360х360 px. <br/><br/> Размер файла не должен <br/> превышать 5 Mb.',
     BUTTON_SAVE_DESCRIPTION: 'Вы всегда можете отредактировать резюме в личном кабинете',
+    BUTTON_SAVE_ALERT: 'Заполнены не все обязательные поля!',
     GET_ADVANCED_ACCOUNT: 'Получите улучшенный аккаунт',
     GET_ADVANCED_ACCOUNT_DESCRIPTION: 'Приобретая улучшенный аккаунт вы получаете возможность продвинуть свое резюме в топ',
     VIEW_RATE: 'Посмотреть тарифы',

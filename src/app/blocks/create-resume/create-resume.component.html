@@ -74,7 +74,7 @@
                                                 [(ngModel)]="resumeForm.family" required>
                                         <mat-option value="{{dictionary.SINGLE}}">{{dictionary.SINGLE}}</mat-option>
                                         <mat-option value="{{dictionary.MARRIED}}">{{dictionary.MARRIED}}</mat-option>
-                                        <mat-option value="{{dictionary.DIVORCED}}">{{dictionary.DIVORCED}}</mat-option>
+                                        <!--<mat-option value="{{dictionary.DIVORCED}}">{{dictionary.DIVORCED}}</mat-option>-->
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -88,11 +88,11 @@
                             </div>
                             <div class="right radio">
                                 <input type="radio" name="business-trips" id="business-trips-yes"
-                                       value="{{dictionary.YES}}"
+                                       value="да"
                                        [(ngModel)]="resumeForm.businessTrips"/>
                                 <label for="business-trips-yes">{{dictionary.YES}}</label>
                                 <input type="radio" name="business-trips" id="business-trips-no"
-                                       value="{{dictionary.NO}}"
+                                       value="нет"
                                        [(ngModel)]="resumeForm.businessTrips" checked/>
                                 <label for="business-trips-no">{{dictionary.NO}}</label>
                             </div>
@@ -104,10 +104,10 @@
                                         class="required">*</span></label>
                             </div>
                             <div class="right radio">
-                                <input type="radio" name="relocation" id="relocation-yes" value="{{dictionary.YES}}"
+                                <input type="radio" name="relocation" id="relocation-yes" value="да"
                                        [(ngModel)]="resumeForm.relocation"/>
                                 <label for="relocation-yes">{{dictionary.YES}}</label>
-                                <input type="radio" name="relocation" id="relocation-no" value="{{dictionary.NO}}"
+                                <input type="radio" name="relocation" id="relocation-no" value="нет"
                                        [(ngModel)]="resumeForm.relocation" checked/>
                                 <label for="relocation-no">{{dictionary.NO}}</label>
                             </div>
@@ -267,6 +267,9 @@
                                                 </mat-option>
                                                 <mat-option value="{{dictionary.TYPE_WORK_MINING}}">
                                                     {{dictionary.TYPE_WORK_MINING}}
+                                                </mat-option>
+                                                <mat-option value="{{dictionary.TYPE_WORK_OTHER}}">
+                                                    {{dictionary.TYPE_WORK_OTHER}}
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -489,7 +492,7 @@
                                 <div class="line"></div>
                                 <mat-form-field class="short-input">
                                     <mat-select name="language-level-{{i}}" class="language"
-                                                [placeholder]="'Уровень владения'"
+                                                [placeholder]="dictionary.LANGUAGE_PLACEHOLDER"
                                                 [(ngModel)]="resumeForm.languages[i].level" id="level" required>
                                         <mat-option value="{{dictionary.LANGUAGE_LVL_START}}">{{dictionary.LANGUAGE_LVL_START}}</mat-option>
                                         <mat-option value="{{dictionary.LANGUAGE_LVL_MIDDLE}}">{{dictionary.LANGUAGE_LVL_MIDDLE}}</mat-option>
@@ -688,7 +691,7 @@
                             {{dictionary.SAVE}}
                         </button>
                         <div class="message" id="alert" (click)="showRequired()">
-                            Заполнены не все обязательные поля!
+                            {{dictionary.BUTTON_SAVE_ALERT}}
                         </div>
                         <div class="message">
                             {{dictionary.BUTTON_SAVE_DESCRIPTION}}

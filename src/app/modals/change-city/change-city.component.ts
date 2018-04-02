@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from "@angular/material";
+import { LocalizationService } from "../../services";
 
 import { ChangeCityModalService } from "./change-city.service";
 
@@ -13,14 +14,19 @@ export class ChangeCityModalComponent implements OnInit {
     public showContextMenu: boolean = false;
     public currentCity: string = '';
     public cities: any[] = [];
+    public dictionary: any = null;
 
     private _locations: any[] = [];
 
     constructor(private dialogRef: MatDialogRef<any>,
-                private cityModalService: ChangeCityModalService) {
+                private cityModalService: ChangeCityModalService,
+                private _localizationService: LocalizationService) {
     }
 
     ngOnInit(): void {
+
+        this.dictionary = this._localizationService.currentDictionary
+
         this.currentCity = this.cityModalService.getCurrentCity();
         this.cityModalService.getLocations()
             .subscribe((locations: any) => {
