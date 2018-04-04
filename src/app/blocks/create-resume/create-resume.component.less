@@ -545,4 +545,19 @@
 	form.invalid .ng-invalid {
 		background-color: @alert !important;
 	}
+
+
+	.validation-alert {
+		position: absolute;
+		top: 100%;
+		font-size: 13px;
+		color: #ec3737;
+		display: none;
+	}
+	.validation-alert.visible {
+		display: block;
+	}
+	.ng-touched.ng-invalid:not(:disabled) ~ .validation-alert {
+		display: block;
+	}
 }
