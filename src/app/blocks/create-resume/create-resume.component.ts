@@ -72,15 +72,20 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
 
+        // подклюение локализцаии
         this.dictionary = this._localizationService.currentDictionary;
+
+        // установка текста кнопки лоаклизации из словря
         this.loadingPhotoButton = this.dictionary.LOAD_PHOTO;
 
+        // получить текущего юзера
         this.subscriptions.push(this.userService.user$
             .filter(user => !!user)
             .subscribe((user) => {
                 this.isAuthorized = !!user;
                 this.resumeForm.fullName = user.fullName;
-            }))
+            })
+        );
 
         this.subscriptions.push(this.resumeService.resume$
             .subscribe((resume) => {

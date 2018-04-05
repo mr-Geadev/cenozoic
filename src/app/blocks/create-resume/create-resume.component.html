@@ -6,7 +6,7 @@
         <div class="row title alert" *ngIf="!isAuthorized">
             Вы должны авторизироваться чтобы создать резюме
         </div>
-        <div class="row" *ngIf="isAuthorized">
+        <div class="row" *ngIf="!isAuthorized">
             <div class="col form">
                 <form id="create-summary" #myForm="ngForm" [ngClass]="{invalid: invalid}">
 
