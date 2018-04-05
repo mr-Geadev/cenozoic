@@ -525,7 +525,7 @@
 
 	form.ng-invalid {
 		#alert {
-			display: block !important;
+			display: inline !important;
 		}
 	}
 
@@ -553,6 +553,10 @@
 		font-size: 13px;
 		color: #ec3737;
 		display: none;
+
+		&.select {
+			margin-top: -15px;
+		}
 	}
 	.validation-alert.visible {
 		display: block;

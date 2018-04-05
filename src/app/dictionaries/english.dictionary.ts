@@ -10,6 +10,20 @@ export const ENGLISH_DICTIONARY = {
     CHANGE_CITY: 'Choose a city',
     CHANGE_CITY_PLACEHOLDER: 'Enter the name of the city',
 
+    MONTHS: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ],
 
     // меню
     FOR_CANDIDATES: 'For candidates',
@@ -186,4 +200,13 @@ export const ENGLISH_DICTIONARY = {
     GET_ADVANCED_ACCOUNT_DESCRIPTION: 'You can use the promotion of your CV by purchasing an account with advanced features (top of CV list).',
     VIEW_RATE: 'View Price list',
     FULL_EXPERIENCE: 'Full experience',
+    // сообщения валидаторов
+    FIELD_SHOULD_BE_COMPLETED: 'This field must be filled in',
+    VALID_EMAIL: 'Enter mail in the format: exapmple@domain.com',
+    VALID_PHONE_NUMBER: 'Enter the phone in the format +79991112233',
+    VALID_ENTRY_DATE: 'Enter the date',
+    VALID_ENTRY_DATE_END_WORK: 'Enter the date or set "Until now"',
+    VALID_CHANGE_INDUSTRIAL: 'Select type of industry',
+    VALID_CHANGE_EDUCATION: 'Select type of education',
+    VALID_CHANGE_LANGUAGE: 'Enter information about the language that you own',
 };
