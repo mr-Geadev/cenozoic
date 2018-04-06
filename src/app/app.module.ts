@@ -26,6 +26,10 @@ import { ConfirmModule } from "./modals/confirm/confirm.module";
 import { SortService } from "./services/sort.service";
 
 const ROUTES = [
+    {
+        path: 'admin',
+        loadChildren: 'app/admin/admin.module#AdminModule'
+    },
     { path: '**', redirectTo: '/' }
 ];
 
