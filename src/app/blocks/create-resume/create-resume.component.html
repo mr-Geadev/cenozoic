@@ -6,22 +6,26 @@
         <div class="row title alert" *ngIf="!isAuthorized">
             Вы должны авторизироваться чтобы создать резюме
         </div>
-        <div class="row" *ngIf="!isAuthorized">
+        <div class="row" *ngIf="isAuthorized">
             <div class="col form">
                 <form id="create-summary" #myForm="ngForm" [ngClass]="{invalid: invalid}">
 
                     <div class="main-fields part">
 
+
+                        <!--название-->
                         <div class="parameter job">
                             <div class="left">
                                 <label for="job">{{dictionary.EXPECTED_POSITION}}<span class="required">*</span></label>
                             </div>
                             <div class="right">
                                 <input type="text" name="job" id="job" [(ngModel)]="resumeForm.job" required>
-                                <div class="validation-alert">Поле должно быть заполнено</div>
+                                <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                             </div>
                         </div>
 
+
+                        <!--зарплата-->
                         <div class="parameter salary">
                             <div class="left">
                                 <label for="salary-from">{{dictionary.SALARY}}<span class="required">*</span></label>
@@ -33,13 +37,15 @@
 
                                 <input type="number" name="salary" id="salary-from" [(ngModel)]="resumeForm.salary"
                                        required>
-                                <div class="validation-alert">Поле должно быть заполнено</div>
+                                <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 <div class="word rub">
                                     руб.
                                 </div>
                             </div>
                         </div>
 
+
+                        <!--возраст-->
                         <div class="parameter age">
                             <div class="left">
                                 <label>{{dictionary.BIRTHDAY}}<span class="required">*</span></label>
@@ -57,10 +63,10 @@
                                 <label for="gender">{{dictionary.SEX}}<span class="required">*</span></label>
                             </div>
                             <div class="right radio" id="gender">
-                                <input type="radio" name="gender" id="man" value="Мужчина"
+                                <input type="radio" name="gender" id="man" value="man"
                                        [(ngModel)]="resumeForm.gender" checked/>
                                 <label for="man">{{dictionary.MAN}}</label>
-                                <input type="radio" name="gender" id="female" value="Женщина"
+                                <input type="radio" name="gender" id="female" value="woman"
                                        [(ngModel)]="resumeForm.gender"/>
                                 <label for="female">{{dictionary.WOMAN}}</label>
                             </div>
@@ -75,12 +81,12 @@
                                 <mat-form-field>
                                     <mat-select name="family" id="family-position" class="short-input"
                                                 [(ngModel)]="resumeForm.family" required>
-                                        <mat-option value="{{dictionary.SINGLE}}">{{dictionary.SINGLE}}</mat-option>
-                                        <mat-option value="{{dictionary.MARRIED}}">{{dictionary.MARRIED}}</mat-option>
-                                        <!--<mat-option value="{{dictionary.DIVORCED}}">{{dictionary.DIVORCED}}</mat-option>-->
+                                        <mat-option value="single">{{dictionary.SINGLE}}</mat-option>
+                                        <mat-option value="married">{{dictionary.MARRIED}}</mat-option>
+                                        <!--<mat-option value="divorced">{{dictionary.DIVORCED}}</mat-option>-->
                                     </mat-select>
-                                    <div class="validation-alert">Поле должно быть заполнено</div>
                                 </mat-form-field>
+                                <div class="validation-alert select">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                             </div>
                         </div>
 
@@ -92,11 +98,11 @@
                             </div>
                             <div class="right radio">
                                 <input type="radio" name="business-trips" id="business-trips-yes"
-                                       value="да"
+                                       [value]="true"
                                        [(ngModel)]="resumeForm.businessTrips"/>
                                 <label for="business-trips-yes">{{dictionary.YES}}</label>
                                 <input type="radio" name="business-trips" id="business-trips-no"
-                                       value="нет"
+                                       [value]="false"
                                        [(ngModel)]="resumeForm.businessTrips" checked/>
                                 <label for="business-trips-no">{{dictionary.NO}}</label>
                             </div>
@@ -108,10 +114,10 @@
                                         class="required">*</span></label>
                             </div>
                             <div class="right radio">
-                                <input type="radio" name="relocation" id="relocation-yes" value="да"
+                                <input type="radio" name="relocation" id="relocation-yes" [value]="true"
                                        [(ngModel)]="resumeForm.relocation"/>
                                 <label for="relocation-yes">{{dictionary.YES}}</label>
-                                <input type="radio" name="relocation" id="relocation-no" value="нет"
+                                <input type="radio" name="relocation" id="relocation-no" [value]="false"
                                        [(ngModel)]="resumeForm.relocation" checked/>
                                 <label for="relocation-no">{{dictionary.NO}}</label>
                             </div>
@@ -125,14 +131,14 @@
                             <div class="right">
                                 <mat-form-field>
                                     <mat-select name="schedule" [(ngModel)]="resumeForm.schedule" required>
-                                        <mat-option value="{{dictionary.IRRELEVANT}}">{{dictionary.IRRELEVANT}}
+                                        <mat-option value="none">{{dictionary.IRRELEVANT}}
                                         </mat-option>
-                                        <mat-option value="{{dictionary.FULL_DAY}}">{{dictionary.FULL_DAY}}</mat-option>
-                                        <mat-option value="{{dictionary.REMOTE}}">{{dictionary.REMOTE}}</mat-option>
-                                        <mat-option value="{{dictionary.SHIFT}}">{{dictionary.SHIFT}}</mat-option>
+                                        <mat-option value="full">{{dictionary.FULL_DAY}}</mat-option>
+                                        <mat-option value="remoute">{{dictionary.REMOTE}}</mat-option>
+                                        <mat-option value="watch">{{dictionary.SHIFT}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <div class="validation-alert">Поле должно быть заполнено</div>
+                                <div class="validation-alert select">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 <div class="line"></div>
                             </div>
                         </div>
@@ -146,19 +152,14 @@
                                     <mat-select name="employment" id="employment"
                                                 [(ngModel)]="resumeForm.employmentType"
                                                 required>
-                                        <mat-option value="{{dictionary.IRRELEVANT}}">{{dictionary.IRRELEVANT}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.FULL_EMPLOYMENT}}">
-                                            {{dictionary.FULL_EMPLOYMENT}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.PART}}">{{dictionary.PART}}</mat-option>
-                                        <mat-option value="{{dictionary.TEMPORARY}}">{{dictionary.TEMPORARY}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.INTERNSHIP}}">{{dictionary.INTERNSHIP}}
-                                        </mat-option>
+                                        <mat-option value="none">{{dictionary.IRRELEVANT}}</mat-option>
+                                        <mat-option value="full">{{dictionary.FULL_EMPLOYMENT}}</mat-option>
+                                        <mat-option value="part">{{dictionary.PART}}</mat-option>
+                                        <mat-option value="time">{{dictionary.TEMPORARY}}</mat-option>
+                                        <mat-option value="internship">{{dictionary.INTERNSHIP}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <div class="validation-alert">Поле должно быть заполнено</div>
+                                <div class="validation-alert select">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 <div class="line"></div>
                             </div>
                         </div>
@@ -194,25 +195,14 @@
                                                         class="shortest-select"
                                                         [(ngModel)]="resumeForm.experience[i].startMonth"
                                                         required>
-                                                <mat-option value="Январь">Январь</mat-option>
-                                                <mat-option value="Февраль">Февраль</mat-option>
-                                                <mat-option value="Март">Март</mat-option>
-                                                <mat-option value="Апрель">Апрель</mat-option>
-                                                <mat-option value="Май">Май</mat-option>
-                                                <mat-option value="Июнь">Июнь</mat-option>
-                                                <mat-option value="Июль">Июль</mat-option>
-                                                <mat-option value="Июнь">Июнь</mat-option>
-                                                <mat-option value="Август">Август</mat-option>
-                                                <mat-option value="Сентябрь">Сентябрь</mat-option>
-                                                <mat-option value="Октябрь">Октябрь</mat-option>
-                                                <mat-option value="Ноябрь">Ноябрь</mat-option>
-                                                <mat-option value="Декабрь">Декабрь</mat-option>
+                                                <mat-option *ngFor="let month of dictionary.MONTHS; let number = index;"
+                                                        [value]="number">{{month}}</mat-option>
                                             </mat-select>
                                         </mat-form-field>
                                         <input type="number" name="experience-startYear-{{i}}" id="start" required
                                                class="shortest-input" [(ngModel)]="resumeForm.experience[i].startYear">
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
-                                        <div class="validation-alert">Введите дату</div>
+                                        <div class="validation-alert select">{{dictionary.VALID_ENTRY_DATE}}</div>
                                     </div>
                                 </div>
 
@@ -230,19 +220,8 @@
                                                             [disabled]="resumeForm.experience[i].present"
                                                             [(ngModel)]="resumeForm.experience[i].endMonth"
                                                             required>
-                                                    <mat-option value="Январь">Январь</mat-option>
-                                                    <mat-option value="Февраль">Февраль</mat-option>
-                                                    <mat-option value="Март">Март</mat-option>
-                                                    <mat-option value="Апрель">Апрель</mat-option>
-                                                    <mat-option value="Май">Май</mat-option>
-                                                    <mat-option value="Июнь">Июнь</mat-option>
-                                                    <mat-option value="Июль">Июль</mat-option>
-                                                    <mat-option value="Июнь">Июнь</mat-option>
-                                                    <mat-option value="Август">Август</mat-option>
-                                                    <mat-option value="Сентябрь">Сентябрь</mat-option>
-                                                    <mat-option value="Октябрь">Октябрь</mat-option>
-                                                    <mat-option value="Ноябрь">Ноябрь</mat-option>
-                                                    <mat-option value="Декабрь">Декабрь</mat-option>
+                                                    <mat-option *ngFor="let month of dictionary.MONTHS; let number = index;"
+                                                                [value]="number">{{month}}</mat-option>
                                                 </mat-select>
                                             </mat-form-field>
                                         </div>
@@ -251,7 +230,7 @@
                                                [(ngModel)]="resumeForm.experience[i].endYear"
                                                [disabled]="resumeForm.experience[i].present"
                                                [required]="!resumeForm.experience[i].present">
-                                        <div class="validation-alert">Введите дату либо поставьте "По настоящее время"</div>
+                                        <div class="validation-alert select">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
                                         <input type="checkbox" name="experience-name-{{i}}" value="true"
                                                id="present-{{i}}" [(ngModel)]="resumeForm.experience[i].present">
@@ -270,18 +249,12 @@
                                                         class="shortest-select"
                                                         [(ngModel)]="resumeForm.experience[i].type"
                                                         required>
-                                                <mat-option value="{{dictionary.TYPE_WORK_OIL}}">
-                                                    {{dictionary.TYPE_WORK_OIL}}
-                                                </mat-option>
-                                                <mat-option value="{{dictionary.TYPE_WORK_MINING}}">
-                                                    {{dictionary.TYPE_WORK_MINING}}
-                                                </mat-option>
-                                                <mat-option value="{{dictionary.TYPE_WORK_OTHER}}">
-                                                    {{dictionary.TYPE_WORK_OTHER}}
-                                                </mat-option>
+                                                <mat-option value="oil">{{dictionary.TYPE_WORK_OIL}}</mat-option>
+                                                <mat-option value="mining">{{dictionary.TYPE_WORK_MINING}}</mat-option>
+                                                <mat-option value="other">{{dictionary.TYPE_WORK_OTHER}}</mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                        <div class="validation-alert">Выберите тип промышленности</div>
+                                        <div class="validation-alert select">{{dictionary.VALID_CHANGE_INDUSTRIAL}}</div>
                                     </div>
                                 </div>
 
@@ -292,7 +265,7 @@
                                     <div class="right">
                                         <input type="text" name="experience-company-{{i}}" id="company"
                                                [(ngModel)]="resumeForm.experience[i].organization" required>
-                                        <div class="validation-alert">Поле должно быть заполнено</div>
+                                        <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
                                 </div>
 
@@ -303,7 +276,7 @@
                                     <div class="right">
                                         <input type="text" name="experience-job-{{i}}" id="was-job"
                                                [(ngModel)]="resumeForm.experience[i].job" required>
-                                        <div class="validation-alert">Поле должно быть заполнено</div>
+                                        <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
                                 </div>
 
@@ -314,7 +287,7 @@
                                     <div class="right">
                                         <input type="text" name="duties-{{i}}" id="duties"
                                                [(ngModel)]="resumeForm.experience[i].duties" required>
-                                        <div class="validation-alert">Поле должно быть заполнено</div>
+                                        <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -374,7 +347,7 @@
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                        <div class="validation-alert">Выберите тип образования</div>
+                                        <div class="validation-alert select">{{dictionary.VALID_CHANGE_EDUCATION}}</div>
                                     </div>
                                 </div>
 
@@ -386,7 +359,7 @@
                                         <input type="number" name="education-start-{{i}}" id="start-education"
                                                class="short-input" [(ngModel)]="resumeForm.education[i].start" required>
                                         <div class="word">{{dictionary.EDUCATION_YEAR}}</div>
-                                        <div class="validation-alert">Введите дату</div>
+                                        <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
                                     </div>
                                 </div>
 
@@ -397,7 +370,7 @@
                                     <div class="right">
                                         <input type="number" name="education-end-{{i}}" id="end-education"
                                                class="short-input" [(ngModel)]="resumeForm.education[i].end" required>
-                                        <div class="validation-alert">Введите дату</div>
+                                        <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
                                         <div class="word">{{dictionary.EDUCATION_YEAR}}</div>
                                     </div>
                                 </div>
@@ -437,7 +410,7 @@
                                     <div class="right">
                                         <input type="text" name="education-university-{{i}}" id="university"
                                                [(ngModel)]="resumeForm.education[i].university" required>
-                                        <div class="validation-alert">Поле должно быть заполнено</div>
+                                        <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
                                 </div>
 
@@ -449,7 +422,7 @@
                                          [ngClass]="{disabled: resumeForm.education[i].stage == 'Среднее'}">
                                         <input type=`text` name="education-faculty-{{i}}" id="faculty"
                                                [(ngModel)]="resumeForm.education[i].faculty" required [disabled]="resumeForm.education[i].stage === 'middle'">
-                                        <div *ngIf="!(resumeForm.education[i].stage === 'middle')" class="validation-alert">Поле должно быть заполнено</div>
+                                        <div *ngIf="!(resumeForm.education[i].stage === 'middle')" class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
                                 </div>
 
@@ -461,7 +434,7 @@
                                          [ngClass]="{disabled: resumeForm.education[i].stage == 'Среднее'}">
                                         <input type="text" id="specialty" name="education-specialty-{{i}}"
                                                [(ngModel)]="resumeForm.education[i].specialty" required [disabled]="resumeForm.education[i].stage === 'middle'">
-                                        <div *ngIf="!(resumeForm.education[i].stage === 'middle')" class="validation-alert">Поле должно быть заполнено</div>
+                                        <div *ngIf="!(resumeForm.education[i].stage === 'middle')" class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -487,24 +460,15 @@
                                 <mat-form-field>
                                     <mat-select name="language-{{i}}" class="language"
                                                 [(ngModel)]="resumeForm.languages[i].name" id="language" required>
-                                        <mat-option value="{{dictionary.LANGUAGE_EN}}">{{dictionary.LANGUAGE_EN}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_RU}}">{{dictionary.LANGUAGE_RU}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_CHI}}">{{dictionary.LANGUAGE_CHI}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_ARAB}}">{{dictionary.LANGUAGE_ARAB}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_SPAN}}">{{dictionary.LANGUAGE_SPAN}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_PORT}}">{{dictionary.LANGUAGE_PORT}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_IND}}">{{dictionary.LANGUAGE_IND}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_FRAN}}">{{dictionary.LANGUAGE_FRAN}}
-                                        </mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_DEUTH}}">{{dictionary.LANGUAGE_DEUTH}}
-                                        </mat-option>
+                                        <mat-option value="en">{{dictionary.LANGUAGE_EN}}</mat-option>
+                                        <mat-option value="ru">{{dictionary.LANGUAGE_RU}}</mat-option>
+                                        <mat-option value="chi">{{dictionary.LANGUAGE_CHI}}</mat-option>
+                                        <mat-option value="arab">{{dictionary.LANGUAGE_ARAB}}</mat-option>
+                                        <mat-option value="span">{{dictionary.LANGUAGE_SPAN}}</mat-option>
+                                        <mat-option value="port">{{dictionary.LANGUAGE_PORT}}</mat-option>
+                                        <mat-option value="ind">{{dictionary.LANGUAGE_IND}}</mat-option>
+                                        <mat-option value="fran">{{dictionary.LANGUAGE_FRAN}}</mat-option>
+                                        <mat-option value="dutch">{{dictionary.LANGUAGE_DEUTH}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <div class="line"></div>
@@ -512,13 +476,13 @@
                                     <mat-select name="language-level-{{i}}" class="language"
                                                 [placeholder]="dictionary.LANGUAGE_PLACEHOLDER"
                                                 [(ngModel)]="resumeForm.languages[i].level" id="level" required>
-                                        <mat-option value="{{dictionary.LANGUAGE_LVL_START}}">{{dictionary.LANGUAGE_LVL_START}}</mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_LVL_MIDDLE}}">{{dictionary.LANGUAGE_LVL_MIDDLE}}</mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_LVL_HIGH}}">{{dictionary.LANGUAGE_LVL_HIGH}}</mat-option>
-                                        <mat-option value="{{dictionary.LANGUAGE_LVL_BEST}}">{{dictionary.LANGUAGE_LVL_BEST}}</mat-option>
+                                        <mat-option value="start">{{dictionary.LANGUAGE_LVL_START}}</mat-option>
+                                        <mat-option value="middle">{{dictionary.LANGUAGE_LVL_MIDDLE}}</mat-option>
+                                        <mat-option value="hight">{{dictionary.LANGUAGE_LVL_HIGH}}</mat-option>
+                                        <mat-option value="native">{{dictionary.LANGUAGE_LVL_BEST}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <div class="validation-alert">Введите данные о языке, которым вы владеете</div>
+                                <div class="validation-alert select">{{dictionary.VALID_CHANGE_LANGUAGE}}</div>
                                 <span class="remove-language" (click)="manageFields('languages', i)">
                                     <img src="/assets/images/icon-garbage.svg">
                                 </span>
@@ -558,7 +522,7 @@
                                     <div class="right">
                                         <input type="text" name="training-year-{{i}}" id="year-training"
                                                class="short-input" [(ngModel)]="resumeForm.trainings[i].year">
-                                        <div class="validation-alert">Введите дату</div>
+                                        <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
                                     </div>
                                 </div>
 
@@ -570,7 +534,7 @@
                                         <input type="text" name="training-durability-{{i}}" id="durability-training"
                                                class="short-input"
                                                [(ngModel)]="resumeForm.trainings[i].durability">
-                                        <div class="validation-alert">Поле должно быть заполнено</div>
+                                        <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
                                 </div>
 
@@ -608,7 +572,7 @@
                                                 <mat-option value="Лондон">Лондон</mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                        <div class="validation-alert">Поле должно быть заполнено</div>
+                                        <div class="validation-alert select">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                         <div class="line"></div>
                                     </div>
                                 </div>
@@ -621,7 +585,7 @@
                                     <div class="right">
                                         <input type="text" name="training-name-{{i}}" id="name-training"
                                                [(ngModel)]="resumeForm.trainings[i].name">
-                                        <div class="validation-alert">Поле должно быть заполнено</div>
+                                        <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
                                 </div>
 
@@ -691,7 +655,7 @@
                             <div class="right">
                                 <input type="email" name="email" id="email" class="" [(ngModel)]="resumeForm.email"
                                        required pattern="^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$">
-                                <div class="validation-alert">Введите почту в формате: exapmple@domain.com</div>
+                                <div class="validation-alert">{{dictionary.VALID_EMAIL}}</div>
                             </div>
                         </div>
 
@@ -705,7 +669,7 @@
                                        id="phone-number"
                                        (keypress)="onPhoneKeyPress($event)"
                                        [(ngModel)]="resumeForm.phoneNumber" required pattern="^(\+7([0-9]){10})$">
-                                <div class="validation-alert">Введите телефон в формату +79991112233 </div>
+                                <div class="validation-alert">{{dictionary.VALID_PHONE_NUMBER}}</div>
                             </div>
                         </div>
 
@@ -713,11 +677,9 @@
 
                     <div class="additionally">
                         <button type="submit" (click)="send()" id="save" [disabled]="myForm.invalid">
-                            {{dictionary.SAVE}}
+                            <!--{{dictionary.SAVE}} <br/> <span id="alert" *ngIf="myForm.invalid">({{dictionary.BUTTON_SAVE_ALERT}})</span>-->
+                            {{ myForm.invalid ? dictionary.BUTTON_SAVE_ALERT : dictionary.SAVE }}
                         </button>
-                        <div class="message" id="alert" (click)="showRequired()">
-                            {{dictionary.BUTTON_SAVE_ALERT}}
-                        </div>
                         <div class="message">
                             {{dictionary.BUTTON_SAVE_DESCRIPTION}}
                         </div>

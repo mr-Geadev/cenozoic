@@ -10,6 +10,20 @@ export const RUSSIAN_DICTIONARY = {
     CHANGE_CITY: 'Выберете город',
     CHANGE_CITY_PLACEHOLDER: 'Введите название города',
 
+    MONTHS: [
+        'Январь',
+        'Февраль',
+        'Март',
+        'Апрель',
+        'Май',
+        'Июнь',
+        'Июль',
+        'Август',
+        'Сентябрь',
+        'Октябрь',
+        'Ноябрь',
+        'Декабрь'
+    ],
 
     // меню
     FOR_CANDIDATES: 'Соискателям',
@@ -185,5 +199,14 @@ export const RUSSIAN_DICTIONARY = {
     GET_ADVANCED_ACCOUNT: 'Получите улучшенный аккаунт',
     GET_ADVANCED_ACCOUNT_DESCRIPTION: 'Приобретая улучшенный аккаунт вы получаете возможность продвинуть свое резюме в топ',
     VIEW_RATE: 'Посмотреть тарифы',
-    FULL_EXPERIENCE: 'Общий стаж'
+    FULL_EXPERIENCE: 'Общий стаж',
+    // сообщения валидаторов
+    FIELD_SHOULD_BE_COMPLETED: 'Поле должно быть заполнено',
+    VALID_EMAIL: 'Введите почту в формате: exapmple@domain.com',
+    VALID_PHONE_NUMBER: 'Введите телефон в формате +79991112233',
+    VALID_ENTRY_DATE: 'Введите дату',
+    VALID_ENTRY_DATE_END_WORK: 'Введите дату либо поставьте "По настоящее время"',
+    VALID_CHANGE_INDUSTRIAL: 'Выберите тип промышленности',
+    VALID_CHANGE_EDUCATION: 'Выберите тип образования',
+    VALID_CHANGE_LANGUAGE: 'Введите данные о языке, которым вы владеете',
 };
