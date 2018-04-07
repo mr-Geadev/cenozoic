@@ -10,7 +10,7 @@
                 <nav class="header-menu row col-md-auto justify-content-between">
                     <a class="header-menu-item" [routerLink]="['/list-vacancy']">{{ dictionary.FOR_CANDIDATES }}</a>
                     <a class="header-menu-item" [routerLink]="['/list-resume']">{{ dictionary.FOR_EMPLOYER }}</a>
-                    <a class="header-menu-item" [routerLink]="['/admin']">{{ dictionary.SUPPORT }}</a>
+                    <a class="header-menu-item" [routerLink]="['/']">{{ dictionary.SUPPORT }}</a>
                 </nav>
 
                 <a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">{{ dictionary.ACCOUNT }}</a>

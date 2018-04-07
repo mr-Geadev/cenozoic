@@ -9,5 +9,6 @@ export const ROUTES = [
     '/create-vacancy',
     '/list-vacancy',
     '/resume/:id',
-    '/vacancy/:id'
+    '/vacancy/:id',
+    '/admin'
 ];
