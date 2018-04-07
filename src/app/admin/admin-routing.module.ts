@@ -1,16 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ResumeListComponent } from "./resume-list/resume-list.component";
+import { AdminComponent } from "./admin.component";
+import { MainComponent } from "./build-blocks/main/main.component";
+import { ResumeListComponent } from "./build-blocks/resume-list/resume-list.component";
+import { UsersComponent } from "./pages/users";
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'resumeList'
+        component: AdminComponent,
+        children: [
+            {
+                path: '', component: MainComponent
+            },
+            {
+                path: 'resumeList', component: ResumeListComponent
+            },
+            {
+                path: 'users', component: UsersComponent
+            },
+        ]
     },
-    {
-        path: 'resumeList',
-        component: ResumeListComponent
-    }
+
+
 ];
 
 @NgModule({

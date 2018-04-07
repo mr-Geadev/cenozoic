@@ -7,7 +7,7 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { PageFooterModule, PageHeaderModule } from "./blocks";
-import { CreateResumeGuard } from "./guards";
+import { AdminGuards, CreateResumeGuard } from "./guards";
 import { ChangeCityModalModule } from "./modals/change-city";
 import {
     AccountSettingPageModule,
@@ -28,7 +28,8 @@ import { SortService } from "./services/sort.service";
 const ROUTES = [
     {
         path: 'admin',
-        loadChildren: 'app/admin/admin.module#AdminModule'
+        loadChildren: 'app/admin/admin.module#AdminModule',
+        canActivate: [AdminGuards]
     },
     { path: '**', redirectTo: '/' }
 ];
@@ -74,6 +75,7 @@ const ROUTES = [
 
         //Guards
         CreateResumeGuard,
+        AdminGuards,
     ],
     bootstrap: [AppComponent]
 })
