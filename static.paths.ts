@@ -10,6 +10,6 @@ export const ROUTES = [
     '/list-vacancy',
     '/resume/:id',
     '/vacancy/:id',
-    '/account-email-confirm',
+    '/account-email-confirm:token',
     '/admin'
 ];
