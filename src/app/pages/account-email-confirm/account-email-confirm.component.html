@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="message" *ngIf="status === 'loading'">
+                Ожидайте
+            </div>
+            <div class="message" *ngIf="status === 'success'">
+                Ваш аккаунт успешно подтвержден
+            </div>
+            <div class="message" *ngIf="status === 'error'">
+                Ссылка недействительна. Проверьте правильность ссылки, либо обратитесь за помощью к администратору.
+            </div>
+        </div>
+    </div>
+</div>

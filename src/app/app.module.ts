@@ -16,6 +16,7 @@ import {
     MainPageModule,
     NotFoundPageComponent
 } from "./pages";
+import { AccountEmailConfirmModule } from "./pages/account-email-confirm";
 import { CreateResumePageModule } from "./pages/create-resume-page";
 import { ListResumePageModule } from "./pages/list-resume-page";
 import { PersonalAccountPageModule } from "./pages/personal-account-page";
@@ -54,6 +55,7 @@ const ROUTES = [
         CreateVacancyPageModule,
         ListVacancyPageModule,
         VacancyFullPageModule,
+        AccountEmailConfirmModule,
 
         // Blocks
         PageHeaderModule,

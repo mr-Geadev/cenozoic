@@ -8,3 +8,4 @@ export * from './personal-account-page';
 export * from './resume-full-page';
 export * from './vacancy-full-page';
 export * from './account-setting-page';
+export * from './account-setting-page';
