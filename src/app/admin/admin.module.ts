@@ -13,7 +13,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from "./admin.component";
 import { MainComponent } from "./build-blocks/main/main.component";
 import { ResumeListComponent } from './build-blocks/resume-list/resume-list.component';
-import { UsersComponent } from "./pages/users/users.component";
+import { UsersComponent } from "./build-blocks/users/users.component";
 
 @NgModule({
     imports: [
@@ -31,7 +31,6 @@ import { UsersComponent } from "./pages/users/users.component";
     declarations: [
         // core
         AdminComponent,
-
 
         // pages
         ResumeListComponent,
