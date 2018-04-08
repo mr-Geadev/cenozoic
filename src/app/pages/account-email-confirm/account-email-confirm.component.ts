@@ -14,7 +14,7 @@ export class AccountEmailConfirmComponent implements OnInit {
 
     constructor(private activateRoute: ActivatedRoute,
                 private _http: HttpClient) {
-        this.token = activateRoute.snapshot.params['id'];
+        this.token = activateRoute.snapshot.params['token'];
     }
 
 
