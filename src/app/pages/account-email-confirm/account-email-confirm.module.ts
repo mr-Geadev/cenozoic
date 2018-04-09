@@ -11,7 +11,7 @@ import { AccountEmailConfirmComponent } from "./account-email-confirm.component"
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'account-email-confirm/:token', component: AccountEmailConfirmComponent, pathMatch: 'full' },
+            { path: 'account-email-confirm/:token', component: AccountEmailConfirmComponent },
         ]),
         CommonModule,
         HttpClientModule
