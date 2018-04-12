@@ -674,9 +674,11 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" (click)="send()" id="save" [disabled]="myForm.invalid">
-                            <!--{{dictionary.SAVE}} <br/> <span id="alert" *ngIf="myForm.invalid">({{dictionary.BUTTON_SAVE_ALERT}})</span>-->
-                            {{ myForm.invalid ? dictionary.BUTTON_SAVE_ALERT : dictionary.SAVE }}
+                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid">
+                            {{ dictionary.SAVE }}
+                        </button>
+                        <button type="submit" (click)="showInvalidField()" class="save-button invalid" *ngIf="myForm.invalid">
+                            {{ dictionary.BUTTON_SAVE_ALERT }}
                         </button>
                         <div class="message">
                             {{dictionary.BUTTON_SAVE_DESCRIPTION}}

@@ -257,6 +257,32 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         }
     }
 
+    public showInvalidField(): void {
+        let firstInvalid = document.querySelectorAll('form .ng-invalid')[0];
+        scrollToElement(firstInvalid);
+
+        function focus(theElement) {
+            theElement.focus();
+        }
+
+        function scrollToElement(theElement) {
+            var selectedPosY = 0;
+
+            while (theElement != null) {
+                selectedPosY += theElement.offsetTop;
+                theElement = theElement.offsetParent;
+            }
+
+            selectedPosY -= 20;
+            window.scroll({
+                top: selectedPosY,
+                behavior: "smooth"
+            });
+
+            setTimeout(focus, 500, firstInvalid);
+        }
+    }
+
     private _calculateTime(item: any, tillNow?: boolean): number {
 
         const startMonth: number = item.startMonth;
