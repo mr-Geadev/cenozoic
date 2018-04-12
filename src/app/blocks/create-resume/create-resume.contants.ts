@@ -42,7 +42,7 @@ export const DEFAULT_RESUME_FORM = {
     job: null,
     salary: null,
     birthday: null,
-    gender: 'Мужчина',
+    gender: 'man',
     family: null,
     experienceAllTime: null,
     experienceAll: {
@@ -55,8 +55,8 @@ export const DEFAULT_RESUME_FORM = {
             month: null
         }
     },
-    businessTrips: 'нет',
-    relocation: 'нет',
+    businessTrips: false,
+    relocation: false,
     schedule: null,
     employmentType: null,
     experience: [

@@ -35,7 +35,7 @@
                     <label for="archive">{{ dictionary.ACCOUNT_PAGE_TAB_3 }}</label>
                 </li>
 
-                <li class="item" *ngIf="typeCurrentUser === 'employer'">
+                <li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
                     <input type="radio"
                            id="interview"
                            name="manager"
@@ -44,7 +44,7 @@
                     <label for="interview">Опросные листы</label>
                 </li>
 
-                <li class="item" *ngIf="typeCurrentUser === 'worker'">
+                <li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
                     <input type="radio"
                            id="summary"
                            name="manager"
@@ -53,7 +53,7 @@
                     <label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_4 }}</label>
                 </li>
 
-                <li class="item" *ngIf="typeCurrentUser === 'employer'">
+                <li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
                     <input type="radio"
                            id="vacancy"
                            name="manager"

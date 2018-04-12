@@ -86,7 +86,7 @@
                                         <!--<mat-option value="divorced">{{dictionary.DIVORCED}}</mat-option>-->
                                     </mat-select>
                                 </mat-form-field>
-                                <div class="validation-alert select">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
+                                <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                             </div>
                         </div>
 
@@ -134,11 +134,11 @@
                                         <mat-option value="none">{{dictionary.IRRELEVANT}}
                                         </mat-option>
                                         <mat-option value="full">{{dictionary.FULL_DAY}}</mat-option>
-                                        <mat-option value="remoute">{{dictionary.REMOTE}}</mat-option>
+                                        <mat-option value="remote">{{dictionary.REMOTE}}</mat-option>
                                         <mat-option value="watch">{{dictionary.SHIFT}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <div class="validation-alert select">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
+                                <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 <div class="line"></div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
                                         <mat-option value="internship">{{dictionary.INTERNSHIP}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <div class="validation-alert select">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
+                                <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 <div class="line"></div>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
 
                     <div class="experience-fields part">
                         <div class="mini-title">
-                            {{dictionary.EXPERIENCE}}<span class="required">*</span>
+                            {{dictionary.EXPERIENCE}}
                         </div>
 
                         <div class="workplace" *ngFor="let item of resumeForm.experience; let i = index">
@@ -187,7 +187,7 @@
                             <div class="hidden-wrapper" [class.hidden]="!listVisibleElement.experience[i]">
                                 <div class="parameter start">
                                     <div class="left">
-                                        <label for="employment-start">{{dictionary.START_WORK}}</label>
+                                        <label for="employment-start">{{dictionary.START_WORK}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <mat-form-field>
@@ -202,13 +202,13 @@
                                         <input type="number" name="experience-startYear-{{i}}" id="start" required
                                                class="shortest-input" [(ngModel)]="resumeForm.experience[i].startYear">
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
-                                        <div class="validation-alert select">{{dictionary.VALID_ENTRY_DATE}}</div>
+                                        <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
                                     </div>
                                 </div>
 
                                 <div class="parameter end">
                                     <div class="left">
-                                        <label for="employment-end">{{dictionary.END_WORK}}</label>
+                                        <label for="employment-end">{{dictionary.END_WORK}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <div [ngClass]="{disabled: resumeForm.experience[i].present}"
@@ -230,7 +230,7 @@
                                                [(ngModel)]="resumeForm.experience[i].endYear"
                                                [disabled]="resumeForm.experience[i].present"
                                                [required]="!resumeForm.experience[i].present">
-                                        <div class="validation-alert select">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
+                                        <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
                                         <input type="checkbox" name="experience-name-{{i}}" value="true"
                                                id="present-{{i}}" [(ngModel)]="resumeForm.experience[i].present">
@@ -241,7 +241,7 @@
 
                                 <div class="parameter type">
                                     <div class="left">
-                                        <label for="employment-type">{{dictionary.TYPE_WORK}}</label>
+                                        <label for="employment-type">{{dictionary.TYPE_WORK}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <mat-form-field>
@@ -254,13 +254,13 @@
                                                 <mat-option value="other">{{dictionary.TYPE_WORK_OTHER}}</mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                        <div class="validation-alert select">{{dictionary.VALID_CHANGE_INDUSTRIAL}}</div>
+                                        <div class="validation-alert">{{dictionary.VALID_CHANGE_INDUSTRIAL}}</div>
                                     </div>
                                 </div>
 
                                 <div class="parameter company">
                                     <div class="left">
-                                        <label for="company">{{dictionary.ORGANIZATION_WORK}}</label>
+                                        <label for="company">{{dictionary.ORGANIZATION_WORK}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="experience-company-{{i}}" id="company"
@@ -271,7 +271,7 @@
 
                                 <div class="parameter was-job">
                                     <div class="left">
-                                        <label for="was-job">{{dictionary.POSITION_WORK}}</label>
+                                        <label for="was-job">{{dictionary.POSITION_WORK}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="experience-job-{{i}}" id="was-job"
@@ -282,7 +282,7 @@
 
                                 <div class="parameter duties">
                                     <div class="left">
-                                        <label for="duties">{{dictionary.DUTIES_WORK}}</label>
+                                        <label for="duties">{{dictionary.DUTIES_WORK}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="duties-{{i}}" id="duties"
@@ -306,7 +306,6 @@
 
                         <div class="mini-title">
                             {{dictionary.EDUCATION}}
-                            <span class="required">*</span>
                         </div>
 
                         <!--<div class="parameter education">-->
@@ -335,7 +334,7 @@
                                 <!--*ngIf="listVisibleElement.education[i]"-->
                                 <div class="parameter stage">
                                     <div class="left">
-                                        <label for="stage">{{dictionary.EDUCATION_STAGE}}</label>
+                                        <label for="stage">{{dictionary.EDUCATION_STAGE}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <mat-form-field>
@@ -347,13 +346,13 @@
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                        <div class="validation-alert select">{{dictionary.VALID_CHANGE_EDUCATION}}</div>
+                                        <div class="validation-alert">{{dictionary.VALID_CHANGE_EDUCATION}}</div>
                                     </div>
                                 </div>
 
                                 <div class="parameter start-education">
                                     <div class="left">
-                                        <label for="start-education">{{dictionary.EDUCATION_START}}</label>
+                                        <label for="start-education">{{dictionary.EDUCATION_START}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="number" name="education-start-{{i}}" id="start-education"
@@ -365,7 +364,7 @@
 
                                 <div class="parameter end-education">
                                     <div class="left">
-                                        <label for="end-education">{{dictionary.EDUCATION_END}}</label>
+                                        <label for="end-education">{{dictionary.EDUCATION_END}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="number" name="education-end-{{i}}" id="end-education"
@@ -393,7 +392,7 @@
 
                                 <div class="parameter city-eductation">
                                     <div class="left">
-                                        <label>{{dictionary.EDUCATION_CITY}}</label>
+                                        <label>{{dictionary.EDUCATION_CITY}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <button mat-raised-button color="primary" (click)="changeEducationCity(i)">
@@ -405,7 +404,7 @@
 
                                 <div class="parameter university">
                                     <div class="left">
-                                        <label for="university">{{dictionary.EDUCATION_SCHOOL}}</label>
+                                        <label for="university">{{dictionary.EDUCATION_SCHOOL}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="education-university-{{i}}" id="university"
@@ -415,11 +414,10 @@
                                 </div>
 
                                 <div class="parameter faculty">
-                                    <div class="left">
-                                        <label for="faculty">{{dictionary.EDUCATION_FACULTY}}</label>
+                                    <div class="left" [ngClass]="{disabled: resumeForm.education[i].stage == 'middle'}">
+                                        <label for="faculty">{{dictionary.EDUCATION_FACULTY}}<span class="required" *ngIf="resumeForm.education[i].stage !== 'middle'">*</span></label>
                                     </div>
-                                    <div class="right"
-                                         [ngClass]="{disabled: resumeForm.education[i].stage == 'Среднее'}">
+                                    <div class="right">
                                         <input type=`text` name="education-faculty-{{i}}" id="faculty"
                                                [(ngModel)]="resumeForm.education[i].faculty" required [disabled]="resumeForm.education[i].stage === 'middle'">
                                         <div *ngIf="!(resumeForm.education[i].stage === 'middle')" class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
@@ -427,11 +425,10 @@
                                 </div>
 
                                 <div class="parameter specialty">
-                                    <div class="left">
-                                        <label for="specialty">{{dictionary.EDUCATION_SPECIALTY}}</label>
+                                    <div class="left" [ngClass]="{disabled: resumeForm.education[i].stage == 'middle'}">
+                                        <label for="specialty">{{dictionary.EDUCATION_SPECIALTY}}<span class="required" *ngIf="resumeForm.education[i].stage !== 'middle'">*</span></label>
                                     </div>
-                                    <div class="right"
-                                         [ngClass]="{disabled: resumeForm.education[i].stage == 'Среднее'}">
+                                    <div class="right">
                                         <input type="text" id="specialty" name="education-specialty-{{i}}"
                                                [(ngModel)]="resumeForm.education[i].specialty" required [disabled]="resumeForm.education[i].stage === 'middle'">
                                         <div *ngIf="!(resumeForm.education[i].stage === 'middle')" class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
@@ -459,6 +456,7 @@
                             <div class="right">
                                 <mat-form-field>
                                     <mat-select name="language-{{i}}" class="language"
+                                                [placeholder]="dictionary.LANGUAGE"
                                                 [(ngModel)]="resumeForm.languages[i].name" id="language" required>
                                         <mat-option value="en">{{dictionary.LANGUAGE_EN}}</mat-option>
                                         <mat-option value="ru">{{dictionary.LANGUAGE_RU}}</mat-option>
@@ -482,7 +480,7 @@
                                         <mat-option value="native">{{dictionary.LANGUAGE_LVL_BEST}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <div class="validation-alert select">{{dictionary.VALID_CHANGE_LANGUAGE}}</div>
+                                <div class="validation-alert">{{dictionary.VALID_CHANGE_LANGUAGE}}</div>
                                 <span class="remove-language" (click)="manageFields('languages', i)">
                                     <img src="/assets/images/icon-garbage.svg">
                                 </span>
@@ -517,7 +515,7 @@
                             <div class="hidden-wrapper" [class.hidden]="!listVisibleElement.trainings[i]">
                                 <div class="parameter year-training">
                                     <div class="left">
-                                        <label for="year-training">{{dictionary.TRAINING_YEAR}}</label>
+                                        <label for="year-training">{{dictionary.TRAINING_YEAR}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="training-year-{{i}}" id="year-training"
@@ -528,7 +526,7 @@
 
                                 <div class="parameter durability-training">
                                     <div class="left">
-                                        <label for="durability-training">{{dictionary.TRAINING_DURABILITY}}</label>
+                                        <label for="durability-training">{{dictionary.TRAINING_DURABILITY}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="training-durability-{{i}}" id="durability-training"
@@ -559,7 +557,7 @@
 
                                 <div class="parameter city-training">
                                     <div class="left">
-                                        <label for="city-training">{{dictionary.TRAINING_CITY}}</label>
+                                        <label for="city-training">{{dictionary.TRAINING_CITY}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <mat-form-field>
@@ -572,7 +570,7 @@
                                                 <mat-option value="Лондон">Лондон</mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                        <div class="validation-alert select">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
+                                        <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                         <div class="line"></div>
                                     </div>
                                 </div>
@@ -580,7 +578,7 @@
 
                                 <div class="parameter name-training">
                                     <div class="left">
-                                        <label for="name-training">{{dictionary.TRAINING_NAME}}</label>
+                                        <label for="name-training">{{dictionary.TRAINING_NAME}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="training-name-{{i}}" id="name-training"
