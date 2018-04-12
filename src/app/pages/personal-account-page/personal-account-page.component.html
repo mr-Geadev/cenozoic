@@ -40,8 +40,8 @@
                            id="interview"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Опросные листы">
-                    <label for="interview">Опросные листы</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_5">
+                    <label for="interview">{{dictionary.ACCOUNT_PAGE_TAB_5}}</label>
                 </li>
 
                 <li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
@@ -49,8 +49,8 @@
                            id="summary"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           [value]="dictionary.ACCOUNT_PAGE_TAB_4">
-                    <label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_4 }}</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_4_1">
+                    <label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_4_1 }}</label>
                 </li>
 
                 <li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
@@ -58,8 +58,8 @@
                            id="vacancy"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Вакансии">
-                    <label for="vacancy">Вакансии</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_4_2">
+                    <label for="vacancy">{{dictionary.ACCOUNT_PAGE_TAB_4_2}}</label>
                 </li>
 
             </ul>
@@ -70,9 +70,12 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf=" dictionary.MY !== 'My'">
         <div class="side-title" *ngIf="activeTab !== 'Архив'">Мои {{ activeTab }}</div>
         <div class="side-title" *ngIf="activeTab === 'Архив'">Мой {{ activeTab }}</div>
+    </div>
+    <div class="row" *ngIf=" dictionary.MY === 'My'">
+        <div class="side-title" >My {{ activeTab }}</div>
     </div>
 </div>
 
@@ -87,26 +90,26 @@
         <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_3 }">
             {{ dictionary.ACCOUNT_PAGE_TAB_3_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4 }">
-            {{ dictionary.ACCOUNT_PAGE_TAB_4_DESC }}
+        <div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_5 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_5_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Опросные листы' }">
-            В этом разделе показаны ваши опросные листы
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_4_1_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Вакансии' }">
-            В этом разделе показаны ваши вакансии
+        <div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_4_2 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_4_2_DESC }}
         </div>
     </div>
 </div>
 
 
 <list-resume class="block resume"
-             [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4 }"
-             *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_4"
+             [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1 }"
+             *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1"
              [config]="'user'"></list-resume>
 
 <list-vacancy class="block vacancy"
-              *ngIf="activeTab === 'Вакансии'"
-              [ngClass]="{ 'active': activeTab === 'Вакансии' }"
+              *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_4_2"
+              [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_2 }"
               [config]="'user'"></list-vacancy>
 

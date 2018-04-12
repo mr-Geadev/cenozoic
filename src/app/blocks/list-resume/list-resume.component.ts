@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
 
-import { ResumeService } from "../../services";
+import { LocalizationService, ResumeService } from "../../services";
 import { FilterResumesService } from "../filter-resumes";
 import { SortService } from "../../services/sort.service";
 import { SortModel } from "../../models/sort.model";
@@ -15,17 +15,22 @@ export class ListResumeComponent implements OnInit {
 
     @Input() config: string;
 
+    public dictionary: any = null;
+
     private offset: number = 0;
     public listResume: any[];
 
     constructor(private _http: HttpClient,
                 private _filterResumesService: FilterResumesService,
                 public resumeService: ResumeService,
-                private _sortService: SortService) {
+                private _sortService: SortService,
+                private _localizationService: LocalizationService) {
     }
 
 
     ngOnInit(): void {
+
+        this.dictionary = this._localizationService.currentDictionary;
 
         this._sortService.typeSort
             .subscribe(

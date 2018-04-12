@@ -9,7 +9,7 @@ import { UserService } from "../../services/user.service";
 })
 export class PersonalAccountPageComponent implements OnInit {
 
-    public activeTab: string = 'Отклики';
+    public activeTab: string = null;
     public dictionary: any = null;
     public typeCurrentUser: string = null;
 
@@ -20,6 +20,7 @@ export class PersonalAccountPageComponent implements OnInit {
     public ngOnInit(): void {
 
         this.dictionary = this._localizationService.currentDictionary;
+        this.activeTab = this.dictionary.ACCOUNT_PAGE_TAB_1;
 
         this._userService.user$
             .subscribe(

@@ -9,6 +9,7 @@ export const ENGLISH_DICTIONARY = {
     YOUR: 'Your',
     CHANGE_CITY: 'Choose a city',
     CHANGE_CITY_PLACEHOLDER: 'Enter the name of the city',
+    FROM: 'from',
 
     MONTHS: [
         'January',
@@ -24,6 +25,8 @@ export const ENGLISH_DICTIONARY = {
         'November',
         'December'
     ],
+    MONTH: 'Month',
+    YEAR: 'Year',
 
     // меню
     FOR_CANDIDATES: 'For candidates',
@@ -92,15 +95,20 @@ export const ENGLISH_DICTIONARY = {
     SORT_BY_DATA: 'Sort by data',
 
     // личный кабинет
+    MY: 'My',
     ACCOUNT_PAGE_TAB_1: 'Response',
     ACCOUNT_PAGE_TAB_2: 'Invitations',
     ACCOUNT_PAGE_TAB_3: 'Archive',
-    ACCOUNT_PAGE_TAB_4: 'CV',
+    ACCOUNT_PAGE_TAB_4_1: 'CV',
+    ACCOUNT_PAGE_TAB_4_2: 'Careers',
+    ACCOUNT_PAGE_TAB_5: 'Questionnaires',
 
     ACCOUNT_PAGE_TAB_1_DESC: 'This section shows the results of your responses to the vacancy. You can cancel the selected response or it move to the archive of your responses to which the employer has already responded.',
     ACCOUNT_PAGE_TAB_2_DESC: 'This section shows the Invitations that you received from companies. You can  respond to them or move them to the archive.',
     ACCOUNT_PAGE_TAB_3_DESC: 'This section contains your old responses/invitations.',
     ACCOUNT_PAGE_TAB_4_DESC: 'This section shows all your CVs. You can view and edit CV by clicking on it.',
+    ACCOUNT_PAGE_TAB_4_1_2_DESC:'This section shows all your jobs. You can view and edit the desired one by clicking on it',
+    ACCOUNT_PAGE_TAB_5_DESC:'This section shows all your questionnaires. You can view and edit the desired by clicking on it',
 
     // конструктор вакансий/резюме
     CONSTRUCTOR_CV: 'Constructor CV',
@@ -109,6 +117,7 @@ export const ENGLISH_DICTIONARY = {
     EXPECTED_POSITION: 'Expected Position',
     CHANGE_BIRTHDAY: 'select birth date',
     SALARY: 'Salary',
+    AGE: 'Age',
     BIRTHDAY: 'Date of birthday',
     IRRELEVANT: 'Does not matter',
     SEX: 'Sex',
@@ -137,7 +146,9 @@ export const ENGLISH_DICTIONARY = {
         YEAR_WORK: 'yers',
         TYPE_WORK: 'Type of industry',
         TYPE_WORK_OIL: 'Oil and gas',
+        IN_OIL: 'in the oil and gas industry',
         TYPE_WORK_MINING: 'Mining',
+        IN_MINING: 'in the mining industry',
         TYPE_WORK_OTHER: 'Other',
         ORGANIZATION_WORK: 'Organization',
         POSITION_WORK: 'Position',
@@ -175,7 +186,7 @@ export const ENGLISH_DICTIONARY = {
         LANGUAGE_LVL_MIDDLE: 'Average',
         LANGUAGE_LVL_HIGH: 'Tall',
         LANGUAGE_LVL_BEST: 'Carrier',
-    TRAININGS: 'Professional competencies, course, trainings, certificates and etc.',
+    TRAININGS: 'Professional competencies, course, trainings, certificates',
         TRAINING: 'Training',
         TRAINING_ADD: 'Upload',
         TRAINING_YEAR: 'Year of passage / graduation',
@@ -209,4 +220,9 @@ export const ENGLISH_DICTIONARY = {
     VALID_CHANGE_INDUSTRIAL: 'Select type of industry',
     VALID_CHANGE_EDUCATION: 'Select type of education',
     VALID_CHANGE_LANGUAGE: 'Enter information about the language that you own',
+    // вывод
+    EDUCATION_PLACES: 'Educational establishments',
+    YEAR_OF_END_EDUCATION: 'Year of ending',
+    KNOWLEDGE_OF_LANGUAGES: 'Knowledge of languages',
+    FIO: 'Full name',
 };
