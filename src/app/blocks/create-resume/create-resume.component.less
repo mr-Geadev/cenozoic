@@ -224,6 +224,7 @@
 						width: 100%;
 						justify-content: flex-start;
 						position: relative;
+						height: 20px;
 					}
 
 					&.salary {
@@ -274,15 +275,6 @@
 						}
 					}
 
-					.disabled {
-						opacity: 0.5;
-
-						input, label, select {
-							cursor: default;
-							pointer-events: none;
-						}
-
-					}
 
 				}
 				&.experience-fields {
@@ -403,7 +395,7 @@
 
 			.additionally {
 
-				#save {
+				.save-button {
 					margin-top: 58px;
 					display: inline-flex;
 					font-family: Roboto;
@@ -416,11 +408,21 @@
 					justify-content: center;
 					align-items: center;
 					border-radius: 0.313rem;
-					background-color: @orange;
-					.tr-bg;
+					.tr-all;
+					opacity: 0;
 
-					&:hover {
-						background-color: @hover-orange;
+					&.valid {
+						background-color: @orange;
+						opacity: 1;
+
+						&:hover {
+							background-color: @hover-orange;
+						}
+					}
+
+					&.invalid {
+						background-color: @light-gray !important;
+						opacity: 1;
 					}
 				}
 
@@ -517,11 +519,6 @@
 		transform: translateY(-3px);
 	}
 
-	#save:disabled {
-		background-color: @light-gray !important;
-		pointer-events: none;
-		cursor: default;
-	}
 
 	form.ng-invalid {
 		#alert {
@@ -550,13 +547,10 @@
 	.validation-alert {
 		position: absolute;
 		top: 100%;
+		margin-top: 2px;
 		font-size: 13px;
 		color: #ec3737;
 		display: none;
-
-		&.select {
-			margin-top: -15px;
-		}
 	}
 	.validation-alert.visible {
 		display: block;

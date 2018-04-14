@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { ResumeService, UserService } from "../../services";
+import { LocalizationService, ResumeService, UserService } from "../../services";
 
 @Component({
     selector: 'resume-full',
@@ -11,10 +11,13 @@ import { ResumeService, UserService } from "../../services";
 })
 export class ResumeFullComponent implements OnInit {
 
+    public dictionary: any = null;
+
     constructor(public resumeService: ResumeService,
                 public userService: UserService,
                 private activateRoute: ActivatedRoute,
-                private http: HttpClient) {
+                private http: HttpClient,
+                private _localizationService: LocalizationService) {
         this.id = activateRoute.snapshot.params['id'];
     }
 
@@ -24,6 +27,8 @@ export class ResumeFullComponent implements OnInit {
     public currentUser: any;
 
     ngOnInit(): void {
+
+        this.dictionary = this._localizationService.currentDictionary;
 
         this.userService.user$
             .subscribe((user) => {

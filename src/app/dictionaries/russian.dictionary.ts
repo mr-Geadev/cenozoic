@@ -9,6 +9,8 @@ export const RUSSIAN_DICTIONARY = {
     YOUR: 'Ваши',
     CHANGE_CITY: 'Выберете город',
     CHANGE_CITY_PLACEHOLDER: 'Введите название города',
+    FROM: 'от',
+    MORE: 'Подробнее',
 
     MONTHS: [
         'Январь',
@@ -24,6 +26,8 @@ export const RUSSIAN_DICTIONARY = {
         'Ноябрь',
         'Декабрь'
     ],
+    MONTH: 'Месяц',
+    YEAR: 'год',
 
     // меню
     FOR_CANDIDATES: 'Соискателям',
@@ -92,23 +96,31 @@ export const RUSSIAN_DICTIONARY = {
     SORT_BY_DATA: 'По дате добавления',
 
     // личный кабинет
+    MY: 'Мои',
     ACCOUNT_PAGE_TAB_1: 'Отклики',
     ACCOUNT_PAGE_TAB_2: 'Предложения',
     ACCOUNT_PAGE_TAB_3: 'Архив',
-    ACCOUNT_PAGE_TAB_4: 'Резюме',
+    ACCOUNT_PAGE_TAB_4_1: 'Резюме',
+    ACCOUNT_PAGE_TAB_4_2: 'Вакансии',
+    ACCOUNT_PAGE_TAB_5: 'Опросные листы',
+
 
     ACCOUNT_PAGE_TAB_1_DESC: 'В этом разделе показаны результаты всех ваших откликов на вакансии. Вы можете отменить отправленный отклик или переместить в архив отклики, на которые уже дан ответ работодателя.',
     ACCOUNT_PAGE_TAB_2_DESC: 'В этом разделе показаны предложения, поступившие вам со стороны компаний. Вы можете ответить на них или переместить в архив.',
     ACCOUNT_PAGE_TAB_3_DESC: 'В этом разделе содержатся ваши старые отклики/предложения',
-    ACCOUNT_PAGE_TAB_4_DESC: 'В этом разделе показаны все ваши резюме. Вы можежет просмотреть и отредактировать нужное, кликнув по нему',
+    ACCOUNT_PAGE_TAB_4_1_DESC: 'В этом разделе показаны все ваши резюме. Вы можежет просмотреть и отредактировать нужное, кликнув по нему',
+    ACCOUNT_PAGE_TAB_4_2_DESC: 'В этом разделе показаны все ваши вакансии. Вы можежет просмотреть и отредактировать нужную, кликнув по нему',
+    ACCOUNT_PAGE_TAB_5_DESC: 'В этом разделе показаны все ваши опросные листы. Вы можежет просмотреть и отредактировать нужное, кликнув по нему',
 
     // конструктор вакансий/резюме
     CONSTRUCTOR_CV: 'Конструктор резюме',
+    ADD_NEW_CV: 'Добавить новое резюме',
     YES:'Да',
     NO: 'Нет',
     EXPECTED_POSITION: 'Желаемая должность',
     CHANGE_BIRTHDAY: 'выберите дату рождения',
     SALARY: 'Оклад',
+    AGE: 'Возраст',
     BIRTHDAY: 'Дата рождения',
     IRRELEVANT: 'Не имеет значения',
     SEX: 'Пол',
@@ -120,7 +132,7 @@ export const RUSSIAN_DICTIONARY = {
         DIVORCED: 'В разводе',
     BUSINESS_TRIPS: 'Готовность к комнадировкам',
     RELOCATION: 'Переезд',
-    SCHEDULE: 'Метод работы',
+    SCHEDULE: 'График работы',
         FULL_DAY: 'Полный день',
         REMOTE: 'Удаленная работа',
         SHIFT: 'Вахтовый метод',
@@ -137,12 +149,15 @@ export const RUSSIAN_DICTIONARY = {
         YEAR_WORK: 'года',
         TYPE_WORK: 'Тип промышленности',
         TYPE_WORK_OIL: 'Нефтегазовая',
+        IN_OIL: 'в нефтегазовой промышленности',
         TYPE_WORK_MINING: 'Горнодобывающая',
+        IN_MINING: 'в горнодобывающей промышленности',
         TYPE_WORK_OTHER: 'Другая',
         ORGANIZATION_WORK: 'Организация',
         POSITION_WORK: 'Позиция',
         DUTIES_WORK: 'Ваши обязанности',
         ADD_PLACE_WORK: 'Добавить место работы',
+        LAST_WORKPLACE: 'Последнее место работы',
     EDUCATION: 'Образование',
         EDUCATION_PLACE: 'Учебное заведение',
         EDUCATION_STAGE: 'Степень образования',
@@ -175,7 +190,7 @@ export const RUSSIAN_DICTIONARY = {
         LANGUAGE_LVL_MIDDLE: 'Средний',
         LANGUAGE_LVL_HIGH: 'Высокий',
         LANGUAGE_LVL_BEST: 'Носитель',
-    TRAININGS: 'Профессиональные компетенции, курсы, тренинги, сертификаты и прочее',
+    TRAININGS: 'Профессиональные компетенции, курсы, тренинги, сертификаты',
         TRAINING: 'Тренинг',
         TRAINING_ADD: 'Добавить',
         TRAINING_YEAR: 'Год прохождения/окончания',
@@ -209,4 +224,9 @@ export const RUSSIAN_DICTIONARY = {
     VALID_CHANGE_INDUSTRIAL: 'Выберите тип промышленности',
     VALID_CHANGE_EDUCATION: 'Выберите тип образования',
     VALID_CHANGE_LANGUAGE: 'Введите данные о языке, которым вы владеете',
+    // вывод
+    EDUCATION_PLACES: 'Учебные заведения',
+    YEAR_OF_END_EDUCATION: 'Год окончания',
+    KNOWLEDGE_OF_LANGUAGES: 'Знание языков',
+    FIO: 'ФИО',
 };
