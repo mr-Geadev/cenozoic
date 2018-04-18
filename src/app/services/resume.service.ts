@@ -30,7 +30,7 @@ export class ResumeService {
     }
 
     public delete(id: string): void {
-        this.http.get(`/api/v1/user/resume/remove?resumeId=${id}`)
+        this.http.get(`:8080/api/v1/user/resume/remove?resumeId=${id}`)
             .subscribe((res: any) => {
                 if (res.success) {
                     this._systemMessages.info('Ваше резюме было удалено');

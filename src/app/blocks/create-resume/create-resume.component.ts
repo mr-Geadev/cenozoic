@@ -223,7 +223,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             formData.append('resumeId', id);
             formData.append('resume', JSON.stringify(this.resumeForm));
 
-            this.http.post('/api/v1/user/resume/edit', formData)
+            this.http.post(':8080/api/v1/user/resume/edit', formData)
                 .subscribe((res: any) => {
                     if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);

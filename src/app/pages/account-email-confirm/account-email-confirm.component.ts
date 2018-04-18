@@ -19,7 +19,7 @@ export class AccountEmailConfirmComponent implements OnInit {
 
 
     public ngOnInit() {
-        this._http.get(`/api/v1/user/email/confirm?confirmToken=${this.token}`)
+        this._http.get(`:8080/api/v1/user/email/confirm?confirmToken=${this.token}`)
             .subscribe(
                 (res) => {this.status = 'success'},
                 (err) => {this.status = 'error'}
