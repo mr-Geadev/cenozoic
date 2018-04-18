@@ -39,7 +39,7 @@ export class ListResumeComponent implements OnInit {
 
         // резюме пользоватля
         if (this.config === "user") {
-            this._http.get(`http://localhost:8080/api/v1/user/resume/all`)
+            this._http.get(`:8080/api/v1/user/resume/all`)
                 .subscribe((res: any) => {
                     this.listResume = this.formatting(res.resumeList);
                 });
@@ -55,7 +55,7 @@ export class ListResumeComponent implements OnInit {
                             });
                     } else {
                         //все резюме
-                        this._http.post(`:8080/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
+                        this._http.post(`http://localhost:8080/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
                             .subscribe((res: any) => {
                                 this.listResume = this.formatting(res.resumeList);
                             });
