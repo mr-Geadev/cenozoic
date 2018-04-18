@@ -37,7 +37,7 @@ export class ResumeFullComponent implements OnInit {
                 }
             });
 
-        this.http.get(`http://134.0.119.98:8080/api/v1/resume/get/one?resumeId=${this.id}`)
+        this.http.get(`/api/v1/resume/get/one?resumeId=${this.id}`)
             .subscribe((res: any) => {
                 if (res.success) {
                     this.currentResume = res.resume;
