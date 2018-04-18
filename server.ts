@@ -43,12 +43,15 @@ const PORT = 3000;
 enableProdMode();
 
 const app = express();
+var proxy = require('http-proxy-middleware');
 app.use(compression());
 app.use(cookieparser());
 
 const redirectowww = false;
 const redirectohttps = false;
 const wwwredirecto = true;
+
+app.use('/api', proxy({target: 'http://134.0.119.98:8080', changeOrigin: true}));
 app.use((req, res, next) => {
         // for domain/index.html
         if (req.url === '/index.html') {

@@ -39,7 +39,7 @@ export class ListResumeComponent implements OnInit {
 
         // резюме пользоватля
         if (this.config === "user") {
-            this._http.get(`http://134.0.119.98:8080/api/v1/user/resume/all`)
+            this._http.get(`/api/v1/user/resume/all`)
                 .subscribe((res: any) => {
                     this.listResume = this.formatting(res.resumeList);
                 });
@@ -49,13 +49,13 @@ export class ListResumeComponent implements OnInit {
             this._filterResumesService.filter$
                 .subscribe((parameters: any) => {
                     if (parameters != null) {
-                        this._http.post(`http://134.0.119.98:8080/api/v1/resume/get/all`, { offset: this.offset, filters: parameters, count: 24 })
+                        this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, filters: parameters, count: 24 })
                             .subscribe((res: any) => {
                                 this.listResume = this.formatting(res.resumeList);
                             });
                     } else {
                         //все резюме
-                        this._http.post(`http://134.0.119.98:8080/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
+                        this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
                             .subscribe((res: any) => {
                                 this.listResume = this.formatting(res.resumeList);
                             });
