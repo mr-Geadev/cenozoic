@@ -29,7 +29,7 @@
     "universal": "ng build --prod && ng build --prod --app 1 && ts-node server",
     "build:prerender": "npm run build:universal && npm run generate:prerender",
     "generate:prerender": "node prerender.js",
-    "prod":"npm run ssr"
+    "prod": "npm run ssr"
   },
   "private": true,
   "dependencies": {
