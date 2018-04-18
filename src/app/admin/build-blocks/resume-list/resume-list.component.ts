@@ -13,7 +13,7 @@ export class ResumeListComponent implements OnInit {
   constructor(private _http: HttpClient) { }
 
   ngOnInit() {
-      this._http.post(`:8080/api/v1/resume/get/all`, { offset: 0, count: 24 })
+      this._http.post(`http://134.0.119.98:8080/api/v1/resume/get/all`, { offset: 0, count: 24 })
           .subscribe((res: any) => {
               this.listResume = res.resumeList;
           })
