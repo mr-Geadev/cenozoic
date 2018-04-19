@@ -11,9 +11,12 @@ import {
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from "./admin.component";
-import { MainComponent } from "./build-blocks/main/main.component";
-import { ResumeListComponent } from './build-blocks/resume-list/resume-list.component';
-import { UsersComponent } from "./build-blocks/users/users.component";
+import { MainComponent } from "./pages/main/main.component";
+import { ResumeListComponent } from './pages/resume-list/resume-list.component';
+import { FullUserInfoComponent } from "./pages/users/full-user-info/full-user-info.component";
+import { ItemUserComponent } from "./pages/users/item-user/item-user.component";
+import { UsersApi } from "./pages/users/users.api";
+import { UsersComponent } from "./pages/users/users.component";
 
 @NgModule({
     imports: [
@@ -35,7 +38,14 @@ import { UsersComponent } from "./build-blocks/users/users.component";
         // pages
         ResumeListComponent,
         MainComponent,
-        UsersComponent
+        UsersComponent,
+
+        // blocks
+        ItemUserComponent,
+        FullUserInfoComponent
+    ],
+    providers: [
+        UsersApi
     ]
 })
 export class AdminModule {

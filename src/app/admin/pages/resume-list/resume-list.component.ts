@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-resume-list',
+  selector: 'resume-list.col',
   templateUrl: './resume-list.component.html',
   styleUrls: ['./resume-list.component.less']
 })

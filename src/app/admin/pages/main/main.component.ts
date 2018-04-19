@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'admin-main',
+    selector: 'admin-main.col',
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.less']
 })

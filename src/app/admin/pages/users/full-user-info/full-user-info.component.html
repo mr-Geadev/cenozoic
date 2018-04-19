@@ -1,0 +1,4 @@
+<h6 *ngIf="!user?.fullName">Аккаунт не заполнен</h6>
+<h3 *ngIf="user?.fullName">{{user.fullName}}</h3>
+<h2>{{user.email}}</h2>
+<h3>{{user.typeAccount}}</h3>
