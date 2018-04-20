@@ -143,14 +143,6 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                     }
                     this._dialog.closeAll();
                 });
-            // this._reqConfirm.confirmRequest('Вы действительно хотите удалить?');
-            // this._resConfirm.response
-            //     .subscribe((res) => {
-            //         if (res) {
-            //             this.resumeForm[nameSection].splice(index, 1);
-            //         }
-            //         this._dialog.closeAll();
-            //     });
         }
     }
 

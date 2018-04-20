@@ -11,8 +11,8 @@ export class ReqConfirmService {
 
     public confirmRequest(title: string): void {
         this.dialog.open(ConfirmComponent, {
-            width: '300px',
-            height: '200px',
+            width: '400px',
+            height: '300px',
             data: {title: title}
         } as MatDialogConfig);
     };

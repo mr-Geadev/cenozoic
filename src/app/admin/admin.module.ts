@@ -12,6 +12,7 @@ import {
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from "./admin.component";
 import { MainComponent } from "./pages/main/main.component";
+import { AdminResumeApi } from "./pages/resume-list/admin-resume.api";
 import { ResumeListComponent } from './pages/resume-list/resume-list.component';
 import { FullUserInfoComponent } from "./pages/users/full-user-info/full-user-info.component";
 import { ItemUserComponent } from "./pages/users/item-user/item-user.component";
@@ -45,7 +46,8 @@ import { UsersComponent } from "./pages/users/users.component";
         FullUserInfoComponent
     ],
     providers: [
-        UsersApi
+        UsersApi,
+        AdminResumeApi
     ]
 })
 export class AdminModule {
