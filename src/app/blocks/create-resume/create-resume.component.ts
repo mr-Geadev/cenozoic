@@ -11,6 +11,7 @@ import { Subscription } from "rxjs/Subscription";
 import { CREATE_RESUME } from "../../constants";
 import { ChangeCityModalComponent } from "../../modals/change-city";
 import { ConfirmService } from "../../modals/confirm/confirm.service";
+import { ReqConfirmService } from "../../modals/confirm/req-confirm.service";
 import { ResConfirmService } from "../../modals/confirm/res-confirm.service";
 import { ResumeService, SystemMessageService, UserService } from "../../services";
 import { LocalizationService } from "../../services/localization.service";
@@ -63,7 +64,6 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                 private _systemMessageService: SystemMessageService,
                 private _dialog: MatDialog,
                 private _confirm: ConfirmService,
-                private _resConfirm: ResConfirmService,
                 private _localizationService: LocalizationService,) {
     }
 
@@ -136,8 +136,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
             this.resumeForm[nameSection].push(Object.assign({}, typeField));
             this.listVisibleElement[nameSection].push(true);
         } else {
-            this._confirm.confirm('Вы действительно хотите удалить?');
-            this._resConfirm.answer
+            this._confirm.confirm('Вы действительно хотите удалить?')
                 .subscribe((res) => {
                     if (res) {
                         this.resumeForm[nameSection].splice(index, 1);

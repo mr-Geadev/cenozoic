@@ -15,10 +15,10 @@ export class ConfirmComponent {
     }
 
     public accept(): void {
-        this.resConfirmService.answer.next(true);
+        this.resConfirmService.response.next(true);
     }
 
     public renouncement(): void {
-        this.resConfirmService.answer.next(false);
+        this.resConfirmService.response.next(false);
     }
 }

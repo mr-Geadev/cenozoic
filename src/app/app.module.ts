@@ -9,6 +9,7 @@ import { AppComponent } from "./app.component";
 import { PageFooterModule, PageHeaderModule } from "./blocks";
 import { AdminGuards, CreateResumeGuard } from "./guards";
 import { ChangeCityModalModule } from "./modals/change-city";
+import { ConfirmService } from "./modals/confirm/confirm.service";
 import {
     AccountSettingPageModule,
     CreateVacancyPageModule,
@@ -74,6 +75,7 @@ const ROUTES = [
         LocalizationService,
         UserService,
         SortService,
+        ConfirmService,
 
         //Guards
         CreateResumeGuard,

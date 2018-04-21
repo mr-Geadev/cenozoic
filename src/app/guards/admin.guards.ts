@@ -16,10 +16,9 @@ export class AdminGuards implements CanActivate {
         return this.userService.user$
             .filter(user => !!user)
             .map(user => {
-                if (user._id !== '5aa5718520189420bfa91aea') {
+                if (user.typeAccount !== 'admin') {
                     this.router.navigate(['/']);
                 }
-
                 return true;
             });
     }
