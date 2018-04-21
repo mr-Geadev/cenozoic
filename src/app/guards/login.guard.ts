@@ -16,7 +16,6 @@ export class LogInGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return this.userService.user$
-            .filter(user => !!user)
             .map(user => {
                 if (this.userService.isLogIn()) {
                     return true;
