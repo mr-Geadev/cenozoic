@@ -11,6 +11,7 @@ export class UsersApi {
     }
 
     public getUserList():void {
+        this.userList.length = 0;
         this._http.get('/api/v1/admin/users/info')
             .subscribe(
                 (res) => res['users'].forEach(user => this.userList.push(new UserModel(user))),

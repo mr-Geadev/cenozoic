@@ -1,4 +1,42 @@
-<h6 *ngIf="!user?.fullName">Аккаунт не заполнен</h6>
-<h3 *ngIf="user?.fullName">{{user.fullName}}</h3>
-<h2>{{user.email}}</h2>
-<h3>{{user.typeAccount}}</h3>
+<!--<h6 *ngIf="!user?.fullName">Аккаунт не заполнен</h6>-->
+<!--<h3 *ngIf="user?.fullName">{{user.fullName}}</h3>-->
+<!--<h2>{{user.email}}</h2>-->
+<!--<h3>{{user.typeAccount}}</h3>-->
+
+<mat-card-header>
+    <mat-card-title *ngIf="!user.fullName">Аккаунт не заполнен</mat-card-title>
+    <mat-card-title *ngIf="user.fullName">{{user.fullName}}</mat-card-title>
+    <mat-card-subtitle>{{user._id}}</mat-card-subtitle>
+</mat-card-header>
+
+<img mat-card-image class="avatar" src="/assets/images/icon-camera.svg">
+
+<mat-card-content>
+    <p class="main-info block">
+        <span *ngIf="user.phone">
+        <b>Номер:</b> {{user.phone}}</span> <br>
+        <b>Почта:</b> {{user.email}} <br>
+        <b>Тип аккаунта:</b> {{user.typeAccount}}
+
+    </p>
+    <p class="list-resume-vacancy block">
+        Тут будет список резюме
+    </p>
+</mat-card-content>
+
+<mat-card-actions>
+    <button mat-button>Бан</button>
+    <button mat-button>Написать</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+</mat-card-actions>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>
+        <span>Изменить тип аккаунта</span>
+    </button>
+    <button mat-menu-item>
+        <span>Активировать</span>
+    </button>
+</mat-menu>

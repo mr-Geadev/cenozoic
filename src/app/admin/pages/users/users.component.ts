@@ -18,8 +18,7 @@ export class UsersComponent implements OnInit {
         this.usersApi.getUserList();
     }
 
-    public showFullInfo(user: UserModel) :void {
+    public showFullInfo(user: UserModel): void {
         this.checkedUser = user;
-        console.log('click');
     }
 }

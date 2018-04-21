@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 export const MENU_LIST = [
     {name: 'Главная', link: './'},
     {name: 'Пользователи', link: 'users'},
-    {name: 'Резюме', link: 'resumeList'},
-    {name: 'Вакансии', link: 'vacancyList'},
+    {name: 'Резюме', link: 'resumeList'}
+    // {name: 'Вакансии', link: '#'},
 ];
 
 @Component({

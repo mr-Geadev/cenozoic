@@ -4,7 +4,7 @@ import {
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    MatListModule,
+    MatListModule, MatMenuModule,
     MatTabsModule,
     MatToolbarModule,
 } from "@angular/material";
@@ -30,7 +30,8 @@ import { UsersComponent } from "./pages/users/users.component";
         MatIconModule,
         MatButtonModule,
         MatToolbarModule,
-        MatTabsModule
+        MatTabsModule,
+        MatMenuModule
     ],
     declarations: [
         // core
