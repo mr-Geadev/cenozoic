@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 import { LOG_OUT, SIGN_IN, SIGN_UP, USER_INFO } from "../constants/api.constant";
+import { UserModel } from "../models/user.model";
 import { SystemMessageService } from "./system-message.service";
 
 @Injectable()
@@ -29,6 +30,14 @@ export class UserService {
                     this.setUser(null);
                 }
             );
+    }
+
+    public isType(type: string): boolean {
+        return this.getUser().typeAccount === type || false
+    }
+
+    public getUser(): any {
+        return this.userSubject.value;
     }
 
 
