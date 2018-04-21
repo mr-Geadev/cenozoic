@@ -12,14 +12,20 @@ export class AdminGuards implements CanActivate {
                 private router: Router) {
     }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-        return this.userService.user$
-            .filter(user => !!user)
-            .map(user => {
-                if (user.typeAccount !== 'admin') {
-                    this.router.navigate(['/']);
-                }
-                return true;
-            });
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        console.log('test');
+        // return this.userService.user$
+        //     .filter(user => !!user)
+        //     .map(user => {
+        //         if (user.typeAccount !== 'admin') {
+        //             this.router.navigate(['/']);
+        //         }
+        //         return true;
+        //     });
+        if (this.userService.isType('admin')) {
+            return true;
+        } else {
+            this.router.navigate(['/']);
+        }
     }
 }

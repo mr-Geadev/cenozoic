@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { UserService } from "../services";
 
 export const MENU_LIST = [
     {name: 'Главная', link: './'},
@@ -16,10 +18,15 @@ export class AdminComponent implements OnInit {
 
     public menuList: any = MENU_LIST;
 
-    constructor() {
+    constructor(private _userService: UserService,
+                private _router: Router) {
     }
 
     public ngOnInit() {
+        console.log(this._userService.isType('admin'));
+        if (!this._userService.isType('admin')) {
+            this._router.navigate(['/']);
+        }
     }
 
 }

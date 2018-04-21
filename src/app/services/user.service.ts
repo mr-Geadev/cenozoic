@@ -33,7 +33,12 @@ export class UserService {
     }
 
     public isType(type: string): boolean {
-        return this.getUser().typeAccount === type || false
+
+        if (this.getUser()) {
+            return this.getUser().typeAccount === type;
+        } else {
+            return false
+        }
     }
 
     public getUser(): any {
