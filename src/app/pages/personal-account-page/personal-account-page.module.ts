@@ -6,6 +6,8 @@ import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
 
 import { ListResumeModule, ResumeFullModule } from "../../blocks";
+import { LogInGuard } from "../../guards";
+import { BlankAccountGuard } from "../../guards/blank-account.guard";
 import { LoginModalModule } from "../../modals";
 import { PersonalAccountPageComponent } from "./personal-account-page.component";
 import { ListVacancyModule } from "../../blocks/list-vacancy/list-vacancy.module";
@@ -16,7 +18,12 @@ import { ListVacancyModule } from "../../blocks/list-vacancy/list-vacancy.module
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'personal-account', component: PersonalAccountPageComponent, pathMatch: 'full' },
+            {
+                path: 'personal-account',
+                component: PersonalAccountPageComponent,
+                pathMatch: 'full',
+                canActivate: [LogInGuard]
+            },
         ]),
         CommonModule,
         HttpClientModule,

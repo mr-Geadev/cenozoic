@@ -7,7 +7,7 @@ import { SystemMessageService } from "../services/system-message.service";
 import { UserService } from "../services/user.service";
 
 @Injectable()
-export class CreateResumeGuard implements CanActivate {
+export class BlankAccountGuard implements CanActivate {
 
     constructor(private userService: UserService,
                 private msg: SystemMessageService,

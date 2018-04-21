@@ -2,8 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
-import { LOG_OUT, SIGN_IN, SIGN_UP, USER_INFO } from "../constants/api.constant";
-import { UserModel } from "../models/user.model";
+import { USER_INFO } from "../constants/api.constant";
 import { SystemMessageService } from "./system-message.service";
 
 @Injectable()
@@ -39,6 +38,10 @@ export class UserService {
         } else {
             return false
         }
+    }
+
+    public isLogIn(): boolean {
+        return this.getUser();
     }
 
     public getUser(): any {

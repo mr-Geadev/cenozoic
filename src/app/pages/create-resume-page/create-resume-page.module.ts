@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { BreadcrumbsModule, CreateResumeModule } from "../../blocks";
-import { CreateResumeGuard } from "../../guards/create-resume.guards";
+import { LogInGuard } from "../../guards";
+import { BlankAccountGuard } from "../../guards/blank-account.guard";
 
 import { CreateResumePageComponent } from "./create-resume-page.component";
 
@@ -19,7 +20,7 @@ import { CreateResumePageComponent } from "./create-resume-page.component";
                 path: 'create-resume',
                 component: CreateResumePageComponent,
                 pathMatch: 'full',
-                canActivate: [CreateResumeGuard]
+                canActivate: [LogInGuard, BlankAccountGuard]
             },
         ]),
         CommonModule,
