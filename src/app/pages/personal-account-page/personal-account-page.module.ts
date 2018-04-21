@@ -7,7 +7,6 @@ import { RouterModule } from "@angular/router";
 
 import { ListResumeModule, ResumeFullModule } from "../../blocks";
 import { LogInGuard } from "../../guards";
-import { BlankAccountGuard } from "../../guards/blank-account.guard";
 import { LoginModalModule } from "../../modals";
 import { PersonalAccountPageComponent } from "./personal-account-page.component";
 import { ListVacancyModule } from "../../blocks/list-vacancy/list-vacancy.module";

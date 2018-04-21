@@ -22,9 +22,7 @@ export class UserService {
     public getUserInfo(): void {
         this.http.get(USER_INFO)
             .subscribe(
-                (res: any) => {
-                    this.setUser(res.user);
-                },
+                (res: any) => {this.setUser(res.user);},
                 (err: any) => {
                     this.setUser(null);
                 }
@@ -42,6 +40,14 @@ export class UserService {
 
     public isLogIn(): boolean {
         return this.getUser();
+    }
+
+    public isManagement(): boolean {
+        if (this.getUser()) {
+            return this.getUser().typeAccount === 'admin' || this.getUser().typeAccount === 'manager';
+        } else {
+            return false
+        }
     }
 
     public getUser(): any {

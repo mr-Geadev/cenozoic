@@ -3,26 +3,27 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
-import { LoginModalService } from "../modals/login";
+import { SystemMessageService } from "../services";
 import { UserService } from "../services/user.service";
 
 @Injectable()
-export class LogInGuard implements CanActivate {
+export class NotEmployerGuard implements CanActivate {
 
     constructor(private userService: UserService,
-                private _login: LoginModalService,
-                private router: Router) {
+                private router: Router,
+                private _message: SystemMessageService) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return this.userService.user$
             .filter(user => !!user)
             .map(user => {
-                if (this.userService.isLogIn()) {
+                if (this.userService.isType('employer')) {
+                    this._message.info('Действие не доступно для вашего аккаунта')
+                    this.router.navigate(['/']);
+                } else {
                     return true;
                 }
-                this.router.navigate(['/']);
-                this._login.openModal()
             });
     }
 }

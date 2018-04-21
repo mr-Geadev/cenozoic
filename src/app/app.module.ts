@@ -7,7 +7,7 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { PageFooterModule, PageHeaderModule } from "./blocks";
-import { AdminGuard, LogInGuard } from "./guards";
+import { AdminGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from "./guards";
 import { BlankAccountGuard } from "./guards/blank-account.guard";
 import { ChangeCityModalModule } from "./modals/change-city";
 import { ConfirmService } from "./modals/confirm/confirm.service";
@@ -81,7 +81,9 @@ const ROUTES = [
         //Guards
         BlankAccountGuard,
         AdminGuard,
-        LogInGuard
+        LogInGuard,
+        NotEmployerGuard,
+        NotWorkerGuard
     ],
     bootstrap: [AppComponent]
 })
