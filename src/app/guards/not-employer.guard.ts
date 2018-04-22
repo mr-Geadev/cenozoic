@@ -20,7 +20,7 @@ export class NotEmployerGuard implements CanActivate {
             .map(user => {
                 if (this.userService.isType('employer')) {
                     this._message.info('Действие не доступно для вашего аккаунта')
-                    this.router.navigate(['/']);
+                    this.router.navigate(['/personal-account']);
                 } else {
                     return true;
                 }

@@ -10,6 +10,8 @@ import { UserService } from "../services/user.service";
 @Injectable()
 export class LogInGuard implements CanActivate {
 
+    private init:boolean = false;
+
     constructor(private userService: UserService,
                 private _login: LoginModalService,
                 private _message: SystemMessageService,
@@ -18,12 +20,14 @@ export class LogInGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return this.userService.user$
+            .filter(user => user !== undefined)
             .map(user => {
-                if (this.userService.isLogIn()) {
+                if (user) {
                     return true;
+                } else {
+                    this._message.info('Для просмотра данной страницы необходимо авторизироваться');
+                    this.router.navigate(['/']);
                 }
-                this.router.navigate(['/']);
-                this._message.info('Пожалуйста авторизируйтесь');
             });
     }
 }

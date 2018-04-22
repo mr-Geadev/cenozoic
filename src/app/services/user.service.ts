@@ -8,7 +8,7 @@ import { SystemMessageService } from "./system-message.service";
 @Injectable()
 export class UserService {
 
-    private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+    private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
     public user$: Observable<any> = this.userSubject.asObservable();
 
     constructor(private http: HttpClient,
@@ -23,9 +23,7 @@ export class UserService {
         this.http.get(USER_INFO)
             .subscribe(
                 (res: any) => {this.setUser(res.user);},
-                (err: any) => {
-                    this.setUser(null);
-                }
+                (err: any) => { this.setUser(null);}
             );
     }
 
@@ -53,6 +51,7 @@ export class UserService {
     public getUser(): any {
         return this.userSubject.value;
     }
+
 
 
 }
