@@ -4,6 +4,7 @@ import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 import { LoginModalService } from "../modals/login";
+import { SystemMessageService } from "../services";
 import { UserService } from "../services/user.service";
 
 @Injectable()
@@ -11,6 +12,7 @@ export class LogInGuard implements CanActivate {
 
     constructor(private userService: UserService,
                 private _login: LoginModalService,
+                private _message: SystemMessageService,
                 private router: Router) {
     }
 
@@ -21,7 +23,7 @@ export class LogInGuard implements CanActivate {
                     return true;
                 }
                 this.router.navigate(['/']);
-                this._login.openModal()
+                this._message.info('Пожалуйста авторизируйтесь');
             });
     }
 }
