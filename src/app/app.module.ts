@@ -7,7 +7,8 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { PageFooterModule, PageHeaderModule } from "./blocks";
-import { AdminGuards, CreateResumeGuard } from "./guards";
+import { AdminGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from "./guards";
+import { BlankAccountGuard } from "./guards/blank-account.guard";
 import { ChangeCityModalModule } from "./modals/change-city";
 import { ConfirmService } from "./modals/confirm/confirm.service";
 import {
@@ -31,7 +32,7 @@ const ROUTES = [
     {
         path: 'admin',
         loadChildren: 'app/admin/admin.module#AdminModule',
-        canActivate: [AdminGuards]
+        canActivate: [AdminGuard]
     },
     { path: '**', redirectTo: '/' }
 ];
@@ -78,8 +79,11 @@ const ROUTES = [
         ConfirmService,
 
         //Guards
-        CreateResumeGuard,
-        AdminGuards,
+        BlankAccountGuard,
+        AdminGuard,
+        LogInGuard,
+        NotEmployerGuard,
+        NotWorkerGuard
     ],
     bootstrap: [AppComponent]
 })
