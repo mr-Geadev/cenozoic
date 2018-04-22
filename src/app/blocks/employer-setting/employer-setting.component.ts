@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { MatDialog } from "@angular/material";
+import { Router } from "@angular/router";
 import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants/api.constant";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ConfirmService } from "../../modals/confirm/confirm.service";
 import { AuthService } from "../../services/auth.service";
 import { HttpClient } from "@angular/common/http";
 import { SystemMessageService } from "../../services/system-message.service";
@@ -21,6 +24,9 @@ export class EmployerSettingComponent {
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
                 private _http: HttpClient,
+                private router: Router,
+                private _dialog: MatDialog,
+                private _confirm: ConfirmService,
                 private _authService: AuthService) {
 
         this.userService.user$
@@ -94,13 +100,23 @@ export class EmployerSettingComponent {
     }
 
     public removeUser(): void {
-        this._http.get(`${REMOVE_USER}?resumeId=${this.currentUser._id}`)
+        this._confirm.confirm('Вы действительно хотите удалить аккаунт?')
             .subscribe(
-                (res) => {
-                    this._authService.logOut();
-                    this.msg.info('Аккаунт удален');
-                },
-                (err) => this.msg.info('Данная фича будет добавлена позже'))
+                res => {
+                    if (res) {
+                        this._http.get('/api/v1/employer/account/delete')
+                            .subscribe(
+                                (res) => {
+                                    this.userService.setUser(null);
+                                    this.msg.info('Аккаунт удален');
+                                    this.router.navigate(['/'])
+                                },
+                                (err) => this.msg.info(err.error.errorMessage)
+                            )
+                    }
+                    this._dialog.closeAll();
+                }
+            )
     }
 
 }
