@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
     MatButtonModule,
-    MatCardModule,
+    MatCardModule, MatDialogModule,
     MatIconModule,
     MatListModule, MatMenuModule,
     MatTabsModule,
@@ -25,6 +25,7 @@ import { UsersComponent } from "./pages/users/users.component";
         AdminRoutingModule,
 
         // material
+        MatDialogModule,
         MatCardModule,
         MatListModule,
         MatIconModule,
