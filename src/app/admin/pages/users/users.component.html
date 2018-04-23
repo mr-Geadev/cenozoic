@@ -8,7 +8,7 @@
                         <h3 mat-subheader>Список всех аккаунтов на сайте</h3>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
                                    [user]="user"
-                                   (click)="showFullInfo(user)"></item-user>
+                                   (click)="showFullInfo(user, i)"></item-user>
                     </mat-list>
                 </mat-tab>
 
@@ -17,7 +17,7 @@
                         <h3 mat-subheader>Список всех работодателей зарегестрированных на сайте</h3>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
                                    [user]="user" [filter]="'employer'"
-                                   (click)="showFullInfo(user)"></item-user>
+                                   (click)="showFullInfo(user, i)"></item-user>
                     </mat-list>
                 </mat-tab>
 
@@ -26,7 +26,7 @@
                         <h3 mat-subheader>Список всех соискателей зарегестрированных на сайте</h3>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
                                    [user]="user" [filter]="'worker'"
-                                   (click)="showFullInfo(user)"></item-user>
+                                   (click)="showFullInfo(user, i)"></item-user>
                     </mat-list>
                 </mat-tab>
 
@@ -35,7 +35,7 @@
                         <h3 mat-subheader>Список модераторов</h3>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
                                    [user]="user" [filter]="'moderator'"
-                                   (click)="showFullInfo(user)"></item-user>
+                                   (click)="showFullInfo(user, i)"></item-user>
                     </mat-list>
                 </mat-tab>
 
@@ -46,7 +46,7 @@
     <div class="full-info-user col-4" *ngIf="checkedUser">
         <mat-card>
             <mat-icon class="close-full-info" mat-list-icon (click)="showFullInfo(null)">close</mat-icon>
-            <full-user-info [user]="checkedUser"></full-user-info>
+            <full-user-info [user]="checkedUser" [index]="indexCheckedUser"></full-user-info>
         </mat-card>
     </div>
 
