@@ -1,8 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatDialog } from "@angular/material";
+import { Router } from "@angular/router";
 
 import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants";
+import { ConfirmService } from "../../modals/confirm/confirm.service";
 import { AuthService, SystemMessageService, UserService } from "../../services";
 
 @Component({
@@ -19,6 +22,9 @@ export class WorkerSettingComponent {
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
                 private _http: HttpClient,
+                private router: Router,
+                private _confirm: ConfirmService,
+                private _dialog: MatDialog,
                 private _authService: AuthService) {
 
         this.userService.user$
@@ -98,13 +104,23 @@ export class WorkerSettingComponent {
     }
 
     public removeUser(): void {
-        this._http.get(`${REMOVE_USER}?resumeId=${this.currentUser._id}`)
+        this._confirm.confirm('Вы действительно хотите удалить аккаунт?')
             .subscribe(
-                (res) => {
-                    this._authService.logOut();
-                    this.msg.info('Аккаунт удален');
-                },
-                (err) => this.msg.info('Данная фича будет добавлена позже'))
+                res => {
+                    if (res) {
+                        this._http.get('/api/v1/worker/account/delete')
+                            .subscribe(
+                                (res) => {
+                                    this.userService.setUser(null);
+                                    this.msg.info('Аккаунт удален');
+                                    this.router.navigate(['/'])
+                                },
+                                (err) => this.msg.info(err.error.errorMessage)
+                            )
+                    }
+                    this._dialog.closeAll();
+                }
+            )
     }
 
 }
