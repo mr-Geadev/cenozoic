@@ -10,6 +10,7 @@ import { UsersApi } from "./users.api";
 export class UsersComponent implements OnInit {
 
     public checkedUser: UserModel = null;
+    public indexCheckedUser: number = null;
 
     constructor(public usersApi: UsersApi) {
     }
@@ -18,7 +19,8 @@ export class UsersComponent implements OnInit {
         this.usersApi.getUserList();
     }
 
-    public showFullInfo(user: UserModel): void {
+    public showFullInfo(user: UserModel, index?: number): void {
         this.checkedUser = user;
+        this.indexCheckedUser = index;
     }
 }
