@@ -558,4 +558,21 @@
 	.ng-touched.ng-invalid:not(:disabled) ~ .validation-alert {
 		display: block;
 	}
+
+
+
+	@media (max-width: 600px) {
+		.col-auto.add-photo {
+			display: none !important;
+		}
+
+		.parameter {
+			flex-wrap: wrap !important;
+
+			.left {
+				width: 100% !important;
+				margin-bottom: 10px !important;
+			}
+		}
+	}
 }
