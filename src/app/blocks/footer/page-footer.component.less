@@ -117,17 +117,22 @@
 
 	@media (max-width: 765px) {
 
-		.col .copyright {
-			display: none;
+		.col.copyright {
+			display: none !important;
 		}
 
 		.col.menu .social-network {
-			position: relative;
-			margin-top: 20px;
+			position: relative !important;
+			margin-top: 20px !important;
+		}
+
+		.col.menu .menu-list {
+			flex-direction: column !important;
+			align-items: center !important;
 		}
 
 		.col.menu .menu-list .link {
-			margin: 0 5px;
+			margin: 0 5px !important;
 		}
 	}
 }
