@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { ResumeService, UserService } from "../../services";
+import { LocalizationService, ResumeService, UserService } from "../../services";
 import { VacancyFullService } from "./vacancy-full.service";
 
 @Component({
@@ -11,8 +11,11 @@ import { VacancyFullService } from "./vacancy-full.service";
 })
 export class VacancyFullComponent implements OnInit {
 
+    public dictionary: any = null;
+
     constructor(public resumeService: ResumeService,
                 private _vacancyFullService: VacancyFullService,
+                private _localizationService: LocalizationService,
                 private activateRoute: ActivatedRoute) {
         this.id = activateRoute.snapshot.params['id'];
     }
@@ -23,6 +26,9 @@ export class VacancyFullComponent implements OnInit {
 
 
     ngOnInit(): void {
+
+        this.dictionary = this._localizationService.currentDictionary;
+
         this._vacancyFullService.getVacancy(this.id)
             .subscribe(
                 res => this.currentVacancy = res

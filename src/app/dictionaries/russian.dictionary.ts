@@ -8,9 +8,20 @@ export const RUSSIAN_DICTIONARY = {
     //общее
     YOUR: 'Ваши',
     CHANGE_CITY: 'Выберете город',
+    CITY: 'Город',
     CHANGE_CITY_PLACEHOLDER: 'Введите название города',
     FROM: 'от',
+    TO: 'до',
     MORE: 'Подробнее',
+    NO_DATA: 'нет данных',
+    WAIT: 'Ожидайте',
+
+    //валюта
+    EURO: 'Евро',
+    DOLLARS: 'Доллары',
+    RUBLES: 'Рубли',
+    RUBLES_SHORT: 'руб',
+    POUNDS: 'Фунты стерлингов',
 
     MONTHS: [
         'Январь',
@@ -27,7 +38,19 @@ export const RUSSIAN_DICTIONARY = {
         'Декабрь'
     ],
     MONTH: 'Месяц',
+    MONTH_SHORT: 'мес',
+    MONTHES: 'месяцев',
     YEAR: 'год',
+    YEARS: 'лет',
+    OF_YEARS: 'года',
+
+    // тарифы
+    GET_UPGRADE_ACCOUNT: 'Получите улучшенный аккаунт',
+    RATE: 'тариф',
+    BASIC_RATE: 'базовый',
+    BASIC_RATE_DESCRIPTION: 'Вы сможете видеть контакные данные соискателей,  отправлять им приглашения, прикреплять к резюме опросники.',
+    SHOW_RATES: 'Посмотреть тарифы',
+
 
     // меню
     FOR_CANDIDATES: 'Соискателям',
@@ -104,7 +127,6 @@ export const RUSSIAN_DICTIONARY = {
     ACCOUNT_PAGE_TAB_4_2: 'Вакансии',
     ACCOUNT_PAGE_TAB_5: 'Опросные листы',
 
-
     ACCOUNT_PAGE_TAB_1_DESC: 'В этом разделе показаны результаты всех ваших откликов на вакансии. Вы можете отменить отправленный отклик или переместить в архив отклики, на которые уже дан ответ работодателя.',
     ACCOUNT_PAGE_TAB_2_DESC: 'В этом разделе показаны предложения, поступившие вам со стороны компаний. Вы можете ответить на них или переместить в архив.',
     ACCOUNT_PAGE_TAB_3_DESC: 'В этом разделе содержатся ваши старые отклики/предложения',
@@ -112,7 +134,24 @@ export const RUSSIAN_DICTIONARY = {
     ACCOUNT_PAGE_TAB_4_2_DESC: 'В этом разделе показаны все ваши вакансии. Вы можежет просмотреть и отредактировать нужную, кликнув по нему',
     ACCOUNT_PAGE_TAB_5_DESC: 'В этом разделе показаны все ваши опросные листы. Вы можежет просмотреть и отредактировать нужное, кликнув по нему',
 
-    // конструктор вакансий/резюме
+    // вывод вакансии
+    REQUIRED_EXPERIENCE: 'Требуемый опыт работы',
+    ANSWER_VACANCY: 'Откликнуться на вакансию',
+
+    // конструктор вакансий
+    ADD_NEW_VACANCY: 'Добавить новую вакансию',
+    NAMED_VACANCY: 'Название вакансии',
+    VACANCY_EXPERIENCE: 'Опыт работы в промышленности:',
+    DUTIES: 'Обязанности',
+    DUTIES_DESCRIPTION: 'Через запятую перечислите все обязанности претендента',
+    REQUIREMENTS: 'Требования',
+    REQUIREMENTS_DESCRIPTION: 'Через запятую перечислите, какими навыками должен обладать претендент',
+    WORKING_CONDITIONS: 'Условия работы',
+    WORKING_CONDITIONS_DESCRIPTION: 'Через запятую перечислите, какими условия предоставляемой должности',
+    SAVE_VACANCY: 'Сохранить вакансию',
+    SAVE_VACANCY_DESCRIPTION: 'Вы всегда сможете отредактировать вакансию  в личном кабинете',
+
+    // конструктор резюме
     CONSTRUCTOR_CV: 'Конструктор резюме',
     ADD_NEW_CV: 'Добавить новое резюме',
     YES:'Да',
@@ -123,6 +162,8 @@ export const RUSSIAN_DICTIONARY = {
     AGE: 'Возраст',
     BIRTHDAY: 'Дата рождения',
     IRRELEVANT: 'Не имеет значения',
+    BEFORE_TAXES: 'до вычета налогов',
+    AFTER_TAXES: 'после вычета налогов',
     SEX: 'Пол',
         MAN: 'Муж',
         WOMAN: 'Жен',
@@ -229,4 +270,25 @@ export const RUSSIAN_DICTIONARY = {
     YEAR_OF_END_EDUCATION: 'Год окончания',
     KNOWLEDGE_OF_LANGUAGES: 'Знание языков',
     FIO: 'ФИО',
+
+    // настройки аккаунта
+    SETTING_ACCOUNT: 'Настройки профиля',
+    PARAMETERS_ENTER: 'Параметры входа',
+    OLD_PASSWORD: 'Старый пароль',
+    NEW_PASSWORD: 'Новый пароль',
+    SAVE_CHANGES: 'Сохранить изменения',
+    PHONE_CONNECT: 'Телефон для связи',
+    LOAD_LOGO: 'Загрузить логотип',
+    NOTIFICATIONS: 'Оповещения',
+        NOTIFICATIONS_PERSONAL_ACCOUNT: 'Личный кабинет',
+    DATA_COMPANY: 'Данные компании',
+        FULL_NAME: 'Полное имя',
+    PERSONAL_DATA: 'Личные данные',
+        NAME_COMPANY: 'Название компании',
+    DELETE_ACCOUNT: 'Удалить аккаунт',
+
+
+    //  подтверждение почты
+    CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден',
+    CONFIRM_FAIL: 'Ссылка недействительна. Проверьте правильность ссылки, либо обратитесь за помощью к администратору.',
 };
