@@ -196,4 +196,29 @@
 			}
 		}
 	}
+
+	@media (max-width: 1000px) {
+
+		.list .item:nth-child(4n), .list .item:nth-child(3n)  {
+			display: none !important;
+		}
+
+	}
+
+	@media (max-width: 765px) {
+
+		.row.type .typeof {
+			width: 50% !important;
+		}
+
+		.list {
+			justify-content: center !important;
+		}
+		.row.manage {
+			justify-content: center !important;
+
+			.steps {display: none !important;}
+			.arrows {display: none !important;}
+		}
+	}
 }
