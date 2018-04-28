@@ -56,7 +56,7 @@
                         </label>
                     </div>
                     <div class="right">
-                        <input type="text" id="fio" formControlName="fullName" placeholder="Фамилия, имя, отчество">
+                        <input type="text" id="fio" formControlName="companyName" placeholder="Фамилия, имя, отчество">
                     </div>
                 </div>
                 <div class="parameter">
@@ -94,15 +94,17 @@
         </div>
         <div class="col-4">
             <div class="add-photo">
-                <div class="image default">
+                <div *ngIf="!companyLogo.data && !currentUser.photoURL" class="image default">
                     <img src="/assets/images/icon-camera.svg"/>
                 </div>
-                <input id="load-photo" type="file" size="0"
+                <div *ngIf="companyLogo.data || currentUser.photoURL" class="image user">
+                    <img [src]="companyLogo.data || currentUser.photoURL">
+                </div>
+                <input (change)="onImageChange($event)" id="load-photo" type="file" size="0"
                        accept="image/*,image/jpeg,image/png,image/gif">
-                <label for="load-photo">{{dictionary.LOAD_LOGO}}</label>
+                <label for="load-photo">{{loadingPhotoButton}}</label>
 
-                <div class="message">
-                    {{dictionary.LOAD_PHOTO_DESCRIPTION}}
+                <div class="message" [innerHTML]="dictionary.LOAD_PHOTO_DESCRIPTION">
                 </div>
             </div>
             <div class="rate">

@@ -174,6 +174,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
     }
 
     public send(): void {
+
+        // блок рассчета опыта
         let timeOil: number = 0;
         let timeMining: number = 0;
 
@@ -192,6 +194,7 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
         this.resumeForm.experienceAll.mining.years = Math.floor(timeMining / 12);
         this.resumeForm.experienceAll.mining.months = timeMining % 12;
         this.resumeForm.experienceAllTime = `${Math.floor((timeOil + timeMining) / 12)};${(timeOil + timeMining) % 12}`;
+        // конец
 
         if (this.type === DEFAULT_TYPE) {
             const formData: FormData = new FormData();

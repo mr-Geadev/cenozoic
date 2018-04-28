@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material";
 import { Router } from "@angular/router";
+import { CREATE_RESUME } from "../../constants";
 import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants/api.constant";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ConfirmService } from "../../modals/confirm/confirm.service";
@@ -9,6 +10,7 @@ import { HttpClient } from "@angular/common/http";
 import { LocalizationService } from "../../services/localization.service";
 import { SystemMessageService } from "../../services/system-message.service";
 import { UserService } from "../../services/user.service";
+import { DEFAULT_TYPE } from "../create-resume/create-resume.contants";
 
 @Component({
     selector: 'employer-setting',
@@ -23,6 +25,12 @@ export class EmployerSettingComponent implements OnInit{
     public passwords: FormGroup = null;
     public info: FormGroup = null;
 
+    public companyLogo: any = {
+        file: null,
+        data: null
+    };
+    public loadingPhotoButton: string = ''; // текст кнопки загрузки фото
+
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
                 private _http: HttpClient,
@@ -36,8 +44,8 @@ export class EmployerSettingComponent implements OnInit{
             .subscribe((user) => {
                 if (user) {
                     this.currentUser = Object.assign(this.currentUser, user);
-                    if (!this.currentUser.fullName) {
-                        this.currentUser.fullName = '';
+                    if (!this.currentUser.companyName) {
+                        this.currentUser.companyName = '';
                     }
                     if (!this.currentUser.phone) {
                         this.currentUser.phone = '';
@@ -45,7 +53,8 @@ export class EmployerSettingComponent implements OnInit{
                     if (!this.currentUser.notifications) {
                         this.currentUser.notifications = {
                             lk: false,
-                            email: false
+                            email: false,
+                            push: false
                         }
                     }
                     this.formCreate();
@@ -56,6 +65,9 @@ export class EmployerSettingComponent implements OnInit{
     public ngOnInit() {
         // подклюение локализцаи
         this.dictionary = this._localizationService.currentDictionary;
+
+        // установка текста кнопки лоаклизации из словря
+        this.loadingPhotoButton = this.dictionary.LOAD_PHOTO;
     }
 
     public formCreate(): void {
@@ -66,7 +78,7 @@ export class EmployerSettingComponent implements OnInit{
         });
 
         this.info = new FormGroup({
-            fullName: new FormControl(this.currentUser.fullName, [
+            companyName: new FormControl(this.currentUser.companyName, [
                 Validators.required,
                 Validators.minLength(10)
             ]),
@@ -101,7 +113,19 @@ export class EmployerSettingComponent implements OnInit{
     }
 
     public changeUserInfo(): void {
-        this._http.post(CHANGE_USER_INFO, this.info.value)
+
+        const formData: FormData = new FormData();
+
+        if (!!this.companyLogo.file) {
+            formData.append('fileToUpload', this.companyLogo.file);
+        }
+
+        let info = this.info.value;
+        info.photoURL = 'костыль';
+
+        formData.append('userParameters', JSON.stringify(info));
+        console.log(formData);
+        this._http.post('/api/v1/employer/profile/parameters/change', formData)
             .subscribe(
                 (res: any) => this.msg.info('Данные изменены'),
                 (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз'))
@@ -125,6 +149,29 @@ export class EmployerSettingComponent implements OnInit{
                     this._dialog.closeAll();
                 }
             )
+    }
+
+    public onImageChange(event): void {
+        const fileList: FileList = event.target.files;
+        const file: File = fileList[0];
+
+        if (fileList && fileList.length > 0) {
+            if (file.size <= 5242880) {
+                const reader = new FileReader();
+                this.companyLogo.file = fileList[0];
+
+                this.loadingPhotoButton = this.companyLogo.file.name;
+
+                if (event.target.files && event.target.files.length > 0) {
+                    reader.readAsDataURL(this.companyLogo.file);
+                    reader.onload = () => {
+                        this.companyLogo.data = reader.result;
+                    };
+                }
+            } else {
+                this.msg.info('Размер файла превышает 5мб');
+            }
+        }
     }
 
 }
