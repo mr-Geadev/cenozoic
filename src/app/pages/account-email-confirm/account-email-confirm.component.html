@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col">
             <div class="message" *ngIf="status === 'loading'">
-                Ожидайте
+                {{dictionary.WAIT }}
             </div>
             <div class="message" *ngIf="status === 'success'">
-                Ваш аккаунт успешно подтвержден
+                {{dictionary.CONFIRM_SUCCESS }}
             </div>
             <div class="message" *ngIf="status === 'error'">
-                Ссылка недействительна. Проверьте правильность ссылки, либо обратитесь за помощью к администратору.
+                {{dictionary.CONFIRM_FAIL }}
             </div>
         </div>
     </div>

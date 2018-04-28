@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material";
 import { Router } from "@angular/router";
 import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants/api.constant";
@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ConfirmService } from "../../modals/confirm/confirm.service";
 import { AuthService } from "../../services/auth.service";
 import { HttpClient } from "@angular/common/http";
+import { LocalizationService } from "../../services/localization.service";
 import { SystemMessageService } from "../../services/system-message.service";
 import { UserService } from "../../services/user.service";
 
@@ -14,8 +15,9 @@ import { UserService } from "../../services/user.service";
     templateUrl: './employer-setting.component.html',
     styleUrls: ['./employer-setting.component.less']
 })
-export class EmployerSettingComponent {
+export class EmployerSettingComponent implements OnInit{
 
+    public dictionary: any = null;
 
     public currentUser: any = {};
     public passwords: FormGroup = null;
@@ -27,7 +29,8 @@ export class EmployerSettingComponent {
                 private router: Router,
                 private _dialog: MatDialog,
                 private _confirm: ConfirmService,
-                private _authService: AuthService) {
+                private _authService: AuthService,
+                private _localizationService: LocalizationService) {
 
         this.userService.user$
             .subscribe((user) => {
@@ -48,6 +51,11 @@ export class EmployerSettingComponent {
                     this.formCreate();
                 }
             });
+    }
+
+    public ngOnInit() {
+        // подклюение локализцаи
+        this.dictionary = this._localizationService.currentDictionary;
     }
 
     public formCreate(): void {

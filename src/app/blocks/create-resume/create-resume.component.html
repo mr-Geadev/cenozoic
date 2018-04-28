@@ -39,7 +39,7 @@
                                        required>
                                 <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 <div class="word rub">
-                                    руб.
+                                    {{dictionary.RUBLES_SHORT}}.
                                 </div>
                             </div>
                         </div>
@@ -131,8 +131,7 @@
                             <div class="right">
                                 <mat-form-field>
                                     <mat-select name="schedule" [(ngModel)]="resumeForm.schedule" required>
-                                        <mat-option value="none">{{dictionary.IRRELEVANT}}
-                                        </mat-option>
+                                        <mat-option value="none">{{dictionary.IRRELEVANT}}</mat-option>
                                         <mat-option value="full">{{dictionary.FULL_DAY}}</mat-option>
                                         <mat-option value="remote">{{dictionary.REMOTE}}</mat-option>
                                         <mat-option value="watch">{{dictionary.SHIFT}}</mat-option>
@@ -396,8 +395,7 @@
                                     </div>
                                     <div class="right">
                                         <button mat-raised-button color="primary" (click)="changeEducationCity(i)">
-                                            {{resumeForm.education[i].city ? resumeForm.education[i].city :
-                                            dictionary.EDUCATION_CHANGE_CITY}}
+                                            {{resumeForm.education[i].city ? resumeForm.education[i].city : dictionary.EDUCATION_CHANGE_CITY}}
                                         </button>
                                     </div>
                                 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SystemMessageService } from "../../services";
+import { LocalizationService } from "../../services/localization.service";
 import { CreateVacancyService } from "./create-vacancy.service";
 import { ChangeCityModalComponent } from "../../modals/change-city/change-city.component";
 import { MatDialog, MatDialogConfig } from "@angular/material";
@@ -13,13 +14,19 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 export class CreateVacancyComponent implements OnInit {
 
     public vacancy: FormGroup;
+    public dictionary: any = null;
 
     constructor(private _createVacancyService: CreateVacancyService,
                 private _msg: SystemMessageService,
-                private _dialog: MatDialog,) {
+                private _dialog: MatDialog,
+                private _localizationService: LocalizationService,) {
     }
 
     public ngOnInit(): void {
+
+        // подклюение локализцаии
+        this.dictionary = this._localizationService.currentDictionary;
+
         this.createVacancy();
         console.log(this.vacancy);
     }
