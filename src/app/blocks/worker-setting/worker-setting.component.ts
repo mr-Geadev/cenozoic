@@ -1,29 +1,31 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 import { Router } from "@angular/router";
 
 import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants";
 import { ConfirmService } from "../../modals/confirm/confirm.service";
-import { AuthService, SystemMessageService, UserService } from "../../services";
+import { AuthService, LocalizationService, SystemMessageService, UserService } from "../../services";
 
 @Component({
     selector: 'worker-setting',
     templateUrl: './worker-setting.component.html',
     styleUrls: ['./worker-setting.component.less']
 })
-export class WorkerSettingComponent {
+export class WorkerSettingComponent implements OnInit {
 
     public currentUser: any = {};
     public passwords: FormGroup = null;
     public info: FormGroup = null;
+    public dictionary: any = null;
 
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
                 private _http: HttpClient,
                 private router: Router,
                 private _confirm: ConfirmService,
+                private _localizationService: LocalizationService,
                 private _dialog: MatDialog,
                 private _authService: AuthService) {
 
@@ -47,6 +49,10 @@ export class WorkerSettingComponent {
                 }
             });
 
+    }
+
+    public ngOnInit() {
+        this.dictionary = this._localizationService.currentDictionary;
     }
 
     public formCreate(): void {

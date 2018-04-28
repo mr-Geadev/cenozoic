@@ -8,8 +8,20 @@ export const ENGLISH_DICTIONARY = {
     //общее
     YOUR: 'Your',
     CHANGE_CITY: 'Choose a city',
+    CITY: 'Город',
     CHANGE_CITY_PLACEHOLDER: 'Enter the name of the city',
     FROM: 'from',
+    TO: 'to',
+    MORE: 'Learn More',
+    NO_DATA: 'no data',
+    WAIT: 'Wait',
+
+    //валюта
+    EURO: 'Euro',
+    DOLLARS: 'Dollars',
+    RUBLES: 'Rubles',
+    RUBLES_SHORT: 'rub',
+    POUNDS: 'Pounds',
 
     MONTHS: [
         'January',
@@ -26,7 +38,19 @@ export const ENGLISH_DICTIONARY = {
         'December'
     ],
     MONTH: 'Month',
+    MONTH_SHORT: 'month',
+    MONTHES: 'months',
     YEAR: 'Year',
+    YEARS: 'years',
+    OF_YEARS: 'year',
+
+    // тарифы
+    GET_UPGRADE_ACCOUNT: 'Get an improved account',
+    RATE: 'rate',
+    BASIC_RATE: 'base',
+    BASIC_RATE_DESCRIPTION: 'You can see the contact details of applicants, send them invitations, attach to the resume questionnaires.',
+    SHOW_RATES: 'View Rates',
+
 
     // меню
     FOR_CANDIDATES: 'For candidates',
@@ -110,8 +134,26 @@ export const ENGLISH_DICTIONARY = {
     ACCOUNT_PAGE_TAB_4_1_2_DESC:'This section shows all your jobs. You can view and edit the desired one by clicking on it',
     ACCOUNT_PAGE_TAB_5_DESC:'This section shows all your questionnaires. You can view and edit the desired by clicking on it',
 
-    // конструктор вакансий/резюме
+    // вывод вакансии
+    REQUIRED_EXPERIENCE: 'Required work experience',
+    ANSWER_VACANCY: 'Apply for job',
+
+    // конструктор вакансий
+    ADD_NEW_VACANCY: 'Add a new vacancy',
+    NAMED_VACANCY: 'Job title',
+    VACANCY_EXPERIENCE: 'Work experience in industry:',
+    DUTIES: 'Duties',
+    DUTIES_DESCRIPTION: 'List all the duties of the applicant by commas',
+    REQUIREMENTS: 'Requirements',
+    REQUIREMENTS_DESCRIPTION: 'Separate by comma what skills the applicant should have',
+    WORKING_CONDITIONS: 'Working conditions',
+    WORKING_CONDITIONS_DESCRIPTION: 'Separate by comma what the terms of the post',
+    SAVE_VACANCY: 'Save the vacancy',
+    SAVE_VACANCY_DESCRIPTION: 'You can always edit the vacancy in your personal account',
+
+    // конструктор резюме
     CONSTRUCTOR_CV: 'Constructor CV',
+    ADD_NEW_CV: 'Add a new resume',
     YES: 'Yes',
     NO: 'No',
     EXPECTED_POSITION: 'Expected Position',
@@ -120,6 +162,8 @@ export const ENGLISH_DICTIONARY = {
     AGE: 'Age',
     BIRTHDAY: 'Date of birthday',
     IRRELEVANT: 'Does not matter',
+    BEFORE_TAXES: 'before tax',
+    AFTER_TAXES: 'after tax',
     SEX: 'Sex',
         MAN: 'Male',
         WOMAN: 'Female',
@@ -225,4 +269,26 @@ export const ENGLISH_DICTIONARY = {
     YEAR_OF_END_EDUCATION: 'Year of ending',
     KNOWLEDGE_OF_LANGUAGES: 'Knowledge of languages',
     FIO: 'Full name',
+
+
+    // настройки аккаунта
+    SETTING_ACCOUNT: 'Profile settings',
+    PARAMETERS_ENTER: 'Login options',
+    OLD_PASSWORD: 'old password',
+    NEW_PASSWORD: 'New password',
+    SAVE_CHANGES: 'Save Changes',
+    PHONE_CONNECT: 'Phone for communication',
+    LOAD_LOGO: 'Upload logo',
+    NOTIFICATIONS: 'Notifications',
+    NOTIFICATIONS_PERSONAL_ACCOUNT: 'Personal Area',
+    DATA_COMPANY: 'Company data',
+    FULL_NAME: 'Full name',
+    PERSONAL_DATA: 'Personal data',
+    NAME_COMPANY: 'Company name',
+    DELETE_ACCOUNT: 'Delete account',
+
+
+    //  подтверждение почты
+    CONFIRM_SUCCESS: 'Your account has been successfully verified',
+    CONFIRM_FAIL: 'The link is not valid. Check the correctness of the link, or contact the administrator for assistance.',
 };

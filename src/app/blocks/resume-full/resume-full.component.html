@@ -18,7 +18,7 @@
                         {{dictionary.AGE}}
                     </div>
                     <div class="value black text">
-                        {{currentResume.age || 'нет данных'}} ({{currentResume.birthday}})
+                        {{currentResume.age || dictionary.NO_DATA}} ({{currentResume.birthday}})
                     </div>
                 </div>
                 <div class="line">
@@ -42,7 +42,7 @@
                             {{dictionary.IN_OIL}}
                         </div>
                         <div class="value black text">
-                            {{currentResume.experienceAll.oil.year}} года
+                            {{currentResume.experienceAll.oil.year}} {{dictionary.OF_YEARS}}
                         </div>
                     </div>
                     <div class="line" *ngIf="currentResume.experienceAll.mining.year">
@@ -51,7 +51,7 @@
                             {{dictionary.IN_MINING}}
                         </div>
                         <div class="value black text">
-                            {{currentResume.experienceAll.mining.year}} года
+                            {{currentResume.experienceAll.mining.year}} {{dictionary.OF_YEARS}}
                         </div>
                     </div>
                 </div>
