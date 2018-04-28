@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { UserService } from "../services";
@@ -23,7 +24,6 @@ export class AdminComponent implements OnInit {
     }
 
     public ngOnInit() {
-        console.log(this._userService.isType('admin'));
         if (!this._userService.isType('admin')) {
             this._router.navigate(['/']);
         }

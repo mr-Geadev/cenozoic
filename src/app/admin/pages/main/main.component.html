@@ -1,4 +1,30 @@
-<mat-card>
-    Главная страница<br>
-    Сюда можно вставить статистику или часто используемые данные
-</mat-card>
+<div class="row" *ngIf="statistics">
+    <div class="col-4">
+        <mat-card>
+            <mat-card-title>Пользователи</mat-card-title>
+            <mat-card-content>
+                Всего: {{statistics.totalUserAmount}} <br>
+                Подтвержденных: {{statistics.activeUserAmount}}
+            </mat-card-content>
+            <mat-card-actions>
+                <a [routerLink]="['/admin/users']" mat-button>Смотреть всех</a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-3">
+        <mat-card>
+            <mat-card-title>Вакансии</mat-card-title>
+            <mat-card-content>
+                Всего: {{statistics.vacancyAmount}} <br>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-3">
+        <mat-card>
+            <mat-card-title>Резюме</mat-card-title>
+            <mat-card-content>
+                Всего: {{statistics.resumeAmount}} <br>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
