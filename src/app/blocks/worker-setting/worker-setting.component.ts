@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants";
 import { ConfirmService } from "../../modals/confirm/confirm.service";
 import { AuthService, LocalizationService, SystemMessageService, UserService } from "../../services";
+import { BlankAccountService } from "../../services/blank-account.service";
 
 @Component({
     selector: 'worker-setting',
@@ -26,6 +27,7 @@ export class WorkerSettingComponent implements OnInit {
                 private router: Router,
                 private _confirm: ConfirmService,
                 private _localizationService: LocalizationService,
+                private blankAccountService: BlankAccountService,
                 private _dialog: MatDialog,
                 private _authService: AuthService) {
 
@@ -105,7 +107,12 @@ export class WorkerSettingComponent implements OnInit {
     public changeUserInfo(): void {
         this._http.post(CHANGE_USER_INFO, this.info.value)
             .subscribe(
-                (res: any) => this.msg.info('Данные изменены'),
+                (res: any) => {
+                    this.msg.info('Данные изменены');
+                    if (this.blankAccountService.isProtector) {
+                        this.blankAccountService.compleateFilled();
+                    }
+                },
                 (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз'))
     }
 
