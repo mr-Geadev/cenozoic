@@ -97,8 +97,8 @@ export class CreateResumeComponent implements OnInit, OnDestroy {
                     this.type = DEFAULT_TYPE;
                     for (let key in this.resumeForm) {
                         delete this.resumeForm[key];
+                        this.resumeForm[key] = this.cleanResumeForm[key];
                     }
-                    this.resumeForm = Object.assign({}, this.cleanResumeForm);
                 }
             }))
     }

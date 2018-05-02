@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
+import { BlankAccountService } from "../services/blank-account.service";
 import { SystemMessageService } from "../services/system-message.service";
 import { UserService } from "../services/user.service";
 
@@ -10,8 +11,7 @@ import { UserService } from "../services/user.service";
 export class BlankAccountGuard implements CanActivate {
 
     constructor(private userService: UserService,
-                private msg: SystemMessageService,
-                private router: Router) {
+                private blankAccountService: BlankAccountService) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
@@ -19,8 +19,7 @@ export class BlankAccountGuard implements CanActivate {
             .filter(user => !!user)
             .map(user => {
                 if (!user.fullName) {
-                    this.msg.info('Заполните личные данные в разделе настроек',4000);
-                    this.router.navigate(['/setting']);
+                    this.blankAccountService.goFilled();
                 }
 
                 return !!user.fullName;

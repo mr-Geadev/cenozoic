@@ -4,3 +4,4 @@ export * from './system-message.service';
 export * from './auth.service';
 export * from './sort.service';
 export * from './localization.service';
+export * from './blank-account.service';

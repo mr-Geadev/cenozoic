@@ -19,12 +19,18 @@ export class UserService {
         this.userSubject.next(user);
     }
 
-    public getUserInfo(): void {
+    public getUserInfo(): Observable<boolean> {
         this.http.get(USER_INFO)
             .subscribe(
                 (res: any) => {this.setUser(res.user);},
                 (err: any) => { this.setUser(null);}
             );
+
+        return this.http.get(USER_INFO)
+                    .map(
+                        (res: any) => true ,
+                        (err: any) => false
+                    )
     }
 
     public isType(type: string): boolean {
