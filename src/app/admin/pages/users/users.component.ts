@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { UserModel } from "../../../models/user.model";
-import { UsersApi } from "./users.api";
+import {Component, OnInit} from '@angular/core';
+import {UserModel} from '../../../models/user.model';
+import {UsersApi} from './users.api';
 
 @Component({
     selector: 'users.col',

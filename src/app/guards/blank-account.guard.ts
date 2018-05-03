@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
-import "rxjs/add/operator/filter";
-import "rxjs/add/operator/map";
-import { Observable } from "rxjs/Observable";
-import { BlankAccountService } from "../services/blank-account.service";
-import { SystemMessageService } from "../services/system-message.service";
-import { UserService } from "../services/user.service";
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
+import {BlankAccountService} from '../services/blank-account.service';
+import {UserService} from '../services/user.service';
 
 @Injectable()
 export class BlankAccountGuard implements CanActivate {

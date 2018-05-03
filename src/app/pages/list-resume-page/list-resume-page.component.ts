@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 
-import { SortModel } from "../../models";
-import { LocalizationService, SortService } from "../../services";
+import {SortModel} from '../../models';
+import {LocalizationService, SortService} from '../../services';
 
 @Component({
     selector: 'list-resume-page',
@@ -25,12 +25,12 @@ export class ListResumePageComponent implements OnInit {
             .subscribe(
                 parameters => {
                     if (parameters) {
-                        this.sortParameter = parameters
+                        this.sortParameter = parameters;
                     } else {
-                        this.sortParameter = new SortModel({})
+                        this.sortParameter = new SortModel({});
                     }
                 }
-            )
+            );
     }
 
     public updateSortParameters(): void {

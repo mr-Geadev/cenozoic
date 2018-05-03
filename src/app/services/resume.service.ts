@@ -1,24 +1,23 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
-import { SystemMessageService } from "./system-message.service";
-import { UserService } from "./user.service";
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
+import {SystemMessageService} from './system-message.service';
+import {UserService} from './user.service';
 
 @Injectable()
 export class ResumeService {
+
+    private _userId: string;
+    private resumeSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+    public resume$: Observable<any> = this.resumeSubject.asObservable();
 
     constructor(private http: HttpClient,
                 private userService: UserService,
                 private _systemMessages: SystemMessageService,
                 private router: Router) {
     }
-
-    private _userId: string;
-
-    private resumeSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-    public resume$: Observable<any> = this.resumeSubject.asObservable();
 
     public setResume(resume: any): void {
         this.resumeSubject.next(resume);

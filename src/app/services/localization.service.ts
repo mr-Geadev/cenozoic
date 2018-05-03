@@ -1,9 +1,9 @@
-import { isPlatformBrowser } from "@angular/common";
-import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
+import {isPlatformBrowser} from '@angular/common';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 
 
-import { ENGLISH_DICTIONARY, RUSSIAN_DICTIONARY } from "../dictionaries";
-import { LANGUAGES } from "../constants";
+import {ENGLISH_DICTIONARY, RUSSIAN_DICTIONARY} from '../dictionaries';
+import {LANGUAGES} from '../constants';
 
 const LOCALIZATION = 'localization';
 

@@ -63,11 +63,11 @@ export class VacancyModel {
         this.schedule = vacancy.schedule || null;
         this.employmentType = vacancy.employmentType || null;
         this.duties = vacancy.duties || null;
-        this.demands = vacancy.demands|| null;
-        this.conditions = vacancy.conditions|| null;
+        this.demands = vacancy.demands || null;
+        this.conditions = vacancy.conditions || null;
 
         this.expAll = this.experience.oil.years || 0 + this.experience.mining.years || 0;
-        this.salaryFrom = (this.salaryGROSS.from || 0 + this.salaryNET.from || 0)/2
-        this.salaryTo = (this.salaryGROSS.to || 0 + this.salaryNET.to || 0)/2
+        this.salaryFrom = (this.salaryGROSS.from || 0 + this.salaryNET.from || 0) / 2;
+        this.salaryTo = (this.salaryGROSS.to || 0 + this.salaryNET.to || 0) / 2;
     }
 }

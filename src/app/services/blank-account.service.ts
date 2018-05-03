@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { SystemMessageService } from "./system-message.service";
-import { UserService } from "./user.service";
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {SystemMessageService} from './system-message.service';
+import {UserService} from './user.service';
 
 @Injectable()
 export class BlankAccountService {
@@ -14,7 +14,7 @@ export class BlankAccountService {
     }
 
     public goFilled(): void {
-        this.msg.info('Заполните личные данные в разделе настроек',4000);
+        this.msg.info('Заполните личные данные в разделе настроек', 4000);
         this._router.navigate(['/setting']);
         this.isProtector = true;
     }
@@ -23,7 +23,7 @@ export class BlankAccountService {
         this.isProtector = false;
         this.userService.getUserInfo()
             .subscribe(
-                res => this._router.navigate(['/create-resume'])
+                res => this._router.navigate(['/constructor-resume'])
             );
     }
 }

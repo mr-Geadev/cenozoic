@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { MatDialog } from "@angular/material";
-import { ConfirmService } from "../../../../modals/confirm/confirm.service";
-import { UserModel } from "../../../../models/user.model";
-import { SystemMessageService } from "../../../../services";
-import { UsersApi } from "../users.api";
+import {Component, Input, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {ConfirmService} from '../../../../modals/confirm/confirm.service';
+import {UserModel} from '../../../../models/user.model';
+import {SystemMessageService} from '../../../../services';
+import {UsersApi} from '../users.api';
 
 @Component({
     selector: 'full-user-info',
@@ -38,7 +38,7 @@ export class FullUserInfoComponent implements OnInit {
                             err => {
                                 this._messages.info(err.error.errorMessage);
                             }
-                        )
+                        );
                 }
                 this._dialog.closeAll();
             });

@@ -1,13 +1,13 @@
-import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatDialogModule } from "@angular/material";
-import { RouterModule } from "@angular/router";
+import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
 
-import { LoginModalModule } from "../../modals";
-import { VacancyFullPageComponent } from "./vacancy-full-page.component";
-import { VacancyFullModule } from "../../blocks/vacancy-full/vacancy-full.module";
+import {LoginModalModule} from '../../modals';
+import {VacancyFullPageComponent} from './vacancy-full-page.component';
+import {FullVacancyModule} from '../../blocks/full-vacancy';
 
 @NgModule({
     declarations: [
@@ -15,7 +15,7 @@ import { VacancyFullModule } from "../../blocks/vacancy-full/vacancy-full.module
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'vacancy/:id', component: VacancyFullPageComponent, pathMatch: 'full' },
+            {path: 'vacancy/:id', component: VacancyFullPageComponent, pathMatch: 'full'},
         ]),
         CommonModule,
         HttpClientModule,
@@ -25,7 +25,7 @@ import { VacancyFullModule } from "../../blocks/vacancy-full/vacancy-full.module
         LoginModalModule,
 
         // Blocks
-        VacancyFullModule
+        FullVacancyModule
 
     ],
     exports: [VacancyFullPageComponent]

@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { LocalizationService } from "../../services";
-import { ListVacancyService } from "./list-vacancy.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {LocalizationService} from '../../services';
+import {ListVacancyService} from './list-vacancy.service';
 
 @Component({
     selector: 'list-vacancy',
@@ -10,10 +10,9 @@ import { ListVacancyService } from "./list-vacancy.service";
 export class ListVacancyComponent implements OnInit {
 
     @Input() config: string;
-
-    private _offset: number = 0;
     public listVacancy: any[] = [];
     public dictionary: any = null;
+    private _offset: number = 0;
 
     constructor(private _listVacancyService: ListVacancyService,
                 private _localizationService: LocalizationService) {

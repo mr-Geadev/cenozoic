@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatDialog } from "@angular/material";
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialog} from '@angular/material';
 
-import { AuthService, LocalizationService, SystemMessageService, UserService } from "../../services";
+import {AuthService, LocalizationService, SystemMessageService, UserService} from '../../services';
 
 @Component({
     selector: 'login-modal',
@@ -48,9 +48,9 @@ export class LoginModalComponent implements OnInit {
                     this._dialog.closeAll();
                 },
                 (err) => {
-                    this._systemMessageService.info(err.error.errorMessage)
+                    this._systemMessageService.info(err.error.errorMessage);
                 }
-            )
+            );
     };
 
     public signUp(): void {

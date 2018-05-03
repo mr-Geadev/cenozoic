@@ -1,6 +1,5 @@
-import { Input } from "@angular/core";
-import { Component, OnInit } from "@angular/core";
-import { UserModel } from "../../../../models/user.model";
+import {Component, Input, OnInit} from '@angular/core';
+import {UserModel} from '../../../../models/user.model';
 
 @Component({
     selector: 'item-user',

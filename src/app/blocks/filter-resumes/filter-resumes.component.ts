@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { FilterResumesService } from "./filter-resumes.service";
+import {Component} from '@angular/core';
+import {FilterResumesService} from './filter-resumes.service';
 
 
 @Component({

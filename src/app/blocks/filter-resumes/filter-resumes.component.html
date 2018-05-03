@@ -62,7 +62,7 @@
                 <mat-form-field>
                     <mat-select name="schedule" placeholder="Занятость" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.employmentType">
-                        <mat-option >Не имеет значения</mat-option>
+                        <mat-option>Не имеет значения</mat-option>
                         <mat-option value="full">Полная занятость</mat-option>
                         <mat-option value="part">Частичная занятость</mat-option>
                         <mat-option value="time">Временная работа</mat-option>
@@ -134,8 +134,9 @@
                 </div>
 
                 <div class="change-class">
-                    <input type="checkbox" id="havePhoto" name="photo" [(ngModel)]="filterResumesService.parameters.photo">
-                    <label for="havePhoto" >Фото профиля</label>
+                    <input type="checkbox" id="havePhoto" name="photo"
+                           [(ngModel)]="filterResumesService.parameters.photo">
+                    <label for="havePhoto">Фото профиля</label>
                 </div>
 
             </div>
