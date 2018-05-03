@@ -8,6 +8,7 @@ export class FilterResumesModel {
     public employmentType: string = null;
     public family: string = null;
     public gender: string = null;
+    public placeResidence: string = null;
 
     // other properties
     public photo: boolean = false;
