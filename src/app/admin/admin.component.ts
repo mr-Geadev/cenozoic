@@ -1,7 +1,6 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { UserService } from "../services";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {UserService} from '../services';
 
 export const MENU_LIST = [
     {name: 'Главная', link: './'},

@@ -1,9 +1,9 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { ResumeService } from "../../services";
-import { ListResumeComponent } from "./list-resume.component";
+import {ResumeService} from '../../services';
+import {ListResumeComponent} from './list-resume.component';
 
 @NgModule({
     imports: [

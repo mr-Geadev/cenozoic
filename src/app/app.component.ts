@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { UserService } from "./services";
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import {UserService} from './services';
 
 @Component({
     selector: 'app-root',
@@ -14,11 +13,11 @@ export class AppComponent implements OnInit {
     public isAdminPanel: boolean = false;
 
     constructor(private userService: UserService,
-                private router: Router  ) {
+                private router: Router) {
 
         router.events.subscribe((event: any) => {
             if (event instanceof NavigationEnd) {
-                event.url.split('/')[1] === 'admin' ? this.isAdminPanel = true : this.isAdminPanel = false ;
+                event.url.split('/')[1] === 'admin' ? this.isAdminPanel = true : this.isAdminPanel = false;
             }
         });
 

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from "@angular/material";
-import { LocalizationService } from "../../services";
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
+import {LocalizationService} from '../../services';
 
-import { ChangeCityModalService } from "./change-city.service";
+import {ChangeCityModalService} from './change-city.service';
 
 @Component({
     selector: 'change-city-modal',
@@ -25,7 +25,7 @@ export class ChangeCityModalComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.dictionary = this._localizationService.currentDictionary
+        this.dictionary = this._localizationService.currentDictionary;
 
         this.currentCity = this.cityModalService.getCurrentCity();
         this.cityModalService.getLocations()

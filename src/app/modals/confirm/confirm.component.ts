@@ -1,6 +1,6 @@
-import { Component, Inject } from "@angular/core";
-import { MAT_DIALOG_DATA } from "@angular/material";
-import { ResConfirmService } from "./res-confirm.service";
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material';
+import {ResConfirmService} from './res-confirm.service';
 
 @Component({
     selector: 'confirm-modal',
@@ -10,8 +10,8 @@ import { ResConfirmService } from "./res-confirm.service";
 
 export class ConfirmComponent {
 
-    constructor (private resConfirmService: ResConfirmService,
-                 @Inject(MAT_DIALOG_DATA) public data: any) {
+    constructor(private resConfirmService: ResConfirmService,
+                @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 
     public accept(): void {

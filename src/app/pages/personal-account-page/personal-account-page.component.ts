@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { LocalizationService } from "../../services";
-import { UserService } from "../../services/user.service";
+import {Component, OnInit} from '@angular/core';
+import {LocalizationService} from '../../services';
+import {UserService} from '../../services/user.service';
 
 @Component({
     selector: 'personal-account-page',
@@ -25,7 +25,7 @@ export class PersonalAccountPageComponent implements OnInit {
         this._userService.user$
             .subscribe(
                 (user) => user ? this.typeCurrentUser = user.typeAccount : null
-            )
+            );
     }
 
 }

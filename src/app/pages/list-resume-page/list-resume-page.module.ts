@@ -1,13 +1,13 @@
-import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatDialogModule, MatFormFieldModule, MatSelectModule } from "@angular/material";
-import { RouterModule } from "@angular/router";
-import { FilterResumesModule } from "../../blocks/filter-resumes";
-import { ListResumeModule } from "../../blocks/list-resume";
+import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
+import {FilterResumesModule} from '../../blocks/filter-resumes';
+import {ListResumeModule} from '../../blocks/list-resume';
 
-import { ListResumePageComponent } from "./list-resume-page.component";
+import {ListResumePageComponent} from './list-resume-page.component';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ListResumePageComponent } from "./list-resume-page.component";
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'list-resume', component: ListResumePageComponent, pathMatch: 'full' },
+            {path: 'list-resume', component: ListResumePageComponent, pathMatch: 'full'},
         ]),
         CommonModule,
         HttpClientModule,

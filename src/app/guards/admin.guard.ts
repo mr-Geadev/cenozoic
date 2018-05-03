@@ -1,9 +1,8 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
-import "rxjs/add/operator/filter";
-import "rxjs/add/operator/map";
-import { Observable } from "rxjs/Observable";
-import { UserService } from "../services/user.service";
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import {UserService} from '../services/user.service';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
@@ -12,7 +11,8 @@ export class AdminGuard implements CanActivate {
                 private router: Router) {
     }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {;
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        ;
         if (this.userService.isType('admin')) {
             return true;
         } else {

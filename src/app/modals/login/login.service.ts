@@ -1,10 +1,8 @@
-import { Injectable } from "@angular/core";
-import { MatDialog, MatDialogConfig } from "@angular/material";
-import { LoginModalComponent } from "./login.component";
-import { HttpClient } from "@angular/common/http";
-
-import { LOG_OUT } from "../../constants/api.constant";
-import { UserService } from "../../services/user.service";
+import {Injectable} from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {LoginModalComponent} from './login.component';
+import {HttpClient} from '@angular/common/http';
+import {UserService} from '../../services/user.service';
 
 @Injectable()
 export class LoginModalService {

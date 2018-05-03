@@ -1,16 +1,16 @@
 export const ROUTES = [
     '/',
-    '/create-resume',
+    '/constructor-resume',
     '/list-resume',
     '/personal-account',
     '/setting',
     '/resume',
     '/vacancy',
-    '/create-vacancy',
+    '/constructor-vacancy',
     '/list-vacancy',
     '/admin',
     '/vacancy/:id',
-    '/account-email-confirm',
-    '/account-email-confirm/:token',
+    '/account-email-confirm-page',
+    '/account-email-confirm-page/:token',
     '/resume/:id'
 ];

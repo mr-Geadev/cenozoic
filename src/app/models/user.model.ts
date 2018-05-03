@@ -8,7 +8,7 @@ export class UserModel {
     public confirmToken: string = null;
     public fullName: string;
     public phone: string;
-    public notifications =  {
+    public notifications = {
         lk: false,
         email: false
     };
@@ -20,7 +20,7 @@ export class UserModel {
         this.typeAccount = user.typeAccount;
         this.status = user.status || 0;
 
-        this.confirmToken = user.confirmToken || null
+        this.confirmToken = user.confirmToken || null;
         this.fullName = user.fullName || null;
         this.phone = user.phone || null;
 

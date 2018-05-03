@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { ConfirmComponent } from "./confirm.component";
-import { ReqConfirmService } from "./req-confirm.service";
-import { ResConfirmService } from "./res-confirm.service";
+import {ConfirmComponent} from './confirm.component';
+import {ReqConfirmService} from './req-confirm.service';
+import {ResConfirmService} from './res-confirm.service';
 
 @NgModule({
     imports: [

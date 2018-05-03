@@ -1,0 +1,144 @@
+<div class="container" *ngIf="!(passwords == null || info == null)">
+    <div class="row">
+        <div class="col-8" *ngIf="currentUser">
+            <form [formGroup]="passwords" validate (submit)="changePassword()">
+                <div class="side-title">
+                    {{dictionary.PARAMETERS_ENTER}}
+                </div>
+                <div class="parameter">
+                    <div class="left">
+                        <label for="email">
+                            E-mail
+                        </label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="email" [ngModelOptions]="{standalone: true}" disabled
+                               [(ngModel)]="currentUser.email"> <!--временно выключен-->
+                    </div>
+                </div>
+                <div class="parameter">
+                    <div class="left">
+                        <label for="old-psw">
+                            {{dictionary.OLD_PASSWORD}}
+                        </label>
+                    </div>
+                    <div class="right">
+                        <input type="password"
+                               id="old-psw"
+                               formControlName="oldPassword">
+                    </div>
+                </div>
+                <div class="parameter">
+                    <div class="left">
+                        <label for="new-psw">
+                            {{dictionary.NEW_PASSWORD}}
+                        </label>
+                    </div>
+                    <div class="right">
+                        <input type="password"
+                               id="new-psw"
+                               formControlName="newPassword">
+                    </div>
+                </div>
+                <div class="parameter">
+                    <button type="submit" class="submit" [disabled]="passwords.invalid">
+                        {{dictionary.SAVE_CHANGES}}
+                    </button>
+                </div>
+            </form>
+            <form [formGroup]="info" validate (submit)="changeUserInfo()">
+                <div class="side-title">
+                    {{dictionary.DATA_COMPANY}}
+                </div>
+                <div class="parameter">
+                    <div class="left">
+                        <label for="fio">
+                            {{dictionary.NAME_COMPANY}}
+                        </label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="fio" formControlName="companyName" placeholder="Фамилия, имя, отчество">
+                    </div>
+                </div>
+                <div class="parameter">
+                    <div class="left">
+                        <label for="phone">
+                            {{dictionary.PHONE_CONNECT}}
+                        </label>
+                    </div>
+                    <div class="right">
+                        <input type="tel" id="phone" formControlName="phone" placeholder="В формате: +79991112233">
+                    </div>
+                </div>
+                <div class="side-title">
+                    {{dictionary.NOTIFICATIONS}}
+                </div>
+                <div class="parameter" formGroupName="notifications">
+                    <input id="inner" type="checkbox" value="true" formControlName="lk">
+                    <label for="inner">{{dictionary.NOTIFICATIONS_PERSONAL_ACCOUNT}}</label>
+                    <input id="e-mail-notification" type="checkbox" value="true" formControlName="email">
+                    <label for="e-mail-notification">E-mail</label>
+                    <input id="push-notification" type="checkbox" value="true" formControlName="push">
+                    <label for="push-notification">Push</label>
+                </div>
+                <div class="parameter">
+                    <button type="submit" class="submit" [disabled]="info.invalid">
+                        {{dictionary.SAVE_CHANGES}}
+                    </button>
+                </div>
+                <div class="parameter">
+                    <a class="delete-account" (click)="removeUser()">
+                        {{dictionary.DELETE_ACCOUNT}}
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="col-4">
+            <div class="add-photo">
+                <div *ngIf="!companyLogo.data && !currentUser.photoURL" class="image default">
+                    <img src="/assets/images/icon-camera.svg"/>
+                </div>
+                <div *ngIf="companyLogo.data || currentUser.photoURL" class="image user">
+                    <img [src]="companyLogo.data || currentUser.photoURL">
+                </div>
+                <input (change)="onImageChange($event)" id="load-photo" type="file" size="0"
+                       accept="image/*,image/jpeg,image/png,image/gif">
+                <label for="load-photo">{{loadingPhotoButton}}</label>
+
+                <div class="message" [innerHTML]="dictionary.LOAD_PHOTO_DESCRIPTION">
+                </div>
+            </div>
+            <div class="rate">
+                <div class="short-name">
+                    {{dictionary.RATE}}: {{dictionary.BASIC_RATE}}
+                </div>
+                <div class="long-name">
+                    {{dictionary.GET_UPGRADE_ACCOUNT}}
+                </div>
+                <div class="description">
+                    {{dictionary.BASIC_RATE_DESCRIPTION}}
+                </div>
+                <div class="price">
+                    {{dictionary.FROM}} <span class="number">1 300</span> ₽/{{dictionary.MONTH_SHORT}}
+                </div>
+                <a class="all-rates" href="#">
+                    <svg id="SVGDoc" width="26" height="26" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                         viewBox="0 0 26 26">
+                        <defs>
+                            <path d="M1194.93347,782.69917l-1.83449,-1.83471c0,0 2.66396,-3.45862 5.44327,-3.70448c-0.72315,1.15559 -1.71524,2.71952 -3.4013,5.14763c-0.08652,0.12369 -0.15438,0.25623 -0.20748,0.39156zM1202.69405,789.86157c2.42821,-1.68691 3.99158,-2.67922 5.14687,-3.40155c-0.24582,2.7795 -3.70399,5.44334 -3.70399,5.44334l-1.83346,-1.8332c0.13664,-0.05346 0.26768,-0.12369 0.39059,-0.20859zM1199.67087,789.05143l0.19627,0.19613c-0.81196,1.21196 -2.19715,1.9789 -3.56907,2.38654c-0.75016,0.22315 -1.54621,0.3593 -2.32979,0.36582c-0.12909,0.00082 -0.25394,0 -0.37823,-0.04018c-0.14797,-0.04764 -0.28152,-0.13685 -0.38303,-0.25471c-0.10242,-0.11856 -0.17086,-0.26566 -0.19489,-0.4215c-0.01865,-0.12078 -0.01064,-0.24377 -0.00698,-0.36524c0.02563,-0.86349 0.1902,-1.72931 0.466,-2.54749c0.25692,-0.76181 0.62428,-1.48415 1.11431,-2.12227c0.33131,-0.43023 0.72144,-0.81155 1.16993,-1.11238l0.20164,0.20126c-0.11627,0.24808 -0.23163,0.49767 -0.3241,0.75669c-0.14866,0.4187 -0.28713,0.83728 -0.39562,1.26833c-0.22545,0.89202 -0.36461,1.80396 -0.44334,2.72021c-0.00389,0.04682 -0.00744,0.09434 -0.01122,0.14116c0.3812,-0.02923 0.7616,-0.07314 1.13846,-0.12439c0.89939,-0.12509 1.78665,-0.31912 2.64782,-0.60738c0.32261,-0.10762 0.63194,-0.24295 0.94654,-0.37037c0.05219,-0.02259 0.10391,-0.04612 0.1553,-0.07023zM1215.00034,770.77477c-0.04601,2.44803 -0.50091,8.48629 -3.71532,11.70125c-1.45683,1.45631 -2.21512,1.93056 -3.87669,2.96747c-1.19579,0.74726 -2.83401,1.77031 -5.52601,3.64089c-0.13172,0.09143 -0.28324,0.13615 -0.43407,0.13615c-0.19604,0 -0.39093,-0.07547 -0.5381,-0.22327l-4.90574,-4.90619c-0.26035,-0.25972 -0.29675,-0.66957 -0.08686,-0.9718c1.86974,-2.69168 2.89284,-4.33096 3.64014,-5.52755c1.03786,-1.66118 1.51119,-2.41938 2.9678,-3.87639c3.20869,-3.20914 9.2506,-3.66721 11.69952,-3.71555c0.00492,0 0.00996,0 0.01499,0c0.2013,0 0.39494,0.07978 0.53776,0.22245c0.00011,0.00082 0.00011,0.00082 0.00011,0.00082c0.14626,0.14628 0.22671,0.34544 0.22247,0.55171zM1209.09748,775.90341c-0.98763,-0.98788 -2.58842,-0.98788 -3.57605,0c-0.98763,0.98729 -0.98797,2.58849 0,3.57648c0.98763,0.98718 2.58842,0.98718 3.57605,0c0.98763,-0.98729 0.98728,-2.58919 0,-3.57648z"
+                                  id="Path-0"/>
+                        </defs>
+                        <desc>Generated with Avocode.</desc>
+                        <g transform="matrix(1,0,0,1,-1191,-768)">
+                            <g><title>Forma 1</title>
+                                <use xlink:href="#Path-0" fill="#ffffff" fill-opacity="1"/>
+                            </g>
+                        </g>
+                    </svg>
+                    {{dictionary.SHOW_RATES}}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

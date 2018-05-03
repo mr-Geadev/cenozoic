@@ -1,9 +1,9 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
-import { USER_INFO } from "../constants/api.constant";
-import { SystemMessageService } from "./system-message.service";
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
+import {USER_INFO} from '../constants/api.constant';
+import {SystemMessageService} from './system-message.service';
 
 @Injectable()
 export class UserService {
@@ -22,15 +22,19 @@ export class UserService {
     public getUserInfo(): Observable<boolean> {
         this.http.get(USER_INFO)
             .subscribe(
-                (res: any) => {this.setUser(res.user);},
-                (err: any) => { this.setUser(null);}
+                (res: any) => {
+                    this.setUser(res.user);
+                },
+                (err: any) => {
+                    this.setUser(null);
+                }
             );
 
         return this.http.get(USER_INFO)
-                    .map(
-                        (res: any) => true ,
-                        (err: any) => false
-                    )
+            .map(
+                (res: any) => true,
+                (err: any) => false
+            );
     }
 
     public isType(type: string): boolean {
@@ -38,7 +42,7 @@ export class UserService {
         if (this.getUser()) {
             return this.getUser().typeAccount === type;
         } else {
-            return false
+            return false;
         }
     }
 
@@ -50,14 +54,13 @@ export class UserService {
         if (this.getUser()) {
             return this.getUser().typeAccount === 'admin' || this.getUser().typeAccount === 'manager';
         } else {
-            return false
+            return false;
         }
     }
 
     public getUser(): any {
         return this.userSubject.value;
     }
-
 
 
 }

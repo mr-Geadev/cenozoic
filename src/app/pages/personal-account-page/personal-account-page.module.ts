@@ -1,15 +1,16 @@
-import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatDialogModule } from "@angular/material";
-import { RouterModule } from "@angular/router";
+import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
 
-import { ListResumeModule, ResumeFullModule } from "../../blocks";
-import { LogInGuard } from "../../guards";
-import { LoginModalModule } from "../../modals";
-import { PersonalAccountPageComponent } from "./personal-account-page.component";
-import { ListVacancyModule } from "../../blocks/list-vacancy/list-vacancy.module";
+import {ListResumeModule} from '../../blocks';
+import {LogInGuard} from '../../guards';
+import {LoginModalModule} from '../../modals';
+import {PersonalAccountPageComponent} from './personal-account-page.component';
+import {ListVacancyModule} from '../../blocks/list-vacancy/list-vacancy.module';
+import {FullResumeModule} from '../../blocks/full-resume';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,7 @@ import { ListVacancyModule } from "../../blocks/list-vacancy/list-vacancy.module
         // Blocks
         ListResumeModule,
         ListVacancyModule,
-        ResumeFullModule
+        FullResumeModule
     ],
     exports: [PersonalAccountPageComponent]
 })
