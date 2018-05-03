@@ -9,11 +9,13 @@ import { FilterResumesService } from "./filter-resumes.service";
 })
 export class FilterResumesComponent {
 
-    public showing: boolean = false;
+    public showing: boolean = false; // view
+    public dictionary: any = null;
 
     constructor(public filterResumesService: FilterResumesService) {
     }
 
+    // view function
     public showFilters(reset?: boolean): void {
         if (reset) {
             this.filterResumesService.resetFilterParameters();
