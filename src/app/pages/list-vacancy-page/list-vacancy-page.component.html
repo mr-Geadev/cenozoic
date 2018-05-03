@@ -1,1 +1,13 @@
-<list-vacancy></list-vacancy>
+<div class="container">
+    <div class="row head">
+        <div class="title">{{ dictionary.VACANCIES }}</div>
+        <form class="sort">
+            <label for="">{{ dictionary.SORT_BY }}</label>
+            <select name="" id="">
+                <option value="date">{{ dictionary.SORT_BY_DATA }}</option>
+            </select>
+        </form>
+    </div>
+</div>
+
+<list-vacancy [config]="" ></list-vacancy>

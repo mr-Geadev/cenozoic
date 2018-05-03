@@ -1,0 +1,14 @@
+<mat-list-item *ngIf="visible"
+               [class.unconfirmed]="user.status === 1"
+               [class.banned]="user.status === 9">
+    <h4 mat-line>{{user.email}}</h4>
+    <p mat-line>{{user.fullName}}</p>
+    <!--<button mat-mini-fab color="primary">-->
+    <!--<a href="/resume/{{resume._id}}" target="_blank" color="white">-->
+    <!--<mat-icon  aria-label="iExample icon-button with a heart con">open_in_new</mat-icon>-->
+    <!--</a>-->
+    <!--</button>-->
+    <!--<button mat-mini-fab color="primary" (click)="alert('Удалилось')">-->
+    <!--<mat-icon aria-label="iExample icon-button with a heart con">delete</mat-icon>-->
+    <!--</button>-->
+</mat-list-item>

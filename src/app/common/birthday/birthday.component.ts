@@ -1,17 +1,27 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Moment } from "moment";
 import * as moment from 'moment';
+import { LocalizationService } from "../../services/localization.service";
 
 @Component({
     selector: 'birthday-date-picker',
     templateUrl: './birthday.component.html',
     styleUrls: ['./birthday.component.less']
 })
-export class BirthdayComponent {
+export class BirthdayComponent implements OnInit {
     @Output() changed: EventEmitter<any> = new EventEmitter();
 
-    public data: string = 'выберите дату рождения';
+    public data: string = null;
+    public dictionary: any = null;
 
+    constructor(private _localizationService: LocalizationService,) {
+
+    }
+
+    public ngOnInit() {
+        this.dictionary = this._localizationService.currentDictionary;
+        this.data = this.dictionary.CHANGE_BIRTHDAY;
+    }
     public dateChanged(date: Moment): void {
         const currentDate = moment();
         const formattedDate: string = date.format('DD.MM.YYYY');

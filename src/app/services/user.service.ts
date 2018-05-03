@@ -2,13 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
-import { LOG_OUT, SIGN_IN, SIGN_UP, USER_INFO } from "../constants/api.constant";
+import { USER_INFO } from "../constants/api.constant";
 import { SystemMessageService } from "./system-message.service";
 
 @Injectable()
 export class UserService {
 
-    private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+    private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
     public user$: Observable<any> = this.userSubject.asObservable();
 
     constructor(private http: HttpClient,
@@ -19,17 +19,45 @@ export class UserService {
         this.userSubject.next(user);
     }
 
-    public getUserInfo(): void {
+    public getUserInfo(): Observable<boolean> {
         this.http.get(USER_INFO)
             .subscribe(
-                (res: any) => {
-                    this.setUser(res.user);
-                },
-                (err: any) => {
-                    this.setUser(null);
-                }
+                (res: any) => {this.setUser(res.user);},
+                (err: any) => { this.setUser(null);}
             );
+
+        return this.http.get(USER_INFO)
+                    .map(
+                        (res: any) => true ,
+                        (err: any) => false
+                    )
     }
+
+    public isType(type: string): boolean {
+
+        if (this.getUser()) {
+            return this.getUser().typeAccount === type;
+        } else {
+            return false
+        }
+    }
+
+    public isLogIn(): boolean {
+        return this.getUser();
+    }
+
+    public isManagement(): boolean {
+        if (this.getUser()) {
+            return this.getUser().typeAccount === 'admin' || this.getUser().typeAccount === 'manager';
+        } else {
+            return false
+        }
+    }
+
+    public getUser(): any {
+        return this.userSubject.value;
+    }
+
 
 
 }

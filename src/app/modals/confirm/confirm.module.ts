@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { ConfirmComponent } from "./confirm.component";
-import { ConfirmService } from "./confirm.service";
+import { ReqConfirmService } from "./req-confirm.service";
 import { ResConfirmService } from "./res-confirm.service";
 
 @NgModule({
@@ -15,7 +15,7 @@ import { ResConfirmService } from "./res-confirm.service";
     declarations: [ConfirmComponent],
     entryComponents: [ConfirmComponent],
     providers: [
-        ConfirmService,
+        ReqConfirmService,
         ResConfirmService,
     ],
     exports: [ConfirmComponent]

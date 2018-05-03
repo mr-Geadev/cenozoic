@@ -7,5 +7,10 @@ export const ROUTES = [
     '/resume',
     '/vacancy',
     '/create-vacancy',
-    '/list-vacancy'
+    '/list-vacancy',
+    '/admin',
+    '/vacancy/:id',
+    '/account-email-confirm',
+    '/account-email-confirm/:token',
+    '/resume/:id'
 ];

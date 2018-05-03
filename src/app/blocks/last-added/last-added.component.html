@@ -1,12 +1,12 @@
 <section class="last-added">
     <div class="container">
-        <div class="row title">Последние добавленные</div>
+        <div class="row title">{{ dictionary.RECENTLY_ADDED }}</div>
         <div class="row type">
             <div class="typeof one">
-                Резюме
+                {{ dictionary.CVS }}
             </div>
             <div class="typeof two checked">
-                Вакансии
+                {{ dictionary.VACANCIES }}
             </div>
         </div>
         <div class="row list">
@@ -58,7 +58,7 @@
                 <img class="next" src="/assets/images/orange-arrow-next.svg">
             </div>
             <a class="see-all" href="#">
-                Смотреть все вакансии<img src="/assets/images/arrow-orange.svg"/>
+                {{ dictionary.SEE_ALL_VACANCIES }}<img src="/assets/images/arrow-orange.svg"/>
             </a>
         </div>
     </div>

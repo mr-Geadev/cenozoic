@@ -1,25 +1,34 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants/api.constant";
-import { AuthService } from "../../services/auth.service";
-import { SystemMessageService } from "../../services/system-message.service";
-import { UserService } from "../../services/user.service";
+import { MatDialog } from "@angular/material";
+import { Router } from "@angular/router";
+
+import { CHANGE_PASSWORD, CHANGE_USER_INFO, REMOVE_USER } from "../../constants";
+import { ConfirmService } from "../../modals/confirm/confirm.service";
+import { AuthService, LocalizationService, SystemMessageService, UserService } from "../../services";
+import { BlankAccountService } from "../../services/blank-account.service";
 
 @Component({
     selector: 'worker-setting',
     templateUrl: './worker-setting.component.html',
     styleUrls: ['./worker-setting.component.less']
 })
-export class WorkerSettingComponent {
+export class WorkerSettingComponent implements OnInit {
 
     public currentUser: any = {};
     public passwords: FormGroup = null;
     public info: FormGroup = null;
+    public dictionary: any = null;
 
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
                 private _http: HttpClient,
+                private router: Router,
+                private _confirm: ConfirmService,
+                private _localizationService: LocalizationService,
+                private blankAccountService: BlankAccountService,
+                private _dialog: MatDialog,
                 private _authService: AuthService) {
 
         this.userService.user$
@@ -38,10 +47,14 @@ export class WorkerSettingComponent {
                             email: false
                         }
                     }
-                    console.log(this.currentUser);
                     this.formCreate();
                 }
             });
+
+    }
+
+    public ngOnInit() {
+        this.dictionary = this._localizationService.currentDictionary;
     }
 
     public formCreate(): void {
@@ -68,6 +81,12 @@ export class WorkerSettingComponent {
         });
     }
 
+    public onPhoneKeyPress(event: KeyboardEvent): void {
+        if (!((event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode === 43)) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    }
 
     public changePassword(): void {
         this._http.post(CHANGE_PASSWORD, this.passwords.value)
@@ -88,18 +107,33 @@ export class WorkerSettingComponent {
     public changeUserInfo(): void {
         this._http.post(CHANGE_USER_INFO, this.info.value)
             .subscribe(
-                (res: any) => this.msg.info('Данные изменены'),
+                (res: any) => {
+                    this.msg.info('Данные изменены');
+                    if (this.blankAccountService.isProtector) {
+                        this.blankAccountService.compleateFilled();
+                    }
+                },
                 (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз'))
     }
 
     public removeUser(): void {
-        this._http.get(`${REMOVE_USER}?resumeId=${this.currentUser._id}`)
+        this._confirm.confirm('Вы действительно хотите удалить аккаунт?')
             .subscribe(
-                (res) => {
-                    this._authService.logOut();
-                    this.msg.info('Аккаунт удален');
-                },
-                (err) => this.msg.info('Данная фича будет добавлена позже'))
+                res => {
+                    if (res) {
+                        this._http.get('/api/v1/worker/account/delete')
+                            .subscribe(
+                                (res) => {
+                                    this.userService.setUser(null);
+                                    this.msg.info('Аккаунт удален');
+                                    this.router.navigate(['/'])
+                                },
+                                (err) => this.msg.info(err.error.errorMessage)
+                            )
+                    }
+                    this._dialog.closeAll();
+                }
+            )
     }
 
 }

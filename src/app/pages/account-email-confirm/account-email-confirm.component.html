@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="message" *ngIf="status === 'loading'">
+                {{dictionary.WAIT }}
+            </div>
+            <div class="message" *ngIf="status === 'success'">
+                {{dictionary.CONFIRM_SUCCESS }}
+            </div>
+            <div class="message" *ngIf="status === 'error'">
+                {{dictionary.CONFIRM_FAIL }}
+            </div>
+        </div>
+    </div>
+</div>

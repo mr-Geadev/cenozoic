@@ -1,4 +1,5 @@
 import { Component, DoCheck, OnDestroy, OnInit } from "@angular/core";
+import { NavigationEnd, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 
 import { LoginModalService } from "../../modals/login";
@@ -13,6 +14,8 @@ import { LANGUAGES } from "../../constants";
 export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     public isMainPage: boolean = false;
     public isAuthorized: boolean = false;
+    public isMobileMenuOpen: boolean = false;
+    public currentPage: string = null;
 
     // For localization
     public dictionary: any = null;
@@ -24,7 +27,15 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     constructor(private _login: LoginModalService,
                 private _userService: UserService,
                 private _authService: AuthService,
+                private router: Router,
                 private _localizationService: LocalizationService) {
+
+        router.events.subscribe((event: any) => {
+            if (event instanceof NavigationEnd) {
+                this.currentPage = event.url.split('/')[1];
+            }
+        });
+
     }
 
     ngOnInit(): void {
@@ -48,6 +59,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     public logOut() {
+        this.closeMobileMenu();
         this._authService.logOut()
             .first()
             .subscribe((res) => {
@@ -58,10 +70,19 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     public openLoginModal(): void {
+        this.closeMobileMenu();
         this._login.openModal()
     }
 
     public changeLanguage(language: string): void {
         this._localizationService.setLocalization(language);
+    }
+
+    public openMobileMenu(): void {
+        this.isMobileMenuOpen = true;
+    }
+
+    public closeMobileMenu(): void {
+        this.isMobileMenuOpen = false;
     }
 }

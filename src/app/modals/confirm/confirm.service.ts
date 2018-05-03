@@ -1,20 +1,18 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs/Subject";
-import { ConfirmComponent } from "./confirm.component";
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { Observable } from "rxjs/Observable";
+import { ReqConfirmService } from "./req-confirm.service";
+import { ResConfirmService } from "./res-confirm.service";
 
 @Injectable()
 export class ConfirmService {
 
 
-    constructor(private dialog: MatDialog) {
+    constructor(private _reqConfirm: ReqConfirmService,
+                private _resConfirm: ResConfirmService) {
     }
 
-    public confirm(title: string): void {
-        this.dialog.open(ConfirmComponent, {
-            width: '300px',
-            height: '200px',
-            data: {title: title}
-        } as MatDialogConfig);
-    };
+    public confirm(title): Observable<boolean> {
+        this._reqConfirm.confirmRequest(title);
+        return this._resConfirm.response;
+    }
 }

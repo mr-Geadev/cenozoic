@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SystemMessageService } from "../../services";
+import { LocalizationService } from "../../services/localization.service";
 import { CreateVacancyService } from "./create-vacancy.service";
+import { ChangeCityModalComponent } from "../../modals/change-city/change-city.component";
+import { MatDialog, MatDialogConfig } from "@angular/material";
 
 @Component({
     selector: 'create-vacancy',
@@ -11,13 +14,21 @@ import { CreateVacancyService } from "./create-vacancy.service";
 export class CreateVacancyComponent implements OnInit {
 
     public vacancy: FormGroup;
+    public dictionary: any = null;
 
     constructor(private _createVacancyService: CreateVacancyService,
-                private _msg: SystemMessageService) {
+                private _msg: SystemMessageService,
+                private _dialog: MatDialog,
+                private _localizationService: LocalizationService,) {
     }
 
     public ngOnInit(): void {
+
+        // подклюение локализцаии
+        this.dictionary = this._localizationService.currentDictionary;
+
         this.createVacancy();
+        console.log(this.vacancy);
     }
 
     private createVacancy(data: any = { salary: {}, experience: { mining: {}, oil: {} } }): void { // дико костыльное решение, кооторое нудно будет потом заменить модлеью
@@ -65,6 +76,19 @@ export class CreateVacancyComponent implements OnInit {
         });
     }
 
+    public changeEducationCity(): void {
+        this._dialog.open(ChangeCityModalComponent, {
+            width: '600px',
+            height: '370px'
+        } as MatDialogConfig)
+            .afterClosed()
+            .first()
+            .filter(city => !!city)
+            .subscribe((city: string) => {
+                this.vacancy.controls['city'].setValue(city)
+            });
+    }
+
     public experienceDiabedChange(nameField: string): void {
         if (this.vacancy.controls['experience']['controls'][nameField]['controls'].checked.value) {
             this.vacancy.controls['experience']['controls'][nameField]['controls'].years.enable();
@@ -76,10 +100,9 @@ export class CreateVacancyComponent implements OnInit {
     }
 
     public sentVacancy(): void {
-        console.log(this.vacancy);
         this._createVacancyService.createVacancy(this.vacancy.value)
             .subscribe(
-                (res) => { this._msg.info('Ваше резюме сохранено')},
+                (res) => { this._msg.info('Ваша вакансия сохранено')},
                 (err) =>  { this._msg.info(err.error.errorMessage)}
             );
     }

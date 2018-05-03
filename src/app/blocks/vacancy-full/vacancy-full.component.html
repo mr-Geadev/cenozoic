@@ -11,7 +11,7 @@
             <div class="table">
                 <div class="line">
                     <div class="parameter gray text">
-                        Город
+                        {{dictionary.CITY}}
                     </div>
                     <div class="value black text">
                         {{currentVacancy.city || 'нет данных'}}
@@ -19,7 +19,7 @@
                 </div>
                 <div class="line">
                     <div class="parameter gray text">
-                        Требуемый опыт работы
+                        {{dictionary.REQUIRED_EXPERIENCE}}
                     </div>
                     <div class="value black text">
                         от {{currentVacancy.expAll}}
@@ -27,7 +27,7 @@
                 </div>
                 <div class="line">
                     <div class="parameter gray text">
-                       График работы
+                       {{dictionary.SCHEDULE}}
                     </div>
                     <div class="value black text">
                         {{currentVacancy.schedule}}
@@ -35,7 +35,7 @@
                 </div>
                 <div class="line">
                     <div class="parameter gray text">
-                        Метод работы
+                        {{dictionary.EMPLOYMENT}}
                     </div>
                     <div class="value black text">
                         {{currentVacancy.employmentType}}
@@ -45,45 +45,27 @@
 
             <div class="info">
                 <div class="title row">
-                    Обязанности
+                    {{dictionary.DUTIES}}
                 </div>
-                <div class="row text-wrap">
-                    <ul class="text">
-                        <li *ngFor="let item of currentVacancy.duties">
-                            {{item}}
-                        </li>
-                    </ul>
-                </div>
+                <div class="row text-wrap" [innerHTML]="currentVacancy.duties"></div>
             </div>
 
             <div class="info">
                 <div class="title row">
-                    Требования
+                    {{dictionary.REQUIREMENTS}}
                 </div>
-                <div class="row text-wrap">
-                    <ul class="text">
-                        <li *ngFor="let item of currentVacancy.demands">
-                            {{item}}
-                        </li>
-                    </ul>
-                </div>
+                <div class="row text-wrap" [innerHTML]="currentVacancy.demands"></div>
             </div>
 
             <div class="info">
                 <div class="title row">
-                    Условия
+                    {{dictionary.WORKING_CONDITIONS}}
                 </div>
-                <div class="row text-wrap">
-                    <ul class="text">
-                        <li *ngFor="let item of currentVacancy.conditions">
-                            {{item}}
-                        </li>
-                    </ul>
-                </div>
+                <div class="row text-wrap" [innerHTML]="currentVacancy.conditions"></div>
             </div>
 
             <div class="button">
-                Откликнуться на вакансию
+                {{dictionary.ANSWER_VACANCY}}
             </div>
 
         </div>
@@ -96,7 +78,7 @@
                 <img src="/assets/images/icon-camera.svg">
             </div>
             <div class="button">
-                Откликнуться на вакансию
+                {{dictionary.ANSWER_VACANCY}}
             </div>
         </div>
     </div>

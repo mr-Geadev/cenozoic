@@ -7,8 +7,10 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { PageFooterModule, PageHeaderModule } from "./blocks";
-import { CreateResumeGuard } from "./guards";
+import { AdminGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from "./guards";
+import { BlankAccountGuard } from "./guards/blank-account.guard";
 import { ChangeCityModalModule } from "./modals/change-city";
+import { ConfirmService } from "./modals/confirm/confirm.service";
 import {
     AccountSettingPageModule,
     CreateVacancyPageModule,
@@ -16,6 +18,7 @@ import {
     MainPageModule,
     NotFoundPageComponent
 } from "./pages";
+import { AccountEmailConfirmModule } from "./pages/account-email-confirm";
 import { CreateResumePageModule } from "./pages/create-resume-page";
 import { ListResumePageModule } from "./pages/list-resume-page";
 import { PersonalAccountPageModule } from "./pages/personal-account-page";
@@ -23,10 +26,16 @@ import { ResumeFullPageModule } from "./pages/resume-full-page";
 import { LocalizationService, SystemMessageService, UserService } from "./services";
 import { VacancyFullPageModule } from "./pages/vacancy-full-page/vacancy-full-page.module";
 import { ConfirmModule } from "./modals/confirm/confirm.module";
+import { BlankAccountService } from "./services/blank-account.service";
 import { SortService } from "./services/sort.service";
 
 const ROUTES = [
-    //{ path: '**', redirectTo: '/' }
+    {
+        path: 'admin',
+        loadChildren: 'app/admin/admin.module#AdminModule',
+        canActivate: [AdminGuard]
+    },
+    { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({
@@ -49,6 +58,7 @@ const ROUTES = [
         CreateVacancyPageModule,
         ListVacancyPageModule,
         VacancyFullPageModule,
+        AccountEmailConfirmModule,
 
         // Blocks
         PageHeaderModule,
@@ -67,9 +77,15 @@ const ROUTES = [
         LocalizationService,
         UserService,
         SortService,
+        ConfirmService,
+        BlankAccountService,
 
         //Guards
-        CreateResumeGuard,
+        BlankAccountGuard,
+        AdminGuard,
+        LogInGuard,
+        NotEmployerGuard,
+        NotWorkerGuard
     ],
     bootstrap: [AppComponent]
 })

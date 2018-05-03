@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="title">
-                Личный кабинет
+                {{ dictionary.ACCOUNT }}
             </div>
 
             <ul class="list">
@@ -13,8 +13,8 @@
                            id="responses"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Отклики">
-                    <label for="responses">Отклики</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_1">
+                    <label for="responses">{{ dictionary.ACCOUNT_PAGE_TAB_1 }}</label>
                 </li>
 
                 <li class="item">
@@ -22,8 +22,8 @@
                            id="suggestions"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Предложения">
-                    <label for="suggestions">Предложения</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_2">
+                    <label for="suggestions">{{ dictionary.ACCOUNT_PAGE_TAB_2 }}</label>
                 </li>
 
                 <li class="item">
@@ -31,17 +31,35 @@
                            id="archive"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Архив">
-                    <label for="archive">Архив</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_3">
+                    <label for="archive">{{ dictionary.ACCOUNT_PAGE_TAB_3 }}</label>
                 </li>
 
-                <li class="item">
+                <li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
+                    <input type="radio"
+                           id="interview"
+                           name="manager"
+                           [(ngModel)]="activeTab"
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_5">
+                    <label for="interview">{{dictionary.ACCOUNT_PAGE_TAB_5}}</label>
+                </li>
+
+                <li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
                     <input type="radio"
                            id="summary"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           value="Резюме">
-                    <label for="summary">Резюме</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_4_1">
+                    <label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_4_1 }}</label>
+                </li>
+
+                <li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
+                    <input type="radio"
+                           id="vacancy"
+                           name="manager"
+                           [(ngModel)]="activeTab"
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_4_2">
+                    <label for="vacancy">{{dictionary.ACCOUNT_PAGE_TAB_4_2}}</label>
                 </li>
 
             </ul>
@@ -52,33 +70,46 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf=" dictionary.MY !== 'My'">
         <div class="side-title" *ngIf="activeTab !== 'Архив'">Мои {{ activeTab }}</div>
         <div class="side-title" *ngIf="activeTab === 'Архив'">Мой {{ activeTab }}</div>
+    </div>
+    <div class="row" *ngIf=" dictionary.MY === 'My'">
+        <div class="side-title" >My {{ activeTab }}</div>
     </div>
 </div>
 
 <div class="container description">
     <div class="row">
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Отклики' }">
-            В этом разделе показаны результаты всех ваших откликов на вакансии. Вы можете отменить отправленный отклик
-            или переместить в архив отклики, на которые уже дан ответ работодателя.
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_1 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_1_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Предложения' }">
-            В этом разделе показаны предложения, поступившие вам со стороны компаний. Вы можете ответить на них или
-            переместить в архив.
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_2 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_2_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Архив' }">
-            В этом разделе содержатся ваши старые отклики/предложения
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_3 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_3_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === 'Резюме' }">
-            В этом разделе показаны все ваши резюме. Вы можежет просмотреть и отредактировать нужное, кликнув по нему
+        <div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_5 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_5_DESC }}
+        </div>
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_4_1_DESC }}
+        </div>
+        <div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_4_2 }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_4_2_DESC }}
         </div>
     </div>
 </div>
 
-<list-resume class="block resume"
-             [ngClass]="{ 'active': activeTab === 'Резюме' }"
-             [config]="'resume'"></list-resume>
 
+<list-resume class="block resume"
+             [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1 }"
+             *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1"
+             [config]="'user'"></list-resume>
+
+<list-vacancy class="block vacancy"
+              *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_4_2"
+              [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_2 }"
+              [config]="'user'"></list-vacancy>
 

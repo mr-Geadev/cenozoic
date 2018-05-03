@@ -5,9 +5,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { BreadcrumbsModule, CreateResumeModule } from "../../blocks";
+import { LogInGuard } from "../../guards";
 
 import { AccountSettingPageComponent } from "./account-setting-page.component"
 import { WorkerSettingModule } from "../../blocks/worker-setting/worker-setting.module";
+import { EmployerSettingModule } from "../../blocks/employer-setting/employer-setting.module";
 
 @NgModule({
     declarations: [
@@ -15,7 +17,12 @@ import { WorkerSettingModule } from "../../blocks/worker-setting/worker-setting.
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'setting', component: AccountSettingPageComponent, pathMatch: 'full' },
+            {
+                path: 'setting',
+                component: AccountSettingPageComponent,
+                pathMatch: 'full',
+                canActivate: [LogInGuard]
+            },
         ]),
         CommonModule,
         HttpClientModule,
@@ -24,7 +31,8 @@ import { WorkerSettingModule } from "../../blocks/worker-setting/worker-setting.
         MatDialogModule,
 
         //blocks
-        WorkerSettingModule
+        WorkerSettingModule,
+        EmployerSettingModule
     ],
     exports: [AccountSettingPageComponent]
 })

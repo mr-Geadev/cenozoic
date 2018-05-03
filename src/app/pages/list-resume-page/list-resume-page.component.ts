@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { SortModel } from "../../models/sort.model";
-import { SortService } from "../../services/sort.service";
+
+import { SortModel } from "../../models";
+import { LocalizationService, SortService } from "../../services";
 
 @Component({
     selector: 'list-resume-page',
@@ -8,22 +9,25 @@ import { SortService } from "../../services/sort.service";
     styleUrls: ['./list-resume-page.component.less']
 })
 export class ListResumePageComponent implements OnInit {
+    public dictionary: any = null;
     public selected = 'ascending';
 
     public sortParameter: SortModel = new SortModel({});
-    constructor(private _sortService: SortService) {
 
+    constructor(private _sortService: SortService,
+                private _localizationService: LocalizationService) {
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
+        this.dictionary = this._localizationService.currentDictionary;
+
         this._sortService.typeSort
             .subscribe(
                 parameters => {
-                    console.log(parameters);
                     if (parameters) {
                         this.sortParameter = parameters
                     } else {
-                        this.sortParameter  = new SortModel({})
+                        this.sortParameter = new SortModel({})
                     }
                 }
             )
