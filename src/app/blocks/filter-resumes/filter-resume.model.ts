@@ -64,13 +64,11 @@ export class FilterResumesModel {
 
 
         // this.salary.from !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {from: this.salary.from}}) : null;
-        this.salary.to !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {to: this.salary.to}}) : null;
+        this.salary.to !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {from: 0, to: this.salary.to}}) : null;
 
         if (this.salary.to === 'other') {
             objectRequest = Object.assign(objectRequest, {salary: {from: 600000}});
             delete objectRequest.salary.to;
-        } else if (this.salary.to) {
-            objectRequest = Object.assign(objectRequest, {salary: {from: 0}});
         }
 
         this.age.from !== 0 ? objectRequest = Object.assign(objectRequest, {age: {from: this.age.from}}) : null;

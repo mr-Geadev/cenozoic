@@ -9,7 +9,7 @@
         .container {
             padding-top: 14px;
 
-            .col.copyright {
+            .copyright {
                 width: auto;
                 text-align: center;
                 flex-grow: 0;
@@ -92,7 +92,7 @@
                 }
             }
 
-            .col.privacy {
+            .privacy {
                 margin-top: 35px;
                 width: auto;
                 flex-grow: 0;
@@ -113,7 +113,7 @@
                 }
             }
 
-            .col.rhinoceros {
+            .rhinoceros {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -123,22 +123,30 @@
 
     @media (max-width: 765px) {
 
-        .col.copyright {
-            display: none !important;
+        .copyright {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            order: 1;
         }
 
-        .col.menu .social-network {
+        .menu .social-network {
             position: relative !important;
             margin-top: 20px !important;
         }
 
-        .col.menu .menu-list {
+        .menu .menu-list {
             flex-direction: column !important;
             align-items: center !important;
         }
 
-        .col.menu .menu-list .link {
+        .menu .menu-list .link {
             margin: 0 5px !important;
+        }
+
+        .rhinoceros {
+            margin: 40px 0;
         }
     }
 }
