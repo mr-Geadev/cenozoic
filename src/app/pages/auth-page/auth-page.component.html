@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="title">{{ dictionary.ACCOUNT }}</div>
+        </div>
+    </div>
+
+    <div class="row full-change-type">
+        <div class="type">
+            <input type="radio" id="sign-in" name="type" value="entry" [(ngModel)]="type">
+            <label for="sign-in">{{ dictionary.LOG_IN }}</label>
+
+            <input type="radio" id="sign-up" name="type" value="register" [(ngModel)]="type">
+            <label for="sign-up">{{ dictionary.SIGN_IN }}</label>
+        </div>
+    </div>
+
+    <div class="row mobile-change-type">
+        <div class="type">
+            <input type="radio" id="sign-in" name="type" value="entry" [(ngModel)]="type">
+            <label for="sign-in">{{ dictionary.LOG_IN }}</label>
+
+            <input type="radio" id="sign-up" name="type" value="register" [(ngModel)]="type">
+            <label for="sign-up">{{ dictionary.SIGN_IN }}</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 form-field">
+            <form [formGroup]="loginForm" *ngIf="type === 'entry'" (submit)="logIn()">
+
+                <div class="field first">
+                    <label for="login-email">E-MAIL</label>
+                    <input id="login-email" type="email" name="email" formControlName="email">
+                </div>
+                <div class="field">
+                    <label for="password">{{ dictionary.PASSWORD }}</label>
+                    <input id="password" type="password" name="password" formControlName="password">
+                    <a href="#" class="forgot">{{ dictionary.FORGOT_PASSWORD }}</a>
+                </div>
+
+                <button class="button " type="submit" [disabled]="loginForm.invalid">
+                    {{ dictionary.LOG_IN }}
+                </button>
+
+            </form>
+
+            <form [formGroup]="registerForm" (submit)="signUp()" *ngIf="type !== 'entry'">
+
+                <div class="type-account">
+                    <div class="description">{{ dictionary.YOU_REGISTER_AS }}:</div>
+
+                    <input type="radio" id="worker" value="worker" name="typeAccount" formControlName="typeAccount">
+                    <label for="worker">
+                        <div class="checkbox"></div>
+                        {{ dictionary.I_AM_CANDIDATE }}
+                    </label>
+
+                    <input type="radio" id="employer" value="employer" name="typeAccount" formControlName="typeAccount">
+                    <label for="employer">
+                        <div class="checkbox"></div>
+                        {{ dictionary.I_AM_EMPLOYER }}
+                    </label>
+
+                </div>
+
+                <div class="field first">
+                    <label for="register-email">E-MAIL</label>
+                    <input id="register-email" type="email" name="email" formControlName="email">
+                    <div class="error"
+                         *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty">
+                        {{ dictionary.INCORRECT_EMAIL }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="register-password">{{ dictionary.PASSWORD }}</label>
+                    <input id="register-password" type="password" name="password" formControlName="password">
+                    <div class="error"
+                         *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].dirty">
+                        {{ dictionary.LESS_THEN_8_SYMBOLS }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="password-return">{{ dictionary.REPEAT_PASSWORD }}</label>
+                    <input id="password-return" type="password" name="confirm-password" formControlName="confirmPassword"
+                           class="ng-undirty"
+                           [ngClass]="((registerForm.controls['password'].value !== registerForm.controls['confirmPassword'].value) && registerForm.controls['password'].dirty && registerForm.controls['confirmPassword'].dirty) === true ? { 'ng-invalid':true , 'ng-valid':false } : {'ng-invalid':false , 'ng-valid':true } ">
+                    <div class="error"
+                         *ngIf="(registerForm.controls['password'].value !== registerForm.controls['confirmPassword'].value) && registerForm.controls['password'].dirty && registerForm.controls['confirmPassword'].dirty">
+                        {{ dictionary.PASSWORDS_ARE_NOT_THE_SAME }}
+                    </div>
+                </div>
+
+                <button class="button" type="submit"
+                        [disabled]="(registerForm.invalid) || (registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value)">
+                    {{ dictionary.SIGN_IN }}
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>

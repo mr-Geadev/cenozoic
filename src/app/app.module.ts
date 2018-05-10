@@ -19,6 +19,7 @@ import {ResumeFullPageModule} from './pages/resume-full-page';
 import {BlankAccountService, LocalizationService, SortService, SystemMessageService, UserService} from './services';
 import {VacancyFullPageModule} from './pages/vacancy-full-page';
 import {ConfirmModule} from './modals/confirm';
+import {AuthPageModule} from './pages/auth-page';
 
 const ROUTES = [
     {
@@ -50,6 +51,7 @@ const ROUTES = [
         ListVacancyPageModule,
         VacancyFullPageModule,
         AccountEmailConfirmPageModule,
+        AuthPageModule,
 
         // Blocks
         PageHeaderModule,
