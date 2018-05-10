@@ -61,7 +61,9 @@
 
             .item {
                 display: block;
-                width: 262px;
+                margin: 10px;
+                width: 22%;
+                min-width: 250px;
                 height: 400px;
                 padding: 30px;
                 padding-bottom: 0;
@@ -199,7 +201,15 @@
 
     @media (max-width: 1000px) {
 
-        .list .item:nth-child(4n), .list .item:nth-child(3n) {
+        .list .item:nth-child(3n) {
+            display: none !important;
+        }
+
+    }
+
+    @media (max-width: 1200px) {
+
+        .list .item:nth-child(4n) {
             display: none !important;
         }
 

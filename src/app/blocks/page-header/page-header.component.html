@@ -73,8 +73,7 @@
                     </li>
                     <li class="item" *ngIf="isAuthorized"><a class="link" [routerLink]="['/']" (click)="logOut()">{{
                         dictionary.LOG_OUT }}</a>
-                    <li class="item" *ngIf="!isAuthorized"><a class="link" [routerLink]="['/']"
-                                                              (click)="openLoginModal()">{{ dictionary.LOG_IN }}</a>
+                    <li class="item" *ngIf="!isAuthorized"><a class="link" [routerLink]="['/auth']" (click)="closeMobileMenu()">{{ dictionary.LOG_IN }}</a>
                 </ul>
             </div>
         </div>

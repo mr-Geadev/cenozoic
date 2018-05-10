@@ -432,7 +432,8 @@
                     font-size: 0.875rem;
                     font-weight: 700;
                     line-height: 1;
-                    width: 361px;
+                    max-width: 361px;
+                    width: 100%;
                     height: 46px;
                     color: white;
                     justify-content: center;
@@ -592,6 +593,32 @@
             display: none !important;
         }
 
+        .workplace {
+
+            .mobile-visible {
+                display: flex !important;
+                margin-top: 40px;
+            }
+
+            .mobile-hidden {
+                display: none !important;
+            }
+
+
+        }
+
+        .language {
+
+            .right {
+                height: auto !important;
+            }
+
+            .remove-language {
+                top: 100%;
+            }
+
+        }
+
         .parameter {
             flex-wrap: wrap !important;
 
@@ -599,6 +626,25 @@
                 width: 100% !important;
                 margin-bottom: 10px !important;
             }
+
+            &.language .right {
+                flex-wrap: wrap;
+            }
+
+            &.language .short-input {
+                margin-left: 0px !important;
+            }
+
+
+            input:not(.shortest-input), select, mat-form-field {
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
         }
+    }
+
+    .mobile-visibl {
+        display: none;
     }
 }
