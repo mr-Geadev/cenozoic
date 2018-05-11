@@ -1,8 +1,8 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Observable";
-import { UserModel } from "../../../models/user.model";
-import { SystemMessageService } from "../../../services";
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {UserModel} from '../../../models/user.model';
+import {SystemMessageService} from '../../../services';
 
 @Injectable()
 export class UsersApi {
@@ -13,7 +13,7 @@ export class UsersApi {
                 private _messages: SystemMessageService) {
     }
 
-    public getUserList():void {
+    public getUserList(): void {
         this.userList.length = 0;
         this._http.get('/api/v1/admin/users/info')
             .subscribe(
@@ -22,12 +22,12 @@ export class UsersApi {
             );
     }
 
-    public banUser(id: string): Observable<any>{
+    public banUser(id: string): Observable<any> {
         return this._http.get(`/api/v1/admin/account/block?uid=${id}`)
             .map(
                 res => true,
                 err => err
-            )
+            );
     }
 
 }

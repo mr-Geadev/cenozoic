@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AdminGuard } from "../guards";
-import { AdminComponent } from "./admin.component";
-import { MainComponent } from "./pages/main/main.component";
-import { ResumeListComponent } from "./pages/resume-list/resume-list.component";
-import { UsersComponent } from "./pages/users/users.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminGuard} from '../guards';
+import {AdminComponent} from './admin.component';
+import {MainComponent} from './pages/main/main.component';
+import {ResumeListComponent} from './pages/resume-list/resume-list.component';
+import {UsersComponent} from './pages/users/users.component';
 
 const routes: Routes = [
     {
@@ -28,7 +28,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+}

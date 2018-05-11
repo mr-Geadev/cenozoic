@@ -1,10 +1,10 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule } from "@angular/material";
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
 
-import { FilterResumesComponent } from "./filter-resumes.component";
-import { FilterResumesService } from "./filter-resumes.service";
+import {FilterResumesComponent} from './filter-resumes.component';
+import {FilterResumesService} from './filter-resumes.service';
 
 @NgModule({
     imports: [

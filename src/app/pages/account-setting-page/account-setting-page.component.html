@@ -7,8 +7,8 @@
 </div>
 
 <div *ngIf="typeCurrentUser">
-    <worker-setting
-            *ngIf="typeCurrentUser === 'worker'"></worker-setting>
-    <employer-setting
-            *ngIf="typeCurrentUser === 'employer'"></employer-setting>
+    <setting-worker
+            *ngIf="typeCurrentUser === 'worker'"></setting-worker>
+    <setting-employer
+            *ngIf="typeCurrentUser === 'employer'"></setting-employer>
 </div>

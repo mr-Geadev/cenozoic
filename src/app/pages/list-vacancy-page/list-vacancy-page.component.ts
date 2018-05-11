@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { LocalizationService } from "../../services/localization.service";
+import {Component, OnInit} from '@angular/core';
+import {LocalizationService} from '../../services/localization.service';
 
 @Component({
     selector: 'list-vacancy-page',

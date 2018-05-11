@@ -171,7 +171,7 @@ export const RUSSIAN_DICTIONARY = {
         MARRIED: 'Замужем/Женат',
         SINGLE: 'Холост',
         DIVORCED: 'В разводе',
-    BUSINESS_TRIPS: 'Готовность к комнадировкам',
+    BUSINESS_TRIPS: 'Готовность к командировкам',
     RELOCATION: 'Переезд',
     SCHEDULE: 'График работы',
         FULL_DAY: 'Полный день',

@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Observable";
-import { ReqConfirmService } from "./req-confirm.service";
-import { ResConfirmService } from "./res-confirm.service";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {ReqConfirmService} from './req-confirm.service';
+import {ResConfirmService} from './res-confirm.service';
 
 @Injectable()
 export class ConfirmService {

@@ -1,0 +1,160 @@
+:host {
+
+    @import (less) '../../../assets/styles/base.less';
+
+    .footer {
+        background-color: @dark-gray;
+        padding-bottom: 20px;
+
+        .container {
+            padding-top: 14px;
+
+            .copyright {
+                width: auto;
+                text-align: center;
+                flex-grow: 0;
+
+                .logo {
+                    width: 97px;
+                    height: 97px;
+                }
+
+                .copyright {
+                    margin-top: 20px;
+                    color: @white;
+                    font-family: Roboto;
+                    font-size: 0.875rem;
+                    font-weight: 400;
+                    line-height: 1.5rem;
+                    width: 259px;
+                }
+            }
+
+            .menu {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .menu-list {
+                    margin-bottom: 30px;
+                    height: auto;
+                    justify-content: space-evenly;
+                    align-items: flex-start;
+
+                    .link {
+                        color: @white;
+                        font-family: Arimo;
+                        font-size: 0.875rem;
+                        font-weight: 400;
+                        line-height: 2rem;
+                        .tr-color;
+
+                        &:hover {
+                            color: @orange;
+                        }
+
+                    }
+                }
+
+                .social-network {
+                    justify-content: center;
+                    width: 100%;
+
+                    .link {
+                        margin: 3px;
+                        width: 37px;
+                        height: 37px;
+                        border: 0.063rem solid @white;
+                        background-image: url('/assets/images/social-network.png');
+                        background-position-y: center;
+                        background-repeat: no-repeat;
+                        overflow: hidden;
+                        .tr-bg;
+
+                        &.fb {
+                            background-position-x: 8px;
+                        }
+                        &.linkedin {
+                            background-position-x: -18px;
+                        }
+                        &.inst {
+                            background-position-x: -47px;
+                        }
+                        &.tg {
+                            background-position-x: -75px;
+                        }
+
+                        &:hover {
+                            background-color: @gray - #555;
+                        }
+                    }
+                }
+            }
+
+            .privacy {
+                margin-top: 35px;
+                width: auto;
+                flex-grow: 0;
+
+                .link {
+                    width: 215px;
+                    display: block;
+                    color: @orange;
+                    font-family: Roboto;
+                    font-size: 0.875rem;
+                    font-weight: 400;
+                    line-height: 1.25rem;
+                    .tr-color;
+
+                    &:hover {
+                        color: @hover-orange;
+                    }
+                }
+            }
+
+            .rhinoceros {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    @media (max-width: 765px) {
+
+        .copyright {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            order: 1;
+
+            .logo {
+                display: none;
+            }
+
+            .copyright {
+                margin-top: -30px !important;
+            }
+        }
+
+        .menu .social-network {
+            position: relative !important;
+            margin-top: 20px !important;
+        }
+
+        .menu .menu-list {
+            align-items: center !important;
+            margin-bottom: 0px !important;
+        }
+
+        .menu .menu-list .link {
+            margin: 0 5px !important;
+        }
+
+        .rhinoceros {
+            margin: 40px 0;
+        }
+    }
+}

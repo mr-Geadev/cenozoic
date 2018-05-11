@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'breadcrumbs',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./breadcrumbs.component.less']
 })
 export class BreadcrumbsComponent {
-    constructor() {}
+    constructor() {
+    }
 }

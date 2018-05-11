@@ -1,0 +1,300 @@
+<div class="container" *ngIf="currentResume">
+
+    <div class="row main-info">
+
+        <div class="col-12 col-md-7 left">
+
+            <div class="city gray text">Санкт-Петербург</div>
+            <div class="page-title">{{currentResume.job}}</div>
+
+            <div class="salary"><span>{{dictionary.FROM}} <b>{{currentResume.salary}} ₽</b></span></div>
+
+            <div class="name">{{currentResume.fullName}}</div>
+
+            <div class="table">
+                <div class="line">
+                    <div class="parameter gray text">
+                        <!--возраст-->
+                        {{dictionary.AGE}}
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.age || dictionary.NO_DATA}} ({{currentResume.birthday}})
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        <!--пол-->
+                        {{dictionary.SEX}}
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.gender === 'man' ? dictionary.MAN : dictionary.WOMAN}}
+                    </div>
+                </div>
+                <div class="line not-dott"
+                     *ngIf="currentResume.experienceAll && (currentResume.experienceAll.oil.year || currentResume.experienceAll.mining.year)">
+                    <div class="parameter gray text">
+                        <!--опыт рабоыт-->
+                        {{dictionary.EXPERIENCE}}
+                    </div>
+                    <div class="line">
+                        <div class="parameter gray text" *ngIf="currentResume.experienceAll.oil.year">
+                            <!--нефтегазовая-->
+                            {{dictionary.IN_OIL}}
+                        </div>
+                        <div class="value black text">
+                            {{currentResume.experienceAll.oil.year}} {{dictionary.OF_YEARS}}
+                        </div>
+                    </div>
+                    <div class="line" *ngIf="currentResume.experienceAll.mining.year">
+                        <div class="parameter gray text">
+                            <!--горнодобывающая-->
+                            {{dictionary.IN_MINING}}
+                        </div>
+                        <div class="value black text">
+                            {{currentResume.experienceAll.mining.year}} {{dictionary.OF_YEARS}}
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        <!--Готовность к командировкам-->
+                        {{dictionary.BUSINESS_TRIPS}}
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.businessTrips ? dictionary.YES : dictionary.NO}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        <!--Переезд-->
+                        {{dictionary.RELOCATION}}
+                    </div>
+                    <div class="value black text">
+                        {{currentResume.relocation ? dictionary.YES : dictionary.NO}}
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        <!--График работы-->
+                        {{dictionary.SCHEDULE}}
+                    </div>
+                    <div class="value black text" [ngSwitch]="currentResume.schedule">
+                        <ng-template ngSwitchCase="full">{{dictionary.FULL_DAY}}</ng-template>
+                        <ng-template ngSwitchCase="remote">{{dictionary.REMOTE}}</ng-template>
+                        <ng-template ngSwitchCase="watch">{{dictionary.SHIFT}}</ng-template>
+                        <ng-template ngSwitchDefault>{{dictionary.IRRELEVANT}}</ng-template>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        <!--Занятость-->
+                        {{dictionary.EMPLOYMENT}}
+                    </div>
+                    <div class="value black text" [ngSwitch]="currentResume.employmentType">
+                        <ng-template ngSwitchCase="full">{{dictionary.FULL_EMPLOYMENT}}</ng-template>
+                        <ng-template ngSwitchCase="part">{{dictionary.PART}}</ng-template>
+                        <ng-template ngSwitchCase="time">{{dictionary.TEMPORARY}}</ng-template>
+                        <ng-template ngSwitchCase="internship">{{dictionary.INTERNSHIP}}</ng-template>
+                        <ng-template ngSwitchDefault>{{dictionary.IRRELEVANT}}</ng-template>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        <!--Семейное положение-->
+                        {{dictionary.FAMILY}}
+                    </div>
+                    <div class="value black text" [ngSwitch]="currentResume.family">
+                        <ng-template ngSwitchCase="married">{{dictionary.MARRIED}}</ng-template>
+                        <ng-template ngSwitchCase="divorced">{{dictionary.DIVORCED}}</ng-template>
+                        <ng-template ngSwitchDefault>{{dictionary.SINGLE}}</ng-template>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 col-md-4 offset-md-1 right">
+            <div class="user-photo">
+                <img *ngIf="currentResume.photoURL" src="{{currentResume.photoURL}}">
+            </div>
+            <div class="default-photo" *ngIf="!currentResume.photoURL">
+                <img src="/assets/images/icon-camera.svg">
+            </div>
+            <div class="button" (click)="resumeService.goEdit(currentResume)"
+                 *ngIf="currentResume.userId == currentUser?._id">
+                Редактировать резюме
+            </div>
+            <div class="button" (click)="resumeService.delete(currentResume._id)"
+                 *ngIf="currentResume.userId == currentUser?._id">
+                Удалить резюме
+            </div>
+        </div>
+    </div>
+
+    <div class="row add-info" *ngIf="currentResume.experience.length > 0">
+        <div class="col">
+            <div class="title">
+                {{dictionary.EXPERIENCE}}
+            </div>
+
+            <table class="experience">
+
+                <tr *ngFor="let item of currentResume.experience">
+                    <td class="time-work">
+                        <div class="text black">2 года 5 месяцев</div>
+                        <div class="text gray">{{dictionary.MONTHS[item.startMonth]}} {{item.startYear}} —
+                            {{item.endMonth}}
+                            {{item.present? dictionary.TILL_NOW_WORK : item.endYear}}
+                        </div>
+                    </td>
+                    <td class="work">
+                        <div class="job side-title">{{item.job}}</div>
+                        <div class="company text gray">{{item.organization}}</div>
+                        <div class="duties text black">
+                            {{item.duties}}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="row add-info education" *ngIf="currentResume.education.length > 0">
+        <div class="col">
+            <div class="title">
+                <!--Учебные заведения-->
+                {{dictionary.EDUCATION_PLACES}}
+            </div>
+
+            <table class="experience">
+
+                <tr *ngFor="let item of currentResume.education">
+                    <td class="time-work">
+                        <div class="text gray">{{item.stage === 'high' ? dictionary.EDUCATION_STAGE_HIGH :
+                            dictionary.EDUCATION_STAGE_MIDDLE}}
+                        </div>
+                        <div class="text gray">{{dictionary.YEAR_OF_END_EDUCATION}}: {{item.end}}</div>
+                        <div class="text gray">{{item.end - item.start}} лет</div>
+                    </td>
+                    <td class="education">
+                        <div class="side-title">{{item.country}}, {{item.city}}</div>
+                        <div class="side-title">{{item.university}}</div>
+                        <div class="text black" *ngIf="item.faculty">{{item.faculty}}</div>
+                        <div class="side-title" *ngIf="item.specialty">{{item.specialty}}</div>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row add-info languages" *ngIf="currentResume.education.languages > 0">
+        <div class="col">
+            <div class="title">
+                <!--Знание языков-->
+                {{dictionary.KNOWLEDGE_OF_LANGUAGES}}
+            </div>
+
+            <div class="text black" *ngFor="let item of currentResume.languages">{{item.name}} - {{item.level}}</div>
+
+        </div>
+    </div>
+
+    <div class="row add-info trainings" *ngIf="currentResume.education.languages > 0">
+        <div class="col">
+            <div class="title">
+                <!--Профессиональные компетенции, Курсы, тренинги, сертификаты-->
+                {{dictionary.TRAININGS}}
+            </div>
+
+            <table class="experience">
+
+                <tr *ngFor="let item of currentResume.trainings">
+                    <td class="time-work">
+                        <div class="text gray">{{item.year}} {{dictionary.YEAR}}</div>
+                    </td>
+                    <td class="education">
+                        <div class="side-title">{{item.name}}</div>
+                        <div class="text gray">{{item.city}}</div>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row add-info additional" *ngIf="currentResume.additionalInformation">
+        <div class="col">
+            <div class="title">
+                <!--Дополнительная информация-->
+                {{dictionary.ADDITIONAL_INFO}}
+            </div>
+
+            <div class="text black" [innerHTML]="currentResume.additionalInformation"></div>
+        </div>
+    </div>
+
+    <div class="row add-info personal-properties" *ngIf="currentResume.personalQualities">
+        <div class="col">
+            <div class="title">
+                <!--Личные качества-->
+                {{dictionary.PERSONAL_QUALITIES}}
+            </div>
+
+            <div class="text black" [innerHTML]="currentResume.personalQualities"></div>
+        </div>
+    </div>
+
+    <div class="row add-info hobbies" *ngIf="currentResume.hobbies">
+        <div class="col">
+            <div class="title">
+                <!--Увлечения-->
+                {{dictionary.HOBBIES}}
+            </div>
+
+            <div class="text black" [innerHTML]="currentResume.hobbies"></div>
+        </div>
+    </div>
+
+    <div class="row add-info contacts">
+        <div class="col">
+            <div class="title">
+                <!--Контактные данные-->
+                {{dictionary.CONTACTS_RESUME}}
+            </div>
+
+            <table class="experience contact-data">
+
+                <tr>
+                    <td class="time-work">
+                        <div class="text gray">{{dictionary.FIO}}:</div>
+                    </td>
+                    <td class="education">
+                        <div class="text black">{{currentResume.fullName}}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="time-work">
+                        <div class="text gray">E-mail:</div>
+                    </td>
+                    <td class="education">
+                        <div class="text black">{{currentResume.email}}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="time-work">
+                        <div class="text gray">{{dictionary.PHONE}}:</div>
+                    </td>
+                    <td class="education">
+                        <div class="text black">{{currentResume.phoneNumber}}</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,8 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { UserService } from "./user.service";
-import { LOG_OUT, SIGN_IN, SIGN_UP } from "../constants/api.constant";
-import { Observable } from "rxjs/Observable";
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {UserService} from './user.service';
+import {LOG_OUT, SIGN_IN, SIGN_UP} from '../constants/api.constant';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +12,7 @@ export class AuthService {
     }
 
     public loginUser(dataUser: any): Observable<any> {
-        return this._http.post(SIGN_IN, dataUser)
+        return this._http.post(SIGN_IN, dataUser);
     }
 
     public logOut(): Observable<boolean> {

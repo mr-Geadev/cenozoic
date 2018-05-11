@@ -83,6 +83,12 @@ body {
 	color: #ff682a !important;
 }
 
+@media (max-width: 1000px) {
+  .mat-snack-bar-container{
+    border: none !important;
+  }
+}
+
 .mce-notification.mce-notification-warning,
 .mce-branding.mce-widget.mce-label {
     display: none;

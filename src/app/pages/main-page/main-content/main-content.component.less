@@ -1,0 +1,134 @@
+:host {
+
+    @import (less) '../../../../assets/styles/base.less';
+
+    .main-content {
+
+        .for {
+            height: 400px;
+            display: flex;
+
+            &:nth-child(2) {
+                .img {
+                    order: 1;
+                }
+                .description {
+                    order: 0;
+                }
+            }
+
+            .img {
+                height: inherit;
+                width: 50%;
+                order: 0;
+
+                img {
+                    height: 100%;;
+                    width: 100%;
+                }
+            }
+
+            .description {
+                width: 50%;
+                order: 1;
+                text-align: center;
+
+                img {
+                    margin-top: 62px;
+                }
+
+                .title {
+                    margin-top: 37px;
+                    color: @black;
+                    .bebas;
+                    font-size: 3rem;
+                    font-weight: 400;
+                    line-height: 0.191rem;
+                }
+
+                .text {
+                    width: 60%;
+                    margin: 43px auto 0;
+                    color: @black;
+                    font-family: Roboto;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.876rem;
+                }
+
+            }
+        }
+
+    }
+
+    @media (max-width: 1680px) {
+        .main-content {
+
+            .for {
+                height: 300px;
+
+                .description {
+                    img {
+                        margin-top: 32px;
+                    }
+
+                    .text {
+                        width: 90%;
+                        margin: 23px auto 0;
+                        line-height: 1.5;
+                    }
+                }
+            }
+
+        }
+    }
+
+    @media (max-width: 1000px) {
+
+        .for {
+            height: 230px !important;
+
+            .description {
+
+                img {
+                    display: none !important;
+                }
+
+                .title {
+                    margin-top: 57px !important;
+                }
+            }
+
+        }
+
+    }
+
+    @media (max-width: 640px) {
+
+        .for {
+            margin-top: 30px !important;
+            height: 200px !important;
+        }
+
+        .for .img {
+            display: none !important;
+        }
+
+        .for .description {
+            width: 100% !important;
+
+            .title {
+                font-size: 30px !important;
+                color: @orange !important;
+                letter-spacing: 2px !important;
+                line-height: 1 !important;
+                margin-top: 20px !important;
+            }
+
+            .text {
+                color: @white !important;
+                margin-top: 5px !important;
+            }
+        }
+    }
+}

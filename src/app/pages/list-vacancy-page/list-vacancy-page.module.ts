@@ -1,13 +1,13 @@
-import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatDialogModule } from "@angular/material";
-import { RouterModule } from "@angular/router";
-import { ListVacancyModule } from "../../blocks/list-vacancy/list-vacancy.module";
+import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
+import {ListVacancyModule} from '../../blocks/list-vacancy/list-vacancy.module';
 
-import { LoginModalModule } from "../../modals";
-import { ListVacancyPageComponent } from "./list-vacancy-page.component";
+import {LoginModalModule} from '../../modals';
+import {ListVacancyPageComponent} from './list-vacancy-page.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +15,7 @@ import { ListVacancyPageComponent } from "./list-vacancy-page.component";
     ],
     imports: [
         RouterModule.forRoot([
-            { path: 'list-vacancy', component: ListVacancyPageComponent, pathMatch: 'full' },
+            {path: 'list-vacancy', component: ListVacancyPageComponent, pathMatch: 'full'},
         ]),
         CommonModule,
         HttpClientModule,
