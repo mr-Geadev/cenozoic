@@ -199,17 +199,17 @@
         }
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1200px) {
 
-        .list .item:nth-child(3n) {
+        .list .item:nth-child(4n) {
             display: none !important;
         }
 
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1000px) {
 
-        .list .item:nth-child(4n) {
+        .list .item:nth-child(3n) {
             display: none !important;
         }
 
@@ -223,6 +223,17 @@
 
         .list {
             justify-content: center !important;
+
+            .item {
+
+                .description {
+                    margin-top: 11px !important;
+                }
+
+                .terms {
+                    margin-top: 10px !important;
+                }
+            }
         }
 
         .row.manage {
@@ -234,6 +245,12 @@
             .arrows {
                 display: none !important;
             }
+        }
+    }
+
+    @media (max-width: 640px) {
+        .last-added .title {
+            font-size: 2rem !important;
         }
     }
 }
