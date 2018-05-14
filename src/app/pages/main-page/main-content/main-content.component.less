@@ -107,12 +107,20 @@
 
         .for {
             margin-top: 30px !important;
-            height: 200px !important;
+            height: auto !important;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .img {
+                margin-top: 50px;
+                order: 2 !important;
+                height: auto !important;
+                width: 135% !important;
+                max-width: 550px;
+                flex-shrink: 0;
+            }
         }
 
-        .for .img {
-            display: none !important;
-        }
 
         .for .description {
             width: 100% !important;
@@ -126,7 +134,6 @@
             }
 
             .text {
-                color: @white !important;
                 margin-top: 5px !important;
             }
         }
