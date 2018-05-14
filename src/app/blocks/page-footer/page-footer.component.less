@@ -27,6 +27,7 @@
                     font-weight: 400;
                     line-height: 1.5rem;
                     width: 259px;
+                    text-transform: uppercase;
                 }
             }
 
@@ -125,10 +126,15 @@
 
         .copyright {
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             justify-content: space-between;
             align-items: center;
             order: 1;
+
+            .copyright {
+                margin-top: -30px !important;
+                width: auto !important;
+            }
         }
 
         .menu .social-network {
@@ -137,8 +143,8 @@
         }
 
         .menu .menu-list {
-            flex-direction: column !important;
             align-items: center !important;
+            margin-bottom: 0px !important;
         }
 
         .menu .menu-list .link {

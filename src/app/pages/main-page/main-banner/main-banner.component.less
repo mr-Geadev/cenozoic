@@ -200,11 +200,17 @@
     @media (max-width: 640px) {
 
         .banner .container {
+            position: relative !important;
             margin-top: 0 !important;
+            padding-top: 10px !important;
 
             .description {
                 padding-left: 9px !important;
             }
+        }
+
+        .banner-image {
+            display: none !important;
         }
 
     }
@@ -220,8 +226,9 @@
             margin-top: 0 !important;
 
             .logo img {
-                width: 100px !important;
-                height: 100px !important;
+                width: 130px !important;
+                height: 130px !important;
+                margin-bottom: 20px;
             }
 
             .description {
@@ -236,17 +243,11 @@
 
         .banner .container {
 
-            .logo img {
-                width: 80px !important;
-                height: 80px !important;
-            }
-
             .description {
                 margin-top: 0 !important;
                 font-size: 1.5rem !important;
             }
         }
-
     }
 
 }
