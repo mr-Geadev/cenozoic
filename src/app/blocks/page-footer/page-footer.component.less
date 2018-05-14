@@ -1,4 +1,5 @@
 :host {
+    display: block;
 
     @import (less) '../../../assets/styles/base.less';
 
@@ -13,6 +14,9 @@
                 width: auto;
                 text-align: center;
                 flex-grow: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
                 .logo {
                     width: 97px;
@@ -118,6 +122,11 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                .group {
+                    width: 170%;
+                    max-width: none;
+                }
             }
         }
     }
@@ -125,7 +134,11 @@
     .mobile-visible {
         display: none;
     }
+    @media (max-width: 1189px) {
+        margin-top: -70px;
+    }
     @media (max-width: 765px) {
+        margin-top: -20px;
 
         .copyright {
             display: flex;
@@ -137,6 +150,7 @@
             .copyright {
                 margin-top: -30px !important;
                 width: auto !important;
+                font-size: 0.575rem !important;
             }
 
             .logo.mobile-hidden {
@@ -147,6 +161,7 @@
         .menu .social-network {
             position: relative !important;
             margin-top: 20px !important;
+            transform: scale(0.8);
         }
 
         .menu .menu-list {
@@ -156,16 +171,20 @@
 
         .menu .menu-list .link {
             margin: 0 5px !important;
+            font-size: 1rem !important;
         }
 
         .rhinoceros {
-            margin: 40px 0;
+            margin: 10px 0 50px;
+            display: flex;
+            justify-content: space-between !important;
 
             .group {
                 width: 70%;
+                order: 1;
             }
             .community {
-                width: 30%;
+                width: 20%;
             }
         }
 

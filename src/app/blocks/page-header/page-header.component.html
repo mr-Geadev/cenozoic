@@ -6,12 +6,12 @@
 
             <div class="mobile-menu-bg" [class.active]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
 
-            <div class="mobile-menu-button">
+            <div class="mobile-menu-button modal">
                 <a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">{{
                     dictionary.ACCOUNT }}</a>
             </div>
 
-            <a [routerLink]="['/']"><img class="logo" src="/assets/images/logo.png" alt=""></a>
+            <a class="logo-wrapper" [routerLink]="['/']"><img class="logo" src="/assets/images/logo.png" alt=""></a>
 
             <div class="menu row align-items-center justify-content-between">
 
@@ -52,12 +52,23 @@
 
             </div>
 
-            <div class="mobile-menu-button" (click)="openMobileMenu()">
-                <mat-icon style="transform: scale(1.5);">menu</mat-icon>
+            <div class="languages-mobile">
+                <a class="change-language"
+                   [ngClass]="{ 'active': language === availableLanguages.RUSSIAN }"
+                   (click)="changeLanguage(availableLanguages.ENGLISH)">EN</a>
+
+                <a class="change-language"
+                   [ngClass]="{ 'active': language === availableLanguages.ENGLISH }"
+                   (click)="changeLanguage(availableLanguages.RUSSIAN)">RU</a>
+            </div>
+
+            <div class="mobile-menu-button" (click)="toggleMobileMenu()">
+                <mat-icon *ngIf="!isMobileMenuOpen" style="transform: scale(1.5);">menu</mat-icon>
+                <mat-icon *ngIf="isMobileMenuOpen" style="transform: scale(1.5);">close</mat-icon>
             </div>
 
             <div class="mobile-menu" [class.active]="isMobileMenuOpen">
-                <ul>
+                <ul class="list">
                     <li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/']">Главная</a></li>
                     <li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-vacancy']">{{
                         dictionary.FOR_CANDIDATES }}</a></li>

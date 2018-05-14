@@ -62,7 +62,7 @@
             .item {
                 display: block;
                 margin: 10px;
-                width: 22%;
+                width:256px;
                 min-width: 250px;
                 height: 400px;
                 padding: 30px;
@@ -201,6 +201,18 @@
 
     @media (max-width: 1200px) {
 
+        .list .item {
+            width: 30% !important;
+
+            .description {
+                margin-top: 11px !important;
+            }
+
+            .terms {
+                margin-top: 10px !important;
+            }
+        }
+
         .list .item:nth-child(4n) {
             display: none !important;
         }
@@ -213,6 +225,10 @@
             display: none !important;
         }
 
+        .list .item {
+            width: 47%;
+        }
+
     }
 
     @media (max-width: 765px) {
@@ -223,17 +239,6 @@
 
         .list {
             justify-content: center !important;
-
-            .item {
-
-                .description {
-                    margin-top: 11px !important;
-                }
-
-                .terms {
-                    margin-top: 10px !important;
-                }
-            }
         }
 
         .row.manage {

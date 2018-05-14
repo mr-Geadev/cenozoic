@@ -78,7 +78,7 @@
     "http-proxy-middleware": "^0.18.0",
     "http-server": "^0.10.0",
     "less": "^2.7.3",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.9.0",
     "reflect-metadata": "^0.1.12",
     "ts-loader": "^2.3.7",
     "typescript": "^2.7.2"

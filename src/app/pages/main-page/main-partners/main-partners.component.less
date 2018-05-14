@@ -1,276 +1,280 @@
 :host {
 
-	@import (less) '../../../../assets/styles/base.less';
+    @import (less) '../../../../assets/styles/base.less';
 
-	.main-patners {
-		background-image: url('/assets/images/background-for-steps.png');
-		background-repeat: no-repeat;
-		margin-top: 50px;
-		padding-bottom: 190px;
+    .main-patners {
+        background-image: url('/assets/images/background-for-steps.png');
+        background-repeat: no-repeat;
+        margin-top: 50px;
+        padding-bottom: 190px;
 
-		.row.title {
-			padding-top: 73px;
-			justify-content: center;
-			color: @white;
-			.bebas;
-			font-size: 3rem;
-			font-weight: 400;
-			line-height: 3.375rem;
-		}
+        .row.title {
+            padding-top: 73px;
+            justify-content: center;
+            color: @white;
+            .bebas;
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 3.375rem;
+        }
 
-		.circle {
-			margin-top: 84px;
-			justify-content: space-between;
-			position: relative;
+        .circle {
+            margin-top: 84px;
+            justify-content: space-between;
+            position: relative;
 
-			.col-md {
-				width: 22%;
-				text-align: center;
+            .col-md {
+                width: 22%;
+                text-align: center;
 
-				&:after {
-					content: '';
-					position: absolute;
-					width: 114px;
-					height: 2px;
-					background-image: url(/assets/images/dots.png);
-					margin-left: 82px;
-					top: 70px;
-				}
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 114px;
+                    height: 2px;
+                    background-image: url(/assets/images/dots.png);
+                    margin-left: 82px;
+                    top: 70px;
+                }
 
-				&:last-child:after {
-					display: none;
-				}
+                &:last-child:after {
+                    display: none;
+                }
 
-				.img {
-					position: relative;
-					padding-top: 15px;
+                .img {
+                    position: relative;
+                    padding-top: 15px;
 
-					.label {
-						position: absolute;
-						opacity: 0.3;
-						color: @white;
-						.bebas;
-						font-size: 4.5rem;
-						font-weight: 400;
-						top: 0;
-						right: 50px;
-					}
-				}
+                    .label {
+                        position: absolute;
+                        opacity: 0.3;
+                        color: @white;
+                        .bebas;
+                        font-size: 4.5rem;
+                        font-weight: 400;
+                        top: 0;
+                        right: 50px;
+                    }
+                }
 
-				.description {
-					margin-top: 35px;
-					color: @white;
-					font-family: Roboto;
-					font-size: 1rem;
-					font-weight: 400;
-					line-height: 1.375rem;
-				}
-			}
-		}
+                .description {
+                    margin-top: 35px;
+                    color: @white;
+                    font-family: Roboto;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.375rem;
+                }
+            }
+        }
 
-		.row.title.partners {
-			margin-top: 123px;
-			justify-content: flex-start;
-		}
+        .row.title.partners {
+            margin-top: 123px;
+            justify-content: flex-start;
+        }
 
-		.partners-list {
+        .partners-list {
 
-			&.visible-xs {
-				display: none;
-			}
-			.row {
-				margin-top: 55px;
-				width: 100%;
-				justify-content: flex-start;
-			}
-			.col {
-				flex-grow: 0;
-				text-align: center;
-				height: 71px;
-				width: 190px;
-				padding: 0;
-				margin-right: 30px;
-				flex-basis: auto;
+            &.hidden-full {
+                display: none;
+            }
+            .row {
+                margin-top: 55px;
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .col {
+                flex-grow: 0;
+                text-align: center;
+                height: 71px;
+                width: 190px;
+                padding: 0;
+                margin-right: 30px;
+                flex-basis: auto;
 
-				div {
-					margin: auto;
-					background-position: center;
-					width: 100%;
-					height: 80px;
-					background-size: contain;
-					background-repeat: no-repeat;
+                div {
+                    margin: auto;
+                    background-position: center;
+                    width: 100%;
+                    height: 80px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
 
-				}
-			}
-		}
-	}
+    @media (max-width: 1180px) {
 
-	@media (max-width: 1000px) {
+        .main-patners {
+            background-image: url('/assets/images/background-for-steps.mob.png') !important;
+        }
 
-		.circle .img .label {
-			right: 0px !important;
-		}
+        .circle .img .label {
+            right: 0px !important;
+        }
 
-		.title.partners.row {
-			margin-top: 0 !important;
-		}
+        .title.partners.row {
+            margin-top: 0 !important;
+        }
 
-		.partners-list .col {
-			height: 41px !important;
-			width: 108px !important;
-		}
+        .partners-list .col {
+            height: 41px !important;
+            width: 108px !important;
+        }
 
-		.main-patners {
-			background-position-x: center !important;
-		}
+        .main-patners {
+            background-position-x: center !important;
+        }
 
-	}
+        .main-partners .circle.row {
+            margin-top: 0px !important;
+        }
 
-	@media (max-width: 765px) {
+        .hidden-mobile {
+            display: none;
+        }
 
-		.main-patners {
-			background-image: url('/assets/images/background-for-steps.mob.png') !important;
-		}
+        .hidden-full {
+            display: block !important;
 
-		.circle .img .label {
-			right: -20px !important;
-			display: none !important;
-		}
+            .mobile-flex {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
 
-		.circle .col-md:after {
-			display: none !important;
-		}
+                div {
+                    width: 22% !important;
+                    margin: 20px 10px;
+                    background-position: center;
+                    height: 70px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
 
-		.circle .col-md .description {
-			display: flex !important;
-			justify-content: center !important;
-		}
+    }
 
-		.title.partners.row {
-			margin-top: 0 !important;
-		}
+    @media (max-width: 765px) {
 
-		.partners-list .col {
-			margin-right: 10px !important;
-			height: 41px !important;
-			width: 88px !important;
-		}
+        .circle .img .label {
+            right: -20px !important;
+            display: none !important;
+        }
 
-		.main-patners {
-			background-position-x: center !important;
-		}
+        .circle .col-md:after {
+            display: none !important;
+        }
 
-
-	}
-
-	@media (max-width: 980px) {
-		.main-patners .circle.row {
-			margin-top: 0px !important;
-		}
-	}
-
-
-	@media (max-width: 576px) {
-
-		.row.title {
-			padding-top: 20px !important;
-			font-size: 2rem !important;
-			line-height: 1.2 !important;
-			text-align: center !important;
+        .circle .col-md .description {
+            display: flex !important;
             justify-content: center !important;
-		}
+        }
 
-		.circle {
-			margin-top: 0 !important;
+        .title.partners.row {
+            margin-top: 31px !important;
+            margin-bottom: -10px;
+        }
 
-			.col-12.col-md {
-				display: flex !important;
-				align-items: center !important;
+        .partners-list .col {
+            margin-right: 10px !important;
+            height: 41px !important;
+            width: 88px !important;
+        }
 
-				.img {
-					flex-shrink: 0 !important;
+        .main-patners {
+            background-position-x: center !important;
+        }
 
-					img {
-						width: 80px !important;
-					}
-				}
+    }
 
-				.label {
-					display: none !important;
-				}
-			}
-		}
+    @media (max-width: 576px) {
 
-		.hidden-xs {
-			display: none;
-		}
+        .row.title {
+            padding-top: 20px !important;
+            font-size: 2rem !important;
+            line-height: 1.2 !important;
+            text-align: center !important;
+            justify-content: center !important;
+        }
 
-		.visible-xs {
-			display: block !important;
+        .circle {
+            margin-top: 0 !important;
 
-			.mobile-flex {
-				display: flex;
-				flex-wrap: wrap;
-                justify-content: center;
+            .col-12.col-md {
+                display: flex !important;
+                align-items: center !important;
 
-				div {
-					width: 25% !important;
-					margin: 10px;
-					background-position: center;
-					height: 40px;
-					background-size: contain;
-					background-repeat: no-repeat;
-				}
-			}
-		}
+                .img {
+                    flex-shrink: 0 !important;
 
-	}
+                    img {
+                        width: 80px !important;
+                    }
+                }
 
+                .label {
+                    display: none !important;
+                }
+            }
+        }
 
+        .mobile-flex {
+            justify-content: center !important;
 
-	.logo-15 {
-		background-image: url('/assets/images/logo-15.png');
-	}
-	.logo-14 {
-		background-image: url('/assets/images/logo-14.png');
-	}
-	.logo-13 {
-		background-image: url('/assets/images/logo-13.png');
-	}
-	.logo-12 {
-		background-image: url('/assets/images/logo-12.png');
-	}
-	.logo-11 {
-		background-image: url('/assets/images/logo-11.png');
-	}
-	.logo-10 {
-		background-image: url('/assets/images/logo-10.png');
-	}
-	.logo-9 {
-		background-image: url('/assets/images/logo-9.png');
-	}
-	.logo-8 {
-		background-image: url('/assets/images/logo-8.png');
-	}
-	.logo-7 {
-		background-image: url('/assets/images/logo-7.png');
-	}
-	.logo-6 {
-		background-image: url('/assets/images/logo-6.png');
-	}
-	.logo-5 {
-		background-image: url('/assets/images/logo-5.png');
-	}
-	.logo-4 {
-		background-image: url('/assets/images/logo-4.png');
-	}
-	.logo-3 {
-		background-image: url('/assets/images/logo-3.png');
-	}
-	.logo-2 {
-		background-image: url('/assets/images/logo-2.png');
-	}
-	.logo-1 {
-		background-image: url('/assets/images/logo-1.png');
-	}
+            div {
+                width: 25% !important;
+                margin: 10px;
+                height: 40px;
+            }
+        }
+
+    }
+
+    .logo-15 {
+        background-image: url('/assets/images/logo-15.png');
+    }
+    .logo-14 {
+        background-image: url('/assets/images/logo-14.png');
+    }
+    .logo-13 {
+        background-image: url('/assets/images/logo-13.png');
+    }
+    .logo-12 {
+        background-image: url('/assets/images/logo-12.png');
+    }
+    .logo-11 {
+        background-image: url('/assets/images/logo-11.png');
+    }
+    .logo-10 {
+        background-image: url('/assets/images/logo-10.png');
+    }
+    .logo-9 {
+        background-image: url('/assets/images/logo-9.png');
+    }
+    .logo-8 {
+        background-image: url('/assets/images/logo-8.png');
+    }
+    .logo-7 {
+        background-image: url('/assets/images/logo-7.png');
+    }
+    .logo-6 {
+        background-image: url('/assets/images/logo-6.png');
+    }
+    .logo-5 {
+        background-image: url('/assets/images/logo-5.png');
+    }
+    .logo-4 {
+        background-image: url('/assets/images/logo-4.png');
+    }
+    .logo-3 {
+        background-image: url('/assets/images/logo-3.png');
+    }
+    .logo-2 {
+        background-image: url('/assets/images/logo-2.png');
+    }
+    .logo-1 {
+        background-image: url('/assets/images/logo-1.png');
+    }
 }

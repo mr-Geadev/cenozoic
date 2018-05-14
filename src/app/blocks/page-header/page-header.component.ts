@@ -78,8 +78,8 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
         this._localizationService.setLocalization(language);
     }
 
-    public openMobileMenu(): void {
-        this.isMobileMenuOpen = true;
+    public toggleMobileMenu(): void {
+        this.isMobileMenuOpen = !this.isMobileMenuOpen;
     }
 
     public closeMobileMenu(): void {

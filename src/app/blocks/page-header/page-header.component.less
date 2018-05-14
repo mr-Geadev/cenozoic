@@ -174,17 +174,23 @@
 
     }
 
+    .mobile-menu, .languages-mobile {
+        display: none;
+    }
+
+
     .mainPage.header {
 
         background-color: transparent !important;
         position: absolute;
+        top: 0;
         width: 100%;
 
         .container > .row {
-            justify-content: flex-end !important;
+            justify-content: space-between !important;
         }
 
-        .logo {
+        .logo{
             display: none;
         }
     }
@@ -193,18 +199,30 @@
         display: none;
     }
     .mobile-menu {
-        left: -100%;
-        top: 0px;
+        top: -100%;
+        left: 0px;
         height: 100%;
+        width: 100%;
         position: fixed;
-        transition: all .5s ease-in-out;
+        transition: all .8s cubic-bezier(0, 1.02, 0, 1.01);
         z-index: 999;
         padding: 20px;
-        background-color: #8b8d8d;
+        background-color: #333;
+        display: flex;
+        align-items: center;
 
-        .item {
-            margin-top: 10px;
-            font-size: 20px;
+        .list {
+            text-align: center;
+            min-height: 250px;
+            height: 100%;
+            padding: 20% 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .item {
+                font-size: 20px;
+            }
         }
     }
     .mobile-menu-bg {
@@ -249,9 +267,30 @@
 
     @media (max-width: 765px) {
 
+        .mobile-menu, .languages-mobile {
+            display: block !important;
+        }
+
+        .mainPage.header {
+            position: fixed !important;
+            background-color: @dark-gray !important;
+        }
+
+        .header {
+            height: 54px !important;
+            width: 100%;
+            top: 0 !important;
+            position: fixed !important;
+            margin-bottom: 54px;
+        }
+
         .logo {
             height: 50px !important;
             width: 50px !important;
+        }
+
+        .logo-wrapper, .mobile-menu-button.modal {
+            display: none !important;
         }
 
         .menu, .personal-area, .authorize {
@@ -261,6 +300,20 @@
         .mobile-menu-button {
             display: block;
             color: white;
+            z-index: 9999;
+            margin-right: 20px;
+        }
+
+        .languages-mobile {
+            margin-left: 20px;
+
+            .change-language {
+                display: none;
+            }
+
+            .change-language.active {
+                display: block;
+            }
         }
 
         .mobile-menu-bg.active {
@@ -268,7 +321,7 @@
         }
 
         .mobile-menu.active {
-            left: 0;
+            top: 0;
         }
 
         .languages {
@@ -281,5 +334,12 @@
         }
     }
 
+}
+
+@media (max-width: 765px) {
+    :host {
+        margin-bottom: 54px;
+        display: block;
+    }
 }
 
