@@ -29,7 +29,16 @@ export class LocalizationService {
     }
 
     public setLocalization(language: string): void {
-        if (Object.values(LANGUAGES).indexOf(language) > -1) {
+        // метод переписан для совместимости на страхы устровах
+        // if (Object.values(LANGUAGES).indexOf(language) > -1) {
+        //     if (isPlatformBrowser(this.platformId)) {
+        //         if (typeof window !== 'undefined') {
+        //             localStorage.setItem(LOCALIZATION, language);
+        //             window.location.href = String(window.location.href); // Refresh page
+        //         }
+        //     }
+        // }
+        if ((LANGUAGES.RUSSIAN === language) || (LANGUAGES.ENGLISH === language))  {
             if (isPlatformBrowser(this.platformId)) {
                 if (typeof window !== 'undefined') {
                     localStorage.setItem(LOCALIZATION, language);

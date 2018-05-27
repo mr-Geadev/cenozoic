@@ -1,280 +1,184 @@
+@import (less) '../../../../assets/styles/base.less';
+
 :host {
+    display: block;
+    @media (min-width: 992px) {
+        background-image: url("/assets/images/main-page/background-for-steps.png");
+        background-position-x: 0;
+        background-position-y: 50px;
+    };
+    @media (max-width: 992px) {
+        background-image: url("/assets/images/main-page/background-for-steps.mob.png");
+        background-position-x: 7%;
+        background-position-y: center;
+    };
+    background-size: cover;
+    background-repeat: no-repeat;
 
-    @import (less) '../../../../assets/styles/base.less';
-
-    .main-patners {
-        background-image: url('/assets/images/background-for-steps.png');
-        background-repeat: no-repeat;
-        margin-top: 50px;
-        padding-bottom: 190px;
-
-        .row.title {
-            padding-top: 73px;
-            justify-content: center;
-            color: @white;
-            .bebas;
-            font-size: 3rem;
-            font-weight: 400;
-            line-height: 3.375rem;
+    .partners-title {
+        .bebas;
+        width: 100%;
+        margin-top: 73px;
+        text-align: center;
+        color: @white;
+        font-size: 3rem;
+        @media (max-width: 768px) {
+            font-size: 2.5rem;
         }
+        @media (max-width: 576px) {
+            font-size: 2rem;
+        }
+        line-height: 1.2;
+        font-weight: 400;
+    }
 
-        .circle {
-            margin-top: 84px;
-            justify-content: space-between;
+    .steps {
+        margin-top: 60px;
+
+        .step {
+            display: flex;
             position: relative;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
 
-            .col-md {
-                width: 22%;
-                text-align: center;
+            &:nth-child(5),
+            &:nth-child(7) {
+                @media (min-width: 576px) and (max-width: 992px) {
+                    margin-top: 40px;
+                }
+            }
+            @media (max-width: 576px) {
+                margin-top: 20px;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
 
-                &:after {
-                    content: '';
+            .cover-step {
+                width: 115px;
+                height: 115px;
+                position: relative;
+                flex-shrink: 0;
+                @media (max-width: 576px) {
+                    width: 70px;
+                    height: 70px;
+                }
+
+                .icon {
+                    margin-left: 10px;
+                }
+
+                .number {
                     position: absolute;
-                    width: 114px;
-                    height: 2px;
-                    background-image: url(/assets/images/dots.png);
-                    margin-left: 82px;
-                    top: 70px;
-                }
-
-                &:last-child:after {
-                    display: none;
-                }
-
-                .img {
-                    position: relative;
-                    padding-top: 15px;
-
-                    .label {
-                        position: absolute;
-                        opacity: 0.3;
-                        color: @white;
-                        .bebas;
-                        font-size: 4.5rem;
-                        font-weight: 400;
-                        top: 0;
-                        right: 50px;
+                    opacity: 0.3;
+                    color: @white;
+                    .bebas;
+                    font-size: 4.5rem;
+                    line-height: 1;
+                    font-weight: 400;
+                    top: -17px;
+                    right: -27px;
+                    @media (max-width: 576px) {
+                        font-size: 2.5rem;
+                        top: -7px;
+                        right: -17px;
                     }
                 }
+            }
 
-                .description {
-                    margin-top: 35px;
-                    color: @white;
-                    font-family: Roboto;
-                    font-size: 1rem;
-                    font-weight: 400;
-                    line-height: 1.375rem;
+            .label {
+                color: @white;
+                font-family: Roboto;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.375rem;
+                text-align: center;
+                @media (min-width: 576px) {
+                    margin-top: 15px;
+                    height: 35px;
+                    display: flex;
+                    align-items: center;
+                }
+                @media (max-width: 576px) {
+                    margin-top: 0;
+                    margin-left: 30px;
+                    font-size: 1.2rem;
                 }
             }
         }
 
-        .row.title.partners {
-            margin-top: 123px;
-            justify-content: flex-start;
-        }
-
-        .partners-list {
-
-            &.hidden-full {
+        .dots {
+            margin-top: 53px;
+            @media (max-width: 992px) {
                 display: none;
             }
+            display: flex;
+            justify-content: center;
+            width: 0;
+
+            img {
+                margin-left: 10px;
+                width: 124px;
+                height: 2px;
+                max-width: none;
+            }
+        }
+    }
+
+    .partners {
+        &.full {
+            @media (max-width: 992px) {
+                display: none;
+            }
+
             .row {
-                margin-top: 55px;
-                width: 100%;
-                justify-content: flex-start;
+                margin-top: 30px;
             }
-            .col {
-                flex-grow: 0;
-                text-align: center;
-                height: 71px;
-                width: 190px;
-                padding: 0;
-                margin-right: 30px;
-                flex-basis: auto;
 
-                div {
-                    margin: auto;
-                    background-position: center;
-                    width: 100%;
-                    height: 80px;
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                }
-            }
-        }
-    }
-
-    @media (max-width: 1180px) {
-
-        .main-patners {
-            background-image: url('/assets/images/background-for-steps.mob.png') !important;
-        }
-
-        .circle .img .label {
-            right: 0px !important;
-        }
-
-        .title.partners.row {
-            margin-top: 0 !important;
-        }
-
-        .partners-list .col {
-            height: 41px !important;
-            width: 108px !important;
-        }
-
-        .main-patners {
-            background-position-x: center !important;
-        }
-
-        .main-partners .circle.row {
-            margin-top: 0px !important;
-        }
-
-        .hidden-mobile {
-            display: none;
-        }
-
-        .hidden-full {
-            display: block !important;
-
-            .mobile-flex {
+            .item {
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: flex-start;
+                justify-content: center;
+                align-items: center;
 
-                div {
-                    width: 22% !important;
-                    margin: 20px 10px;
-                    background-position: center;
-                    height: 70px;
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                }
-            }
-        }
+                img {
+                    max-width: 120px;
 
-    }
-
-    @media (max-width: 765px) {
-
-        .circle .img .label {
-            right: -20px !important;
-            display: none !important;
-        }
-
-        .circle .col-md:after {
-            display: none !important;
-        }
-
-        .circle .col-md .description {
-            display: flex !important;
-            justify-content: center !important;
-        }
-
-        .title.partners.row {
-            margin-top: 31px !important;
-            margin-bottom: -10px;
-        }
-
-        .partners-list .col {
-            margin-right: 10px !important;
-            height: 41px !important;
-            width: 88px !important;
-        }
-
-        .main-patners {
-            background-position-x: center !important;
-        }
-
-    }
-
-    @media (max-width: 576px) {
-
-        .row.title {
-            padding-top: 20px !important;
-            font-size: 2rem !important;
-            line-height: 1.2 !important;
-            text-align: center !important;
-            justify-content: center !important;
-        }
-
-        .circle {
-            margin-top: 0 !important;
-
-            .col-12.col-md {
-                display: flex !important;
-                align-items: center !important;
-
-                .img {
-                    flex-shrink: 0 !important;
-
-                    img {
-                        width: 80px !important;
+                    &.chevron {
+                        max-width: 100px;
                     }
                 }
+            }
+        }
 
-                .label {
-                    display: none !important;
+        &.partners.mobile {
+            @media (min-width: 992px) {
+                display: none;
+            }
+
+            .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+
+                .item {
+                    margin: 20px 10px;
+                    width: 150px;
+                    height: 100px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    @media (max-width: 576px) {
+                        margin: 20px 0;
+                        width: 120px;
+                        height: 80px;
+                    }
+
+                    img {
+                        max-height: 100%;
+                    }
                 }
             }
         }
-
-        .mobile-flex {
-            justify-content: center !important;
-
-            div {
-                width: 25% !important;
-                margin: 10px;
-                height: 40px;
-            }
-        }
-
-    }
-
-    .logo-15 {
-        background-image: url('/assets/images/logo-15.png');
-    }
-    .logo-14 {
-        background-image: url('/assets/images/logo-14.png');
-    }
-    .logo-13 {
-        background-image: url('/assets/images/logo-13.png');
-    }
-    .logo-12 {
-        background-image: url('/assets/images/logo-12.png');
-    }
-    .logo-11 {
-        background-image: url('/assets/images/logo-11.png');
-    }
-    .logo-10 {
-        background-image: url('/assets/images/logo-10.png');
-    }
-    .logo-9 {
-        background-image: url('/assets/images/logo-9.png');
-    }
-    .logo-8 {
-        background-image: url('/assets/images/logo-8.png');
-    }
-    .logo-7 {
-        background-image: url('/assets/images/logo-7.png');
-    }
-    .logo-6 {
-        background-image: url('/assets/images/logo-6.png');
-    }
-    .logo-5 {
-        background-image: url('/assets/images/logo-5.png');
-    }
-    .logo-4 {
-        background-image: url('/assets/images/logo-4.png');
-    }
-    .logo-3 {
-        background-image: url('/assets/images/logo-3.png');
-    }
-    .logo-2 {
-        background-image: url('/assets/images/logo-2.png');
-    }
-    .logo-1 {
-        background-image: url('/assets/images/logo-1.png');
     }
 }

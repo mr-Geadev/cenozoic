@@ -53,6 +53,7 @@ export const ENGLISH_DICTIONARY = {
 
 
     // меню
+    MAIN_PAGE: 'Main',
     FOR_CANDIDATES: 'For candidates',
     FOR_EMPLOYER: 'For employers',
     FOR_PARTNERSHIPS: 'For partnerships',
@@ -76,7 +77,7 @@ export const ENGLISH_DICTIONARY = {
 
     HOME_PAGE_CONTENT_1_1: 'We have collected the most ',
     HOME_PAGE_CONTENT_1_2: 'current vacancies ',
-    HOME_PAGE_CONTENT_1_3: 'in the Oil&Gas and Mining industries. <br> Compose your CV, send it to employers and you will definitely find a dream job!',
+    HOME_PAGE_CONTENT_1_3: 'in the Oil&Gas and Mining industries. Compose your CV, send it to employers and you will definitely find a dream job!',
 
     HOME_PAGE_CONTENT_2_1: 'On our portal you can find the most complete ',
     HOME_PAGE_CONTENT_2_2: 'employee database ',

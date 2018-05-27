@@ -41,7 +41,7 @@
                 <div class="languages col-md-auto">
                     <a class="change-language"
                        [ngClass]="{ 'active': language === availableLanguages.RUSSIAN }"
-                       (click)="changeLanguage(availableLanguages.RUSSIAN)">RU</a>
+                        (click)="changeLanguage(availableLanguages.RUSSIAN)">RU</a>
 
                     <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 
@@ -69,7 +69,8 @@
 
             <div class="mobile-menu" [class.active]="isMobileMenuOpen">
                 <ul class="list">
-                    <li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/']">Главная</a></li>
+                    <li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/']">{{
+                        dictionary.MAIN_PAGE }}</a></li>
                     <li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-vacancy']">{{
                         dictionary.FOR_CANDIDATES }}</a></li>
                     <li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-resume']">{{

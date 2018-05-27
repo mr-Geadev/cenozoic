@@ -1,195 +1,134 @@
+@import (less) '../../../assets/styles/base.less';
+
 :host {
+    background-color: @dark-gray;
+    padding: 30px 0;
+    color: @white;
     display: block;
 
-    @import (less) '../../../assets/styles/base.less';
+    .cenozoic-group,
+    .menu-bar,
+    .privacy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-    .footer {
-        background-color: @dark-gray;
-        padding-bottom: 20px;
-
-        .container {
-            padding-top: 14px;
-
-            .copyright {
-                width: auto;
-                text-align: center;
-                flex-grow: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                .logo {
-                    width: 97px;
-                    height: 97px;
-                }
-
-                .copyright {
-                    margin-top: 20px;
-                    color: @white;
-                    font-family: Roboto;
-                    font-size: 0.875rem;
-                    font-weight: 400;
-                    line-height: 1.5rem;
-                    width: 259px;
-                    text-transform: uppercase;
+    .privacy {
+        .logo {
+            width: 97px;
+            height: 97px;
+            @media (max-width: 768px) {
+                &.full {
+                    display: none;
                 }
             }
+        }
 
-            .menu {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+        .privacy-text {
+            text-align: center;
+            margin-top: 20px;
+            color: @white;
+            font-family: Roboto;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5rem;
+            width: 259px;
+            text-transform: uppercase;
+        }
+    }
 
-                .menu-list {
-                    margin-bottom: 30px;
-                    height: auto;
-                    justify-content: space-evenly;
-                    align-items: flex-start;
+    .menu-bar {
+        .nav-menu {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
 
-                    .link {
-                        color: @white;
-                        font-family: Arimo;
-                        font-size: 0.875rem;
-                        font-weight: 400;
-                        line-height: 2rem;
-                        .tr-color;
-
-                        &:hover {
-                            color: @orange;
-                        }
-
-                    }
-                }
-
-                .social-network {
-                    justify-content: center;
-                    width: 100%;
-
-                    .link {
-                        margin: 3px;
-                        width: 37px;
-                        height: 37px;
-                        border: 0.063rem solid @white;
-                        background-image: url('/assets/images/social-network.png');
-                        background-position-y: center;
-                        background-repeat: no-repeat;
-                        overflow: hidden;
-                        .tr-bg;
-
-                        &.fb {
-                            background-position-x: 8px;
-                        }
-                        &.linkedin {
-                            background-position-x: -18px;
-                        }
-                        &.inst {
-                            background-position-x: -47px;
-                        }
-                        &.tg {
-                            background-position-x: -75px;
-                        }
-
-                        &:hover {
-                            background-color: @gray - #555;
-                        }
-                    }
-                }
-            }
-
-            .privacy {
-                margin-top: 35px;
-                width: auto;
-                flex-grow: 0;
-
+            .nav-menu-item {
                 .link {
-                    width: 215px;
-                    display: block;
-                    color: @orange;
-                    font-family: Roboto;
+                    color: @white;
+                    font-family: Arimo;
                     font-size: 0.875rem;
                     font-weight: 400;
-                    line-height: 1.25rem;
+                    line-height: 2rem;
                     .tr-color;
 
                     &:hover {
-                        color: @hover-orange;
+                        color: @orange;
+                    }
+                }
+                @media (max-width: 1150px) {
+                    &:last-child {
+                        width: 100%;
+                        text-align: center;
                     }
                 }
             }
+        }
 
-            .rhinoceros {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+        .social-network {
+            margin-top: 20px;
+            justify-content: center;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
 
-                .group {
-                    width: 170%;
-                    max-width: none;
+            .link {
+                margin: 3px;
+                display: block;
+                width: 37px;
+                height: 37px;
+                border: 0.063rem solid @white;
+                background-image: url("/assets/images/social-network.png");
+                background-position-y: center;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                .tr-all;
+
+                &.fb {
+                    background-position-x: 8px;
+                }
+
+                &.linkedin {
+                    background-position-x: -18px;
+                }
+
+                &.inst {
+                    background-position-x: -47px;
+                }
+
+                &.tg {
+                    background-position-x: -75px;
+                }
+
+                &:hover {
+                    border-color: @orange;
                 }
             }
         }
     }
 
-    .mobile-visible {
-        display: none;
-    }
-    @media (max-width: 1189px) {
-        margin-top: -70px;
-    }
-    @media (max-width: 765px) {
-        margin-top: -20px;
-
-        .copyright {
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: space-between;
-            align-items: center;
-            order: 1;
-
-            .copyright {
-                margin-top: -30px !important;
-                width: auto !important;
-                font-size: 0.575rem !important;
-            }
-
-            .logo.mobile-hidden {
+    .cenozoic-group {
+        @media (min-width: 768px) {
+            .mobile {
                 display: none;
             }
         }
-
-        .menu .social-network {
-            position: relative !important;
-            margin-top: 20px !important;
-            transform: scale(0.8);
+        @media (max-width: 768px) {
+            flex-direction: row;
+            justify-content: space-between;
         }
+        @media (max-width: 400px) {
+            margin-top: 20px;
 
-        .menu .menu-list {
-            align-items: center !important;
-            margin-bottom: 0px !important;
-        }
-
-        .menu .menu-list .link {
-            margin: 0 5px !important;
-            font-size: 1rem !important;
-        }
-
-        .rhinoceros {
-            margin: 10px 0 50px;
-            display: flex;
-            justify-content: space-between !important;
-
-            .group {
-                width: 70%;
-                order: 1;
+            .rhinoceros {
+                width: 60%;
             }
             .community {
-                width: 20%;
+                width: 30%;
             }
-        }
-
-        .mobile-visible {
-            display: block;
         }
     }
 }

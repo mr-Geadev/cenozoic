@@ -1,12 +1,12 @@
-<section class="main-content">
-    <div class="for">
-        <div class="img"><img src="/assets/images/main-content_01.jpg"/></div>
-        <div class="description">
-            <img src="/assets/images/main-content_11.svg"/>
-            <div class="title">
-                {{ dictionary.FOR_CANDIDATES }}
-            </div>
-            <p class="text">
+<ul class="description-list">
+    <li class="description-item">
+        <div class="cover">
+            <img src="/assets/images/main-page/descripton-cover-01.jpg" alt="">
+        </div>
+        <div class="text">
+            <img src="/assets/images/main-page/descripton-icon-11.svg" alt="" class="icon">
+            <h2 class="description-title">{{ dictionary.FOR_CANDIDATES }}</h2>
+            <p class="description-text">
                 {{dictionary.HOME_PAGE_CONTENT_1_1}}
                 <a [routerLink]="['/list-vacancy']" class="inline-link">
                     {{dictionary.HOME_PAGE_CONTENT_1_2}}
@@ -14,31 +14,31 @@
                 {{dictionary.HOME_PAGE_CONTENT_1_3}}
             </p>
         </div>
-    </div>
-    <div class="for">
-        <div class="img"><img src="/assets/images/main-content_02.jpg"/></div>
-        <div class="description">
-            <img src="/assets/images/main-content_12.svg"/>
-            <div class="title">
-                {{ dictionary.FOR_EMPLOYER }}
-            </div>
-            <p class="text">
+    </li>
+    <li class="description-item">
+        <div class="cover">
+            <img src="/assets/images/main-page/descripton-cover-02.jpg" alt="">
+        </div>
+        <div class="text">
+            <img src="/assets/images/main-page/descripton-icon-12.svg" alt="" class="icon">
+            <h2 class="description-title">{{ dictionary.FOR_EMPLOYER }}</h2>
+            <p class="description-text">
                 {{dictionary.HOME_PAGE_CONTENT_2_1}}
-                <a [routerLink]="['/list-resume']" class="inline-link">
+                <a [routerLink]="['/list-vacancy']" class="inline-link">
                     {{dictionary.HOME_PAGE_CONTENT_2_2}}
                 </a>
                 {{dictionary.HOME_PAGE_CONTENT_2_3}}
             </p>
         </div>
-    </div>
-    <div class="for">
-        <div class="img"><img src="/assets/images/main-content_03.jpg"/></div>
-        <div class="description">
-            <img src="/assets/images/main-content_13.svg"/>
-            <div class="title">
-                {{ dictionary.FOR_PARTNERSHIPS }}
-            </div>
-            <p class="text" [innerHTML]="dictionary.HOME_PAGE_CONTENT_3"></p>
+    </li>
+    <li class="description-item">
+        <div class="cover">
+            <img src="/assets/images/main-page/descripton-cover-03.jpg" alt="">
         </div>
-    </div>
-</section>
+        <div class="text">
+            <img src="/assets/images/main-page/descripton-icon-13.svg" alt="" class="icon">
+            <h2 class="description-title">{{ dictionary.FOR_PARTNERSHIPS }}</h2>
+            <p class="description-text" [innerHTML]="dictionary.HOME_PAGE_CONTENT_3"></p>
+        </div>
+    </li>
+</ul>

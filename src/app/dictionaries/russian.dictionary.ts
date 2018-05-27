@@ -53,6 +53,7 @@ export const RUSSIAN_DICTIONARY = {
 
 
     // меню
+    MAIN_PAGE: 'Главная',
     FOR_CANDIDATES: 'Соискателям',
     FOR_EMPLOYER: 'Работодателям',
     FOR_PARTNERSHIPS: 'Сотрудничество',
