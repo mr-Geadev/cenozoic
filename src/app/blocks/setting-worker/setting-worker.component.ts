@@ -110,7 +110,7 @@ export class SettingWorkerComponent implements OnInit {
                 (res: any) => {
                     this.msg.info('Данные изменены');
                     if (this.blankAccountService.isProtector) {
-                        this.blankAccountService.compleateFilled();
+                        this.blankAccountService.compleateFilled('worker');
                     }
                 },
                 (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз'));

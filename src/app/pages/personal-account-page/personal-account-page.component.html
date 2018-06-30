@@ -13,8 +13,8 @@
                            id="responses"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           [value]="dictionary.ACCOUNT_PAGE_TAB_1">
-                    <label for="responses">{{ dictionary.ACCOUNT_PAGE_TAB_1 }}</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_RESPONSE">
+                    <label for="responses">{{ dictionary.ACCOUNT_PAGE_TAB_RESPONSE }}</label>
                 </li>
 
                 <li class="item">
@@ -22,8 +22,8 @@
                            id="suggestions"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           [value]="dictionary.ACCOUNT_PAGE_TAB_2">
-                    <label for="suggestions">{{ dictionary.ACCOUNT_PAGE_TAB_2 }}</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_INVITATIONS">
+                    <label for="suggestions">{{ dictionary.ACCOUNT_PAGE_TAB_INVITATIONS }}</label>
                 </li>
 
                 <li class="item">
@@ -31,8 +31,8 @@
                            id="archive"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           [value]="dictionary.ACCOUNT_PAGE_TAB_3">
-                    <label for="archive">{{ dictionary.ACCOUNT_PAGE_TAB_3 }}</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_ARCHIVE">
+                    <label for="archive">{{ dictionary.ACCOUNT_PAGE_TAB_ARCHIVE }}</label>
                 </li>
 
                 <li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
@@ -40,8 +40,8 @@
                            id="interview"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           [value]="dictionary.ACCOUNT_PAGE_TAB_5">
-                    <label for="interview">{{dictionary.ACCOUNT_PAGE_TAB_5}}</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES">
+                    <label for="interview">{{dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES}}</label>
                 </li>
 
                 <li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
@@ -49,8 +49,8 @@
                            id="summary"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           [value]="dictionary.ACCOUNT_PAGE_TAB_4_1">
-                    <label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_4_1 }}</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_CV">
+                    <label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_CV }}</label>
                 </li>
 
                 <li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
@@ -58,8 +58,8 @@
                            id="vacancy"
                            name="manager"
                            [(ngModel)]="activeTab"
-                           [value]="dictionary.ACCOUNT_PAGE_TAB_4_2">
-                    <label for="vacancy">{{dictionary.ACCOUNT_PAGE_TAB_4_2}}</label>
+                           [value]="dictionary.ACCOUNT_PAGE_TAB_CAREERS">
+                    <label for="vacancy">{{dictionary.ACCOUNT_PAGE_TAB_CAREERS}}</label>
                 </li>
 
             </ul>
@@ -81,35 +81,37 @@
 
 <div class="container description">
     <div class="row">
-        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_1 }">
-            {{ dictionary.ACCOUNT_PAGE_TAB_1_DESC }}
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPONSE }">
+            {{ typeCurrentUser === 'worker' ? dictionary.ACCOUNT_PAGE_TAB_RESPONSE_DESC_WORKER : null }}
+            {{ typeCurrentUser === 'employer' ? dictionary.ACCOUNT_PAGE_TAB_RESPONSE_DESC_EMPLOYER : null }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_2 }">
-            {{ dictionary.ACCOUNT_PAGE_TAB_2_DESC }}
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_INVITATIONS }">
+            {{ typeCurrentUser === 'worker' ? dictionary.ACCOUNT_PAGE_TAB_INVITATIONS_DESC_WORKER : null }}
+            {{ typeCurrentUser === 'employer' ? dictionary.ACCOUNT_PAGE_TAB_INVITATIONS_DESC_EMPLOYER : null }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_3 }">
-            {{ dictionary.ACCOUNT_PAGE_TAB_3_DESC }}
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_ARCHIVE }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_ARCHIVE_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_5 }">
-            {{ dictionary.ACCOUNT_PAGE_TAB_5_DESC }}
+        <div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1 }">
-            {{ dictionary.ACCOUNT_PAGE_TAB_4_1_DESC }}
+        <div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_CV }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_CV_DESC }}
         </div>
-        <div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_4_2 }">
-            {{ dictionary.ACCOUNT_PAGE_TAB_4_2_DESC }}
+        <div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CAREERS }">
+            {{ dictionary.ACCOUNT_PAGE_TAB_CAREERS_DESC }}
         </div>
     </div>
 </div>
 
 
 <list-resume class="block resume"
-             [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1 }"
-             *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_4_1"
+             [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CV }"
+             *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_CV"
              [config]="'user'"></list-resume>
 
 <list-vacancy class="block vacancy"
-              *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_4_2"
-              [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_4_2 }"
+              *ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_CAREERS"
+              [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CAREERS }"
               [config]="'user'"></list-vacancy>
 

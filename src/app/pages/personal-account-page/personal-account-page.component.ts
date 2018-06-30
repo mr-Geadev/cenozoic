@@ -20,7 +20,7 @@ export class PersonalAccountPageComponent implements OnInit {
     public ngOnInit(): void {
 
         this.dictionary = this._localizationService.currentDictionary;
-        this.activeTab = this.dictionary.ACCOUNT_PAGE_TAB_1;
+        this.activeTab = this.dictionary.ACCOUNT_PAGE_TAB_RESPONSE;
 
         this._userService.user$
             .subscribe(

@@ -131,7 +131,7 @@
                             <div class="right">
                                 <mat-form-field>
                                     <mat-select name="schedule" [(ngModel)]="resumeForm.schedule" required>
-                                        <mat-option value="none">{{dictionary.IRRELEVANT}}</mat-option>
+                                        <mat-option value="irrelevant">{{dictionary.IRRELEVANT}}</mat-option>
                                         <mat-option value="full">{{dictionary.FULL_DAY}}</mat-option>
                                         <mat-option value="remote">{{dictionary.REMOTE}}</mat-option>
                                         <mat-option value="watch">{{dictionary.SHIFT}}</mat-option>
@@ -151,7 +151,7 @@
                                     <mat-select name="employment" id="employment"
                                                 [(ngModel)]="resumeForm.employmentType"
                                                 required>
-                                        <mat-option value="none">{{dictionary.IRRELEVANT}}</mat-option>
+                                        <mat-option value="irrelevant">{{dictionary.IRRELEVANT}}</mat-option>
                                         <mat-option value="full">{{dictionary.FULL_EMPLOYMENT}}</mat-option>
                                         <mat-option value="part">{{dictionary.PART}}</mat-option>
                                         <mat-option value="time">{{dictionary.TEMPORARY}}</mat-option>

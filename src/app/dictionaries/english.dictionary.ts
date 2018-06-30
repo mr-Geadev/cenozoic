@@ -109,7 +109,7 @@ export const ENGLISH_DICTIONARY = {
     LESS_THEN_8_SYMBOLS: 'Less then 8 symbols',
     PASSWORDS_ARE_NOT_THE_SAME: 'Passwords are not the same',
 
-    //футер
+    // футер
     ABOUT_COMPANY: 'About company',
     SERVICES: 'Services',
     CONTACTS: 'Contacts',
@@ -121,19 +121,21 @@ export const ENGLISH_DICTIONARY = {
 
     // личный кабинет
     MY: 'My',
-    ACCOUNT_PAGE_TAB_1: 'Response',
-    ACCOUNT_PAGE_TAB_2: 'Invitations',
-    ACCOUNT_PAGE_TAB_3: 'Archive',
-    ACCOUNT_PAGE_TAB_4_1: 'CV',
-    ACCOUNT_PAGE_TAB_4_2: 'Careers',
-    ACCOUNT_PAGE_TAB_5: 'Questionnaires',
+    ACCOUNT_PAGE_TAB_RESPONSE: 'Response',
+    ACCOUNT_PAGE_TAB_INVITATIONS: 'Invitations',
+    ACCOUNT_PAGE_TAB_ARCHIVE: 'Archive',
+    ACCOUNT_PAGE_TAB_QUESTIONNAIRES: 'Questionnaires',
+    ACCOUNT_PAGE_TAB_CV: 'CV',
+    ACCOUNT_PAGE_TAB_CAREERS: 'Careers',
 
-    ACCOUNT_PAGE_TAB_1_DESC: 'This section shows the results of your responses to the vacancy. You can cancel the selected response or it move to the archive of your responses to which the employer has already responded.',
-    ACCOUNT_PAGE_TAB_2_DESC: 'This section shows the Invitations that you received from companies. You can  respond to them or move them to the archive.',
-    ACCOUNT_PAGE_TAB_3_DESC: 'This section contains your old responses/invitations.',
-    ACCOUNT_PAGE_TAB_4_DESC: 'This section shows all your CVs. You can view and edit CV by clicking on it.',
-    ACCOUNT_PAGE_TAB_4_1_2_DESC:'This section shows all your jobs. You can view and edit the desired one by clicking on it',
-    ACCOUNT_PAGE_TAB_5_DESC:'This section shows all your questionnaires. You can view and edit the desired by clicking on it',
+    ACCOUNT_PAGE_TAB_RESPONSE_DESC_WORKER: 'This section shows the results of your responses to the vacancy. You can cancel the selected response or it move to the archive of your responses to which the employer has already responded.',
+    ACCOUNT_PAGE_TAB_RESPONSE_DESC_EMPLOYER: 'This section shows the answers to your vacancies. You can accept or reject the incoming response.',
+    ACCOUNT_PAGE_TAB_INVITATIONS_DESC_WORKER: 'This section shows the Invitations that you received from companies. You can  respond to them or move them to the archive.',
+    ACCOUNT_PAGE_TAB_INVITATIONS_DESC_EMPLOYER: 'This section shows the sentences you sent to the candidates',
+    ACCOUNT_PAGE_TAB_ARCHIVE_DESC: 'This section contains your old responses/invitations.',
+    ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC: 'This section shows all your questionnaires. You can view and edit the desired by clicking on it',
+    ACCOUNT_PAGE_TAB_CV_DESC: 'This section shows all your CVs. You can view and edit CV by clicking on it.',
+    ACCOUNT_PAGE_TAB_CAREERS_DESC: 'This section shows all your jobs. You can view and edit the desired one by clicking on it',
 
     // вывод вакансии
     REQUIRED_EXPERIENCE: 'Required work experience',

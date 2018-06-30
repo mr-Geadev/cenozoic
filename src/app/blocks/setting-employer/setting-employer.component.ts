@@ -9,6 +9,7 @@ import {HttpClient} from '@angular/common/http';
 import {LocalizationService} from '../../services/localization.service';
 import {SystemMessageService} from '../../services/system-message.service';
 import {UserService} from '../../services/user.service';
+import {BlankAccountService} from '../../services';
 
 @Component({
     selector: 'setting-employer',
@@ -27,7 +28,7 @@ export class SettingEmployerComponent implements OnInit {
         file: null,
         data: null
     };
-    public loadingPhotoButton: string = ''; // текст кнопки загрузки фото
+    public loadingPhotoButton = ''; // текст кнопки загрузки фото
 
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
@@ -36,6 +37,7 @@ export class SettingEmployerComponent implements OnInit {
                 private _dialog: MatDialog,
                 private _confirm: ConfirmService,
                 private _authService: AuthService,
+                private blankAccountService: BlankAccountService,
                 private _localizationService: LocalizationService) {
 
         this.userService.user$
@@ -78,7 +80,7 @@ export class SettingEmployerComponent implements OnInit {
         this.info = new FormGroup({
             companyName: new FormControl(this.currentUser.companyName, [
                 Validators.required,
-                Validators.minLength(10)
+                Validators.minLength(1)
             ]),
             phone: new FormControl(this.currentUser.phone, [
                 Validators.required,
@@ -118,15 +120,21 @@ export class SettingEmployerComponent implements OnInit {
             formData.append('fileToUpload', this.companyLogo.file);
         }
 
-        let info = this.info.value;
-        info.photoURL = 'костыль';
 
-        formData.append('userParameters', JSON.stringify(info));
-        console.log(formData);
+        const photoURL =  this.currentUser.photoURL ? this.currentUser.photoURL : null;
+        const userParameter = Object.assign(this.info.value, {photoURL: photoURL});
+
+        formData.append('userParameters', JSON.stringify(userParameter));
         this._http.post('/api/v1/employer/profile/parameters/change', formData)
             .subscribe(
-                (res: any) => this.msg.info('Данные изменены'),
-                (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз'));
+                (res: any) => {
+                    this.msg.info('Данные изменены');
+                    if (this.blankAccountService.isProtector) {
+                        this.blankAccountService.compleateFilled('employer');
+                    }
+                },
+                (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз')
+            );
     }
 
     public removeUser(): void {

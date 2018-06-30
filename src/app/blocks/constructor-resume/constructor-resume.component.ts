@@ -42,6 +42,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     public isAuthorized = false; // проверка авторизации текущего пользователя
     public invalid = false; // форма валидна/нет
     public loadingPhotoButton = ''; // текст кнопки загрузки фото
+    public currentUser = null;
 
     public textEditorConfig: any = {}; // для RichTextComponent'ы
     public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
@@ -70,7 +71,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
         // подклюение локализцаии
         this.dictionary = this._localizationService.currentDictionary;
 
-        // установка текста кнопки лоаклизации из словря
+        // установка текста кнопки локализации из словаря
         this.loadingPhotoButton = this.dictionary.LOAD_PHOTO;
 
         // получить текущего юзера
@@ -78,7 +79,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             .filter(user => !!user)
             .subscribe((user) => {
                 this.isAuthorized = !!user;
-                this.resumeForm.fullName = user.fullName;
+                this.currentUser = Object.assign({}, user);
             })
         );
 
@@ -200,7 +201,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             if (!!this.resumeImage.file) {
                 formData.append('fileToUpload', this.resumeImage.file);
             }
-
+            this.resumeForm.fullName = this.currentUser.fullName;
+            console.log(this.resumeForm);
             formData.append('resume', JSON.stringify(this.resumeForm));
             this.http.post(CREATE_RESUME, formData)
                 .subscribe((res: any) => {

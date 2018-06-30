@@ -19,11 +19,17 @@ export class BlankAccountService {
         this.isProtector = true;
     }
 
-    public compleateFilled(): void {
+    public compleateFilled(typeAccount): void {
         this.isProtector = false;
         this.userService.getUserInfo()
             .subscribe(
-                res => this._router.navigate(['/constructor-resume'])
+                user => {
+                    if (typeAccount === 'worker') {
+                        this._router.navigate(['/create-resume']);
+                    } else {
+                        this._router.navigate(['/create-vacancy']);
+                    }
+                }
             );
     }
 }

@@ -17,11 +17,11 @@ export class BlankAccountGuard implements CanActivate {
         return this.userService.user$
             .filter(user => !!user)
             .map(user => {
-                if (!user.fullName) {
+                if (!user.fullName && !user.companyName) {
                     this.blankAccountService.goFilled();
                 }
 
-                return !!user.fullName;
+                return true;
             });
     }
 }
