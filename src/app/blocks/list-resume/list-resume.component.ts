@@ -68,11 +68,10 @@ export class ListResumeComponent implements OnInit {
 
         let answer = list.map((item) => {
 
-            if ((!item.experienceAllTime) || (item.experienceAllTime == '0;0')) {
+            if ( (!item.experienceAllTime) || ( (item.experienceAllTime.years === 0) && (item.experienceAllTime.months === 0) ) ) {
                 item.experienceAllTime = 'Без опыта';
             } else {
-                let time = item.experienceAllTime.split(';');
-                item.experienceAllTime = `${time[0]} лет и ${time[1]} месяцев`;
+                item.experienceAllTime = `${item.experienceAllTime.years} лет и ${item.experienceAllTime.months} месяцев`;
             }
 
             return item;

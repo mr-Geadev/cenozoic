@@ -8,6 +8,7 @@ import {ListVacancyModule} from '../../blocks/list-vacancy/list-vacancy.module';
 
 import {LoginModalModule} from '../../modals';
 import {ListVacancyPageComponent} from './list-vacancy-page.component';
+import {FilterVacancyModule} from '../../blocks/filter-vacancy';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import {ListVacancyPageComponent} from './list-vacancy-page.component';
         FormsModule,
         MatDialogModule,
         LoginModalModule,
+        FilterVacancyModule,
 
         // Blocks
         ListVacancyModule

@@ -29,19 +29,19 @@
                                 [(ngModel)]="filterResumesService.parameters.experienceAllTime">
                         <mat-option>без опыта</mat-option>
                         <!--<mat-option value="до 1го года">до 1го года</mat-option>-->
-                        <mat-option value="1-3 года">1-3 года</mat-option>
-                        <mat-option value="3-5 лет">3-5 лет</mat-option>
-                        <mat-option value="5-10 лет">5-10 лет</mat-option>
-                        <mat-option value="10-19 лет">10-19 лет</mat-option>
-                        <mat-option value="Более 20 лет">Более 20 лет</mat-option>
+                        <mat-option value="little">1-3 года</mat-option>
+                        <mat-option value="medium">3-5 лет</mat-option>
+                        <mat-option value="high">5-10 лет</mat-option>
+                        <mat-option value="moreHigh">10-19 лет</mat-option>
+                        <mat-option value="highest">Более 20 лет</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
                     <mat-select name="languages" placeholder="Язык резюме" (change)="filterResumesService.changeForm()"
-                                [(ngModel)]="filterResumesService.parameters.languagesResume" disabled>
-                        <mat-option value="Русский">Русский</mat-option>
-                        <mat-option value="Английский">Английский</mat-option>
+                                [(ngModel)]="filterResumesService.parameters.resumeLanguage">
+                        <mat-option value="ru">Русский</mat-option>
+                        <mat-option value="en">Английский</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -128,7 +128,7 @@
                     <input type="number" class="from" name="from"
                            [(ngModel)]="filterResumesService.parameters.age.from">
                     <div class="text before">до</div>
-                    <input type="number" class="before" name="before"
+                    <input type="number" class="to" name="to"
                            [(ngModel)]="filterResumesService.parameters.age.to">
                     <div class="text age">лет</div>
                 </div>

@@ -43,6 +43,7 @@ export const DEFAULT_RESUME_FORM = {
     salary: null,
     birthday: null,
     fullName: null,
+    resumeLanguage: 'ru',
     gender: 'man',
     family: null,
     experienceAllTime: null,

@@ -2,14 +2,13 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
-import {FilterResumesModel} from './filter-resumes.model';
-
+import {FilterVacancyModel} from './filter-vacancy.model';
 
 @Injectable()
-export class FilterResumesService {
+export class FilterVacancyService {
 
     // хрнанит текущие фильтры
-    public parameters: FilterResumesModel = new FilterResumesModel();
+    public parameters: FilterVacancyModel = new FilterVacancyModel();
     private filterSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
     public filter$: Observable<any> = this.filterSubject.asObservable();
 

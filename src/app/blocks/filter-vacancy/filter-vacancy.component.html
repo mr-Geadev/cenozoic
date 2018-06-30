@@ -1,0 +1,112 @@
+<section class="filtr-summaryes">
+    <div class="container">
+        <div class="row search-field">
+            <input type="text" placeholder="Я ищу...">
+            <button class="button-search">
+                Искать
+            </button>
+        </div>
+
+        <form (change)="filterResumesService.changeForm()">
+            <div class="row">
+                <mat-form-field>
+                    <mat-select name="region" placeholder="Регион деятельности"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.region">
+                        <mat-option value="middle">Россия</mat-option>
+                        <mat-option value="high">Зарубеж</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select name="salary" placeholder="Оклад"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.salary">
+                        <mat-option value="маленькая">маленькая</mat-option>
+                        <mat-option value="большая">большая</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select name="educationStage" placeholder="Образование"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.educationStage">
+                        <mat-option value="среднее">среднее</mat-option>
+                        <mat-option value="высшее">высшее</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select name="experienceAllTime" placeholder="Стаж"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.experienceAllTime">
+                        <mat-option value="маленький">маленький</mat-option>
+                        <mat-option value="большой">большой</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field>
+                    <mat-select name="languages" placeholder="Знание языков"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.languages" multiple>
+                        <mat-option value="en">Английский</mat-option>
+                        <mat-option value="ru">Русский</mat-option>
+                        <mat-option value="chi">Китайский</mat-option>
+                        <mat-option value="arab">Арабский</mat-option>
+                        <mat-option value="span">Испанский</mat-option>
+                        <mat-option value="port">Португальский</mat-option>
+                        <mat-option value="ind(индийский)">Хинди(индийский)</mat-option>
+                        <mat-option value="fran">Французский</mat-option>
+                        <mat-option value="dutch">Немецкий</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select name="schedule" placeholder="Метод работы" (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.employmentType">
+                        <mat-option>Не имеет значения</mat-option>
+                        <mat-option value="full">Полная занятость</mat-option>
+                        <mat-option value="part">Частичная занятость</mat-option>
+                        <mat-option value="time">Временная работа</mat-option>
+                        <mat-option value="internship">Стажировка</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select name="schedule" placeholder="График работы" (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.employmentType">
+                        <mat-option>Не имеет значения</mat-option>
+                        <mat-option value="full">Полная занятость</mat-option>
+                        <mat-option value="part">Частичная занятость</mat-option>
+                        <mat-option value="time">Временная работа</mat-option>
+                        <mat-option value="internship">Стажировка</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select name="social" placeholder="Соц. пакет"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.social">
+                        <mat-option value="есть">есть</mat-option>
+                        <mat-option value="нет">нет</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </form>
+        <div class="row reset">
+            <div class="button-text"
+                 (click)="showFilters();"
+                 *ngIf="!showing">
+                <img class="button-icon" src="/assets/images/icon-gray-triangle.svg">
+                Расширенный фильтр&nbsp;&nbsp;|&nbsp;&nbsp;
+            </div>
+            <div class="button-text"
+                 (click)="showFilters(true);">
+                Сбросить фильтры
+                <img class="button-icon" src="/assets/images/icon-gray-cross.svg">
+            </div>
+        </div>
+    </div>
+</section>

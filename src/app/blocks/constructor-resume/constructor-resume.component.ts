@@ -63,7 +63,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 private _systemMessageService: SystemMessageService,
                 private _dialog: MatDialog,
                 private _confirm: ConfirmService,
-                private _localizationService: LocalizationService,) {
+                private _localizationService: LocalizationService, ) {
     }
 
     ngOnInit(): void {
@@ -177,14 +177,19 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
         // блок рассчета опыта
         let timeOil = 0;
         let timeMining = 0;
+        let timeOther = 0;
 
         this.resumeForm.experience.forEach((item) => {
-            if (item.type === 'Нефтегазовая') {
+            if (item.type === 'oil') {
                 timeOil += this._calculateTime(item, item.present);
             }
 
-            if (item.type === 'Горнодобывающая') {
+            if (item.type === 'mining') {
                 timeMining += this._calculateTime(item, item.present);
+            }
+
+            if (item.type === 'other') {
+                timeOther += this._calculateTime(item, item.present);
             }
         });
 
@@ -192,8 +197,13 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
         this.resumeForm.experienceAll.oil.months = timeOil % 12;
         this.resumeForm.experienceAll.mining.years = Math.floor(timeMining / 12);
         this.resumeForm.experienceAll.mining.months = timeMining % 12;
-        this.resumeForm.experienceAllTime = `${Math.floor((timeOil + timeMining) / 12)};${(timeOil + timeMining) % 12}`;
+        this.resumeForm.experienceAllTime = {
+            years: Math.floor((timeOil + timeMining + timeOther) / 12),
+            months: (timeOil + timeMining + timeOther) % 12
+        };
         // конец
+
+        this.resumeForm.resumeLanguage =  window.localStorage.getItem('localization').slice(0, 2);
 
         if (this.type === DEFAULT_TYPE) {
             const formData: FormData = new FormData();
