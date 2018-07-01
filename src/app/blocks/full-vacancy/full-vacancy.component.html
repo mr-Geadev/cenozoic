@@ -30,35 +30,40 @@
                     <div class="parameter gray text">
                         {{dictionary.SCHEDULE}}
                     </div>
-                    <div class="value black text">
-                        {{currentVacancy.schedule}}
+                    <div class="value black text" [ngSwitch]="currentVacancy.schedule">
+                        <ng-template ngSwitchCase="full">{{dictionary.FULL_DAY}}</ng-template>
+                        <ng-template ngSwitchCase="remote">{{dictionary.REMOTE}}</ng-template>
+                        <ng-template ngSwitchCase="watch">{{dictionary.SHIFT}}</ng-template>
                     </div>
                 </div>
                 <div class="line">
                     <div class="parameter gray text">
                         {{dictionary.EMPLOYMENT}}
                     </div>
-                    <div class="value black text">
-                        {{currentVacancy.employmentType}}
+                    <div class="value black text" [ngSwitch]="currentVacancy.employmentType">
+                        <ng-template ngSwitchCase="full">{{dictionary.FULL_EMPLOYMENT}}</ng-template>
+                        <ng-template ngSwitchCase="part">{{dictionary.PART}}</ng-template>
+                        <ng-template ngSwitchCase="time">{{dictionary.TEMPORARY}}</ng-template>
+                        <ng-template ngSwitchCase="internship">{{dictionary.INTERNSHIP}}</ng-template>
                     </div>
                 </div>
             </div>
 
-            <div class="info">
+            <div class="info" *ngIf="currentVacancy.duties">
                 <div class="title row">
                     {{dictionary.DUTIES}}
                 </div>
                 <div class="row text-wrap" [innerHTML]="currentVacancy.duties"></div>
             </div>
 
-            <div class="info">
+            <div class="info" *ngIf="currentVacancy.demands">
                 <div class="title row">
                     {{dictionary.REQUIREMENTS}}
                 </div>
                 <div class="row text-wrap" [innerHTML]="currentVacancy.demands"></div>
             </div>
 
-            <div class="info">
+            <div class="info" *ngIf="currentVacancy.conditions">
                 <div class="title row">
                     {{dictionary.WORKING_CONDITIONS}}
                 </div>

@@ -83,9 +83,11 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             })
         );
 
-        this.subscriptions.push(this.resumeService.resume$
+        this.subscriptions.push(
+            this.resumeService.resume$
             .subscribe((resume) => {
                 if (resume) {
+                    console.log(1, resume);
                     for (const key in resume) {
                         if (resume.hasOwnProperty(key)) {
                             this.resumeForm[key] = resume[key];
@@ -93,11 +95,11 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                     }
                     this.type = CHANGES_TYPE;
                 } else {
+                    console.log(2, resume);
                     this.type = DEFAULT_TYPE;
-                    for (const key in this.resumeForm) {
-                        delete this.resumeForm[key];
-                        this.resumeForm[key] = this.cleanResumeForm[key];
-                    }
+                    console.log(this.resumeForm);
+                    this.resumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
+                    console.log(this.resumeForm);
                 }
             }));
     }
@@ -218,6 +220,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 .subscribe((res: any) => {
                     if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                        this.resumeService.setResume(null);
                         this.router.navigate(['personal-account']);
                     }
                 });
@@ -239,6 +242,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 .subscribe((res: any) => {
                     if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                        this.resumeService.setResume(null);
                         this.router.navigate(['resume', id]);
                     }
                 });

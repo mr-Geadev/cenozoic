@@ -72,6 +72,9 @@ mat-datepicker-toggle {
     background-color: #ff682a;
 }
 
+html {
+  overflow: inherit;
+}
 body {
     font-family: Roboto;
     overflow-x: hidden;

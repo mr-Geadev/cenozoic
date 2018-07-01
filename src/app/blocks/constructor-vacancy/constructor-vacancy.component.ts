@@ -19,7 +19,7 @@ export class ConstructorVacancyComponent implements OnInit {
     constructor(private _createVacancyService: ConstructorVacancyService,
                 private _msg: SystemMessageService,
                 private _dialog: MatDialog,
-                private _localizationService: LocalizationService,) {
+                private _localizationService: LocalizationService) {
     }
 
     public ngOnInit(): void {
@@ -68,7 +68,7 @@ export class ConstructorVacancyComponent implements OnInit {
 
     private createVacancy(data: any = {salary: {}, experience: {mining: {}, oil: {}}}): void { // дико костыльное решение, кооторое нудно будет потом заменить модлеью
         this.vacancy = new FormGroup({
-            title: new FormControl(data.name || '', [Validators.required, Validators.minLength(10)]),
+            title: new FormControl(data.name || '', [Validators.required]),
             currency: new FormControl(data.currency || ''),
             salaryGROSS: new FormGroup({
                 from: new FormControl(data.salary.from || 0),
@@ -105,9 +105,9 @@ export class ConstructorVacancyComponent implements OnInit {
             }),
             schedule: new FormControl(data.schedule || '', [Validators.required]),
             employmentType: new FormControl(data.employmentType || '', [Validators.required]),
-            duties: new FormControl(data.duties || ''),
-            demands: new FormControl(data.demands || ''),
-            conditions: new FormControl(data.conditions || '')
+            duties: new FormControl(data.duties || null),
+            demands: new FormControl(data.demands || null),
+            conditions: new FormControl(data.conditions || null)
         });
     }
 }

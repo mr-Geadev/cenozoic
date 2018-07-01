@@ -61,7 +61,6 @@ export class ListResumeComponent implements OnInit {
                     }
                 });
         }
-        ;
     };
 
     public formatting(list: any[]) {

@@ -3,6 +3,8 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 import {FilterVacancyModel} from './filter-vacancy.model';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {ChangeCityModalComponent} from '../../modals/change-city/change-city.component';
 
 @Injectable()
 export class FilterVacancyService {
@@ -12,7 +14,11 @@ export class FilterVacancyService {
     private filterSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
     public filter$: Observable<any> = this.filterSubject.asObservable();
 
-    constructor(private _http: HttpClient) {
+    private _setFilterParameters(parameter: any): void {
+        this.filterSubject.next(parameter);
+    }
+
+    constructor(private _dialog: MatDialog) {
     }
 
     public resetFilterParameters(): void {
@@ -26,7 +32,19 @@ export class FilterVacancyService {
         this._setFilterParameters(this.parameters.getObjectRequest());
     }
 
-    private _setFilterParameters(parameter: any): void {
-        this.filterSubject.next(parameter);
+    public changeCity(event: any): void {
+        event.preventDefault();
+        this._dialog.open(ChangeCityModalComponent, {
+            width: '600px',
+            height: '370px'
+        } as MatDialogConfig)
+            .afterClosed()
+            .first()
+            .filter(city => !!city)
+            .subscribe((city: string) => {
+                this.parameters.city = city;
+                console.log(this.parameters.getObjectRequest());
+                this._setFilterParameters(this.parameters.getObjectRequest());
+            });
     }
 }
