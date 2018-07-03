@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import * as moment from 'moment';
 
 import {LocalizationService, ResumeService, UserService} from '../../services';
 
@@ -41,8 +42,38 @@ export class FullResumeComponent implements OnInit {
                     this.currentResume = res.resume;
                     this.currentResume.age = this.getAge(this.currentResume.birthday);
                     this.currentResume.birthday = this.setBirthday(this.currentResume.birthday);
+                    this.calculateTimeRange();
                 }
             });
+    }
+
+    public calculateTimeRange() {
+        this.currentResume.experience.forEach(workPlace => {
+            console.log(workPlace);
+            let startDate = moment([workPlace.startYear, workPlace.startMonth]);
+            let endDate = moment();
+            if (!workPlace.present) {
+                endDate = moment([workPlace.endYear, workPlace.endMonth]);
+            };
+            let diffMonths = moment.duration(endDate.diff(startDate)).asMonths();
+
+            let years: any = Math.floor(diffMonths / 12);
+            if ((Math.floor(years % 10) > 0) && (Math.floor(years % 10) < 5))  {
+                years = years + ' год ';
+            }   else {
+                years = years + ' лет ';
+            }
+
+            let months: any = Math.floor(diffMonths % 12);
+            switch (months) {
+                case 0: months = ''; break;
+                case 1: months = months + ' месяц'; break;
+                case 2: case 3: case 4: months = months + ' месяца'; break;
+                default: months = months + ' месяцев'; break;
+            }
+            let answer = years + months;
+            workPlace.time = answer;
+        })
     }
 
     public setBirthday(dateString): string {

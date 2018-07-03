@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
 import {ListVacancyComponent} from './list-vacancy.component';
-import {ListVacancyService} from './list-vacancy.service';
 
 @NgModule({
     imports: [
@@ -12,7 +11,6 @@ import {ListVacancyService} from './list-vacancy.service';
     ],
     declarations: [ListVacancyComponent],
     exports: [ListVacancyComponent],
-    providers: [ListVacancyService]
 })
 export class ListVacancyModule {
 }

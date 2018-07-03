@@ -106,8 +106,7 @@
                             </div>
                             <div class="right">
                                 <button mat-raised-button color="primary" (click)="changeEducationCity()">
-                                    {{vacancy.controls['city'].value ? vacancy.controls['city'].value : 'Выберите
-                                    город'}}
+                                    {{vacancy.controls['city'].value ? vacancy.controls['city'].value : 'Выберите город'}}
                                 </button>
                             </div>
                         </div>
@@ -152,11 +151,11 @@
 
                         <div class="parameter employment">
                             <div class="left">
-                                <label for="employment">{{dictionary.EMPLOYMENT}}<span class="required">*</span></label>
+                                <label for="employmentType">{{dictionary.EMPLOYMENT}}<span class="required">*</span></label>
                             </div>
                             <div class="right">
                                 <mat-form-field>
-                                    <mat-select name="employment" id="employment" formControlName="schedule">
+                                    <mat-select name="employmentType" id="employmentType" formControlName="employmentType">
                                         <mat-option value="full">{{dictionary.FULL_EMPLOYMENT}}</mat-option>
                                         <mat-option value="part">{{dictionary.PART}}</mat-option>
                                         <mat-option value="time">{{dictionary.TEMPORARY}}</mat-option>
@@ -168,11 +167,11 @@
 
                         <div class="parameter method-work">
                             <div class="left">
-                                <label for="method-work">{{dictionary.SCHEDULE}}<span class="required">*</span></label>
+                                <label for="schedule">{{dictionary.SCHEDULE}}<span class="required">*</span></label>
                             </div>
                             <div class="right">
                                 <mat-form-field>
-                                    <mat-select name="method-work" id="method-work" formControlName="employmentType">
+                                    <mat-select name="schedule" id="schedule" formControlName="schedule">
                                         <mat-option value="full">{{dictionary.FULL_DAY}}</mat-option>
                                         <mat-option value="remote">{{dictionary.REMOTE}}</mat-option>
                                         <mat-option value="watch">{{dictionary.SHIFT}}</mat-option>

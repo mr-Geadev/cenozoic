@@ -2,19 +2,19 @@ export class FilterVacancyModel {
 
     // string properties
 
-    public region: string = null; // регион
-    public salary: string = null; // оклад
-    public educationStage: string = null; // образование
-    public experienceAllTime: string = null; // стаж
-    public languages: string[] = []; // знание языков
-    public employmentType: string = null; // метод работы
-    public schedule: string = null; // график
-    public social: boolean = false; // соц пакет
+    public city: string = null; // регион (он же город)
+    public salary: string = null; // оклад disabled
+    public educationStage: string = null; // образование disabled
+    public experienceAllTime: string = null; // стаж disabled
+    public languages: string[] = []; // знание языков disabled
+    public employmentType: string = null; // метод работы: full/part/time/internship
+    public schedule: string = null; // график: full/remote/watch
+    public social: boolean = false; // соц пакет disabled
 
     // сброс формы
     public reset(): void {
 
-        this.region = null;
+        this.city = null;
         this.salary = null;
         this.educationStage = null;
         this.experienceAllTime = null;
@@ -28,30 +28,11 @@ export class FilterVacancyModel {
 
     public getObjectRequest(): any {
 
-        let objectRequest: any = {};
+        const objectRequest: any = {};
 
-        // this.educationStage ? objectRequest['educationStage'] = this.educationStage : null;
-        // this.schedule ? objectRequest['schedule'] = this.schedule : null;
-        // this.experienceAllTime ? objectRequest['experienceAllTime'] = this.experienceAllTime : null;
-        // this.languagesResume ? objectRequest['languagesResume'] = this.languagesResume : null;
-        // this.employmentType ? objectRequest['employmentType'] = this.employmentType : null;
-        // this.family ? objectRequest['family'] = this.family : null;
-        // this.gender ? objectRequest['gender'] = this.gender : null;
-        //
-        // this.photo ? objectRequest['photo'] = this.photo : null;
-        // this.languages.length ? objectRequest['languages'] = this.languages.map(item => item) : null;
-        //
-        //
-        // // this.salary.from !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {from: this.salary.from}}) : null;
-        // this.salary.to !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {from: 0, to: this.salary.to}}) : null;
-        //
-        // if (this.salary.to === 'other') {
-        //     objectRequest = Object.assign(objectRequest, {salary: {from: 600000}});
-        //     delete objectRequest.salary.to;
-        // }
-        //
-        // this.age.from !== 0 ? objectRequest = Object.assign(objectRequest, {age: {from: this.age.from}}) : null;
-        // this.age.to !== 0 ? objectRequest = Object.assign(objectRequest, {age: {to: this.age.to}}) : null;
+        this.city ? objectRequest['city'] = this.city : null;
+        this.employmentType ? objectRequest['employmentType'] = this.employmentType : null;
+        this.schedule ? objectRequest['schedule'] = this.schedule : null;
 
         return objectRequest;
     }

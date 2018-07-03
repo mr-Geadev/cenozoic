@@ -16,6 +16,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     public isAuthorized: boolean = false;
     public isMobileMenuOpen: boolean = false;
     public currentPage: string = null;
+    public isAdmin: boolean = false;
 
     // For localization
     public dictionary: any = null;
@@ -46,6 +47,9 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
             this._userService.user$
                 .subscribe((user) => {
                     this.isAuthorized = !!user;
+                    if (this.isAuthorized) {
+                        this.isAdmin = user.typeAccount === 'admin';
+                    }
                 })
         );
     }
@@ -65,6 +69,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
             .subscribe((res) => {
                 if (res) {
                     this._userService.setUser(null);
+                    this.isAdmin = false;
                 }
             });
     }

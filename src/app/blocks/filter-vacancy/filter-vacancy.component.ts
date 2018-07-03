@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {FilterVacancyService} from './filter-vacancy.service';
 
-
 @Component({
     selector: 'filter-vacancy',
     templateUrl: './filter-vacancy.component.html',
@@ -12,15 +11,10 @@ export class FilterVacancyComponent {
     public showing: boolean = false; // view
     public dictionary: any = null;
 
-    constructor(public filterResumesService: FilterVacancyService) {
+    constructor(public filterVacancyService: FilterVacancyService) {
     }
 
-    // view function
-    public showFilters(reset?: boolean): void {
-        if (reset) {
-            this.filterResumesService.resetFilterParameters();
-        } else {
-            this.showing = !this.showing;
-        }
+    public resetFilters(): void {
+        this.filterVacancyService.resetFilterParameters();
     }
 }

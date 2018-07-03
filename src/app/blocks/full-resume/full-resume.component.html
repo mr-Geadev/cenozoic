@@ -141,9 +141,9 @@
 
                 <tr *ngFor="let item of currentResume.experience">
                     <td class="time-work">
-                        <div class="text black">2 года 5 месяцев</div>
+                        <div class="text black">{{item.time}}</div>
                         <div class="text gray">{{dictionary.MONTHS[item.startMonth]}} {{item.startYear}} —
-                            {{item.endMonth}}
+                            {{dictionary.MONTHS[item.endMonth]}}
                             {{item.present? dictionary.TILL_NOW_WORK : item.endYear}}
                         </div>
                     </td>
@@ -190,19 +190,39 @@
         </div>
     </div>
 
-    <div class="row add-info languages" *ngIf="currentResume.education.languages > 0">
+    <div class="row add-info languages" *ngIf="currentResume.languages.length > 0">
         <div class="col">
             <div class="title">
                 <!--Знание языков-->
                 {{dictionary.KNOWLEDGE_OF_LANGUAGES}}
             </div>
 
-            <div class="text black" *ngFor="let item of currentResume.languages">{{item.name}} - {{item.level}}</div>
+
+            <div class="text black" *ngFor="let item of currentResume.languages">
+                <span [ngSwitch]="item.name">
+                    <ng-template ngSwitchCase="en">{{dictionary.LANGUAGE_EN}}</ng-template>
+                    <ng-template ngSwitchCase="ru">{{dictionary.LANGUAGE_RU}}</ng-template>
+                    <ng-template ngSwitchCase="chi">{{dictionary.LANGUAGE_CHI}}</ng-template>
+                    <ng-template ngSwitchCase="arab">{{dictionary.LANGUAGE_ARAB}}</ng-template>
+                    <ng-template ngSwitchCase="span">{{dictionary.LANGUAGE_SPAN}}</ng-template>
+                    <ng-template ngSwitchCase="port">{{dictionary.LANGUAGE_PORT}}</ng-template>
+                    <ng-template ngSwitchCase="ind">{{dictionary.LANGUAGE_IND}}</ng-template>
+                    <ng-template ngSwitchCase="fran">{{dictionary.LANGUAGE_FRAN}}</ng-template>
+                    <ng-template ngSwitchCase="dutch">{{dictionary.LANGUAGE_DEUTH}}</ng-template>
+                </span>
+                -
+                <span [ngSwitch]="item.level">
+                    <ng-template ngSwitchCase="start">{{dictionary.LANGUAGE_LVL_START}}</ng-template>
+                    <ng-template ngSwitchCase="middle">{{dictionary.LANGUAGE_LVL_MIDDLE}}</ng-template>
+                    <ng-template ngSwitchCase="hight">{{dictionary.LANGUAGE_LVL_HIGH}}</ng-template>
+                    <ng-template ngSwitchCase="native">{{dictionary.LANGUAGE_LVL_BEST}}</ng-template>
+                </span>
+            </div>
 
         </div>
     </div>
 
-    <div class="row add-info trainings" *ngIf="currentResume.education.languages > 0">
+    <div class="row add-info trainings" *ngIf="currentResume.trainings.length > 0">
         <div class="col">
             <div class="title">
                 <!--Профессиональные компетенции, Курсы, тренинги, сертификаты-->
