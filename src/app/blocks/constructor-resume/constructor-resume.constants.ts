@@ -32,7 +32,7 @@ export const DEFAULT_LANGUAGE = {
 export const DEFAULT_TRAINING = {
     year: null,
     durability: null,
-    country: null,
+    country: '',
     city: null,
     name: null,
     document: false

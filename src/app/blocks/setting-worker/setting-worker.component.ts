@@ -20,6 +20,7 @@ export class SettingWorkerComponent implements OnInit {
     public passwords: FormGroup = null;
     public info: FormGroup = null;
     public dictionary: any = null;
+    public phoneMask: any[] = ['+', '7', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
 
     constructor(public userService: UserService,
                 private msg: SystemMessageService,
@@ -81,12 +82,13 @@ export class SettingWorkerComponent implements OnInit {
         });
     }
 
-    public onPhoneKeyPress(event: KeyboardEvent): void {
-        if (!((event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode === 43)) {
-            event.stopPropagation();
-            event.preventDefault();
-        }
-    }
+    // public onPhoneKeyPress(event: any): void {
+    //     console.log(event.charCode);
+    //     if (!( (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode === 43)) {
+    //         event.stopPropagation();
+    //         event.preventDefault();
+    //     }
+    // }
 
     public changePassword(): void {
         this._http.post(CHANGE_PASSWORD, this.passwords.value)

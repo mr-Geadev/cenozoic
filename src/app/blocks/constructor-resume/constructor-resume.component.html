@@ -697,7 +697,7 @@
                                 <input type="tel"
                                        name="phone-number"
                                        id="phone-number"
-                                       (keypress)="onPhoneKeyPress($event)"
+                                       [textMask]="{mask: phoneMask, guide: false}"
                                        [(ngModel)]="resumeForm.phoneNumber" required pattern="^(\+7([0-9]){10})$">
                                 <div class="validation-alert">{{dictionary.VALID_PHONE_NUMBER}}</div>
                             </div>

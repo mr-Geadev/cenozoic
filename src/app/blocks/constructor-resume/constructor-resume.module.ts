@@ -5,6 +5,7 @@ import {MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, Ma
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {BirthdayModule} from '../../modals/birthday';
 import {ConstructorResumeComponent} from './constructor-resume.component';
+import {TextMaskModule} from 'angular2-text-mask';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {ConstructorResumeComponent} from './constructor-resume.component';
         MatOptionModule,
         MatButtonModule,
         BirthdayModule,
-        EditorModule
+        EditorModule,
+        TextMaskModule
     ],
     declarations: [ConstructorResumeComponent],
     exports: [ConstructorResumeComponent]

@@ -69,7 +69,7 @@
                     <div class="right">
                         <input type="tel"
                                id="phone"
-                               (keypress)="onPhoneKeyPress($event)"
+                               [textMask]="{mask: phoneMask, guide: false}"
                                formControlName="phone"
                                placeholder="В формате: +79991112233">
                     </div>

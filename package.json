@@ -55,6 +55,7 @@
     "@ngx-translate/core": "9.1.1",
     "@ngx-translate/http-loader": "2.0.1",
     "@tinymce/tinymce-angular": "^1.0.5",
+    "angular2-text-mask": "^9.0.0",
     "body-parser": "^1.18.2",
     "codelyzer": "^4.3.0",
     "cookie-parser": "1.4.3",

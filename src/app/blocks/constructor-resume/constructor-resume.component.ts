@@ -43,6 +43,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     public invalid = false; // форма валидна/нет
     public loadingPhotoButton = ''; // текст кнопки загрузки фото
     public currentUser = null;
+    public phoneMask: any[] = ['+', '7', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
 
     public textEditorConfig: any = {}; // для RichTextComponent'ы
     public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
@@ -268,13 +269,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             .subscribe((city: string) => {
                 this.resumeForm.education[index].city = city;
             });
-    }
-
-    public onPhoneKeyPress(event: KeyboardEvent): void {
-        if (!((event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode === 43)) {
-            event.stopPropagation();
-            event.preventDefault();
-        }
     }
 
     public showInvalidField(): void {
