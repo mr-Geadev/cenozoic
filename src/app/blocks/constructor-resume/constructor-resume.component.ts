@@ -205,7 +205,11 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
         };
         // конец
 
-        this.resumeForm.resumeLanguage =  window.localStorage.getItem('localization').slice(0, 2);
+        if ( window.localStorage.getItem('localization') ) {
+            this.resumeForm.resumeLanguage =  window.localStorage.getItem('localization').slice(0, 2);
+        } else {
+            this.resumeForm.resumeLanguage = 'ru';
+        }
 
         if (this.type === DEFAULT_TYPE) {
             const formData: FormData = new FormData();
