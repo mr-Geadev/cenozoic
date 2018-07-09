@@ -2,10 +2,12 @@ export class City {
 
     public name: string = null;
     public code: number = null;
+    public codeCountry: number = null;
 
-    constructor(name: string, code: number) {
+    constructor(name: string, codeCity: number, codeCountry: number) {
         this.name = name;
-        this.code = code;
+        this.code = codeCity;
+        this.codeCountry = codeCountry;
     }
 }
 
@@ -22,14 +24,14 @@ export class Country {
 
 export class Locations {
 
-    public gavnoCity: City = new City('Данные устарели', -1);
+    public gavnoCity: City = new City('Данные устарели', -1, -1);
     public listCity: City[] = [];
     public listCountry: Country[] = [];
 
     constructor(jsonList, lang: string) {
         jsonList.forEach( (country) => {
                 this.listCountry.push(new Country(country.countryName[lang], country.codeCountry));
-                country.cities.forEach((city) => this.listCity.push(new City(city.cityName[lang], city.codeCity)));
+                country.cities.forEach((city) => this.listCity.push(new City(city.cityName[lang], city.codeCity, country.codeCountry)));
             }
         );
     }

@@ -17,7 +17,7 @@ export const DEFAULT_EDUCATION = {
     stage: null,
     start: null,
     end: null,
-    // country: null,
+    country: null,
     city: null,
     university: null,
     faculty: null,
@@ -32,7 +32,7 @@ export const DEFAULT_LANGUAGE = {
 export const DEFAULT_TRAINING = {
     year: null,
     durability: null,
-    country: '',
+    country: null,
     city: null,
     name: null,
     document: false

@@ -157,9 +157,11 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             .subscribe((city: City) => {
                     if (nameField === 'education') {
                         this.resumeForm.education[index].city = city.code;
+                        this.resumeForm.education[index].country = city.codeCountry;
                         this.educationCityName[index] = city.name;
                     } else {
                         this.resumeForm.trainings[index].city = city.code;
+                        this.resumeForm.trainings[index].country = city.codeCountry;
                         this.trainingsCityName[index] = city.name;
                     }
                 });
@@ -304,7 +306,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             }
 
             this.resumeForm.trainings.forEach((training, index) => {
-                if (training.document) {
+                if ((training.document) && (!!this.certificateImages[index].file)) {
                     formData.append(`certificatePhoto-${index}`, this.certificateImages[index].file);
                     this.resumeForm.trainings[index].documentName = `certificatePhoto-${index}`;
                 }
@@ -331,12 +333,12 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 formData.append('userPhoto', this.resumeImage.file);
             }
 
-            this.resumeForm.trainings.forEach((training, index)=>{
-                if (training.document) {
-                    formData.append(`certificatePhoto-${index}`, this.certificateImages[index].file);
-                    this.resumeForm.trainings.certificateName = `certificatePhoto-${index}`;
-                }
-            });
+            // this.resumeForm.trainings.forEach((training, index) => {
+            //     if ((training.document) && (!!this.certificateImages[index].file)) {
+            //         formData.append(`certificatePhoto-${index}`, this.certificateImages[index].file);
+            //         this.resumeForm.trainings[index].documentName = `certificatePhoto-${index}`;
+            //     }
+            // });
 
             formData.append('resumeId', id);
             formData.append('resume', JSON.stringify(this.resumeForm));

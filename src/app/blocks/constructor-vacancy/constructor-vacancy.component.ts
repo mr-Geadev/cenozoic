@@ -38,6 +38,7 @@ export class ConstructorVacancyComponent implements OnInit {
         this._changeCityService.changeCity()
             .subscribe((city: City) => {
                 this.vacancy.controls['city'].setValue(city.code);
+                this.vacancy.controls['country'].setValue(city.codeCountry);
                 this.nameCity = city.name;
             });
     }
@@ -76,7 +77,8 @@ export class ConstructorVacancyComponent implements OnInit {
                 from: new FormControl(data.salary.from || 0),
                 to: new FormControl(data.salary.to || 0)
             }),
-            city: new FormControl(data.city || '', [Validators.required]),
+            country: new FormControl(data.country || null, [Validators.required]),
+            city: new FormControl(data.city || null, [Validators.required]),
             experience: new FormGroup({
                 oil: new FormGroup({
                     checked: new FormControl(data.experience.oil.checked || false),
