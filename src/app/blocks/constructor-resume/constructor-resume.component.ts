@@ -302,7 +302,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             const formData: FormData = new FormData();
 
             if (!!this.resumeImage.file) {
-                formData.append('userPhoto', this.resumeImage.file);
+                formData.append('fileToUpload', this.resumeImage.file);
             }
 
             this.resumeForm.trainings.forEach((training, index) => {
@@ -330,7 +330,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             const formData: FormData = new FormData();
 
             if (!!this.resumeImage.file) {
-                formData.append('userPhoto', this.resumeImage.file);
+                formData.append('fileToUpload', this.resumeImage.file);
             }
 
             // this.resumeForm.trainings.forEach((training, index) => {

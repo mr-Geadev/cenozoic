@@ -486,9 +486,10 @@
 
                 .button-for-load {
                     display: flex;
-                    justify-content: center;
                     align-items: center;
-                    width: 261px;
+                    padding: 0 10px;
+                    justify-content: flex-start;
+                    white-space: nowrap;
                     height: 26px;
                     border-radius: 0.313rem;
                     background-color: @orange;
@@ -532,7 +533,11 @@
             label {
                 margin-top: 30px;
                 display: flex;
-                justify-content: center;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 0 10px;
+                justify-content: flex-start;
+                white-space: nowrap;
                 align-items: center;
                 width: 261px;
                 height: 46px;

@@ -27,7 +27,7 @@ export class LocalizationService {
     }
 
     public static currentLang(): string {
-        const savedLang: string = localStorage.getItem(LOCALIZATION).slice(0, 2);
+        const savedLang: string = localStorage.getItem(LOCALIZATION);
 
         if (!savedLang) {
             if (navigator.language.indexOf('ru') > -1) {
@@ -38,7 +38,7 @@ export class LocalizationService {
                 return 'en';
             }
         } else {
-            return savedLang;
+            return savedLang.slice(0, 2);
         }
     }
 
