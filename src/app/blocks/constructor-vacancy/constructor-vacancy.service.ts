@@ -22,10 +22,6 @@ export class ConstructorVacancyService {
             }
         }
 
-        if (!vacancy.duties.length) vacancy.duties = null;
-        if (!vacancy.demands.length) vacancy.demands = null;
-        if (!vacancy.conditions.length) vacancy.conditions = null;
-
         return this._http.post(CREATE_VACANCY, {'vacancy': vacancy})
             .map(
                 (res) => {

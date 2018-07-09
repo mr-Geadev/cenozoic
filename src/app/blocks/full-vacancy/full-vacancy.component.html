@@ -15,7 +15,7 @@
                         {{dictionary.CITY}}
                     </div>
                     <div class="value black text">
-                        {{currentVacancy.city || 'нет данных'}}
+                        {{citiesService.locations.getCityToCode(currentVacancy.city).name}}
                     </div>
                 </div>
                 <div class="line">

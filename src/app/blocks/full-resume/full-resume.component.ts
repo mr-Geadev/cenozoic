@@ -18,15 +18,6 @@ export class FullResumeComponent implements OnInit {
     public currentUser: any;
     private id: string = null;
 
-    constructor(public resumeService: ResumeService,
-                public userService: UserService,
-                public citiesService: CitiesService,
-                private activateRoute: ActivatedRoute,
-                private http: HttpClient,
-                private _localizationService: LocalizationService) {
-        this.id = activateRoute.snapshot.params['id'];
-    }
-
     ngOnInit(): void {
 
         this.dictionary = this._localizationService.currentDictionary;
@@ -47,6 +38,15 @@ export class FullResumeComponent implements OnInit {
                     this.calculateTimeRange();
                 }
             });
+    }
+
+    constructor(public resumeService: ResumeService,
+                public userService: UserService,
+                public citiesService: CitiesService,
+                private activateRoute: ActivatedRoute,
+                private http: HttpClient,
+                private _localizationService: LocalizationService) {
+        this.id = activateRoute.snapshot.params['id'];
     }
 
     public calculateTimeRange() {

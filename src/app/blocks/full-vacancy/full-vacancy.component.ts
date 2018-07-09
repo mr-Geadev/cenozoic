@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 
 import {LocalizationService, ResumeService} from '../../services';
 import {FullVacancyService} from './full-vacancy.service';
+import {CitiesService} from '../../services/cities.service';
 
 @Component({
     selector: 'full-vacancy',
@@ -18,6 +19,7 @@ export class FullVacancyComponent implements OnInit {
     constructor(public resumeService: ResumeService,
                 private _vacancyFullService: FullVacancyService,
                 private _localizationService: LocalizationService,
+                public citiesService: CitiesService,
                 private activateRoute: ActivatedRoute) {
         this.id = activateRoute.snapshot.params['id'];
     }
