@@ -50,11 +50,11 @@ export const DEFAULT_RESUME_FORM = {
     experienceAll: {
         oil: {
             years: null,
-            month: null
+            months: null
         },
         mining: {
             years: null,
-            month: null
+            months: null
         }
     },
     businessTrips: false,

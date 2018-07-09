@@ -43,7 +43,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     public isAuthorized = false; // проверка авторизации текущего пользователя
     public invalid = false; // форма валидна/нет
     public loadingPhotoButton = ''; // текст кнопки загрузки фото
-    public loadingImagesOfCertificate: string[] = [];
+    public nameImagesOfCertificate: string[] = [];
     public currentUser = null;
     public educationCityName: string[] = [];
     public trainingsCityName: string[] = [];
@@ -51,7 +51,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
     public textEditorConfig: any = {}; // для RichTextComponent'ы
     public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
-    public certificateImages: any = []; // фотка сертификата
+    public imagesOfCertificate: any = []; // фотка сертификата
     public dictionary: any = null;
     public listVisibleElement: any = {
         experience: [],
@@ -100,6 +100,12 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                         }
                     }
                     this.type = CHANGES_TYPE;
+                    this.resumeForm.trainings.forEach((training, index) => {
+                        training.document = false;
+                        training.documentName = null;
+                        this.nameImagesOfCertificate[index] = 'Выбрать фото';
+                    });
+                    console.log(this.resumeForm);
                 } else {
                     this.type = DEFAULT_TYPE;
                     this.resumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
@@ -132,15 +138,15 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                     break;
                 case 'trainings':
                     typeField = DEFAULT_TRAINING;
-                    this.loadingImagesOfCertificate.push(this.dictionary.TRAINING_CERTIFICATE_LOAD);
-                    this.certificateImages.push(Object.assign({}, DEFAULT_CERTIFICATE_IMAGE));
+                    this.nameImagesOfCertificate.push(this.dictionary.TRAINING_CERTIFICATE_LOAD);
+                    this.imagesOfCertificate.push(Object.assign({}, DEFAULT_CERTIFICATE_IMAGE));
                     break;
                 default: null;
             }
             this.resumeForm[nameSection].push(Object.assign({}, typeField));
             this.listVisibleElement[nameSection].push(true);
-            console.log(this.certificateImages);
-            console.log(this.loadingImagesOfCertificate);
+            console.log(this.imagesOfCertificate);
+            console.log(this.nameImagesOfCertificate);
         } else {
             this._confirm.confirm('Вы действительно хотите удалить?')
                 .subscribe((res) => {
@@ -189,22 +195,28 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                         };
                     }
                 } else {
-                    this.certificateImages[index].file = fileList[0];
-                    this.loadingImagesOfCertificate[index] = this.certificateImages[index].file.name;
+                    this.imagesOfCertificate[index] = (Object.assign({}, DEFAULT_CERTIFICATE_IMAGE));
+                    this.imagesOfCertificate[index].file = fileList[0];
+                    this.nameImagesOfCertificate[index] = this.imagesOfCertificate[index].file.name;
                     if (event.target.files && event.target.files.length > 0) {
-                        reader.readAsDataURL(this.certificateImages[index].file);
+                        reader.readAsDataURL(this.imagesOfCertificate[index].file);
                         reader.onload = () => {
-                            this.certificateImages[index].data = reader.result;
+                            this.imagesOfCertificate[index].data = reader.result;
                             this.resumeForm.trainings[index].document = true;
+                            this.resumeForm.trainings[index].photoURL = null;
                         };
                     }
-                    console.log(this.certificateImages);
-                    console.log(this.loadingImagesOfCertificate);
+                    console.log(this.imagesOfCertificate);
+                    console.log(this.nameImagesOfCertificate);
                 }
             } else {
                 this._systemMessageService.info('Размер файла превышает 5мб');
             }
         }
+    }
+
+    public deletePhotoCertificate(i: number) {
+        this.resumeForm.trainings[i].photoURL = null;
     }
 
     public birthdayChanged(date: Moment): void {
@@ -306,8 +318,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             }
 
             this.resumeForm.trainings.forEach((training, index) => {
-                if ((training.document) && (!!this.certificateImages[index].file)) {
-                    formData.append(`certificatePhoto-${index}`, this.certificateImages[index].file);
+                if ((training.document) && (!!this.imagesOfCertificate[index].file)) {
+                    formData.append(`certificatePhoto-${index}`, this.imagesOfCertificate[index].file);
                     this.resumeForm.trainings[index].documentName = `certificatePhoto-${index}`;
                 }
             });
@@ -327,18 +339,28 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             const id = this.resumeForm._id;
             delete this.resumeForm._id;
 
+            if (this.resumeForm.experience.length) {
+                this.resumeForm.experience.forEach((experience) => {
+                    delete experience.time;
+                });
+            }
+
+            delete this.resumeForm.status;
+            delete this.resumeForm.age;
+            delete this.resumeForm.creationDate;
+
             const formData: FormData = new FormData();
 
             if (!!this.resumeImage.file) {
                 formData.append('fileToUpload', this.resumeImage.file);
             }
 
-            // this.resumeForm.trainings.forEach((training, index) => {
-            //     if ((training.document) && (!!this.certificateImages[index].file)) {
-            //         formData.append(`certificatePhoto-${index}`, this.certificateImages[index].file);
-            //         this.resumeForm.trainings[index].documentName = `certificatePhoto-${index}`;
-            //     }
-            // });
+            this.resumeForm.trainings.forEach((training, index) => {
+                if ((training.document) && (!!this.imagesOfCertificate[index].file)) {
+                    formData.append(`certificatePhoto-${index}`, this.imagesOfCertificate[index].file);
+                    this.resumeForm.trainings[index].documentName = `certificatePhoto-${index}`;
+                }
+            });
 
             formData.append('resumeId', id);
             formData.append('resume', JSON.stringify(this.resumeForm));

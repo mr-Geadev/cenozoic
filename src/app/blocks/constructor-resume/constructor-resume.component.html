@@ -613,14 +613,26 @@
                                     </div>
                                 </div>
 
-                                <div class="parameter document-training" *ngIf="type !== 'Изменение'">
+                                <div class="parameter document-training">
                                     <div class="left">
                                         <label>{{dictionary.TRAINING_CERTIFICATE}}</label>
                                     </div>
                                     <div class="right">
                                         <input (change)="onImageChange($event, 'certificate', i)" class="load-photo-certificate" id="load-photo-certificate-{{i}}" name="load-photo-certificate-{{i}}" type="file" size="0"
                                                accept="image/*,image/jpeg,image/png,image/gif">
-                                        <label class="button-for-load" for="load-photo-certificate-{{i}}">{{loadingImagesOfCertificate[i]}}</label>
+                                        <label class="button-for-load" for="load-photo-certificate-{{i}}">
+                                            {{
+                                                resumeForm.trainings[i].photoURL ?
+                                                'Изменить сертификат' :
+                                                nameImagesOfCertificate[i]
+                                            }}
+                                        </label>
+                                        <div class="button-for-delete"
+                                             *ngIf="resumeForm.trainings[i].photoURL"
+                                             (click)="deletePhotoCertificate(i)"
+                                        >
+                                            Удалить сертификат
+                                        </div>
                                     </div>
                                 </div>
                             </div>
