@@ -2,10 +2,10 @@ export class FilterResumesModel {
 
     // string properties
     public educationStage: string = null;
-    public schedule: string = null;
     public experienceAllTime: string = null;
     public resumeLanguage: string = null;
     public employmentType: string = null;
+    public schedule: string = null;
     public family: string = null;
     public gender: string = null;
     public placeResidence: string = null;
@@ -32,6 +32,7 @@ export class FilterResumesModel {
         this.experienceAllTime = null;
         this.resumeLanguage = null;
         this.employmentType = null;
+        this.schedule = null;
         this.family = null;
         this.gender = null;
 

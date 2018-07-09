@@ -18,12 +18,10 @@ export class FilterResumesService {
 
     public resetFilterParameters(): void {
         this.parameters.reset();
-        console.log(this.parameters);
         this._setFilterParameters(null);
     }
 
     public changeForm(): void {
-        console.log(this.parameters.getObjectRequest());
         this._setFilterParameters(this.parameters.getObjectRequest());
     }
 

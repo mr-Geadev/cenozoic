@@ -25,7 +25,6 @@ export class FullUserInfoComponent implements OnInit {
     }
 
     public banUser(): void {
-        console.log('click');
         this._confirm.confirm(`Вы хотите забанить аккаунт ${this.user.email} ?`)
             .subscribe((res) => {
                 if (res) {

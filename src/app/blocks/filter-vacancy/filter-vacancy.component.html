@@ -10,16 +10,11 @@
         <form (change)="filterVacancyService.changeForm()">
             <div class="row">
                 <mat-form-field>
-                    <mat-select name="city" placeholder="Регион деятельности"
-                                [(ngModel)]="filterVacancyService.parameters.city">
-                        <mat-option>
-                            Не имеет значения
-                        </mat-option>
-                        <mat-option value="{{filterVacancyService.parameters.city }}"
-                                    (click)="filterVacancyService.changeCity($event)">
-                            {{ filterVacancyService.parameters.city || 'Выбрать...' }}
-                        </mat-option>
-                    </mat-select>
+                    <input matInput
+                           name="city"
+                           placeholder="Регион деятельности"
+                           value="{{filterVacancyService.parameters.city ? citiesService.locations.getCityToCode(filterVacancyService.parameters.city).name : 'Выбрать город..'}}"
+                           (click)="filterVacancyService.changeCity($event)">
                 </mat-form-field>
 
                 <mat-form-field>
@@ -68,7 +63,8 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="employmentType" placeholder="Метод работы" (change)="filterVacancyService.changeForm()"
+                    <mat-select name="employmentType" placeholder="Занятость"
+                                (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.employmentType">
                         <mat-option>Не имеет значения</mat-option>
                         <mat-option value="full">Полная занятость</mat-option>

@@ -2,7 +2,7 @@ export class FilterVacancyModel {
 
     // string properties
 
-    public city: string = null; // регион (он же город)
+    public city: number = null; // код региона (он же город)
     public salary: string = null; // оклад disabled
     public educationStage: string = null; // образование disabled
     public experienceAllTime: string = null; // стаж disabled

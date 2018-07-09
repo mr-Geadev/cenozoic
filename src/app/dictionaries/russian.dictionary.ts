@@ -54,11 +54,13 @@ export const RUSSIAN_DICTIONARY = {
 
     // меню
     MAIN_PAGE: 'Главная',
-    FOR_CANDIDATES: 'Соискателям',
-    FOR_EMPLOYER: 'Работодателям',
+    FOR_CANDIDATES: 'Вакансии',
+    FOR_EMPLOYER: 'Резюме',
     FOR_PARTNERSHIPS: 'Сотрудничество',
     SUPPORT: 'Поддержка',
     ACCOUNT: 'Личный кабинет',
+    PERSONAL_ACCOUNT_WORKER: 'Личный кабинет соискателя',
+    PERSONAL_ACCOUNT_EMPLOYER: 'Личный кабинет работодателя',
     SETTINGS: 'Настройки',
     LOG_IN: 'Войти',
     LOG_OUT: 'Выйти',
@@ -198,7 +200,7 @@ export const RUSSIAN_DICTIONARY = {
         IN_MINING: 'в горнодобывающей',
         TYPE_WORK_OTHER: 'Другая',
         ORGANIZATION_WORK: 'Организация',
-        POSITION_WORK: 'Позиция',
+        POSITION_WORK: 'Доллжность',
         DUTIES_WORK: 'Ваши обязанности',
         ADD_PLACE_WORK: 'Добавить место работы',
         LAST_WORKPLACE: 'Последнее место работы',
@@ -241,6 +243,7 @@ export const RUSSIAN_DICTIONARY = {
         TRAINING_DURABILITY: 'Длительность курса',
         TRAINING_CITY: 'Город',
         TRAINING_NAME: 'Название',
+        TRAINING_CERTIFICATE_LOAD: 'Загрузить фото сертификата',
         TRAINING_CERTIFICATE: 'Сертификат',
         TRAINING_CERTIFICATE_DESC: 'Документально подтвержден',
     ADDITIONAL_INFO: 'Дополнительная информация',
@@ -288,6 +291,7 @@ export const RUSSIAN_DICTIONARY = {
         FULL_NAME: 'Полное имя',
     PERSONAL_DATA: 'Личные данные',
         NAME_COMPANY: 'Название компании',
+        COMPANY_CONTACT_PERSON_NAME: 'ФИО контактного лица',
     DELETE_ACCOUNT: 'Удалить аккаунт',
 
 

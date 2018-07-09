@@ -10,8 +10,6 @@ import {UserService} from '../services/user.service';
 @Injectable()
 export class LogInGuard implements CanActivate {
 
-    private init: boolean = false;
-
     constructor(private userService: UserService,
                 private _login: LoginModalService,
                 private _message: SystemMessageService,

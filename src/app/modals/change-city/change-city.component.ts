@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialogRef} from '@angular/material';
+import {Component, Inject, OnInit} from '@angular/core';
+import {ChangeCityClose} from './change-city-close.service';
+import {City, Locations} from './cities.models';
+import {MAT_DIALOG_DATA} from '@angular/material';
 import {LocalizationService} from '../../services';
-
-import {ChangeCityModalService} from './change-city.service';
 
 @Component({
     selector: 'change-city-modal',
@@ -11,44 +11,42 @@ import {ChangeCityModalService} from './change-city.service';
 })
 export class ChangeCityModalComponent implements OnInit {
 
-    public showContextMenu: boolean = false;
-    public currentCity: string = '';
-    public cities: any[] = [];
+    public inputField: string = '';
+    public popularCities: City[] = [];
     public dictionary: any = null;
+    public showContextMenu: boolean = false;
 
-    private _locations: any[] = [];
-
-    constructor(private dialogRef: MatDialogRef<any>,
-                private cityModalService: ChangeCityModalService,
-                private _localizationService: LocalizationService) {
+    constructor(private _closeModal: ChangeCityClose,
+                private _localizationService: LocalizationService,
+                @Inject(MAT_DIALOG_DATA) public data: Locations) {
     }
 
     ngOnInit(): void {
-
+        this.popularCities = this.data.listCity.slice(0, 5);
         this.dictionary = this._localizationService.currentDictionary;
-
-        this.currentCity = this.cityModalService.getCurrentCity();
-        this.cityModalService.getLocations()
-            .subscribe((locations: any) => {
-                this._locations = locations.data.map(item => item.name);
-            });
     }
 
-    public update(value: string): void {
-        if (value) {
-            // Transform word to normal form
-            // Example: сарАтов --> Саратов
-            const localValueArray: string[] = Array.from(value.toLocaleLowerCase());
-            localValueArray[0] = localValueArray[0].toLocaleUpperCase();
-            const localValue: string = localValueArray.join('');
-
-            this.cities = this._locations
-                .filter(city => city.indexOf(localValue) === 0);
-            this.showContextMenu = this.cities.length > 0;
-        }
+    public onShowContextMenu(): void {
+        this.showContextMenu = true;
     }
 
-    public selectCity(city: string): void {
-        this.dialogRef.close(city);
+    public offShowContextMenu(): void {
+        this.showContextMenu = false;
+    }
+
+    public updatePopularCity(): void {
+        this.popularCities = this.data.listCity
+            .filter((city) =>
+                city.name.toLocaleLowerCase().indexOf(this.inputField.toLocaleLowerCase()) > -1
+            )
+            .slice(0, 5);
+    }
+
+    public selectCity(cityCode: number) {
+        console.log(cityCode);
+        this.offShowContextMenu();
+        this._closeModal.setCity(
+            this.data.getCityToCode(cityCode)
+        );
     }
 }

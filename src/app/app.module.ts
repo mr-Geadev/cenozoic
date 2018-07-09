@@ -8,7 +8,7 @@ import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 import {PageFooterModule, PageHeaderModule} from './blocks';
 import {AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard} from './guards';
-import {ChangeCityModalModule} from './modals/change-city';
+import {ChangeCityModule, ChangeCityService} from './modals/change-city';
 import {ConfirmService} from './modals/confirm/confirm.service';
 import {AccountSettingPageModule, CreateVacancyPageModule, ListVacancyPageModule, MainPageModule, NotFoundPageComponent} from './pages';
 import {AccountEmailConfirmPageModule} from './pages/account-email-confirm-page';
@@ -20,6 +20,7 @@ import {BlankAccountService, LocalizationService, SortService, SystemMessageServ
 import {VacancyFullPageModule} from './pages/vacancy-full-page';
 import {ConfirmModule} from './modals/confirm';
 import {AuthPageModule} from './pages/auth-page';
+import {CitiesService} from './services/cities.service';
 
 const ROUTES = [
     {
@@ -58,7 +59,7 @@ const ROUTES = [
         PageFooterModule,
 
         // Modals
-        ChangeCityModalModule,
+        ChangeCityModule,
         ConfirmModule
 
     ],
@@ -68,12 +69,14 @@ const ROUTES = [
         // custom services
         SystemMessageService,
         LocalizationService,
+        CitiesService,
         UserService,
         SortService,
         ConfirmService,
         BlankAccountService,
+        ChangeCityService,
 
-        //Guards
+        // Guards
         BlankAccountGuard,
         AdminGuard,
         LogInGuard,

@@ -8,7 +8,7 @@ export const ENGLISH_DICTIONARY = {
     //общее
     YOUR: 'Your',
     CHANGE_CITY: 'Choose a city',
-    CITY: 'Город',
+    CITY: 'City',
     CHANGE_CITY_PLACEHOLDER: 'Enter the name of the city',
     FROM: 'from',
     TO: 'to',
@@ -54,11 +54,13 @@ export const ENGLISH_DICTIONARY = {
 
     // меню
     MAIN_PAGE: 'Main',
-    FOR_CANDIDATES: 'For candidates',
-    FOR_EMPLOYER: 'For employers',
+    FOR_CANDIDATES: 'Vacancies',
+    FOR_EMPLOYER: 'СV',
     FOR_PARTNERSHIPS: 'For partnerships',
     SUPPORT: 'Support',
     ACCOUNT: 'Account',
+    PERSONAL_ACCOUNT_WORKER: 'Applicant\'s personal office',
+    PERSONAL_ACCOUNT_EMPLOYER: 'Employer\'s private office',
     SETTINGS: 'Settings',
     LOG_IN: 'Log in',
     LOG_OUT: 'Log out',
@@ -198,9 +200,10 @@ export const ENGLISH_DICTIONARY = {
         IN_MINING: 'in the mining industry',
         TYPE_WORK_OTHER: 'Other',
         ORGANIZATION_WORK: 'Organization',
-        POSITION_WORK: 'Position',
+        POSITION_WORK: 'Appointment',
         DUTIES_WORK: 'Job Description',
         ADD_PLACE_WORK: 'Add workplace',
+        LAST_WORKPLACE: 'Last workplace',
     EDUCATION: 'Education',
         EDUCATION_PLACE: 'Educational institution',
         EDUCATION_STAGE: 'Degree of education',
@@ -240,6 +243,7 @@ export const ENGLISH_DICTIONARY = {
         TRAINING_DURABILITY: 'Duration of the course',
         TRAINING_CITY: 'City',
         TRAINING_NAME: 'Name',
+        TRAINING_CERTIFICATE_LOAD: 'Upload Photo Certificate',
         TRAINING_CERTIFICATE: 'Certificate',
         TRAINING_CERTIFICATE_DESC: 'Documented',
     ADDITIONAL_INFO: 'Additional Information',
@@ -273,7 +277,6 @@ export const ENGLISH_DICTIONARY = {
     KNOWLEDGE_OF_LANGUAGES: 'Knowledge of languages',
     FIO: 'Full name',
 
-
     // настройки аккаунта
     SETTING_ACCOUNT: 'Profile settings',
     PARAMETERS_ENTER: 'Login options',
@@ -283,11 +286,12 @@ export const ENGLISH_DICTIONARY = {
     PHONE_CONNECT: 'Phone for communication',
     LOAD_LOGO: 'Upload logo',
     NOTIFICATIONS: 'Notifications',
-    NOTIFICATIONS_PERSONAL_ACCOUNT: 'Personal Area',
+        NOTIFICATIONS_PERSONAL_ACCOUNT: 'Personal Area',
     DATA_COMPANY: 'Company data',
-    FULL_NAME: 'Full name',
+        FULL_NAME: 'Full name',
     PERSONAL_DATA: 'Personal data',
-    NAME_COMPANY: 'Company name',
+        NAME_COMPANY: 'Company name',
+        COMPANY_CONTACT_PERSON_NAME: 'Name of contact person',
     DELETE_ACCOUNT: 'Delete account',
 
 

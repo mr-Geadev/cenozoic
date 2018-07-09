@@ -1,0 +1,46 @@
+{
+  "cities": [
+    {
+      "cityName": {
+        "ru": "Москва",
+        "en": "Moscow"
+      },
+      "codeCity": 1001
+    },
+    {
+      "cityName": {
+        "ru": "Санкт-Петербург",
+        "en": "St. Petersburg"
+      },
+      "codeCity": 1002
+    },
+    {
+      "cityName": {
+        "ru": "Краснодар",
+        "en": "Krasnodar"
+      },
+      "codeCity": 1003
+    },
+    {
+      "cityName": {
+        "ru": "Чита",
+        "en": "Chita"
+      },
+      "codeCity": 1004
+    },
+    {
+      "cityName": {
+        "ru": "Челябинск",
+        "en": "Chelyabinsk"
+      },
+      "codeCity": 1005
+    },
+    {
+      "cityName": {
+        "ru": "Екатеринбург",
+        "en": "Ekaterinburg"
+      },
+      "codeCity": 1006
+    }
+  ]
+}

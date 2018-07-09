@@ -83,7 +83,6 @@ export class SettingWorkerComponent implements OnInit {
     }
 
     // public onPhoneKeyPress(event: any): void {
-    //     console.log(event.charCode);
     //     if (!( (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode === 43)) {
     //         event.stopPropagation();
     //         event.preventDefault();

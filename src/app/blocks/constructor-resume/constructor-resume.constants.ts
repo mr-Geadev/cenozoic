@@ -17,7 +17,7 @@ export const DEFAULT_EDUCATION = {
     stage: null,
     start: null,
     end: null,
-    country: 'Россия',
+    // country: null,
     city: null,
     university: null,
     faculty: null,
@@ -81,6 +81,11 @@ export const DEFAULT_RESUME_FORM = {
 };
 
 export const DEFAULT_RESUME_IMAGE = {
+    file: null,
+    data: null
+};
+
+export const DEFAULT_CERTIFICATE_IMAGE = {
     file: null,
     data: null
 };

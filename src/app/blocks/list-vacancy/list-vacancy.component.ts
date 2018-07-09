@@ -27,7 +27,7 @@ export class ListVacancyComponent implements OnInit {
 
         // this._listVacancyService.getListVancacy(this._offset, this.config)
         //     .subscribe(
-        //         (res) => {this.listVacancy = res; console.log(this.listVacancy)},
+        //         (res) => {this.listVacancy = res;},
         //         (err) => console.log(err.error.errorMessage)
         //     );
 

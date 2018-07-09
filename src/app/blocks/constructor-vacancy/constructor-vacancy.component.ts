@@ -5,6 +5,8 @@ import {LocalizationService} from '../../services/localization.service';
 import {ChangeCityModalComponent} from '../../modals/change-city/change-city.component';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ConstructorVacancyService} from './constructor-vacancy.service';
+import {City} from '../../modals/change-city/cities.models';
+import {ChangeCityService} from '../../modals/change-city';
 
 @Component({
     selector: 'constructor-vacancy',
@@ -15,32 +17,28 @@ export class ConstructorVacancyComponent implements OnInit {
 
     public vacancy: FormGroup;
     public dictionary: any = null;
+    public nameCity: string = null;
 
     constructor(private _createVacancyService: ConstructorVacancyService,
                 private _msg: SystemMessageService,
                 private _dialog: MatDialog,
+                private _changeCityService: ChangeCityService,
                 private _localizationService: LocalizationService) {
     }
 
     public ngOnInit(): void {
 
-        // подклюение локализцаии
+        // подключение локализцаии
         this.dictionary = this._localizationService.currentDictionary;
 
         this.createVacancy();
-        console.log(this.vacancy);
     }
 
     public changeEducationCity(): void {
-        this._dialog.open(ChangeCityModalComponent, {
-            width: '600px',
-            height: '370px'
-        } as MatDialogConfig)
-            .afterClosed()
-            .first()
-            .filter(city => !!city)
-            .subscribe((city: string) => {
-                this.vacancy.controls['city'].setValue(city);
+        this._changeCityService.changeCity()
+            .subscribe((city: City) => {
+                this.vacancy.controls['city'].setValue(city.code);
+                this.nameCity = city.name;
             });
     }
 

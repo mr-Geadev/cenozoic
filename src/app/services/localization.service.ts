@@ -24,8 +24,22 @@ export class LocalizationService {
                 this.currentDictionary = ENGLISH_DICTIONARY;
                 break;
         }
+    }
 
+    public static currentLang(): string {
+        const savedLang: string = localStorage.getItem(LOCALIZATION).slice(0, 2);
 
+        if (!savedLang) {
+            if (navigator.language.indexOf('ru') > -1) {
+                return 'ru';
+            }
+
+            if (navigator.language.indexOf('en') > -1) {
+                return 'en';
+            }
+        } else {
+            return savedLang;
+        }
     }
 
     public setLocalization(language: string): void {

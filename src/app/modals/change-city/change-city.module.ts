@@ -1,9 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-
 import {ChangeCityModalComponent} from './change-city.component';
-import {ChangeCityModalService} from './change-city.service';
+import {ChangeCityOpen} from './change-city-open.service';
+import {ChangeCityClose} from './change-city-close.service';
 
 @NgModule({
     imports: [
@@ -12,8 +12,11 @@ import {ChangeCityModalService} from './change-city.service';
     ],
     declarations: [ChangeCityModalComponent],
     entryComponents: [ChangeCityModalComponent],
-    providers: [ChangeCityModalService],
+    providers: [
+        ChangeCityOpen,
+        ChangeCityClose
+    ],
     exports: [ChangeCityModalComponent]
 })
-export class ChangeCityModalModule {
+export class ChangeCityModule {
 }

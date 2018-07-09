@@ -479,8 +479,30 @@
                 }
             }
 
-            .document-training .word {
-                margin-left: 0 !important;
+            .document-training {
+                .load-photo-certificate {
+                    display: none;
+                }
+
+                .button-for-load {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 261px;
+                    height: 26px;
+                    border-radius: 0.313rem;
+                    background-color: @orange;
+                    color: @white;
+                    font-family: Roboto;
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    line-height: 1.875rem;
+                    .tr-bg;
+
+                    &:hover {
+                        background-color: @hover-orange;
+                    }
+                }
             }
 
         }

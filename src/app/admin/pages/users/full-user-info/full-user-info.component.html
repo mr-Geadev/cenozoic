@@ -19,8 +19,11 @@
         <b>Тип аккаунта:</b> {{user.typeAccount}}
 
     </p>
-    <p class="list-resume-vacancy block">
-        Тут будет список резюме
+    <p class="list-resume-vacancy block" *ngIf="user.resumeCount !== null">
+        Количество резюме: {{user.resumeCount}}
+    </p>
+    <p class="list-resume-vacancy block" *ngIf="user.vacancyCount !== null">
+        Количество вакансий: {{user.vacancyCount}}
     </p>
 </mat-card-content>
 

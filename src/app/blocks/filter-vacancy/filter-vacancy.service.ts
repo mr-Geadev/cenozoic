@@ -5,6 +5,8 @@ import {Observable} from 'rxjs/Observable';
 import {FilterVacancyModel} from './filter-vacancy.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ChangeCityModalComponent} from '../../modals/change-city/change-city.component';
+import {City} from '../../modals/change-city/cities.models';
+import {ChangeCityService} from '../../modals/change-city';
 
 @Injectable()
 export class FilterVacancyService {
@@ -18,32 +20,24 @@ export class FilterVacancyService {
         this.filterSubject.next(parameter);
     }
 
-    constructor(private _dialog: MatDialog) {
+    constructor(private _changeCityService: ChangeCityService) {
     }
 
     public resetFilterParameters(): void {
         this.parameters.reset();
-        console.log(this.parameters);
         this._setFilterParameters(null);
     }
 
     public changeForm(): void {
-        console.log(this.parameters.getObjectRequest());
         this._setFilterParameters(this.parameters.getObjectRequest());
     }
 
-    public changeCity(event: any): void {
-        event.preventDefault();
-        this._dialog.open(ChangeCityModalComponent, {
-            width: '600px',
-            height: '370px'
-        } as MatDialogConfig)
-            .afterClosed()
+    public changeCity(e: any): void {
+        e.preventDefault();
+        this._changeCityService.changeCity()
             .first()
-            .filter(city => !!city)
-            .subscribe((city: string) => {
-                this.parameters.city = city;
-                console.log(this.parameters.getObjectRequest());
+            .subscribe((city: City) => {
+                this.parameters.city = city.code;
                 this._setFilterParameters(this.parameters.getObjectRequest());
             });
     }

@@ -3,7 +3,9 @@
 
         <div class="row">
             <div class="title">
-                {{ dictionary.ACCOUNT }}
+                {{ typeCurrentUser === 'worker' ?
+                dictionary.PERSONAL_ACCOUNT_WORKER :
+                dictionary.PERSONAL_ACCOUNT_EMPLOYER }}
             </div>
 
             <ul class="list">

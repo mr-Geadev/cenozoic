@@ -414,8 +414,8 @@
                                         <label>{{dictionary.EDUCATION_CITY}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
-                                        <button mat-raised-button color="primary" (click)="changeEducationCity(i)">
-                                            {{resumeForm.education[i].city ? resumeForm.education[i].city :
+                                        <button mat-raised-button color="primary" (click)="changeCity(i, 'education')">
+                                            {{educationCityName[i] ? educationCityName[i] :
                                             dictionary.EDUCATION_CHANGE_CITY}}
                                         </button>
                                     </div>
@@ -591,16 +591,10 @@
                                                 class="required">*</span></label>
                                     </div>
                                     <div class="right">
-                                        <mat-form-field>
-                                            <mat-select name="training-city-{{i}}" id="city-training"
-                                                        class="city-training"
-                                                        [(ngModel)]="resumeForm.trainings[i].city">
-                                                <mat-option value="Саратов">Саратов</mat-option>
-                                                <mat-option value="Москва">Москва</mat-option>
-                                                <mat-option value="Киев">Киев</mat-option>
-                                                <mat-option value="Лондон">Лондон</mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
+                                        <button mat-raised-button color="primary" (click)="changeCity(i, 'trainings')">
+                                            {{trainingsCityName[i] ? trainingsCityName[i] :
+                                            dictionary.TRAINING_CITY}}
+                                        </button>
                                         <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                         <div class="line"></div>
                                     </div>
@@ -624,10 +618,9 @@
                                         <label>{{dictionary.TRAINING_CERTIFICATE}}</label>
                                     </div>
                                     <div class="right">
-                                        <input type="checkbox" name="training-document-{{i}}" id="document-training"
-                                               value="true"
-                                               [(ngModel)]="resumeForm.trainings[i].document">
-                                        <label for="document-training" class="word">{{dictionary.TRAINING_CERTIFICATE_DESC}}</label>
+                                        <input (change)="onImageChange($event, 'certificate', i)" class="load-photo-certificate" id="load-photo-certificate-{{i}}" name="load-photo-certificate-{{i}}" type="file" size="0"
+                                               accept="image/*,image/jpeg,image/png,image/gif">
+                                        <label class="button-for-load" for="load-photo-certificate-{{i}}">{{loadingImagesOfCertificate[i]}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -728,7 +721,7 @@
                 <div *ngIf="resumeImage.data || resumeForm.photoURL" class="image user">
                     <img [src]="resumeImage.data || resumeForm.photoURL">
                 </div>
-                <input form="create-summary" (change)="onImageChange($event)" id="load-photo" type="file" size="0"
+                <input form="create-summary" (change)="onImageChange($event, 'avatar')" id="load-photo" type="file" size="0"
                        accept="image/*,image/jpeg,image/png,image/gif">
                 <label for="load-photo">{{loadingPhotoButton}}</label>
 

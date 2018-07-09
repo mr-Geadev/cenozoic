@@ -52,12 +52,22 @@
                 </div>
                 <div class="parameter">
                     <div class="left">
+                        <label for="contact-person">
+                            {{dictionary.COMPANY_CONTACT_PERSON_NAME}}<span class="required">*</span>
+                        </label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="contact-person" formControlName="fullName" placeholder="Фамилия, имя, отчество">
+                    </div>
+                </div>
+                <div class="parameter">
+                    <div class="left">
                         <label for="fio">
                             {{dictionary.NAME_COMPANY}}<span class="required">*</span>
                         </label>
                     </div>
                     <div class="right">
-                        <input type="text" id="fio" formControlName="companyName" placeholder="Фамилия, имя, отчество">
+                        <input type="text" id="fio" formControlName="companyName" placeholder="Навзание компании">
                     </div>
                 </div>
                 <div class="parameter">

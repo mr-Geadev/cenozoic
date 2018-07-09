@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import * as moment from 'moment';
 
 import {LocalizationService, ResumeService, UserService} from '../../services';
+import {CitiesService} from '../../services/cities.service';
 
 @Component({
     selector: 'full-resume',
@@ -19,6 +20,7 @@ export class FullResumeComponent implements OnInit {
 
     constructor(public resumeService: ResumeService,
                 public userService: UserService,
+                public citiesService: CitiesService,
                 private activateRoute: ActivatedRoute,
                 private http: HttpClient,
                 private _localizationService: LocalizationService) {
@@ -49,7 +51,6 @@ export class FullResumeComponent implements OnInit {
 
     public calculateTimeRange() {
         this.currentResume.experience.forEach(workPlace => {
-            console.log(workPlace);
             let startDate = moment([workPlace.startYear, workPlace.startMonth]);
             let endDate = moment();
             if (!workPlace.present) {

@@ -178,7 +178,9 @@
                         <div class="text gray">{{item.end - item.start}} лет</div>
                     </td>
                     <td class="education">
-                        <div class="side-title">{{item.country}}, {{item.city}}</div>
+                        <div class="side-title">
+                            <!--{{item.country}}, -->
+                            {{citiesService.locations.getCityToCode(item.city).name}}</div>
                         <div class="side-title">{{item.university}}</div>
                         <div class="text black" *ngIf="item.faculty">{{item.faculty}}</div>
                         <div class="side-title" *ngIf="item.specialty">{{item.specialty}}</div>

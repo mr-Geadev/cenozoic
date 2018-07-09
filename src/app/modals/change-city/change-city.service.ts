@@ -1,36 +1,23 @@
 import {HttpClient} from '@angular/common/http';
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {isPlatformBrowser} from '@angular/common';
-
+import {ChangeCityOpen} from './change-city-open.service';
+import {ChangeCityClose} from './change-city-close.service';
+import {City} from './cities.models';
+import {CitiesService} from '../../services/cities.service';
 
 @Injectable()
-export class ChangeCityModalService {
+export class ChangeCityService {
 
 
     constructor(private _http: HttpClient,
-                @Inject(PLATFORM_ID) private platformId: Object) {
+                private _openModal: ChangeCityOpen,
+                private _cities: CitiesService,
+                private _closeModal: ChangeCityClose) {
     }
 
-    public getLocations(): Observable<any> {
-        return this._http.get('/assets/json/russia.locality.json');
-    }
-
-    public setCity(city: string): void {
-        if (typeof window !== 'undefined') {
-            if (isPlatformBrowser(this.platformId)) {
-                localStorage.setItem('city', city);
-            }
-        }
-    }
-
-    public getCurrentCity(): string {
-        if (isPlatformBrowser(this.platformId)) {
-            if (typeof window !== 'undefined') {
-                return localStorage.getItem('city');
-            } else {
-                return '';
-            }
-        }
+    public changeCity(): Observable<City> {
+        this._openModal.open(this._cities.locations);
+        return this._closeModal.response;
     }
 }

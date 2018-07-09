@@ -13,8 +13,6 @@ export class ConstructorVacancyService {
 
     public createVacancy(vacancy: any): Observable<any> {
 
-        console.log(vacancy);
-
         if (vacancy.experience) {
             if (!vacancy.experience.oil.checked) {
                 vacancy.experience.oil = null;
@@ -27,8 +25,6 @@ export class ConstructorVacancyService {
         if (!vacancy.duties.length) vacancy.duties = null;
         if (!vacancy.demands.length) vacancy.demands = null;
         if (!vacancy.conditions.length) vacancy.conditions = null;
-
-        console.log(vacancy);
 
         return this._http.post(CREATE_VACANCY, {'vacancy': vacancy})
             .map(

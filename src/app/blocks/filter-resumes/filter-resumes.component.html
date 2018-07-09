@@ -60,13 +60,23 @@
             <div class="row" *ngIf="showing">
 
                 <mat-form-field>
-                    <mat-select name="schedule" placeholder="Занятость" (change)="filterResumesService.changeForm()"
+                    <mat-select name="employmentType" placeholder="Занятость" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.employmentType">
                         <mat-option>Не имеет значения</mat-option>
                         <mat-option value="full">Полная занятость</mat-option>
                         <mat-option value="part">Частичная занятость</mat-option>
                         <mat-option value="time">Временная работа</mat-option>
                         <mat-option value="internship">Стажировка</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select name="schedule" placeholder="График работы" (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.schedule">
+                        <mat-option>Не имеет значения</mat-option>
+                        <mat-option value="full">Полный день</mat-option>
+                        <mat-option value="remote">Удаленная работа</mat-option>
+                        <mat-option value="watch">Вахтовый метод</mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -100,17 +110,6 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field>
-                    <mat-select name="family" placeholder="Семейное положение"
-                                (change)="filterResumesService.changeForm()"
-                                [(ngModel)]="filterResumesService.parameters.family">
-                        <mat-option>Не имеет значение</mat-option>
-                        <mat-option value="single">Холост/Не замужем</mat-option>
-                        <mat-option value="married">В браке</mat-option>
-                        <!--<mat-option value="divorced">В разводе</mat-option>-->
-                    </mat-select>
-                </mat-form-field>
-
             </div>
             <div class="row" *ngIf="showing">
 
@@ -123,17 +122,31 @@
                     </mat-select>
                 </mat-form-field>
 
+                <mat-form-field>
+                    <mat-select name="family" placeholder="Семейное положение"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.family">
+                        <mat-option>Не имеет значение</mat-option>
+                        <mat-option value="single">Холост/Не замужем</mat-option>
+                        <mat-option value="married">В браке</mat-option>
+                        <!--<mat-option value="divorced">В разводе</mat-option>-->
+                    </mat-select>
+                </mat-form-field>
+
                 <div class="change-age">
-                    <div class="text from">возраст от</div>
-                    <input type="number" class="from" name="from"
-                           [(ngModel)]="filterResumesService.parameters.age.from">
-                    <div class="text before">до</div>
-                    <input type="number" class="to" name="to"
-                           [(ngModel)]="filterResumesService.parameters.age.to">
-                    <div class="text age">лет</div>
+                    <div class="placeholder">Возраст</div>
+                    <div class="entry">
+                        <div class="text from">от</div>
+                        <input type="number" class="from" name="from"
+                               [(ngModel)]="filterResumesService.parameters.age.from">
+                        <div class="text before">до</div>
+                        <input type="number" class="to" name="to"
+                               [(ngModel)]="filterResumesService.parameters.age.to">
+                        <div class="text age">лет</div>
+                    </div>
                 </div>
 
-                <div class="change-class">
+                <div class="change-photo">
                     <input type="checkbox" id="havePhoto" name="photo"
                            [(ngModel)]="filterResumesService.parameters.photo">
                     <label for="havePhoto">Фото профиля</label>

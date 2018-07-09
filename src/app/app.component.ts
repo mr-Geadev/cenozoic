@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {UserService} from './services';
+import {CitiesService} from './services/cities.service';
 
 @Component({
     selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
     public isAdminPanel: boolean = false;
 
     constructor(private userService: UserService,
+                private locations: CitiesService,
                 private router: Router) {
 
         router.events.subscribe((event: any) => {
@@ -25,5 +27,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.userService.getUserInfo();
+        this.locations.getCities();
     }
 }

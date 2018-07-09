@@ -21,7 +21,7 @@
                     <a class="header-menu-item" [class.active]="currentPage === 'list-resume'"
                        [routerLink]="['/list-resume']">{{ dictionary.FOR_EMPLOYER }}</a>
                     <a class="header-menu-item" *ngIf="!isAdmin" [routerLink]="['/']">{{ dictionary.SUPPORT }}</a>
-                    <a class="header-menu-item" *ngIf="isAdmin" [routerLink]="['/admin']">админка</a>
+                    <a class="header-menu-item" *ngIf="isAdmin" [routerLink]="['/admin']">Кабинет<br /> администратора</a>
                 </nav>
 
                 <a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">{{

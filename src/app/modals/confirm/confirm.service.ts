@@ -6,7 +6,6 @@ import {ResConfirmService} from './res-confirm.service';
 @Injectable()
 export class ConfirmService {
 
-
     constructor(private _reqConfirm: ReqConfirmService,
                 private _resConfirm: ResConfirmService) {
     }

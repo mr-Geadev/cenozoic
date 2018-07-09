@@ -4,6 +4,8 @@ export class UserModel {
     public email: string;
     public typeAccount: string;
     public status: number = null;
+    public resumeCount: number = null;
+    public vacancyCount: number = null;
 
     public confirmToken: string = null;
     public fullName: string;
@@ -23,6 +25,12 @@ export class UserModel {
         this.confirmToken = user.confirmToken || null;
         this.fullName = user.fullName || null;
         this.phone = user.phone || null;
+
+        user.resumeCount ?
+            this.resumeCount = user.resumeCount : null;
+
+        user.vacancyCount ?
+            this.vacancyCount = user.vacancyCount : null;
 
         if (user.notifications) {
             this.notifications.lk = user.notifications.lk;

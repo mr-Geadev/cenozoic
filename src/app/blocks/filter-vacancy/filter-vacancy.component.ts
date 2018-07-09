@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FilterVacancyService} from './filter-vacancy.service';
+import {CitiesService} from '../../services/cities.service';
 
 @Component({
     selector: 'filter-vacancy',
@@ -11,7 +12,8 @@ export class FilterVacancyComponent {
     public showing: boolean = false; // view
     public dictionary: any = null;
 
-    constructor(public filterVacancyService: FilterVacancyService) {
+    constructor(public filterVacancyService: FilterVacancyService,
+                public citiesService: CitiesService) {
     }
 
     public resetFilters(): void {

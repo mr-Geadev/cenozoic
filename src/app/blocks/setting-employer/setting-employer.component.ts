@@ -44,6 +44,9 @@ export class SettingEmployerComponent implements OnInit {
             .subscribe((user) => {
                 if (user) {
                     this.currentUser = Object.assign(this.currentUser, user);
+                    if (!this.currentUser.companyContactPersonName) {
+                        this.currentUser.companyContactPersonName = '';
+                    }
                     if (!this.currentUser.companyName) {
                         this.currentUser.companyName = '';
                     }
@@ -78,13 +81,14 @@ export class SettingEmployerComponent implements OnInit {
         });
 
         this.info = new FormGroup({
+            fullName: new FormControl(this.currentUser.fullName, [
+                Validators.required,
+            ]),
             companyName: new FormControl(this.currentUser.companyName, [
                 Validators.required,
-                Validators.minLength(1)
             ]),
             phone: new FormControl(this.currentUser.phone, [
                 Validators.required,
-                Validators.minLength(6),
                 Validators.pattern(`^(\\+7([0-9]){10})$`)
             ]),
             notifications: new FormGroup({

@@ -1,0 +1,157 @@
+{
+  "data": [
+    {
+      "countryName": {
+        "ru": "Россия",
+        "en": "Russia"
+      },
+      "codeCountry": 1000,
+      "cities": [
+        {
+          "cityName": {
+            "ru": "Москва",
+            "en": "Moscow"
+          },
+          "codeCity": 1001
+        },
+        {
+          "cityName": {
+            "ru": "Санкт-Петербург",
+            "en": "St. Petersburg"
+          },
+          "codeCity": 1002
+        },
+        {
+          "cityName": {
+            "ru": "Краснодар",
+            "en": "Krasnodar"
+          },
+          "codeCity": 1003
+        },
+        {
+          "cityName": {
+            "ru": "Чита",
+            "en": "Chita"
+          },
+          "codeCity": 1004
+        },
+        {
+          "cityName": {
+            "ru": "Челябинск",
+            "en": "Chelyabinsk"
+          },
+          "codeCity": 1005
+        },
+        {
+          "cityName": {
+            "ru": "Екатеринбург",
+            "en": "Ekaterinburg"
+          },
+          "codeCity": 1006
+        }
+      ]
+    },
+    {
+      "countryName": {
+        "ru": " Англия",
+        "en": "England"
+      },
+      "code": 2000,
+      "cities": [
+        {
+          "cityName": {
+            "ru": "Лондон",
+            "en": "London"
+          },
+          "codeCity": 2001
+        },
+        {
+          "cityName": {
+            "ru": "Ливерпуль",
+            "en": "Liverpool"
+          },
+          "codeCity": 2002
+        },
+        {
+          "cityName": {
+            "ru": "Йорк",
+            "en": "York"
+          },
+          "codeCity": 2003
+        },
+        {
+          "cityName": {
+            "ru": "Оксфорд",
+            "en": "Oxford"
+          },
+          "codeCity": 2004
+        },
+        {
+          "cityName": {
+            "ru": "Кембридж",
+            "en": "Cambridge"
+          },
+          "codeCity": 2005
+        },
+        {
+          "cityName": {
+            "ru": "Манчестер",
+            "en": "Manchester"
+          },
+          "codeCity": 2006
+        }
+      ]
+    },
+    {
+      "countryName": {
+        "ru": " Германия",
+        "en": "Germany"
+      },
+      "code": 3000,
+      "cities": [
+        {
+          "cityName": {
+            "ru": "Берлин",
+            "en": "Berlin"
+          },
+          "codeCity": 3001
+        },
+        {
+          "cityName": {
+            "ru": "Мюнхен",
+            "en": "Munich"
+          },
+          "codeCity": 3002
+        },
+        {
+          "cityName": {
+            "ru": "Франкфурт",
+            "en": "Frankfurt"
+          },
+          "codeCity": 3003
+        },
+        {
+          "cityName": {
+            "ru": "Штутгарт",
+            "en": "Stuttgart"
+          },
+          "codeCity": 3004
+        },
+        {
+          "cityName": {
+            "ru": "Гамбург",
+            "en": "Hamburg"
+          },
+          "codeCity": 3005
+        },
+        {
+          "cityName": {
+            "ru": "Дрезден",
+            "en": "Dresden"
+          },
+          "codeCity": 3006
+        }
+      ]
+    }
+  ]
+}

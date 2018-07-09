@@ -9,12 +9,11 @@ import 'rxjs/add/operator/first';
 import {Subscription} from 'rxjs/Subscription';
 
 import {CREATE_RESUME} from '../../constants';
-import {ChangeCityModalComponent} from '../../modals/change-city';
 import {ConfirmService} from '../../modals/confirm/confirm.service';
 import {ResumeService, SystemMessageService, UserService} from '../../services';
 import {LocalizationService} from '../../services/localization.service';
 import {
-    CHANGES_TYPE,
+    CHANGES_TYPE, DEFAULT_CERTIFICATE_IMAGE,
     DEFAULT_EDUCATION,
     DEFAULT_EXPERIENCE,
     DEFAULT_LANGUAGE,
@@ -23,6 +22,8 @@ import {
     DEFAULT_TRAINING,
     DEFAULT_TYPE
 } from './constructor-resume.constants';
+import {ChangeCityService} from '../../modals/change-city/change-city.service';
+import {City} from '../../modals/change-city/cities.models';
 
 @Component({
     selector: 'constructor-resume',
@@ -42,11 +43,15 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     public isAuthorized = false; // проверка авторизации текущего пользователя
     public invalid = false; // форма валидна/нет
     public loadingPhotoButton = ''; // текст кнопки загрузки фото
+    public loadingImagesOfCertificate: string[] = [];
     public currentUser = null;
+    public educationCityName: string[] = [];
+    public trainingsCityName: string[] = [];
     public phoneMask: any[] = ['+', '7', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
 
     public textEditorConfig: any = {}; // для RichTextComponent'ы
     public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
+    public certificateImages: any = []; // фотка сертификата
     public dictionary: any = null;
     public listVisibleElement: any = {
         experience: [],
@@ -61,6 +66,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 private userService: UserService,
                 private resumeService: ResumeService,
                 private router: Router,
+                private _changeCityService: ChangeCityService,
                 private _systemMessageService: SystemMessageService,
                 private _dialog: MatDialog,
                 private _confirm: ConfirmService,
@@ -88,7 +94,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             this.resumeService.resume$
             .subscribe((resume) => {
                 if (resume) {
-                    console.log(1, resume);
                     for (const key in resume) {
                         if (resume.hasOwnProperty(key)) {
                             this.resumeForm[key] = resume[key];
@@ -96,11 +101,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                     }
                     this.type = CHANGES_TYPE;
                 } else {
-                    console.log(2, resume);
                     this.type = DEFAULT_TYPE;
-                    console.log(this.resumeForm);
                     this.resumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
-                    console.log(this.resumeForm);
                 }
             }));
     }
@@ -114,7 +116,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     public showRequired(): void {
         this.invalid = true;
     }
-
 
     public manageFields(nameSection: string, index?: number): void {
         if (index === undefined) {
@@ -131,12 +132,15 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                     break;
                 case 'trainings':
                     typeField = DEFAULT_TRAINING;
+                    this.loadingImagesOfCertificate.push(this.dictionary.TRAINING_CERTIFICATE_LOAD);
+                    this.certificateImages.push(Object.assign({}, DEFAULT_CERTIFICATE_IMAGE));
                     break;
-                default:
-                    console.log('Error program');
+                default: null;
             }
             this.resumeForm[nameSection].push(Object.assign({}, typeField));
             this.listVisibleElement[nameSection].push(true);
+            console.log(this.certificateImages);
+            console.log(this.loadingImagesOfCertificate);
         } else {
             this._confirm.confirm('Вы действительно хотите удалить?')
                 .subscribe((res) => {
@@ -148,26 +152,52 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
         }
     }
 
+    public changeCity(index: number, nameField: string): void {
+        this._changeCityService.changeCity()
+            .subscribe((city: City) => {
+                    if (nameField === 'education') {
+                        this.resumeForm.education[index].city = city.code;
+                        this.educationCityName[index] = city.name;
+                    } else {
+                        this.resumeForm.trainings[index].city = city.code;
+                        this.trainingsCityName[index] = city.name;
+                    }
+                });
+    }
+
     public manageVisible(nameSection: string, index: number): void {
         this.listVisibleElement[nameSection][index] = !this.listVisibleElement[nameSection][index];
     }
 
-    public onImageChange(event): void {
+    public onImageChange(event, nameField, index?): void {
         const fileList: FileList = event.target.files;
         const file: File = fileList[0];
 
         if (fileList && fileList.length > 0) {
             if (file.size <= 5242880) {
                 const reader = new FileReader();
-                this.resumeImage.file = fileList[0];
 
-                this.loadingPhotoButton = this.resumeImage.file.name;
-
-                if (event.target.files && event.target.files.length > 0) {
-                    reader.readAsDataURL(this.resumeImage.file);
-                    reader.onload = () => {
-                        this.resumeImage.data = reader.result;
-                    };
+                if (nameField === 'avatar') {
+                    this.resumeImage.file = fileList[0];
+                    this.loadingPhotoButton = this.resumeImage.file.name;
+                    if (event.target.files && event.target.files.length > 0) {
+                        reader.readAsDataURL(this.resumeImage.file);
+                        reader.onload = () => {
+                            this.resumeImage.data = reader.result;
+                        };
+                    }
+                } else {
+                    this.certificateImages[index].file = fileList[0];
+                    this.loadingImagesOfCertificate[index] = this.certificateImages[index].file.name;
+                    if (event.target.files && event.target.files.length > 0) {
+                        reader.readAsDataURL(this.certificateImages[index].file);
+                        reader.onload = () => {
+                            this.certificateImages[index].data = reader.result;
+                            this.resumeForm.trainings[index].document = true;
+                        };
+                    }
+                    console.log(this.certificateImages);
+                    console.log(this.loadingImagesOfCertificate);
                 }
             } else {
                 this._systemMessageService.info('Размер файла превышает 5мб');
@@ -175,100 +205,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
         }
     }
 
-    public send(): void {
-
-        // блок рассчета опыта
-        let timeOil = 0;
-        let timeMining = 0;
-        let timeOther = 0;
-
-        this.resumeForm.experience.forEach((item) => {
-            if (item.type === 'oil') {
-                timeOil += this._calculateTime(item, item.present);
-            }
-
-            if (item.type === 'mining') {
-                timeMining += this._calculateTime(item, item.present);
-            }
-
-            if (item.type === 'other') {
-                timeOther += this._calculateTime(item, item.present);
-            }
-        });
-
-        this.resumeForm.experienceAll.oil.years = Math.floor(timeOil / 12);
-        this.resumeForm.experienceAll.oil.months = timeOil % 12;
-        this.resumeForm.experienceAll.mining.years = Math.floor(timeMining / 12);
-        this.resumeForm.experienceAll.mining.months = timeMining % 12;
-        this.resumeForm.experienceAllTime = {
-            years: Math.floor((timeOil + timeMining + timeOther) / 12),
-            months: (timeOil + timeMining + timeOther) % 12
-        };
-        // конец
-
-        if ( window.localStorage.getItem('localization') ) {
-            this.resumeForm.resumeLanguage =  window.localStorage.getItem('localization').slice(0, 2);
-        } else {
-            this.resumeForm.resumeLanguage = 'ru';
-        }
-
-        if (this.type === DEFAULT_TYPE) {
-            const formData: FormData = new FormData();
-
-            if (!!this.resumeImage.file) {
-                formData.append('fileToUpload', this.resumeImage.file);
-            }
-            this.resumeForm.fullName = this.currentUser.fullName;
-            console.log(this.resumeForm);
-            formData.append('resume', JSON.stringify(this.resumeForm));
-            this.http.post(CREATE_RESUME, formData)
-                .subscribe((res: any) => {
-                    if (res.success) {
-                        this.resumeForm = Object.assign({}, this.cleanResumeForm);
-                        this.resumeService.setResume(null);
-                        this.router.navigate(['personal-account']);
-                    }
-                });
-        } else {
-            delete this.resumeForm.userId;
-            const id = this.resumeForm._id;
-            delete this.resumeForm._id;
-
-            const formData: FormData = new FormData();
-
-            if (!!this.resumeImage.file) {
-                formData.append('fileToUpload', this.resumeImage.file);
-            }
-
-            formData.append('resumeId', id);
-            formData.append('resume', JSON.stringify(this.resumeForm));
-
-            this.http.post('/api/v1/user/resume/edit', formData)
-                .subscribe((res: any) => {
-                    if (res.success) {
-                        this.resumeForm = Object.assign({}, this.cleanResumeForm);
-                        this.resumeService.setResume(null);
-                        this.router.navigate(['resume', id]);
-                    }
-                });
-        }
-    }
-
     public birthdayChanged(date: Moment): void {
         this.resumeForm.birthday = date.toISOString();
-    }
-
-    public changeEducationCity(index: number): void {
-        this._dialog.open(ChangeCityModalComponent, {
-            width: '600px',
-            height: '370px'
-        } as MatDialogConfig)
-            .afterClosed()
-            .first()
-            .filter(city => !!city)
-            .subscribe((city: string) => {
-                this.resumeForm.education[index].city = city;
-            });
     }
 
     public showInvalidField(): void {
@@ -323,5 +261,94 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
         }
 
         return allMonths;
+    }
+
+    public send(): void {
+
+        // блок рассчета опыта
+        let timeOil = 0;
+        let timeMining = 0;
+        let timeOther = 0;
+
+        this.resumeForm.experience.forEach((item) => {
+            if (item.type === 'oil') {
+                timeOil += this._calculateTime(item, item.present);
+            }
+
+            if (item.type === 'mining') {
+                timeMining += this._calculateTime(item, item.present);
+            }
+
+            if (item.type === 'other') {
+                timeOther += this._calculateTime(item, item.present);
+            }
+        });
+
+        this.resumeForm.experienceAll.oil.years = Math.floor(timeOil / 12);
+        this.resumeForm.experienceAll.oil.months = timeOil % 12;
+        this.resumeForm.experienceAll.mining.years = Math.floor(timeMining / 12);
+        this.resumeForm.experienceAll.mining.months = timeMining % 12;
+        this.resumeForm.experienceAllTime = {
+            years: Math.floor((timeOil + timeMining + timeOther) / 12),
+            months: (timeOil + timeMining + timeOther) % 12
+        };
+        // конец
+
+        this.resumeForm.resumeLanguage = LocalizationService.currentLang();
+
+        if (this.type === DEFAULT_TYPE) {
+            const formData: FormData = new FormData();
+
+            if (!!this.resumeImage.file) {
+                formData.append('userPhoto', this.resumeImage.file);
+            }
+
+            this.resumeForm.trainings.forEach((training, index) => {
+                if (training.document) {
+                    formData.append(`certificatePhoto-${index}`, this.certificateImages[index].file);
+                    this.resumeForm.trainings[index].documentName = `certificatePhoto-${index}`;
+                }
+            });
+
+            this.resumeForm.fullName = this.currentUser.fullName;
+            formData.append('resume', JSON.stringify(this.resumeForm));
+            this.http.post(CREATE_RESUME, formData)
+                .subscribe((res: any) => {
+                    if (res.success) {
+                        this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                        this.resumeService.setResume(null);
+                        this.router.navigate(['personal-account']);
+                    }
+                });
+        } else {
+            delete this.resumeForm.userId;
+            const id = this.resumeForm._id;
+            delete this.resumeForm._id;
+
+            const formData: FormData = new FormData();
+
+            if (!!this.resumeImage.file) {
+                formData.append('userPhoto', this.resumeImage.file);
+            }
+
+            this.resumeForm.trainings.forEach((training, index)=>{
+                if (training.document) {
+                    formData.append(`certificatePhoto-${index}`, this.certificateImages[index].file);
+                    this.resumeForm.trainings.certificateName = `certificatePhoto-${index}`;
+                }
+            });
+
+            formData.append('resumeId', id);
+            formData.append('resume', JSON.stringify(this.resumeForm));
+
+            this.http.post('/api/v1/user/resume/edit', formData)
+                .subscribe((res: any) => {
+                    if (res.success) {
+                        this.resumeForm = Object.assign({}, this.cleanResumeForm);
+                        this.resumeService.setResume(null);
+                        this.router.navigate(['resume', id]);
+                    }
+                });
+        }
     }
 }
