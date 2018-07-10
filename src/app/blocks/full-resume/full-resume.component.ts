@@ -34,7 +34,7 @@ export class FullResumeComponent implements OnInit {
                 if (res.success) {
                     this.currentResume = res.resume;
                     this.currentResume.age = this.getAge(this.currentResume.birthday);
-                    this.currentResume.birthday = this.setBirthday(this.currentResume.birthday);
+                    this.currentResume.birthdayNormal = this.setBirthday(this.currentResume.birthday);
                     this.calculateTimeRange();
                 }
             });

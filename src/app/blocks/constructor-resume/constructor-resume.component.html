@@ -52,6 +52,7 @@
                             </div>
                             <div class="right">
                                 <birthday-date-picker
+                                        [dataInput]="this.resumeForm.birthday"
                                         (changed)="birthdayChanged($event);">
                                 </birthday-date-picker>
                                 <!--<div class="validation-alert" [class.visible]="age < 17">Возраст должен {{age}}быть больше 18</div>-->
@@ -201,9 +202,11 @@
                                             </mat-select>
                                         </mat-form-field>
                                         <input type="number" name="experience-startYear-{{i}}" id="start" required
+                                               (blur)="checkTimeValid(resumeForm.experience[i].startYear > 2018)"
                                                class="shortest-input" [(ngModel)]="resumeForm.experience[i].startYear">
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
                                         <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
+                                        <div class="validation-alert" [class.visible]="resumeForm.experience[i].startYear > 2018">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
                                     </div>
                                 </div>
 
@@ -235,8 +238,10 @@
                                                [disabled]="resumeForm.experience[i].present"
                                                [required]="!resumeForm.experience[i].present">
                                         <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
+                                        <div class="validation-alert" [class.visible]="resumeForm.experience[i].endYear > 2018">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
                                         <input type="checkbox" name="experience-name-{{i}}" value="true"
+                                               (blur)="checkTimeValid(resumeForm.experience[i].endYear > 2018)"
                                                id="present-{{i}}" [(ngModel)]="resumeForm.experience[i].present">
                                         <label for="present-{{i}}"
                                                class="word present mobile-hidden">{{dictionary.TILL_NOW_WORK}}</label>
@@ -374,9 +379,10 @@
                                     </div>
                                     <div class="right">
                                         <input type="number" name="education-start-{{i}}" id="start-education"
+                                               (blur)="checkTimeValid(resumeForm.education[i].start > 2018)"
                                                class="short-input" [(ngModel)]="resumeForm.education[i].start" required>
                                         <div class="word">{{dictionary.EDUCATION_YEAR}}</div>
-                                        <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
+                                        <div class="validation-alert" [class.visible]="resumeForm.education[i].start > 2018">{{dictionary.VALID_ENTRY_DATE}}</div>
                                     </div>
                                 </div>
 
@@ -387,8 +393,10 @@
                                     </div>
                                     <div class="right">
                                         <input type="number" name="education-end-{{i}}" id="end-education"
+                                               (blur)="checkTimeValid(resumeForm.education[i].end > 2029)"
                                                class="short-input" [(ngModel)]="resumeForm.education[i].end" required>
                                         <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
+                                        <div class="validation-alert" [class.visible]="resumeForm.education[i].end > 2029">{{dictionary.VALID_ENTRY_DATE}}</div>
                                         <div class="word">{{dictionary.EDUCATION_YEAR}}</div>
                                     </div>
                                 </div>
@@ -543,8 +551,7 @@
                             <div class="hidden-wrapper" [class.hidden]="!listVisibleElement.trainings[i]">
                                 <div class="parameter year-training">
                                     <div class="left">
-                                        <label for="year-training">{{dictionary.TRAINING_YEAR}}<span
-                                                class="required">*</span></label>
+                                        <label for="year-training">{{dictionary.TRAINING_YEAR}}</label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="training-year-{{i}}" id="year-training"
@@ -555,8 +562,7 @@
 
                                 <div class="parameter durability-training">
                                     <div class="left">
-                                        <label for="durability-training">{{dictionary.TRAINING_DURABILITY}}<span
-                                                class="required">*</span></label>
+                                        <label for="durability-training">{{dictionary.TRAINING_DURABILITY}}</label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="training-durability-{{i}}" id="durability-training"
@@ -587,8 +593,7 @@
 
                                 <div class="parameter city-training">
                                     <div class="left">
-                                        <label for="city-training">{{dictionary.TRAINING_CITY}}<span
-                                                class="required">*</span></label>
+                                        <label for="city-training">{{dictionary.TRAINING_CITY}}</label>
                                     </div>
                                     <div class="right">
                                         <button mat-raised-button color="primary" (click)="changeCity(i, 'trainings')">
@@ -603,8 +608,7 @@
 
                                 <div class="parameter name-training">
                                     <div class="left">
-                                        <label for="name-training">{{dictionary.TRAINING_NAME}}<span
-                                                class="required">*</span></label>
+                                        <label for="name-training">{{dictionary.TRAINING_NAME}}</label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="training-name-{{i}}" id="name-training"
@@ -711,11 +715,15 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid">
+                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime">
                             {{ dictionary.SAVE }}
                         </button>
+                        <button type="submit" class="save-button invalid"
+                                *ngIf="!myForm.invalid && invalidTime">
+                            {{ dictionary.BUTTON_SAVE_ALERT }}
+                        </button>
                         <button type="submit" (click)="showInvalidField()" class="save-button invalid"
-                                *ngIf="myForm.invalid">
+                                *ngIf="myForm.invalid ">
                             {{ dictionary.BUTTON_SAVE_ALERT }}
                         </button>
                         <div class="message">

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as moment from 'moment';
 import {Moment} from 'moment';
 import {LocalizationService} from '../../services/localization.service';
@@ -10,6 +10,7 @@ import {LocalizationService} from '../../services/localization.service';
 })
 export class BirthdayComponent implements OnInit {
     @Output() changed: EventEmitter<any> = new EventEmitter();
+    @Input() dataInput?: string;
 
     public data: string = null;
     public dictionary: any = null;
@@ -21,6 +22,9 @@ export class BirthdayComponent implements OnInit {
     public ngOnInit() {
         this.dictionary = this._localizationService.currentDictionary;
         this.data = this.dictionary.CHANGE_BIRTHDAY;
+        if (this.dataInput) {
+            this.dateChanged(moment(this.dataInput));
+        }
     }
 
     public dateChanged(date: Moment): void {

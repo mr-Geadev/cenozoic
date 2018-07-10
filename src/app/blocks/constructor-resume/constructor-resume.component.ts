@@ -39,9 +39,11 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
     public resumeForm: any = DEFAULT_RESUME_FORM; // резюме, которое будет заполняться
     public age: any = 1000;
+    public resumeId: string = null;
     public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM); // схема незаполненнго резюме
     public isAuthorized = false; // проверка авторизации текущего пользователя
     public invalid = false; // форма валидна/нет
+    public invalidTime = false; // форма не валидна по времени
     public loadingPhotoButton = ''; // текст кнопки загрузки фото
     public nameImagesOfCertificate: string[] = [];
     public currentUser = null;
@@ -99,6 +101,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                             this.resumeForm[key] = resume[key];
                         }
                     }
+                    this.resumeId = this.resumeForm._id;
                     this.type = CHANGES_TYPE;
                     this.resumeForm.trainings.forEach((training, index) => {
                         training.document = false;
@@ -121,6 +124,11 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
     public showRequired(): void {
         this.invalid = true;
+    }
+
+    public checkTimeValid(mustBeInvalid): void {
+        mustBeInvalid  ? this.invalidTime = true : this.invalidTime = false;
+        console.log(this.invalidTime);
     }
 
     public manageFields(nameSection: string, index?: number): void {
@@ -152,6 +160,14 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 .subscribe((res) => {
                     if (res) {
                         this.resumeForm[nameSection].splice(index, 1);
+                        if (nameSection === 'trainings') {
+                            this.nameImagesOfCertificate.splice(index, 1);
+                            this.imagesOfCertificate.splice(index, 1);
+                            this.trainingsCityName.splice(index, 1);
+                        }
+                        if (nameSection === 'education') {
+                            this.educationCityName.splice(index, 1);
+                        }
                     }
                     this._dialog.closeAll();
                 });
@@ -336,8 +352,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 });
         } else {
             delete this.resumeForm.userId;
-            const id = this.resumeForm._id;
             delete this.resumeForm._id;
+            delete this.resumeForm.birthdayNormal;
 
             if (this.resumeForm.experience.length) {
                 this.resumeForm.experience.forEach((experience) => {
@@ -362,7 +378,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 }
             });
 
-            formData.append('resumeId', id);
+            formData.append('resumeId', this.resumeId);
             formData.append('resume', JSON.stringify(this.resumeForm));
 
             this.http.post('/api/v1/user/resume/edit', formData)
@@ -370,7 +386,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                     if (res.success) {
                         this.resumeForm = Object.assign({}, this.cleanResumeForm);
                         this.resumeService.setResume(null);
-                        this.router.navigate(['resume', id]);
+                        this.router.navigate(['resume', this.resumeId]);
                     }
                 });
         }

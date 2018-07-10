@@ -266,7 +266,7 @@ export const RUSSIAN_DICTIONARY = {
     FIELD_SHOULD_BE_COMPLETED: 'Поле должно быть заполнено',
     VALID_EMAIL: 'Введите почту в формате: exapmple@domain.com',
     VALID_PHONE_NUMBER: 'Введите телефон в формате +79991112233',
-    VALID_ENTRY_DATE: 'Введите дату',
+    VALID_ENTRY_DATE: 'Введите корректную дату',
     VALID_ENTRY_DATE_END_WORK: 'Введите дату либо поставьте "По настоящее время"',
     VALID_CHANGE_INDUSTRIAL: 'Выберите тип промышленности',
     VALID_CHANGE_EDUCATION: 'Выберите тип образования',
