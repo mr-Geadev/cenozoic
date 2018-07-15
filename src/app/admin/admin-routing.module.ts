@@ -5,6 +5,7 @@ import {AdminComponent} from './admin.component';
 import {MainComponent} from './pages/main/main.component';
 import {ResumeListComponent} from './pages/resume-list/resume-list.component';
 import {UsersComponent} from './pages/users/users.component';
+import {SettingsComponent} from './pages/settings/settings.component';
 
 const routes: Routes = [
     {
@@ -20,6 +21,9 @@ const routes: Routes = [
             },
             {
                 path: 'users', component: UsersComponent
+            },
+            {
+                path: 'settings', component: SettingsComponent
             },
         ],
     },

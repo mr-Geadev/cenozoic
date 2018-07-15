@@ -1,0 +1,52 @@
+<div class="row">
+    <form class="col-4" [formGroup]="city" validate (submit)="saveCity()" >
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Добавить город</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-select name="country"
+                                placeholder="Выберете страну"
+                                formControlName="codeCountry">
+                        <mat-option *ngFor="let country of listCountry"
+                                    value="{{++country.code}}">
+                            {{country.name}} {{country.code}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+               <div formGroupName="cityName">
+                   <mat-form-field class="example-full-width" >
+                       <input matInput formControlName="ru" placeholder="Имя города на русском">
+                   </mat-form-field>
+
+                   <mat-form-field class="example-full-width" >
+                       <input matInput formControlName="en" placeholder="Имя города на английском">
+                   </mat-form-field>
+               </div>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-button type="submit" [disabled]="city.invalid">Сохранить</button>
+            </mat-card-actions>
+
+            <mat-menu #menu="matMenu">
+
+            </mat-menu>
+        </mat-card>
+    </form>
+    <div class="col-3 all-city">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Текущие города</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="city" *ngFor="let city of listCities">
+                    {{city.name}}
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

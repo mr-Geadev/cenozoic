@@ -3,10 +3,10 @@ import {NgModule} from '@angular/core';
 import {
     MatButtonModule,
     MatCardModule,
-    MatDialogModule,
-    MatIconModule,
+    MatDialogModule, MatFormFieldModule,
+    MatIconModule, MatInputModule,
     MatListModule,
-    MatMenuModule,
+    MatMenuModule, MatSelectModule,
     MatTabsModule,
     MatToolbarModule,
 } from '@angular/material';
@@ -20,11 +20,15 @@ import {FullUserInfoComponent} from './pages/users/full-user-info/full-user-info
 import {ItemUserComponent} from './pages/users/item-user/item-user.component';
 import {UsersApi} from './pages/users/users.api';
 import {UsersComponent} from './pages/users/users.component';
+import {SettingsComponent} from './pages/settings/settings.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
         AdminRoutingModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
 
         // material
         MatDialogModule,
@@ -34,7 +38,9 @@ import {UsersComponent} from './pages/users/users.component';
         MatButtonModule,
         MatToolbarModule,
         MatTabsModule,
-        MatMenuModule
+        MatMenuModule,
+        MatInputModule,
+        MatSelectModule,
     ],
     declarations: [
         // core
@@ -42,6 +48,7 @@ import {UsersComponent} from './pages/users/users.component';
 
         // pages
         ResumeListComponent,
+        SettingsComponent,
         MainComponent,
         UsersComponent,
 

@@ -5,7 +5,8 @@ import {UserService} from '../services';
 export const MENU_LIST = [
     {name: 'Главная', link: './'},
     {name: 'Пользователи', link: 'users'},
-    {name: 'Резюме', link: 'resumeList'}
+    {name: 'Резюме', link: 'resumeList'},
+    {name: 'Настройки', link: 'settings'}
     // {name: 'Вакансии', link: '#'},
 ];
 
