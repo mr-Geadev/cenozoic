@@ -62,7 +62,7 @@ export class LoginModalComponent implements OnInit {
                         .subscribe((res) => {
                             this._userService.getUserInfo();
                         });
-                    this._systemMessageService.info('Вы зарегистрированы');
+                    this._systemMessageService.info('Вам отправлено письмо на почтовый ящик, пожалуйста подтвердите почту');
                     this._dialog.closeAll();
                 },
                 (err) => {

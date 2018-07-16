@@ -296,6 +296,6 @@ export const ENGLISH_DICTIONARY = {
 
 
     //  подтверждение почты
-    CONFIRM_SUCCESS: 'Your account has been successfully verified',
+    CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',
     CONFIRM_FAIL: 'The link is not valid. Check the correctness of the link, or contact the administrator for assistance.',
 };
