@@ -1,8 +1,30 @@
 :host {
+    item-user {
+        display: table-row;
+        &.hidden {
+            display: none;
+        }
+    }
     item-user:focus, item-user:hover {
-        display: block;
+        //display: block;
         background-color: #dcdcdc;
         cursor: pointer;
+    }
+
+    table {
+        width: 100%;
+
+        caption {
+            text-align: left;
+            padding: 20px 0;
+            font-size: 1rem;
+            font-family: 'Roboto';
+        }
+
+        th {
+            text-align: left;
+            vertical-align: middle;
+        }
     }
 
     .full-info-user {

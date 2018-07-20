@@ -4,37 +4,55 @@
             <mat-tab-group>
 
                 <mat-tab label="Все">
-                    <mat-list>
-                        <h3 mat-subheader>Список всех аккаунтов на сайте</h3>
+                    <table>
+                        <caption>Список всех аккаунтов на сайте</caption>
+                        <tr>
+                            <th>Email</th>
+                            <th>Имя/Контактое лицо</th>
+                            <th>Количество <br/> резюме/вакансий</th>
+                            <th>Название компании</th>
+                        </tr>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
                                    [user]="user"
                                    (click)="showFullInfo(user, i)"></item-user>
-                    </mat-list>
+                    </table>
                 </mat-tab>
 
                 <mat-tab label="Компании">
-                    <mat-list>
-                        <h3 mat-subheader>Список всех работодателей зарегестрированных на сайте</h3>
+                    <table>
+                        <caption>Список всех работодателей зарегестрированных на сайте</caption>
+                        <tr>
+                            <th>Email</th>
+                            <th>Контактое лицо</th>
+                            <th>Количество <br/>вакансий</th>
+                            <th>Название компании</th>
+                        </tr>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
-                                   [user]="user" [filter]="'employer'"
+                                   [user]="user" [class.hidden]="user.typeAccount !== 'employer'"
                                    (click)="showFullInfo(user, i)"></item-user>
-                    </mat-list>
+                    </table>
                 </mat-tab>
 
                 <mat-tab label="Соискатели">
-                    <mat-list>
-                        <h3 mat-subheader>Список всех соискателей зарегестрированных на сайте</h3>
+                    <table>
+                        <caption>Список всех соискателей зарегестрированных на сайте</caption>
+                        <tr>
+                            <th>Email</th>
+                            <th>Имя</th>
+                            <th>Количество <br/> резюме/вакансий</th>
+                            <th></th>
+                        </tr>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
-                                   [user]="user" [filter]="'worker'"
+                                   [user]="user" [class.hidden]="user.typeAccount !== 'worker'"
                                    (click)="showFullInfo(user, i)"></item-user>
-                    </mat-list>
+                    </table>
                 </mat-tab>
 
                 <mat-tab label="Модераторы">
                     <mat-list>
                         <h3 mat-subheader>Список модераторов</h3>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
-                                   [user]="user" [filter]="'moderator'"
+                                   [user]="user" [class.hidden]="user.typeAccount !== 'moderator'"
                                    (click)="showFullInfo(user, i)"></item-user>
                     </mat-list>
                 </mat-tab>

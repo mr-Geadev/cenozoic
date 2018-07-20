@@ -9,14 +9,10 @@ import {UserModel} from '../../../../models/user.model';
 export class ItemUserComponent implements OnInit {
 
     @Input() user: UserModel;
-    @Input() filter?: string;
-
-    public visible: boolean = false;
 
     constructor() {
     }
 
     public ngOnInit() {
-        this.filter ? this.visible = this.user.typeAccount === this.filter : this.visible = true;
     }
 }

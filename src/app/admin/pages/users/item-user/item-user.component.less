@@ -1,13 +1,23 @@
 :host {
-    .unconfirmed {
+    height: 50px;
+
+    &.unconfirmed {
         border-left: 3px solid red;
         margin: 2px 0;
         display: block;
     }
 
-    .banned {
+    &.banned {
         border-left: 3px solid black;
         margin: 2px 0;
         display: block;
+    }
+
+    td {
+        vertical-align: middle;
+    }
+
+    .number {
+        text-align: center;
     }
 }

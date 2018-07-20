@@ -6,6 +6,7 @@ export class UserModel {
     public status: number = null;
     public resumeCount: number = null;
     public vacancyCount: number = null;
+    public companyName: string = null;
 
     public confirmToken: string = null;
     public fullName: string;
@@ -21,6 +22,7 @@ export class UserModel {
         this.email = user.email;
         this.typeAccount = user.typeAccount;
         this.status = user.status || 0;
+        this.companyName = user.companyName || null;
 
         this.confirmToken = user.confirmToken || null;
         this.fullName = user.fullName || null;
