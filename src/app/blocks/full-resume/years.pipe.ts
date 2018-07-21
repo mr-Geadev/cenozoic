@@ -14,7 +14,7 @@ export class YearsPipe implements PipeTransform {
     transform(value: any, year: any): number {
         let yearLang = value;
         if (LocalizationService.currentLang() === 'ru') {
-            switch (value) {
+            switch (year) {
                 case 2: yearLang = 'года'; break;
                 case 3: yearLang = 'года'; break;
                 case 4: yearLang = 'года'; break;
@@ -23,7 +23,7 @@ export class YearsPipe implements PipeTransform {
                 case 13: yearLang = 'лет'; break;
                 case 14: yearLang = 'лет'; break;
                 default:
-                    if ((value % 10 > 0 ) && (value % 10 < 5 )) {
+                    if ((year % 10 > 0 ) && (year % 10 < 5 )) {
                         yearLang = 'год';
                     } else {
                         yearLang = 'лет';
