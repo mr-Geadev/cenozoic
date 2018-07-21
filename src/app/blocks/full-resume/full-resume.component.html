@@ -42,7 +42,7 @@
                             {{dictionary.IN_OIL}}
                         </div>
                         <div class="value black text">
-                            {{currentResume.experienceAll.oil.years}} {{dictionary.OF_YEARS}}
+                            {{currentResume.experienceAll.oil.years}} {{dictionary.OF_YEARS | howLong:currentResume.experienceAll.oil.years}}
                         </div>
                     </div>
                     <div class="line" *ngIf="currentResume.experienceAll.mining.years">
@@ -51,7 +51,7 @@
                             {{dictionary.IN_MINING}}
                         </div>
                         <div class="value black text">
-                            {{currentResume.experienceAll.mining.years}} {{dictionary.OF_YEARS}}
+                            {{currentResume.experienceAll.mining.years}} {{dictionary.OF_YEARS | howLong:currentResume.experienceAll.mining.years}}
                         </div>
                     </div>
                 </div>
