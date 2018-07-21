@@ -35,7 +35,8 @@ export const DEFAULT_TRAINING = {
     country: null,
     city: null,
     name: null,
-    document: false
+    document: false,
+    documentName: null
 };
 
 export const DEFAULT_RESUME_FORM = {
