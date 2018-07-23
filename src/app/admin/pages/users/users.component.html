@@ -14,6 +14,8 @@
                         </tr>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
                                    [user]="user"
+                                   [class.unconfirmed]="user.status === 1"
+                                   [class.banned]="user.status === 9"
                                    (click)="showFullInfo(user, i)"></item-user>
                     </table>
                 </mat-tab>
@@ -29,6 +31,8 @@
                         </tr>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
                                    [user]="user" [class.hidden]="user.typeAccount !== 'employer'"
+                                   [class.unconfirmed]="user.status === 1"
+                                   [class.banned]="user.status === 9"
                                    (click)="showFullInfo(user, i)"></item-user>
                     </table>
                 </mat-tab>
@@ -44,6 +48,8 @@
                         </tr>
                         <item-user *ngFor="let user of usersApi.userList; let i = index;"
                                    [user]="user" [class.hidden]="user.typeAccount !== 'worker'"
+                                   [class.unconfirmed]="user.status === 1"
+                                   [class.banned]="user.status === 9"
                                    (click)="showFullInfo(user, i)"></item-user>
                     </table>
                 </mat-tab>

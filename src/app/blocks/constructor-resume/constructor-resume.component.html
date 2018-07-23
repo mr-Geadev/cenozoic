@@ -205,8 +205,12 @@
                                                (blur)="checkTimeValid(resumeForm.experience[i].startYear > 2018)"
                                                class="shortest-input" [(ngModel)]="resumeForm.experience[i].startYear">
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
-                                        <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
-                                        <div class="validation-alert" [class.visible]="resumeForm.experience[i].startYear > 2018">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
+                                        <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
+                                        <div class="validation-alert"
+                                             *ngIf="resumeForm.experience[i].startYear"
+                                             [class.visible]="resumeForm.experience[i].startYear > 2018">
+                                            {{dictionary.VALID_ENTRY_DATE}}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -238,7 +242,11 @@
                                                [disabled]="resumeForm.experience[i].present"
                                                [required]="!resumeForm.experience[i].present">
                                         <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
-                                        <div class="validation-alert" [class.visible]="resumeForm.experience[i].endYear > 2018">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
+                                        <div class="validation-alert"
+                                             *ngIf="resumeForm.experience[i].endYear"
+                                             [class.visible]="resumeForm.experience[i].endYear > 2018">
+                                            {{dictionary.VALID_ENTRY_DATE}}
+                                        </div>
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
                                         <input type="checkbox" name="experience-name-{{i}}" value="true"
                                                (blur)="checkTimeValid(resumeForm.experience[i].endYear > 2018)"
