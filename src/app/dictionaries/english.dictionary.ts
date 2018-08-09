@@ -93,11 +93,24 @@ export const ENGLISH_DICTIONARY = {
     HOME_PAGE_STEP_4: 'Get the desired job',
 
     RECENTLY_ADDED: 'Recently added',
-    CVS: 'CVs',
+    CVS: "CV's",
     VACANCIES: 'Vacancies',
     SEE_ALL_VACANCIES: 'See all vacancies',
     JOB_IN_TOP_COMPANIES: 'Job in the top companies',
     FOUR_STEPS_OF_SUCCESS_CAREER: '4 steps of success career',
+
+    // фильтры
+    PLACE_OF_LIVING: 'Place of residence',
+    MORE_THAN: 'More',
+    LANGUAGE_OF_CV: 'Language of CV',
+    HIDDEN: 'Hidden',
+    GENDER_MAN: 'Man',
+    GENDER_WOMAN: 'Woman',
+    PHOTO_OF_PROFILE: 'Profile photo',
+    ADVANCED_FILTER: 'Advanced filter',
+    RESET_FILTERS: 'Reset filters',
+    WITHOUT_EXPERIENCE: 'Without experience',
+    REGION_OF_ACTIVITY: 'Region of activity',
 
     //окно входа
     PASSWORD: 'Password',
@@ -169,6 +182,7 @@ export const ENGLISH_DICTIONARY = {
     IRRELEVANT: 'Does not matter',
     BEFORE_TAXES: 'before tax',
     AFTER_TAXES: 'after tax',
+    SOCIAL_PACKAGE: 'Social package',
     SEX: 'Sex',
         MAN: 'Male',
         WOMAN: 'Female',

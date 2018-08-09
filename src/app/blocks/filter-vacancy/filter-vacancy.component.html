@@ -12,13 +12,13 @@
                 <mat-form-field>
                     <input matInput
                            name="city"
-                           placeholder="Регион деятельности"
-                           value="{{filterVacancyService.parameters.city ? citiesService.locations.getCityToCode(filterVacancyService.parameters.city).name : 'Выбрать город..'}}"
+                           placeholder="{{dictionary.REGION_OF_ACTIVITY}}"
+                           value="{{ filterVacancyService.parameters.city ? citiesService.locations.getCityToCode(filterVacancyService.parameters.city).name : dictionary.CHANGE_CITY }}"
                            (click)="filterVacancyService.changeCity($event)">
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="salary" placeholder="Оклад"
+                    <mat-select name="salary" placeholder="{{dictionary.SALARY}}"
                                 (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.salary" disabled>
                         <mat-option value="маленькая">маленькая</mat-option>
@@ -27,16 +27,16 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="educationStage" placeholder="Образование"
+                    <mat-select name="educationStage" placeholder="{{dictionary.EDUCATION}}"
                                 (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.educationStage" disabled>
-                        <mat-option value="среднее">среднее</mat-option>
-                        <mat-option value="высшее">высшее</mat-option>
+                        <mat-option value="среднее">{{dictionary.EDUCATION_STAGE_HIGH}}</mat-option>
+                        <mat-option value="высшее">{{dictionary.EDUCATION_STAGE_MIDDLE}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="experienceAllTime" placeholder="Стаж"
+                    <mat-select name="experienceAllTime" placeholder="{{dictionary.FULL_EXPERIENCE}}"
                                 (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.experienceAllTime" disabled>
                         <mat-option value="маленький">маленький</mat-option>
@@ -47,45 +47,45 @@
 
             <div class="row">
                 <mat-form-field>
-                    <mat-select name="languages" placeholder="Знание языков"
+                    <mat-select name="languages" placeholder="{{dictionary.KNOWLEDGE_OF_LANGUAGES}}"
                                 (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.languages" multiple disabled>
-                        <mat-option value="en">Английский</mat-option>
-                        <mat-option value="ru">Русский</mat-option>
-                        <mat-option value="chi">Китайский</mat-option>
-                        <mat-option value="arab">Арабский</mat-option>
-                        <mat-option value="span">Испанский</mat-option>
-                        <mat-option value="port">Португальский</mat-option>
-                        <mat-option value="ind(индийский)">Хинди(индийский)</mat-option>
-                        <mat-option value="fran">Французский</mat-option>
-                        <mat-option value="dutch">Немецкий</mat-option>
+                        <mat-option value="en">{{dictionary.LANGUAGE_EN}}</mat-option>
+                        <mat-option value="ru">{{dictionary.LANGUAGE_RU}}</mat-option>
+                        <mat-option value="chi">{{dictionary.LANGUAGE_CHI}}</mat-option>
+                        <mat-option value="arab">{{dictionary.LANGUAGE_ARAB}}</mat-option>
+                        <mat-option value="span">{{dictionary.LANGUAGE_SPAN}}</mat-option>
+                        <mat-option value="port">{{dictionary.LANGUAGE_PORT}}</mat-option>
+                        <mat-option value="ind">{{dictionary.LANGUAGE_IND}}</mat-option>
+                        <mat-option value="fran">{{dictionary.LANGUAGE_FRAN}}</mat-option>
+                        <mat-option value="dutch">{{dictionary.LANGUAGE_DEUTH}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="employmentType" placeholder="Занятость"
+                    <mat-select name="employmentType" placeholder="{{dictionary.EMPLOYMENT}}"
                                 (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.employmentType">
-                        <mat-option>Не имеет значения</mat-option>
-                        <mat-option value="full">Полная занятость</mat-option>
-                        <mat-option value="part">Частичная занятость</mat-option>
-                        <mat-option value="time">Временная работа</mat-option>
-                        <mat-option value="internship">Стажировка</mat-option>
+                        <mat-option>{{dictionary.IRRELEVANT}}</mat-option>
+                        <mat-option value="full">{{dictionary.FULL_EMPLOYMENT}}</mat-option>
+                        <mat-option value="part">{{dictionary.PART}}</mat-option>
+                        <mat-option value="time">{{dictionary.TEMPORARY}}</mat-option>
+                        <mat-option value="internship">{{dictionary.INTERNSHIP}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="schedule" placeholder="График работы" (change)="filterVacancyService.changeForm()"
+                    <mat-select name="schedule" placeholder="{{dictionary.SCHEDULE}}" (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.schedule">
-                        <mat-option>Не имеет значения</mat-option>
-                        <mat-option value="full">Полный день</mat-option>
-                        <mat-option value="remote">Удаленная работа</mat-option>
-                        <mat-option value="watch">Вахтовый метод</mat-option>
+                        <mat-option>{{dictionary.IRRELEVANT}}</mat-option>
+                        <mat-option value="full">{{dictionary.FULL_DAY}}</mat-option>
+                        <mat-option value="remote">{{dictionary.REMOTE}}</mat-option>
+                        <mat-option value="watch">{{dictionary.SHIFT}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="social" placeholder="Соц. пакет"
+                    <mat-select name="social" placeholder="{{dictionary.SOCIAL_PACKAGE}}"
                                 (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.social" disabled>
                         <mat-option value="есть">есть</mat-option>
@@ -97,7 +97,7 @@
         <div class="row reset">
             <div class="button-text"
                  (click)="resetFilters()">
-                Сбросить фильтры
+                {{dictionary.RESET_FILTERS}}
                 <img class="button-icon" src="/assets/images/icon-gray-cross.svg">
             </div>
         </div>

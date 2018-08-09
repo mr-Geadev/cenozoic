@@ -99,6 +99,19 @@ export const RUSSIAN_DICTIONARY = {
     JOB_IN_TOP_COMPANIES: 'Работа в ведущих компаниях',
     FOUR_STEPS_OF_SUCCESS_CAREER: '4 шага для успешной карьеры',
 
+    // фильтры
+    PLACE_OF_LIVING: 'Место проживания',
+    MORE_THAN: 'Более',
+    LANGUAGE_OF_CV: 'Язык резюме',
+    HIDDEN: 'Скрыть',
+    GENDER_MAN: 'Мужской',
+    GENDER_WOMAN: 'Женский',
+    PHOTO_OF_PROFILE: 'Фото профиля',
+    ADVANCED_FILTER: 'Расширенный фильтр',
+    RESET_FILTERS: 'Сбросить фильтры',
+    WITHOUT_EXPERIENCE: 'Без опыта',
+    REGION_OF_ACTIVITY: 'Регион деятельности',
+
     // окно входа
     PASSWORD: 'Пароль',
     FORGOT_PASSWORD: 'Забыли пароль?',
@@ -156,10 +169,10 @@ export const RUSSIAN_DICTIONARY = {
     SAVE_VACANCY: 'Сохранить вакансию',
     SAVE_VACANCY_DESCRIPTION: 'Вы всегда сможете отредактировать вакансию  в личном кабинете',
 
-    // конструктор резюме
+    // конструкторы
     CONSTRUCTOR_CV: 'Конструктор резюме',
     ADD_NEW_CV: 'Добавить новое резюме',
-    YES:'Да',
+    YES: 'Да',
     NO: 'Нет',
     EXPECTED_POSITION: 'Желаемая должность',
     CHANGE_BIRTHDAY: 'выберите дату рождения',
@@ -169,6 +182,7 @@ export const RUSSIAN_DICTIONARY = {
     IRRELEVANT: 'Не имеет значения',
     BEFORE_TAXES: 'до вычета налогов',
     AFTER_TAXES: 'после вычета налогов',
+    SOCIAL_PACKAGE: 'Соц. пакет',
     SEX: 'Пол',
         MAN: 'Муж',
         WOMAN: 'Жен',

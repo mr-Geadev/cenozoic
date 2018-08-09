@@ -37,7 +37,7 @@ export class FilterResumesModel {
         this.gender = null;
 
         this.photo = false;
-        this.languages.length = 0;
+        this.languages = [];
 
         this.salary.from = 0;
         this.salary.to = 0;

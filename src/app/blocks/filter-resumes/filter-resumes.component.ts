@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FilterResumesService} from './filter-resumes.service';
+import {LocalizationService} from '../../services';
 
 
 @Component({
@@ -7,12 +8,13 @@ import {FilterResumesService} from './filter-resumes.service';
     templateUrl: './filter-resumes.component.html',
     styleUrls: ['./filter-resumes.component.less'],
 })
-export class FilterResumesComponent {
+export class FilterResumesComponent implements OnInit {
 
     public showing: boolean = false; // view
     public dictionary: any = null;
 
-    constructor(public filterResumesService: FilterResumesService) {
+    constructor(public filterResumesService: FilterResumesService,
+                private _localizationService: LocalizationService) {
     }
 
     // view function
@@ -22,5 +24,9 @@ export class FilterResumesComponent {
         } else {
             this.showing = !this.showing;
         }
+    }
+
+    ngOnInit() {
+        this.dictionary = this._localizationService.currentDictionary;
     }
 }
