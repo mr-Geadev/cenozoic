@@ -64,18 +64,17 @@ export class FilterResumesModel {
         this.photo ? objectRequest['photo'] = this.photo : null;
         this.languages.length ? objectRequest['languages'] = this.languages.map(item => item) : null;
 
-
-        this.experienceTime ? objectRequest['experienceTime'] = this.experienceTime : null;
-        this.experienceType ? objectRequest['experienceType'] = this.experienceType : null;
-
         switch (this.experienceTime) {
-            case ('little'): objectRequest['experienceTime']  = {from: 0, to: 3}; break;
+            case ('littlest'): objectRequest['experienceTime']  = {from: 0, to: 1}; break;
+            case ('little'): objectRequest['experienceTime']  = {from: 1, to: 3}; break;
             case ('medium'): objectRequest['experienceTime']  = {from: 3, to: 5}; break;
             case ('high'): objectRequest['experienceTime']  = {from: 5, to: 10}; break;
             case ('moreHigh'): objectRequest['experienceTime']  = {from: 10, to: 19}; break;
             case ('highest'): objectRequest['experienceTime']  = {from: 20}; break;
-            default: null; break;
+            default: objectRequest['experienceTime']  = {from: 0}; break;
         }
+
+        objectRequest['experienceTime'] = Object.assign(objectRequest['experienceTime'], {type: this.experienceType || 'all'});
 
         // this.salary.from !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {from: this.salary.from}}) : null;
         this.salary.to !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {from: 0, to: this.salary.to}}) : null;

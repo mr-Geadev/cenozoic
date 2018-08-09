@@ -314,11 +314,11 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             }
         });
 
-        this.resumeForm.experienceAll.oil.years = Math.floor(timeOil / 12);
-        this.resumeForm.experienceAll.oil.months = timeOil % 12;
-        this.resumeForm.experienceAll.mining.years = Math.floor(timeMining / 12);
-        this.resumeForm.experienceAll.mining.months = timeMining % 12;
-        this.resumeForm.experienceAllTime = {
+        this.resumeForm.experienceTime.oil.years = Math.floor(timeOil / 12);
+        this.resumeForm.experienceTime.oil.months = timeOil % 12;
+        this.resumeForm.experienceTime.mining.years = Math.floor(timeMining / 12);
+        this.resumeForm.experienceTime.mining.months = timeMining % 12;
+        this.resumeForm.experienceTime.all = {
             years: Math.floor((timeOil + timeMining + timeOther) / 12),
             months: (timeOil + timeMining + timeOther) % 12
         };

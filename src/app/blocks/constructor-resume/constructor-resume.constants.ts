@@ -47,8 +47,11 @@ export const DEFAULT_RESUME_FORM = {
     resumeLanguage: 'ru',
     gender: 'man',
     family: null,
-    experienceAllTime: null,
-    experienceAll: {
+    experienceTime: {
+        all: {
+            years: null,
+            months: null
+        },
         oil: {
             years: null,
             months: null

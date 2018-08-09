@@ -67,10 +67,10 @@ export class ListResumeComponent implements OnInit {
 
         let answer = list.map((item) => {
 
-            if ( (!item.experienceAllTime) || ( (item.experienceAllTime.years === 0) && (item.experienceAllTime.months === 0) ) ) {
-                item.experienceAllTime = 'Без опыта';
+            if ( (!item.experienceTime.all) || ( (item.experienceTime.all.years === 0) && (item.experienceTime.all.months === 0) ) ) {
+                item.experienceTime.all = 'Без опыта';
             } else {
-                item.experienceAllTime = `${item.experienceAllTime.years} лет и ${item.experienceAllTime.months} месяцев`;
+                item.experienceTime.all = `${item.experienceTime.all.years} лет и ${item.experienceTime.all.months} месяцев`;
             }
 
             return item;
@@ -85,7 +85,7 @@ export class ListResumeComponent implements OnInit {
         switch (parameters.type) {
             case 'experience':
                 this.listResume.sort((a, b) => {
-                    if (a.experienceAll > b.experienceAll) {
+                    if (a.experienceTime > b.experienceTime) {
                         return 1 * parameters.order;
                     }
                 });
