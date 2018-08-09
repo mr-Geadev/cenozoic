@@ -2,13 +2,14 @@ export class FilterResumesModel {
 
     // string properties
     public educationStage: string = null;
-    public experienceAllTime: string = null;
+    public experienceTime: string = null;
+    public experienceType: string = null; // в каком типе прмоышленности опыт
     public resumeLanguage: string = null;
     public employmentType: string = null;
     public schedule: string = null;
     public family: string = null;
     public gender: string = null;
-    public placeResidence: string = null;
+    public placeResidence: string = null; // disabled
 
     // other properties
     public photo: boolean = false;
@@ -29,7 +30,8 @@ export class FilterResumesModel {
 
         this.educationStage = null;
         this.schedule = null;
-        this.experienceAllTime = null;
+        this.experienceTime = null;
+        this.experienceType = null;
         this.resumeLanguage = null;
         this.employmentType = null;
         this.schedule = null;
@@ -63,14 +65,15 @@ export class FilterResumesModel {
         this.languages.length ? objectRequest['languages'] = this.languages.map(item => item) : null;
 
 
-        this.experienceAllTime ? objectRequest['experienceAllTime'] = this.experienceAllTime : null;
+        this.experienceTime ? objectRequest['experienceTime'] = this.experienceTime : null;
+        this.experienceType ? objectRequest['experienceType'] = this.experienceType : null;
 
-        switch (this.experienceAllTime) {
-            case ('little'): objectRequest['experienceAllTime']  = {from: 0, to: 3}; break;
-            case ('medium'): objectRequest['experienceAllTime']  = {from: 3, to: 5}; break;
-            case ('high'): objectRequest['experienceAllTime']  = {from: 5, to: 10}; break;
-            case ('moreHigh'): objectRequest['experienceAllTime']  = {from: 10, to: 19}; break;
-            case ('highest'): objectRequest['experienceAllTime']  = {from: 20}; break;
+        switch (this.experienceTime) {
+            case ('little'): objectRequest['experienceTime']  = {from: 0, to: 3}; break;
+            case ('medium'): objectRequest['experienceTime']  = {from: 3, to: 5}; break;
+            case ('high'): objectRequest['experienceTime']  = {from: 5, to: 10}; break;
+            case ('moreHigh'): objectRequest['experienceTime']  = {from: 10, to: 19}; break;
+            case ('highest'): objectRequest['experienceTime']  = {from: 20}; break;
             default: null; break;
         }
 

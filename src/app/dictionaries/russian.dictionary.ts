@@ -111,6 +111,7 @@ export const RUSSIAN_DICTIONARY = {
     RESET_FILTERS: 'Сбросить фильтры',
     WITHOUT_EXPERIENCE: 'Без опыта',
     REGION_OF_ACTIVITY: 'Регион деятельности',
+    STANDING: 'Стаж',
 
     // окно входа
     PASSWORD: 'Пароль',
@@ -214,7 +215,7 @@ export const RUSSIAN_DICTIONARY = {
         IN_MINING: 'в горнодобывающей',
         TYPE_WORK_OTHER: 'Другая',
         ORGANIZATION_WORK: 'Организация',
-        POSITION_WORK: 'Доллжность',
+        POSITION_WORK: 'Должность',
         DUTIES_WORK: 'Ваши обязанности',
         ADD_PLACE_WORK: 'Добавить место работы',
         LAST_WORKPLACE: 'Последнее место работы',

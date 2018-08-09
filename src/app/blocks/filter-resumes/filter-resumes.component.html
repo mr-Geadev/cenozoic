@@ -18,15 +18,15 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field>
-                    <mat-select name="place" placeholder="{{dictionary.PLACE_OF_LIVING}}" (change)="filterResumesService.changeForm()"
-                                [(ngModel)]="filterResumesService.parameters.placeResidence" disabled>
-                    </mat-select>
-                </mat-form-field>
+                <!--<mat-form-field>-->
+                    <!--<mat-select name="place" placeholder="{{dictionary.PLACE_OF_LIVING}}" (change)="filterResumesService.changeForm()"-->
+                                <!--[(ngModel)]="filterResumesService.parameters.placeResidence" disabled>-->
+                    <!--</mat-select>-->
+                <!--</mat-form-field>-->
 
                 <mat-form-field>
-                    <mat-select name="experience" placeholder="{{dictionary.FULL_EXPERIENCE}}" (change)="filterResumesService.changeForm()"
-                                [(ngModel)]="filterResumesService.parameters.experienceAllTime">
+                    <mat-select name="experience" placeholder="{{dictionary.STANDING}}" (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.experienceTime">
                         <mat-option>{{dictionary.WITHOUT_EXPERIENCE}}</mat-option>
                         <!--<mat-option value="до 1го года">до 1го года</mat-option>-->
                         <mat-option value="little">1-3 {{dictionary.OF_YEARS}}</mat-option>
@@ -38,9 +38,18 @@
                 </mat-form-field>
 
                 <mat-form-field>
+                    <mat-select name="experience-type" placeholder="{{dictionary.VACANCY_EXPERIENCE}}" (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.experienceType">
+                        <mat-option>{{dictionary.IRRELEVANT}}</mat-option>
+                        <mat-option value="oil">{{dictionary.IN_OIL}}</mat-option>
+                        <mat-option value="mining">{{dictionary.IN_MINING}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
                     <mat-select name="languages" placeholder="{{dictionary.LANGUAGE_OF_CV}}" (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.resumeLanguage">
-                        <mat-option value="ут">{{dictionary.LANGUAGE_RU}}</mat-option>
+                        <mat-option value="ru">{{dictionary.LANGUAGE_RU}}</mat-option>
                         <mat-option value="en">{{dictionary.LANGUAGE_EN}}</mat-option>
                     </mat-select>
                 </mat-form-field>

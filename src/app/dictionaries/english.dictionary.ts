@@ -111,6 +111,7 @@ export const ENGLISH_DICTIONARY = {
     RESET_FILTERS: 'Reset filters',
     WITHOUT_EXPERIENCE: 'Without experience',
     REGION_OF_ACTIVITY: 'Region of activity',
+    STANDING: 'Standing',
 
     //окно входа
     PASSWORD: 'Password',
