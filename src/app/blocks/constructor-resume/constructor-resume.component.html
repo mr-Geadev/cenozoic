@@ -73,6 +73,22 @@
                             </div>
                         </div>
 
+                        <div class="parameter schedule">
+                            <div class="left">
+                                <label>{{dictionary.NATIONALITIES}}<span class="required">*</span></label>
+                            </div>
+                            <div class="right">
+                                <mat-form-field>
+                                    <mat-select name="nationalities" [(ngModel)]="resumeForm.nationalities" multiple required>
+                                        <mat-option *ngFor="let nationality of this.nationalitiesDefault"
+                                                value="{{nationality.code}}">{{nationality.name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+
                         <div class="parameter family-position">
                             <div class="left">
                                 <label for="family-position">{{dictionary.FAMILY}}<span

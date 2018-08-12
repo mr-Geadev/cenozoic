@@ -14,6 +14,7 @@ export class FilterResumesModel {
     // other properties
     public photo: boolean = false;
     public languages: string[] = [];
+    public nationalities: string[] = [];
 
     // multiple properties
     public salary: any = {
@@ -40,6 +41,7 @@ export class FilterResumesModel {
 
         this.photo = false;
         this.languages = [];
+        this.nationalities = [];
 
         this.salary.from = 0;
         this.salary.to = 0;
@@ -63,6 +65,7 @@ export class FilterResumesModel {
 
         this.photo ? objectRequest['photo'] = this.photo : null;
         this.languages.length ? objectRequest['languages'] = this.languages.map(item => item) : null;
+        this.nationalities.length ? objectRequest['nationalities'] = this.nationalities.map(item => item) : null;
 
         switch (this.experienceTime) {
             case ('littlest'): objectRequest['experienceTime']  = {from: 0, to: 1}; break;

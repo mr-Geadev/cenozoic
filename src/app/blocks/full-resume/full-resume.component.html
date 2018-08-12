@@ -109,6 +109,15 @@
                         <ng-template ngSwitchDefault>{{dictionary.SINGLE}}</ng-template>
                     </div>
                 </div>
+                <div class="line">
+                    <div class="parameter gray text">
+                        <!--Семейное положение-->
+                        {{dictionary.NATIONALITIES}}
+                    </div>
+                    <div class="value black text">
+                        {{this.findNameNationality()}}
+                    </div>
+                </div>
             </div>
 
         </div>

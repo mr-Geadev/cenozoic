@@ -90,6 +90,15 @@
                 </mat-form-field>
 
                 <mat-form-field>
+                    <mat-select name="nationalities" placeholder="{{dictionary.NATIONALITY}}"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.nationalities" multiple>
+                        <mat-option *ngFor="let nationality of this.nationalitiesDefault"
+                                    value="{{nationality.code}}">{{nationality.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
                     <mat-select name="languages" placeholder="{{dictionary.LANGUAGES}}"
                                 (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.languages" multiple>

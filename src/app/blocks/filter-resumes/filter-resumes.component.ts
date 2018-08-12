@@ -12,6 +12,7 @@ export class FilterResumesComponent implements OnInit {
 
     public showing: boolean = false; // view
     public dictionary: any = null;
+    public nationalitiesDefault: any[] = null;
 
     constructor(public filterResumesService: FilterResumesService,
                 private _localizationService: LocalizationService) {
@@ -27,6 +28,13 @@ export class FilterResumesComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.filterResumesService.getNationalitiesList()
+            .subscribe(
+                (nationalities: any) => {
+                    this.nationalitiesDefault = nationalities.list;
+                });
+
         this.dictionary = this._localizationService.currentDictionary;
     }
 }

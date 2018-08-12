@@ -28,4 +28,8 @@ export class FilterResumesService {
     private _setFilterParameters(parameter: any): void {
         this.filterSubject.next(parameter);
     }
+
+    public getNationalitiesList(): Observable<any> {
+        return this._http.get('/assets/json/nationalities.json');
+    }
 }

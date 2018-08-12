@@ -70,7 +70,7 @@ export class SettingEmployerComponent implements OnInit {
         this.dictionary = this._localizationService.currentDictionary;
 
         // установка текста кнопки лоаклизации из словря
-        this.loadingPhotoButton = this.dictionary.LOAD_PHOTO;
+        this.loadingPhotoButton = this.dictionary.LOAD_COMPANY_LOGO;
     }
 
     public formCreate(): void {
@@ -88,8 +88,7 @@ export class SettingEmployerComponent implements OnInit {
                 Validators.required,
             ]),
             phone: new FormControl(this.currentUser.phone, [
-                Validators.required,
-                Validators.pattern(`^(\\+7([0-9]){10})$`)
+                Validators.required
             ]),
             notifications: new FormGroup({
                 lk: new FormControl(this.currentUser.notifications.lk),

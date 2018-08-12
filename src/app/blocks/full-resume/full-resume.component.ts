@@ -17,10 +17,26 @@ export class FullResumeComponent implements OnInit {
     public currentResume: any;
     public currentUser: any;
     private id: string = null;
+    public nationalitiesDefault: any[] = null;
+
+    constructor(public resumeService: ResumeService,
+                public userService: UserService,
+                public citiesService: CitiesService,
+                private activateRoute: ActivatedRoute,
+                private http: HttpClient,
+                private _localizationService: LocalizationService) {
+        this.id = activateRoute.snapshot.params['id'];
+    }
 
     ngOnInit(): void {
 
         this.dictionary = this._localizationService.currentDictionary;
+
+        this.http.get('/assets/json/nationalities.json')
+            .subscribe(
+                (nationalities: any) => {
+                    this.nationalitiesDefault = nationalities.list;
+                });
 
         this.userService.user$
             .subscribe((user) => {
@@ -40,23 +56,14 @@ export class FullResumeComponent implements OnInit {
             });
     }
 
-    constructor(public resumeService: ResumeService,
-                public userService: UserService,
-                public citiesService: CitiesService,
-                private activateRoute: ActivatedRoute,
-                private http: HttpClient,
-                private _localizationService: LocalizationService) {
-        this.id = activateRoute.snapshot.params['id'];
-    }
-
     public calculateTimeRange() {
         this.currentResume.experience.forEach(workPlace => {
-            let startDate = moment([workPlace.startYear, workPlace.startMonth]);
+            const startDate = moment([workPlace.startYear, workPlace.startMonth]);
             let endDate = moment();
             if (!workPlace.present) {
                 endDate = moment([workPlace.endYear, workPlace.endMonth]);
-            };
-            let diffMonths = moment.duration(endDate.diff(startDate)).asMonths();
+            }
+            const diffMonths = moment.duration(endDate.diff(startDate)).asMonths();
 
             let years: any = Math.floor(diffMonths / 12);
             if ((Math.floor(years % 10) > 0) && (Math.floor(years % 10) < 5))  {
@@ -72,9 +79,9 @@ export class FullResumeComponent implements OnInit {
                 case 2: case 3: case 4: months = months + ' месяца'; break;
                 default: months = months + ' месяцев'; break;
             }
-            let answer = years + months;
+            const answer = years + months;
             workPlace.time = answer;
-        })
+        });
     }
 
     public setBirthday(dateString): string {
@@ -100,5 +107,15 @@ export class FullResumeComponent implements OnInit {
             age--;
         }
         return age;
+    }
+
+    public findNameNationality(): string {
+        let i = 0, answer = [];
+        this.nationalitiesDefault.filter((item) => {
+            if (item.code === this.currentResume.nationalities[i]) {
+                answer.push(item.name); i++;
+            }
+        })
+        return answer.join(', ');
     }
 }

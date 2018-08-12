@@ -1,17 +1,17 @@
-import {HttpClient} from '@angular/common/http';
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDialog, MatDialogConfig} from '@angular/material';
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
-import {Router} from '@angular/router';
-import {Moment} from 'moment';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDialog, MatDialogConfig } from '@angular/material';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { Router } from '@angular/router';
+import { Moment } from 'moment';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/first';
-import {Subscription} from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 
-import {CREATE_RESUME} from '../../constants';
-import {ConfirmService} from '../../modals/confirm/confirm.service';
-import {ResumeService, SystemMessageService, UserService} from '../../services';
-import {LocalizationService} from '../../services/localization.service';
+import { CREATE_RESUME } from '../../constants';
+import { ConfirmService } from '../../modals/confirm/confirm.service';
+import { ResumeService, SystemMessageService, UserService } from '../../services';
+import { LocalizationService } from '../../services/localization.service';
 import {
     CHANGES_TYPE, DEFAULT_CERTIFICATE_IMAGE,
     DEFAULT_EDUCATION,
@@ -22,17 +22,17 @@ import {
     DEFAULT_TRAINING,
     DEFAULT_TYPE
 } from './constructor-resume.constants';
-import {ChangeCityService} from '../../modals/change-city/change-city.service';
-import {City} from '../../modals/change-city/cities.models';
+import { ChangeCityService } from '../../modals/change-city/change-city.service';
+import { City } from '../../modals/change-city/cities.models';
 
 @Component({
     selector: 'constructor-resume',
     templateUrl: './constructor-resume.component.html',
     styleUrls: ['./constructor-resume.component.less'],
     providers: [
-        {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
-        {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-        {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+        { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' },
+        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     ],
 })
 export class ConstructorResumeComponent implements OnInit, OnDestroy {
@@ -50,6 +50,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     public educationCityName: string[] = [];
     public trainingsCityName: string[] = [];
     public phoneMask: any[] = ['+', '7', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
+    public nationalitiesDefault: any[] = null;
 
     public textEditorConfig: any = {}; // для RichTextComponent'ы
     public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
@@ -72,10 +73,16 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 private _systemMessageService: SystemMessageService,
                 private _dialog: MatDialog,
                 private _confirm: ConfirmService,
-                private _localizationService: LocalizationService, ) {
+                private _localizationService: LocalizationService,) {
     }
 
     ngOnInit(): void {
+
+        this.http.get('/assets/json/nationalities.json')
+            .subscribe(
+                (nationalities: any) => {
+                this.nationalitiesDefault = nationalities.list;
+            });
 
         // подклюение локализцаии
         this.dictionary = this._localizationService.currentDictionary;
@@ -94,26 +101,26 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
         this.subscriptions.push(
             this.resumeService.resume$
-            .subscribe((resume) => {
-                if (resume) {
-                    for (const key in resume) {
-                        if (resume.hasOwnProperty(key)) {
-                            this.resumeForm[key] = resume[key];
+                .subscribe((resume) => {
+                    if (resume) {
+                        for (const key in resume) {
+                            if (resume.hasOwnProperty(key)) {
+                                this.resumeForm[key] = resume[key];
+                            }
                         }
+                        this.resumeId = this.resumeForm._id;
+                        this.type = CHANGES_TYPE;
+                        this.resumeForm.trainings.forEach((training, index) => {
+                            training.document = false;
+                            training.documentName = null;
+                            this.nameImagesOfCertificate[index] = 'Выбрать фото';
+                        });
+                        console.log(this.resumeForm);
+                    } else {
+                        this.type = DEFAULT_TYPE;
+                        this.resumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
                     }
-                    this.resumeId = this.resumeForm._id;
-                    this.type = CHANGES_TYPE;
-                    this.resumeForm.trainings.forEach((training, index) => {
-                        training.document = false;
-                        training.documentName = null;
-                        this.nameImagesOfCertificate[index] = 'Выбрать фото';
-                    });
-                    console.log(this.resumeForm);
-                } else {
-                    this.type = DEFAULT_TYPE;
-                    this.resumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
-                }
-            }));
+                }));
     }
 
     ngOnDestroy(): void {
@@ -127,7 +134,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     }
 
     public checkTimeValid(mustBeInvalid): void {
-        mustBeInvalid  ? this.invalidTime = true : this.invalidTime = false;
+        mustBeInvalid ? this.invalidTime = true : this.invalidTime = false;
         console.log(this.invalidTime);
     }
 
@@ -149,7 +156,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                     this.nameImagesOfCertificate.push(this.dictionary.TRAINING_CERTIFICATE_LOAD);
                     this.imagesOfCertificate.push(Object.assign({}, DEFAULT_CERTIFICATE_IMAGE));
                     break;
-                default: null;
+                default:
+                    null;
             }
             this.resumeForm[nameSection].push(Object.assign({}, typeField));
             this.listVisibleElement[nameSection].push(true);
@@ -177,16 +185,16 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     public changeCity(index: number, nameField: string): void {
         this._changeCityService.changeCity()
             .subscribe((city: City) => {
-                    if (nameField === 'education') {
-                        this.resumeForm.education[index].city = city.code;
-                        this.resumeForm.education[index].country = city.codeCountry;
-                        this.educationCityName[index] = city.name;
-                    } else {
-                        this.resumeForm.trainings[index].city = city.code;
-                        this.resumeForm.trainings[index].country = city.codeCountry;
-                        this.trainingsCityName[index] = city.name;
-                    }
-                });
+                if (nameField === 'education') {
+                    this.resumeForm.education[index].city = city.code;
+                    this.resumeForm.education[index].country = city.codeCountry;
+                    this.educationCityName[index] = city.name;
+                } else {
+                    this.resumeForm.trainings[index].city = city.code;
+                    this.resumeForm.trainings[index].country = city.codeCountry;
+                    this.trainingsCityName[index] = city.name;
+                }
+            });
     }
 
     public manageVisible(nameSection: string, index: number): void {
