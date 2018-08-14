@@ -1,8 +1,8 @@
 <section class="filtr-summaryes">
     <div class="container">
         <div class="row search-field">
-            <input type="text" placeholder="Я ищу...">
-            <button class="button-search">
+            <input type="text" name="search" placeholder="Я ищу..." [(ngModel)]="filterResumesService.parameters.search">
+            <button class="button-search" (click)="filterResumesService.changeForm()">
                 Искать
             </button>
         </div>

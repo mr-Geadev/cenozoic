@@ -1,6 +1,7 @@
 export class FilterResumesModel {
 
     // string properties
+    public search: string = null; // вводится юзером
     public educationStage: string = null;
     public experienceTime: string = null;
     public experienceType: string = null; // в каком типе прмоышленности опыт
@@ -29,6 +30,7 @@ export class FilterResumesModel {
     // сброс формы
     public reset(): void {
 
+        this.search = null;
         this.educationStage = null;
         this.schedule = null;
         this.experienceTime = null;
@@ -56,6 +58,7 @@ export class FilterResumesModel {
 
         let objectRequest: any = {};
 
+        this.search ? objectRequest['search'] = this.search : null;
         this.educationStage ? objectRequest['educationStage'] = this.educationStage : null;
         this.schedule ? objectRequest['schedule'] = this.schedule : null;
         this.resumeLanguage ? objectRequest['resumeLanguage'] = this.resumeLanguage : null;
