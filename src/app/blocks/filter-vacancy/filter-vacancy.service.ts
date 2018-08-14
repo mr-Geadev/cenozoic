@@ -3,8 +3,6 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 import {FilterVacancyModel} from './filter-vacancy.model';
-import {MatDialog, MatDialogConfig} from '@angular/material';
-import {ChangeCityModalComponent} from '../../modals/change-city/change-city.component';
 import {City} from '../../modals/change-city/cities.models';
 import {ChangeCityService} from '../../modals/change-city';
 
@@ -20,12 +18,17 @@ export class FilterVacancyService {
         this.filterSubject.next(parameter);
     }
 
-    constructor(private _changeCityService: ChangeCityService) {
+    constructor(private _changeCityService: ChangeCityService,
+                private _http: HttpClient) {
     }
 
     public resetFilterParameters(): void {
         this.parameters.reset();
         this._setFilterParameters(null);
+    }
+
+    public getNationalitiesList(): Observable<any> {
+        return this._http.get('/assets/json/nationalities.json');
     }
 
     public changeForm(): void {

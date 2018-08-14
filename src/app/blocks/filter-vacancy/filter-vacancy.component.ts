@@ -12,6 +12,7 @@ export class FilterVacancyComponent implements OnInit {
 
     public showing: boolean = false; // view
     public dictionary: any = null;
+    public nationalitiesDefault: any[] = null;
 
     constructor(public filterVacancyService: FilterVacancyService,
                 private _localizationService: LocalizationService,
@@ -23,6 +24,13 @@ export class FilterVacancyComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.filterVacancyService.getNationalitiesList()
+            .subscribe(
+                (nationalities: any) => {
+                    this.nationalitiesDefault = nationalities.list;
+                });
+
         this.dictionary = this._localizationService.currentDictionary;
     }
 }

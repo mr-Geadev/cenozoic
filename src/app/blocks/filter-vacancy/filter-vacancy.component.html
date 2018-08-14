@@ -20,18 +20,25 @@
                 <mat-form-field>
                     <mat-select name="salary" placeholder="{{dictionary.SALARY}}"
                                 (change)="filterVacancyService.changeForm()"
-                                [(ngModel)]="filterVacancyService.parameters.salary" disabled>
-                        <mat-option value="маленькая">маленькая</mat-option>
-                        <mat-option value="большая">большая</mat-option>
+                                [(ngModel)]="filterVacancyService.parameters.salary.from">
+                        <mat-option value="60000">{{dictionary.FROM}} 60 000</mat-option>
+                        <mat-option value="120000">{{dictionary.FROM}} 120 000</mat-option>
+                        <mat-option value="180000">{{dictionary.FROM}} 180 000</mat-option>
+                        <mat-option value="300000">{{dictionary.FROM}} 300 000</mat-option>
+                        <mat-option value="420000">{{dictionary.FROM}} 420 000</mat-option>
+                        <mat-option value="600000">{{dictionary.FROM}} 600 000</mat-option>
+                        <mat-option value="other">{{dictionary.MORE_THAN}} 600 000</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="educationStage" placeholder="{{dictionary.EDUCATION}}"
-                                (change)="filterVacancyService.changeForm()"
-                                [(ngModel)]="filterVacancyService.parameters.educationStage" disabled>
-                        <mat-option value="среднее">{{dictionary.EDUCATION_STAGE_HIGH}}</mat-option>
-                        <mat-option value="высшее">{{dictionary.EDUCATION_STAGE_MIDDLE}}</mat-option>
+                    <mat-select form="test" name="education" placeholder="{{dictionary.EDUCATION}}">
+                        <!--
+                            (change)="filterVacancyService.changeForm()"
+                            [(ngModel)]="filterVacancyService.parameters.educationStage"
+                        -->
+                        <mat-option value="middle">{{dictionary.EDUCATION_STAGE_MIDDLE}}</mat-option>
+                        <mat-option value="high">{{dictionary.EDUCATION_STAGE_HIGH}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -47,9 +54,13 @@
 
             <div class="row">
                 <mat-form-field>
-                    <mat-select name="languages" placeholder="{{dictionary.KNOWLEDGE_OF_LANGUAGES}}"
-                                (change)="filterVacancyService.changeForm()"
-                                [(ngModel)]="filterVacancyService.parameters.languages" multiple disabled>
+                    <mat-select name="languages"
+                                placeholder="{{dictionary.KNOWLEDGE_OF_LANGUAGES}}"
+                                multiple>
+                        <!--
+                            [(ngModel)]="filterVacancyService.parameters.languages"
+                            (change)="filterVacancyService.changeForm()"
+                        -->
                         <mat-option value="en">{{dictionary.LANGUAGE_EN}}</mat-option>
                         <mat-option value="ru">{{dictionary.LANGUAGE_RU}}</mat-option>
                         <mat-option value="chi">{{dictionary.LANGUAGE_CHI}}</mat-option>
@@ -59,6 +70,18 @@
                         <mat-option value="ind">{{dictionary.LANGUAGE_IND}}</mat-option>
                         <mat-option value="fran">{{dictionary.LANGUAGE_FRAN}}</mat-option>
                         <mat-option value="dutch">{{dictionary.LANGUAGE_DEUTH}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select name="nationalities" placeholder="{{dictionary.NATIONALITY}}"
+                                multiple>
+                        <!--
+                            (change)="filterResumesService.changeForm()"
+                            [(ngModel)]="filterResumesService.parameters.nationalities"
+                        -->
+                        <mat-option *ngFor="let nationality of this.nationalitiesDefault"
+                                    value="{{nationality.code}}">{{nationality.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 

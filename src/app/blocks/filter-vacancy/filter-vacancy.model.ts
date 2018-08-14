@@ -1,9 +1,10 @@
+import { LocalizationService } from '../../services';
+
 export class FilterVacancyModel {
 
     // string properties
 
     public city: number = null; // код региона (он же город)
-    public salary: string = null; // оклад disabled
     public educationStage: string = null; // образование disabled
     public experienceAllTime: string = null; // стаж disabled
     public languages: string[] = []; // знание языков disabled
@@ -11,11 +12,16 @@ export class FilterVacancyModel {
     public schedule: string = null; // график: full/remote/watch
     public social: boolean = false; // соц пакет disabled
 
+    // multiple properties
+    public salary: any = {
+        currency: 'dollars', // dollars/rubles
+        from: 0
+    };
+
     // сброс формы
     public reset(): void {
 
         this.city = null;
-        this.salary = null;
         this.educationStage = null;
         this.experienceAllTime = null;
         this.languages = [];
@@ -23,16 +29,36 @@ export class FilterVacancyModel {
         this.schedule = null;
         this.social = false;
 
+        this.salary.currency = 'dollars';
+        this.salary.from = 0;
+
     }
 
 
     public getObjectRequest(): any {
 
-        const objectRequest: any = {};
+        let objectRequest: any = {};
 
         this.city ? objectRequest['city'] = this.city : null;
         this.employmentType ? objectRequest['employmentType'] = this.employmentType : null;
         this.schedule ? objectRequest['schedule'] = this.schedule : null;
+
+        if (this.salary.from) {
+            objectRequest = {
+                ...objectRequest,
+                salary: this.salary
+            };
+
+            if (this.salary.from === 'other') {
+                objectRequest.salary.from = 600000;
+            }
+
+            if (LocalizationService.currentLang() === 'ru' ) {
+                objectRequest.salary.currency = 'rubles';
+            }
+        }
+
+        console.log(objectRequest);
 
         return objectRequest;
     }
