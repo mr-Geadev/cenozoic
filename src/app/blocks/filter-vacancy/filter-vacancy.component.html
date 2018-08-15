@@ -1,8 +1,8 @@
 <section class="filtr-summaryes">
     <div class="container">
         <div class="row search-field">
-            <input type="text" placeholder="Я ищу...">
-            <button class="button-search">
+            <input type="text" name="search" placeholder="Я ищу..." [(ngModel)]="filterVacancyService.parameters.search">
+            <button class="button-search" (click)="filterVacancyService.changeForm()">
                 Искать
             </button>
         </div>
@@ -32,11 +32,9 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select form="test" name="education" placeholder="{{dictionary.EDUCATION}}">
-                        <!--
-                            (change)="filterVacancyService.changeForm()"
-                            [(ngModel)]="filterVacancyService.parameters.educationStage"
-                        -->
+                    <mat-select form="test" name="education" placeholder="{{dictionary.EDUCATION}}"
+                                [(ngModel)]="filterVacancyService.parameters.languages" disabled>
+                            <!--(change)="filterVacancyService.changeForm()"-->
                         <mat-option value="middle">{{dictionary.EDUCATION_STAGE_MIDDLE}}</mat-option>
                         <mat-option value="high">{{dictionary.EDUCATION_STAGE_HIGH}}</mat-option>
                     </mat-select>
@@ -56,7 +54,7 @@
                 <mat-form-field>
                     <mat-select name="languages"
                                 placeholder="{{dictionary.KNOWLEDGE_OF_LANGUAGES}}"
-                                multiple>
+                                multiple disabled>
                         <!--
                             [(ngModel)]="filterVacancyService.parameters.languages"
                             (change)="filterVacancyService.changeForm()"
@@ -107,14 +105,14 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field>
-                    <mat-select name="social" placeholder="{{dictionary.SOCIAL_PACKAGE}}"
-                                (change)="filterVacancyService.changeForm()"
-                                [(ngModel)]="filterVacancyService.parameters.social" disabled>
-                        <mat-option value="есть">есть</mat-option>
-                        <mat-option value="нет">нет</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <!--<mat-form-field>-->
+                    <!--<mat-select name="social" placeholder="{{dictionary.SOCIAL_PACKAGE}}"-->
+                                <!--(change)="filterVacancyService.changeForm()"-->
+                                <!--[(ngModel)]="filterVacancyService.parameters.social" disabled>-->
+                        <!--<mat-option value="есть">есть</mat-option>-->
+                        <!--<mat-option value="нет">нет</mat-option>-->
+                    <!--</mat-select>-->
+                <!--</mat-form-field>-->
             </div>
         </form>
         <div class="row reset">

@@ -272,7 +272,7 @@ export const RUSSIAN_DICTIONARY = {
     CONTACTS_RESUME: 'Контактные данные',
     PHONE: 'Телефон',
     LOAD_PHOTO: 'Загрузить фото',
-    LOAD_COMPANY_LOGO: 'Загрузить логотоип компании',
+    LOAD_COMPANY_LOGO: 'Загрузить логотип компании',
     LOAD_PHOTO_DESCRIPTION: 'Фото должно быть в формате PNG, JPG или GIF., разрешением не меньше 360х360 px. <br/><br/> Размер файла не должен <br/> превышать 5 Mb.',
     BUTTON_SAVE_DESCRIPTION: 'Вы всегда можете отредактировать резюме в личном кабинете',
     BUTTON_SAVE_ALERT: 'Заполнены не все обязательные поля!',

@@ -3,7 +3,7 @@ import { LocalizationService } from '../../services';
 export class FilterVacancyModel {
 
     // string properties
-
+    public search: string = null; // вводится юзером
     public city: number = null; // код региона (он же город)
     public educationStage: string = null; // образование disabled
     public experienceAllTime: string = null; // стаж disabled
@@ -21,6 +21,7 @@ export class FilterVacancyModel {
     // сброс формы
     public reset(): void {
 
+        this.search = null;
         this.city = null;
         this.educationStage = null;
         this.experienceAllTime = null;
@@ -39,6 +40,7 @@ export class FilterVacancyModel {
 
         let objectRequest: any = {};
 
+        this.search ? objectRequest['search'] = this.search : null;
         this.city ? objectRequest['city'] = this.city : null;
         this.employmentType ? objectRequest['employmentType'] = this.employmentType : null;
         this.schedule ? objectRequest['schedule'] = this.schedule : null;
