@@ -6,7 +6,8 @@ export class FilterVacancyModel {
     public search: string = null; // вводится юзером
     public city: number = null; // код региона (он же город)
     public educationStage: string = null; // образование disabled
-    public experienceAllTime: string = null; // стаж disabled
+    public experienceTime: string = null;
+    public experienceType: string = null; // в каком типе прмоышленности опыт
     public languages: string[] = []; // знание языков disabled
     public employmentType: string = null; // метод работы: full/part/time/internship
     public schedule: string = null; // график: full/remote/watch
@@ -24,7 +25,8 @@ export class FilterVacancyModel {
         this.search = null;
         this.city = null;
         this.educationStage = null;
-        this.experienceAllTime = null;
+        this.experienceTime = null;
+        this.experienceType = null;
         this.languages = [];
         this.employmentType = null;
         this.schedule = null;
@@ -35,7 +37,6 @@ export class FilterVacancyModel {
 
     }
 
-
     public getObjectRequest(): any {
 
         let objectRequest: any = {};
@@ -44,6 +45,18 @@ export class FilterVacancyModel {
         this.city ? objectRequest['city'] = this.city : null;
         this.employmentType ? objectRequest['employmentType'] = this.employmentType : null;
         this.schedule ? objectRequest['schedule'] = this.schedule : null;
+
+        switch (this.experienceTime) {
+            case ('littlest'): objectRequest['experienceTime']  = {from: 0, to: 1}; break;
+            case ('little'): objectRequest['experienceTime']  = {from: 1, to: 3}; break;
+            case ('medium'): objectRequest['experienceTime']  = {from: 3, to: 5}; break;
+            case ('high'): objectRequest['experienceTime']  = {from: 5, to: 10}; break;
+            case ('moreHigh'): objectRequest['experienceTime']  = {from: 10, to: 19}; break;
+            case ('highest'): objectRequest['experienceTime']  = {from: 20}; break;
+            default: objectRequest['experienceTime']  = {from: 0}; break;
+        }
+
+        objectRequest['experienceTime'] = Object.assign(objectRequest['experienceTime'], {type: this.experienceType || 'all'});
 
         if (this.salary.from) {
             objectRequest = {
