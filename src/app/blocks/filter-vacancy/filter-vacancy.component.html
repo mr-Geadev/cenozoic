@@ -32,27 +32,6 @@
                 </mat-form-field>
 
                 <!--<mat-form-field>-->
-                    <!--<mat-select form="test" name="education" placeholder="{{dictionary.EDUCATION}}"-->
-                                <!--[(ngModel)]="filterVacancyService.parameters.languages" disabled>-->
-                            <!--&lt;!&ndash;(change)="filterVacancyService.changeForm()"&ndash;&gt;-->
-                        <!--<mat-option value="middle">{{dictionary.EDUCATION_STAGE_MIDDLE}}</mat-option>-->
-                        <!--<mat-option value="high">{{dictionary.EDUCATION_STAGE_HIGH}}</mat-option>-->
-                    <!--</mat-select>-->
-                <!--</mat-form-field>-->
-                <mat-form-field>
-                    <mat-select name="experience" placeholder="{{dictionary.STANDING}}" (change)="filterVacancyService.changeForm()"
-                                [(ngModel)]="filterVacancyService.parameters.experienceTime">
-                        <mat-option>{{dictionary.IRRELEVANT}}</mat-option>
-                        <mat-option value="littlest">{{dictionary.TO}} 1 {{dictionary.OF_YEARS}}</mat-option>
-                        <mat-option value="little">1-3 {{dictionary.OF_YEARS}}</mat-option>
-                        <mat-option value="medium">3-5 {{dictionary.YEARS}}</mat-option>
-                        <mat-option value="high">5-10 {{dictionary.YEARS}}</mat-option>
-                        <mat-option value="moreHigh">10-19 {{dictionary.YEARS}}</mat-option>
-                        <mat-option value="highest">{{dictionary.MORE_THAN}} 20 {{dictionary.YEARS}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <!--<mat-form-field>-->
                     <!--<mat-select name="experience-time-all" placeholder="{{dictionary.FULL_EXPERIENCE}}"-->
                                 <!--(change)="filterVacancyService.changeForm()"-->
                                 <!--[(ngModel)]="filterVacancyService.parameters.experienceAllTime" disabled>-->
@@ -63,12 +42,35 @@
 
                 <mat-form-field>
                     <mat-select name="experience-type" placeholder="{{dictionary.VACANCY_EXPERIENCE}}" (change)="filterVacancyService.changeForm()"
-                                [(ngModel)]="filterVacancyService.parameters.experienceType" [disabled]="!filterVacancyService.parameters.experienceTime">
+                                [(ngModel)]="filterVacancyService.parameters.experienceType">
                         <mat-option>{{dictionary.IRRELEVANT}}</mat-option>
                         <mat-option value="oil">{{dictionary.IN_OIL}}</mat-option>
                         <mat-option value="mining">{{dictionary.IN_MINING}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+
+                <!--<mat-form-field>-->
+                <!--<mat-select form="test" name="education" placeholder="{{dictionary.EDUCATION}}"-->
+                <!--[(ngModel)]="filterVacancyService.parameters.languages" disabled>-->
+                <!--&lt;!&ndash;(change)="filterVacancyService.changeForm()"&ndash;&gt;-->
+                <!--<mat-option value="middle">{{dictionary.EDUCATION_STAGE_MIDDLE}}</mat-option>-->
+                <!--<mat-option value="high">{{dictionary.EDUCATION_STAGE_HIGH}}</mat-option>-->
+                <!--</mat-select>-->
+                <!--</mat-form-field>-->
+
+                <mat-form-field>
+                    <mat-select name="experience" placeholder="{{dictionary.STANDING}}" (change)="filterVacancyService.changeForm()"
+                                [(ngModel)]="filterVacancyService.parameters.experienceTime" [disabled]="!filterVacancyService.parameters.experienceType">
+                        <mat-option>{{dictionary.IRRELEVANT}}</mat-option>
+                        <mat-option value="littlest">{{dictionary.TO}} 1 {{dictionary.OF_YEARS}}</mat-option>
+                        <mat-option value="little">1-3 {{dictionary.OF_YEARS}}</mat-option>
+                        <mat-option value="medium">3-5 {{dictionary.YEARS}}</mat-option>
+                        <mat-option value="high">5-10 {{dictionary.YEARS}}</mat-option>
+                        <mat-option value="moreHigh">10-19 {{dictionary.YEARS}}</mat-option>
+                        <mat-option value="highest">{{dictionary.MORE_THAN}} 20 {{dictionary.YEARS}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
             </div>
 
             <div class="row">

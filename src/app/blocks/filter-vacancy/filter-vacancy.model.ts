@@ -46,17 +46,19 @@ export class FilterVacancyModel {
         this.employmentType ? objectRequest['employmentType'] = this.employmentType : null;
         this.schedule ? objectRequest['schedule'] = this.schedule : null;
 
-        switch (this.experienceTime) {
-            case ('littlest'): objectRequest['experienceTime']  = {from: 0, to: 1}; break;
-            case ('little'): objectRequest['experienceTime']  = {from: 1, to: 3}; break;
-            case ('medium'): objectRequest['experienceTime']  = {from: 3, to: 5}; break;
-            case ('high'): objectRequest['experienceTime']  = {from: 5, to: 10}; break;
-            case ('moreHigh'): objectRequest['experienceTime']  = {from: 10, to: 19}; break;
-            case ('highest'): objectRequest['experienceTime']  = {from: 20}; break;
-            default: objectRequest['experienceTime']  = {from: 0}; break;
-        }
+        if (this.experienceType && this.experienceTime) {
+            switch (this.experienceTime) {
+                case ('littlest'): objectRequest['experienceTime']  = {from: 0, to: 1}; break;
+                case ('little'): objectRequest['experienceTime']  = {from: 1, to: 3}; break;
+                case ('medium'): objectRequest['experienceTime']  = {from: 3, to: 5}; break;
+                case ('high'): objectRequest['experienceTime']  = {from: 5, to: 10}; break;
+                case ('moreHigh'): objectRequest['experienceTime']  = {from: 10, to: 19}; break;
+                case ('highest'): objectRequest['experienceTime']  = {from: 20}; break;
+                default: objectRequest['experienceTime']  = {from: 0}; break;
+            }
 
-        objectRequest['experienceTime'] = Object.assign(objectRequest['experienceTime'], {type: this.experienceType || 'all'});
+            objectRequest['experienceTime'] = Object.assign(objectRequest['experienceTime'], {type: this.experienceType});
+        }
 
         if (this.salary.from) {
             objectRequest = {
