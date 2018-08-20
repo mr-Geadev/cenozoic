@@ -30,7 +30,10 @@ export class FullVacancyComponent implements OnInit {
 
         this._vacancyFullService.getVacancy(this.id)
             .subscribe(
-                res => this.currentVacancy = res
+                res => {
+                    this.currentVacancy = res;
+                    console.log(this.currentVacancy);
+                }
             );
     }
 

@@ -6,7 +6,7 @@
             <div class="city gray text">ООО "Перспектива"</div>
             <div class="page-title">{{currentVacancy.title}}</div>
 
-            <div class="salary"><span>от <b>{{currentVacancy.salaryGROSS.from}} до {{currentVacancy.salaryGROSS.to}} ₽</b></span>
+            <div class="salary"><span>от <b>{{currentVacancy.salaryGROSS.from}} до {{currentVacancy.salaryGROSS.to}} {{currentVacancy.currency === "rubles" ? "₽" : "$" }}</b></span>
             </div>
 
             <div class="table">

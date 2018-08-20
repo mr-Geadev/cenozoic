@@ -34,7 +34,7 @@ export class VacancyModel {
 
     constructor(vacancy) {
         this.title = vacancy.title || null;
-        this.currency = vacancy.curreny || null;
+        this.currency = vacancy.currency || null;
 
         this.salaryGROSS = vacancy.salaryGROSS || {
             from: 0,

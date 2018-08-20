@@ -57,7 +57,7 @@ export class ConstructorVacancyComponent implements OnInit {
         this._createVacancyService.createVacancy(this.vacancy.value)
             .subscribe(
                 (res) => {
-                    this._msg.info('Ваша вакансия сохранено');
+                    this._msg.info('Ваша вакансия сохранена');
                 },
                 (err) => {
                     this._msg.info(err.error.errorMessage);
