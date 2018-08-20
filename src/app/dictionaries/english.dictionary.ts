@@ -103,6 +103,7 @@ export const ENGLISH_DICTIONARY = {
     PLACE_OF_LIVING: 'Place of residence',
     MORE_THAN: 'More',
     LANGUAGE_OF_CV: 'Language of CV',
+    LANGUAGE_OF_VACANCY: 'Language of Vacancy',
     HIDDEN: 'Hidden',
     GENDER_MAN: 'Man',
     GENDER_WOMAN: 'Woman',

@@ -75,22 +75,10 @@
 
             <div class="row">
                 <mat-form-field>
-                    <mat-select name="languages"
-                                placeholder="{{dictionary.KNOWLEDGE_OF_LANGUAGES}}"
-                                multiple disabled>
-                        <!--
-                            [(ngModel)]="filterVacancyService.parameters.languages"
-                            (change)="filterVacancyService.changeForm()"
-                        -->
-                        <mat-option value="en">{{dictionary.LANGUAGE_EN}}</mat-option>
+                    <mat-select name="languagesOfVacancy" placeholder="{{dictionary.LANGUAGE_OF_VACANCY}}" (change)="filterVacancyService.changeForm()"
+                                [(ngModel)]="filterVacancyService.parameters.vacancyLanguage">
                         <mat-option value="ru">{{dictionary.LANGUAGE_RU}}</mat-option>
-                        <mat-option value="chi">{{dictionary.LANGUAGE_CHI}}</mat-option>
-                        <mat-option value="arab">{{dictionary.LANGUAGE_ARAB}}</mat-option>
-                        <mat-option value="span">{{dictionary.LANGUAGE_SPAN}}</mat-option>
-                        <mat-option value="port">{{dictionary.LANGUAGE_PORT}}</mat-option>
-                        <mat-option value="ind">{{dictionary.LANGUAGE_IND}}</mat-option>
-                        <mat-option value="fran">{{dictionary.LANGUAGE_FRAN}}</mat-option>
-                        <mat-option value="dutch">{{dictionary.LANGUAGE_DEUTH}}</mat-option>
+                        <mat-option value="en">{{dictionary.LANGUAGE_EN}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 

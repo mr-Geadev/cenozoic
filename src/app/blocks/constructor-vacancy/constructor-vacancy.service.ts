@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {CREATE_VACANCY} from '../../constants/api.constant';
 import 'rxjs/add/operator/map';
+import {LocalizationService} from '../../services/localization.service';
 
 @Injectable()
 export class ConstructorVacancyService {
@@ -21,6 +22,8 @@ export class ConstructorVacancyService {
                 vacancy.experience.mining = null;
             }
         }
+
+        vacancy.vacancyLanguage = LocalizationService.currentLang();
 
         return this._http.post(CREATE_VACANCY, {'vacancy': vacancy})
             .map(

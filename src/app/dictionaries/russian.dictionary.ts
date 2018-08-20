@@ -103,6 +103,7 @@ export const RUSSIAN_DICTIONARY = {
     PLACE_OF_LIVING: 'Место проживания',
     MORE_THAN: 'Более',
     LANGUAGE_OF_CV: 'Язык резюме',
+    LANGUAGE_OF_VACANCY: 'Язык вакансии',
     HIDDEN: 'Скрыть',
     GENDER_MAN: 'Мужской',
     GENDER_WOMAN: 'Женский',

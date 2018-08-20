@@ -8,7 +8,7 @@ export class FilterVacancyModel {
     public educationStage: string = null; // образование disabled
     public experienceTime: string = null;
     public experienceType: string = null; // в каком типе прмоышленности опыт
-    public languages: string[] = []; // знание языков disabled
+    public vacancyLanguage: string = null;
     public employmentType: string = null; // метод работы: full/part/time/internship
     public schedule: string = null; // график: full/remote/watch
     public social: boolean = false; // соц пакет disabled
@@ -27,7 +27,7 @@ export class FilterVacancyModel {
         this.educationStage = null;
         this.experienceTime = null;
         this.experienceType = null;
-        this.languages = [];
+        this.vacancyLanguage = null;
         this.employmentType = null;
         this.schedule = null;
         this.social = false;
@@ -45,6 +45,7 @@ export class FilterVacancyModel {
         this.city ? objectRequest['city'] = this.city : null;
         this.employmentType ? objectRequest['employmentType'] = this.employmentType : null;
         this.schedule ? objectRequest['schedule'] = this.schedule : null;
+        this.vacancyLanguage ? objectRequest['vacancyLanguage'] = this.vacancyLanguage : null;
 
         if (this.experienceType && this.experienceTime) {
             switch (this.experienceTime) {
