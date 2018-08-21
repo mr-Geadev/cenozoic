@@ -22,6 +22,7 @@ export class VacancyModel {
             months: 0,
         }
     };
+    nationalities: string[];
     schedule: null;
     employmentType: null;
     duties: null;
@@ -60,6 +61,7 @@ export class VacancyModel {
             }
         };
 
+        this.nationalities = vacancy.nationalities || [];
         this.schedule = vacancy.schedule || null;
         this.employmentType = vacancy.employmentType || null;
         this.duties = vacancy.duties || null;

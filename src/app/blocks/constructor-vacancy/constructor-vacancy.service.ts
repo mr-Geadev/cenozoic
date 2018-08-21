@@ -33,4 +33,8 @@ export class ConstructorVacancyService {
                 (err) => err
             );
     }
+
+    public getNationalities(): Observable<any> {
+        return this._http.get('/assets/json/nationalities.json')
+    }
 }

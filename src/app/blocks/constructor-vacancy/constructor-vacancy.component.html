@@ -154,6 +154,21 @@
                             </div>
                         </div>
 
+                        <div class="parameter schedule">
+                            <div class="left">
+                                <label>{{dictionary.NATIONALITIES}}</label>
+                            </div>
+                            <div class="right">
+                                <mat-form-field>
+                                    <mat-select name="nationalities" formControlName="nationalities" multiple>
+                                        <mat-option *ngFor="let nationality of this.nationalitiesDefault"
+                                                    value="{{nationality.code}}">{{nationality.name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+
 
                         <div class="parameter employment">
                             <div class="left">

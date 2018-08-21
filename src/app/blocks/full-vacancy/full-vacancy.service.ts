@@ -15,4 +15,8 @@ export class FullVacancyService {
             .map(res => new VacancyModel(res['vacancy']));
     }
 
+    public getNationalities(): Observable<any> {
+        return this._http.get('/assets/json/nationalities.json')
+    }
+
 }

@@ -18,6 +18,7 @@ export class ConstructorVacancyComponent implements OnInit {
     public vacancy: FormGroup;
     public dictionary: any = null;
     public nameCity: string = null;
+    public nationalitiesDefault: any[] = null;
 
     constructor(private _createVacancyService: ConstructorVacancyService,
                 private _msg: SystemMessageService,
@@ -30,6 +31,12 @@ export class ConstructorVacancyComponent implements OnInit {
 
         // подключение локализцаии
         this.dictionary = this._localizationService.currentDictionary;
+
+        this._createVacancyService.getNationalities()
+            .subscribe(
+                (nationalities: any) => {
+                    this.nationalitiesDefault = nationalities.list;
+                });
 
         this.createVacancy();
     }
@@ -103,6 +110,7 @@ export class ConstructorVacancyComponent implements OnInit {
                     }),
                 })
             }),
+            nationalities: new FormControl(data.nationalities || []),
             schedule: new FormControl(data.schedule || '', [Validators.required]),
             employmentType: new FormControl(data.employmentType || '', [Validators.required]),
             duties: new FormControl(data.duties || null),

@@ -13,6 +13,7 @@ export class FilterVacancyModel {
     public schedule: string = null; // график: full/remote/watch
     public social: boolean = false; // соц пакет disabled
 
+    public nationalities: string[] = []; // соц пакет disabled
     // multiple properties
     public salary: any = {
         currency: 'dollars', // dollars/rubles
@@ -35,6 +36,8 @@ export class FilterVacancyModel {
         this.salary.currency = 'dollars';
         this.salary.from = 0;
 
+        this.nationalities = [];
+
     }
 
     public getObjectRequest(): any {
@@ -46,6 +49,7 @@ export class FilterVacancyModel {
         this.employmentType ? objectRequest['employmentType'] = this.employmentType : null;
         this.schedule ? objectRequest['schedule'] = this.schedule : null;
         this.vacancyLanguage ? objectRequest['vacancyLanguage'] = this.vacancyLanguage : null;
+        this.nationalities.length ? objectRequest['nationalities'] = this.nationalities.map(item => item) : null;
 
         if (this.experienceType && this.experienceTime) {
             switch (this.experienceTime) {

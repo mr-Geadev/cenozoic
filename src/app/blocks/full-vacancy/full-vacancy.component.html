@@ -47,6 +47,15 @@
                         <ng-template ngSwitchCase="internship">{{dictionary.INTERNSHIP}}</ng-template>
                     </div>
                 </div>
+                <div class="line"  *ngIf="currentVacancy.nationalities.length">
+                    <div class="parameter gray text">
+                        <!-- Гражданство -->
+                        {{dictionary.NATIONALITIES}}
+                    </div>
+                    <div class="value black text">
+                        {{this.findNameNationality()}}
+                    </div>
+                </div>
             </div>
 
             <div class="info" *ngIf="currentVacancy.duties">

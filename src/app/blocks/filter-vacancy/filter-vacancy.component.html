@@ -84,11 +84,9 @@
 
                 <mat-form-field>
                     <mat-select name="nationalities" placeholder="{{dictionary.NATIONALITY}}"
+                                (change)="filterVacancyService.changeForm()"
+                                [(ngModel)]="filterVacancyService.parameters.nationalities"
                                 multiple>
-                        <!--
-                            (change)="filterResumesService.changeForm()"
-                            [(ngModel)]="filterResumesService.parameters.nationalities"
-                        -->
                         <mat-option *ngFor="let nationality of this.nationalitiesDefault"
                                     value="{{nationality.code}}">{{nationality.name}}</mat-option>
                     </mat-select>
