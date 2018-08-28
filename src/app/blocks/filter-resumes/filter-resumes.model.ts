@@ -1,3 +1,5 @@
+import { LocalizationService } from '../../services';
+
 export class FilterResumesModel {
 
     // string properties
@@ -13,12 +15,13 @@ export class FilterResumesModel {
     public placeResidence: string = null; // disabled
 
     // other properties
-    public photo: boolean = false;
+    public photo = false;
     public languages: string[] = [];
     public nationalities: string[] = [];
 
     // multiple properties
     public salary: any = {
+        currency: 'dollars', // dollars/rubles
         from: 0,
         to: 0
     };
@@ -45,6 +48,7 @@ export class FilterResumesModel {
         this.languages = [];
         this.nationalities = [];
 
+        this.salary.currency = 'dollars';
         this.salary.from = 0;
         this.salary.to = 0;
 
@@ -82,15 +86,23 @@ export class FilterResumesModel {
 
         objectRequest['experienceTime'] = Object.assign(objectRequest['experienceTime'], {type: this.experienceType || 'all'});
 
-        // this.salary.from !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {from: this.salary.from}}) : null;
-        this.salary.to !== 0 ? objectRequest = Object.assign(objectRequest, {salary: {from: 0, to: this.salary.to}}) : null;
+        if (this.salary.to) {
+            objectRequest = {
+                ...objectRequest,
+                salary: this.salary
+            };
 
-        if (this.salary.to === 'other') {
-            objectRequest = Object.assign(objectRequest, {salary: {from: 600000}});
-            delete objectRequest.salary.to;
+            if (this.salary.to === 'other') {
+                objectRequest.salary.to = 600000;
+                delete objectRequest.salary.from;
+            }
+
+            if (LocalizationService.currentLang() === 'ru' ) {
+                objectRequest.salary.currency = 'rubles';
+            }
         }
 
-        let age: any =  {};
+        const age: any =  {};
 
         if (this.age.from) {
             age.from = this.age.from;
