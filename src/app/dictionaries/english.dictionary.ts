@@ -4,6 +4,7 @@ export const ENGLISH_DICTIONARY = {
     DELETE: 'Delete',
     COLLAPSE: 'Collapse',
     SAVE: 'Save',
+    EDIT: 'Edit',
 
     //общее
     YOUR: 'Your',
@@ -131,6 +132,9 @@ export const ENGLISH_DICTIONARY = {
     SERVICES: 'Services',
     CONTACTS: 'Contacts',
     PRIVACY_POLICY: 'Privacy policy',
+
+    // сообщения
+    RESUME_WAS_DELETED: 'Your resume was deleted',
 
     // фильтры
     SORT_BY: 'Sort by',

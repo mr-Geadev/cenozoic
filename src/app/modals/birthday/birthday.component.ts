@@ -50,7 +50,10 @@ export class BirthdayComponent implements OnInit {
         const currentDate = moment();
         const formattedDate: string = date.format('DD.MM.YYYY');
         const diffYears: number = currentDate.diff(date, 'years');
-        const prefix: string = (diffYears > 4) ? 'лет' : (diffYears === 1) ? 'год' : 'года';
+        let prefix: string = null;
+        if (LocalizationService.currentLang() === 'ru') {
+            prefix = (diffYears > 4) ? 'лет' : (diffYears === 1) ? 'год' : 'года';
+        } else { prefix = 'years'; }
         this.data = `${formattedDate} (${diffYears}) ${prefix}`;
         this.changed.emit(date);
     }

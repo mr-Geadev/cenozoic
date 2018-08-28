@@ -4,6 +4,7 @@ export const RUSSIAN_DICTIONARY = {
     DELETE: 'Удалить',
     COLLAPSE: 'Свернуть',
     SAVE: 'Сохранить',
+    EDIT: 'Редактировать',
 
     //общее
     YOUR: 'Ваши',
@@ -131,6 +132,9 @@ export const RUSSIAN_DICTIONARY = {
     SERVICES: 'Услуги',
     CONTACTS: 'Контакты',
     PRIVACY_POLICY: 'Политика конфеденциальности',
+
+    // сообщения
+    RESUME_WAS_DELETED: 'Ваше резюме было удалено',
 
     // фильтры
     SORT_BY: 'Сортировать по',

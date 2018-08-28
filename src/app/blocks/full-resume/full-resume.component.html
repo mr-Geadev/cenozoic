@@ -131,11 +131,11 @@
             </div>
             <div class="button" (click)="resumeService.goEdit(currentResume)"
                  *ngIf="currentResume.userId == currentUser?._id">
-                Редактировать резюме
+                {{dictionary.EDIT}}
             </div>
             <div class="button" (click)="resumeService.delete(currentResume._id)"
                  *ngIf="currentResume.userId == currentUser?._id">
-                Удалить резюме
+                {{dictionary.DELETE}}
             </div>
         </div>
     </div>

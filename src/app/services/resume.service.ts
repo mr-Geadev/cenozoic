@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
+import { LocalizationService } from "./localization.service";
 import {SystemMessageService} from './system-message.service';
 import {UserService} from './user.service';
 
@@ -16,6 +17,7 @@ export class ResumeService {
     constructor(private http: HttpClient,
                 private userService: UserService,
                 private _systemMessages: SystemMessageService,
+                private _localizationService: LocalizationService,
                 private router: Router) {
     }
 
@@ -32,7 +34,7 @@ export class ResumeService {
         this.http.get(`/api/v1/user/resume/remove?resumeId=${id}`)
             .subscribe((res: any) => {
                 if (res.success) {
-                    this._systemMessages.info('Ваше резюме было удалено');
+                    this._systemMessages.info(this._localizationService.currentDictionary.RESUME_WAS_DELETED);
                     this.router.navigate(['list-resume']);
                 } else {
                     this._systemMessages.info(res.errorMessage);
