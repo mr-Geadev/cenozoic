@@ -3,12 +3,12 @@
 
         <div class="row list">
             <a [routerLink]="['/vacancy', vacancy._id]" class="item" *ngFor="let vacancy of listVacancy; let i = index">
-                <div class="name-of-company">ООО «Перспектива»</div>
+                <div class="name-of-company">{{vacancy.companyName}}</div>
                 <div class="post">{{vacancy.title}}</div>
                 <div class="description" [innerHtml]="vacancy.duties">
                 </div>
                 <div class="terms">от <span class="number">{{vacancy.salaryGROSS.from}}</span> {{vacancy.currency === "rubles" ? "₽" : "$" }}</div>
-                <div class="more-info">Подробнее <img src="/assets/images/arrow.svg"/></div>
+                <div class="more-info">{{dictionary.MORE}} <img src="/assets/images/arrow.svg"/></div>
             </a>
 
             <a [routerLink]="['/create-vacancy']" class="add item" *ngIf="config === 'user'">

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SystemMessageService} from '../../services';
+import { SystemMessageService, UserService } from '../../services';
 import {LocalizationService} from '../../services/localization.service';
 import {ChangeCityModalComponent} from '../../modals/change-city/change-city.component';
 import {MatDialog, MatDialogConfig} from '@angular/material';
@@ -19,10 +19,12 @@ export class ConstructorVacancyComponent implements OnInit {
     public dictionary: any = null;
     public nameCity: string = null;
     public nationalitiesDefault: any[] = null;
+    public currentUser = null;
 
     constructor(private _createVacancyService: ConstructorVacancyService,
                 private _msg: SystemMessageService,
                 private _dialog: MatDialog,
+                private userService: UserService,
                 private _changeCityService: ChangeCityService,
                 private _localizationService: LocalizationService) {
     }
@@ -39,6 +41,12 @@ export class ConstructorVacancyComponent implements OnInit {
                 });
 
         this.createVacancy();
+
+        this.userService.user$
+            .filter(user => !!user)
+            .subscribe((user) => {
+                this.currentUser = Object.assign({}, user);
+            })
     }
 
     public changeEducationCity(): void {
@@ -61,7 +69,13 @@ export class ConstructorVacancyComponent implements OnInit {
     }
 
     public sentVacancy(): void {
-        this._createVacancyService.createVacancy(this.vacancy.value)
+        const vacancy = {
+            ...this.vacancy.value,
+            companyName: this.currentUser.companyName,
+            phone: this.currentUser.phone,
+            email: this.currentUser.email
+        }
+        this._createVacancyService.createVacancy(vacancy)
             .subscribe(
                 (res) => {
                     this._msg.info('Ваша вакансия сохранена');

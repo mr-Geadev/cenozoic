@@ -33,6 +33,10 @@ export class VacancyModel {
     salaryFrom: number = 0;
     salaryTo: number = 0;
 
+    companyName: string = null;
+    phone: string = null;
+    email: string = null;
+
     constructor(vacancy) {
         this.title = vacancy.title || null;
         this.currency = vacancy.currency || null;
@@ -67,6 +71,10 @@ export class VacancyModel {
         this.duties = vacancy.duties || null;
         this.demands = vacancy.demands || null;
         this.conditions = vacancy.conditions || null;
+
+        this.companyName = vacancy.companyName || null;
+        this.phone = vacancy.phone || null;
+        this.email = vacancy.email || null;
 
         this.expAll = this.experience.oil.years || 0 + this.experience.mining.years || 0;
         this.salaryFrom = (this.salaryGROSS.from || 0 + this.salaryNET.from || 0) / 2;
