@@ -32,14 +32,14 @@
                             </div>
                             <div class="right">
                                 <div class="word from">
-                                    от
+                                    {{dictionary.FROM}}
                                 </div>
 
-                                <input type="number" name="salary" id="salary-from" [(ngModel)]="resumeForm.salary"
+                                <input type="number" name="salary" id="salary-from" [(ngModel)]="resumeForm.salary.value"
                                        required>
                                 <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 <div class="word rub">
-                                    {{dictionary.RUBLES_SHORT}}.
+                                    {{ LocalizationService.currentLang() === 'ru' ? dictionary.RUBLES_SHORT : '$'}}.
                                 </div>
                             </div>
                         </div>

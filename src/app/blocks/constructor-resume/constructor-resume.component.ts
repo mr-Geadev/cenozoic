@@ -51,6 +51,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     public trainingsCityName: string[] = [];
     public phoneMask: any[] = ['+', '7', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
     public nationalitiesDefault: any[] = null;
+    public LocalizationService = LocalizationService;
 
     public textEditorConfig: any = {}; // для RichTextComponent'ы
     public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
@@ -73,7 +74,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
                 private _systemMessageService: SystemMessageService,
                 private _dialog: MatDialog,
                 private _confirm: ConfirmService,
-                private _localizationService: LocalizationService,) {
+                public _localizationService: LocalizationService) {
     }
 
     ngOnInit(): void {

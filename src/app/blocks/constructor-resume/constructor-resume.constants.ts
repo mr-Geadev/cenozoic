@@ -1,3 +1,6 @@
+import { months } from "moment";
+import { LocalizationService } from "../../services";
+
 export const DEFAULT_TYPE = 'Создание';
 export const CHANGES_TYPE = 'Изменение';
 
@@ -41,7 +44,10 @@ export const DEFAULT_TRAINING = {
 
 export const DEFAULT_RESUME_FORM = {
     job: null,
-    salary: null,
+    salary: {
+        currency: LocalizationService.currentLang() === 'ru' ? 'rubles' : 'dollars',
+        value: null,
+    },
     birthday: null,
     fullName: null,
     resumeLanguage: 'ru',
