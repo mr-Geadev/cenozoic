@@ -7,7 +7,7 @@
             <div class="city gray text">Санкт-Петербург</div>
             <div class="page-title">{{currentResume.job}}</div>
 
-            <div class="salary"><span>{{dictionary.FROM}} <b>{{currentResume.salary}} ₽</b></span></div>
+            <div class="salary"><span>{{dictionary.FROM}} <b>{{currentResume.salary.value}} {{currentResume.salary.currency === 'ru' ? '₽' : '$'}}</b></span></div>
 
             <div class="name">{{currentResume.fullName}}</div>
 
