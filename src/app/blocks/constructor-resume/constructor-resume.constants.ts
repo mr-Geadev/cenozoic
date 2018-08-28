@@ -45,7 +45,7 @@ export const DEFAULT_TRAINING = {
 export const DEFAULT_RESUME_FORM = {
     job: null,
     salary: {
-        currency: LocalizationService.currentLang() === 'ru' ? 'rubles' : 'dollars',
+        currency: 'rubles',
         value: null,
     },
     birthday: null,
