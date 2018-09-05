@@ -55,7 +55,7 @@
                                         [dataInput]="this.resumeForm.birthday"
                                         (changed)="birthdayChanged($event);">
                                 </birthday-date-picker>
-                                <!--<div class="validation-alert" [class.visible]="age < 17">Возраст должен {{age}}быть больше 18</div>-->
+                                <div class="validation-alert" [class.visible]="isBirthdayInvalid && isBirthdayTouched">{{dictionary.VALID_ENTRY_DATE}}</div>
                             </div>
                         </div>
 
@@ -739,11 +739,15 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime">
+                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime && !isBirthdayInvalid">
                             {{ dictionary.SAVE }}
                         </button>
                         <button type="submit" class="save-button invalid"
                                 *ngIf="!myForm.invalid && invalidTime">
+                            {{ dictionary.BUTTON_SAVE_ALERT }}
+                        </button>
+                        <button type="submit" class="save-button invalid"
+                                *ngIf="!myForm.invalid && isBirthdayInvalid">
                             {{ dictionary.BUTTON_SAVE_ALERT }}
                         </button>
                         <button type="submit" (click)="showInvalidField()" class="save-button invalid"

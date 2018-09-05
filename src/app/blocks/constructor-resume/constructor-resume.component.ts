@@ -65,6 +65,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     };
     private subscriptions: Subscription[] = []; // для горчиях подписок
     private type: string = DEFAULT_TYPE; // создание/редактирование
+    public isBirthdayInvalid: boolean = true;
+    public isBirthdayTouched: boolean = false;
 
     constructor(private http: HttpClient,
                 private userService: UserService,
@@ -246,6 +248,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
     public birthdayChanged(date: Moment): void {
         this.resumeForm.birthday = date.toISOString();
+        this.isBirthdayTouched = true;
+        this.isBirthdayInvalid = this.resumeForm.birthday > new Date().toISOString();
     }
 
     public showInvalidField(): void {

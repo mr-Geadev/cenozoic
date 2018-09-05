@@ -1,6 +1,3 @@
-import { months } from "moment";
-import { LocalizationService } from "../../services";
-
 export const DEFAULT_TYPE = 'Создание';
 export const CHANGES_TYPE = 'Изменение';
 
