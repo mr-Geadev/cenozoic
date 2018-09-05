@@ -135,6 +135,7 @@ export class SettingEmployerComponent implements OnInit {
                     if (this.blankAccountService.isProtector) {
                         this.blankAccountService.compleateFilled('employer');
                     }
+                    this.userService.getUserInfo();
                 },
                 (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз')
             );
