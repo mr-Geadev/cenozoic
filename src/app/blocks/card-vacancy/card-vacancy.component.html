@@ -1,0 +1,24 @@
+<a [routerLink]="['/vacancy', vacancy._id]">
+    <div class="name-of-company">
+        {{vacancy.companyName }}
+    </div>
+
+    <div class="post">
+        {{vacancy.title}}
+    </div>
+
+    <div class="description" [innerHtml]="vacancy.duties">
+
+    </div>
+
+
+    <div class="terms">
+        от <span class="number">{{vacancy.salaryGROSS.from}}</span>
+        {{vacancy.currency === "rubles" ? "₽" : "$" }}
+    </div>
+
+    <a class="more-info" target="_blank" [routerLink]="['/vacancy', vacancy._id]">
+        {{dictionary.MORE}}
+        <img src="/assets/images/arrow.svg"/>
+    </a>
+</a>

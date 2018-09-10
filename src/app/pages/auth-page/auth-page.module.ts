@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 
-import {LoginModalModule} from '../../modals';
+import {LoginModalModule} from '../../pop-ups';
 import {AuthPageComponent} from './auth-page.component';
 
 @NgModule({

@@ -1,0 +1,34 @@
+<section class="list-vacancy">
+    <div class="container">
+
+        <div class="row list">
+            <card-vacancy
+                *ngFor="let vacancy of listVacancy; let i = index"
+                [vacancy]="vacancy"
+                [dictionary]="dictionary"
+            ></card-vacancy>
+
+            <a [routerLink]="['/create-vacancy']" class="add item" *ngIf="config === 'user'">
+                <div class="inner">
+                    <div class="circle">
+                        <div class="plus">
+                            +
+                        </div>
+                    </div>
+                </div>
+                <div class="more-info">{{dictionary.ADD_NEW_VACANCY}}</div>
+            </a>
+        </div>
+
+
+        <!--кнопка "показать еще"-->
+        <!--<div class="row show-more">-->
+        <!--<button type="button" name="button">-->
+        <!--<img src="/assets/images/dott.png" alt="">-->
+        <!--<img src="/assets/images/dott.png" alt="">-->
+        <!--<img src="/assets/images/dott.png" alt="">-->
+        <!--Показать ещё-->
+        <!--</button>-->
+        <!--</div>-->
+    </div>
+</section>

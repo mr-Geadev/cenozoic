@@ -6,19 +6,19 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
-import {PageFooterModule, PageHeaderModule} from './blocks';
+import {PageFooterModule, PageHeaderModule} from './containers';
 import {AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard} from './guards';
-import {ChangeCityModule, ChangeCityService} from './modals/change-city';
-import {ConfirmService} from './modals/confirm/confirm.service';
-import {AccountSettingPageModule, CreateVacancyPageModule, ListVacancyPageModule, MainPageModule, NotFoundPageComponent} from './pages';
-import {AccountEmailConfirmPageModule} from './pages/account-email-confirm-page';
+import {ChangeCityModule, ChangeCityService} from './pop-ups/change-city';
+import {ConfirmService} from './pop-ups/confirm/confirm.service';
+import {AccountSettingsPageModule, CreateVacancyPageModule, ListVacancyPageModule, MainPageModule} from './pages';
+import {EmailConfirmPageModule} from './pages/email-confirm-page';
 import {CreateResumePageModule} from './pages/constructor-resume-page';
 import {ListResumePageModule} from './pages/list-resume-page';
 import {PersonalAccountPageModule} from './pages/personal-account-page';
 import {ResumeFullPageModule} from './pages/resume-full-page';
 import {BlankAccountService, LocalizationService, SortService, SystemMessageService, UserService} from './services';
 import {VacancyFullPageModule} from './pages/vacancy-full-page';
-import {ConfirmModule} from './modals/confirm';
+import {ConfirmModule} from './pop-ups/confirm';
 import {AuthPageModule} from './pages/auth-page';
 import {CitiesService} from './services/cities.service';
 
@@ -34,7 +34,6 @@ const ROUTES = [
 @NgModule({
     declarations: [
         AppComponent,
-        NotFoundPageComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -47,11 +46,11 @@ const ROUTES = [
         ListResumePageModule,
         PersonalAccountPageModule,
         ResumeFullPageModule,
-        AccountSettingPageModule,
+        AccountSettingsPageModule,
         CreateVacancyPageModule,
         ListVacancyPageModule,
         VacancyFullPageModule,
-        AccountEmailConfirmPageModule,
+        EmailConfirmPageModule,
         AuthPageModule,
 
         // Blocks

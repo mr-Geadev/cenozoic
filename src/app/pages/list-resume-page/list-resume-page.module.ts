@@ -4,8 +4,8 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {FilterResumesModule} from '../../blocks/filter-resumes';
-import {ListResumeModule} from '../../blocks/list-resume';
+import {FilterResumesModule} from '../../containers/filter-resumes';
+import {ListResumeModule} from '../../containers/list-resume';
 
 import {ListResumePageComponent} from './list-resume-page.component';
 

@@ -1,14 +1,14 @@
-import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatDialogModule} from '@angular/material';
-import {RouterModule} from '@angular/router';
-import {BreadcrumbsModule, ConstructorResumeModule} from '../../blocks';
-import {LogInGuard, NotEmployerGuard} from '../../guards';
-import {BlankAccountGuard} from '../../guards/blank-account.guard';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { ConstructorResumeModule } from '../../containers';
+import { LogInGuard, NotEmployerGuard } from 'app/guards';
+import { BlankAccountGuard } from 'app/guards';
 
-import {CreateResumePageComponent} from './create-resume-page.component';
+import { CreateResumePageComponent } from './create-resume-page.component';
 
 @NgModule({
     declarations: [
@@ -28,8 +28,7 @@ import {CreateResumePageComponent} from './create-resume-page.component';
         ReactiveFormsModule,
         FormsModule,
         MatDialogModule,
-        ConstructorResumeModule,
-        BreadcrumbsModule,
+        ConstructorResumeModule
         // Blocks
     ],
     exports: [CreateResumePageComponent]

@@ -7,7 +7,7 @@ import {LogInGuard, NotWorkerGuard} from '../../guards';
 import {BlankAccountGuard} from '../../guards/blank-account.guard';
 
 import {CreateVacancyPageComponent} from './create-vacancy-page.component';
-import {ConstructorVacancyModule} from '../../blocks/constructor-vacancy';
+import {ConstructorVacancyModule} from '../../containers/constructor-vacancy';
 
 
 @NgModule({

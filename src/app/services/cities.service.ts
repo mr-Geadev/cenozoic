@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Locations} from '../modals/change-city/cities.models';
+import {Locations} from '../pop-ups/change-city/cities.models';
 import {LocalizationService} from './index';
 
 @Injectable()

@@ -1,4 +1,6 @@
 export class VacancyModel {
+    _id: null;
+
     title: null;
     currency: null;
     salaryGROSS: {
@@ -38,6 +40,7 @@ export class VacancyModel {
     email: string = null;
 
     constructor(vacancy) {
+        this._id = vacancy._id || null;
         this.title = vacancy.title || null;
         this.currency = vacancy.currency || null;
 

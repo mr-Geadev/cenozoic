@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {ConfirmService} from '../../../../modals/confirm/confirm.service';
+import {ConfirmService} from '../../../../pop-ups/confirm/confirm.service';
 import {UserModel} from '../../../../models/user.model';
 import {SystemMessageService} from '../../../../services';
 import {UsersApi} from '../users.api';

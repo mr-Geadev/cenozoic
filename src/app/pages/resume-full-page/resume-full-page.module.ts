@@ -5,9 +5,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 
-import {LoginModalModule} from '../../modals';
+import {LoginModalModule} from '../../pop-ups';
 import {ResumeFullPageComponent} from './resume-full-page.component';
-import {FullResumeModule} from '../../blocks/full-resume/full-resume.module';
+import {FullResumeModule} from '../../containers/full-resume/full-resume.module';
 
 @NgModule({
     declarations: [

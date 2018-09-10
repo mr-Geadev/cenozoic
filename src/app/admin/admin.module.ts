@@ -52,7 +52,7 @@ import {ReactiveFormsModule} from '@angular/forms';
         MainComponent,
         UsersComponent,
 
-        // blocks
+        // containers
         ItemUserComponent,
         FullUserInfoComponent
     ],

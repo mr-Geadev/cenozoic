@@ -4,11 +4,11 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {ListVacancyModule} from '../../blocks/list-vacancy/list-vacancy.module';
+import {ListVacancyModule} from '../../containers/list-vacancy/list-vacancy.module';
 
-import {LoginModalModule} from '../../modals';
+import {LoginModalModule} from '../../pop-ups';
 import {ListVacancyPageComponent} from './list-vacancy-page.component';
-import {FilterVacancyModule} from '../../blocks/filter-vacancy';
+import {FilterVacancyModule} from '../../containers/filter-vacancy';
 
 @NgModule({
     declarations: [

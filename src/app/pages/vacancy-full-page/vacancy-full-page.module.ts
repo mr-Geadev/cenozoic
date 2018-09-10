@@ -5,9 +5,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 
-import {LoginModalModule} from '../../modals';
+import {LoginModalModule} from '../../pop-ups';
 import {VacancyFullPageComponent} from './vacancy-full-page.component';
-import {FullVacancyModule} from '../../blocks/full-vacancy';
+import {FullVacancyModule} from '../../containers/full-vacancy';
 
 @NgModule({
     declarations: [

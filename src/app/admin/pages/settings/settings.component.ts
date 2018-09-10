@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {City, Country} from '../../../modals/change-city/cities.models';
+import {City, Country} from '../../../pop-ups/change-city/cities.models';
 import {CitiesService} from '../../../services/cities.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';

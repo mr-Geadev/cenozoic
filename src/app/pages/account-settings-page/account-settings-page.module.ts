@@ -4,23 +4,21 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-
-import {ListResumeModule} from '../../containers';
 import {LogInGuard} from '../../guards';
-import {LoginModalModule} from '../../pop-ups';
-import {PersonalAccountPageComponent} from './personal-account-page.component';
-import {ListVacancyModule} from '../../containers/list-vacancy/list-vacancy.module';
-import {FullResumeModule} from '../../containers/full-resume';
+
+import {AccountSettingsPageComponent} from './account-settings-page.component';
+import {SettingWorkerModule} from '../../containers/setting-worker';
+import {SettingEmployerModule} from '../../containers/setting-employer';
 
 @NgModule({
     declarations: [
-        PersonalAccountPageComponent,
+        AccountSettingsPageComponent,
     ],
     imports: [
         RouterModule.forRoot([
             {
-                path: 'personal-account',
-                component: PersonalAccountPageComponent,
+                path: 'setting',
+                component: AccountSettingsPageComponent,
                 pathMatch: 'full',
                 canActivate: [LogInGuard]
             },
@@ -30,14 +28,14 @@ import {FullResumeModule} from '../../containers/full-resume';
         ReactiveFormsModule,
         FormsModule,
         MatDialogModule,
-        LoginModalModule,
 
-        // Blocks
-        ListResumeModule,
-        ListVacancyModule,
-        FullResumeModule
+        // containers
+
+        SettingWorkerModule,
+        SettingEmployerModule
     ],
-    exports: [PersonalAccountPageComponent]
+    exports: [AccountSettingsPageComponent]
 })
-export class PersonalAccountPageModule {
+export class AccountSettingsPageModule {
+
 }

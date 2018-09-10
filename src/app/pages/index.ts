@@ -1,5 +1,4 @@
 export * from './main-page';
-export * from './not-found';
 export * from './constructor-resume-page';
 export * from './create-vacancy-page';
 export * from './list-resume-page';
@@ -7,5 +6,5 @@ export * from './list-vacancy-page';
 export * from './personal-account-page';
 export * from './resume-full-page';
 export * from './vacancy-full-page';
-export * from './account-setting-page';
-export * from './account-email-confirm-page';
+export * from './account-settings-page';
+export * from './email-confirm-page';
