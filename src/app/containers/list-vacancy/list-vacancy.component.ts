@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {LocalizationService} from 'app/services';
-import {LIST_VACANCY_USER} from 'app/constants';
-import {LIST_VACANCY} from 'app/constants';
+import {LocalizationService} from '../../services';
+import {LIST_VACANCY_USER, LIST_VACANCY} from '../../constants';
 import {HttpClient} from '@angular/common/http';
 import {FilterVacancyService} from '../filter-vacancy';
 

@@ -5,8 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { ConstructorResumeModule } from '../../containers';
-import { LogInGuard, NotEmployerGuard } from 'app/guards';
-import { BlankAccountGuard } from 'app/guards';
+import { BlankAccountGuard, LogInGuard, NotEmployerGuard } from '../../../app/guards';
 
 import { CreateResumePageComponent } from './create-resume-page.component';
 
