@@ -3,9 +3,9 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {LoginModalService} from '../pop-ups/login';
-import {SystemMessageService} from '../services';
-import {UserService} from '../services/user.service';
+import {LoginModalService} from '../../pop-ups/login/index';
+import {SystemMessageService} from '../../services/index';
+import {UserService} from '../../services/user.service';
 
 @Injectable()
 export class LogInGuard implements CanActivate {

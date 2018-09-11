@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {LogInGuard} from '../../guards';
+import {LogInGuard} from '../guards';
 
 import {AccountSettingsPageComponent} from './account-settings-page.component';
 import {SettingWorkerModule} from '../../containers/setting-worker';

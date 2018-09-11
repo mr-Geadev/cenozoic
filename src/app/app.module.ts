@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PageFooterModule, PageHeaderModule } from './containers';
-import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from './guards';
+import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from './pages/guards';
 import { ChangeCityModule, ChangeCityService } from './pop-ups/change-city';
 import { ConfirmService } from './pop-ups/confirm/confirm.service';
 import { AccountSettingsPageModule, CreateVacancyPageModule, ListVacancyPageModule, MainPageModule } from './pages';

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AdminGuard} from '../guards';
+import {AdminGuard} from '../pages/guards';
 import {AdminComponent} from './admin.component';
 import {MainComponent} from './pages/main/main.component';
 import {ResumeListComponent} from './pages/resume-list/resume-list.component';

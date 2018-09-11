@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { VacancyModel } from '../../models';
+import { VacancyModel } from 'models';
+
 
 @Component({
   selector: 'card-vacancy',
