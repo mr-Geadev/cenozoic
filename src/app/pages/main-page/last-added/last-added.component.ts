@@ -5,7 +5,7 @@ import {LocalizationService} from '../../../services/index';
 @Component({
     selector: 'last-added',
     templateUrl: './last-added.component.html',
-    styleUrls: ['./last-added.component.less']
+    styleUrls: ['./last-added.component.scss']
 })
 export class LastAddedComponent implements OnInit {
     public dictionary: any = null;

@@ -7,7 +7,7 @@ import {FilterVacancyService} from '../filter-vacancy';
 @Component({
     selector: 'list-vacancy',
     templateUrl: './list-vacancy.component.html',
-    styleUrls: ['./list-vacancy.component.less']
+    styleUrls: ['./list-vacancy.component.scss']
 })
 export class ListVacancyComponent implements OnInit {
 

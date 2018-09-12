@@ -11,7 +11,7 @@ import {ChangeCityService} from '../../pop-ups/change-city';
 @Component({
     selector: 'constructor-vacancy',
     templateUrl: './constructor-vacancy.component.html',
-    styleUrls: ['./constructor-vacancy.component.less']
+    styleUrls: ['./constructor-vacancy.component.scss']
 })
 export class ConstructorVacancyComponent implements OnInit {
 

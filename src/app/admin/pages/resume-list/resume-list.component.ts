@@ -8,7 +8,7 @@ import {AdminResumeApi} from './admin-resume.api';
 @Component({
     selector: 'resume-list.col',
     templateUrl: './resume-list.component.html',
-    styleUrls: ['./resume-list.component.less']
+    styleUrls: ['./resume-list.component.scss']
 })
 export class ResumeListComponent implements OnInit {
 

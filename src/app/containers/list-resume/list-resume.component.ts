@@ -9,7 +9,7 @@ import {SortModel} from '../../models/sort.model';
 @Component({
     selector: 'list-resume',
     templateUrl: './list-resume.component.html',
-    styleUrls: ['./list-resume.component.less']
+    styleUrls: ['./list-resume.component.scss']
 })
 export class ListResumeComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import {UsersApi} from './users.api';
 @Component({
     selector: 'users.col',
     templateUrl: 'users.component.html',
-    styleUrls: ['./users.component.less']
+    styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
 

@@ -98,3 +98,28 @@ body {
     display: none;
 }
 
+@import "colors";
+@import "fonts";
+@import "blocks";
+
+// my fixes
+html, body {
+	min-height: 100%;
+	height: 100%;
+	font-size: 16px;
+}
+
+
+.container {
+	height: inherit;
+}
+
+.row {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+a {
+	color: $white;
+	text-decoration: none;
+}

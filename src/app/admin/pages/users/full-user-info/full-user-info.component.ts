@@ -8,7 +8,7 @@ import {UsersApi} from '../users.api';
 @Component({
     selector: 'full-user-info',
     templateUrl: 'full-user-info.component.html',
-    styleUrls: ['./full-user-info.component.less']
+    styleUrls: ['./full-user-info.component.scss']
 })
 export class FullUserInfoComponent implements OnInit {
 

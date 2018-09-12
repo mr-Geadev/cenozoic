@@ -6,7 +6,7 @@ import {LocalizationService} from '../../services';
 @Component({
     selector: 'account-email-confirm',
     templateUrl: './email-confirm-page.component.html',
-    styleUrls: ['./email-confirm-page.component.less']
+    styleUrls: ['./email-confirm-page.component.scss']
 })
 export class EmailConfirmPageComponent implements OnInit {
 

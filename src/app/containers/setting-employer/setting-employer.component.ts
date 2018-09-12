@@ -14,7 +14,7 @@ import {BlankAccountService} from '../../services';
 @Component({
     selector: 'setting-employer',
     templateUrl: './setting-employer.component.html',
-    styleUrls: ['./setting-employer.component.less']
+    styleUrls: ['./setting-employer.component.scss']
 })
 export class SettingEmployerComponent implements OnInit {
 

@@ -28,7 +28,7 @@ import { City } from '../../pop-ups/change-city/cities.models';
 @Component({
     selector: 'constructor-resume',
     templateUrl: './constructor-resume.component.html',
-    styleUrls: ['./constructor-resume.component.less'],
+    styleUrls: ['./constructor-resume.component.scss'],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' },
         { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },

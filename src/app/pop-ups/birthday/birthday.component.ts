@@ -8,7 +8,7 @@ import { LocalizationService } from '../../services/localization.service';
 @Component({
     selector: 'birthday-date-picker',
     templateUrl: './birthday.component.html',
-    styleUrls: ['./birthday.component.less'],
+    styleUrls: ['./birthday.component.scss'],
     providers: [
         // The locale would typically be provided on the root module of your application. We do it at
         // the component level here, due to limitations of our example generation script.

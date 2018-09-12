@@ -5,7 +5,7 @@ import {ResConfirmService} from './res-confirm.service';
 @Component({
     selector: 'confirm-modal',
     templateUrl: './confirm.component.html',
-    styleUrls: ['./confirm.component.less']
+    styleUrls: ['./confirm.component.scss']
 })
 
 export class ConfirmComponent {

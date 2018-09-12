@@ -9,7 +9,7 @@ import {LANGUAGES} from '../../constants';
 @Component({
     selector: 'page-header',
     templateUrl: './page-header.component.html',
-    styleUrls: ['./page-header.component.less']
+    styleUrls: ['./page-header.component.scss']
 })
 export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     public isMainPage: boolean = false;

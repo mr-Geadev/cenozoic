@@ -5,7 +5,7 @@ import { VacancyModel } from 'models';
 @Component({
   selector: 'card-vacancy',
   templateUrl: 'card-vacancy.component.html',
-  styleUrls: ['card-vacancy.component.less']
+  styleUrls: ['card-vacancy.component.scss']
 })
 export class CardVacancyComponent {
 

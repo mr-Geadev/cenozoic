@@ -5,7 +5,7 @@ import { LocalizationService } from "../../../services/index";
 @Component({
     selector: 'main-partners',
     templateUrl: './main-partners.component.html',
-    styleUrls: ['./main-partners.component.less']
+    styleUrls: ['./main-partners.component.scss']
 })
 export class MainPartnersComponent implements OnInit {
     public dictionary: any = null;

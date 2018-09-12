@@ -1,0 +1,29 @@
+//transitions
+@mixin transition-duration { // дефолтная продолжительности анимации на сайте
+	transition-duration: .2s;
+}
+
+@mixin tr-bg { // плавный hover для цвета фона
+	transition-property: background-color;
+	@include transition-duration;
+}
+
+@mixin tr-color { // плавный hover для цвета текста
+	transition-property: color;
+	@include transition-duration
+}
+
+@mixin tr-bg-clr { // плавный hover для цвета фона и текста
+	transition-property: background-color, color;
+	@include transition-duration;
+}
+
+@mixin tr-opacity { // плавный hover для изменения прозрачности
+	transition-property: opacity;
+	@include transition-duration;
+}
+
+@mixin tr-all { // плавный hover для всех параметров
+	transition-property: all;
+	@include transition-duration;
+}

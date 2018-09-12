@@ -9,7 +9,7 @@ import {CitiesService} from '../../services/cities.service';
 @Component({
     selector: 'full-resume',
     templateUrl: './full-resume.component.html',
-    styleUrls: ['./full-resume.component.less']
+    styleUrls: ['./full-resume.component.scss']
 })
 export class FullResumeComponent implements OnInit {
 

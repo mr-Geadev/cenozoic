@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 @Component({
     selector: 'auth-page',
     templateUrl: './auth-page.component.html',
-    styleUrls: ['./auth-page.component.less']
+    styleUrls: ['./auth-page.component.scss']
 })
 
 export class AuthPageComponent implements OnInit {

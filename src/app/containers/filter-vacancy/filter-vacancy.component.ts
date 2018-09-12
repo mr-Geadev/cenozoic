@@ -6,7 +6,7 @@ import {LocalizationService} from '../../services';
 @Component({
     selector: 'filter-vacancy',
     templateUrl: './filter-vacancy.component.html',
-    styleUrls: ['./filter-vacancy.component.less'],
+    styleUrls: ['./filter-vacancy.component.scss'],
 })
 export class FilterVacancyComponent implements OnInit {
 

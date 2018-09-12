@@ -6,7 +6,7 @@ import {LocalizationService, SortService} from '../../services';
 @Component({
     selector: 'list-resume-page',
     templateUrl: './list-resume-page.component.html',
-    styleUrls: ['./list-resume-page.component.less']
+    styleUrls: ['./list-resume-page.component.scss']
 })
 export class ListResumePageComponent implements OnInit {
     public dictionary: any = null;

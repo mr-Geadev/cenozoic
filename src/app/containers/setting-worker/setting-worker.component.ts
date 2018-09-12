@@ -12,7 +12,7 @@ import {BlankAccountService} from '../../services/blank-account.service';
 @Component({
     selector: 'setting-worker',
     templateUrl: './setting-worker.component.html',
-    styleUrls: ['./setting-worker.component.less']
+    styleUrls: ['./setting-worker.component.scss']
 })
 export class SettingWorkerComponent implements OnInit {
 
