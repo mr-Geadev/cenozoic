@@ -1,10 +1,8 @@
-import {HttpClient} from '@angular/common/http';
-import {Component, Input, OnInit} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
 
-import {LocalizationService, ResumeService} from '../../services';
-import {FilterResumesService} from '../filter-resumes';
-import {SortService} from '../../services/sort.service';
-import {SortModel} from '../../models/sort.model';
+import { LocalizationService, ResumeService } from 'services';
+import { FilterResumesService } from '../filter-resumes';
 
 @Component({
     selector: 'list-resume',
@@ -22,7 +20,6 @@ export class ListResumeComponent implements OnInit {
     constructor(private _http: HttpClient,
                 private _filterResumesService: FilterResumesService,
                 public resumeService: ResumeService,
-                private _sortService: SortService,
                 private _localizationService: LocalizationService) {
     }
 
@@ -31,77 +28,31 @@ export class ListResumeComponent implements OnInit {
 
         this.dictionary = this._localizationService.currentDictionary;
 
-        this._sortService.typeSort
-            .subscribe(
-                (parameters) => this.sorting(parameters)
-            );
-
         // резюме пользоватля
         if (this.config === 'user') {
             this._http.get(`/api/v1/user/resume/all`)
                 .subscribe((res: any) => {
-                    this.listResume = this.formatting(res.resumeList);
+                    this.listResume = res.resumeList;
                 });
         } else if (this.config === 'all') {
 
-            //фитрованные резюме
+            // фитрованные резюме
             this._filterResumesService.filter$
                 .subscribe((parameters: any) => {
                     if (parameters != null) {
                         this._http.post(`/api/v1/resume/get/all`, {offset: this.offset, filters: parameters, count: 24})
                             .subscribe((res: any) => {
-                                this.listResume = this.formatting(res.resumeList);
+                                this.listResume = res.resumeList;
                             });
                     } else {
-                        //все резюме
+                        // все резюме
                         this._http.post(`/api/v1/resume/get/all`, {offset: this.offset, count: 24})
                             .subscribe((res: any) => {
-                                this.listResume = this.formatting(res.resumeList);
+                                this.listResume = res.resumeList;
                             });
                     }
                 });
         }
     };
-
-    public formatting(list: any[]) {
-
-        let answer = list.map((item) => {
-
-            if ( (!item.experienceTime.all) || ( (item.experienceTime.all.years === 0) && (item.experienceTime.all.months === 0) ) ) {
-                item.experienceTime.all = this.dictionary.WITHOUT_EXPERIENCE;
-            } else {
-                item.experienceTime.all = `${item.experienceTime.all.years} лет и ${item.experienceTime.all.months} месяцев`;
-            }
-
-            return item;
-
-        });
-
-        return answer;
-    }
-
-    public sorting(parameters: SortModel): void {
-
-        switch (parameters.type) {
-            case 'experience':
-                this.listResume.sort((a, b) => {
-                    if (a.experienceTime > b.experienceTime) {
-                        return 1 * parameters.order;
-                    }
-                });
-                break;
-            case 'salary':
-                this.listResume.sort((a, b) => {
-                    if (a.salary > b.salary) {
-                        return 1 * parameters.order;
-                    }
-                });
-                break;
-            default:
-                break;
-        }
-
-    }
-
 
 }

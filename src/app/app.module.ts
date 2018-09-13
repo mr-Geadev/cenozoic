@@ -1,27 +1,29 @@
-import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
-import { APP_ID, Inject, PLATFORM_ID, NgModule } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { APP_ID, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from 'app.component';
+import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
+import {
+  AccountSettingsPageModule,
+  AuthPageModule,
+  CreateResumePageModule,
+  CreateVacancyPageModule,
+  EmailConfirmPageModule,
+  ListResumePageModule,
+  ListVacancyPageModule,
+  MainPageModule,
+  PersonalAccountPageModule,
+  ResumeFullPageModule,
+  VacancyFullPageModule,
+} from 'pages';
+import { ChangeCityModule, ChangeCityService, ConfirmModule } from 'pop-ups';
+import { BlankAccountService, CitiesService, ConfirmService, LocalizationService, SystemMessageService, UserService } from 'services';
 import { PageFooterModule, PageHeaderModule } from './containers';
-import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from './pages/guards';
-import { ChangeCityModule, ChangeCityService } from './pop-ups/change-city';
-import { ConfirmService } from './pop-ups/confirm/confirm.service';
-import { AccountSettingsPageModule, CreateVacancyPageModule, ListVacancyPageModule, MainPageModule } from './pages';
-import { EmailConfirmPageModule } from './pages/email-confirm-page';
-import { CreateResumePageModule } from './pages/constructor-resume-page';
-import { ListResumePageModule } from './pages/list-resume-page';
-import { PersonalAccountPageModule } from './pages/personal-account-page';
-import { ResumeFullPageModule } from './pages/resume-full-page';
-import { BlankAccountService, LocalizationService, SortService, SystemMessageService, UserService } from './services';
-import { VacancyFullPageModule } from './pages/vacancy-full-page';
-import { ConfirmModule } from './pop-ups/confirm';
-import { AuthPageModule } from './pages/auth-page';
-import { CitiesService } from './services/cities.service';
 
 const ROUTES = [
   {
@@ -71,7 +73,6 @@ const ROUTES = [
     LocalizationService,
     CitiesService,
     UserService,
-    SortService,
     ConfirmService,
     BlankAccountService,
     ChangeCityService,

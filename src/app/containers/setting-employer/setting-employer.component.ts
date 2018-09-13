@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
-import {CHANGE_PASSWORD} from '../../constants/api.constant';
+import {CHANGE_PASSWORD} from '../../const/api.constant';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ConfirmService} from '../../pop-ups/confirm/confirm.service';
+import {ConfirmService} from '../../services/confirm.service';
 import {AuthService} from '../../services/auth.service';
 import {HttpClient} from '@angular/common/http';
 import {LocalizationService} from '../../services/localization.service';

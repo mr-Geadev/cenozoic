@@ -1,0 +1,43 @@
+@import "colors";
+@import "animations";
+@import "blocks";
+
+:host {
+  @include card();
+
+  .add {
+    @include card-add();
+  }
+
+  .job {
+    color: $black;
+    font-family: "Bebas";
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 1.501rem;
+  }
+
+  .title {
+    color: $gray;
+    font-family: Roboto;
+    font-size: 0.813rem;
+    font-weight: 400;
+    line-height: 1rem;
+  }
+
+  .value {
+    color: $black;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.251rem;
+  }
+
+  .experience {
+    margin-top: 34px;
+  }
+
+  .last-work-place {
+    margin-top: 27px;
+  }
+}

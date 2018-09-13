@@ -1,29 +1,33 @@
 //transitions
-@mixin transition-duration { // дефолтная продолжительности анимации на сайте
-	transition-duration: .2s;
+
+$transition-duration-default: .2s; // дефолтная продолжительности анимации на сайте
+
+@mixin animation($animation-property: all, $transition-duration: $transition-duration-default) {
+  transition-property: $animation-property;
+  transition-duration: $transition-duration;
 }
 
 @mixin tr-bg { // плавный hover для цвета фона
-	transition-property: background-color;
-	@include transition-duration;
+  transition-property: background-color;
+  $transition-duration-defaultn: $transition-duration-default;
 }
 
 @mixin tr-color { // плавный hover для цвета текста
-	transition-property: color;
-	@include transition-duration
+  transition-property: color;
+  transition-duration: $transition-duration-default;
 }
 
 @mixin tr-bg-clr { // плавный hover для цвета фона и текста
-	transition-property: background-color, color;
-	@include transition-duration;
+  transition-property: background-color, color;
+  transition-duration: $transition-duration-default;
 }
 
 @mixin tr-opacity { // плавный hover для изменения прозрачности
-	transition-property: opacity;
-	@include transition-duration;
+  transition-property: opacity;
+  transition-duration: $transition-duration-default;
 }
 
 @mixin tr-all { // плавный hover для всех параметров
-	transition-property: all;
-	@include transition-duration;
+  transition-property: all;
+  transition-duration: $transition-duration-default;
 }

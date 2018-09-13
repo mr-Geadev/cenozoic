@@ -6,7 +6,7 @@ import {MatDialogModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 
 import {ListResumeModule} from '../../containers';
-import {LogInGuard} from '../guards';
+import {LogInGuard} from '../../guards';
 import {LoginModalModule} from '../../pop-ups';
 import {PersonalAccountPageComponent} from './personal-account-page.component';
 import {ListVacancyModule} from '../../containers/list-vacancy/list-vacancy.module';

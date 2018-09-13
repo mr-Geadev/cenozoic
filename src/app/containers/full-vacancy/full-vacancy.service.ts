@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {GET_VACANCY_BY_ID} from '../../constants/api.constant';
+import {GET_VACANCY_BY_ID} from '../../const/api.constant';
 import {VacancyModel} from '../../models/vacancy.model';
 
 @Injectable()

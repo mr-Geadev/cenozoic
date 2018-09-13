@@ -1,68 +1,28 @@
 <section class="list-summaryes" *ngIf="listResume">
-    <div class="container">
+	<div class="container">
 
-        <div class="row list">
+		<div class="row list">
+			<card-resume
+				*ngFor="let resume of listResume; let i = index"
+				[resume]="resume"
+				class="item"
+			></card-resume>
 
-            <a class="item" *ngFor="let item of listResume; let i = index" [routerLink]="['/resume',item._id]">
-                <div class="job">{{item?.job}}</div>
-                <div class="experience">
-                    <div class="title">
-                        {{dictionary.FULL_EXPERIENCE}}
-                    </div>
-                    <div class="value">
-                        {{item?.experienceTime.all}}
-                    </div>
-                </div>
-                <div class="last-work-place" *ngIf="item.experience.length > 0">
-                    <div class="title">
-                        {{dictionary.LAST_WORKPLACE}}
-                    </div>
-                    <div class="value">
-                        {{item?.experience[0]?.job}}, {{item?.experience[0]?.organization}}
-                    </div>
-                    <div class="value" *ngIf="item?.experience.length == 0">
-                        -
-                    </div>
-                </div>
-                <!--которое образоание, ага-->
-                <div class="last-work-place" *ngIf="item.education.length > 0">
-                    <div class="title">
-                        {{dictionary.EDUCATION}}
-                    </div>
-                    <div *ngFor="let education of item.education; let j = index" >
-                        <div class="value" *ngIf="!education.faculty && j < 2">
-                            {{education.university}}
-                        </div>
-                        <div class="value" *ngIf="education.faculty && j < 2">
-                            {{education.university}}, {{education.faculty}}
-                        </div>
-                    </div>
-                </div>
-                <div class="more-info">{{dictionary.MORE}}<img src="/assets/images/arrow.svg"/></div>
-            </a>
+			<card-resume
+				*ngIf="config === 'user'"
+				[add-resume]="true"
+				class="item"
+			></card-resume>
+		</div>
 
+		<!--<div class="row show-more">-->
+			<!--<button type="button" name="button">-->
+				<!--<img src="/assets/images/dott.png" alt="">-->
+				<!--<img src="/assets/images/dott.png" alt="">-->
+				<!--<img src="/assets/images/dott.png" alt="">-->
+				<!--Показать ещё-->
+			<!--</button>-->
+		<!--</div>-->
 
-            <a [routerLink]="['/create-resume']" class="add item" *ngIf="config === 'user'">
-                <div class="inner">
-                    <div class="circle">
-                        <div class="plus">
-                            +
-                        </div>
-                    </div>
-                </div>
-                <div class="more-info">{{dictionary.ADD_NEW_CV}}</div>
-            </a>
-
-
-        </div>
-
-        <div class="row show-more">
-            <button type="button" name="button">
-                <img src="/assets/images/dott.png" alt="">
-                <img src="/assets/images/dott.png" alt="">
-                <img src="/assets/images/dott.png" alt="">
-                Показать ещё
-            </button>
-        </div>
-    </div>
+	</div>
 </section>

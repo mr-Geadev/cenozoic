@@ -24,7 +24,7 @@
         font-weight: 400;
         padding: 17px 51px;
         transition-property: border-color;
-        @include transition-duration;;
+        transition-duration: $transition-duration-default;
 
         &:focus {
           outline: none;

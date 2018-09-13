@@ -1,24 +1,37 @@
-<a [routerLink]="['/vacancy', vacancy._id]">
-    <div class="name-of-company">
-        {{vacancy.companyName }}
-    </div>
+<a *ngIf="vacancy" class="wrapper" [routerLink]="['/vacancy', vacancy._id]">
+	<div class="name-of-company">
+		{{vacancy.companyName }}
+	</div>
 
-    <div class="post">
-        {{vacancy.title}}
-    </div>
+	<div class="post">
+		{{vacancy.title}}
+	</div>
 
-    <div class="description" [innerHtml]="vacancy.duties">
+	<div class="description" [innerHtml]="vacancy.duties">
 
-    </div>
+	</div>
 
 
-    <div class="terms">
-        от <span class="number">{{vacancy.salaryGROSS.from}}</span>
-        {{vacancy.currency === "rubles" ? "₽" : "$" }}
-    </div>
+	<div class="terms">
+		{{dictionary.FROM}} <span class="number">{{vacancy.salaryGROSS.from}}</span>
+		{{vacancy.currency === "rubles" ? "₽" : "$" }}
+	</div>
 
-    <a class="more-info" target="_blank" [routerLink]="['/vacancy', vacancy._id]">
-        {{dictionary.MORE}}
-        <img src="/assets/images/arrow.svg"/>
-    </a>
+	<a class="more-info" target="_blank" [routerLink]="['/vacancy', vacancy._id]">
+		{{dictionary.MORE}}
+		<img src="/assets/images/arrow.svg"/>
+	</a>
+</a>
+
+
+
+<a *ngIf="add" class="add item" [routerLink]="['/create-vacancy']">
+	<div class="inner">
+		<div class="circle">
+			<div class="plus">
+				+
+			</div>
+		</div>
+	</div>
+	<div class="more-info">{{dictionary.ADD_NEW_VACANCY}}</div>
 </a>

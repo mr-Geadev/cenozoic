@@ -97,7 +97,7 @@
           z-index: -1;
           transition-property: left;
           transition-timing-function: ease-out;
-          @include transition-duration;
+          transition-duration: $transition-duration-default;
           pointer-events: none;
         }
 

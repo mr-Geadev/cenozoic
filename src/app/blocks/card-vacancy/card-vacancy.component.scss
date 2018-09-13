@@ -1,29 +1,12 @@
 @import "colors";
 @import "animations";
+@import "blocks";
 
 :host {
-  display: block;
-  width: 262px;
-  height: 400px;
-  padding: 30px;
-  padding-bottom: 0;
-  box-shadow: 1px 0rem 1.875rem rgba(0, 0, 0, 0.15);
-  position: relative;
-  @include transition-duration;
-  transition-property: transform;
-  margin-right: 20px;
-  margin-top: 14px;
+  @include card();
 
-  &:nth-child(4n) {
-    margin-right: 0;
-  }
-
-  &:hover {
-    transform: scale(1.05);
-
-    .more-info {
-      color: black;
-    }
+  .add {
+    @include card-add();
   }
 
   .name-of-company {
@@ -61,26 +44,5 @@
     .number {
       font-size: 1.5rem;
     }
-  }
-
-  .more-info {
-    display: block;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    color: $gray;
-    font-family: Roboto;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-top: 1px solid #ddd;
-    padding: 13px 30px;
-    @include tr-color;
-
-    img {
-      margin-bottom: -2px;
-      display: inline-block;
-    }
-
   }
 }

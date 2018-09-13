@@ -3,8 +3,8 @@ import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {BlankAccountService} from '../../services/blank-account.service';
-import {UserService} from '../../services/user.service';
+import {BlankAccountService} from '../services/blank-account.service';
+import {UserService} from '../services/user.service';
 
 @Injectable()
 export class BlankAccountGuard implements CanActivate {

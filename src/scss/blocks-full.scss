@@ -17,7 +17,7 @@ input[type="checkbox"] {
     border-radius: 0.188rem;
     border: 0.063rem solid #dadada;
     background-color: $white;
-    @include tr-bg;
+    @include animation(background-color);
   }
   & + label:hover:before {
     background-color: $light-gray;
@@ -32,7 +32,7 @@ input[type="checkbox"] {
 .inline-link { // встроенные ссылки
   color: $orange;
   text-decoration: underline;
-  @include tr-color;
+  @include animation(color);
 
   &:hover {
     color: $hover-orange;

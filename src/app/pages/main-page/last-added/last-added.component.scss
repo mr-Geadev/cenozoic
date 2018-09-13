@@ -70,7 +70,7 @@
         padding-bottom: 0;
         box-shadow: 0 0.875rem 1.875rem rgba(0, 0, 0, 0.15);
         position: relative;
-        @include transition-duration;
+        transition-duration: $transition-duration-default;
         transition-property: transform;
 
         .name-of-company {

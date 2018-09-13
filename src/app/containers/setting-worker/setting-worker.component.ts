@@ -4,8 +4,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
 
-import {CHANGE_PASSWORD, CHANGE_USER_INFO} from '../../constants';
-import {ConfirmService} from '../../pop-ups/confirm/confirm.service';
+import {CHANGE_PASSWORD, CHANGE_USER_INFO} from '../../const';
+import {ConfirmService} from '../../services/confirm.service';
 import {AuthService, LocalizationService, SystemMessageService, UserService} from '../../services';
 import {BlankAccountService} from '../../services/blank-account.service';
 
