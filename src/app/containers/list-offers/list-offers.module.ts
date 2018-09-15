@@ -11,7 +11,6 @@ import { ListOffersComponent } from 'containers/list-offers/list-offers.componen
   ],
   declarations: [
     ListOffersComponent,
-    CardRespondComponent,
     CardOfferComponent,
   ],
   exports: [ListOffersComponent],

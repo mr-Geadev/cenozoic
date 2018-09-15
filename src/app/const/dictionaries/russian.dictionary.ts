@@ -320,11 +320,18 @@ export const RUSSIAN_DICTIONARY = {
   STATUS: 'Статус',
   NEW: 'Новое',
   PENDING: 'Ожидание',
-  PENDING_DESC: 'Кандидат еще не ответил',
+  REPLY: 'Ответить',
+  CHANGE_SOLUTION: 'Изменить решение',
+  SEE_ANSWER: 'Посмотреть ответы',
+
+  CANDIDATE_NOT_ANSWER: 'Кандидат еще не ответил',
   CANDIDATE_RESPONDED: 'Кандидат ответил вам',
-  CANDIDATE_RESPONDED_DESC: 'Посмотреть ответ',
   CANDIDATE_REFUSED: 'Кандидат отказался',
-  CANDIDATE_REFUSED_DESC: 'Вакансия не заинтересовала',
+  VACANCY_NOT_INTERESTED_FOR_CANDIDATE: 'Вакансия не заинтересовала',
+  YOU_WILL_CONNECT: 'Вы свяжетесь с кандидатом',
+  CANDIDATE_NOT_SUIT: 'Кандидат не подошел вам',
+  CANDIDATE_FILLED_INTERVIEW: 'Кандидат заполнил опросник',
+  CANDIDATE_FILLING_INTERVIEW: 'Кандидат заполняет опросник',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',

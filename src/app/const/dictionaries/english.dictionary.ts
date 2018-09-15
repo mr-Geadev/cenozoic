@@ -320,11 +320,18 @@ export const ENGLISH_DICTIONARY = {
   STATUS: 'Status',
   NEW: 'New',
   PENDING: 'Expectation',
-  PENDING_DESC: 'The candidate has not yet responded',
+  REPLY: 'Reply',
+  CHANGE_SOLUTION: 'Edit solution',
+  SEE_ANSWER: 'View the answers of',
+
+  CANDIDATE_NOT_ANSWER: 'The candidate has not yet responded',
   CANDIDATE_RESPONDED: 'The candidate answered you',
-  CANDIDATE_RESPONDED_DESC: 'See the answer',
   CANDIDATE_REFUSED: 'The candidate refused',
-  CANDIDATE_REFUSED_DESC: 'Vacancy is not interested',
+  VACANCY_NOT_INTERESTED_FOR_CANDIDATE: 'Vacancy is not interested',
+  YOU_WILL_CONNECT: 'You will contact the candidate',
+  CANDIDATE_NOT_SUIT: 'The candidate did not fit you',
+  CANDIDATE_FILLED_INTERVIEW: 'The candidate completed the interview',
+  CANDIDATE_FILLING_INTERVIEW: 'The candidate completes the interview',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',

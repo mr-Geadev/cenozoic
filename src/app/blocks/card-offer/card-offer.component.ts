@@ -9,7 +9,7 @@ import { LocalizationService } from 'services';
 export class CardOfferComponent implements OnInit {
 
   @Input('offer') respond?: any;
-  @Input('status') status?: string; // waiting/pending/refusal
+  @Input('status') status?: string; // pending/responded/refused
   @Input('new') new?: boolean;
 
   public dictionary: any = null;

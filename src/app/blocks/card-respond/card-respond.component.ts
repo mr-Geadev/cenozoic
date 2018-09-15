@@ -8,7 +8,8 @@ import { LocalizationService } from 'services';
 })
 export class CardRespondComponent implements OnInit {
 
-  @Input('respond') respond: any;
+  @Input('respond') respond?: any;
+  @Input('status') status?: string; // new -> interview-pending -> interview-ready -> responded/refused
 
   public dictionary: any = null;
 

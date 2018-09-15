@@ -64,9 +64,9 @@
 				<ng-template ngSwitchDefault>{{dictionary.PENDING}}</ng-template>
 			</div>
 			<div class="description" [ngSwitch]="status">
-				<ng-template ngSwitchCase="responded"><a routerLink="#!">{{dictionary.CANDIDATE_RESPONDED_DESC}}</a></ng-template>
-				<ng-template ngSwitchCase="refused">{{dictionary.CANDIDATE_REFUSED_DESC}}</ng-template>
-				<ng-template ngSwitchDefault>{{dictionary.PENDING_DESC}}</ng-template>
+				<ng-template ngSwitchCase="responded"><a routerLink="#!">{{dictionary.SEE_ANSWER}}</a></ng-template>
+				<ng-template ngSwitchCase="refused">{{dictionary.VACANCY_NOT_INTERESTED_FOR_CANDIDATE}}</ng-template>
+				<ng-template ngSwitchDefault>{{dictionary.CANDIDATE_NOT_ANSWER}}</ng-template>
 			</div>
 		</div>
 
