@@ -12,6 +12,7 @@ import { FilterVacancyService } from '../filter-vacancy';
 export class ListOffersComponent implements OnInit {
 
   public dictionary: any = null;
+  @Input('typeUser') typeUser: string; // worker/employer
 
   constructor(private _localizationService: LocalizationService) {
   }

@@ -11,6 +11,7 @@ export class CardOfferComponent implements OnInit {
   @Input('offer') respond?: any;
   @Input('status') status?: string; // pending/responded/refused
   @Input('new') new?: boolean;
+  @Input('typeUser') typeUser: string; // worker/employer
 
   public dictionary: any = null;
 

@@ -319,6 +319,7 @@ export const RUSSIAN_DICTIONARY = {
   // отклики и предложения
   STATUS: 'Статус',
   NEW: 'Новое',
+  VIEWED_TRUE: 'Просмотрено',
   PENDING: 'Ожидание',
   REPLY: 'Ответить',
   CHANGE_SOLUTION: 'Изменить решение',
@@ -332,6 +333,9 @@ export const RUSSIAN_DICTIONARY = {
   CANDIDATE_NOT_SUIT: 'Кандидат не подошел вам',
   CANDIDATE_FILLED_INTERVIEW: 'Кандидат заполнил опросник',
   CANDIDATE_FILLING_INTERVIEW: 'Кандидат заполняет опросник',
+
+  YOU_AGREED: 'Вы согласились',
+  YOU_REFUSED: 'Вы отказались',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',

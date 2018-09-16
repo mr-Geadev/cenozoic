@@ -108,6 +108,7 @@
 
 <list-offers
 	class="block resume"
+	[typeUser]="typeCurrentUser"
 	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS }"
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS"
 ></list-offers>
