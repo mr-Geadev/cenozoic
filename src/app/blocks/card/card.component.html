@@ -1,0 +1,23 @@
+<!--<a *ngIf="resume" class="wrapper resume" [routerLink]="['/resume', resume._id]">-->
+<a class="wrapper" routerLink="{{viewRoute}}">
+
+	<resume-card
+		[resume]="resume"
+		[dictionary]="dictionary"
+	></resume-card>
+
+	<div class="more-info">{{dictionary.MORE}}<img src="/assets/images/arrow.svg"/></div>
+</a>
+
+
+
+<!--<a *ngIf="addNew" routerLink="{{addRoute}}" class="add item">-->
+	<!--<div class="inner">-->
+		<!--<div class="circle">-->
+			<!--<div class="plus">-->
+				<!--+-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div class="more-info">{{dictionary.ADD_NEW_CV}}</div>-->
+<!--</a>-->

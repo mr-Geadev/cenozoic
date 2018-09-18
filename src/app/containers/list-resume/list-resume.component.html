@@ -2,17 +2,19 @@
 	<div class="container">
 
 		<div class="row list">
-			<card-resume
+			<card
 				*ngFor="let resume of listResume; let i = index"
 				[resume]="resume"
+				[typeUser]="'worker'"
+				[dictionary]="dictionary"
 				class="item"
-			></card-resume>
+			></card>
 
-			<card-resume
-				*ngIf="config === 'user'"
-				[add-resume]="true"
-				class="item"
-			></card-resume>
+			<!--<card-resume-->
+				<!--*ngIf="config === 'user'"-->
+				<!--[add-resume]="true"-->
+				<!--class="item"-->
+			<!--&gt;</card-resume>-->
 		</div>
 
 		<!--<div class="row show-more">-->

@@ -1,25 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { VacancyModel } from 'models';
-import { LocalizationService } from 'services';
 
 @Component({
-  selector: 'card-resume',
-  templateUrl: 'card-resume.component.html',
-  styleUrls: ['card-resume.component.scss'],
+  selector: 'resume-card',
+  templateUrl: './resume-card.component.html',
+  styleUrls: ['./resume-card.component.scss'],
 })
-export class CardResumeComponent implements OnInit {
+export class ResumeCardComponent implements OnInit {
 
-  @Input('resume') resume?: any;
-  @Input('add-resume') add?: boolean;
+  @Input('dictionary') dictionary: any;
+  @Input('resume') resume: any;
 
-  public dictionary: any = null;
-
-  constructor(private _localization: LocalizationService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.dictionary = this._localization.currentDictionary;
-
     if (this.resume) {
       if ((!this.resume.experienceTime.all) || ((this.resume.experienceTime.all.years === 0) && (this.resume.experienceTime.all.months === 0))) {
         this.resume.experienceTime.all = this.dictionary.WITHOUT_EXPERIENCE;
@@ -28,5 +22,4 @@ export class CardResumeComponent implements OnInit {
       }
     }
   }
-
 }

@@ -1,0 +1,12 @@
+@import "colors";
+@import "animations";
+@import "blocks";
+
+:host {
+  @include card();
+
+  .add {
+    @include card-add();
+  }
+
+}
