@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
 @Component({
     selector: 'admin-main.col',
     templateUrl: './main.component.html',
-    styleUrls: ['./main.component.less']
+    styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
 

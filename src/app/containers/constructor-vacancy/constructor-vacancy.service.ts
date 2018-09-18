@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {CREATE_VACANCY} from '../../constants/api.constant';
+import {CREATE_VACANCY} from '../../const/api.constant';
 import 'rxjs/add/operator/map';
 import {LocalizationService} from '../../services/localization.service';
 

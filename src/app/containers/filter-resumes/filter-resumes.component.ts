@@ -6,7 +6,7 @@ import {LocalizationService} from '../../services';
 @Component({
     selector: 'filter-resumes',
     templateUrl: './filter-resumes.component.html',
-    styleUrls: ['./filter-resumes.component.less'],
+    styleUrls: ['./filter-resumes.component.scss'],
 })
 export class FilterResumesComponent implements OnInit {
 

@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
-import {USER_INFO} from '../constants/api.constant';
+import {USER_INFO} from '../const/api.constant';
 import {SystemMessageService} from './system-message.service';
 
 @Injectable()

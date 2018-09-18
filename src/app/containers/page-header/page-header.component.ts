@@ -4,12 +4,12 @@ import {Subscription} from 'rxjs';
 
 import {LoginModalService} from '../../pop-ups/login';
 import {AuthService, LocalizationService, UserService} from '../../services';
-import {LANGUAGES} from '../../constants';
+import {LANGUAGES} from '../../const';
 
 @Component({
     selector: 'page-header',
     templateUrl: './page-header.component.html',
-    styleUrls: ['./page-header.component.less']
+    styleUrls: ['./page-header.component.scss']
 })
 export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     public isMainPage: boolean = false;

@@ -1,14 +1,14 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {ConfirmService} from '../../../pop-ups/confirm/confirm.service';
+import {ConfirmService} from '../../../services/confirm.service';
 import {SystemMessageService} from '../../../services';
 import {AdminResumeApi} from './admin-resume.api';
 
 @Component({
     selector: 'resume-list.col',
     templateUrl: './resume-list.component.html',
-    styleUrls: ['./resume-list.component.less']
+    styleUrls: ['./resume-list.component.scss']
 })
 export class ResumeListComponent implements OnInit {
 

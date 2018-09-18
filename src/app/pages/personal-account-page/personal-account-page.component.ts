@@ -5,7 +5,7 @@ import {UserService} from '../../services/user.service';
 @Component({
     selector: 'personal-account-page',
     templateUrl: './personal-account-page.component.html',
-    styleUrls: ['./personal-account-page.component.less']
+    styleUrls: ['./personal-account-page.component.scss']
 })
 export class PersonalAccountPageComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class PersonalAccountPageComponent implements OnInit {
     public ngOnInit(): void {
 
         this.dictionary = this._localizationService.currentDictionary;
-        this.activeTab = this.dictionary.ACCOUNT_PAGE_TAB_RESPONSE;
+        this.activeTab = this.dictionary.ACCOUNT_PAGE_TAB_RESPOND;
 
         this._userService.user$
             .subscribe(

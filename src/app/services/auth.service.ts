@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {UserService} from './user.service';
-import {LOG_OUT, SIGN_IN, SIGN_UP} from '../constants/api.constant';
+import {LOG_OUT, SIGN_IN, SIGN_UP} from '../const/api.constant';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()

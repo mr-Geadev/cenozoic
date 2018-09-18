@@ -8,8 +8,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/first';
 import { Subscription } from 'rxjs/Subscription';
 
-import { CREATE_RESUME } from '../../constants';
-import { ConfirmService } from '../../pop-ups/confirm/confirm.service';
+import { CREATE_RESUME } from '../../const';
+import { ConfirmService } from '../../services/confirm.service';
 import { ResumeService, SystemMessageService, UserService } from '../../services';
 import { LocalizationService } from '../../services/localization.service';
 import {
@@ -28,7 +28,7 @@ import { City } from '../../pop-ups/change-city/cities.models';
 @Component({
     selector: 'constructor-resume',
     templateUrl: './constructor-resume.component.html',
-    styleUrls: ['./constructor-resume.component.less'],
+    styleUrls: ['./constructor-resume.component.scss'],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' },
         { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },

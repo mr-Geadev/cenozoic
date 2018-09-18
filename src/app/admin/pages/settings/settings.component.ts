@@ -8,7 +8,7 @@ import {SystemMessageService} from '../../../services';
 @Component({
     selector: 'settings',
     templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.less']
+    styleUrls: ['./settings.component.scss']
 })
 
 // TODO: вынести добавление города в компоненту

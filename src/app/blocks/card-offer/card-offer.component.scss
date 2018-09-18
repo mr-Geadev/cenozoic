@@ -1,0 +1,173 @@
+@import "colors";
+@import "animations";
+@import "blocks";
+
+:host {
+  @include card();
+  height: 450px;
+
+  & > *:first-child {
+    padding-bottom: 93px;
+  }
+
+  .status-new {
+    width: 100%;
+    height: 9px;
+    margin-bottom: 32px;
+    color: $dark-orange;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      margin-right: 9px;
+    }
+
+    &.viewed {
+      color: $gray;
+    }
+  }
+
+  .job {
+    color: $black;
+    font-family: "Bebas";
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 1.501rem;
+  }
+
+  .title {
+    color: $gray;
+    font-family: Roboto;
+    font-size: 0.813rem;
+    font-weight: 400;
+    line-height: 1rem;
+  }
+
+  .value {
+    color: $black;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.251rem;
+  }
+
+  .experience {
+    margin-top: 34px;
+  }
+
+  .last-work-place {
+    margin-top: 27px;
+  }
+
+  .name-of-company {
+    color: $gray;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 3.375rem;
+  }
+
+  .post {
+    color: $black;
+    font-family: "Bebas";
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+  }
+
+  .description {
+    margin-top: 21px;
+    color: $black;
+    font-family: Roboto;
+    font-size: 0.813rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+  }
+
+  .terms {
+    margin-top: 16px;
+    color: $dark-orange;
+    font-family: Roboto;
+    font-weight: 700;
+    line-height: 1.375rem;
+    font-size: 1rem;
+    .number {
+      font-size: 1.5rem;
+    }
+  }
+
+  .status-container {
+    position: absolute;
+    left: 0;
+    height: 78px;
+    width: 100%;
+    bottom: 43px;
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+
+    display: flex;
+    align-items: center;
+
+    &.worker {
+      height: 48px;
+      padding: 10px 0 10px 10px;
+    }
+
+    &.new {
+      background-color: $orange;
+      border-color: $orange;
+      padding: 0;
+      height: 48px;
+      justify-content: center;
+      align-items: center;
+
+      color: $white;
+      font-weight: 700;
+
+      @include animation();
+
+      &:hover {
+        background-color: $dark-orange;
+        border-color: $dark-orange;
+        cursor: pointer;
+      }
+    }
+
+    .icon {
+      padding: 0 7px;
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 14px;
+
+      .header {
+        color: $gray;
+      }
+
+      .status {
+        color: $black;
+      }
+
+      .description {
+        margin-top: 0;
+        color: #bcbdbf;
+        font-size: 12px;
+
+        a {
+          text-decoration: underline;
+          color: $orange;
+        }
+      }
+    }
+  }
+}

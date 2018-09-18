@@ -1,0 +1,76 @@
+@import "colors";
+@import "animations";
+
+:host {
+  display: block;
+
+  .list-summaryes {
+
+    .list {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .item {
+      display: block;
+      margin-right: 20px;
+      margin-top: 14px;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+
+    .show-more {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 72px;
+      margin-bottom: 160px;
+      visibility: hidden;
+
+      button {
+
+        img {
+          margin-right: 4px;
+
+          &:first-child {
+            margin-left: -40px;
+          }
+        }
+
+        width: 560px;
+        height: 54px;
+        background-color: $orange;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+        font-family: Roboto;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.875rem;
+        border-radius: 0.313rem;
+        @include tr-bg;
+
+        &:hover {
+          background-color: $hover-orange;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .list {
+      justify-content: space-around !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .list {
+      justify-content: center !important;
+    }
+  }
+
+}

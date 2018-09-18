@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {ConfirmService} from '../../../../pop-ups/confirm/confirm.service';
+import {ConfirmService} from '../../../../services/confirm.service';
 import {UserModel} from '../../../../models/user.model';
 import {SystemMessageService} from '../../../../services';
 import {UsersApi} from '../users.api';
@@ -8,7 +8,7 @@ import {UsersApi} from '../users.api';
 @Component({
     selector: 'full-user-info',
     templateUrl: 'full-user-info.component.html',
-    styleUrls: ['./full-user-info.component.less']
+    styleUrls: ['./full-user-info.component.scss']
 })
 export class FullUserInfoComponent implements OnInit {
 

@@ -8,7 +8,7 @@ import "rxjs/add/operator/filter";
 @Component({
     selector: 'account-setting-page',
     templateUrl: './account-settings-page.component.html',
-    styleUrls: ['./account-settings-page.component.less']
+    styleUrls: ['./account-settings-page.component.scss']
 })
 export class AccountSettingsPageComponent implements OnInit {
 

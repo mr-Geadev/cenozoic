@@ -3,7 +3,7 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {SystemMessageService} from '../services';
+import {SystemMessageService} from '../services/index';
 import {UserService} from '../services/user.service';
 
 @Injectable()

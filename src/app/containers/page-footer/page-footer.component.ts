@@ -5,7 +5,7 @@ import {LocalizationService} from '../../services';
 @Component({
     selector: 'page-footer',
     templateUrl: './page-footer.component.html',
-    styleUrls: ['./page-footer.component.less']
+    styleUrls: ['./page-footer.component.scss']
 })
 export class PageFooterComponent implements OnInit {
     public dictionary: any = null;

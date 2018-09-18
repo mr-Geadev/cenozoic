@@ -7,3 +7,4 @@ dist-server/
 
 server.js
 prerender.js
+.DS_Store

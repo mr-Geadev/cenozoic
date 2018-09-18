@@ -1,0 +1,32 @@
+//fonts
+@import "animations";
+@import "colors";
+
+@font-face {
+  font-family: "Bebas";
+  src: url("/assets/fonts/BebasNeueBold.otf");
+  src: url("/assets/fonts/BebasNeueBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&subset=cyrillic');
+
+@mixin inline-link { // встроенные ссылки
+  color: $orange;
+  text-decoration: underline;
+  @include tr-color;
+
+  &:hover {
+    color: $hover-orange;
+  }
+
+  &:focus {
+    color: $hover-orange;
+  }
+
+  &:active {
+    color: $hover-orange;
+  }
+
+}

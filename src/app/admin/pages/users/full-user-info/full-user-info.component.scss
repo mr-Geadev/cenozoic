@@ -1,0 +1,27 @@
+:host {
+
+  .avatar {
+    margin: auto;
+    background-color: #dcdcdc;
+  }
+
+  .mat-card-content {
+
+    .block {
+      margin: 10px auto;
+    }
+
+    .main-info {
+      text-align: center;
+
+      b {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-around;
+  }
+}

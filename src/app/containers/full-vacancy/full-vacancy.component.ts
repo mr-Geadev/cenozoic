@@ -8,7 +8,7 @@ import {CitiesService} from '../../services/cities.service';
 @Component({
     selector: 'full-vacancy',
     templateUrl: './full-vacancy.component.html',
-    styleUrls: ['./full-vacancy.component.less']
+    styleUrls: ['./full-vacancy.component.scss']
 })
 export class FullVacancyComponent implements OnInit {
 

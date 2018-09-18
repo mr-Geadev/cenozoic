@@ -7,7 +7,7 @@ import {AuthService, LocalizationService, SystemMessageService, UserService} fro
 @Component({
     selector: 'login-modal',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.less']
+    styleUrls: ['./login.component.scss']
 })
 
 export class LoginModalComponent implements OnInit {

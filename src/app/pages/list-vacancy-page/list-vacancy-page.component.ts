@@ -4,7 +4,7 @@ import {LocalizationService} from '../../services/localization.service';
 @Component({
     selector: 'list-vacancy-page',
     templateUrl: './list-vacancy-page.component.html',
-    styleUrls: ['./list-vacancy-page.component.less']
+    styleUrls: ['./list-vacancy-page.component.scss']
 })
 export class ListVacancyPageComponent implements OnInit {
 
