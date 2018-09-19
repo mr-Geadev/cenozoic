@@ -5,7 +5,7 @@
 :host {
   @include card();
 
-  .not-link {
+  .wrapper.not-link {
     cursor: default;
     pointer-events: none;
   }

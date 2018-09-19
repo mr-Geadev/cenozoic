@@ -1,0 +1,57 @@
+@import "colors";
+@import "animations";
+
+:host {
+  display: block;
+  height: 14px;
+  width: 100%;
+  margin-bottom: 30px;
+
+  & > div {
+    display: flex;
+    width: inherit;
+    height: inherit;
+    justify-content: flex-start;
+    align-items: center;
+
+    &.icon {
+      justify-content: flex-end;
+    }
+  }
+
+  color: $dark-orange;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+
+  img {
+    margin-right: 9px;
+  }
+
+  .viewed {
+    color: $gray;
+  }
+
+  .icon {
+    cursor: pointer;
+    pointer-events: auto;
+
+    .default {
+      position: absolute;
+      z-index: 9;
+    }
+
+    .hover {
+      opacity: 0;
+      position: absolute;
+      z-index: 10;
+      @include animation(opacity);
+    }
+
+    &:hover {
+      .hover {
+        opacity: 1;
+      }
+    }
+  }
+}

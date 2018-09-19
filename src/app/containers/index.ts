@@ -9,5 +9,4 @@ export * from './page-footer';
 export * from './page-header';
 export * from './setting-employer';
 export * from './setting-worker';
-export * from './list-offers';
 export * from './list-respond';

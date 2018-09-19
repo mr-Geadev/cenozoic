@@ -1,6 +1,15 @@
 <a class="wrapper" [ngClass]="{ 'not-link': respond }"
 	 routerLink="{{addNew ? addRoute() : viewRoute()}}">
 
+	<main-status
+		*ngIf="respond"
+		[typeUser]="typeUser"
+		[entity]="respond.entity"
+		[viewed]="respond.viewed"
+		[status]="respond.status"
+		[dictionary]="dictionary"
+	></main-status>
+
 	<resume-view
 		*ngIf="resume || (respond && typeUser === 'employer')"
 		[resume]="respond ? respond.resume : resume"

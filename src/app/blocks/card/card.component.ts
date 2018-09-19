@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { VacancyModel } from 'models';
+import { RespondModel, VacancyModel } from 'models';
 
 @Component({
   selector: 'card',
@@ -20,7 +20,7 @@ export class CardComponent implements OnInit {
 
   @Input('vacancy') vacancy?: VacancyModel;
   @Input('resume') resume?: any;
-  @Input('respond') respond?: any;
+  @Input('respond') respond?: RespondModel;
 
   @Input('addNew') addNew?: boolean;
 
@@ -28,6 +28,7 @@ export class CardComponent implements OnInit {
   }
 
   public ngOnInit() {
+    console.log(this.respond);
   }
 
   public addRoute(): string {
@@ -50,9 +51,9 @@ export class CardComponent implements OnInit {
 
   public moreRoute(): string {
     if (this.typeUser === 'worker') {
-      return `/vacancy/${this.respond.vacancy._id}`;
+      return `/vacancy/${this.respond.vacancyId}`;
     } else if (this.vacancy) {
-      return `/resume/${this.respond.resume._id}`;
+      return `/resume/${this.respond.resumeId}`;
     }
 
     return null;

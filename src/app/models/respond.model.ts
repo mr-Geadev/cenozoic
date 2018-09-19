@@ -1,3 +1,5 @@
+import { STATUSES_INIT } from 'const';
+
 export class RespondModel {
   public _id: string = '5ba1f9ae6c4d81c2ef3771a1';
 
@@ -43,7 +45,7 @@ export class RespondModel {
   };
 
   public employerId: string = '5adb2ea904e069a23756d19d';
-  public resumerId: string = '5adb2ea904e069a23756d19d';
+  public resumeId: string = '5adb2ea904e069a23756d19d';
   public resume: any = {
     '_id': '5b8e59747ffd8e35d887f778',
     'job': 'Бухгалтер',
@@ -125,28 +127,27 @@ export class RespondModel {
 
   public workerArchive: boolean = false;
   public employerArchive: boolean = false;
-  public viewed: boolean = false;
+  public viewed: boolean = true;
 
   public creationDate: string = '2018-09-19T07:24:30.015Z';
 
-  respondStatuses: {
-    AWAITING: 0,
-    WAIT_QUESTIONNAIRE: 3,
-    QUESTIONNAIRE_DONE: 4,
-    APPROVED: 5,
-    REJECTED: 6
-  }
+  respondStatuses: {};
 
   offerStatuses: {
     AWAITING: 0,
     WAIT_QUESTIONNAIRE: 3,
     QUESTIONNAIRE_DONE: 4,
     APPROVED: 5,
-    REJECTED: 6
-  }
+    REJECTED: 6,
+  };
 
-  // TODO: временно, (нет)
-  constructor(status?, entity?, workerArchive?, employerArchive?, viewed?) {
+  // TODO: временно (нет)
+  constructor(status, entity?, viewed?, workerArchive?, employerArchive?) {
+    this.status = STATUSES_INIT[status];
+    entity ? this.entity = entity : null;
+    workerArchive ? this.workerArchive = workerArchive : null;
+    employerArchive ? this.employerArchive = employerArchive : null;
+    this.viewed = viewed;
   }
 }
 

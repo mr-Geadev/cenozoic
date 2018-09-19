@@ -106,16 +106,19 @@
 	</div>
 </div>
 
-<list-offers
+<list-respond
 	class="block resume"
 	[typeUser]="typeCurrentUser"
 	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS }"
+	[listRespond]="listOfOffers"
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS"
-></list-offers>
+></list-respond>
 
 <list-respond
 	class="block resume"
+	[typeUser]="typeCurrentUser"
 	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND }"
+	[listRespond]="listOfResponds"
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND"
 ></list-respond>
 

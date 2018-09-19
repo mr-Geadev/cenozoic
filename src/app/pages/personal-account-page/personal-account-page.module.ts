@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
-import { FullResumeModule, ListOffersModule, ListRespondModule, ListResumeModule, ListVacancyModule } from 'containers';
+import { FullResumeModule, ListRespondModule, ListResumeModule, ListVacancyModule } from 'containers';
 import { LogInGuard } from 'guards';
 import { LoginModalModule } from 'pop-ups';
 import { PersonalAccountPageComponent } from './personal-account-page.component';
@@ -34,7 +34,6 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     ListResumeModule,
     ListVacancyModule,
     FullResumeModule,
-    ListOffersModule,
     ListRespondModule
   ],
   exports: [PersonalAccountPageComponent],
