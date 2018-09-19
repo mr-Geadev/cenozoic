@@ -2,17 +2,23 @@
 	<div class="container">
 
 		<div class="row list">
-			<card-vacancy
+			<card
 				*ngFor="let vacancy of listVacancy; let i = index"
 				[vacancy]="vacancy"
+				[typeUser]="typeCurrentUser"
+				[dictionary]="dictionary"
+				[heightContent]="250"
 				class="item"
-			></card-vacancy>
+			></card>
 
-			<card-vacancy
+			<card
 				*ngIf="config === 'user'"
+				[typeUser]="typeCurrentUser"
+				[dictionary]="dictionary"
+				[addNew]="true"
+				[heightContent]="250"
 				class="item"
-				[add-vacancy]="true"
-			></card-vacancy>
+			></card>
 
 		</div>
 

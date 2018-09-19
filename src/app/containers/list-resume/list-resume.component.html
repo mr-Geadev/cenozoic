@@ -5,7 +5,7 @@
 			<card
 				*ngFor="let resume of listResume; let i = index"
 				[resume]="resume"
-				[typeUser]="'worker'"
+				[typeUser]="typeCurrentUser"
 				[dictionary]="dictionary"
 				[heightContent]="230"
 				class="item"
@@ -13,7 +13,7 @@
 
 			<card
 				*ngIf="config === 'user'"
-				[typeUser]="'worker'"
+				[typeUser]="typeCurrentUser"
 				[dictionary]="dictionary"
 				[addNew]="true"
 				[heightContent]="230"

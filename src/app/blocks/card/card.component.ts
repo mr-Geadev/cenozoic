@@ -61,7 +61,7 @@ export class CardComponent implements OnInit {
   public descriptionForAdding(): string {
     if (this.typeUser === 'worker') {
       return this.dictionary.ADD_NEW_CV;
-    } else if (this.vacancy) {
+    } else {
       return this.dictionary.ADD_NEW_VACANCY;
     }
   }
