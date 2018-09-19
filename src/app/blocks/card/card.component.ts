@@ -10,17 +10,27 @@ export class CardComponent implements OnInit {
 
   /*
    В карточку приходит тип аккаута и одна из сущностей,
-   Основываясь на ней и типе аккаунта мы выводим разные карточки.
+   Основываясь на ней и типе аккаунта мы выводим разные типы карточки.
    Словарь приходит, чтобы не делать подписку на сервис локализации в каждой карточке
    */
+
   @Input('typeUser') typeUser: string; // worker/employer
   @Input('dictionary') dictionary: any;
+  @Input('heightContent') heightContent: number;
+
   @Input('vacancy') vacancy?: VacancyModel;
   @Input('resume') resume?: any;
   @Input('respond') respond?: any;
+
   @Input('addNew') addNew?: boolean;
 
-  public get addRoute(): string {
+  constructor() {
+  }
+
+  public ngOnInit() {
+  }
+
+  public addRoute(): string {
     if (this.typeUser === 'worker') {
       return '/create-resume';
     } else {
@@ -28,7 +38,7 @@ export class CardComponent implements OnInit {
     }
   }
 
-  public get viewRoute(): string {
+  public viewRoute(): string {
     if (this.resume) {
       return `/resume/${this.resume._id}`;
     } else if (this.vacancy) {
@@ -38,10 +48,22 @@ export class CardComponent implements OnInit {
     return null;
   }
 
-  constructor() {
+  public moreRoute(): string {
+    if (this.typeUser === 'worker') {
+      return `/vacancy/${this.respond.vacancy._id}`;
+    } else if (this.vacancy) {
+      return `/resume/${this.respond.resume._id}`;
+    }
+
+    return null;
   }
 
-  public ngOnInit() {
+  public descriptionForAdding(): string {
+    if (this.typeUser === 'worker') {
+      return this.dictionary.ADD_NEW_CV;
+    } else if (this.vacancy) {
+      return this.dictionary.ADD_NEW_VACANCY;
+    }
   }
 
 }

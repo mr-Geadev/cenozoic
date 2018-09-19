@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'resume-card',
-  templateUrl: './resume-card.component.html',
-  styleUrls: ['./resume-card.component.scss'],
+  selector: 'resume-view',
+  templateUrl: './resume-view.component.html',
+  styleUrls: ['./resume-view.component.scss'],
 })
-export class ResumeCardComponent implements OnInit {
+export class ResumeViewComponent implements OnInit {
 
   @Input('dictionary') dictionary: any;
   @Input('resume') resume: any;

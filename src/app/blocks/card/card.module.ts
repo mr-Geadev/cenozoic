@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CardComponent } from './card.component';
-import { ResumeCardComponent, VacancyCardComponent } from './view-blocks';
+import { ResumeViewComponent, VacancyViewComponent, AddViewComponent } from './elements-card';
 
 @NgModule({
   imports: [
@@ -12,8 +12,10 @@ import { ResumeCardComponent, VacancyCardComponent } from './view-blocks';
   declarations: [
     CardComponent,
 
-    VacancyCardComponent,
-    ResumeCardComponent,
+    // elements of card
+    VacancyViewComponent,
+    ResumeViewComponent,
+    AddViewComponent
   ],
   exports: [CardComponent],
 })

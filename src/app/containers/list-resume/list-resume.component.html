@@ -7,14 +7,19 @@
 				[resume]="resume"
 				[typeUser]="'worker'"
 				[dictionary]="dictionary"
+				[heightContent]="230"
 				class="item"
 			></card>
 
-			<!--<card-resume-->
-				<!--*ngIf="config === 'user'"-->
-				<!--[add-resume]="true"-->
-				<!--class="item"-->
-			<!--&gt;</card-resume>-->
+			<card
+				*ngIf="config === 'user'"
+				[typeUser]="'worker'"
+				[dictionary]="dictionary"
+				[addNew]="true"
+				[heightContent]="230"
+				class="item"
+			></card>
+
 		</div>
 
 		<!--<div class="row show-more">-->

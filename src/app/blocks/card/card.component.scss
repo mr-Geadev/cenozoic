@@ -5,8 +5,31 @@
 :host {
   @include card();
 
-  .add {
-    @include card-add();
+  .not-link {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .wrapper > .content {
+    display: block;
+  }
+
+  .more-info.add {
+    text-align: center;
+    background-color: $orange;
+    color: white;
+    @include animation();
+
+    img {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .more-info.add  {
+      background-color: $white;
+      color: $dark-orange;
+    }
   }
 
 }
