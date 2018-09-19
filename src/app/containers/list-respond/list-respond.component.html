@@ -2,35 +2,15 @@
 	<div class="container">
 
 		<div class="row list">
-			<card-respond
+			<card
+				*ngFor="let respond of listRespond"
 				class="item"
-				[status]="'new'"
+				[typeUser]="typeUser"
+				[dictionary]="dictionary"
+				[heightContent]="300"
+				[respond]="respond"
 			>
-			</card-respond>
-
-			<card-respond
-				class="item"
-				[status]="'interview-pending'"
-			>
-			</card-respond>
-
-			<card-respond
-				class="item"
-				[status]="'interview-ready'"
-			>
-			</card-respond>
-
-			<card-respond
-				class="item"
-				[status]="'responded'"
-			>
-			</card-respond>
-
-			<card-respond
-				class="item"
-				[status]="'refused'"
-			>
-			</card-respond>
+			</card>
 		</div>
 
 	</div>

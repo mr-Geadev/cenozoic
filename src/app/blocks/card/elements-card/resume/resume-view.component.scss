@@ -3,11 +3,9 @@
 @import "blocks";
 
 :host {
-  @include card();
-
-  .add {
-    @include card-add();
-  }
+  //.add {
+  //  @include card-add();
+  //}
 
   .job {
     color: $black;

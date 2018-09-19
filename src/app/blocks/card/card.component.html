@@ -1,0 +1,49 @@
+<a class="wrapper" [ngClass]="{ 'not-link': respond }"
+	 routerLink="{{addNew ? addRoute() : viewRoute()}}">
+
+	<main-status
+		*ngIf="respond"
+		[typeUser]="typeUser"
+		[entity]="respond.entity"
+		[viewed]="respond.viewed"
+		[status]="respond.status"
+		[dictionary]="dictionary"
+	></main-status>
+
+	<resume-view
+		*ngIf="resume || (respond && typeUser === 'employer')"
+		[resume]="respond ? respond.resume : resume"
+		[dictionary]="dictionary"
+		[ngStyle]="{'height':heightContent+'px'}"
+		class="content"
+	></resume-view>
+
+	<vacancy-view
+		*ngIf="vacancy || (respond && typeUser === 'worker')"
+		[vacancy]="respond ? respond.vacancy : vacancy"
+		[dictionary]="dictionary"
+		[ngStyle]="{'height':heightContent+'px'}"
+		class="content"
+	></vacancy-view>
+
+	<add-view
+		*ngIf="addNew"
+		[ngStyle]="{'height':heightContent+'px'}"
+		class="content"
+	>
+	</add-view>
+</a>
+
+<detailed-status
+	*ngIf="respond"
+	[typeUser]="typeUser"
+	[entity]="respond.entity"
+	[status]="respond.status"
+	[dictionary]="dictionary"
+></detailed-status>
+
+<a class="more-info" [ngClass]="{'add': addNew }"
+	 routerLink="{{respond ? moreRoute() : viewRoute()}}">
+	{{ addNew ? descriptionForAdding() : dictionary.MORE }}
+	<img src="/assets/images/arrow.svg"/>
+</a>

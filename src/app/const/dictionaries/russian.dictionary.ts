@@ -321,9 +321,11 @@ export const RUSSIAN_DICTIONARY = {
   NEW: 'Новое',
   VIEWED_TRUE: 'Просмотрено',
   PENDING: 'Ожидание',
-  REPLY: 'Ответить',
+  REPLY_EMPLOYER: 'Ответить',
+  REPLY_WORKER: 'Окликнуться',
   CHANGE_SOLUTION: 'Изменить решение',
   SEE_ANSWER: 'Посмотреть ответы',
+  FILL_THE_INTERVIEW: 'Заполните опросник',
 
   CANDIDATE_NOT_ANSWER: 'Кандидат еще не ответил',
   CANDIDATE_RESPONDED: 'Кандидат ответил вам',
@@ -334,8 +336,17 @@ export const RUSSIAN_DICTIONARY = {
   CANDIDATE_FILLED_INTERVIEW: 'Кандидат заполнил опросник',
   CANDIDATE_FILLING_INTERVIEW: 'Кандидат заполняет опросник',
 
+  WITH_YOU_WILL_CONNECT: 'с вами свяжуться',
+  YOU_RESUME_IS_NOT_INTERESTED: 'ваше резюме не заинтересовало',
+  RESUME_IS_NOT_VIEWED: 'резюме еще не просматривалось',
+  ANSWER_THE_QUESTIONS: 'ответьте на вопросы работодателя',
+  COMPANY_CHECK_ANSWER: 'компания обрабатывает ваши ответы',
+
   YOU_AGREED: 'Вы согласились',
   YOU_REFUSED: 'Вы отказались',
+
+  STATUS_APPROVED: 'Положительный',
+  STATUS_REJECTED: 'Отрицательный',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',

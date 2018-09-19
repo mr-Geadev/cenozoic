@@ -1,0 +1,91 @@
+@import "colors";
+@import "animations";
+
+:host {
+  width: 100%;
+
+  .status-container {
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+    display: flex;
+    flex-direction: column;
+    padding-left: 32px;
+    padding-right: 0;
+  }
+
+  & > div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 50px;
+    box-sizing: border-box;
+
+    &.big {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      height: 80px;
+    }
+  }
+
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 14px;
+
+  .header {
+    color: $gray;
+  }
+
+  .status {
+    color: $black;
+    position: relative;
+
+    &.link {
+      color: $orange;
+      text-decoration: underline;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      padding: 8px;
+      background: no-repeat center;
+
+      position: absolute;
+      right: 100%;
+    }
+
+    &.green::before {background-image: url(/assets/images/dott-green.svg);}
+    &.red::before {background-image: url(/assets/images/dott-red.svg);}
+    &.gray::before {background-image: url(/assets/images/dott-gray.svg);}
+    &.file::before {
+      background-image: url(/assets/images/icon-file.svg);
+      padding-right: 10px;
+    }
+  }
+
+  .description {
+    margin-top: 0;
+    color: #bcbdbf;
+    font-size: 12px;
+
+    &.link {
+      text-decoration: underline;
+      color: $orange;
+    }
+  }
+
+  .answer {
+    background-color: $orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    cursor: pointer;
+    @include animation(background-color);
+
+    &:hover {
+      background-color: $dark-orange;
+    }
+  }
+}

@@ -143,31 +143,6 @@
       padding: 0 7px;
     }
 
-    .text {
-      display: flex;
-      flex-direction: column;
-      font-family: Roboto;
-      font-weight: 500;
-      font-size: 14px;
 
-      .header {
-        color: $gray;
-      }
-
-      .status {
-        color: $black;
-      }
-
-      .description {
-        margin-top: 0;
-        color: #bcbdbf;
-        font-size: 12px;
-
-        a {
-          text-decoration: underline;
-          color: $orange;
-        }
-      }
-    }
   }
 }

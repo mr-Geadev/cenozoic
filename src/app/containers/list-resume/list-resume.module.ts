@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CardResumeComponent } from 'blocks';
+import { CardModule } from 'blocks/card';
 
 import { ResumeService } from 'services';
 import { ListResumeComponent } from './list-resume.component';
@@ -10,10 +10,10 @@ import { ListResumeComponent } from './list-resume.component';
   imports: [
     CommonModule,
     RouterModule,
+    CardModule
   ],
   declarations: [
-    ListResumeComponent,
-    CardResumeComponent
+    ListResumeComponent
   ],
   exports: [ListResumeComponent],
   providers: [ResumeService],

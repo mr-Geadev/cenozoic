@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { RespondModel } from 'models';
 import { LocalizationService } from 'services';
 
 @Component({
@@ -7,6 +8,9 @@ import { LocalizationService } from 'services';
   styleUrls: ['./list-respond.component.scss'],
 })
 export class ListRespondComponent implements OnInit {
+
+  @Input('typeUser') typeUser: string;
+  @Input('listRespond') listRespond: RespondModel[];
 
   public dictionary: any = null;
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LocalizationService } from 'services';
+import { LocalizationService, UserService } from 'services';
 import { LIST_VACANCY_USER, LIST_VACANCY } from 'const';
 import { HttpClient } from '@angular/common/http';
 import { FilterVacancyService } from '../filter-vacancy';
@@ -15,14 +15,21 @@ export class ListVacancyComponent implements OnInit {
   public listVacancy: any[] = [];
   public dictionary: any = null;
   private _offset: number = 0;
+  public typeCurrentUser: string = null;
 
   constructor(private _http: HttpClient,
+              private _userService: UserService,
               private _filterVacancyService: FilterVacancyService,
               private _localizationService: LocalizationService) {
   }
 
   ngOnInit(): void {
     this.dictionary = this._localizationService.currentDictionary;
+
+    this._userService.user$
+      .subscribe(
+        (user) => user ? this.typeCurrentUser = user.typeAccount : null
+      );
 
     // резюме пользоватля
     if (this.config === 'user') {

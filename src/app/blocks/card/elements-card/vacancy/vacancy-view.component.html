@@ -1,0 +1,17 @@
+<div class="name-of-company">
+	{{vacancy.companyName }}
+</div>
+
+<div class="post">
+	{{vacancy.title}}
+</div>
+
+<div class="description" [innerHtml]="vacancy.duties">
+
+</div>
+
+
+<div class="terms">
+	{{dictionary.FROM}} <span class="number">{{vacancy.salaryGROSS.from}}</span>
+	{{vacancy.currency === "rubles" ? "₽" : "$" }}
+</div>

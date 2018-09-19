@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CardVacancyComponent } from 'blocks/card-vacancy';
+import { CardModule } from 'blocks/card';
 
 import { ListVacancyComponent } from './list-vacancy.component';
 
@@ -9,10 +9,10 @@ import { ListVacancyComponent } from './list-vacancy.component';
   imports: [
     CommonModule,
     RouterModule,
+    CardModule
   ],
   declarations: [
     ListVacancyComponent,
-    CardVacancyComponent,
   ],
   exports: [ListVacancyComponent],
 })
