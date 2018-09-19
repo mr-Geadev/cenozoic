@@ -319,10 +319,13 @@ export const ENGLISH_DICTIONARY = {
   // отклики и предложения
   STATUS: 'Status',
   NEW: 'New',
+  VIEWED_TRUE: 'Viewed',
   PENDING: 'Expectation',
-  REPLY: 'Reply',
+  REPLY_EMPLOYER: 'Reply',
+  REPLY_WORKER: 'Hail',
   CHANGE_SOLUTION: 'Edit solution',
   SEE_ANSWER: 'View the answers of',
+  FILL_THE_INTERVIEW: 'Fill in the questionnaire',
 
   CANDIDATE_NOT_ANSWER: 'The candidate has not yet responded',
   CANDIDATE_RESPONDED: 'The candidate answered you',
@@ -332,6 +335,18 @@ export const ENGLISH_DICTIONARY = {
   CANDIDATE_NOT_SUIT: 'The candidate did not fit you',
   CANDIDATE_FILLED_INTERVIEW: 'The candidate completed the interview',
   CANDIDATE_FILLING_INTERVIEW: 'The candidate completes the interview',
+
+  WITH_YOU_WILL_CONNECT: 'contact you',
+  YOU_RESUME_IS_NOT_INTERESTED: 'your resume is not interested',
+  RESUME_IS_NOT_VIEWED: 'CV not yet viewed',
+  ANSWER_THE_QUESTIONS: 'answer the questions of the employer',
+  COMPANY_CHECK_ANSWER: 'the company processes your answers',
+
+  YOU_AGREED: 'You agreed',
+  YOU_REFUSED: 'You refused',
+
+  STATUS_APPROVED: 'Positive',
+  STATUS_REJECTED: 'Negative',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',

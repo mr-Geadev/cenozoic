@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CardComponent } from './card.component';
-import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatusComponent } from './elements-card';
+import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatusComponent, DetailedStatusComponent } from './elements-card';
 
 @NgModule({
   imports: [
@@ -16,7 +16,8 @@ import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatus
     VacancyViewComponent,
     ResumeViewComponent,
     AddViewComponent,
-    MainStatusComponent
+    MainStatusComponent,
+    DetailedStatusComponent,
   ],
   exports: [CardComponent],
 })

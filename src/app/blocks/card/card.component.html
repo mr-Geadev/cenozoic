@@ -32,8 +32,15 @@
 		class="content"
 	>
 	</add-view>
-
 </a>
+
+<detailed-status
+	*ngIf="respond"
+	[typeUser]="typeUser"
+	[entity]="respond.entity"
+	[status]="respond.status"
+	[dictionary]="dictionary"
+></detailed-status>
 
 <a class="more-info" [ngClass]="{'add': addNew }"
 	 routerLink="{{respond ? moreRoute() : viewRoute()}}">

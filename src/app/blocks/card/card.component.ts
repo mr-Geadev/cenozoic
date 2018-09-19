@@ -28,7 +28,6 @@ export class CardComponent implements OnInit {
   }
 
   public ngOnInit() {
-    console.log(this.respond);
   }
 
   public addRoute(): string {
@@ -52,11 +51,9 @@ export class CardComponent implements OnInit {
   public moreRoute(): string {
     if (this.typeUser === 'worker') {
       return `/vacancy/${this.respond.vacancyId}`;
-    } else if (this.vacancy) {
+    } else {
       return `/resume/${this.respond.resumeId}`;
     }
-
-    return null;
   }
 
   public descriptionForAdding(): string {
