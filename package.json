@@ -23,7 +23,7 @@
     "build:client-and-server-bundles": "ng build --prod && ng run testNg6SSRHMR:server",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "prod-local": "npm run build:ssr && npm run serve:ssr",
-    "prod": "npm run prod-local &"
+    "prod": "npm install && npm run prod-local &"
   },
   "private": true,
   "dependencies": {
