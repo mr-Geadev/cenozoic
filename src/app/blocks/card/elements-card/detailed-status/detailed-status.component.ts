@@ -41,7 +41,7 @@ export class DetailedStatusComponent {
 
   public answer() {
     if (this.isWorker()) {
-      this._popups.answerToOffer();
+      this._popups.answerToOffer(this.respond);
     } else {
       this._popups.answerToRespond(this.respond);
     }

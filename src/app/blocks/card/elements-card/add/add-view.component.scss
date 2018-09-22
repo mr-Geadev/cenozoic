@@ -12,7 +12,7 @@
     .circle {
       width: 100px;
       height: 100px;
-      border: 3px solid $hover-orange;
+      border: 3px solid $orange;
       border-radius: 100%;
       display: flex;
       justify-content: center;
@@ -20,7 +20,7 @@
       align-items: center;
 
       .plus {
-        color: $hover-orange;
+        color: $orange;
         font-family: "Bebas";
         font-size: 3.75rem;
         font-weight: 400;
@@ -38,7 +38,7 @@
   &:hover {
 
     .circle {
-      background-color: $hover-orange;
+      background-color: $orange;
       transform: scale(1.1);
 
       .plus {
