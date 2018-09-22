@@ -85,7 +85,7 @@
     @include animation(background-color);
 
     &:hover {
-      background-color: $dark-orange;
+      background-color: $hover-orange;
     }
   }
 }

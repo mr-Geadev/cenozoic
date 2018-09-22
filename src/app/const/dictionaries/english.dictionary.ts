@@ -348,6 +348,17 @@ export const ENGLISH_DICTIONARY = {
   STATUS_APPROVED: 'Positive',
   STATUS_REJECTED: 'Negative',
 
+  // попапы
+  ANSWER_TO_RESPOND_TITLE: 'Is the candidate suitable for you?',
+  ANSWER_TO_RESPOND_TEXT_POSITIVE: 'Hello! Your candidacy is suitable for our vacancy',
+  ANSWER_TO_RESPOND_TEXT_NEGATIVE: 'Hello! Your resume is not suitable for our job',
+  ANSWER_TO_RESPOND_RESPOND_QUESTIONNAIRE: 'Send a questionnaire',
+  ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE: 'Name of the questionnaire',
+  ANSWER_TO_RESPOND_SUMMARY_POSITIVE: 'We received your contacts and will contact you',
+  ANSWER_TO_RESPOND_SUMMARY_NEGATIVE: 'Thank you for your interest',
+  ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE: 'Fill out the questionnaire so that we can learn more about you.',
+  SEND_RESPOND: 'Send an answer',
+
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',
   CONFIRM_FAIL: 'The link is not valid. Check the correctness of the link, or contact the administrator for assistance.',

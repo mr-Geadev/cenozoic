@@ -1,0 +1,156 @@
+@import "colors";
+@import "animations";
+@import "fonts";
+
+:host {
+  display: block;
+  height: 100%;
+
+  .wrap {
+    width: 80%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+
+    & > .title {
+      color: $black;
+      font-family: "Bebas";
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 2.25rem;
+      text-align: center;
+    }
+
+    .type {
+      margin: 43px auto 0;
+      width: 286px;
+      height: 40px;
+      display: flex;
+      border-radius: 20px;
+      background-color: $light-gray;
+
+      input {
+        display: none;
+      }
+
+      label {
+        width: 50%;
+        height: inherit;
+        border-radius: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $gray;
+        position: relative;
+        z-index: 5;
+        padding: 0 10px;
+        font-family: Roboto;
+        @include tr-color;
+
+        &:hover {
+          color: $dark-gray;
+        }
+
+      }
+
+      input:checked + label {
+        color: $white;
+        pointer-events: none;
+        transition-delay: .2s;
+      }
+
+      #negative {
+        & + label {
+          z-index: 3;
+        }
+
+        & + label::after {
+          width: 100%;
+          height: inherit;
+          border-radius: inherit;
+          position: absolute;
+          top: 0;
+          left: -100%;
+          content: '';
+          background-color: $orange;
+          z-index: -1;
+          transition-property: left;
+          transition-timing-function: ease-out;
+          transition-duration: $transition-duration-default;
+          pointer-events: none;
+        }
+
+        &:checked {
+          & + label:hover {
+            cursor: default;
+          }
+
+          & + label::after {
+            left: 0;
+            pointer-events: auto;
+          }
+        }
+      }
+    }
+
+    .body-of-answer {
+      margin-top: 61px;
+
+      .title {
+        color: #000000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+
+        .name-of-vacancy {
+          font-weight: bold;
+        }
+      }
+
+      .questionnaire {
+        margin-top: 60px;
+      }
+
+      .change-questionnaire {
+        margin-top: 40px;
+        width: 360px;
+        border-bottom: 1px solid $light-gray;
+      }
+
+      .summary {
+        margin-top: 70px;
+      }
+
+      &.negative .summary {
+        margin-top: 40px;
+      }
+    }
+
+    .button {
+      margin-top: 40px;
+      display: inline-flex;
+      font-family: Roboto;
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 1;
+      width: 361px;
+      height: 46px;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.313rem;
+      background-color: $orange;
+      @include tr-bg;
+
+      &:hover {
+        background-color: $hover-orange;
+      }
+
+      &:disabled {
+        background-color: $gray;
+        cursor: default;
+      }
+    }
+  }
+}

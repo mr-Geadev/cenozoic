@@ -348,6 +348,17 @@ export const RUSSIAN_DICTIONARY = {
   STATUS_APPROVED: 'Положительный',
   STATUS_REJECTED: 'Отрицательный',
 
+  // попапы
+  ANSWER_TO_RESPOND_TITLE: 'Кандидат вам подходит?',
+  ANSWER_TO_RESPOND_TEXT_POSITIVE: 'Здравствуйте! Ваша кандидатура подходит для нашей вакансии',
+  ANSWER_TO_RESPOND_TEXT_NEGATIVE: 'Здравствуйте! Ваше резюме не подходит для нашей вакансии',
+  ANSWER_TO_RESPOND_RESPOND_QUESTIONNAIRE: 'Отправить опросный лист',
+  ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE: 'Название опросника',
+  ANSWER_TO_RESPOND_SUMMARY_POSITIVE: 'Мы получили ваши контакты и свяжемся с вами',
+  ANSWER_TO_RESPOND_SUMMARY_NEGATIVE: 'Спасибо за проявленный интерес',
+  ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE: 'Заполните опросный лист, чтобы мы больше узнали о вас',
+  SEND_RESPOND: 'Отправить ответ',
+
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',
   CONFIRM_FAIL: 'Ссылка недействительна. Проверьте правильность ссылки, либо обратитесь за помощью к администратору.',

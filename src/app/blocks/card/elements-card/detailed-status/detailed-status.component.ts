@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RESPOND_STATUSES } from 'const';
+import { RespondModel } from 'models';
+import { PopupsService } from '../../../../services/popups.service';
 
 @Component({
   selector: 'detailed-status',
@@ -14,8 +16,9 @@ export class DetailedStatusComponent {
   @Input('status') status: string;
   @Input('entity') entity: string;
   @Input('dictionary') dictionary: any;
+  @Input('respond') respond: RespondModel;
 
-  constructor() {
+  constructor(private _popups: PopupsService) {
   }
 
   public isWorker(): boolean {
@@ -34,6 +37,14 @@ export class DetailedStatusComponent {
     }
 
     return false;
+  }
+
+  public answer() {
+    if (this.isWorker()) {
+      this._popups.answerToOffer();
+    } else {
+      this._popups.answerToRespond(this.respond);
+    }
   }
 
 }

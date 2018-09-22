@@ -64,13 +64,13 @@
 </div>
 
 
-<div class="answer" [class.big]="isBig()"
+<div class="answer" [class.big]="isBig()" (click)="answer()"
 		 *ngIf="isWorker() && (entity === 'offer') && (status === RESPOND_STATUS.AWAITING)">
 	{{ dictionary.REPLY_EMPLOYER }}
 </div>
 
 
-<div class="answer" [class.big]="isBig()"
+<div class="answer" [class.big]="isBig()" (click)="answer()"
 		 *ngIf="!isWorker() && (entity === 'respond') && (status === RESPOND_STATUS.AWAITING)">
 	{{ dictionary.REPLY_WORKER }}
 </div>

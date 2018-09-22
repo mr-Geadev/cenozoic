@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AnswerToRespondModule } from "../../pop-ups/answer-to-respond";
 import { CardComponent } from './card.component';
 import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatusComponent, DetailedStatusComponent } from './elements-card';
 
@@ -8,6 +9,7 @@ import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatus
   imports: [
     RouterModule,
     CommonModule,
+      AnswerToRespondModule
   ],
   declarations: [
     CardComponent,
