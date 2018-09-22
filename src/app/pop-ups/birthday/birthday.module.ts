@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {MatDatepickerModule, MatFormFieldModule} from '@angular/material';
+import { MatDatepickerModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import {BirthdayComponent} from './birthday.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -11,7 +11,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatInputModule
     ],
     declarations: [BirthdayComponent],
     exports: [BirthdayComponent]

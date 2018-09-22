@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl } from "@angular/forms";
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as moment from 'moment';
@@ -27,6 +28,7 @@ export class BirthdayComponent implements OnInit {
 
     public data: string = null;
     public dictionary: any = null;
+    date = new FormControl(moment([2017, 0, 1]));
 
     constructor(private _localizationService: LocalizationService,
                 private adapter: DateAdapter<any>) {
@@ -46,7 +48,8 @@ export class BirthdayComponent implements OnInit {
         }
     }
 
-    public dateChanged(date: Moment): void {
+    public dateChanged(dateIn?: Moment): void {
+        const date = dateIn || this.date.value;
         const currentDate = moment();
         const formattedDate: string = date.format('DD.MM.YYYY');
         const diffYears: number = currentDate.diff(date, 'years');
