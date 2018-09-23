@@ -54,10 +54,16 @@ export class RespondsApi {
     // список откликов для юзверя
     public getResponds(): void {
         this.http.post('/api/v1/user/respond/all', {})
-            .subscribe(res => {
-                const list = res['responds'].map(respond => new RespondModel(respond));
-                this.setListRespond(list);
-            });
+            .subscribe(
+                res => {
+                    const list = res['responds'].map(respond => new RespondModel(respond));
+                    this.setListRespond(list);
+                },
+                (err) => {
+                    if (err.error.errorCode === 'offers is not defined') {
+                        this.setListRespond([]);
+                    }
+                });
     }
 
     // список предложений юзверя
