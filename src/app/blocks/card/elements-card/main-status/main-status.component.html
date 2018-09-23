@@ -19,7 +19,7 @@
 	<img class="hover" src="/assets/images/icon-to-archive-orange.svg"/>
 </div>
 <!--отменить отклик-->
-<div class="icon"
+<div class="icon" (click)="cancel()"
 	*ngIf="isWorker() && !isOffer() && ((status === RESPOND_STATUS.AWAITING) || (status === RESPOND_STATUS.WAIT_QUESTIONNAIRE) ||  (status === RESPOND_STATUS.QUESTIONNAIRE_DONE))">
 	<img class="default" src="/assets/images/icon-gray-cross.svg"/>
 	<img class="hover" src="/assets/images/icon-orange-cross.svg"/>

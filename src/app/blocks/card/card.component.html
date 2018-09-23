@@ -1,38 +1,65 @@
-<a class="wrapper" [ngClass]="{ 'not-link': respond }"
-	 routerLink="{{addNew ? addRoute() : viewRoute()}}">
-
-	<main-status
-		*ngIf="respond"
-		[typeUser]="typeUser"
-		[entity]="respond.entity"
-		[viewed]="respond.viewed"
-		[status]="respond.status"
-		[dictionary]="dictionary"
-	></main-status>
+<a class="wrapper" *ngIf="!respond"
+	   routerLink="{{addNew ? addRoute() : viewRoute()}}">
 
 	<resume-view
-		*ngIf="resume || (respond && typeUser === 'employer')"
-		[resume]="respond ? respond.resume : resume"
-		[dictionary]="dictionary"
-		[ngStyle]="{'height':heightContent+'px'}"
-		class="content"
+			*ngIf="resume || (respond && typeUser === 'employer')"
+			[resume]="respond ? respond.resume : resume"
+			[dictionary]="dictionary"
+			[ngStyle]="{'height':heightContent+'px'}"
+			class="content"
 	></resume-view>
 
 	<vacancy-view
-		*ngIf="vacancy || (respond && typeUser === 'worker')"
-		[vacancy]="respond ? respond.vacancy : vacancy"
-		[dictionary]="dictionary"
-		[ngStyle]="{'height':heightContent+'px'}"
-		class="content"
+			*ngIf="vacancy || (respond && typeUser === 'worker')"
+			[vacancy]="respond ? respond.vacancy : vacancy"
+			[dictionary]="dictionary"
+			[ngStyle]="{'height':heightContent+'px'}"
+			class="content"
 	></vacancy-view>
 
 	<add-view
-		*ngIf="addNew"
-		[ngStyle]="{'height':heightContent+'px'}"
-		class="content"
+			*ngIf="addNew"
+			[ngStyle]="{'height':heightContent+'px'}"
+			class="content"
 	>
 	</add-view>
 </a>
+
+<div class="wrapper not-link" *ngIf="respond">
+
+	<main-status
+			*ngIf="respond"
+			[typeUser]="typeUser"
+			[entity]="respond.entity"
+			[viewed]="respond.viewed"
+			[status]="respond.status"
+			[dictionary]="dictionary"
+			[respond]="respond"
+	></main-status>
+
+	<resume-view
+			*ngIf="resume || (respond && typeUser === 'employer')"
+			[resume]="respond ? respond.resume : resume"
+			[dictionary]="dictionary"
+			[ngStyle]="{'height':heightContent+'px'}"
+			class="content"
+	></resume-view>
+
+	<vacancy-view
+			*ngIf="vacancy || (respond && typeUser === 'worker')"
+			[vacancy]="respond ? respond.vacancy : vacancy"
+			[dictionary]="dictionary"
+			[ngStyle]="{'height':heightContent+'px'}"
+			class="content"
+	></vacancy-view>
+
+	<add-view
+			*ngIf="addNew"
+			[ngStyle]="{'height':heightContent+'px'}"
+			class="content"
+	>
+	</add-view>
+</div>
 
 <detailed-status
 	*ngIf="respond"

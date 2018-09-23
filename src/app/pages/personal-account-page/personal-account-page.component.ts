@@ -38,6 +38,8 @@ export class PersonalAccountPageComponent implements OnInit {
 
   public ngOnInit(): void {
 
+    this.respondsApi.initializeResponds();
+
     this.dictionary = this._localizationService.currentDictionary;
     this.activeTab = this.dictionary.ACCOUNT_PAGE_TAB_RESPOND;
 
@@ -46,15 +48,15 @@ export class PersonalAccountPageComponent implements OnInit {
         (user) => user ? this.typeCurrentUser = user.typeAccount : null,
       );
 
-    this.respondsApi.getOffers()
-        .subscribe(res => {
-          res.offers.forEach( offer => this.listOfOffers.push(new RespondModel(offer)) );
-        });
+    this.respondsApi.listOffers$
+        .subscribe(
+            listOffers => this.listOfOffers = listOffers
+        );
 
-    this.respondsApi.getResponds()
-        .subscribe(res => {
-          res.responds.forEach( respond => this.listOfResponds.push(new RespondModel(respond)) );
-        });
+    this.respondsApi.listRespond$
+        .subscribe(
+            listResponds => this.listOfResponds = listResponds
+        );
   }
 
 }

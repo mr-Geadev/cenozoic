@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AnswerToOfferModule, AnswerToRespondModule } from 'pop-ups';
+import { RespondsApi } from 'api';
+import { ConfirmService } from "../../services";
 import { CardComponent } from './card.component';
 import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatusComponent, DetailedStatusComponent } from './elements-card';
 
@@ -22,6 +24,7 @@ import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatus
     MainStatusComponent,
     DetailedStatusComponent,
   ],
+  providers: [RespondsApi, ConfirmService],
   exports: [CardComponent],
 })
 export class CardModule {
