@@ -2,7 +2,7 @@
 
     <div class="title">{{ dictionary.ANSWER_TO_RESPOND_TITLE }}</div>
 
-    <div class="type">
+    <div class="type" *ngIf="respond">
         <input type="radio" id="positive" name="type" [value]="true" [(ngModel)]="answer">
         <label for="positive">{{ dictionary.YES }}</label>
 
@@ -14,7 +14,7 @@
         <div class="title">
             {{dictionary.ANSWER_TO_OFFER_TEXT_POSITIVE_1}}
             <span class="name-of-vacancy">
-                "{{data.respond.vacancy.title}}"
+                "{{vacancy.title}}"
             </span>
             <br />
             {{dictionary.ANSWER_TO_OFFER_TEXT_POSITIVE_2}}
@@ -26,7 +26,7 @@
                     {{dictionary.FIO}}
                 </div>
                 <div class="value">
-                    {{data.respond.resume.fullName}}
+                    {{resume && resume.fullName}}
                 </div>
             </div>
 
@@ -35,7 +35,7 @@
                    E-Mail
                 </div>
                 <div class="value">
-                    {{data.respond.resume.email}}
+                    {{resume && resume.email}}
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
                     {{dictionary.PHONE}}
                 </div>
                 <div class="value">
-                    {{data.respond.resume.phoneNumber}}
+                    {{resume && resume.phoneNumber}}
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="title">
             {{dictionary.ANSWER_TO_OFFER_TEXT_NEGATIVE}}
             <span class="name-of-vacancy">
-                "{{data.respond.vacancy.title}}"
+                "{{vacancy.title}}"
             </span>
         </div>
 
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <button class="button">
+    <button class="button" (click)="sendRespond()">
         {{dictionary.SEND_ANSWER}}
     </button>
 

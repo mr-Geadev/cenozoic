@@ -79,7 +79,7 @@
                 <div class="row text-wrap" [innerHTML]="currentVacancy.conditions"></div>
             </div>
 
-            <div class="button">
+            <div class="button" (click)="responds.newRespond(currentVacancy)">
                 {{dictionary.ANSWER_VACANCY}}
             </div>
 

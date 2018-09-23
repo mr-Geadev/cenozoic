@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
 import {LocalizationService, ResumeService} from '../../services';
+import { PopupsService } from '../../services/popups.service';
 import {FullVacancyService} from './full-vacancy.service';
 import {CitiesService} from '../../services/cities.service';
 
@@ -20,6 +21,7 @@ export class FullVacancyComponent implements OnInit {
     constructor(public resumeService: ResumeService,
                 private _vacancyFullService: FullVacancyService,
                 private _localizationService: LocalizationService,
+                public responds: PopupsService,
                 public citiesService: CitiesService,
                 private activateRoute: ActivatedRoute) {
         this.id = activateRoute.snapshot.params['id'];
@@ -50,7 +52,7 @@ export class FullVacancyComponent implements OnInit {
             if (item.code === this.currentVacancy.nationalities[i]) {
                 answer.push(item.name); i++;
             }
-        })
+        });
         return answer.join(', ');
     }
 
