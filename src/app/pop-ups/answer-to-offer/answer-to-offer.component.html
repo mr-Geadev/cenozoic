@@ -1,8 +1,8 @@
 <div class="wrap">
 
-    <div class="title">{{ dictionary.ANSWER_TO_RESPOND_TITLE }}</div>
+    <div class="title">{{ dictionary.ANSWER_TO_OFFER_TITLE }}</div>
 
-    <div class="type" *ngIf="respond">
+    <div class="type" *ngIf="data.respond">
         <input type="radio" id="positive" name="type" [value]="true" [(ngModel)]="answer">
         <label for="positive">{{ dictionary.YES }}</label>
 

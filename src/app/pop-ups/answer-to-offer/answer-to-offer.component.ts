@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 import { VacancyModel } from 'models';
 import { LocalizationService, SystemMessageService } from 'services';
 import { ResumeApi, RespondsApi } from 'api';
+import { RESPOND_STATUSES } from "../../const";
 
 @Component({
     selector: 'answer-to-offer',
@@ -42,6 +43,8 @@ export class AnswerToOfferComponent implements OnInit {
     sendRespond() {
        if (!this.data.respond) {
            this.respondsApi.createRespond(this.vacancy._id, this.resume._id);
+       } else {
+           this.respondsApi.setStatusOffer(this.data.respond._id, this.answer ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED)
        }
     }
 

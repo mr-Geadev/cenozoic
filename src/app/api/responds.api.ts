@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SystemMessageService } from 'services';
+import { NEW_STATUSES } from "../const";
 import { RespondModel } from "../models";
 
 @Injectable()
@@ -84,8 +85,25 @@ export class RespondsApi {
             });
     }
 
+    // отменить предложение (изанчально в макетах этот метод не предусмотрен)
     public cancelOffer(respondId: string): void {
         this.http.get(`/api/v1/employer/offer/cancel?offerId=${respondId}`);
+    }
+
+    public setStatusOffer(offerId: string, status: string): void {
+        status = NEW_STATUSES[status]
+        this.http.get(`/api/v1/worker/offer/status/change?offerId=${offerId}&newStatus=${status}`)
+            .subscribe((res) => {
+                this.getOffers();
+            });
+    }
+
+    public setStatusRespond(respondId: string, status: string): void {
+        status = NEW_STATUSES[status]
+        this.http.get(`/api/v1/employer/respond/status/change?respondId=${respondId}&newStatus=${status}`)
+            .subscribe((res) => {
+                this.getResponds();
+            });
     }
 
 }
