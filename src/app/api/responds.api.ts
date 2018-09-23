@@ -11,11 +11,19 @@ export class RespondsApi {
     }
 
     public createRespond(vacancyId: string, resumeId: string): void {
-        this.http.post('/api/v1/worker/respond/create', {respond: {vacancyId, resumeId}})
+        this.http.post('/api/v1/worker/respond/create', { respond: { vacancyId, resumeId } })
             .subscribe(
                 (res) => {
                     this.messages.info('Отклик отправлен');
                 });
+    }
+
+    public getResponds(): Observable<any> {
+        return this.http.post('/api/v1/user/respond/all', {});
+    }
+
+    public getOffers(): Observable<any> {
+        return this.http.post('/api/v1/user/offer/all', {});
     }
 
 }

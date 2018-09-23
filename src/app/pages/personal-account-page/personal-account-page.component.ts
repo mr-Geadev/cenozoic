@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RespondModel } from 'models';
+import { RespondsApi } from "../../api";
 import { LocalizationService } from '../../services';
 import { UserService } from '../../services/user.service';
 
@@ -14,21 +15,24 @@ export class PersonalAccountPageComponent implements OnInit {
   public dictionary: any = null;
   public typeCurrentUser: string = null;
 
-  public listOfResponds = [
-    new RespondModel(0, 'respond', false),
-    new RespondModel(3, 'respond', true),
-    new RespondModel(4, 'respond', true),
-    new RespondModel(5, 'respond', true),
-    new RespondModel(6, 'respond', true),
-  ]
+  public listOfResponds: RespondModel[] = [];
+  // [
+  //   new RespondModel(0, 'respond', false),
+  //   new RespondModel(3, 'respond', true),
+  //   new RespondModel(4, 'respond', true),
+  //   new RespondModel(5, 'respond', true),
+  //   new RespondModel(6, 'respond', true),
+  // ]
 
-  public listOfOffers = [
-    new RespondModel(0, 'offer', false),
-    new RespondModel(5, 'offer', true),
-    new RespondModel(6, 'offer', true),
-  ]
+  public listOfOffers: RespondModel[] = [];
+  // [
+  //   new RespondModel(0, 'offer', false),
+  //   new RespondModel(5, 'offer', true),
+  //   new RespondModel(6, 'offer', true),
+  // ]
 
   constructor(private _localizationService: LocalizationService,
+              private respondsApi: RespondsApi,
               private _userService: UserService) {
   }
 
@@ -41,6 +45,16 @@ export class PersonalAccountPageComponent implements OnInit {
       .subscribe(
         (user) => user ? this.typeCurrentUser = user.typeAccount : null,
       );
+
+    this.respondsApi.getOffers()
+        .subscribe(res => {
+          res.offers.forEach( offer => this.listOfOffers.push(new RespondModel(offer)) );
+        });
+
+    this.respondsApi.getResponds()
+        .subscribe(res => {
+          res.responds.forEach( respond => this.listOfResponds.push(new RespondModel(respond)) );
+        });
   }
 
 }

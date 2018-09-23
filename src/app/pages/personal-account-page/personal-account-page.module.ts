@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { FullResumeModule, ListRespondModule, ListResumeModule, ListVacancyModule } from 'containers';
 import { LogInGuard } from 'guards';
 import { LoginModalModule } from 'pop-ups';
+import { RespondsApi } from "../../api";
 import { PersonalAccountPageComponent } from './personal-account-page.component';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     FullResumeModule,
     ListRespondModule
   ],
+  providers: [RespondsApi],
   exports: [PersonalAccountPageComponent],
 })
 export class PersonalAccountPageModule {
