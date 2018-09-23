@@ -5,6 +5,7 @@ import * as moment from 'moment';
 
 import {LocalizationService, ResumeService, UserService} from '../../services';
 import {CitiesService} from '../../services/cities.service';
+import { PopupsService } from '../../services/popups.service';
 
 @Component({
     selector: 'full-resume',
@@ -23,6 +24,7 @@ export class FullResumeComponent implements OnInit {
                 public userService: UserService,
                 public citiesService: CitiesService,
                 private activateRoute: ActivatedRoute,
+                public responds: PopupsService,
                 private http: HttpClient,
                 private _localizationService: LocalizationService) {
         this.id = activateRoute.snapshot.params['id'];

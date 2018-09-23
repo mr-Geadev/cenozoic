@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class ListResumeApi {
+export class ResumeApi {
 
     constructor(private http: HttpClient) {
     }

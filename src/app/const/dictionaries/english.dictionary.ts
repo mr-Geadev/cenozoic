@@ -356,6 +356,7 @@ export const ENGLISH_DICTIONARY = {
   ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE: 'Name of the questionnaire',
   ANSWER_TO_RESPOND_SUMMARY_POSITIVE: 'We received your contacts and will contact you',
   ANSWER_TO_RESPOND_SUMMARY_NEGATIVE: 'Thank you for your interest',
+  ANSWER_TO_RESPOND_CREATE_OFFER: 'We hope that it will interest you',
   ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE: 'Fill out the questionnaire so that we can learn more about you.',
 
   ANSWER_TO_OFFER_TITLE: 'Are you interested in the vacancy?',
@@ -367,6 +368,7 @@ export const ENGLISH_DICTIONARY = {
   ANSWER_TO_OFFER_SUMMARY_NEGATIVE: 'Thank you for your interest',
 
   SEND_ANSWER: 'Send an answer',
+  SEND_INVITE: 'Send a invite',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',

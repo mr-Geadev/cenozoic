@@ -1,4 +1,4 @@
-f<div class="container" *ngIf="currentResume">
+<div class="container" *ngIf="currentResume">
 
     <div class="row main-info">
 
@@ -136,6 +136,10 @@ f<div class="container" *ngIf="currentResume">
             <div class="button" (click)="resumeService.delete(currentResume._id)"
                  *ngIf="currentResume.userId == currentUser?._id">
                 {{dictionary.DELETE}}
+            </div>
+            <div class="button" (click)="responds.newOffer(currentResume)"
+                 *ngIf="currentUser?.typeAccount === 'employer'">
+                {{dictionary.SEND_INVITE}}
             </div>
         </div>
     </div>

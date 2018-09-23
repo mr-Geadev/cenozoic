@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { VacancyModel } from 'models';
 import { LocalizationService, SystemMessageService } from 'services';
-import { ListResumeApi, RespondsApi } from 'api';
+import { ResumeApi, RespondsApi } from 'api';
 
 @Component({
     selector: 'answer-to-offer',
@@ -19,7 +19,7 @@ export class AnswerToOfferComponent implements OnInit {
 
     constructor(private _systemMessageService: SystemMessageService,
                 private _localizationService: LocalizationService,
-                private listResumeApi: ListResumeApi,
+                private listResumeApi: ResumeApi,
                 private respondsApi: RespondsApi,
                 @Inject(MAT_DIALOG_DATA) public data: any) {
     }
@@ -27,7 +27,7 @@ export class AnswerToOfferComponent implements OnInit {
     ngOnInit(): void {
         this.dictionary = this._localizationService.currentDictionary;
 
-        this.vacancy = this.data.respond ? this.data.respond.vacancy : this.data.vacancy;
+        this.vacancy = new VacancyModel(this.data.respond ? this.data.respond.vacancy : this.data.vacancy);
 
         if (!this.data.respond) {
             this.listResumeApi.getUserResume()
@@ -40,7 +40,9 @@ export class AnswerToOfferComponent implements OnInit {
     }
 
     sendRespond() {
-        this.respondsApi.createRespond(this.vacancy._id, this.resume._id);
+       if (!this.data.respond) {
+           this.respondsApi.createRespond(this.vacancy._id, this.resume._id);
+       }
     }
 
 }

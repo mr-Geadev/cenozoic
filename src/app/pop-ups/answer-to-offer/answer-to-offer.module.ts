@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material';
-import { ListResumeApi, RespondsApi } from 'api';
+import { ResumeApi, RespondsApi } from 'api';
 import { AnswerToOfferComponent } from './answer-to-offer.component';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { AnswerToOfferComponent } from './answer-to-offer.component';
     ],
     declarations: [AnswerToOfferComponent],
     entryComponents: [AnswerToOfferComponent],
-    providers: [ListResumeApi, RespondsApi],
+    providers: [ResumeApi, RespondsApi],
     exports: [AnswerToOfferComponent]
 })
 export class AnswerToOfferModule {

@@ -355,6 +355,7 @@ export const RUSSIAN_DICTIONARY = {
   ANSWER_TO_RESPOND_RESPOND_QUESTIONNAIRE: 'Отправить опросный лист',
   ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE: 'Название опросника',
   ANSWER_TO_RESPOND_SUMMARY_POSITIVE: 'Мы получили ваши контакты и свяжемся с вами',
+  ANSWER_TO_RESPOND_CREATE_OFFER: 'Надеемся, что она вас заинтересует',
   ANSWER_TO_RESPOND_SUMMARY_NEGATIVE: 'Спасибо за проявленный интерес',
   ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE: 'Заполните опросный лист, чтобы мы больше узнали о вас',
 
@@ -367,6 +368,7 @@ export const RUSSIAN_DICTIONARY = {
   ANSWER_TO_OFFER_SUMMARY_NEGATIVE: 'Спасибо за проявленный интерес',
 
   SEND_ANSWER: 'Отправить ответ',
+  SEND_INVITE: 'Отправить приглашение',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',
