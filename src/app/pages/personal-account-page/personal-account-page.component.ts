@@ -31,6 +31,8 @@ export class PersonalAccountPageComponent implements OnInit {
   //   new RespondModel(6, 'offer', true),
   // ]
 
+  public listOfArchive: RespondModel[] = [];
+
   constructor(private _localizationService: LocalizationService,
               private respondsApi: RespondsApi,
               private _userService: UserService) {
@@ -39,6 +41,7 @@ export class PersonalAccountPageComponent implements OnInit {
   public ngOnInit(): void {
 
     this.respondsApi.initializeResponds();
+    this.respondsApi.getArchive();
 
     this.dictionary = this._localizationService.currentDictionary;
     this.activeTab = this.dictionary.ACCOUNT_PAGE_TAB_RESPOND;
@@ -57,6 +60,11 @@ export class PersonalAccountPageComponent implements OnInit {
         .subscribe(
             listResponds => this.listOfResponds = listResponds
         );
+
+    this.respondsApi.listArchive$
+      .subscribe(
+        listArchive => this.listOfArchive = listArchive
+      );
   }
 
 }

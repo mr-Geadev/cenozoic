@@ -24,6 +24,13 @@ export class RespondsApi {
     this.listOffers.next(list);
   }
 
+  private listArchive: BehaviorSubject<RespondModel[]> = new BehaviorSubject<RespondModel[]>([]);
+  public listArchive$: Observable<any> = this.listArchive.asObservable();
+
+  private setListArchive(list: RespondModel[]): void {
+    this.listArchive.next(list);
+  }
+
   public initializeResponds(): void {
     this.getResponds();
     this.getOffers();
@@ -133,6 +140,7 @@ export class RespondsApi {
     this.http.get(`/api/v1/employer/respond/archive?respondId=${respondId}`)
       .subscribe((res) => {
         this.getResponds();
+        this.getArchive();
       });
   }
 
@@ -141,6 +149,16 @@ export class RespondsApi {
     this.http.get(`/api/v1/worker/offer/archive?offerId=${offerId}`)
       .subscribe((res) => {
         this.getOffers();
+        this.getArchive();
+      });
+  }
+
+  // возвращает архив
+  public getArchive(): void {
+    this.http.get(`/api/v1/user/archive/entities/all`)
+      .subscribe((res) => {
+        const list = res['entities'].map(entity => new RespondModel(entity));
+        this.setListArchive(list);
       });
   }
 
