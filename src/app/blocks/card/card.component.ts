@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { RespondsApi } from 'api';
 import { RespondModel, VacancyModel } from 'models';
 
 @Component({
@@ -24,7 +25,7 @@ export class CardComponent implements OnInit {
 
   @Input('addNew') addNew?: boolean;
 
-  constructor() {
+  constructor(private respondsApi: RespondsApi) {
   }
 
   public ngOnInit() {
@@ -61,6 +62,16 @@ export class CardComponent implements OnInit {
       return this.dictionary.ADD_NEW_CV;
     } else {
       return this.dictionary.ADD_NEW_VACANCY;
+    }
+  }
+
+  public checkToViewed() {
+    if (!this.respond.viewed) {
+      if (this.typeUser === 'worker') {
+        this.respondsApi.checkOfferToViewed(this.respond._id);
+      } else {
+        this.respondsApi.checkRespondToViewed(this.respond._id);
+      }
     }
   }
 

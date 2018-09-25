@@ -52,13 +52,6 @@
 			[ngStyle]="{'height':heightContent+'px'}"
 			class="content"
 	></vacancy-view>
-
-	<add-view
-			*ngIf="addNew"
-			[ngStyle]="{'height':heightContent+'px'}"
-			class="content"
-	>
-	</add-view>
 </div>
 
 <detailed-status
@@ -71,7 +64,7 @@
 ></detailed-status>
 
 <a class="more-info" [ngClass]="{'add': addNew }"
-	 routerLink="{{respond ? moreRoute() : viewRoute()}}">
+	 routerLink="{{respond ? moreRoute() : viewRoute()}}" (click)="checkToViewed()">
 	{{ addNew ? descriptionForAdding() : dictionary.MORE }}
 	<img src="/assets/images/arrow.svg"/>
 </a>

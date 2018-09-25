@@ -52,6 +52,7 @@ export class AnswerToOfferComponent implements OnInit {
       this.respondsApi.createRespond(this.vacancy._id, this.resume._id);
     } else {
       this.respondsApi.setStatusOffer(this.data.respond._id, this.answer ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED);
+      this.respondsApi.checkOfferToViewed(this.data.respond._id);
     }
   }
 
