@@ -368,7 +368,9 @@ export const RUSSIAN_DICTIONARY = {
   ANSWER_TO_OFFER_SUMMARY_NEGATIVE: 'Спасибо за проявленный интерес',
 
   SEND_ANSWER: 'Отправить ответ',
+  SEND_ANSWER_YET: 'Вы откликнулись',
   SEND_INVITE: 'Отправить приглашение',
+  SEND_INVITE_YET: 'Приглашение отправлено',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',

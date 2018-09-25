@@ -368,7 +368,9 @@ export const ENGLISH_DICTIONARY = {
   ANSWER_TO_OFFER_SUMMARY_NEGATIVE: 'Thank you for your interest',
 
   SEND_ANSWER: 'Send an answer',
+  SEND_ANSWER_YET: 'You responded',
   SEND_INVITE: 'Send a invite',
+  SEND_INVITE_YET: 'Invitation sent',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',

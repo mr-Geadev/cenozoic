@@ -79,10 +79,6 @@
                 <div class="row text-wrap" [innerHTML]="currentVacancy.conditions"></div>
             </div>
 
-            <div class="button" (click)="responds.newRespond(currentVacancy)">
-                {{dictionary.ANSWER_VACANCY}}
-            </div>
-
         </div>
 
         <div class="col-4 offset-1 right">
@@ -92,9 +88,16 @@
             <div class="default-photo" *ngIf="!currentVacancy.photoURL">
                 <img src="/assets/images/icon-camera.svg">
             </div>
-            <div class="button">
-                {{dictionary.ANSWER_VACANCY}}
-            </div>
+
+
+            <ng-container *ngIf="user?.typeAccount === 'worker'">
+                <div class="button" *ngIf="!currentVacancy.answered" (click)="responds.newRespond(currentVacancy)">
+                    {{dictionary.ANSWER_VACANCY}}
+                </div>
+                <div class="button disabled" *ngIf="currentVacancy.answered">
+                    {{dictionary.SEND_ANSWER_YET}}
+                </div>
+            </ng-container>
         </div>
     </div>
 
