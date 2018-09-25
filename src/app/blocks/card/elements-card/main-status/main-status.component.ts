@@ -35,12 +35,25 @@ export class MainStatusComponent {
   }
 
   public cancel() {
-
     this._confirm.confirm('Вы действительно хотите отменить?')
       .subscribe((res) => {
         if (res) {
           if (this.isWorker()) {
             this.respondsApi.cancelRespond(this.respond._id);
+          }
+        }
+        this._dialog.closeAll();
+      });
+  }
+
+  public archive() {
+    this._confirm.confirm('Вы действительно хотите отправить в архив?')
+      .subscribe((res) => {
+        if (res) {
+          if (this.isWorker()) {
+            this.respondsApi.sendOfferToArchive(this.respond._id);
+          } else {
+            this.respondsApi.sendRespondToArchive(this.respond._id);
           }
         }
         this._dialog.closeAll();

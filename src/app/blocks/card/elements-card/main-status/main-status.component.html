@@ -12,11 +12,11 @@
 	{{dictionary.VIEWED_TRUE}}
 </div>
 
-<!--архивировать отклик-->
+<!--архивировать предложение-->
 <div class="icon"
-	*ngIf="isWorker() && !isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
+	*ngIf="isWorker() && isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
 	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" title="В архив" src="/assets/images/icon-to-archive-orange.svg"/>
+	<img class="hover" title="В архив" (click)="archive()" src="/assets/images/icon-to-archive-orange.svg"/>
 </div>
 <!--отменить отклик-->
 <div class="icon" (click)="cancel()"
@@ -41,16 +41,16 @@
 <div class="icon"
 		 *ngIf="!isWorker() && !isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
 	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" title="В архив" src="/assets/images/icon-to-archive-orange.svg"/>
+	<img class="hover" title="В архив" (click)="archive()" src="/assets/images/icon-to-archive-orange.svg"/>
 </div>
 
 <!--архивировать предложение-->
-<div class="icon"
-	*ngIf="!isWorker() && isOffer()  && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
-	<!--<img class="icon" src="/assets/images/icon-to-archive.svg"/>-->
-	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" title="В архив" src="/assets/images/icon-to-archive-orange.svg"/>
-</div>
+<!--<div class="icon"-->
+	<!--*ngIf="!isWorker() && isOffer()  && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">-->
+	<!--&lt;!&ndash;<img class="icon" src="/assets/images/icon-to-archive.svg"/>&ndash;&gt;-->
+	<!--<img class="default" src="/assets/images/icon-to-archive.svg"/>-->
+	<!--<img class="hover" title="В архив" (click)="archive()" src="/assets/images/icon-to-archive-orange.svg"/>-->
+<!--</div>-->
 
 <!--конец статусов работодателя-->
 

@@ -128,4 +128,20 @@ export class RespondsApi {
       });
   }
 
+  // отправляет отклик в архив
+  public sendRespondToArchive(respondId: string): void {
+    this.http.get(`/api/v1/employer/respond/archive?respondId=${respondId}`)
+      .subscribe((res) => {
+        this.getResponds();
+      });
+  }
+
+  // отправляет предложение в архив
+  public sendOfferToArchive(offerId: string): void {
+    this.http.get(`/api/v1/worker/offer/archive?offerId=${offerId}`)
+      .subscribe((res) => {
+        this.getOffers();
+      });
+  }
+
 }
