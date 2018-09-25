@@ -34,8 +34,10 @@ export class FullVacancyComponent implements OnInit {
 
     this.dictionary = this._localizationService.currentDictionary;
 
-    this.user = this.userService.getUser();
-    console.log(this.user);
+    this.userService.user$
+      .subscribe((user) => {
+        this.user = user;
+      })
 
     this._vacancyFullService.getVacancy(this.id)
       .subscribe(
