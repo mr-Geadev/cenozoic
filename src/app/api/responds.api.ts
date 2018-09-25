@@ -47,6 +47,7 @@ export class RespondsApi {
       .subscribe(
         (res) => {
           this.messages.info('Отклик отправлен');
+          window.location.href = String(window.location.href); // Refresh page
           this.dialog.closeAll();
         });
   }
@@ -57,6 +58,7 @@ export class RespondsApi {
       .subscribe(
         (res) => {
           this.messages.info('Приглашение отправлено');
+          window.location.href = String(window.location.href); // Refresh page
           this.dialog.closeAll();
         });
   }
