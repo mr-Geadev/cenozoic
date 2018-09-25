@@ -16,13 +16,13 @@
 <div class="icon"
 	*ngIf="isWorker() && !isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
 	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" src="/assets/images/icon-to-archive-orange.svg"/>
+	<img class="hover" title="В архив" src="/assets/images/icon-to-archive-orange.svg"/>
 </div>
 <!--отменить отклик-->
 <div class="icon" (click)="cancel()"
 	*ngIf="isWorker() && !isOffer() && ((status === RESPOND_STATUS.AWAITING) || (status === RESPOND_STATUS.WAIT_QUESTIONNAIRE) ||  (status === RESPOND_STATUS.QUESTIONNAIRE_DONE))">
 	<img class="default" src="/assets/images/icon-gray-cross.svg"/>
-	<img class="hover" src="/assets/images/icon-orange-cross.svg"/>
+	<img class="hover" title="Отменить отклик" src="/assets/images/icon-orange-cross.svg"/>
 </div>
 
 <!--конец статусов сосикателя-->
@@ -41,7 +41,7 @@
 <div class="icon"
 		 *ngIf="!isWorker() && !isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
 	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" src="/assets/images/icon-to-archive-orange.svg"/>
+	<img class="hover" title="В архив" src="/assets/images/icon-to-archive-orange.svg"/>
 </div>
 
 <!--архивировать предложение-->
@@ -49,7 +49,7 @@
 	*ngIf="!isWorker() && isOffer()  && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
 	<!--<img class="icon" src="/assets/images/icon-to-archive.svg"/>-->
 	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" src="/assets/images/icon-to-archive-orange.svg"/>
+	<img class="hover" title="В архив" src="/assets/images/icon-to-archive-orange.svg"/>
 </div>
 
 <!--конец статусов работодателя-->

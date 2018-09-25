@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SystemMessageService } from 'services';
-import { NEW_STATUSES } from "../const";
-import { RespondModel } from "../models";
+import { NEW_STATUSES } from 'const';
+import { RespondModel } from 'models';
 
 @Injectable()
 export class RespondsApi {
@@ -31,6 +32,7 @@ export class RespondsApi {
 
 
     constructor(private http: HttpClient,
+                private dialog: MatDialog,
                 private messages: SystemMessageService) {
     }
 
@@ -40,6 +42,7 @@ export class RespondsApi {
             .subscribe(
                 (res) => {
                     this.messages.info('Отклик отправлен');
+                    this.dialog.closeAll();
                 });
     }
 
@@ -49,6 +52,7 @@ export class RespondsApi {
             .subscribe(
                 (res) => {
                     this.messages.info('Приглашение отправлено');
+                    this.dialog.closeAll();
                 });
     }
 
@@ -90,19 +94,23 @@ export class RespondsApi {
         this.http.get(`/api/v1/employer/offer/cancel?offerId=${respondId}`);
     }
 
+    // изменить статус преложения (соискателем)
     public setStatusOffer(offerId: string, status: string): void {
-        status = NEW_STATUSES[status]
+        status = NEW_STATUSES[status];
         this.http.get(`/api/v1/worker/offer/status/change?offerId=${offerId}&newStatus=${status}`)
             .subscribe((res) => {
                 this.getOffers();
+                this.dialog.closeAll();
             });
     }
 
+    // изменить статус отклика (работодателем)
     public setStatusRespond(respondId: string, status: string): void {
-        status = NEW_STATUSES[status]
+        status = NEW_STATUSES[status];
         this.http.get(`/api/v1/employer/respond/status/change?respondId=${respondId}&newStatus=${status}`)
             .subscribe((res) => {
                 this.getResponds();
+                this.dialog.closeAll();
             });
     }
 
