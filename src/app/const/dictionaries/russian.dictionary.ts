@@ -371,7 +371,8 @@ export const RUSSIAN_DICTIONARY = {
   ANSWER_TO_OFFER_TEXT_POSITIVE_1: 'Здравствуйте! Меня заинтересовала ваша вакансия',
   ANSWER_TO_OFFER_TEXT_POSITIVE_2: 'Отправляю вам свои контактные данные',
   ANSWER_TO_OFFER_TEXT_NEGATIVE: 'Здравствуйте! Меня не заинтересовала ваша вакансия',
-  ANSWER_TO_OFFER_CHANGE_RESUME: 'Мои резюме',
+  ANSWER_TO_OFFER_CHANGE_RESUME: 'Выберете резюме для отправки',
+  ANSWER_TO_OFFER_CHANGE_VACANCY: 'Выберете вакансию для отправки',
   ANSWER_TO_OFFER_SUMMARY_POSITIVE: 'Мы получили ваши контакты и свяжемся с вами',
   ANSWER_TO_OFFER_SUMMARY_NEGATIVE: 'Спасибо за проявленный интерес',
 

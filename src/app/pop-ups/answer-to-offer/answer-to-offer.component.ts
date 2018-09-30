@@ -16,7 +16,8 @@ export class AnswerToOfferComponent implements OnInit {
   public dictionary: any = null;
   public answer: boolean = true;
   public vacancy: VacancyModel = null;
-  public resume: any = null;
+  public checkedResume: any = null;
+  public resumeList: any[] = [];
   public user: UserModel = null;
 
   constructor(private _systemMessageService: SystemMessageService,
@@ -35,10 +36,13 @@ export class AnswerToOfferComponent implements OnInit {
     if (!this.data.respond) {
       this.listResumeApi.getUserResume()
         .subscribe((res: any) => {
-          this.resume = res.resumeList[0];
+          this.resumeList = res.resumeList;
+          if (this.resumeList.length < 2) {
+            this.checkedResume = this.resumeList[0]
+          }
         });
     } else {
-      this.resume = this.data.respond.resume;
+      this.checkedResume = this.data.respond.resume;
     }
 
     this._userService.user$
@@ -49,11 +53,15 @@ export class AnswerToOfferComponent implements OnInit {
 
   sendRespond() {
     if (!this.data.respond) {
-      this.respondsApi.createRespond(this.vacancy._id, this.resume._id);
+      this.respondsApi.createRespond(this.vacancy._id, this.checkedResume._id);
     } else {
       this.respondsApi.setStatusOffer(this.data.respond._id, this.answer ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED);
       this.respondsApi.checkOfferToViewed(this.data.respond._id);
     }
+  }
+
+  checkResume(resume) {
+    this.checkedResume = resume;
   }
 
 }

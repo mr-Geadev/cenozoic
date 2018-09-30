@@ -19,7 +19,8 @@ export class AnswerToRespondComponent implements OnInit {
   public idQuestionnaire: string = '';
 
   private resume: any = null;
-  public vacancy: VacancyModel = null;
+  public checkedVacancy: VacancyModel = null;
+  public listVacancy: VacancyModel[] = [];
 
   constructor(private _systemMessageService: SystemMessageService,
               private _localizationService: LocalizationService,
@@ -37,20 +38,24 @@ export class AnswerToRespondComponent implements OnInit {
     if (!this.data.respond) {
       this.vacancyApi.getUserVacancy()
         .subscribe((res: any) => {
-          this.vacancy = new VacancyModel(res.vacancyList[0]);
+          this.listVacancy = res.vacancyList.map(vacancy => new VacancyModel(vacancy));
         });
     } else {
-      this.vacancy = new VacancyModel(this.data.respond.resume);
+      this.checkedVacancy = new VacancyModel(this.data.respond.resume);
     }
   }
 
   sendRespond() {
     if (!this.data.respond) {
-      this.respondsApi.createOffer(this.vacancy._id, this.resume._id);
+      this.respondsApi.createOffer(this.checkedVacancy._id, this.resume._id);
     } else {
       this.respondsApi.setStatusRespond(this.data.respond._id, this.answer ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED);
       this.respondsApi.checkRespondToViewed(this.data.respond._id);
     }
+  }
+
+  checkVacancy(vacancy) {
+    this.checkedVacancy = vacancy;
   }
 
 }

@@ -13,9 +13,25 @@
     <div class="body-of-answer positive" *ngIf="answer">
         <div class="title">
             {{dictionary.ANSWER_TO_RESPOND_TEXT_POSITIVE}}
-            <span class="name-of-vacancy">
-                "{{vacancy && vacancy.title}}"
+            <span class="name-of-vacancy" *ngIf="checkedVacancy">
+                "{{checkedVacancy && checkedVacancy.title}}"
             </span>
+        </div>
+
+        <div *ngIf="listVacancy.length > 1" class="change-vacancy">
+            <a class="title">
+                {{dictionary.ANSWER_TO_OFFER_CHANGE_VACANCY}}.
+            </a>
+
+            <ul class="my-vacancy">
+                <li
+                  *ngFor="let vacancy of listVacancy"
+                  [class.active]="vacancy._id === checkedVacancy?._id"
+                  (click)="checkVacancy(vacancy)"
+                >
+                    {{ vacancy.title }}
+                </li>
+            </ul>
         </div>
 
         <div class="questionnaire">
@@ -62,7 +78,7 @@
         </div>
     </div>
 
-    <button class="button" [disabled]="isSendQuestionnaire && !idQuestionnaire" (click)="sendRespond()">
+    <button class="button" [disabled]="(isSendQuestionnaire && !idQuestionnaire) || !checkedVacancy" (click)="sendRespond()">
         {{dictionary.SEND_ANSWER}}
     </button>
 

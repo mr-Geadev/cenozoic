@@ -371,7 +371,8 @@ export const ENGLISH_DICTIONARY = {
   ANSWER_TO_OFFER_TEXT_POSITIVE_1: 'Hello! I\'m interested in your vacancy',
   ANSWER_TO_OFFER_TEXT_POSITIVE_2: 'I send you my contact details',
   ANSWER_TO_OFFER_TEXT_NEGATIVE: 'Hello! I was not interested in your vacancy',
-  ANSWER_TO_OFFER_CHANGE_RESUME: 'My resume',
+  ANSWER_TO_OFFER_CHANGE_RESUME: 'Select a resume to send',
+  ANSWER_TO_OFFER_CHANGE_VACANCY: 'Select a vacancy to send',
   ANSWER_TO_OFFER_SUMMARY_POSITIVE: 'We received your contacts and will contact you',
   ANSWER_TO_OFFER_SUMMARY_NEGATIVE: 'Thank you for your interest',
 

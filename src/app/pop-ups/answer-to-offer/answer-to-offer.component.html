@@ -1,74 +1,86 @@
 <div class="wrap">
 
-    <div class="title">{{ dictionary.ANSWER_TO_OFFER_TITLE }}</div>
+	<div class="title">{{ dictionary.ANSWER_TO_OFFER_TITLE }}</div>
 
-    <div class="type" *ngIf="data.respond">
-        <input type="radio" id="positive" name="type" [value]="true" [(ngModel)]="answer">
-        <label for="positive">{{ dictionary.YES }}</label>
+	<div class="type" *ngIf="data.respond">
+		<input type="radio" id="positive" name="type" [value]="true" [(ngModel)]="answer">
+		<label for="positive">{{ dictionary.YES }}</label>
 
-        <input type="radio" id="negative" name="type" [value] ="false" [(ngModel)]="answer">
-        <label for="negative">{{ dictionary.NO }}</label>
-    </div>
+		<input type="radio" id="negative" name="type" [value]="false" [(ngModel)]="answer">
+		<label for="negative">{{ dictionary.NO }}</label>
+	</div>
 
-    <div class="body-of-answer positive" *ngIf="answer">
-        <div class="title">
-            {{dictionary.ANSWER_TO_OFFER_TEXT_POSITIVE_1}}
-            <span class="name-of-vacancy">
+	<div class="body-of-answer positive" *ngIf="answer">
+		<div class="title">
+			{{dictionary.ANSWER_TO_OFFER_TEXT_POSITIVE_1}}
+			<span class="name-of-vacancy">
                 "{{vacancy.title}}"
             </span>
-            <br />
-            {{dictionary.ANSWER_TO_OFFER_TEXT_POSITIVE_2}}
-        </div>
+			<br/>
+			{{dictionary.ANSWER_TO_OFFER_TEXT_POSITIVE_2}}
+		</div>
 
-        <div class="contact-data">
-            <div class="row">
-                <div class="label">
-                    {{dictionary.FIO}}
-                </div>
-                <div class="value">
-                    {{resume && resume.fullName}}
-                </div>
-            </div>
+		<div *ngIf="checkedResume" class="contact-data">
+			<div class="row">
+				<div class="label">
+					{{dictionary.FIO}}
+				</div>
+				<div class="value">
+					{{checkedResume && checkedResume.fullName}}
+				</div>
+			</div>
 
-            <div class="row">
-                <div class="label">
-                   E-Mail
-                </div>
-                <div class="value">
-                    {{resume && resume.email}}
-                </div>
-            </div>
+			<div class="row">
+				<div class="label">
+					E-Mail
+				</div>
+				<div class="value">
+					{{checkedResume && checkedResume.email}}
+				</div>
+			</div>
 
-            <div class="row">
-                <div class="label">
-                    {{dictionary.PHONE}}
-                </div>
-                <div class="value">
-                    {{resume && resume.phoneNumber}}
-                </div>
-            </div>
-        </div>
+			<div class="row">
+				<div class="label">
+					{{dictionary.PHONE}}
+				</div>
+				<div class="value">
+					{{checkedResume && checkedResume.phoneNumber}}
+				</div>
+			</div>
+		</div>
 
-        <a class="change-resume">
-            {{dictionary.ANSWER_TO_OFFER_CHANGE_RESUME}}.
-        </a>
-    </div>
+		<div *ngIf="resumeList.length > 1" class="change-resume">
+			<a class="title">
+				{{dictionary.ANSWER_TO_OFFER_CHANGE_RESUME}}.
+			</a>
 
-    <div class="body-of-answer negative"  *ngIf="!answer">
-        <div class="title">
-            {{dictionary.ANSWER_TO_OFFER_TEXT_NEGATIVE}}
-            <span class="name-of-vacancy">
+			<ul class="my-resume">
+				<li
+					*ngFor="let resume of resumeList"
+					[class.active]="resume._id === checkedResume?._id"
+					(click)="checkResume(resume)"
+				>
+					{{ resume.job }}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="body-of-answer negative" *ngIf="!answer">
+		<div class="title">
+			{{dictionary.ANSWER_TO_OFFER_TEXT_NEGATIVE}}
+			<span class="name-of-vacancy">
                 "{{vacancy.title}}"
             </span>
-        </div>
+		</div>
 
-        <div class="summary">
-            {{dictionary.ANSWER_TO_OFFER_SUMMARY_NEGATIVE}}.
-        </div>
-    </div>
+		<div class="summary">
+			{{dictionary.ANSWER_TO_OFFER_SUMMARY_NEGATIVE}}.
+		</div>
+	</div>
 
-    <button class="button" (click)="sendRespond()">
-        {{dictionary.SEND_ANSWER}}
-    </button>
+	<button class="button" (click)="sendRespond()" [disabled]="!checkedResume">
+		{{dictionary.SEND_ANSWER}}
+	</button>
 
 </div>
