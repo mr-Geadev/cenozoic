@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from "@angular/material";
+import { isWorker } from 'cluster';
 import { RESPOND_STATUSES } from 'const';
 import { RespondsApi } from "../../../../api";
 import { RespondModel } from "../../../../models";
@@ -29,6 +30,11 @@ export class MainStatusComponent {
     return this.entity === 'offer';
   }
 
+  public archived(): boolean {
+    if ((this.typeUser === 'worker') && this.respond.workerArchive) return true;
+    if ((this.typeUser === 'employer') && this.respond.employerArchive) return true;
+  }
+
   constructor(private respondsApi: RespondsApi,
               private _dialog: MatDialog,
               private _confirm: ConfirmService) {
@@ -50,11 +56,7 @@ export class MainStatusComponent {
     this._confirm.confirm('Вы действительно хотите отправить в архив?')
       .subscribe((res) => {
         if (res) {
-          if (this.isWorker()) {
-            this.respondsApi.sendOfferToArchive(this.respond._id);
-          } else {
-            this.respondsApi.sendRespondToArchive(this.respond._id);
-          }
+          this.respondsApi.sendToArchive(this.respond, this.typeUser);
         }
         this._dialog.closeAll();
       });

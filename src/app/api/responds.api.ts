@@ -141,22 +141,41 @@ export class RespondsApi {
       });
   }
 
-  // отправляет отклик в архив
-  public sendRespondToArchive(respondId: string): void {
-    this.http.get(`/api/v1/employer/respond/archive?respondId=${respondId}`)
-      .subscribe((res) => {
-        this.getResponds();
-        this.getArchive();
-      });
+  // работодатель отправляет отклик в архив
+  public employerSendRespondToArchive(respond): void {
   }
 
-  // отправляет предложение в архив
-  public sendOfferToArchive(offerId: string): void {
-    this.http.get(`/api/v1/worker/offer/archive?offerId=${offerId}`)
-      .subscribe((res) => {
-        this.getOffers();
-        this.getArchive();
-      });
+  // работодатель отправляет предложение в архив
+  public sendToArchive(respond: RespondModel, typeUser: string): void {
+    if (typeUser === 'employer') {
+      if (respond.entity === 'offer') {
+        this.http.get(`/api/v1/employer/offer/archive?offerId=${respond._id}`)
+          .subscribe((res) => {
+            this.getOffers();
+            this.getArchive();
+          });
+      } else {
+        this.http.get(`/api/v1/employer/respond/archive?respondId=${respond._id}`)
+          .subscribe((res) => {
+            this.getResponds();
+            this.getArchive();
+          });
+      }
+    } else {
+      if (respond.entity === 'offer') {
+        this.http.get(`/api/v1/worker/offer/archive?offerId=${respond._id}`)
+          .subscribe((res) => {
+            this.getOffers();
+            this.getArchive();
+          });
+      } else {
+        this.http.get(`/api/v1/worker/respond/archive?respondId=${respond._id}`)
+          .subscribe((res) => {
+            this.getResponds();
+            this.getArchive();
+          });
+      }
+    }
   }
 
   // возвращает архив

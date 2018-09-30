@@ -1,4 +1,4 @@
-<ng-container *ngIf="!(respond.employerArchive || respond.workerArchive)">
+<ng-container *ngIf="!archived()">
 	<!--статусы сосикателя-->
 
 	<!--новое предложение-->
@@ -13,12 +13,6 @@
 		{{dictionary.VIEWED_TRUE}}
 	</div>
 
-	<!--архивировать предложение-->
-	<div class="icon"
-			 *ngIf="isWorker() && isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
-		<img class="default" src="/assets/images/icon-to-archive.svg"/>
-		<img class="hover" title="В архив" (click)="archive()" src="/assets/images/icon-to-archive-orange.svg"/>
-	</div>
 	<!--отменить отклик-->
 	<div class="icon" (click)="cancel()"
 			 *ngIf="isWorker() && !isOffer() && ((status === RESPOND_STATUS.AWAITING) || (status === RESPOND_STATUS.WAIT_QUESTIONNAIRE) ||  (status === RESPOND_STATUS.QUESTIONNAIRE_DONE))">
@@ -38,20 +32,13 @@
 		{{dictionary.NEW}}
 	</div>
 
-	<!--архивировать отклик-->
+	<!--конец статусов работодателя-->
+
+
+	<!--архивировать-->
 	<div class="icon"
-			 *ngIf="!isWorker() && !isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
+			 *ngIf="(status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED)">
 		<img class="default" src="/assets/images/icon-to-archive.svg"/>
 		<img class="hover" title="В архив" (click)="archive()" src="/assets/images/icon-to-archive-orange.svg"/>
 	</div>
-
-	<!--архивировать предложение-->
-	<!--<div class="icon"-->
-	<!--*ngIf="!isWorker() && isOffer()  && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">-->
-	<!--&lt;!&ndash;<img class="icon" src="/assets/images/icon-to-archive.svg"/>&ndash;&gt;-->
-	<!--<img class="default" src="/assets/images/icon-to-archive.svg"/>-->
-	<!--<img class="hover" title="В архив" (click)="archive()" src="/assets/images/icon-to-archive-orange.svg"/>-->
-	<!--</div>-->
-
-	<!--конец статусов работодателя-->
 </ng-container>
