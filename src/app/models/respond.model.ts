@@ -1,4 +1,6 @@
 import { STATUSES_INIT } from 'const';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 
 export class RespondModel {
   public _id: string = null;
@@ -18,7 +20,8 @@ export class RespondModel {
   public employerArchive: boolean = false;
   public viewed: boolean = true;
 
-  public creationDate: string = null;
+  public creationDate: Moment = null;
+  public changeDate: Moment = null;
 
   constructor(respond) {
     this._id = respond._id;
@@ -33,7 +36,8 @@ export class RespondModel {
     this.workerArchive = respond.workerArchive;
     this.employerArchive = respond.employerArchive;
     this.viewed = respond.viewed;
-    this.creationDate = respond.creationDate;
+    this.creationDate = moment(respond.creationDate);
+    this.changeDate = respond.changeDate;
   }
 }
 
