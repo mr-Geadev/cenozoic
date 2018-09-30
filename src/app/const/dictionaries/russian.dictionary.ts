@@ -348,6 +348,14 @@ export const RUSSIAN_DICTIONARY = {
   STATUS_APPROVED: 'Положительный',
   STATUS_REJECTED: 'Отрицательный',
 
+  FILTER_SHOW: 'Показать',
+  FILTER_ALL: 'Все',
+  FILTER_AWAITING: 'Ожидание',
+  FILTER_WAIT_QUESTIONNAIRE: 'Ожидание опросника',
+  FILTER_QUESTIONNAIRE_DONE: 'Опросник заполнен',
+  FILTER_APPROVED: 'Положительный',
+  FILTER_REJECTED: 'Отрицательный',
+
   // попапы
   ANSWER_TO_RESPOND_TITLE: 'Кандидат вам подходит?',
   ANSWER_TO_RESPOND_TEXT_POSITIVE: 'Здравствуйте! Ваша кандидатура подходит для нашей вакансии',

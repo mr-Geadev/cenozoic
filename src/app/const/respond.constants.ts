@@ -1,3 +1,11 @@
+export const STATUSES = [
+  { type: 'AWAITING', code: 0},
+  { type: 'WAIT_QUESTIONNAIRE', code: 3},
+  { type: 'QUESTIONNAIRE_DONE', code: 4},
+  { type: 'APPROVED', code: 5},
+  { type: 'REJECTED', code: 6},
+];
+
 export const STATUSES_INIT = {
   0: 'AWAITING',
   3: 'WAIT_QUESTIONNAIRE',

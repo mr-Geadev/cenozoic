@@ -1,0 +1,12 @@
+<section class="filtr-respond">
+	<div class="container">
+		<mat-form-field>
+			<mat-select name="status" placeholder="{{dictionary.FILTER_SHOW}}"
+									(selectionChange)="filterRespondService.changeForm(status);"
+									[(ngModel)]="status">
+				<mat-option>{{dictionary.FILTER_ALL}}</mat-option>
+				<mat-option *ngFor="let status of STATUSES" value={{status.code}}>{{ dictionary['FILTER_' + status.type] }}</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+</section>

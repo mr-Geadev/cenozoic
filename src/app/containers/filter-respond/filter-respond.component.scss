@@ -1,0 +1,14 @@
+@import "colors";
+@import "animations";
+
+:host {
+  display: block;
+  padding: 10px 0 20px;
+  margin-bottom: 20px;
+
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #dadada;
+  }
+}

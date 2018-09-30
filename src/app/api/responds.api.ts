@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ResumeApi } from 'api/resume.api';
 import { VacancyApi } from 'api/vacancy.api';
+import { FilterRespondService } from 'containers/filter-respond';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SystemMessageService } from 'services';
 import { NEW_STATUSES } from 'const';
@@ -10,6 +11,8 @@ import { RespondModel } from 'models';
 
 @Injectable()
 export class RespondsApi {
+
+  private filters: any = {};
 
   // TODO: вынести все это гавно в сервис состояния
   private listRespond: BehaviorSubject<RespondModel[]> = new BehaviorSubject<RespondModel[]>([]);
@@ -42,7 +45,18 @@ export class RespondsApi {
               private dialog: MatDialog,
               private vacancyApi: VacancyApi,
               private resumeApi: ResumeApi,
+              private filterResponds: FilterRespondService,
               private messages: SystemMessageService) {
+    this.filterResponds.filter$
+      .subscribe((filter) => {
+        if (typeof filter !== 'undefined') {
+          this.filters = { status: parseInt(filter) };
+        } else {
+          this.filters = {};
+        }
+        this.getResponds();
+        this.getOffers();
+      });
   }
 
   // соискатель откликается на вакансию
@@ -69,7 +83,7 @@ export class RespondsApi {
 
   // список откликов для юзверя
   public getResponds(): void {
-    this.http.post('/api/v1/user/respond/all', {})
+    this.http.post('/api/v1/user/respond/all', { filters: this.filters })
       .subscribe(
         res => {
           const list = res['responds'].map(respond => new RespondModel(respond));
@@ -84,7 +98,7 @@ export class RespondsApi {
 
   // список предложений юзверя
   public getOffers(): void {
-    this.http.post('/api/v1/user/offer/all', {})
+    this.http.post('/api/v1/user/offer/all', { filters: this.filters })
       .subscribe(res => {
         const list = res['offers'].map(offer => new RespondModel(offer));
         this.setListOffers(list);
@@ -108,7 +122,7 @@ export class RespondsApi {
   // изменить статус преложения (соискателем)
   public setStatusOffer(offerId: string, status: string): void {
     status = NEW_STATUSES[status];
-    this.http.get(`/api/v1/worker/offer/status/change?offerId=${offerId}&newStatus=${status}`)
+    this.http.get(`/api/v1/worker/offer/status/change?offerId=${offerId}&newStatus=${parseInt(status)}`)
       .subscribe((res) => {
         this.getOffers();
         this.dialog.closeAll();
@@ -118,7 +132,7 @@ export class RespondsApi {
   // изменить статус отклика (работодателем)
   public setStatusRespond(respondId: string, status: string): void {
     status = NEW_STATUSES[status];
-    this.http.get(`/api/v1/employer/respond/status/change?respondId=${respondId}&newStatus=${status}`)
+    this.http.get(`/api/v1/employer/respond/status/change?respondId=${respondId}&newStatus=${parseInt(status)}`)
       .subscribe((res) => {
         this.getResponds();
         this.dialog.closeAll();

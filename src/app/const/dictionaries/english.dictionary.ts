@@ -348,6 +348,14 @@ export const ENGLISH_DICTIONARY = {
   STATUS_APPROVED: 'Positive',
   STATUS_REJECTED: 'Negative',
 
+  FILTER_SHOW: 'Show',
+  FILTER_ALL: 'All',
+  FILTER_AWAITING: 'Expectation',
+  FILTER_WAIT_QUESTIONNAIRE: 'Waiting for the questionnaire',
+  FILTER_QUESTIONNAIRE_DONE: 'The questionnaire is completed',
+  FILTER_APPROVED: 'Positive',
+  FILTER_REJECTED: 'Negative',
+
   // попапы
   ANSWER_TO_RESPOND_TITLE: 'Is the candidate suitable for you?',
   ANSWER_TO_RESPOND_TEXT_POSITIVE: 'Hello! Your candidacy is suitable for our vacancy',

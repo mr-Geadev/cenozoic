@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
-import { FullResumeModule, ListRespondModule, ListResumeModule, ListVacancyModule } from 'containers';
+import { FilterRespondModule, FullResumeModule, ListRespondModule, ListResumeModule, ListVacancyModule } from 'containers';
+import { FilterRespondService } from 'containers/filter-respond';
 import { LogInGuard } from 'guards';
 import { LoginModalModule } from 'pop-ups';
 import { RespondsApi } from "../../api";
@@ -35,7 +36,8 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     ListResumeModule,
     ListVacancyModule,
     FullResumeModule,
-    ListRespondModule
+    ListRespondModule,
+    FilterRespondModule
   ],
   providers: [RespondsApi],
   exports: [PersonalAccountPageComponent],
