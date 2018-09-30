@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { ResumeApi } from 'api/resume.api';
+import { VacancyApi } from 'api/vacancy.api';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SystemMessageService } from 'services';
 import { NEW_STATUSES } from 'const';
@@ -38,6 +40,8 @@ export class RespondsApi {
 
   constructor(private http: HttpClient,
               private dialog: MatDialog,
+              private vacancyApi: VacancyApi,
+              private resumeApi: ResumeApi,
               private messages: SystemMessageService) {
   }
 
@@ -47,7 +51,7 @@ export class RespondsApi {
       .subscribe(
         (res) => {
           this.messages.info('Отклик отправлен');
-          window.location.href = String(window.location.href); // Refresh page
+          this.vacancyApi.getVacancyById(vacancyId);
           this.dialog.closeAll();
         });
   }
@@ -58,7 +62,7 @@ export class RespondsApi {
       .subscribe(
         (res) => {
           this.messages.info('Приглашение отправлено');
-          window.location.href = String(window.location.href); // Refresh page
+          this.resumeApi.getResumeById(resumeId);
           this.dialog.closeAll();
         });
   }

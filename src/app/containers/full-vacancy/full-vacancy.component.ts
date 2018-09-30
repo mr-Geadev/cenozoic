@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { VacancyApi } from 'api';
 import { UserModel } from 'models';
 
 import { LocalizationService, ResumeService, UserService } from 'services';
@@ -23,6 +24,7 @@ export class FullVacancyComponent implements OnInit {
   constructor(public resumeService: ResumeService,
               private _vacancyFullService: FullVacancyService,
               private _localizationService: LocalizationService,
+              private vacancyApi: VacancyApi,
               public responds: PopupsService,
               private userService: UserService,
               public citiesService: CitiesService,
@@ -31,7 +33,6 @@ export class FullVacancyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.dictionary = this._localizationService.currentDictionary;
 
     this.userService.user$
@@ -39,13 +40,10 @@ export class FullVacancyComponent implements OnInit {
         this.user = user;
       })
 
-    this._vacancyFullService.getVacancy(this.id)
-      .subscribe(
-        res => {
-          this.currentVacancy = res;
-          console.log(this.currentVacancy);
-        },
-      );
+    this.vacancyApi.getVacancyById(this.id);
+
+    this.vacancyApi.viewedVacancy$
+      .subscribe((vacancy) => this.currentVacancy = vacancy)
 
     this._vacancyFullService.getNationalities()
       .subscribe(
