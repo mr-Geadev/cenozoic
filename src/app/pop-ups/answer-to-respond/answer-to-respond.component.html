@@ -1,85 +1,90 @@
 <div class="wrap">
 
-    <div class="title">{{ dictionary.ANSWER_TO_RESPOND_TITLE }}</div>
+	<div class="title">{{ dictionary.ANSWER_TO_RESPOND_TITLE }}</div>
 
-    <div class="type" *ngIf="data.respond">
-        <input type="radio" id="positive" name="type" [value]="true" [(ngModel)]="answer">
-        <label for="positive">{{ dictionary.YES }}</label>
+	<div class="type" *ngIf="data.respond">
+		<input type="radio" id="positive" name="type" [value]="true" [(ngModel)]="answer">
+		<label for="positive">{{ dictionary.YES }}</label>
 
-        <input type="radio" id="negative" name="type" [value] ="false" [(ngModel)]="answer">
-        <label for="negative">{{ dictionary.NO }}</label>
-    </div>
+		<input type="radio" id="negative" name="type" [value]="false" [(ngModel)]="answer">
+		<label for="negative">{{ dictionary.NO }}</label>
+	</div>
 
-    <div class="body-of-answer positive" *ngIf="answer">
-        <div class="title">
-            {{dictionary.ANSWER_TO_RESPOND_TEXT_POSITIVE}}
-            <span class="name-of-vacancy" *ngIf="checkedVacancy">
+	<div class="body-of-answer positive" *ngIf="answer">
+		<div class="title">
+			{{dictionary.ANSWER_TO_RESPOND_TEXT_POSITIVE}}
+			<span class="name-of-vacancy" *ngIf="checkedVacancy">
                 "{{checkedVacancy && checkedVacancy.title}}"
             </span>
-        </div>
+		</div>
 
-        <div *ngIf="listVacancy.length > 1" class="change-vacancy">
-            <a class="title">
-                {{dictionary.ANSWER_TO_OFFER_CHANGE_VACANCY}}.
-            </a>
+		<div *ngIf="listVacancy.length > 1" class="change-vacancy">
+			<div class="title">
+				{{dictionary.ANSWER_TO_OFFER_CHANGE_VACANCY}}.
+			</div>
 
-            <ul class="my-vacancy">
-                <li
-                  *ngFor="let vacancy of listVacancy"
-                  [class.active]="vacancy._id === checkedVacancy?._id"
-                  (click)="checkVacancy(vacancy)"
-                >
-                    {{ vacancy.title }}
-                </li>
-            </ul>
-        </div>
+			<mat-select
+				name="my-vacancy"
+				class="my-vacancy"
+				[(ngModel)]="checkedVacancy"
+				[placeholder]="dictionary.CHANGE"
+			>
+				<mat-option
+					*ngFor="let vacancy of listVacancy"
+					[value]="vacancy"
+				>
+					{{ vacancy.title }}
+				</mat-option>
+			</mat-select>
+		</div>
 
-        <div class="questionnaire">
-            <input type="checkbox" id="questionnaire" [(ngModel)]="isSendQuestionnaire">
-            <label for="questionnaire">{{dictionary.ANSWER_TO_RESPOND_RESPOND_QUESTIONNAIRE}}</label>
-        </div>
+		<div class="questionnaire">
+			<input type="checkbox" id="questionnaire" [(ngModel)]="isSendQuestionnaire">
+			<label for="questionnaire">{{dictionary.ANSWER_TO_RESPOND_RESPOND_QUESTIONNAIRE}}</label>
+		</div>
 
-        <mat-select name="questionnaire"
-                    class="change-questionnaire"
-                    placeholder="{{dictionary.ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE}}"
-                    [(ngModel)]="idQuestionnaire"
-                    [disabled]="!isSendQuestionnaire">
-            <mat-option>опросник 0</mat-option>
-            <mat-option>опросник 1</mat-option>
-            <mat-option>опросник 2</mat-option>
-            <mat-option>опросник 3</mat-option>
-        </mat-select>
+		<mat-select name="questionnaire"
+								class="change-questionnaire"
+								placeholder="{{dictionary.ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE}}"
+								[(ngModel)]="idQuestionnaire"
+								[disabled]="!isSendQuestionnaire">
+			<mat-option>опросник 0</mat-option>
+			<mat-option>опросник 1</mat-option>
+			<mat-option>опросник 2</mat-option>
+			<mat-option>опросник 3</mat-option>
+		</mat-select>
 
-        <div class="summary" *ngIf="data.respond && isSendQuestionnaire">
-            {{dictionary.ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE}}.
-        </div>
+		<div class="summary" *ngIf="data.respond && isSendQuestionnaire">
+			{{dictionary.ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE}}.
+		</div>
 
-        <div class="summary" *ngIf="data.respond && isSendQuestionnaire">
-            {{dictionary.ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE}}.
-        </div>
+		<div class="summary" *ngIf="data.respond && isSendQuestionnaire">
+			{{dictionary.ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE}}.
+		</div>
 
-        <div class="summary" *ngIf="!data.respond">
-            {{dictionary.ANSWER_TO_RESPOND_CREATE_OFFER}}.
-        </div>
+		<div class="summary" *ngIf="!data.respond">
+			{{dictionary.ANSWER_TO_RESPOND_CREATE_OFFER}}.
+		</div>
 
 
-    </div>
+	</div>
 
-    <div class="body-of-answer negative"  *ngIf="!answer">
-        <div class="title">
-            {{dictionary.ANSWER_TO_RESPOND_TEXT_NEGATIVE}}
-            <span class="name-of-vacancy">
+	<div class="body-of-answer negative" *ngIf="!answer">
+		<div class="title">
+			{{dictionary.ANSWER_TO_RESPOND_TEXT_NEGATIVE}}
+			<span class="name-of-vacancy">
                 "{{vacancy && vacancy.title}}"
             </span>
-        </div>
+		</div>
 
-        <div class="summary">
-            {{dictionary.ANSWER_TO_RESPOND_SUMMARY_NEGATIVE}}.
-        </div>
-    </div>
+		<div class="summary">
+			{{dictionary.ANSWER_TO_RESPOND_SUMMARY_NEGATIVE}}.
+		</div>
+	</div>
 
-    <button class="button" [disabled]="(isSendQuestionnaire && !idQuestionnaire) || !checkedVacancy" (click)="sendRespond()">
-        {{dictionary.SEND_ANSWER}}
-    </button>
+	<button class="button" [disabled]="(isSendQuestionnaire && !idQuestionnaire) || !checkedVacancy"
+					(click)="sendRespond()">
+		{{dictionary.SEND_ANSWER}}
+	</button>
 
 </div>

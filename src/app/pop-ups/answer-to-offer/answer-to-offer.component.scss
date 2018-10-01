@@ -132,21 +132,11 @@
       .change-resume {
         margin-top: 40px;
 
-        .my-resume li {
+        .my-resume {
           margin-top: 10px;
-          padding: 5px;
-          border-radius: 3px;
-          border: 2px solid $gray;
-          cursor: pointer;
-          @include animation(border-color);
-
-          &:hover:not(.active) {
-            border-color: $dark-gray;
-          }
-
-          &.active {
-            border-color: $orange;
-          }
+          padding: 5px 0;
+          border-bottom: 1px solid $gray;
+          width: 360px;
         }
       }
 

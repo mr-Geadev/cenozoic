@@ -326,6 +326,7 @@ export const RUSSIAN_DICTIONARY = {
   CHANGE_SOLUTION: 'Изменить решение',
   SEE_ANSWER: 'Посмотреть ответы',
   FILL_THE_INTERVIEW: 'Заполните опросник',
+  CHANGE: 'Выбрать',
 
   CANDIDATE_NOT_ANSWER: 'Кандидат еще не ответил',
   CANDIDATE_RESPONDED: 'Кандидат ответил вам',

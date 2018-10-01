@@ -39,9 +39,10 @@ export class AnswerToRespondComponent implements OnInit {
       this.vacancyApi.getUserVacancy()
         .subscribe((res: any) => {
           this.listVacancy = res.vacancyList.map(vacancy => new VacancyModel(vacancy));
+          this.checkedVacancy = this.listVacancy[0];
         });
     } else {
-      this.checkedVacancy = new VacancyModel(this.data.respond.resume);
+      this.checkedVacancy = new VacancyModel(this.data.respond.vacancy);
     }
   }
 

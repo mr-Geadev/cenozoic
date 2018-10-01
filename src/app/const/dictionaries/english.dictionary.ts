@@ -326,6 +326,7 @@ export const ENGLISH_DICTIONARY = {
   CHANGE_SOLUTION: 'Edit solution',
   SEE_ANSWER: 'View the answers of',
   FILL_THE_INTERVIEW: 'Fill in the questionnaire',
+  CHANGE: 'Change',
 
   CANDIDATE_NOT_ANSWER: 'The candidate has not yet responded',
   CANDIDATE_RESPONDED: 'The candidate answered you',

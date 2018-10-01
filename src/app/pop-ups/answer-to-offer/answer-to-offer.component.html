@@ -50,19 +50,21 @@
 		</div>
 
 		<div *ngIf="resumeList.length > 1" class="change-resume">
-			<a class="title">
+			<div class="title">
 				{{dictionary.ANSWER_TO_OFFER_CHANGE_RESUME}}.
-			</a>
+			</div>
 
-			<ul class="my-resume">
-				<li
+			<mat-select name="my-resume"
+									class="my-resume"
+									[(ngModel)]="checkedResume"
+									[placeholder]="dictionary.CHANGE">
+				<mat-option
 					*ngFor="let resume of resumeList"
-					[class.active]="resume._id === checkedResume?._id"
-					(click)="checkResume(resume)"
+					[value]="resume"
 				>
 					{{ resume.job }}
-				</li>
-			</ul>
+				</mat-option>
+			</mat-select>
 		</div>
 	</div>
 

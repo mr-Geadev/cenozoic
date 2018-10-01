@@ -37,9 +37,7 @@ export class AnswerToOfferComponent implements OnInit {
       this.listResumeApi.getUserResume()
         .subscribe((res: any) => {
           this.resumeList = res.resumeList;
-          if (this.resumeList.length < 2) {
-            this.checkedResume = this.resumeList[0]
-          }
+          this.checkedResume = this.resumeList[0];
         });
     } else {
       this.checkedResume = this.data.respond.resume;

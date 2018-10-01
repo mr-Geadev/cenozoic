@@ -37,7 +37,7 @@ export class RespondModel {
     this.employerArchive = respond.employerArchive;
     this.viewed = respond.viewed;
     this.creationDate = moment(respond.creationDate);
-    this.changeDate = respond.changeDate;
+    this.changeDate = respond.changeDate ? moment(respond.changeDate) : null;
   }
 }
 
