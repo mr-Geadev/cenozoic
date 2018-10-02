@@ -7,6 +7,7 @@ export const CHANGE_PASSWORD = '/api/v1/user/password/change';
 export const CHANGE_USER_INFO = '/api/v1/worker/profile/parameters/change';
 export const REMOVE_USER = '/api/v1/user/resume/remove';
 export const CREATE_VACANCY = '/api/v1/employer/vacancy/create';
+export const EDIT_VACANCY = '/api/v1/employer/vacancy/edit';
 export const LIST_VACANCY = '/api/v1/vacancy/get/all';
 export const LIST_VACANCY_USER = '/api/v1/employer/vacancy/all';
 export const GET_VACANCY_BY_ID = '/api/v1/vacancy/get/one';

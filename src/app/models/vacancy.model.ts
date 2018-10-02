@@ -1,5 +1,6 @@
 export class VacancyModel {
   _id: null;
+  userId: string = null
 
   answered: boolean = false;
   title: null;
@@ -13,6 +14,7 @@ export class VacancyModel {
     to: 0
   };
   city: null;
+  country: null;
   experience: {
     oil: {
       checked: null,
@@ -40,9 +42,13 @@ export class VacancyModel {
   phone: string = null;
   email: string = null;
 
+  clearVacancy: any = null; // содержит в себе ввакансию, пришедшую с сервака
+
   constructor(vacancy) {
+    this.clearVacancy = vacancy;
     this.answered = vacancy.answered || false;
     this._id = vacancy._id || null;
+    this.userId = vacancy.userId || null;
     this.title = vacancy.title || null;
     this.currency = vacancy.currency || null;
 
@@ -57,6 +63,7 @@ export class VacancyModel {
     };
 
     this.city = vacancy.city || null;
+    this.country = vacancy.country || null;
     this.experience = {
       oil: vacancy.experience.oil || {
         checked: false,

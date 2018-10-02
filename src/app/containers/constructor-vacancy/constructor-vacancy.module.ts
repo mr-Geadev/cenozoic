@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import { VacancyApi } from 'api';
 
-import {ConstructorVacancyService} from './constructor-vacancy.service';
 import {ConstructorVacancyComponent} from './constructor-vacancy.component';
 
 @NgModule({
@@ -18,7 +18,7 @@ import {ConstructorVacancyComponent} from './constructor-vacancy.component';
     ],
     declarations: [ConstructorVacancyComponent],
     exports: [ConstructorVacancyComponent],
-    providers: [ConstructorVacancyService]
+    providers: [VacancyApi]
 })
 export class ConstructorVacancyModule {
 }

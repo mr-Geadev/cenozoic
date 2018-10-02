@@ -126,12 +126,16 @@ export class FullResumeComponent implements OnInit {
 
   public findNameNationality(): string {
     let i = 0, answer = [];
-    this.nationalitiesDefault.filter((item) => {
-      if (item.code === this.currentResume.nationalities[i]) {
-        answer.push(item.name);
-        i++;
-      }
-    });
+
+    if (this.nationalitiesDefault) {
+      this.nationalitiesDefault.filter((item) => {
+        if (item.code === this.currentResume.nationalities[i]) {
+          answer.push(item.name);
+          i++;
+        }
+      });
+    }
+
     return answer.join(', ');
   }
 }

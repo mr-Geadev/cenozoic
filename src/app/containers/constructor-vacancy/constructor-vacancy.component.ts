@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SystemMessageService, UserService } from '../../services';
+import { VacancyApi } from 'api';
+import { VacancyModel } from 'models';
+import { CitiesService, SystemMessageService, UserService } from '../../services';
 import { LocalizationService } from '../../services/localization.service';
 import { ChangeCityModalComponent } from '../../pop-ups/change-city/change-city.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';
-import { ConstructorVacancyService } from './constructor-vacancy.service';
 import { City } from '../../pop-ups/change-city/cities.models';
 import { ChangeCityService } from '../../pop-ups/change-city';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'constructor-vacancy',
@@ -17,17 +19,22 @@ import { ChangeCityService } from '../../pop-ups/change-city';
 export class ConstructorVacancyComponent implements OnInit {
 
   public vacancy: FormGroup;
+  public vacancyId: string = null;
   public dictionary: any = null;
   public nameCity: string = null;
   public nationalitiesDefault: any[] = null;
   public currentUser = null;
 
-  constructor(private _createVacancyService: ConstructorVacancyService,
-              private _msg: SystemMessageService,
+  @Input('edit') edit?: boolean;
+
+  constructor(private _msg: SystemMessageService,
               private _dialog: MatDialog,
               private router: Router,
               private userService: UserService,
               private _changeCityService: ChangeCityService,
+              public citiesService: CitiesService,
+              private _vacancyApi: VacancyApi,
+              private _location: Location,
               private _localizationService: LocalizationService) {
   }
 
@@ -36,13 +43,25 @@ export class ConstructorVacancyComponent implements OnInit {
     // подключение локализцаии
     this.dictionary = this._localizationService.currentDictionary;
 
-    this._createVacancyService.getNationalities()
+    this._vacancyApi.getNationalities()
       .subscribe(
         (nationalities: any) => {
           this.nationalitiesDefault = nationalities.list;
         });
 
-    this.createVacancy();
+    if (this.edit) {
+      this._vacancyApi.viewedVacancy$
+        .subscribe(editableVacancy => {
+          this.createVacancy(editableVacancy);
+          this.vacancyId = editableVacancy._id;
+          const city = this.citiesService.locations.getCityToCode(editableVacancy.city)
+          this.vacancy.controls['city'].setValue(city.code);
+          this.vacancy.controls['country'].setValue(city.codeCountry);
+          this.nameCity = city.name;
+        });
+    } else {
+      this.createVacancy();
+    }
 
     this.userService.user$
       .filter(user => !!user)
@@ -77,29 +96,42 @@ export class ConstructorVacancyComponent implements OnInit {
       phone: this.currentUser.phone,
       email: this.currentUser.email,
     };
-    this._createVacancyService.createVacancy(vacancy)
-      .subscribe(
-        (res) => {
-          this._msg.info('Ваша вакансия сохранена');
-          this.router.navigate(['personal-account']);
-        },
-        (err) => {
-          this._msg.info(err.error.errorMessage);
-        },
-      );
+    if (this.edit) {
+      this._vacancyApi.editVacancy(vacancy, this.vacancyId)
+        .subscribe(
+          (res) => {
+            this._msg.info('Измнения сохранены');
+            this._location.back();
+          },
+          (err) => {
+            this._msg.info(err.error.errorMessage);
+          },
+        );
+    } else {
+      this._vacancyApi.createVacancy(vacancy)
+        .subscribe(
+          (res) => {
+            this._msg.info('Ваша вакансия сохранена');
+            this.router.navigate(['personal-account']);
+          },
+          (err) => {
+            this._msg.info(err.error.errorMessage);
+          },
+        );
+    }
   }
 
-  private createVacancy(data: any = { salary: {}, experience: { mining: {}, oil: {} } }): void { // дико костыльное решение, кооторое нудно будет потом заменить модлеью
+  private createVacancy(data: any = { salaryGROSS: {}, salaryNET: {}, experience: { mining: {}, oil: {} } }): void { // дико костыльное решение, кооторое нудно будет потом заменить модлеью
     this.vacancy = new FormGroup({
-      title: new FormControl(data.name || '', [Validators.required]),
+      title: new FormControl(data.title || '', [Validators.required]),
       currency: new FormControl(data.currency || ''),
       salaryGROSS: new FormGroup({
-        from: new FormControl(data.salary.from || 0),
-        to: new FormControl(data.salary.to || 0),
+        from: new FormControl(data.salaryGROSS.from || 0),
+        to: new FormControl(data.salaryGROSS.to || 0),
       }),
       salaryNET: new FormGroup({
-        from: new FormControl(data.salary.from || 0),
-        to: new FormControl(data.salary.to || 0),
+        from: new FormControl(data.salaryNET.from || 0),
+        to: new FormControl(data.salaryNET.to || 0),
       }),
       country: new FormControl(data.country || null, [Validators.required]),
       city: new FormControl(data.city || null, [Validators.required]),

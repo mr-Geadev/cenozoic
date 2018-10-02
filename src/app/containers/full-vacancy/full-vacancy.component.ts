@@ -54,12 +54,16 @@ export class FullVacancyComponent implements OnInit {
 
   public findNameNationality(): string {
     let i = 0, answer = [];
-    this.nationalitiesDefault.filter((item) => {
-      if (item.code === this.currentVacancy.nationalities[i]) {
-        answer.push(item.name);
-        i++;
-      }
-    });
+
+    if (this.nationalitiesDefault) {
+      this.nationalitiesDefault.filter((item) => {
+        if (item.code === this.currentVacancy.nationalities[i]) {
+          answer.push(item.name);
+          i++;
+        }
+      });
+    }
+
     return answer.join(', ');
   }
 
