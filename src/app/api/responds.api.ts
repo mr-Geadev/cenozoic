@@ -48,12 +48,9 @@ export class RespondsApi {
               private filterResponds: FilterRespondService,
               private messages: SystemMessageService) {
     this.filterResponds.filter$
+      .filter(filter => !!filter)
       .subscribe((filter) => {
-        if (typeof filter !== 'undefined') {
-          this.filters = { status: parseInt(filter) };
-        } else {
-          this.filters = {};
-        }
+        this.filters = filter;
         this.getResponds();
         this.getOffers();
       });
@@ -83,7 +80,7 @@ export class RespondsApi {
 
   // список откликов для юзверя
   public getResponds(): void {
-    this.http.post('/api/v1/user/respond/all', { filters: this.filters })
+    this.http.post('/api/v1/user/respond/all', this.filters)
       .subscribe(
         res => {
           const list = res['responds'].map(respond => new RespondModel(respond));
@@ -98,7 +95,7 @@ export class RespondsApi {
 
   // список предложений юзверя
   public getOffers(): void {
-    this.http.post('/api/v1/user/offer/all', { filters: this.filters })
+    this.http.post('/api/v1/user/offer/all', this.filters)
       .subscribe(res => {
         const list = res['offers'].map(offer => new RespondModel(offer));
         this.setListOffers(list);

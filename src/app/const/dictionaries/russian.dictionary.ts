@@ -137,7 +137,9 @@ export const RUSSIAN_DICTIONARY = {
 
   // фильтры
   SORT_BY: 'Сортировать по',
-  SORT_BY_DATA: 'По дате добавления',
+  SORT_BY_DATA: 'По дате',
+  SORT_BY_RESUME_NAME: 'По имени резюме',
+  SORT_BY_VACANCY_NAME: 'По названию вакансии',
 
   // личный кабинет
   MY: 'Мои',

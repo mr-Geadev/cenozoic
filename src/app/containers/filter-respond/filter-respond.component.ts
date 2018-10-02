@@ -13,7 +13,12 @@ export class FilterRespondComponent implements OnInit {
   public STATUSES = STATUSES;
 
   public dictionary: any = null;
-  public status: number = null;
+  public parameters = {
+    filters: {
+      status: null,
+    },
+    sortBy: 'resumeTitle' // resumeTitle, vacancyTitle, creationDate
+  }
 
   constructor(public filterRespondService: FilterRespondService,
               private _localizationService: LocalizationService) {
@@ -23,6 +28,7 @@ export class FilterRespondComponent implements OnInit {
     this.dictionary = this._localizationService.currentDictionary;
 
     this.filterRespondService.filter$
-      .subscribe((filter) => this.status = filter);
+      .filter(parameters => !!parameters)
+      .subscribe((parameters) => this.parameters = parameters);
   }
 }

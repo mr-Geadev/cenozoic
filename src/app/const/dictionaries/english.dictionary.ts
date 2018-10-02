@@ -138,6 +138,8 @@ export const ENGLISH_DICTIONARY = {
   // фильтры
   SORT_BY: 'Sort by',
   SORT_BY_DATA: 'Sort by data',
+  SORT_BY_RESUME_NAME: 'Sort by name of resume',
+  SORT_BY_VACANCY_NAME: 'Sort by name of vacancy',
 
   // личный кабинет
   MY: 'My',
