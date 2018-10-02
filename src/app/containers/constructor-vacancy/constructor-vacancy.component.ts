@@ -1,15 +1,13 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { VacancyApi } from 'api';
-import { VacancyModel } from 'models';
+import { ChangeCityService } from '../../pop-ups/change-city';
+import { City } from '../../pop-ups/change-city/cities.models';
 import { CitiesService, SystemMessageService, UserService } from '../../services';
 import { LocalizationService } from '../../services/localization.service';
-import { ChangeCityModalComponent } from '../../pop-ups/change-city/change-city.component';
-import { MatDialog, MatDialogConfig } from '@angular/material';
-import { City } from '../../pop-ups/change-city/cities.models';
-import { ChangeCityService } from '../../pop-ups/change-city';
-import {Location} from '@angular/common';
 
 @Component({
   selector: 'constructor-vacancy',
@@ -54,7 +52,7 @@ export class ConstructorVacancyComponent implements OnInit {
         .subscribe(editableVacancy => {
           this.createVacancy(editableVacancy);
           this.vacancyId = editableVacancy._id;
-          const city = this.citiesService.locations.getCityToCode(editableVacancy.city)
+          const city = this.citiesService.locations.getCityToCode(editableVacancy.city);
           this.vacancy.controls['city'].setValue(city.code);
           this.vacancy.controls['country'].setValue(city.codeCountry);
           this.nameCity = city.name;
@@ -139,24 +137,28 @@ export class ConstructorVacancyComponent implements OnInit {
         oil: new FormGroup({
           checked: new FormControl(data.experience.oil.checked || false),
           years: new FormControl({
-            value: data.experience.oil.years || 0,
-            disabled: !data.experience.oil.checked,
-          }),
+              value: data.experience.oil.years || 0,
+              disabled: !data.experience.oil.checked,
+            },
+            [Validators.min(0)]),
           months: new FormControl({
             value: data.experience.oil.months || 0,
             disabled: !data.experience.oil.checked,
-          }),
+          },
+            [Validators.min(0), Validators.max(11)]),
         }),
         mining: new FormGroup({
           checked: new FormControl(data.experience.mining.checked || false),
           years: new FormControl({
             value: data.experience.mining.years || 0,
             disabled: !data.experience.mining.checked,
-          }),
+          },
+            [Validators.min(0)]),
           months: new FormControl({
             value: data.experience.mining.months || 0,
             disabled: !data.experience.mining.checked,
-          }),
+          },
+            [Validators.min(0), Validators.max(11)]),
         }),
       }),
       nationalities: new FormControl(data.nationalities || []),
