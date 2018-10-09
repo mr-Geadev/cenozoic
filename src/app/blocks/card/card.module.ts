@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { QuestionnaireViewComponent } from 'blocks/card/elements-card/questionnaire';
 import { AnswerToOfferModule, AnswerToRespondModule } from 'pop-ups';
 import { RespondsApi } from 'api';
 import { ConfirmService } from "../../services";
@@ -20,6 +21,7 @@ import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatus
     // elements of card
     VacancyViewComponent,
     ResumeViewComponent,
+    QuestionnaireViewComponent,
     AddViewComponent,
     MainStatusComponent,
     DetailedStatusComponent,

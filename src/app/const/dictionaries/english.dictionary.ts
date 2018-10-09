@@ -384,6 +384,11 @@ export const ENGLISH_DICTIONARY = {
   SEND_INVITE: 'Send a invite',
   SEND_INVITE_YET: 'Invitation sent',
 
+  // опросники
+  ADD_QUESTIONNAIRE: 'Add questionnaire',
+  COUNT_QUESTION: 'of questions',
+  QUESTIONNAIRE_FILE_DOWNLOADED: 'Loaded questionnaire',
+
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',
   CONFIRM_FAIL: 'The link is not valid. Check the correctness of the link, or contact the administrator for assistance.',

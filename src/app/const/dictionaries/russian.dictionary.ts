@@ -359,7 +359,7 @@ export const RUSSIAN_DICTIONARY = {
   FILTER_APPROVED: 'Положительный',
   FILTER_REJECTED: 'Отрицательный',
 
-  // попапы
+  // попапы отклики
   ANSWER_TO_RESPOND_TITLE: 'Кандидат вам подходит?',
   ANSWER_TO_RESPOND_TEXT_POSITIVE: 'Здравствуйте! Ваша кандидатура подходит для нашей вакансии',
   ANSWER_TO_RESPOND_TEXT_NEGATIVE: 'Здравствуйте! Ваше резюме не подходит для нашей вакансии',
@@ -383,6 +383,11 @@ export const RUSSIAN_DICTIONARY = {
   SEND_ANSWER_YET: 'Вы откликнулись',
   SEND_INVITE: 'Отправить приглашение',
   SEND_INVITE_YET: 'Приглашение отправлено',
+
+  // опросники
+  ADD_QUESTIONNAIRE: 'Добавить опросный лист',
+  COUNT_QUESTION: 'вопросов',
+  QUESTIONNAIRE_FILE_DOWNLOADED: 'Загружен опросный лист',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',

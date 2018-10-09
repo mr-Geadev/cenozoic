@@ -1,5 +1,5 @@
-<a class="wrapper" *ngIf="!respond"
-	   routerLink="{{addNew ? addRoute() : viewRoute()}}">
+<a class="wrapper" *ngIf="!respond && !questionnaire"
+	   routerLink="{{addRoute() || viewRoute()}}">
 
 	<resume-view
 			*ngIf="resume || (respond && typeUser === 'employer')"
@@ -23,9 +23,24 @@
 			class="content"
 	>
 	</add-view>
+
+	<add-view
+		*ngIf="addQuestionnaire"
+		[ngStyle]="{'height':'144px'}"
+		class="content"
+	>
+	</add-view>
 </a>
 
-<div class="wrapper not-link" *ngIf="respond">
+<div class="wrapper not-link" *ngIf="respond || questionnaire">
+
+	<questionnaire-view
+		*ngIf="questionnaire"
+		[questionnaire]="questionnaire"
+		[dictionary]="dictionary"
+		[ngStyle]="{'height':heightContent+'px'}"
+		class="content"
+	></questionnaire-view>
 
 	<main-status
 			*ngIf="respond"
@@ -63,8 +78,8 @@
 	[respond]="respond"
 ></detailed-status>
 
-<a class="more-info" [ngClass]="{'add': addNew }"
-	 routerLink="{{respond ? moreRoute() : viewRoute()}}" (click)="checkToViewed()">
-	{{ addNew ? descriptionForAdding() : dictionary.MORE }}
+<a class="more-info" [ngClass]="{'add': addNew || addQuestionnaire }"
+	 routerLink="{{routeButtonMore()}}" (click)="checkToViewed()">
+	{{ textButtonMore() }}
 	<img src="/assets/images/arrow.svg"/>
 </a>

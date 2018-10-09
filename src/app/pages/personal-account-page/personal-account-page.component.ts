@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RespondModel } from 'models';
+import { QuestionnaireModel, RespondModel } from 'models';
 import { RespondsApi } from "../../api";
 import { LocalizationService } from '../../services';
 import { UserService } from '../../services/user.service';
@@ -30,6 +30,13 @@ export class PersonalAccountPageComponent implements OnInit {
   //   new RespondModel(5, 'offer', true),
   //   new RespondModel(6, 'offer', true),
   // ]
+
+  public listOfQuestionnaire: QuestionnaireModel[] = [
+    new QuestionnaireModel({title: 'Опросник 1', countOfQuestion: 15, fileQuestionnaire: false}),
+    new QuestionnaireModel({title: 'Опросник 2', countOfQuestion: 147, fileQuestionnaire: false}),
+    new QuestionnaireModel({title: 'Очень длинное название опросника 3', countOfQuestion: 45, fileQuestionnaire: false}),
+    new QuestionnaireModel({title: 'Очень длинное название опросника 4', countOfQuestion: null, fileQuestionnaire: true}),
+  ]
 
   public listOfArchive: RespondModel[] = [];
 
