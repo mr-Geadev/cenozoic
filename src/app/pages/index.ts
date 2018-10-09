@@ -2,6 +2,7 @@ export * from './account-settings-page';
 export * from './auth-page';
 export * from './constructor-resume-page';
 export * from './create-vacancy-page';
+export * from './constructor-questionnaire-page';
 export * from './email-confirm-page';
 export * from './list-resume-page';
 export * from './list-vacancy-page';

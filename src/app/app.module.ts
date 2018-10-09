@@ -10,7 +10,7 @@ import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
 import {
   AccountSettingsPageModule,
-  AuthPageModule,
+  AuthPageModule, CreateQuestionnairePageModule,
   CreateResumePageModule,
   CreateVacancyPageModule, EditVacancyPageModule,
   EmailConfirmPageModule,
@@ -47,6 +47,7 @@ const ROUTES = [
     // Pages
     MainPageModule,
     CreateResumePageModule,
+    CreateQuestionnairePageModule,
     ListResumePageModule,
     PersonalAccountPageModule,
     ResumeFullPageModule,
