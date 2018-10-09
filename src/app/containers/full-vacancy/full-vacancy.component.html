@@ -89,7 +89,7 @@
 				<img src="/assets/images/icon-camera.svg">
 			</div>
 
-			<ng-container *ngIf="user._id === currentVacancy.userId">
+			<ng-container *ngIf="user?._id === currentVacancy.userId">
 				<a class="button" routerLink="/edit-vacancy">
 					{{dictionary.EDIT}}
 				</a>
