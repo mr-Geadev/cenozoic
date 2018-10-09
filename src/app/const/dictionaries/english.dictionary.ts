@@ -138,6 +138,8 @@ export const ENGLISH_DICTIONARY = {
   // фильтры
   SORT_BY: 'Sort by',
   SORT_BY_DATA: 'Sort by data',
+  SORT_BY_RESUME_NAME: 'Sort by name of resume',
+  SORT_BY_VACANCY_NAME: 'Sort by name of vacancy',
 
   // личный кабинет
   MY: 'My',
@@ -326,6 +328,7 @@ export const ENGLISH_DICTIONARY = {
   CHANGE_SOLUTION: 'Edit solution',
   SEE_ANSWER: 'View the answers of',
   FILL_THE_INTERVIEW: 'Fill in the questionnaire',
+  CHANGE: 'Change',
 
   CANDIDATE_NOT_ANSWER: 'The candidate has not yet responded',
   CANDIDATE_RESPONDED: 'The candidate answered you',
@@ -348,6 +351,14 @@ export const ENGLISH_DICTIONARY = {
   STATUS_APPROVED: 'Positive',
   STATUS_REJECTED: 'Negative',
 
+  FILTER_SHOW: 'Show',
+  FILTER_ALL: 'All',
+  FILTER_AWAITING: 'Expectation',
+  FILTER_WAIT_QUESTIONNAIRE: 'Waiting for the questionnaire',
+  FILTER_QUESTIONNAIRE_DONE: 'The questionnaire is completed',
+  FILTER_APPROVED: 'Positive',
+  FILTER_REJECTED: 'Negative',
+
   // попапы
   ANSWER_TO_RESPOND_TITLE: 'Is the candidate suitable for you?',
   ANSWER_TO_RESPOND_TEXT_POSITIVE: 'Hello! Your candidacy is suitable for our vacancy',
@@ -356,17 +367,22 @@ export const ENGLISH_DICTIONARY = {
   ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE: 'Name of the questionnaire',
   ANSWER_TO_RESPOND_SUMMARY_POSITIVE: 'We received your contacts and will contact you',
   ANSWER_TO_RESPOND_SUMMARY_NEGATIVE: 'Thank you for your interest',
+  ANSWER_TO_RESPOND_CREATE_OFFER: 'We hope that it will interest you',
   ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE: 'Fill out the questionnaire so that we can learn more about you.',
 
   ANSWER_TO_OFFER_TITLE: 'Are you interested in the vacancy?',
   ANSWER_TO_OFFER_TEXT_POSITIVE_1: 'Hello! I\'m interested in your vacancy',
   ANSWER_TO_OFFER_TEXT_POSITIVE_2: 'I send you my contact details',
   ANSWER_TO_OFFER_TEXT_NEGATIVE: 'Hello! I was not interested in your vacancy',
-  ANSWER_TO_OFFER_CHANGE_RESUME: 'My resume',
+  ANSWER_TO_OFFER_CHANGE_RESUME: 'Select a resume to send',
+  ANSWER_TO_OFFER_CHANGE_VACANCY: 'Select a vacancy to send',
   ANSWER_TO_OFFER_SUMMARY_POSITIVE: 'We received your contacts and will contact you',
   ANSWER_TO_OFFER_SUMMARY_NEGATIVE: 'Thank you for your interest',
 
   SEND_ANSWER: 'Send an answer',
+  SEND_ANSWER_YET: 'You responded',
+  SEND_INVITE: 'Send a invite',
+  SEND_INVITE_YET: 'Invitation sent',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',

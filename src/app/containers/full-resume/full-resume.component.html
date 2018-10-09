@@ -1,4 +1,4 @@
-f<div class="container" *ngIf="currentResume">
+<div class="container" *ngIf="currentResume">
 
     <div class="row main-info">
 
@@ -137,6 +137,18 @@ f<div class="container" *ngIf="currentResume">
                  *ngIf="currentResume.userId == currentUser?._id">
                 {{dictionary.DELETE}}
             </div>
+
+            <ng-container *ngIf="currentUser?.typeAccount === 'employer'">
+							<div class="button" (click)="responds.newOffer(currentResume)"
+									 *ngIf="!currentResume.answered">
+								{{dictionary.SEND_INVITE}}
+							</div>
+
+							<div class="button disabled" (click)="responds.newOffer(currentResume)"
+									 *ngIf="currentResume.answered">
+								{{dictionary.SEND_INVITE_YET}}
+							</div>
+						</ng-container>
         </div>
     </div>
 

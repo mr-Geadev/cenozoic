@@ -1,0 +1,23 @@
+<section class="filtr-respond">
+	<div class="container">
+		<mat-form-field>
+			<mat-select name="filter-status" placeholder="{{dictionary.FILTER_SHOW}}"
+									(selectionChange)="filterRespondService.changeForm(parameters);"
+									[(ngModel)]="parameters.filters.status">
+				<mat-option>{{dictionary.FILTER_ALL}}</mat-option>
+				<mat-option *ngFor="let status of STATUSES" [value]="status.code">{{ dictionary['FILTER_' + status.type] }}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-select name="sortBy" placeholder="{{dictionary.SORT_BY}}"
+									(selectionChange)="filterRespondService.changeForm(parameters);"
+									[(ngModel)]="parameters.sortBy">
+				<mat-option value="resumeTitle">{{dictionary.SORT_BY_RESUME_NAME}}</mat-option>
+				<mat-option value="vacancyTitle">{{dictionary.SORT_BY_VACANCY_NAME}}</mat-option>
+				<mat-option value="creationDate">{{dictionary.SORT_BY_DATA}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+</section>

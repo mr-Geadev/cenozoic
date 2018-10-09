@@ -1,66 +1,43 @@
-<!--статусы сосикателя-->
+<ng-container>
+	<!--статусы сосикателя-->
 
-<!--новое предложение-->
-<div *ngIf="isWorker() && isOffer() && !viewed">
-	<img src="/assets/images/dott-orange.svg"/>
-	{{dictionary.NEW}}
-</div>
+	<!--новое предложение-->
+	<div *ngIf="isWorker() && isOffer() && !viewed">
+		<img src="/assets/images/dott-orange.svg"/>
+		{{dictionary.NEW}}
+	</div>
 
-<!--просмотренное предложение-->
-<div *ngIf="isWorker() && isOffer() && viewed" class="viewed">
-	<!--<img src="/assets/images/dott-gray.svg"/>-->
-	{{dictionary.VIEWED_TRUE}}
-</div>
+	<!--новый отклик-->
+	<div *ngIf="!isWorker() && !isOffer() && !viewed">
+		<img src="/assets/images/dott-orange.svg"/>
+		{{dictionary.NEW}}
+	</div>
 
-<!--архивировать отклик-->
-<div class="icon"
-	*ngIf="isWorker() && !isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
-	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" src="/assets/images/icon-to-archive-orange.svg"/>
-</div>
-<!--отменить отклик-->
-<div class="icon"
-	*ngIf="isWorker() && !isOffer() && ((status === RESPOND_STATUS.AWAITING) || (status === RESPOND_STATUS.WAIT_QUESTIONNAIRE) ||  (status === RESPOND_STATUS.QUESTIONNAIRE_DONE))">
-	<img class="default" src="/assets/images/icon-gray-cross.svg"/>
-	<img class="hover" src="/assets/images/icon-orange-cross.svg"/>
-</div>
+	<div class="viewed">
+		{{lastUpdate()}}
+	</div>
 
-<!--конец статусов сосикателя-->
+	<!--просмотренное предложение-->
+	<div
+		*ngIf="isWorker() && isOffer() && viewed && !((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))"
+		class="viewed">
+		<!--<img src="/assets/images/dott-gray.svg"/>-->
+		{{dictionary.VIEWED_TRUE}}
+	</div>
 
+	<!--отменить отклик-->
+	<div class="icon" (click)="cancel()"
+			 *ngIf="isWorker() && !isOffer() && ((status === RESPOND_STATUS.AWAITING) || (status === RESPOND_STATUS.WAIT_QUESTIONNAIRE) ||  (status === RESPOND_STATUS.QUESTIONNAIRE_DONE))">
+		<img class="default" src="/assets/images/icon-gray-cross.svg"/>
+		<img class="hover" title="Отменить отклик" src="/assets/images/icon-orange-cross.svg"/>
+	</div>
 
-
-<!--статусы работодателя-->
-
-<!--новый отклик-->
-<div *ngIf="!isWorker() && !isOffer() && !viewed">
-	<img src="/assets/images/dott-orange.svg"/>
-	{{dictionary.NEW}}
-</div>
-
-<!--архивировать отклик-->
-<div class="icon"
-		 *ngIf="!isWorker() && !isOffer() && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
-	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" src="/assets/images/icon-to-archive-orange.svg"/>
-</div>
-
-<!--архивировать предложение-->
-<div class="icon"
-	*ngIf="!isWorker() && isOffer()  && ((status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED))">
-	<!--<img class="icon" src="/assets/images/icon-to-archive.svg"/>-->
-	<img class="default" src="/assets/images/icon-to-archive.svg"/>
-	<img class="hover" src="/assets/images/icon-to-archive-orange.svg"/>
-</div>
-
-<!--конец статусов работодателя-->
-
-
-
-
-
-
-
-
-
-
-
+	<!--архивировать-->
+	<ng-container *ngIf="!archived()">
+		<div class="icon"
+				 *ngIf="(status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED)">
+			<img class="default" src="/assets/images/icon-to-archive.svg"/>
+			<img class="hover" title="В архив" (click)="archive()" src="/assets/images/icon-to-archive-orange.svg"/>
+		</div>
+	</ng-container>
+</ng-container>

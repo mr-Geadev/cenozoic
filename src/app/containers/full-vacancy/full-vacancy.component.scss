@@ -71,6 +71,11 @@
     &:hover {
       background-color: $hover-orange;
     }
+
+    &.disabled {
+      background-color: $gray;
+      pointer-events: none;
+    }
   }
 
   .salary {

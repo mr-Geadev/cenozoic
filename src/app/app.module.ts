@@ -12,7 +12,7 @@ import {
   AccountSettingsPageModule,
   AuthPageModule,
   CreateResumePageModule,
-  CreateVacancyPageModule,
+  CreateVacancyPageModule, EditVacancyPageModule,
   EmailConfirmPageModule,
   ListResumePageModule,
   ListVacancyPageModule,
@@ -56,6 +56,7 @@ const ROUTES = [
     VacancyFullPageModule,
     EmailConfirmPageModule,
     AuthPageModule,
+    EditVacancyPageModule,
 
     // Blocks
     PageHeaderModule,

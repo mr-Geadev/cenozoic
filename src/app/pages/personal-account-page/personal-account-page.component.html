@@ -106,6 +106,12 @@
 	</div>
 </div>
 
+<filter-respond
+	class="block resume"
+	[ngClass]="{ 'active': (activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS) || (activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND) }"
+	*ngIf="(activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS) || (activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND)"
+></filter-respond>
+
 <list-respond
 	class="block resume"
 	[typeUser]="typeCurrentUser"
@@ -121,6 +127,15 @@
 	[listRespond]="listOfResponds"
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND"
 ></list-respond>
+
+<list-respond
+	class="block resume"
+	[typeUser]="typeCurrentUser"
+	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_ARCHIVE }"
+	[listRespond]="listOfArchive"
+	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_ARCHIVE"
+></list-respond>
+
 
 <list-resume
 	class="block resume"

@@ -2,6 +2,7 @@ export * from './constructor-resume';
 export * from './constructor-vacancy';
 export * from './filter-resumes';
 export * from './full-resume';
+export * from './filter-respond';
 export * from './full-vacancy';
 export * from './list-resume';
 export * from './list-vacancy';

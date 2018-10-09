@@ -10,11 +10,6 @@ export class FullVacancyService {
     constructor(private _http: HttpClient) {
     }
 
-    public getVacancy(vacancyId: string): Observable<any> {
-        return this._http.get(GET_VACANCY_BY_ID + `?vacancyId=${vacancyId}`)
-            .map(res => new VacancyModel(res['vacancy']));
-    }
-
     public getNationalities(): Observable<any> {
         return this._http.get('/assets/json/nationalities.json')
     }

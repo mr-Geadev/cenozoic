@@ -3,23 +3,22 @@
 
 		<div class="row list">
 			<card
-				*ngFor="let vacancy of listVacancy; let i = index"
-				[vacancy]="vacancy"
-				[typeUser]="typeCurrentUser"
-				[dictionary]="dictionary"
-				[heightContent]="250"
-				class="item"
-			></card>
-
-			<card
 				*ngIf="config === 'user'"
 				[typeUser]="typeCurrentUser"
 				[dictionary]="dictionary"
 				[addNew]="true"
-				[heightContent]="250"
+				[heightContent]="300"
 				class="item"
 			></card>
 
+			<card
+				*ngFor="let vacancy of listVacancy; let i = index"
+				[vacancy]="vacancy"
+				[typeUser]="typeCurrentUser"
+				[dictionary]="dictionary"
+				[heightContent]="300"
+				class="item"
+			></card>
 		</div>
 
 

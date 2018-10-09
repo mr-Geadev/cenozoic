@@ -137,7 +137,9 @@ export const RUSSIAN_DICTIONARY = {
 
   // фильтры
   SORT_BY: 'Сортировать по',
-  SORT_BY_DATA: 'По дате добавления',
+  SORT_BY_DATA: 'По дате',
+  SORT_BY_RESUME_NAME: 'По имени резюме',
+  SORT_BY_VACANCY_NAME: 'По названию вакансии',
 
   // личный кабинет
   MY: 'Мои',
@@ -326,6 +328,7 @@ export const RUSSIAN_DICTIONARY = {
   CHANGE_SOLUTION: 'Изменить решение',
   SEE_ANSWER: 'Посмотреть ответы',
   FILL_THE_INTERVIEW: 'Заполните опросник',
+  CHANGE: 'Выбрать',
 
   CANDIDATE_NOT_ANSWER: 'Кандидат еще не ответил',
   CANDIDATE_RESPONDED: 'Кандидат ответил вам',
@@ -348,6 +351,14 @@ export const RUSSIAN_DICTIONARY = {
   STATUS_APPROVED: 'Положительный',
   STATUS_REJECTED: 'Отрицательный',
 
+  FILTER_SHOW: 'Показать',
+  FILTER_ALL: 'Все',
+  FILTER_AWAITING: 'Ожидание',
+  FILTER_WAIT_QUESTIONNAIRE: 'Ожидание опросника',
+  FILTER_QUESTIONNAIRE_DONE: 'Опросник заполнен',
+  FILTER_APPROVED: 'Положительный',
+  FILTER_REJECTED: 'Отрицательный',
+
   // попапы
   ANSWER_TO_RESPOND_TITLE: 'Кандидат вам подходит?',
   ANSWER_TO_RESPOND_TEXT_POSITIVE: 'Здравствуйте! Ваша кандидатура подходит для нашей вакансии',
@@ -355,6 +366,7 @@ export const RUSSIAN_DICTIONARY = {
   ANSWER_TO_RESPOND_RESPOND_QUESTIONNAIRE: 'Отправить опросный лист',
   ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE: 'Название опросника',
   ANSWER_TO_RESPOND_SUMMARY_POSITIVE: 'Мы получили ваши контакты и свяжемся с вами',
+  ANSWER_TO_RESPOND_CREATE_OFFER: 'Надеемся, что она вас заинтересует',
   ANSWER_TO_RESPOND_SUMMARY_NEGATIVE: 'Спасибо за проявленный интерес',
   ANSWER_TO_RESPOND_SUMMARY_QUESTIONNAIRE: 'Заполните опросный лист, чтобы мы больше узнали о вас',
 
@@ -362,11 +374,15 @@ export const RUSSIAN_DICTIONARY = {
   ANSWER_TO_OFFER_TEXT_POSITIVE_1: 'Здравствуйте! Меня заинтересовала ваша вакансия',
   ANSWER_TO_OFFER_TEXT_POSITIVE_2: 'Отправляю вам свои контактные данные',
   ANSWER_TO_OFFER_TEXT_NEGATIVE: 'Здравствуйте! Меня не заинтересовала ваша вакансия',
-  ANSWER_TO_OFFER_CHANGE_RESUME: 'Мои резюме',
+  ANSWER_TO_OFFER_CHANGE_RESUME: 'Выберете резюме для отправки',
+  ANSWER_TO_OFFER_CHANGE_VACANCY: 'Выберете вакансию для отправки',
   ANSWER_TO_OFFER_SUMMARY_POSITIVE: 'Мы получили ваши контакты и свяжемся с вами',
   ANSWER_TO_OFFER_SUMMARY_NEGATIVE: 'Спасибо за проявленный интерес',
 
   SEND_ANSWER: 'Отправить ответ',
+  SEND_ANSWER_YET: 'Вы откликнулись',
+  SEND_INVITE: 'Отправить приглашение',
+  SEND_INVITE_YET: 'Приглашение отправлено',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',

@@ -55,8 +55,8 @@
 		<ng-container *ngIf="entity === 'respond'">
 			<a class="description link" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.CHANGE_SOLUTION}}</a>
 			<a class="description link" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.SEE_ANSWER}}</a>
-			<a class="description link"   *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.CHANGE_SOLUTION}}</a>
-			<a class="description link"   *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.CHANGE_SOLUTION}}</a>
+			<a class="description link"  (click)="changeStatus()" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.CHANGE_SOLUTION}}</a>
+			<a class="description link"  (click)="changeStatus()" *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.CHANGE_SOLUTION}}</a>
 		</ng-container>
 	</ng-container>
 

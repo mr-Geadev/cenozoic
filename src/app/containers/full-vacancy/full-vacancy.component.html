@@ -1,102 +1,111 @@
 <div class="container" *ngIf="currentVacancy">
 
-    <div class="row main-info">
-        <div class="col-7 left">
+	<div class="row main-info">
+		<div class="col-7 left">
 
-            <div class="city gray text">{{currentVacancy.companyName}}</div>
-            <div class="page-title">{{currentVacancy.title}}</div>
+			<div class="city gray text">{{currentVacancy.companyName}}</div>
+			<div class="page-title">{{currentVacancy.title}}</div>
 
-            <div class="salary"><span>от <b>{{currentVacancy.salaryGROSS.from}} до {{currentVacancy.salaryGROSS.to}} {{currentVacancy.currency === "rubles" ? "₽" : "$" }}</b></span>
-            </div>
+			<div class="salary"><span>от <b>{{currentVacancy.salaryGROSS.from}} до {{currentVacancy.salaryGROSS.to}} {{currentVacancy.currency === "rubles" ? "₽" : "$" }}</b></span>
+			</div>
 
-            <div class="table">
-                <div class="line">
-                    <div class="parameter gray text">
-                        {{dictionary.CITY}}
-                    </div>
-                    <div class="value black text">
-                        {{citiesService.locations.getCityToCode(currentVacancy.city).name}}
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="parameter gray text">
-                        {{dictionary.REQUIRED_EXPERIENCE}}
-                    </div>
-                    <div class="value black text">
-                        от {{currentVacancy.expAll}} {{dictionary.OF_YEARS | howLongFrom:currentVacancy.expAll}}
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="parameter gray text">
-                        {{dictionary.SCHEDULE}}
-                    </div>
-                    <div class="value black text" [ngSwitch]="currentVacancy.schedule">
-                        <ng-template ngSwitchCase="full">{{dictionary.FULL_DAY}}</ng-template>
-                        <ng-template ngSwitchCase="remote">{{dictionary.REMOTE}}</ng-template>
-                        <ng-template ngSwitchCase="watch">{{dictionary.SHIFT}}</ng-template>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="parameter gray text">
-                        {{dictionary.EMPLOYMENT}}
-                    </div>
-                    <div class="value black text" [ngSwitch]="currentVacancy.employmentType">
-                        <ng-template ngSwitchCase="full">{{dictionary.FULL_EMPLOYMENT}}</ng-template>
-                        <ng-template ngSwitchCase="part">{{dictionary.PART}}</ng-template>
-                        <ng-template ngSwitchCase="time">{{dictionary.TEMPORARY}}</ng-template>
-                        <ng-template ngSwitchCase="internship">{{dictionary.INTERNSHIP}}</ng-template>
-                    </div>
-                </div>
-                <div class="line"  *ngIf="currentVacancy.nationalities.length">
-                    <div class="parameter gray text">
-                        <!-- Гражданство -->
-                        {{dictionary.NATIONALITIES}}
-                    </div>
-                    <div class="value black text">
-                        {{this.findNameNationality()}}
-                    </div>
-                </div>
-            </div>
+			<div class="table">
+				<div class="line">
+					<div class="parameter gray text">
+						{{dictionary.CITY}}
+					</div>
+					<div class="value black text">
+						{{citiesService.locations.getCityToCode(currentVacancy.city).name}}
+					</div>
+				</div>
+				<div class="line">
+					<div class="parameter gray text">
+						{{dictionary.REQUIRED_EXPERIENCE}}
+					</div>
+					<div class="value black text">
+						от {{currentVacancy.expAll}} {{dictionary.OF_YEARS | howLongFrom:currentVacancy.expAll}}
+					</div>
+				</div>
+				<div class="line">
+					<div class="parameter gray text">
+						{{dictionary.SCHEDULE}}
+					</div>
+					<div class="value black text" [ngSwitch]="currentVacancy.schedule">
+						<ng-template ngSwitchCase="full">{{dictionary.FULL_DAY}}</ng-template>
+						<ng-template ngSwitchCase="remote">{{dictionary.REMOTE}}</ng-template>
+						<ng-template ngSwitchCase="watch">{{dictionary.SHIFT}}</ng-template>
+					</div>
+				</div>
+				<div class="line">
+					<div class="parameter gray text">
+						{{dictionary.EMPLOYMENT}}
+					</div>
+					<div class="value black text" [ngSwitch]="currentVacancy.employmentType">
+						<ng-template ngSwitchCase="full">{{dictionary.FULL_EMPLOYMENT}}</ng-template>
+						<ng-template ngSwitchCase="part">{{dictionary.PART}}</ng-template>
+						<ng-template ngSwitchCase="time">{{dictionary.TEMPORARY}}</ng-template>
+						<ng-template ngSwitchCase="internship">{{dictionary.INTERNSHIP}}</ng-template>
+					</div>
+				</div>
+				<div class="line" *ngIf="currentVacancy.nationalities.length">
+					<div class="parameter gray text">
+						<!-- Гражданство -->
+						{{dictionary.NATIONALITIES}}
+					</div>
+					<div class="value black text">
+						{{this.findNameNationality()}}
+					</div>
+				</div>
+			</div>
 
-            <div class="info" *ngIf="currentVacancy.duties">
-                <div class="title row">
-                    {{dictionary.DUTIES}}
-                </div>
-                <div class="row text-wrap" [innerHTML]="currentVacancy.duties"></div>
-            </div>
+			<div class="info" *ngIf="currentVacancy.duties">
+				<div class="title row">
+					{{dictionary.DUTIES}}
+				</div>
+				<div class="row text-wrap" [innerHTML]="currentVacancy.duties"></div>
+			</div>
 
-            <div class="info" *ngIf="currentVacancy.demands">
-                <div class="title row">
-                    {{dictionary.REQUIREMENTS}}
-                </div>
-                <div class="row text-wrap" [innerHTML]="currentVacancy.demands"></div>
-            </div>
+			<div class="info" *ngIf="currentVacancy.demands">
+				<div class="title row">
+					{{dictionary.REQUIREMENTS}}
+				</div>
+				<div class="row text-wrap" [innerHTML]="currentVacancy.demands"></div>
+			</div>
 
-            <div class="info" *ngIf="currentVacancy.conditions">
-                <div class="title row">
-                    {{dictionary.WORKING_CONDITIONS}}
-                </div>
-                <div class="row text-wrap" [innerHTML]="currentVacancy.conditions"></div>
-            </div>
+			<div class="info" *ngIf="currentVacancy.conditions">
+				<div class="title row">
+					{{dictionary.WORKING_CONDITIONS}}
+				</div>
+				<div class="row text-wrap" [innerHTML]="currentVacancy.conditions"></div>
+			</div>
 
-            <div class="button">
-                {{dictionary.ANSWER_VACANCY}}
-            </div>
+		</div>
 
-        </div>
+		<div class="col-4 offset-1 right">
+			<div class="user-photo">
+				<img *ngIf="currentVacancy.photoURL" src="{{currentVacancy.photoURL}}">
+			</div>
+			<div class="default-photo" *ngIf="!currentVacancy.photoURL">
+				<img src="/assets/images/icon-camera.svg">
+			</div>
 
-        <div class="col-4 offset-1 right">
-            <div class="user-photo">
-                <img *ngIf="currentVacancy.photoURL" src="{{currentVacancy.photoURL}}">
-            </div>
-            <div class="default-photo" *ngIf="!currentVacancy.photoURL">
-                <img src="/assets/images/icon-camera.svg">
-            </div>
-            <div class="button">
-                {{dictionary.ANSWER_VACANCY}}
-            </div>
-        </div>
-    </div>
+			<ng-container *ngIf="user._id === currentVacancy.userId">
+				<a class="button" routerLink="/edit-vacancy">
+					{{dictionary.EDIT}}
+				</a>
+			</ng-container>
+
+
+			<ng-container *ngIf="user?.typeAccount === 'worker'">
+				<div class="button" *ngIf="!currentVacancy.answered" (click)="responds.newRespond(currentVacancy)">
+					{{dictionary.ANSWER_VACANCY}}
+				</div>
+				<div class="button disabled" *ngIf="currentVacancy.answered">
+					{{dictionary.SEND_ANSWER_YET}}
+				</div>
+			</ng-container>
+		</div>
+	</div>
 
 
 </div>

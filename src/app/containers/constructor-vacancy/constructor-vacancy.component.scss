@@ -52,6 +52,10 @@
               border-bottom-style: dotted;
               opacity: 0.5;
             }
+
+            .invalid {
+              border-color: red;
+            }
           }
 
           select {

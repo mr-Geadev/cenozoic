@@ -47,4 +47,8 @@ export class DetailedStatusComponent {
     }
   }
 
+  public changeStatus() {
+    this._popups.answerToRespond(this.respond);
+  }
+
 }
