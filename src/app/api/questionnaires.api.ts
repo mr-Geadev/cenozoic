@@ -45,6 +45,10 @@ export class QuestionnairesApi {
     return this.http.post('api/v1/employer/questionnaire/create',  { questionnaire });
   }
 
+  public editQuestionnaire(questionnaireId, questionnaire): Observable<any> {
+    return this.http.post('api/v1/employer/questionnaire/edit',  { questionnaireId, questionnaire });
+  }
+
   public createWithFileQuestionnaire(formData: FormData): Observable<any> {
     return this.http.post('api/v1/employer/questionnaire-file/create',  formData);
   }

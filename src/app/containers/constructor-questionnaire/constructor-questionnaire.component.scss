@@ -90,7 +90,7 @@
     }
 
     .description {
-      margin: 40px 0;
+      margin: 40px 0 0;
       display: block;
       color: #000000;
       font-family: Roboto;
@@ -161,6 +161,10 @@
         font-weight: 700;
         padding: 8px 0;
       }
+    }
+
+    .sections {
+      margin-top: 40px;
     }
 
     .section {

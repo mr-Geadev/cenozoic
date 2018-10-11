@@ -3,7 +3,7 @@
 		<div class="row title">
 			Конструктор опросного листа
 		</div>
-		<div class="row">
+		<div class="row" *ngIf="questionnaire">
 			<form class="col form" [formGroup]="questionnaire">
 
 				<div class="title-questionnaire">
@@ -21,7 +21,7 @@
 					>
 				</div>
 
-				<div class="questionnaire-file">
+				<div class="questionnaire-file" *ngIf="!edit">
 					<input type="radio" id="constructor" name="questionnaire-file" [value]="false" [(ngModel)]="isFromFile"
 								 [ngModelOptions]="{standalone: true}">
 					<label for="constructor">Новый опросный лист</label>
@@ -31,7 +31,7 @@
 					<label for="file">Загрузить файл опросного листа</label>
 				</div>
 
-				<div class="description">
+				<div class="description" *ngIf="!edit">
 					<ng-container *ngIf="!isFromFile">
 						Создайте список дополнительныйх вопросов для кандидата
 					</ng-container>
@@ -40,7 +40,7 @@
 					</ng-container>
 				</div>
 
-				<fieldset *ngIf="!isFromFile" formArrayName="sections">
+				<fieldset *ngIf="!isFromFile" formArrayName="sections" class="sections">
 					<div
 						class="section"
 						*ngFor="let section of questionnaire.controls['sections'].controls; let i = index"

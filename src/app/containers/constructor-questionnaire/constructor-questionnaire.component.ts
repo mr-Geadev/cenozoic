@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionnairesApi } from 'api';
+import { QuestionnaireModel } from 'models';
 import { SystemMessageService } from 'services';
 
 @Component({
@@ -11,6 +12,9 @@ import { SystemMessageService } from 'services';
 })
 export class ConstructorQuestionnaireComponent implements OnInit {
 
+  @Input('edit') edit?: boolean;
+
+  public id: string = null;
   public questionnaire: FormGroup = null;
   public isFromFile: boolean = false;
   public fileToUpload: any = {
@@ -21,43 +25,80 @@ export class ConstructorQuestionnaireComponent implements OnInit {
 
   constructor(private _systemMessageService: SystemMessageService,
               private router: Router,
-              private questionnaireApi: QuestionnairesApi) {
+              private questionnaireApi: QuestionnairesApi,
+              private activateRoute: ActivatedRoute) {
+    this.id = activateRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
-    this.createQuestionnaire();
+    if (this.id) {
+      this.questionnaireApi.getQuestionnaireById(this.id)
+        .subscribe(
+          res => this.createQuestionnaire(new QuestionnaireModel(res.questionnaire)),
+        );
+    } else {
+      this.createQuestionnaire();
+    }
   }
 
-  public createQuestionnaire() {
-    this.questionnaire = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      sections: new FormArray([]),
-    });
+  public createQuestionnaire(editableQuestionnaire?: QuestionnaireModel) {
+    if (editableQuestionnaire) {
+      this.questionnaire = new FormGroup({
+        title: new FormControl(editableQuestionnaire.title, [Validators.required]),
+        sections: new FormArray([]),
+      });
 
-    this.addSection();
-  }
-
-  public addSection() {
-    (<FormArray>this.questionnaire.get('sections')).push(
-      new FormGroup({
+      editableQuestionnaire.sections.forEach((section, index) => this.addSection(section, index));
+    } else {
+      this.questionnaire = new FormGroup({
         title: new FormControl('', [Validators.required]),
-        questions: new FormArray([]),
-      }),
-    );
+        sections: new FormArray([]),
+      });
 
-    this.addQuestion((<FormArray>this.questionnaire.get('sections')).length - 1);
+      this.addSection();
+    }
+  }
+
+  public addSection(section?, indexSection?) {
+    if (section) {
+      (<FormArray>this.questionnaire.get('sections')).push(
+        new FormGroup({
+          title: new FormControl(section.title, [Validators.required]),
+          questions: new FormArray([]),
+        }),
+      );
+
+      section.questions.forEach(question => this.addQuestion(indexSection, question));
+    } else {
+      (<FormArray>this.questionnaire.get('sections')).push(
+        new FormGroup({
+          title: new FormControl('', [Validators.required]),
+          questions: new FormArray([]),
+        }),
+      );
+
+      this.addQuestion((<FormArray>this.questionnaire.get('sections')).length - 1);
+    }
   }
 
   public removeSection(i: number) {
     (<FormArray>this.questionnaire.get('sections')).removeAt(i);
   }
 
-  public addQuestion(i) {
-    (<FormArray>((<FormArray>this.questionnaire.get('sections')).controls[i]).get('questions')).push(
-      new FormGroup({
-        question: new FormControl('', [Validators.required]),
-      }),
-    );
+  public addQuestion(i, question?) {
+    if (question) {
+      (<FormArray>((<FormArray>this.questionnaire.get('sections')).controls[i]).get('questions')).push(
+        new FormGroup({
+          question: new FormControl(question.question, [Validators.required]),
+        }),
+      );
+    } else {
+      (<FormArray>((<FormArray>this.questionnaire.get('sections')).controls[i]).get('questions')).push(
+        new FormGroup({
+          question: new FormControl('', [Validators.required]),
+        }),
+      );
+    }
   }
 
   public removeQuestion(i, j) {
@@ -91,29 +132,38 @@ export class ConstructorQuestionnaireComponent implements OnInit {
   }
 
   save() {
-    console.log(this.questionnaire.value);
 
-    if (!this.isFromFile) {
-      this.questionnaireApi.createQuestionnaire(this.questionnaire.value)
+    if (this.edit) {
+      this.questionnaireApi.editQuestionnaire(this.id, this.questionnaire.value)
         .subscribe(
           res => {
             this.router.navigate(['/personal-account']);
           },
-          err => console.log(err)
+          err => console.log(err),
         );
     } else {
-      const formData: FormData = new FormData();
+      if (!this.isFromFile) {
+        this.questionnaireApi.createQuestionnaire(this.questionnaire.value)
+          .subscribe(
+            res => {
+              this.router.navigate(['/personal-account']);
+            },
+            err => console.log(err),
+          );
+      } else {
+        const formData: FormData = new FormData();
 
-      formData.append('fileToUpload', this.fileToUpload.file);
-      formData.append('title', this.questionnaire.value.title);
+        formData.append('fileToUpload', this.fileToUpload.file);
+        formData.append('title', this.questionnaire.value.title);
 
-      this.questionnaireApi.createWithFileQuestionnaire(formData)
-        .subscribe(
-          res => {
-            this.router.navigate(['/personal-account']);
-          },
-          err => console.log(err)
-        );
+        this.questionnaireApi.createWithFileQuestionnaire(formData)
+          .subscribe(
+            res => {
+              this.router.navigate(['/personal-account']);
+            },
+            err => console.log(err),
+          );
+      }
     }
   }
 }
