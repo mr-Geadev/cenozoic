@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { ConstructorQuestionnaireModule } from 'containers/constructor-questionnaire';
 import { CreateQuestionnairePageComponent } from 'pages/constructor-questionnaire-page/create-questionnaire-page.component';
 import { BlankAccountGuard, LogInGuard, NotWorkerGuard } from 'guards';
 
@@ -25,8 +26,9 @@ import { BlankAccountGuard, LogInGuard, NotWorkerGuard } from 'guards';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
     // Blocks
+    ConstructorQuestionnaireModule
   ],
   exports: [CreateQuestionnairePageComponent]
 })
