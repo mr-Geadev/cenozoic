@@ -16,7 +16,7 @@ import {
 import { FilterRespondService } from 'containers/filter-respond';
 import { LogInGuard } from 'guards';
 import { LoginModalModule } from 'pop-ups';
-import { RespondsApi } from "../../api";
+import { QuestionnairesApi, RespondsApi } from '../../api';
 import { PersonalAccountPageComponent } from './personal-account-page.component';
 
 @NgModule({
@@ -47,7 +47,7 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     ListRespondModule,
     FilterRespondModule
   ],
-  providers: [RespondsApi],
+  providers: [RespondsApi, QuestionnairesApi],
   exports: [PersonalAccountPageComponent],
 })
 export class PersonalAccountPageModule {

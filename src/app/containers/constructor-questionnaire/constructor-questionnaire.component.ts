@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { QuestionnairesApi } from 'api';
 import { SystemMessageService } from 'services';
 
 @Component({
@@ -13,11 +15,13 @@ export class ConstructorQuestionnaireComponent implements OnInit {
   public isFromFile: boolean = false;
   public fileToUpload: any = {
     file: null,
-    data: null
+    data: null,
   };
   public nameOfFile: string = null;
 
-  constructor(private _systemMessageService: SystemMessageService,) {
+  constructor(private _systemMessageService: SystemMessageService,
+              private router: Router,
+              private questionnaireApi: QuestionnairesApi) {
   }
 
   ngOnInit() {
@@ -88,6 +92,29 @@ export class ConstructorQuestionnaireComponent implements OnInit {
 
   save() {
     console.log(this.questionnaire.value);
+
+    if (!this.isFromFile) {
+      this.questionnaireApi.createQuestionnaire(this.questionnaire.value)
+        .subscribe(
+          res => {
+            this.router.navigate(['/personal-account']);
+          },
+          err => console.log(err)
+        );
+    } else {
+      const formData: FormData = new FormData();
+
+      formData.append('fileToUpload', this.fileToUpload.file);
+      formData.append('title', this.questionnaire.value.title);
+
+      this.questionnaireApi.createWithFileQuestionnaire(formData)
+        .subscribe(
+          res => {
+            this.router.navigate(['/personal-account']);
+          },
+          err => console.log(err)
+        );
+    }
   }
 }
 

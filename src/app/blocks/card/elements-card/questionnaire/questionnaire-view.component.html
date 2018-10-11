@@ -7,17 +7,17 @@
 	<img
 		class="icon-file"
 		src="/assets/images/icon-file.svg"
-		*ngIf="questionnaire.fileQuestionnaire"
+		*ngIf="questionnaire.type === 'file'"
 	/>
 	<div class="title">
 		{{questionnaire.title}}
 	</div>
 </div>
 
-<div class="description" *ngIf="!questionnaire.fileQuestionnaire">
+<div class="description" *ngIf="!(questionnaire.type === 'file')">
 	{{questionnaire.countOfQuestion}} {{dictionary.COUNT_QUESTION}}
 </div>
 
-<div class="description" *ngIf="questionnaire.fileQuestionnaire">
+<div class="description" *ngIf="questionnaire.type === 'file'">
 	{{ dictionary.QUESTIONNAIRE_FILE_DOWNLOADED }}
 </div>
