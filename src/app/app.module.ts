@@ -17,7 +17,7 @@ import {
   ListResumePageModule,
   ListVacancyPageModule,
   MainPageModule,
-  PersonalAccountPageModule,
+  PersonalAccountPageModule, QuestionnairePageModule,
   ResumeFullPageModule,
   VacancyFullPageModule,
 } from 'pages';
@@ -58,6 +58,7 @@ const ROUTES = [
     EmailConfirmPageModule,
     AuthPageModule,
     EditVacancyPageModule,
+    QuestionnairePageModule,
 
     // Blocks
     PageHeaderModule,

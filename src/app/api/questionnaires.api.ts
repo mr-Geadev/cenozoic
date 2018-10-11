@@ -32,6 +32,10 @@ export class QuestionnairesApi {
         });
   }
 
+  public getQuestionnaireById(id: string): Observable<any> {
+    return this.http.get(`api/v1/employer/questionnaire/one?questionnaireId=${id}`);
+  }
+
   public createQuestionnaire(questionnaire): Observable<any> {
     return this.http.post('api/v1/employer/questionnaire/create',  { questionnaire });
   }

@@ -1,0 +1,39 @@
+<div class="container" *ngIf="questionnaire">
+
+	<div class="row main-info">
+		<div class="col-7 left">
+
+			<div class="page-title-label text">Опросный лист</div>
+			<div class="page-title">{{questionnaire.title}}</div>
+
+			<div class="section" *ngFor="let section of questionnaire.sections; let i = index;">
+				<div class="title-section">
+					 {{i+1}}. {{section.title}}
+				</div>
+
+				<div class="question" *ngFor="let question of section.questions; let j = index;">
+					<div class="title-question">
+						Вопрос {{j+1}}
+					</div>
+					<label for="answer-{{i}}-{{j}}">
+						{{question.question}}
+					</label>
+					<input id="answer-{{i}}-{{j}}" type="text" class="answer" value="{{question.answer}}" [disabled]="questionnaire.userId">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-4 offset-1 right">
+			<ng-container *ngIf="questionnaire.userId">
+				<a class="button" routerLink="/">
+					Редактировать опросный лист
+				</a>
+
+				<div class="delete-questionnaire">
+					Удалить опросный лист
+				</div>
+			</ng-container>
+		</div>
+	</div>
+</div>

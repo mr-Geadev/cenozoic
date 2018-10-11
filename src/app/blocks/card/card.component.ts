@@ -75,7 +75,7 @@ export class CardComponent implements OnInit {
     }
 
     if (this.questionnaire) {
-      return `/questionnaire/34aasdnasihdnhnud468ty8yqdibye`;
+      return `/questionnaire/${this.questionnaire._id}`;
     }
 
     return this.viewRoute();
@@ -98,7 +98,7 @@ export class CardComponent implements OnInit {
   }
 
   public checkToViewed() {
-    if (!this.respond.viewed) {
+    if (this.respond && !this.respond.viewed) {
       if (this.typeUser === 'worker') {
         this.respondsApi.checkOfferToViewed(this.respond._id);
       } else {
