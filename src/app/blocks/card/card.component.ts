@@ -75,7 +75,11 @@ export class CardComponent implements OnInit {
     }
 
     if (this.questionnaire) {
-      return `/questionnaire/${this.questionnaire._id}`;
+      if (this.questionnaire.type === 'data') {
+        return `/questionnaire/${this.questionnaire._id}`;
+      } else {
+        return this.questionnaire.fileURL;
+      }
     }
 
     return this.viewRoute();

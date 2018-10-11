@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionnairesApi } from 'api';
-import { QuestionnaireModule } from 'containers/questionnaire/questionnaire.module';
 import { QuestionnaireModel } from 'models';
 
-import { LocalizationService, UserService } from 'services';
+import { ConfirmService, LocalizationService, UserService } from 'services';
 
 @Component({
   selector: 'questionnaire',
@@ -20,7 +20,10 @@ export class QuestionnaireComponent implements OnInit {
 
   constructor(public userService: UserService,
               public questionnairesApi: QuestionnairesApi,
+              private _confirm: ConfirmService,
+              private _dialog: MatDialog,
               private activateRoute: ActivatedRoute,
+              private router: Router,
               private _localizationService: LocalizationService) {
     this.id = activateRoute.snapshot.params['id'];
   }
@@ -35,6 +38,18 @@ export class QuestionnaireComponent implements OnInit {
     this.userService.user$
       .subscribe((user) => {
         this.user = user;
-      })
+      });
+  }
+
+  public removeQuestionnaire() {
+    this._confirm.confirm('Вы действительно хотите удалить?')
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.questionnairesApi.removeQuestionnaire(this.id)
+            .subscribe(
+              res => this.router.navigate(['/personal-account']));
+        }
+        this._dialog.closeAll();
+      });
   }
 }

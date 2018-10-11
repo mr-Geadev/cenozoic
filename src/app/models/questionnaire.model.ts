@@ -22,12 +22,14 @@ class Section {
 export class QuestionnaireModel {
   public creationDate: string;
   public title: string;
-  public sections: Section[] = null;
   public countOfQuestion: number = 0;
   public status: number;
   public type: string; // data or file
   public userId: string;
   public _id: string;
+
+  public sections: Section[] = null;
+  public fileURL: string = null
 
   constructor(questionnaire) {
     this.creationDate = questionnaire.creationDate;
@@ -41,5 +43,7 @@ export class QuestionnaireModel {
       this.countOfQuestion += section.questions.length;
       return new Section(section);
     });
+
+    this.fileURL = questionnaire.fileURL || null;
   }
 }

@@ -79,7 +79,18 @@
 ></detailed-status>
 
 <a class="more-info" [ngClass]="{'add': addNew || addQuestionnaire }"
-	 routerLink="{{routeButtonMore()}}" (click)="checkToViewed()">
+	 [routerLink]="[routeButtonMore()]" (click)="checkToViewed()"
+	 *ngIf="!(questionnaire && questionnaire.type === 'file')"
+>
+	{{ textButtonMore() }}
+	<img src="/assets/images/arrow.svg"/>
+</a>
+
+<a class="more-info"
+	 href="{{routeButtonMore()}}"
+	 *ngIf="questionnaire && questionnaire.type === 'file'"
+	 download="{{questionnaire.title}}"
+>
 	{{ textButtonMore() }}
 	<img src="/assets/images/arrow.svg"/>
 </a>
