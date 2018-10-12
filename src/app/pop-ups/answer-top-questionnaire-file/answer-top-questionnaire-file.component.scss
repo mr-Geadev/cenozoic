@@ -1,0 +1,123 @@
+@import "colors";
+@import "animations";
+@import "fonts";
+
+:host {
+  display: block;
+  height: 100%;
+
+  .wrap {
+    width: 80%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+
+    & > .title {
+      color: $black;
+      font-family: "Bebas";
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 2.25rem;
+      text-align: center;
+    }
+
+    .description {
+      margin: 30px 0;
+      color: #000000;
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+
+      b {
+        font-weight: bold;
+      }
+    }
+
+    .button {
+      margin-top: 40px;
+      display: inline-flex;
+      font-family: Roboto;
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 1;
+      width: 361px;
+      height: 46px;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.313rem;
+      background-color: $orange;
+      @include tr-bg;
+
+      &:hover {
+        background-color: $hover-orange;
+      }
+
+      &:disabled {
+        background-color: $light-gray;
+      }
+    }
+
+    .download-file {
+      margin-top: 21px;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+
+      color: $orange;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: underline;
+      @include animation(color);
+
+      &:hover {
+        color: $hover-orange;
+      }
+    }
+
+
+    .add-file {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+
+      #load-file {
+        display: none;
+      }
+
+      .add-file-button {
+        width: 200px;
+        height: 46px;
+        border-radius: 5px;
+        border: 1px solid $orange;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: $orange;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 30px;
+
+        @include animation(all);
+        &:hover:not(:disabled) {
+          background-color: $orange;
+          color: $white;
+        }
+      }
+
+      .file-name {
+        margin-left: 20px;
+        color: #9b9b9b;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+  }
+}

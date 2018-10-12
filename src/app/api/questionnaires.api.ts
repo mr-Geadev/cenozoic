@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { RespondsApi } from 'api/responds.api';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { QuestionnaireService, SystemMessageService } from 'services';
 import { QuestionnaireModel, RespondModel } from 'models';
@@ -21,6 +22,8 @@ export class QuestionnairesApi {
 
   constructor(private http: HttpClient,
               private questionnaireService: QuestionnaireService,
+              private respondsApi: RespondsApi,
+              private dialog: MatDialog,
               private messages: SystemMessageService) {
     this.questionnaireService.respondId$
       .filter(respond => !!respond)
@@ -74,5 +77,19 @@ export class QuestionnairesApi {
       delete body.offerId;
     }
     return this.http.post(`api/v1/worker/questionnaire/answer`, body);
+  }
+
+  public answerToFile(formData: FormData) {
+    if (this.respond.entity === 'offer') {
+      formData.append('offerId', this.respond.id);
+    } else {
+      formData.append('respondId', this.respond.id);
+    }
+    return this.http.post(`api/v1/worker/questionnaire-file/answer`, formData)
+      .map(res => {
+        this.respondsApi.getOffers();
+        this.respondsApi.getResponds();
+        this.dialog.closeAll();
+      });
   }
 }

@@ -30,6 +30,7 @@ export class QuestionnaireModel {
 
   public sections: Section[] = null;
   public fileURL: string = null
+  public answerURL: string = null
 
   constructor(questionnaire) {
     this.title = questionnaire.title;
@@ -46,5 +47,6 @@ export class QuestionnaireModel {
     });
 
     this.fileURL = questionnaire.fileURL || null;
+    this.answerURL = questionnaire.answerURL || null;
   }
 }

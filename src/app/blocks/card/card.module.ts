@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { QuestionnaireViewComponent } from 'blocks/card/elements-card/questionnaire';
 import { AnswerToOfferModule, AnswerToRespondModule } from 'pop-ups';
 import { RespondsApi } from 'api';
+import { AnswerTopQuestionnaireFileModule } from 'pop-ups/answer-top-questionnaire-file';
 import { ConfirmService } from "../../services";
 import { CardComponent } from './card.component';
 import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatusComponent, DetailedStatusComponent } from './elements-card';
@@ -13,7 +14,8 @@ import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatus
     RouterModule,
     CommonModule,
     AnswerToRespondModule,
-    AnswerToOfferModule
+    AnswerToOfferModule,
+    AnswerTopQuestionnaireFileModule
   ],
   declarations: [
     CardComponent,
