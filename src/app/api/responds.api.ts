@@ -68,8 +68,17 @@ export class RespondsApi {
   }
 
   // работодатель делает предложение на резюме
-  public createOffer(vacancyId: string, resumeId: string): void {
-    this.http.post('/api/v1/employer/offer/create', { offer: { vacancyId, resumeId } })
+  public createOffer(vacancyId: string, resumeId: string, questionnaireId?: string): void {
+
+    const body = {
+      offer: {
+        vacancyId, resumeId
+      },
+      questionnaireId: null,
+    };
+    questionnaireId ? body.questionnaireId = questionnaireId : delete body.questionnaireId;
+
+    this.http.post('/api/v1/employer/offer/create', body)
       .subscribe(
         (res) => {
           this.messages.info('Приглашение отправлено');

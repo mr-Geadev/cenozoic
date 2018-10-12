@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { RespondsApi, VacancyApi } from 'api';
+import { QuestionnairesApi, RespondsApi, VacancyApi } from 'api';
 import { RESPOND_STATUSES } from 'const';
-import { VacancyModel } from 'models';
+import { QuestionnaireModel, VacancyModel } from 'models';
 import { LocalizationService, SystemMessageService } from 'services';
 
 @Component({
@@ -16,7 +16,9 @@ export class AnswerToRespondComponent implements OnInit {
   public dictionary: any = null;
   public answer: boolean = true;
   public isSendQuestionnaire: boolean = false;
-  public idQuestionnaire: string = '';
+
+  public questionnaireId: string = null;
+  public listQuestionnaire: QuestionnaireModel[] = [];
 
   private resume: any = null;
   public checkedVacancy: VacancyModel = null;
@@ -26,6 +28,7 @@ export class AnswerToRespondComponent implements OnInit {
               private _localizationService: LocalizationService,
               private vacancyApi: VacancyApi,
               private respondsApi: RespondsApi,
+              private questionnaireApi: QuestionnairesApi,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
@@ -44,11 +47,17 @@ export class AnswerToRespondComponent implements OnInit {
     } else {
       this.checkedVacancy = new VacancyModel(this.data.respond.vacancy);
     }
+
+    this.questionnaireApi.getQuestionnaires();
+    this.questionnaireApi.listQuestionnaire$
+      .subscribe(
+        listQuestionnaire => this.listQuestionnaire = listQuestionnaire
+      );
   }
 
   sendRespond() {
     if (!this.data.respond) {
-      this.respondsApi.createOffer(this.checkedVacancy._id, this.resume._id);
+      this.respondsApi.createOffer(this.checkedVacancy._id, this.resume._id, this.isSendQuestionnaire ? this.questionnaireId : null);
     } else {
       this.respondsApi.setStatusRespond(this.data.respond._id, this.answer ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED);
       this.respondsApi.checkRespondToViewed(this.data.respond._id);

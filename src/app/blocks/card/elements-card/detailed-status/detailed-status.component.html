@@ -8,6 +8,7 @@
 	<ng-container *ngIf="isWorker()">
 		<ng-container *ngIf="entity === 'offer'">
 			<div class="status green" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.YOU_AGREED}}</div>
+			<a  class="status file link" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.FILL_THE_INTERVIEW}}</a>
 			<div class="status red" *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.YOU_REFUSED}}</div>
 		</ng-container>
 		<ng-container *ngIf="entity === 'respond'">

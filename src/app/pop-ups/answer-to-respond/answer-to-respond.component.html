@@ -46,12 +46,14 @@
 		<mat-select name="questionnaire"
 								class="change-questionnaire"
 								placeholder="{{dictionary.ANSWER_TO_RESPOND_NAME_QUESTIONNAIRE}}"
-								[(ngModel)]="idQuestionnaire"
+								[(ngModel)]="questionnaireId"
 								[disabled]="!isSendQuestionnaire">
-			<mat-option>опросник 0</mat-option>
-			<mat-option>опросник 1</mat-option>
-			<mat-option>опросник 2</mat-option>
-			<mat-option>опросник 3</mat-option>
+			<mat-option
+				*ngFor="let questionnaire of listQuestionnaire"
+				[value]="questionnaire._id"
+			>
+				{{ questionnaire.title }}
+			</mat-option>
 		</mat-select>
 
 		<div class="summary" *ngIf="data.respond && isSendQuestionnaire">
@@ -73,7 +75,7 @@
 		<div class="title">
 			{{dictionary.ANSWER_TO_RESPOND_TEXT_NEGATIVE}}
 			<span class="name-of-vacancy">
-                "{{vacancy && vacancy.title}}"
+                "{{checkedVacancy && checkedVacancy.title}}"
             </span>
 		</div>
 
@@ -82,7 +84,7 @@
 		</div>
 	</div>
 
-	<button class="button" [disabled]="(isSendQuestionnaire && !idQuestionnaire) || !checkedVacancy"
+	<button class="button" [disabled]="(isSendQuestionnaire && !questionnaireId) || !checkedVacancy"
 					(click)="sendRespond()">
 		{{dictionary.SEND_ANSWER}}
 	</button>
