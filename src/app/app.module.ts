@@ -22,7 +22,15 @@ import {
   VacancyFullPageModule,
 } from 'pages';
 import { ChangeCityModule, ChangeCityService, ConfirmModule } from 'pop-ups';
-import { BlankAccountService, CitiesService, ConfirmService, LocalizationService, SystemMessageService, UserService } from 'services';
+import {
+  BlankAccountService,
+  CitiesService,
+  ConfirmService,
+  LocalizationService,
+  QuestionnaireService,
+  SystemMessageService,
+  UserService,
+} from 'services';
 import { PageFooterModule, PageHeaderModule } from './containers';
 import { PopupsService } from "./services/popups.service";
 
@@ -82,6 +90,7 @@ const ROUTES = [
     BlankAccountService,
     ChangeCityService,
     PopupsService,
+    QuestionnaireService,
 
     // Guards
     BlankAccountGuard,

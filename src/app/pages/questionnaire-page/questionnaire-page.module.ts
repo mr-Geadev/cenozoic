@@ -15,7 +15,7 @@ import {LoginModalModule} from '../../pop-ups';
   ],
   imports: [
     RouterModule.forRoot([
-      {path: 'questionnaire/:id', component: QuestionnairePageComponent, pathMatch: 'full'},
+      {path: 'questionnaire/:id', component: QuestionnairePageComponent},
     ]),
     CommonModule,
     HttpClientModule,

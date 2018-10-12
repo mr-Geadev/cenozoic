@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { RESPOND_STATUSES } from 'const';
 import { RespondModel } from 'models';
+import { QuestionnaireService } from 'services';
 import { PopupsService } from '../../../../services/popups.service';
 
 @Component({
@@ -18,7 +20,9 @@ export class DetailedStatusComponent {
   @Input('dictionary') dictionary: any;
   @Input('respond') respond: RespondModel;
 
-  constructor(private _popups: PopupsService) {
+  constructor(private _popups: PopupsService,
+              private router: Router,
+              private questionnaireService: QuestionnaireService) {
   }
 
   public isWorker(): boolean {
@@ -49,6 +53,21 @@ export class DetailedStatusComponent {
 
   public changeStatus() {
     this._popups.answerToRespond(this.respond);
+  }
+
+  public goToAnswered() {
+    this.questionnaireService.setRespondId({ entity: this.respond.entity, id: this.respond._id});
+    this.questionnaireService.setQuestionnaire(this.respond.questionnaire);
+    if (this.respond.questionnaire.type === 'data') {
+      this.router.navigate(['/questionnaire/answer']);
+    } else {
+
+    }
+  }
+
+  public goToSee() {
+    this.questionnaireService.setQuestionnaire(this.respond.questionnaire);
+    this.router.navigate(['/questionnaire/see-answer']);
   }
 
 }

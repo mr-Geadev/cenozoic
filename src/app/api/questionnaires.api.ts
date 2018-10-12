@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SystemMessageService } from 'services';
+import { QuestionnaireService, SystemMessageService } from 'services';
 import { QuestionnaireModel, RespondModel } from 'models';
 
 @Injectable()
 export class QuestionnairesApi {
 
   private filters: any = {};
+  private respond: any = null;
 
   // TODO: вынести все это гавно в сервис состояния
   private listQuestionnaire: BehaviorSubject<QuestionnaireModel[]> = new BehaviorSubject<QuestionnaireModel[]>([]);
@@ -19,7 +20,14 @@ export class QuestionnairesApi {
   }
 
   constructor(private http: HttpClient,
-              private messages: SystemMessageService) {}
+              private questionnaireService: QuestionnaireService,
+              private messages: SystemMessageService) {
+    this.questionnaireService.respondId$
+      .filter(respond => !!respond)
+      .subscribe(respond => {
+        this.respond = respond;
+      });
+  }
 
   // список откликов для юзверя
   public getQuestionnaires(): void {
@@ -42,15 +50,29 @@ export class QuestionnairesApi {
   }
 
   public createQuestionnaire(questionnaire): Observable<any> {
-    return this.http.post('api/v1/employer/questionnaire/create',  { questionnaire });
+    return this.http.post('api/v1/employer/questionnaire/create', { questionnaire });
   }
 
   public editQuestionnaire(questionnaireId, questionnaire): Observable<any> {
-    return this.http.post('api/v1/employer/questionnaire/edit',  { questionnaireId, questionnaire });
+    return this.http.post('api/v1/employer/questionnaire/edit', { questionnaireId, questionnaire });
   }
 
   public createWithFileQuestionnaire(formData: FormData): Observable<any> {
-    return this.http.post('api/v1/employer/questionnaire-file/create',  formData);
+    return this.http.post('api/v1/employer/questionnaire-file/create', formData);
   }
 
+  public answerToData(questionnaireAnswer) {
+    const body = {
+      questionnaireAnswer: {sections: questionnaireAnswer},
+      offerId: this.respond.id,
+      respondId: this.respond.id,
+    };
+
+    if (this.respond.entity === 'offer') {
+      delete body.respondId;
+    } else {
+      delete body.offerId;
+    }
+    return this.http.post(`api/v1/worker/questionnaire/answer`, body);
+  }
 }

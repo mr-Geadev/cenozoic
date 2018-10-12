@@ -8,12 +8,13 @@
 	<ng-container *ngIf="isWorker()">
 		<ng-container *ngIf="entity === 'offer'">
 			<div class="status green" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.YOU_AGREED}}</div>
-			<a  class="status file link" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.FILL_THE_INTERVIEW}}</a>
+			<div class="status gray" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.PENDING}}</div>
+			<a  class="status file link" (click)="goToAnswered()" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.FILL_THE_INTERVIEW}}</a>
 			<div class="status red" *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.YOU_REFUSED}}</div>
 		</ng-container>
 		<ng-container *ngIf="entity === 'respond'">
 			<div class="status gray" *ngIf="status === RESPOND_STATUS.AWAITING">{{dictionary.PENDING}}</div>
-			<a class="status file link" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.FILL_THE_INTERVIEW}}</a>
+			<a  class="status file link" (click)="goToAnswered()" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.FILL_THE_INTERVIEW}}</a>
 			<div class="status gray" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.PENDING}}</div>
 			<div class="status green"   *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.STATUS_APPROVED}}</div>
 			<div class="status red"   *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.STATUS_REJECTED}}</div>
@@ -22,7 +23,9 @@
 
 	<ng-container *ngIf="!isWorker()">
 		<ng-container *ngIf="entity === 'offer'">
+			<div class="status gray" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.CANDIDATE_FILLING_INTERVIEW}}</div>
 			<div class="status gray" *ngIf="status === RESPOND_STATUS.AWAITING">{{dictionary.PENDING}}</div>
+			<div class="status green" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.CANDIDATE_FILLED_INTERVIEW}}</div>
 			<div class="status green" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.CANDIDATE_RESPONDED}}</div>
 			<div class="status red" *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.CANDIDATE_REFUSED}}</div>
 		</ng-container>
@@ -50,6 +53,7 @@
 	<ng-container *ngIf="!isWorker()">
 		<ng-container *ngIf="entity === 'offer'">
 			<div class="description" *ngIf="status === RESPOND_STATUS.AWAITING">{{dictionary.CANDIDATE_NOT_ANSWER}}</div>
+			<a class="description link" (click)="goToSee()" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.SEE_ANSWER}}</a>
 			<a class="description link" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.SEE_ANSWER}}</a>
 			<div class="description" *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.VACANCY_NOT_INTERESTED_FOR_CANDIDATE}}</div>
 		</ng-container>

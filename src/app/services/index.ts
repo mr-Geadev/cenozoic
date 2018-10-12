@@ -6,3 +6,4 @@ export * from './localization.service';
 export * from './blank-account.service';
 export * from './confirm.service';
 export * from './cities.service';
+export * from './questionnaire.service';

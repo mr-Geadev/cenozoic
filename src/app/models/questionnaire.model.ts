@@ -32,12 +32,13 @@ export class QuestionnaireModel {
   public fileURL: string = null
 
   constructor(questionnaire) {
-    this.creationDate = questionnaire.creationDate;
     this.title = questionnaire.title;
-    this.status = questionnaire.status;
     this.type = questionnaire.type;
-    this.userId = questionnaire.userId;
-    this._id = questionnaire._id;
+
+    this.creationDate = questionnaire.creationDate || null;
+    this.status = questionnaire.status || null;
+    this.userId = questionnaire.userId || null;
+    this._id = questionnaire._id || null;
 
     this.sections =  questionnaire.sections && questionnaire.sections.map(section => {
       this.countOfQuestion += section.questions.length;
