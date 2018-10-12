@@ -59,7 +59,11 @@ export class AnswerToRespondComponent implements OnInit {
     if (!this.data.respond) {
       this.respondsApi.createOffer(this.checkedVacancy._id, this.resume._id, this.isSendQuestionnaire ? this.questionnaireId : null);
     } else {
-      this.respondsApi.setStatusRespond(this.data.respond._id, this.answer ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED);
+      if (this.isSendQuestionnaire) {
+        this.respondsApi.bindQuestionnaire(this.data.respond._id, this.questionnaireId);
+      } else {
+        this.respondsApi.setStatusRespond(this.data.respond._id, this.answer ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED);
+      }
       this.respondsApi.checkRespondToViewed(this.data.respond._id);
     }
   }

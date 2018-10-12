@@ -53,16 +53,13 @@
 	<ng-container *ngIf="!isWorker()">
 		<ng-container *ngIf="entity === 'offer'">
 			<div class="description" *ngIf="status === RESPOND_STATUS.AWAITING">{{dictionary.CANDIDATE_NOT_ANSWER}}</div>
-			<a class="description link" (click)="goToSee()" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE && respond.questionnaire.type === 'data'">{{dictionary.SEE_ANSWER}}</a>
-			<a class="description link" href="{{respond.questionnaire.answerURL}}" download *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE && respond.questionnaire.type === 'file'">{{dictionary.SEE_ANSWER}}</a>
+			<a class="description link" (click)="goToSee()" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.SEE_ANSWER}}</a>
 			<a class="description link" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.SEE_ANSWER}}</a>
 			<div class="description" *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.VACANCY_NOT_INTERESTED_FOR_CANDIDATE}}</div>
 		</ng-container>
 		<ng-container *ngIf="entity === 'respond'">
 			<a class="description link" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.CHANGE_SOLUTION}}</a>
-			<a class="description link" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.SEE_ANSWER}}</a>
-			<a class="description link"  (click)="changeStatus()" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.CHANGE_SOLUTION}}</a>
-			<a class="description link"  (click)="changeStatus()" *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.CHANGE_SOLUTION}}</a>
+			<a class="description link" (click)="goToSee()" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.SEE_ANSWER}}</a>
 		</ng-container>
 	</ng-container>
 

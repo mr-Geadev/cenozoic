@@ -74,6 +74,7 @@ export class DetailedStatusComponent {
   }
 
   public goToSee() {
+    this.questionnaireService.setRespondId({ entity: this.respond.entity, id: this.respond._id});
     this.questionnaireService.setQuestionnaire(this.respond.questionnaire);
     this.router.navigate(['/questionnaire/see-answer']);
   }

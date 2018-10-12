@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuestionnairesApi } from 'api';
+import { QuestionnairesApi, RespondsApi } from 'api';
+import { RESPOND_STATUSES } from 'const';
 import { QuestionnaireModel } from 'models';
 
 import { ConfirmService, LocalizationService, QuestionnaireService, UserService } from 'services';
@@ -22,6 +23,7 @@ export class QuestionnaireComponent implements OnInit {
 
   constructor(public userService: UserService,
               public questionnairesApi: QuestionnairesApi,
+              public respondsApi: RespondsApi,
               private _confirm: ConfirmService,
               private _dialog: MatDialog,
               private activateRoute: ActivatedRoute,
@@ -87,5 +89,10 @@ export class QuestionnaireComponent implements OnInit {
         res => console.log(res),
         err => console.log(err),
       );
+  }
+
+  public setStatus(status: boolean) {
+    this.respondsApi.setStatusAfterQuestionnaire(status ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED);
+    this.router.navigate(['/personal-account']);
   }
 }
