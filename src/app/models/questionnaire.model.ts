@@ -29,8 +29,8 @@ export class QuestionnaireModel {
   public _id: string;
 
   public sections: Section[] = null;
-  public fileURL: string = null
-  public answerURL: string = null
+  public fileURL: string = null;
+  public answerURL: string = null;
 
   constructor(questionnaire) {
     this.title = questionnaire.title;
