@@ -28,7 +28,7 @@
 			<div class="status green" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.CANDIDATE_FILLED_INTERVIEW}}</div>
 			<div class="status green" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.YOU_WILL_CONNECT}}</div>
 			<div class="status red" *ngIf="status === RESPOND_STATUS.REJECTED && !respond.questionnaire">{{dictionary.CANDIDATE_REFUSED}}</div>
-			<div class="status red" *ngIf="status === RESPOND_STATUS.REJECTED && !respond.questionnaire">{{dictionary.CANDIDATE_NOT_SUIT}}</div>
+			<div class="status red" *ngIf="status === RESPOND_STATUS.REJECTED && respond.questionnaire">{{dictionary.CANDIDATE_NOT_SUIT}}</div>
 		</ng-container>
 		<ng-container *ngIf="entity === 'respond'">
 			<div class="status gray" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.CANDIDATE_FILLING_INTERVIEW}}</div>

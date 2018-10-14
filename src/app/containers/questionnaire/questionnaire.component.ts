@@ -86,7 +86,7 @@ export class QuestionnaireComponent implements OnInit {
 
     this.questionnairesApi.answerToData(this.questionnaireAnswer)
       .subscribe(
-        res => this.router.navigate['/personal-account'],
+        (res) => { this.router.navigate(['/personal-account']); },
         err => console.log(err),
       );
   }
