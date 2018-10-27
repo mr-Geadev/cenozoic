@@ -32,13 +32,17 @@ import {
   UserService,
 } from 'services';
 import { PageFooterModule, PageHeaderModule } from './containers';
-import { PopupsService } from "./services/popups.service";
+import { PopupsService } from './services/popups.service';
 
 const ROUTES = [
   {
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule',
     canActivate: [AdminGuard],
+  },
+  {
+    path: 'faq',
+    loadChildren: './faq/faq.module#FaqModule',
   },
   { path: '**', redirectTo: '/' },
 ];

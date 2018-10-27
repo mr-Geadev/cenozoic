@@ -20,7 +20,7 @@
                        [routerLink]="['/list-vacancy']">{{ dictionary.FOR_CANDIDATES }}</a>
                     <a class="header-menu-item" [class.active]="currentPage === 'list-resume'"
                        [routerLink]="['/list-resume']">{{ dictionary.FOR_EMPLOYER }}</a>
-                    <a class="header-menu-item" *ngIf="!isAdmin" [routerLink]="['/']">{{ dictionary.SUPPORT }}</a>
+                    <a class="header-menu-item" *ngIf="!isAdmin" [routerLink]="['/faq']">{{ dictionary.SUPPORT }}</a>
                     <a class="header-menu-item" *ngIf="isAdmin" [routerLink]="['/admin']">Кабинет<br /> администратора</a>
                 </nav>
 

@@ -57,7 +57,7 @@ export const RUSSIAN_DICTIONARY = {
   FOR_CANDIDATES: 'Вакансии',
   FOR_EMPLOYER: 'Резюме',
   FOR_PARTNERSHIPS: 'Сотрудничество',
-  SUPPORT: 'Поддержка',
+  SUPPORT: 'FAQ',
   ACCOUNT: 'Личный кабинет',
   PERSONAL_ACCOUNT_WORKER: 'Личный кабинет соискателя',
   PERSONAL_ACCOUNT_EMPLOYER: 'Личный кабинет работодателя',

@@ -1,0 +1,37 @@
+@import "colors";
+@import "animations";
+
+:host {
+  .faq {
+    &-title {
+      width: 100%;
+      height: 100px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.06);
+      background-color: #f8f9fb;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: #000000;
+      font-family: "Bebas";
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 54.02px;
+      text-transform: uppercase;
+    }
+
+    &-content {
+      margin: 50px auto;
+    }
+  }
+
+  .faq-subtitle {
+    color: #000000;
+    font-family: "Bebas";
+    font-size: 31px;
+    font-weight: 400;
+    line-height: 78.97px;
+    text-transform: uppercase;
+  }
+}

@@ -57,7 +57,7 @@ export const ENGLISH_DICTIONARY = {
   FOR_CANDIDATES: 'Vacancies',
   FOR_EMPLOYER: 'СV',
   FOR_PARTNERSHIPS: 'For partnerships',
-  SUPPORT: 'Support',
+  SUPPORT: 'FAQ',
   ACCOUNT: 'Account',
   PERSONAL_ACCOUNT_WORKER: 'Applicant\'s personal office',
   PERSONAL_ACCOUNT_EMPLOYER: 'Employer\'s private office',
