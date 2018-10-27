@@ -4,7 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from 'faq/faq.component';
-import { FormQuestionComponent } from 'faq/form-question';
+import { FormQuestionComponent } from './form-question';
+import { ListQuestionComponent } from './list-question';
 
 const ROUTERS = [
   {
@@ -26,7 +27,8 @@ const ROUTERS = [
   ],
   declarations: [
     FaqComponent,
-    FormQuestionComponent
+    FormQuestionComponent,
+    ListQuestionComponent
   ]
 })
 
