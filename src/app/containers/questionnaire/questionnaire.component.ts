@@ -59,7 +59,12 @@ export class QuestionnaireComponent implements OnInit {
     } else {
       this.questionnairesApi.getQuestionnaireById(this.id)
         .subscribe(
-          res => this.questionnaire = new QuestionnaireModel(res.questionnaire),
+          res => {
+            this.questionnaire = new QuestionnaireModel(res.questionnaire);
+            this.questionnaire.sections.forEach(section => {
+              this.questionnaireAnswer.push(section.questions.map(question => ''));
+            });
+          },
           err => this.router.navigate(['/']));
     }
 
