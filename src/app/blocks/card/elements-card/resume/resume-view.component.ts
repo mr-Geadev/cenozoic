@@ -9,6 +9,7 @@ export class ResumeViewComponent implements OnInit, OnChanges {
 
   @Input('dictionary') dictionary: any;
   @Input('resume') resume: any;
+  @Input('respondTitle') respondTitle?: string;
 
   public experienceTime: string = null;
 

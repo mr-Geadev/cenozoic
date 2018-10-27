@@ -1,4 +1,5 @@
 import { STATUSES_INIT } from 'const';
+import { QuestionnaireModel } from 'models/questionnaire.model';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 
@@ -23,6 +24,8 @@ export class RespondModel {
   public creationDate: Moment = null;
   public changeDate: Moment = null;
 
+  public questionnaire: QuestionnaireModel;
+
   constructor(respond) {
     this._id = respond._id;
     this.workerId = respond.workerId;
@@ -38,6 +41,7 @@ export class RespondModel {
     this.viewed = respond.viewed;
     this.creationDate = moment(respond.creationDate);
     this.changeDate = respond.changeDate ? moment(respond.changeDate) : null;
+    this.questionnaire = respond.questionnaire ? new QuestionnaireModel(respond.questionnaire) : null;
   }
 }
 

@@ -10,19 +10,27 @@ import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
 import {
   AccountSettingsPageModule,
-  AuthPageModule,
+  AuthPageModule, CreateQuestionnairePageModule,
   CreateResumePageModule,
-  CreateVacancyPageModule, EditVacancyPageModule,
+  CreateVacancyPageModule, EditQuestionnairePageModule, EditVacancyPageModule,
   EmailConfirmPageModule,
   ListResumePageModule,
   ListVacancyPageModule,
   MainPageModule,
-  PersonalAccountPageModule,
+  PersonalAccountPageModule, QuestionnairePageModule,
   ResumeFullPageModule,
   VacancyFullPageModule,
 } from 'pages';
 import { ChangeCityModule, ChangeCityService, ConfirmModule } from 'pop-ups';
-import { BlankAccountService, CitiesService, ConfirmService, LocalizationService, SystemMessageService, UserService } from 'services';
+import {
+  BlankAccountService,
+  CitiesService,
+  ConfirmService,
+  LocalizationService,
+  QuestionnaireService,
+  SystemMessageService,
+  UserService,
+} from 'services';
 import { PageFooterModule, PageHeaderModule } from './containers';
 import { PopupsService } from "./services/popups.service";
 
@@ -47,6 +55,7 @@ const ROUTES = [
     // Pages
     MainPageModule,
     CreateResumePageModule,
+    CreateQuestionnairePageModule,
     ListResumePageModule,
     PersonalAccountPageModule,
     ResumeFullPageModule,
@@ -57,6 +66,8 @@ const ROUTES = [
     EmailConfirmPageModule,
     AuthPageModule,
     EditVacancyPageModule,
+    QuestionnairePageModule,
+    EditQuestionnairePageModule,
 
     // Blocks
     PageHeaderModule,
@@ -79,6 +90,7 @@ const ROUTES = [
     BlankAccountService,
     ChangeCityService,
     PopupsService,
+    QuestionnaireService,
 
     // Guards
     BlankAccountGuard,

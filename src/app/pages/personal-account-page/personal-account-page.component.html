@@ -112,6 +112,16 @@
 	*ngIf="(activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS) || (activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND)"
 ></filter-respond>
 
+<!--опросники-->
+<list-questionnaire
+	class="block resume"
+	[typeUser]="typeCurrentUser"
+	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES }"
+	[listQuestionnaire]="listQuestionnaire"
+	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES"
+></list-questionnaire>
+
+<!--отклики-->
 <list-respond
 	class="block resume"
 	[typeUser]="typeCurrentUser"
@@ -120,6 +130,7 @@
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS"
 ></list-respond>
 
+<!--предложения-->
 <list-respond
 	class="block resume"
 	[typeUser]="typeCurrentUser"
@@ -128,6 +139,7 @@
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND"
 ></list-respond>
 
+<!--архив-->
 <list-respond
 	class="block resume"
 	[typeUser]="typeCurrentUser"
@@ -136,7 +148,7 @@
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_ARCHIVE"
 ></list-respond>
 
-
+<!--резюме-->
 <list-resume
 	class="block resume"
 	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CV }"
@@ -144,6 +156,7 @@
 	[config]="'user'"
 ></list-resume>
 
+<!--вакансии-->
 <list-vacancy
 	class="block vacancy"
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_CAREERS"

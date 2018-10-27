@@ -1,0 +1,63 @@
+<div class="container" *ngIf="questionnaire">
+
+	<div class="row main-info">
+		<div class="col-7 left">
+
+			<div class="page-title-label text">Опросный лист</div>
+			<div class="page-title">{{questionnaire.title}}</div>
+
+			<ng-container *ngIf="questionnaire.type === 'data'">
+				<div class="section" *ngFor="let section of questionnaire.sections; let i = index;">
+					<div class="title-section">
+						{{i+1}}. {{section.title}}
+					</div>
+
+					<div class="question" *ngFor="let question of section.questions; let j = index;">
+						<div class="title-question">
+							Вопрос {{j+1}}
+						</div>
+						<label for="answer-{{i}}-{{j}}">
+							{{question.question}}
+						</label>
+						<input id="answer-{{i}}-{{j}}"
+									 type="text"
+									 class="answer"
+									 value="{{question.answer}}"
+									 [disabled]="user.typeAccount === 'employer'"
+									 [(ngModel)]="questionnaireAnswer[i][j]">
+					</div>
+				</div>
+			</ng-container>
+
+			<a class="save-answer" *ngIf="questionnaire.type === 'file'" download href="{{questionnaire.answerURL}}" target="_blank">
+				Скачать ответы
+			</a>
+
+			<div class="button" *ngIf="user.typeAccount === 'worker'" (click)="sendAnswers()">
+				Отправить ответы
+			</div>
+
+			<div class="final-accept" *ngIf="id === 'see-answer'">
+				<div class="button short" (click)="setStatus(true)">
+					Кандидат подходит
+				</div>
+
+				<div class="button short" (click)="setStatus(false)">
+					Кандидат не подходит
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4 offset-1 right">
+			<ng-container *ngIf="questionnaire.userId">
+				<a class="button" routerLink="/edit-questionnaire/{{questionnaire._id}}">
+					Редактировать опросный лист
+				</a>
+
+				<div class="delete-questionnaire" (click)="removeQuestionnaire()" >
+					Удалить опросный лист
+				</div>
+			</ng-container>
+		</div>
+	</div>
+</div>

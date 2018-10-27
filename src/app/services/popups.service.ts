@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { RespondModel } from 'models';
-import { AnswerToOfferComponent, AnswerToRespondComponent } from 'pop-ups';
+import { AnswerToOfferComponent, AnswerTopQuestionnaireFileComponent, AnswerToRespondComponent } from 'pop-ups';
 
 @Injectable()
 export class PopupsService {
@@ -45,8 +45,12 @@ export class PopupsService {
         } as MatDialogConfig);
     }
 
-    public closeAnswer(): void {
-
+    public answerToQuestionnaireFile(questionnaire): void {
+      this.dialog.open(AnswerTopQuestionnaireFileComponent, {
+        width: '937px',
+        height: 'auto',
+        data: { questionnaire }
+      } as MatDialogConfig);
     }
 
 

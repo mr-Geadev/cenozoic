@@ -1,0 +1,125 @@
+<div class="create-vacancy">
+	<div class="container">
+		<div class="row title">
+			Конструктор опросного листа
+		</div>
+		<div class="row" *ngIf="questionnaire">
+			<form class="col form" [formGroup]="questionnaire">
+
+				<div class="title-questionnaire">
+					<label
+						for="name-questionnaire"
+						class="name-questionnaire"
+					>
+						Название опросного листа
+					</label>
+					<input
+						id="name-questionnaire"
+						type="text"
+						class="title-questionnaire-input"
+						formControlName="title"
+					>
+				</div>
+
+				<div class="questionnaire-file" *ngIf="!edit">
+					<input type="radio" id="constructor" name="questionnaire-file" [value]="false" [(ngModel)]="isFromFile"
+								 [ngModelOptions]="{standalone: true}">
+					<label for="constructor">Новый опросный лист</label>
+
+					<input type="radio" id="file" name="questionnaire-file" [value]="true" [(ngModel)]="isFromFile"
+								 [ngModelOptions]="{standalone: true}">
+					<label for="file">Загрузить файл опросного листа</label>
+				</div>
+
+				<div class="description" *ngIf="!edit">
+					<ng-container *ngIf="!isFromFile">
+						Создайте список дополнительныйх вопросов для кандидата
+					</ng-container>
+					<ng-container *ngIf="isFromFile">
+						Загрузите свой файл опросного листа, что бы отправить его соискателю.
+					</ng-container>
+				</div>
+
+				<fieldset *ngIf="!isFromFile" formArrayName="sections" class="sections">
+					<div
+						class="section"
+						*ngFor="let section of questionnaire.controls['sections'].controls; let i = index"
+						formGroupName="{{i}}"
+					>
+
+						<div class="name">
+							<label for="name-section-{{i}}" class="label-for-main-input">
+								Название раздела
+							</label>
+
+							<div class="input">
+								<div class="number">
+									{{i+1}}.
+								</div>
+
+								<input
+									id="name-section-{{i}}"
+									type="text"
+									formControlName="title"
+								>
+							</div>
+
+							<div class="delete-section" *ngIf="i > 0" (click)="removeSection(i)" >
+								Удалить раздел
+							</div>
+						</div>
+
+						<fieldset formArrayName="questions">
+							<div
+								class="field question"
+								*ngFor="let question of questionnaire.controls['sections'].controls[i].controls['questions'].controls; let j = index"
+								formGroupName="{{j}}"
+							>
+								<label for="question-{{i}}-{{j}}" class="label-for-main-input">
+									Вопрос {{j+1}}
+								</label>
+								<input type="text" formControlName="question" id="question-{{i}}-{{j}}">
+								<img src="/assets/images/icon-black-cross.svg" class="delete-question" (click)="removeQuestion(i, j)" >
+							</div>
+
+							<div class="field">
+								<label></label>
+								<div class="add-question" (click)="addQuestion(i)">
+									<span class="plus">
+										+
+									</span>
+									Еще вопрос
+								</div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="add-section" (click)="addSection()">
+						<img src="/assets/images/icon-enter.svg">
+						Новый раздел вопросов
+					</div>
+				</fieldset>
+
+				<div class="add-file" *ngIf="isFromFile">
+					<input (change)="addFile($event)" id="load-file" type="file" size="0"
+								 accept=".xlsx,.xls,.doc, .docx">
+					<label class="add-file-button" for="load-file">
+						Прикрепите файл
+					</label>
+					<div class="file-name">
+						{{ nameOfFile || 'Форматы: doc”,“docx”,“xls”,“xlsx”. Ограничение на размер: 300kb' }}
+					</div>
+				</div>
+
+				<button class="save-button" *ngIf="!isFromFile" (click)="save()" [disabled]="questionnaire.invalid">
+					Сохранить опросный лист
+				</button>
+
+				<button class="save-button" *ngIf="isFromFile" (click)="save()"
+								[disabled]="questionnaire.controls['title'].invalid || !fileToUpload.data">
+					Сохранить опросный лист
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,23 @@
+<div class="icon" (click)="removeQuestionnaire()">
+	<img class="default" src="/assets/images/icon-gray-cross.svg"/>
+	<img class="hover" title="Удалить" src="/assets/images/icon-orange-cross.svg"/>
+</div>
+
+<div class="title-container">
+	<img
+		class="icon-file"
+		src="/assets/images/icon-file.svg"
+		*ngIf="questionnaire.type === 'file'"
+	/>
+	<div class="title">
+		{{questionnaire.title}}
+	</div>
+</div>
+
+<div class="description" *ngIf="!(questionnaire.type === 'file')">
+	{{questionnaire.countOfQuestion}} {{dictionary.COUNT_QUESTION}}
+</div>
+
+<div class="description" *ngIf="questionnaire.type === 'file'">
+	{{ dictionary.QUESTIONNAIRE_FILE_DOWNLOADED }}
+</div>

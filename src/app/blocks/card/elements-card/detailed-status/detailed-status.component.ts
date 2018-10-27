@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { RespondsApi } from 'api';
 import { RESPOND_STATUSES } from 'const';
 import { RespondModel } from 'models';
+import { QuestionnaireService } from 'services';
 import { PopupsService } from '../../../../services/popups.service';
 
 @Component({
@@ -18,7 +21,10 @@ export class DetailedStatusComponent {
   @Input('dictionary') dictionary: any;
   @Input('respond') respond: RespondModel;
 
-  constructor(private _popups: PopupsService) {
+    constructor(private _popups: PopupsService,
+              private router: Router,
+              private respondsApi: RespondsApi,
+              private questionnaireService: QuestionnaireService) {
   }
 
   public isWorker(): boolean {
@@ -49,6 +55,28 @@ export class DetailedStatusComponent {
 
   public changeStatus() {
     this._popups.answerToRespond(this.respond);
+  }
+
+  public goToAnswered() {
+    if (this.entity === 'respond') {
+      this.respondsApi.checkRespondToViewed(this.respond._id);
+    } else {
+      this.respondsApi.checkOfferToViewed(this.respond._id);
+    }
+
+    this.questionnaireService.setRespondId({ entity: this.respond.entity, id: this.respond._id});
+    this.questionnaireService.setQuestionnaire(this.respond.questionnaire);
+    if (this.respond.questionnaire.type === 'data') {
+      this.router.navigate(['/questionnaire/answer']);
+    } else {
+      this._popups.answerToQuestionnaireFile(this.respond.questionnaire);
+    }
+  }
+
+  public goToSee() {
+    this.questionnaireService.setRespondId({ entity: this.respond.entity, id: this.respond._id});
+    this.questionnaireService.setQuestionnaire(this.respond.questionnaire);
+    this.router.navigate(['/questionnaire/see-answer']);
   }
 
 }

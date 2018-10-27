@@ -1,0 +1,149 @@
+@import "colors";
+@import "fonts";
+@import "animations";
+
+:host {
+  display: block;
+  padding: 50px 0;
+
+  .right {
+
+  }
+
+  .page-title {
+    color: $black;
+    font-family: "Bebas";
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.25rem;
+
+    &-label {
+      color: #9b9b9b;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 27.99px;
+    }
+  }
+
+  .section {
+    margin-top: 40px;
+
+    .title-section {
+      color: #000000;
+      font-family: "Bebas";
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 28px;
+    }
+
+    .question {
+      margin: 24px 0 48px;
+
+      .title-question {
+        color: $light-gray;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      label {
+        margin-top: 6px;
+        color: #000000;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .answer {
+        margin-top: 24px;
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid $light-gray;
+        padding: 8px 0;
+        color: $black;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .button {
+    margin-top: 20px;
+    display: flex;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    width: 350px;
+    height: 46px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.313rem;
+    background-color: $orange;
+    cursor: pointer;
+    @include animation(background-color);
+
+    &:hover {
+      background-color: $hover-orange;
+    }
+
+    &.disabled {
+      background-color: $gray;
+      pointer-events: none;
+    }
+  }
+
+  .save-answer {
+    margin: 30px 0;
+    width: 200px;
+    height: 46px;
+    border-radius: 5px;
+    border: 1px solid $orange;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $orange;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+
+    @include animation(all);
+    &:hover:not(:disabled) {
+      background-color: $orange;
+      color: $white;
+    }
+  }
+
+  .delete-questionnaire {
+    margin-top: 21px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+
+    color: $orange;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+    text-decoration: underline;
+    @include animation(color);
+
+    &:hover {
+      color: $hover-orange;
+    }
+  }
+
+  .final-accept {
+    display: flex;
+
+    div {
+      margin-right: 40px;
+    }
+  }
+}

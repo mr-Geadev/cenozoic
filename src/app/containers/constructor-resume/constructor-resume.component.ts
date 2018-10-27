@@ -380,6 +380,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       delete this.resumeForm.status;
       delete this.resumeForm.age;
       delete this.resumeForm.creationDate;
+      delete this.resumeForm.answered;
 
       const formData: FormData = new FormData();
 

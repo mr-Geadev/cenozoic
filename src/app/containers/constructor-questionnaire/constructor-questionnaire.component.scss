@@ -1,0 +1,348 @@
+@import "colors";
+@import "animations";
+
+:host {
+  .create-vacancy {
+    padding: 50px 0;
+
+    .row.title {
+      color: $black;
+      font-family: "Bebas";
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 2.25rem;
+    }
+
+    .form {
+      padding: 0;
+    }
+
+    .questionnaire-file {
+      margin: 43px 0;
+      width: 526px;
+      height: 40px;
+      display: flex;
+      border-radius: 20px;
+      background-color: $light-gray;
+
+      input {
+        display: none;
+      }
+
+      label {
+        width: 50%;
+        height: inherit;
+        border-radius: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $gray;
+        position: relative;
+        z-index: 5;
+        padding: 0 10px;
+        font-family: Roboto;
+        @include tr-color;
+
+        &:hover {
+          color: $dark-gray;
+        }
+
+      }
+
+      input:checked + label {
+        color: $white;
+        pointer-events: none;
+        transition-delay: .2s;
+      }
+
+      #file {
+        & + label {
+          z-index: 3;
+        }
+
+        & + label::after {
+          width: 100%;
+          height: inherit;
+          border-radius: inherit;
+          position: absolute;
+          top: 0;
+          left: -100%;
+          content: '';
+          background-color: $orange;
+          z-index: -1;
+          transition-property: left;
+          transition-timing-function: ease-out;
+          transition-duration: $transition-duration-default;
+          pointer-events: none;
+        }
+
+        &:checked {
+          & + label:hover {
+            cursor: default;
+          }
+
+          & + label::after {
+            left: 0;
+            pointer-events: auto;
+          }
+        }
+      }
+    }
+
+    .description {
+      margin: 40px 0 0;
+      display: block;
+      color: #000000;
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px 0;
+      display: block;
+      border-bottom: 1px solid $light-gray;
+    }
+
+    label {
+      color: #9b9b9b;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 27.99px;
+    }
+
+    .field {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      &.question {
+        margin-top: 10px;
+      }
+
+      label {
+        width: 120px;
+        padding: 8px 0;
+
+        &.name-questionnaire {
+          width: 300px;
+        }
+      }
+
+      .delete-question {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: calc(50% - 8px);
+        opacity: 0.5;
+        @include animation(opacity);
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .title-questionnaire {
+      margin-top: 50px;
+      width: 100%;
+      max-width: 600px;
+
+      input {
+        color: #000000;
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 8px 0;
+      }
+    }
+
+    .sections {
+      margin-top: 40px;
+    }
+
+    .section {
+      margin-bottom: 50px;
+
+      .name {
+        padding-left: 28px;
+        width: 100%;
+        max-width: 900px;
+
+        .input {
+          position: relative;
+
+          .number {
+            position: absolute;
+            left: -24px;
+            top: calc(50% - 4px);
+            transform: translateY(-50%);
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 700;
+          }
+
+          input {
+            color: #000000;
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 0 0 8px;
+          }
+        }
+
+        .delete-section {
+          margin-top: 6px;
+          font-family: Roboto;
+          font-size: 12px;
+          font-weight: 400;
+          color: $black;
+          opacity: 0.5;
+          cursor: pointer;
+          @include animation(opacity);
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .add-question {
+      margin-top: 25px;
+      color: #ff6a07;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 27.99px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      cursor: pointer;
+
+      .plus {
+        display: flex;
+        justify-content: center;
+        background-color: $white;
+        align-items: center;
+        color: $orange;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $orange;
+        box-sizing: content-box;
+        border-radius: 100%;
+        margin-right: 10px;
+        @include animation();
+      }
+
+      &:hover {
+        .plus {
+          background-color: $orange;
+          color: $white;
+        }
+      }
+
+    }
+
+    .add-section {
+      margin-top: 25px;
+      color: #ff6a07;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 27.99px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      cursor: pointer;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+
+    .add-file {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+
+      #load-file {
+        display: none;
+      }
+
+      .add-file-button {
+        width: 200px;
+        height: 46px;
+        border-radius: 5px;
+        border: 1px solid $orange;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: $orange;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 30px;
+
+        @include animation(all);
+        &:hover:not(:disabled) {
+          background-color: $orange;
+          color: $white;
+        }
+      }
+
+      .file-name {
+        margin-left: 20px;
+        color: #9b9b9b;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    .save-button {
+      margin-top: 80px;
+
+      width: 364px;
+      height: 46px;
+      background-color: $orange;
+      border-radius: 3px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: #ffffff;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 30px;
+
+      @include animation(background-color);
+      &:hover:not(:disabled) {
+        background-color: $hover-orange;
+      }
+
+      &:disabled{
+        background-color: $light-gray;
+        cursor: default;
+      }
+    }
+
+
+  }
+}

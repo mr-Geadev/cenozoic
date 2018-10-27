@@ -5,11 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
-import { FilterRespondModule, FullResumeModule, ListRespondModule, ListResumeModule, ListVacancyModule } from 'containers';
+import {
+  FilterRespondModule,
+  FullResumeModule,
+  ListQuestionnaireModule,
+  ListRespondModule,
+  ListResumeModule,
+  ListVacancyModule,
+} from 'containers';
 import { FilterRespondService } from 'containers/filter-respond';
 import { LogInGuard } from 'guards';
 import { LoginModalModule } from 'pop-ups';
-import { RespondsApi } from "../../api";
+import { QuestionnairesApi, RespondsApi } from '../../api';
 import { PersonalAccountPageComponent } from './personal-account-page.component';
 
 @NgModule({
@@ -34,12 +41,13 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
 
     // Blocks
     ListResumeModule,
+    ListQuestionnaireModule,
     ListVacancyModule,
     FullResumeModule,
     ListRespondModule,
     FilterRespondModule
   ],
-  providers: [RespondsApi],
+  providers: [RespondsApi, QuestionnairesApi],
   exports: [PersonalAccountPageComponent],
 })
 export class PersonalAccountPageModule {

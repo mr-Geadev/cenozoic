@@ -41,6 +41,7 @@
     &.link {
       color: $orange;
       text-decoration: underline;
+      cursor: pointer;
     }
 
     &::before {
@@ -72,6 +73,7 @@
     &.link {
       text-decoration: underline;
       color: $orange;
+      cursor: pointer;
     }
   }
 

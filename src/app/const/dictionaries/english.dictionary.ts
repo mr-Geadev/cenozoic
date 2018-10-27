@@ -344,6 +344,7 @@ export const ENGLISH_DICTIONARY = {
   RESUME_IS_NOT_VIEWED: 'CV not yet viewed',
   ANSWER_THE_QUESTIONS: 'answer the questions of the employer',
   COMPANY_CHECK_ANSWER: 'the company processes your answers',
+  OFFER_FOR_WORKER_POSITIVE: 'the employer will contact you',
 
   YOU_AGREED: 'You agreed',
   YOU_REFUSED: 'You refused',
@@ -383,6 +384,11 @@ export const ENGLISH_DICTIONARY = {
   SEND_ANSWER_YET: 'You responded',
   SEND_INVITE: 'Send a invite',
   SEND_INVITE_YET: 'Invitation sent',
+
+  // опросники
+  ADD_QUESTIONNAIRE: 'Add questionnaire',
+  COUNT_QUESTION: 'of questions',
+  QUESTIONNAIRE_FILE_DOWNLOADED: 'Loaded questionnaire',
 
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',

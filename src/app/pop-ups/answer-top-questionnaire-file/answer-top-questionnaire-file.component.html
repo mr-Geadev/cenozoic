@@ -1,0 +1,31 @@
+<div class="wrap">
+
+	<div class="title">Скачать опросный лист</div>
+
+	<div class="description">
+		Работодатель отправил вам опросный лист:
+		<b>{{questionnaire.title}}</b>
+	</div>
+
+	<a href="{{questionnaire.fileURL}}" class="download-file" download target="_blank">
+		Скачать опросный лист
+	</a>
+
+
+	<div class="add-file">
+		<input (change)="addFile($event)" id="load-file" type="file" size="0"
+					 accept=".xlsx,.xls,.doc, .docx">
+		<label class="add-file-button" for="load-file">
+			{{ nameOfFile || 'Прикрепите файл'}}
+		</label>
+		<div class="file-name">
+			{{ 'Форматы: doc”,“docx”,“xls”,“xlsx”. Ограничение на размер: 300kb' }}
+		</div>
+	</div>
+
+
+	<button class="button" (click)="sendAnswer()" [disabled]="!fileToUpload.data">
+		Отправить ответы
+	</button>
+
+</div>

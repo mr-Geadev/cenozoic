@@ -5,7 +5,7 @@ import { ResumeApi } from 'api/resume.api';
 import { VacancyApi } from 'api/vacancy.api';
 import { FilterRespondService } from 'containers/filter-respond';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SystemMessageService } from 'services';
+import { QuestionnaireService, SystemMessageService } from 'services';
 import { NEW_STATUSES } from 'const';
 import { RespondModel } from 'models';
 
@@ -13,6 +13,7 @@ import { RespondModel } from 'models';
 export class RespondsApi {
 
   private filters: any = {};
+  private respond: any = null;
 
   // TODO: вынести все это гавно в сервис состояния
   private listRespond: BehaviorSubject<RespondModel[]> = new BehaviorSubject<RespondModel[]>([]);
@@ -45,6 +46,7 @@ export class RespondsApi {
               private dialog: MatDialog,
               private vacancyApi: VacancyApi,
               private resumeApi: ResumeApi,
+              private questionnaireService: QuestionnaireService,
               private filterResponds: FilterRespondService,
               private messages: SystemMessageService) {
     this.filterResponds.filter$
@@ -53,6 +55,12 @@ export class RespondsApi {
         this.filters = filter;
         this.getResponds();
         this.getOffers();
+      });
+
+    this.questionnaireService.respondId$
+      .filter(respond => !!respond)
+      .subscribe(respond => {
+        this.respond = respond;
       });
   }
 
@@ -68,8 +76,17 @@ export class RespondsApi {
   }
 
   // работодатель делает предложение на резюме
-  public createOffer(vacancyId: string, resumeId: string): void {
-    this.http.post('/api/v1/employer/offer/create', { offer: { vacancyId, resumeId } })
+  public createOffer(vacancyId: string, resumeId: string, questionnaireId?: string): void {
+
+    const body = {
+      offer: {
+        vacancyId, resumeId,
+      },
+      questionnaireId: null,
+    };
+    questionnaireId ? body.questionnaireId = questionnaireId : delete body.questionnaireId;
+
+    this.http.post('/api/v1/employer/offer/create', body)
       .subscribe(
         (res) => {
           this.messages.info('Приглашение отправлено');
@@ -130,6 +147,16 @@ export class RespondsApi {
   public setStatusRespond(respondId: string, status: string): void {
     status = NEW_STATUSES[status];
     this.http.get(`/api/v1/employer/respond/status/change?respondId=${respondId}&newStatus=${parseInt(status)}`)
+      .subscribe((res) => {
+        this.getResponds();
+        this.dialog.closeAll();
+      });
+  }
+
+  // изменить статус предложения (работодателем)
+  public setStatusOfferEmployer(offerId: string, status: string): void {
+    status = NEW_STATUSES[status];
+    this.http.get(`/api/v1/employer/offer/status/change?offerId=${offerId}&newStatus=${parseInt(status)}`)
       .subscribe((res) => {
         this.getResponds();
         this.dialog.closeAll();
@@ -198,4 +225,20 @@ export class RespondsApi {
       });
   }
 
+  // прикрепляет опросник к отклику
+  public bindQuestionnaire(respondId: string, questionnaireId: string): void {
+    this.http.get(`/api/v1/employer/questionnaire/bind?respondId=${respondId}&questionnaireId=${questionnaireId}`)
+      .subscribe((res) => {
+        this.getResponds();
+        this.dialog.closeAll();
+      });
+  }
+
+  public setStatusAfterQuestionnaire(status: string) {
+    if (this.respond.entity === 'offer') {
+      this.setStatusOfferEmployer(this.respond.id, status);
+    } else {
+      this.setStatusRespond(this.respond.id, status);
+    }
+  }
 }

@@ -1,0 +1,23 @@
+<section class="list-questionnaire">
+	<div class="container">
+
+		<div class="row list">
+			<card
+				[typeUser]="typeUser"
+				[dictionary]="dictionary"
+				[addQuestionnaire]="true"
+				class="item"
+			></card>
+
+			<card
+				*ngFor="let questionnaire of listQuestionnaire"
+				class="item"
+				[typeUser]="typeUser"
+				[dictionary]="dictionary"
+				[questionnaire]="questionnaire"
+			>
+			</card>
+		</div>
+
+	</div>
+</section>

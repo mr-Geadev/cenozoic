@@ -17,6 +17,17 @@
     line-height: 1.5rem;
   }
 
+  .respond-title {
+    color: $gray;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    font-weight: 400;
+
+    b {
+      font-weight: bold;
+    }
+  }
+
   .description {
     margin-top: 41px;
     color: $black;
