@@ -5,6 +5,7 @@
 <div class="post">
 	{{vacancy.title}}
 </div>
+<div *ngIf="respondTitle" class="respond-title">На ваше резюме:  <b>{{ respondTitle }}</b></div>
 
 <div class="description" [innerHtml]="vacancy.duties">
 

@@ -344,6 +344,7 @@ export const RUSSIAN_DICTIONARY = {
   RESUME_IS_NOT_VIEWED: 'резюме еще не просматривалось',
   ANSWER_THE_QUESTIONS: 'ответьте на вопросы работодателя',
   COMPANY_CHECK_ANSWER: 'компания обрабатывает ваши ответы',
+  OFFER_FOR_WORKER_POSITIVE: 'работодатель свяжется с вами',
 
   YOU_AGREED: 'Вы согласились',
   YOU_REFUSED: 'Вы отказались',

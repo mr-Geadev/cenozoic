@@ -111,4 +111,12 @@ export class CardComponent implements OnInit {
     }
   }
 
+  public getRespondTitle(): string {
+    if (this.typeUser === 'worker') {
+      return this.respond.resume.job;
+    } else {
+      return this.respond.vacancy.title;
+    }
+  }
+
 }

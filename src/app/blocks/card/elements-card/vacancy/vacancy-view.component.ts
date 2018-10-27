@@ -9,6 +9,7 @@ export class VacancyViewComponent {
 
   @Input('dictionary') dictionary: any;
   @Input('vacancy') vacancy: any;
+  @Input('respondTitle') respondTitle?: string;
 
 
   constructor() {

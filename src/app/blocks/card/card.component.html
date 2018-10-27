@@ -57,6 +57,7 @@
 			[resume]="respond ? respond.resume : resume"
 			[dictionary]="dictionary"
 			[ngStyle]="{'height':heightContent+'px'}"
+			[respondTitle]="getRespondTitle()"
 			class="content"
 	></resume-view>
 
@@ -65,6 +66,7 @@
 			[vacancy]="respond ? respond.vacancy : vacancy"
 			[dictionary]="dictionary"
 			[ngStyle]="{'height':heightContent+'px'}"
+			[respondTitle]="getRespondTitle()"
 			class="content"
 	></vacancy-view>
 </div>

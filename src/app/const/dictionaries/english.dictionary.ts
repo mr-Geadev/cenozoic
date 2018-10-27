@@ -344,6 +344,7 @@ export const ENGLISH_DICTIONARY = {
   RESUME_IS_NOT_VIEWED: 'CV not yet viewed',
   ANSWER_THE_QUESTIONS: 'answer the questions of the employer',
   COMPANY_CHECK_ANSWER: 'the company processes your answers',
+  OFFER_FOR_WORKER_POSITIVE: 'the employer will contact you',
 
   YOU_AGREED: 'You agreed',
   YOU_REFUSED: 'You refused',
