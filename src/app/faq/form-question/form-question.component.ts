@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FaqApi } from 'faq/faq.api';
 
 @Component({
   selector: 'form-question',
@@ -7,5 +8,19 @@ import { Component } from '@angular/core';
 })
 export class FormQuestionComponent {
 
-  constructor() {}
+  isReading = false;
+  issue = {
+    category: 'Сотрудничество',
+    description: ''
+  }
+
+  constructor(private faqApi: FaqApi) {}
+
+  createIssue() {
+    this.faqApi.createIssue(this.issue)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      );
+  }
 }

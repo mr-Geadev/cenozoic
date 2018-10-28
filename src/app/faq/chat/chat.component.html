@@ -7,52 +7,24 @@
 
 	<div class="chat-window">
 
-		<div class="message">
+		<div class="message" *ngFor="let comment of comments">
 			<div class="info">
-				<img class="avatar" src="/assets/images/support-user-icon.svg" />
-				<!--<img class="avatar" src="/assets/images/default-user.svg" />-->
+				<img class="avatar" *ngIf="comment.creator !== 'user'" src="/assets/images/support-user-icon.svg" />
+				<img class="avatar" *ngIf="comment.creator === 'user'" src="/assets/images/default-user.svg" />
 
-				<div class="name">
-					Агент поддержки
+				<div class="name-and-data">
+					<div class="name">
+						{{ comment.creator === 'user' ? 'Вы' : '	Агент поддержки'}}
+					</div>
+
+					<div class="time">
+						{{ timeCreation(comment.creationDate) }}
+					</div>
 				</div>
 			</div>
 
 			<div class="message-text">
-				Очень супер пупер длинный тект сообщения и прочего. Очень супер пупер длинный тект сообщения и прочего.
-				Очень супер пупер длинный тект сообщения и прочего. Очень супер пупер длинный тект сообщения и прочего.
-				Очень супер пупер длинный тект сообщения и прочего. Очень супер пупер длинный тект сообщения и прочего.
-				Очень супер пупер длинный тект сообщения и прочего. Очень супер пупер длинный тект сообщения и прочего.
-			</div>
-		</div>
-
-		<div class="message">
-			<div class="info">
-				<!--<img class="avatar" src="/assets/images/support-user-icon.svg" />-->
-				<img class="avatar" src="/assets/images/default-user.svg" />
-
-				<div class="name">
-					User
-				</div>
-			</div>
-
-			<div class="message-text">
-				Очень супер пупер длинный тект сообщения и прочего. Очень супер пупер длинный тект сообщения и прочего.
-				Очень супер пупер длинный тект сообщения и прочего. Очень супер пупер длинный тект сообщения и прочего.
-			</div>
-		</div>
-
-		<div class="message">
-			<div class="info">
-				<img class="avatar" src="/assets/images/support-user-icon.svg" />
-				<!--<img class="avatar" src="/assets/images/default-user.svg" />-->
-
-				<div class="name">
-					Агент поддержки
-				</div>
-			</div>
-
-			<div class="message-text">
-				Очень супер пупер длинный тект сообщения и прочего. Очень супер пупер длинный тект сообщения и прочего.
+				{{ comment.comment }}
 			</div>
 		</div>
 
@@ -60,11 +32,11 @@
 
 	</div>
 
-	<div class="send-message">
-		<input type="text">
+	<form class="send-message" (submit)="sendMessage()" >
+		<input type="text" name="message" [(ngModel)]="newMessage">
 		<button type="submit">
 			Отправить
 		</button>
-	</div>
+	</form>
 
 </div>

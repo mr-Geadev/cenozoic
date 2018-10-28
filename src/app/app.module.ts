@@ -43,6 +43,7 @@ const ROUTES = [
   {
     path: 'faq',
     loadChildren: './faq/faq.module#FaqModule',
+    canActivate: [LogInGuard]
   },
   { path: '**', redirectTo: '/' },
 ];

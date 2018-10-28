@@ -77,12 +77,25 @@
           margin-right: 13px;
         }
 
-        .name {
-          color: #000000;
-          font-family: Roboto;
-          font-size: 20px;
-          line-height: 1;
-          font-weight: 700;
+
+        .name-and-data {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .name {
+            color: #000000;
+            font-family: Roboto;
+            font-size: 18px;
+            line-height: 1.1;
+          }
+
+          .time {
+            color: $gray;
+            font-family: Roboto;
+            font-size: 15px;
+            line-height: 1.1;
+          }
         }
       }
 

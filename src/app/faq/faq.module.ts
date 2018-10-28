@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { FaqApi } from 'faq/faq.api';
 import { FaqComponent } from 'faq/faq.component';
-import { ChatComponent, ChatModule } from 'faq/chat';
-import { PopupsService } from 'services/popups.service';
+import { ChatModule } from 'faq/chat';
 import { FormQuestionComponent } from './form-question';
 import { ListQuestionComponent } from './list-question';
 
@@ -21,6 +21,7 @@ const ROUTERS = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(ROUTERS),
     MatDialogModule,
@@ -29,7 +30,7 @@ const ROUTERS = [
     MatSelectModule,
     ChatModule
   ],
-  providers: [PopupsService],
+  providers: [FaqApi],
   declarations: [
     FaqComponent,
     FormQuestionComponent,

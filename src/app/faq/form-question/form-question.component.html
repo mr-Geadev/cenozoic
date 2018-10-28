@@ -2,17 +2,17 @@
 	Отправить свой вопрос
 </div>
 
-<div class="send-question">
+<form class="send-question" (submit)="createIssue()">
 
 	<div class="field">
 		<label class="field-title faq-subtitle" for="change-reason">
 			Выберите одну из причин
 		</label>
 
-		<select id="change-reason" class="change-reason field-input">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
+		<select id="change-reason" name="change-reason" class="change-reason field-input" [(ngModel)]="issue.category">
+			<option value="Сотрудничество">Сотрудничество</option>
+			<option value="Общие вопросы">Общие вопросы</option>
+			<option value="Проблемы с оплатой">Проблемы с оплатой</option>
 		</select>
 	</div>
 
@@ -21,16 +21,16 @@
 			описание (пожалуйста опишите свою проблему подробно)
 		</label>
 
-		<textarea name="description" id="description" class="description"></textarea>
+		<textarea name="description" id="description" class="description"  [(ngModel)]="issue.description"></textarea>
 	</div>
 
 	<div class="field faq-read">
-		<input type="checkbox" id="faq-is-reading" >
+		<input type="checkbox" id="faq-is-reading" name="faq-is-reading" (value)="true" [(ngModel)]="isReading">
 		<label for="faq-is-reading">Я прочитал(а)&nbsp;<a href="/">часто задаваемые воопросы</a></label>
 	</div>
 
-	<button class="field send-button">
+	<button type="submit" class="field send-button" [disabled]="!issue.description || !isReading">
 		Отправить запрос
 	</button>
 
-</div>
+</form>
