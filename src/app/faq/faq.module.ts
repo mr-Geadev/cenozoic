@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FaqApi } from 'faq/faq.api';
 import { FaqComponent } from 'faq/faq.component';
 import { ChatModule } from 'faq/chat';
+import { FaqSocketService } from 'faq/faq.socket.service';
 import { FormQuestionComponent } from './form-question';
 import { ListQuestionComponent } from './list-question';
 
@@ -30,7 +31,7 @@ const ROUTERS = [
     MatSelectModule,
     ChatModule
   ],
-  providers: [FaqApi],
+  providers: [FaqApi, FaqSocketService],
   declarations: [
     FaqComponent,
     FormQuestionComponent,

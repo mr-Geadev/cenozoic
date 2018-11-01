@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FaqApi } from 'faq/faq.api';
+import { FaqSocketService } from 'faq/faq.socket.service';
 
 @Component({
   selector: 'faq-root',
@@ -10,7 +11,8 @@ export class FaqComponent implements OnInit {
 
   listIssue = [];
 
-  constructor(private faqApi: FaqApi) {
+  constructor(private faqApi: FaqApi,
+              private socket: FaqSocketService) {
   }
 
   public ngOnInit() {
@@ -18,6 +20,17 @@ export class FaqComponent implements OnInit {
 
     this.faqApi.listIssues$
       .subscribe(list => this.listIssue = list);
+
+    this.socket.on('new-issue-comment').subscribe(
+      (data) => {
+        console.log('Success', data);
+      },
+      (error) => {
+        console.log('Error', error);
+      },
+      () => {
+        console.log('complete');
+      });
   }
 
 }
