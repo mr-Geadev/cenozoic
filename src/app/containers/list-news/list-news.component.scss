@@ -23,6 +23,8 @@
 
       .photo-of-news {
         height: 267px;
+        background-size: cover;
+        background-position: center;
       }
 
       .info {
@@ -33,20 +35,21 @@
           font-family: "Bebas";
           font-size: 22px;
           font-weight: 400;
-          line-height: 1.1;
-          height: 43px;
+          line-height: 1.2;
+          height: 50px;
+          overflow: hidden;
         }
 
-        .text {
+        .description {
           margin-top: 28px;
           width: 100%;
-          height: 110px;
+          height: 120px;
           color: #292b2c;
           font-family: Roboto;
           font-size: 14px;
           font-weight: 400;
           line-height: 24px;
-          overflow-y: scroll;
+          overflow: hidden;
         }
 
         .date {

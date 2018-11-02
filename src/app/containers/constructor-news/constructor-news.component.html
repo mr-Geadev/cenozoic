@@ -1,0 +1,100 @@
+<div class="create-vacancy">
+	<div class="container">
+		<div class="row title">
+			Создание новости
+		</div>
+
+		<div class="row">
+			<form class="col-8  form" [formGroup]="news">
+
+				<div class="field title-news">
+					<label
+						for="title-news"
+						class="title-news"
+					>
+						Название новости <span class="required">*</span>
+					</label>
+					<input
+						id="title-news"
+						type="text"
+						class="title-news-input"
+						formControlName="title"
+					>
+				</div>
+
+				<div class="field">
+					<label
+						for="short-description"
+						class="short-description"
+					>
+						Краткое описание новости <span class="required">*</span>
+					</label>
+					<input
+						id="short-description"
+						type="text"
+						class="short-description-input"
+						formControlName="shortDescription"
+					>
+				</div>
+
+				<div class="field">
+					<label
+						for="name-questionnaire"
+						class="name-questionnaire"
+					>
+						Текст новости <span class="required">*</span>
+					</label>
+					<editor [init]="textEditorConfig"
+									[(ngModel)]="textNews"
+									[ngModelOptions]="{standalone: true}"
+					></editor>
+				</div>
+
+
+				<div class="field">
+					<div class="label">
+						Обложка новости <span class="required">*</span>
+					</div>
+
+					<div class="add-file">
+						<input (change)="addFile($event)" id="load-file" type="file" size="0"
+									 accept="image/*,image/jpeg,image/png,image/gif">
+						<label class="add-file-button" for="load-file">
+							Прикрепите файл
+						</label>
+						<div class="file-name">
+							{{ nameOfFile || 'Форматы: PNG, JPG или GIF”. Ограничение на размер: 2 MB' }}
+						</div>
+					</div>
+				</div>
+
+				<button class="save-button" (click)="save()" [disabled]="!news.value.title || !news.value.shortDescription || !textNews || !fileToUpload.data">
+					Сохранить новость
+				</button>
+			</form>
+
+			<div class="col-3 offset-1 preview-card">
+				<h2>Так будет выглядеть новость в общем списке</h2>
+
+				<div class="card">
+					<div class="photo-of-news" *ngIf="fileToUpload.data" [style.backgroundImage]="'url(' + fileToUpload.data + ')'"></div>
+					<div class="photo-of-news default"  *ngIf="!fileToUpload.data"></div>
+					<div class="info">
+						<div class="title">
+							{{ news.value.title }}
+						</div>
+
+						<div class="description">
+							{{ news.value.shortDescription }}
+						</div>
+
+						<div class="date">
+							{{ currentDate.locale(currentLang).format('DD MMMM YYYY') }}
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

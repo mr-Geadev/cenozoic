@@ -7,6 +7,7 @@ class Comment {
 
 export class NewsModel {
   title: string = 'США свернули нефтедобычу в Мексиканском заливе';
+  shortDescription: string = 'Приближение тропического урагана «Нэйт» вынудило американских нефтепроизводителей сократить производство углеводородов практически до нуля.';
   creationDate: string = '23 сен 2017';
   changeDate: string = '23 сен 2017';
   photoUrl: string = 'https://pp.userapi.com/c639517/v639517758/48ddb/xaCYWsf1shc.jpg';

@@ -10,8 +10,8 @@
 						{{ news.title }}
 					</div>
 
-					<div class="text" [innerHTML]="news.text">
-
+					<div class="description" >
+						{{ news.shortDescription }}
 					</div>
 
 					<div class="date">
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 
-			<div class="news add">
+			<a class="news add" routerLink="/create-news">
 				<div class="inner">
 					<div class="circle">
 						<div class="plus">
@@ -32,7 +32,7 @@
 				<div class="more-info add" >
 					Добавить новость
 				</div>
-			</div>
+			</a>
 
 		</div>
 	</div>

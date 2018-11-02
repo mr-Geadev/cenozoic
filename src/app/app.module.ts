@@ -10,17 +10,22 @@ import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
 import {
   AccountSettingsPageModule,
-  AuthPageModule, CreateQuestionnairePageModule,
+  AuthPageModule,
+  CreateQuestionnairePageModule,
   CreateResumePageModule,
-  CreateVacancyPageModule, EditQuestionnairePageModule, EditVacancyPageModule,
+  CreateVacancyPageModule,
+  EditQuestionnairePageModule,
+  EditVacancyPageModule,
   EmailConfirmPageModule,
   ListResumePageModule,
   ListVacancyPageModule,
   MainPageModule,
-  PersonalAccountPageModule, QuestionnairePageModule,
+  PersonalAccountPageModule,
+  QuestionnairePageModule,
   ResumeFullPageModule,
   VacancyFullPageModule,
 } from 'pages';
+import { ConstructorNewsPageModule } from 'pages/constructor-news-page';
 import { ChangeCityModule, ChangeCityService, ConfirmModule } from 'pop-ups';
 import {
   BlankAccountService,
@@ -32,7 +37,7 @@ import {
   UserService,
 } from 'services';
 import { PageFooterModule, PageHeaderModule } from './containers';
-import { PopupsService } from './services/popups.service';
+import { PopupsService } from 'services/popups.service';
 
 const ROUTES = [
   {
@@ -43,7 +48,7 @@ const ROUTES = [
   {
     path: 'faq',
     loadChildren: './faq/faq.module#FaqModule',
-    canActivate: [LogInGuard]
+    canActivate: [LogInGuard],
   },
   { path: '**', redirectTo: '/' },
 ];
@@ -73,6 +78,7 @@ const ROUTES = [
     EditVacancyPageModule,
     QuestionnairePageModule,
     EditQuestionnairePageModule,
+    ConstructorNewsPageModule,
 
     // Blocks
     PageHeaderModule,
