@@ -46,6 +46,15 @@
 					<label for="interview">{{dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES}}</label>
 				</li>
 
+				<li class="item" *ngIf="typeCurrentUser === 'employer'">
+					<input type="radio"
+								 id="news"
+								 name="manager"
+								 [(ngModel)]="activeTab"
+								 [value]="dictionary.ACCOUNT_PAGE_TAB_NEWS">
+					<label for="news">{{dictionary.ACCOUNT_PAGE_TAB_NEWS}}</label>
+				</li>
+
 				<li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
 					<input type="radio"
 								 id="summary"
@@ -97,6 +106,9 @@
 		<div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES }">
 			{{ dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC }}
 		</div>
+		<div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_NEWS }">
+			{{ dictionary.ACCOUNT_PAGE_TAB_NEWS_DESC }}
+		</div>
 		<div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_CV }">
 			{{ dictionary.ACCOUNT_PAGE_TAB_CV_DESC }}
 		</div>
@@ -111,6 +123,14 @@
 	[ngClass]="{ 'active': (activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS) || (activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND) }"
 	*ngIf="(activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS) || (activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND)"
 ></filter-respond>
+
+
+<!--список новостей-->
+<list-news
+	[listNews]="listOfNews"
+	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_NEWS }"
+	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_NEWS"
+></list-news>
 
 <!--опросники-->
 <list-questionnaire

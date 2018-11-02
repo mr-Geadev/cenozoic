@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionnaireModel, RespondModel } from 'models';
+import { NewsModel } from 'models/news.model';
 import { QuestionnairesApi, RespondsApi } from '../../api';
 import { LocalizationService } from '../../services';
 import { UserService } from '../../services/user.service';
@@ -31,12 +32,22 @@ export class PersonalAccountPageComponent implements OnInit {
   //   new RespondModel(6, 'offer', true),
   // ]
 
+  public listOfNews: NewsModel[] = [
+    new NewsModel(),
+    new NewsModel(),
+    new NewsModel(),
+    new NewsModel(),
+    new NewsModel(),
+    new NewsModel(),
+    new NewsModel(),
+  ];
+
   public listQuestionnaire: QuestionnaireModel[] = [
     // new QuestionnaireModel({title: 'Опросник 1', countOfQuestion: 15, fileQuestionnaire: false}),
     // new QuestionnaireModel({title: 'Опросник 2', countOfQuestion: 147, fileQuestionnaire: false}),
     // new QuestionnaireModel({title: 'Очень длинное название опросника 3', countOfQuestion: 45, fileQuestionnaire: false}),
     // new QuestionnaireModel({title: 'Очень длинное название опросника 4', countOfQuestion: null, fileQuestionnaire: true}),
-  ]
+  ];
 
   public listOfArchive: RespondModel[] = [];
 
@@ -61,23 +72,23 @@ export class PersonalAccountPageComponent implements OnInit {
       );
 
     this.respondsApi.listOffers$
-        .subscribe(
-            listOffers => this.listOfOffers = listOffers
-        );
+      .subscribe(
+        listOffers => this.listOfOffers = listOffers,
+      );
 
     this.respondsApi.listRespond$
-        .subscribe(
-            listResponds => this.listOfResponds = listResponds
-        );
+      .subscribe(
+        listResponds => this.listOfResponds = listResponds,
+      );
 
     this.respondsApi.listArchive$
       .subscribe(
-        listArchive => this.listOfArchive = listArchive
+        listArchive => this.listOfArchive = listArchive,
       );
 
     this.questionnaireApi.listQuestionnaire$
       .subscribe(
-        listQuestionnaire => this.listQuestionnaire = listQuestionnaire
+        listQuestionnaire => this.listQuestionnaire = listQuestionnaire,
       );
   }
 

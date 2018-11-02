@@ -13,3 +13,4 @@ export * from './setting-worker';
 export * from './list-respond';
 export * from './list-questionnaire';
 export * from './questionnaire';
+export * from './list-news';

@@ -1,0 +1,39 @@
+<section class="list-news">
+	<div class="container">
+		<div class="row list">
+
+			<div class="news" *ngFor="let news of listNews">
+				<div class="photo-of-news" [style.backgroundImage]="'url(' + news.photoUrl + ')'"></div>
+
+				<div class="info">
+					<div class="title">
+						{{ news.title }}
+					</div>
+
+					<div class="text" [innerHTML]="news.text">
+
+					</div>
+
+					<div class="date">
+						{{ news.changeDate || news.creationDate}}
+					</div>
+				</div>
+			</div>
+
+			<div class="news add">
+				<div class="inner">
+					<div class="circle">
+						<div class="plus">
+							+
+						</div>
+					</div>
+				</div>
+
+				<div class="more-info add" >
+					Добавить новость
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
