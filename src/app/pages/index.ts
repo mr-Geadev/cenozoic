@@ -14,3 +14,4 @@ export * from './edit-vacancy-page';
 export * from './edit-questionnaire-page';
 export * from './questionnaire-page';
 export * from './constructor-news-page';
+export * from './news-full-page';

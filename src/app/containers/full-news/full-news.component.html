@@ -1,0 +1,61 @@
+<div class="container" *ngIf="news">
+	<div class="row">
+		<div class="col">
+
+			<div class="time">
+				{{ news.creationDate.locale(currentLang).format('DD.MM.YYYY HH:mm') }}
+			</div>
+
+			<div class="title">
+				{{ news.title }}
+			</div>
+
+			<img class="photo" src="{{news.photoUrl}}" alt="{{news.title}}">
+
+			<div class="text-news" [innerHTML]="news.text">
+
+			</div>
+
+			<div class="share">
+				<div class="label">
+					Поделиться
+				</div>
+				<div class="links">
+					<a href="#" class="link"><img src="/assets/images/facebook-share.png" alt=""></a>
+					<a href="#" class="link"><img src="/assets/images/logo-linkedin-share.png" alt=""></a>
+					<a href="#" class="link"><img src="/assets/images/instagram-share.png" alt=""></a>
+					<a href="#" class="link"><img src="/assets/images/telegram-logo-share.png" alt=""></a>
+					<a href="#" class="link"><img src="/assets/images/all-share.png" alt=""></a>
+				</div>
+			</div>
+
+			<div class="comments">
+				<div class="title">
+					Комментарии:
+				</div>
+
+				<div class="count-comment">
+					<b>{{news.comments.length}}</b> комментариев
+				</div>
+
+				<div class="comment" *ngFor="let comment of news.comments">
+					<div class="username">
+						{{ comment.userName }}
+					</div>
+
+					<div class="text">
+						 {{ comment.text }}
+					</div>
+				</div>
+
+				<div class="send-comment">
+					<textarea class="new-comment" name="new-comment" id="new-comment"></textarea>
+					<button class="send-button" type="submit">
+						Добавить комментарий
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

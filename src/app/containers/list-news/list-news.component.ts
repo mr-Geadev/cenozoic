@@ -13,12 +13,15 @@ export class ListNewsComponent implements OnInit {
   @Input() listNews: NewsModel[];
 
   public dictionary: any = null;
+  private currentLang: string = null;
 
   constructor(private _localizationService: LocalizationService) {
   }
 
   ngOnInit(): void {
     this.dictionary = this._localizationService.currentDictionary;
+
+    this.currentLang = LocalizationService.currentLang();
   }
 
 }

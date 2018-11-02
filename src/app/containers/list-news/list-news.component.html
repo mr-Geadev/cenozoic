@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row list">
 
-			<div class="news" *ngFor="let news of listNews">
+			<a class="news" *ngFor="let news of listNews" [routerLink]="['/news', news._id]">
 				<div class="photo-of-news" [style.backgroundImage]="'url(' + news.photoUrl + ')'"></div>
 
 				<div class="info">
@@ -15,10 +15,10 @@
 					</div>
 
 					<div class="date">
-						{{ news.changeDate || news.creationDate}}
+						{{ this.news.creationDate.locale(currentLang).format('DD MMMM YYYY') }}
 					</div>
 				</div>
-			</div>
+			</a>
 
 			<a class="news add" routerLink="/create-news">
 				<div class="inner">
