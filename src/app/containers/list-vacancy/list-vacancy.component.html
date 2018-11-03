@@ -1,7 +1,7 @@
 <section class="list-vacancy">
-	<div class="container">
+	<div class="container" [class.mainPage]="mainPage">
 
-		<div class="row list">
+		<div class="list" [style.marginLeft]=" -282*offset+'px' ">
 			<card
 				*ngIf="config === 'user'"
 				[typeUser]="typeCurrentUser"

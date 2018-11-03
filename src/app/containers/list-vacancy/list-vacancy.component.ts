@@ -12,6 +12,9 @@ import { FilterVacancyService } from '../filter-vacancy';
 export class ListVacancyComponent implements OnInit {
 
   @Input() config: string;
+  @Input() mainPage?: boolean = false;
+  @Input() offset?: number = 0;
+
   public listVacancy: any[] = [];
   public dictionary: any = null;
   private _offset: number = 0;

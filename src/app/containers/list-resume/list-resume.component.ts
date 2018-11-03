@@ -12,6 +12,8 @@ import { FilterResumesService } from '../filter-resumes';
 export class ListResumeComponent implements OnInit {
 
   @Input() config: string;
+  @Input() mainPage?: boolean = false;
+  @Input('offset') offsetView?: number = 0;
 
   public dictionary: any = null;
   public listResume: any[];
