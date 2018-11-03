@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NewsApi } from 'api';
 import { NewsModel } from 'models/news.model';
 
 import { LocalizationService } from 'services';
@@ -10,18 +11,29 @@ import { LocalizationService } from 'services';
 })
 export class ListNewsComponent implements OnInit {
 
-  @Input() listNews: NewsModel[];
+  @Input() newsPage?: boolean = false;
+  @Input() mainPage?: boolean = false;
+  @Input() user?: string = null;
+
+  public listNews: NewsModel[] = [];
 
   public dictionary: any = null;
   private currentLang: string = null;
 
-  constructor(private _localizationService: LocalizationService) {
+  constructor(private _localizationService: LocalizationService,
+              private newsApi: NewsApi) {
   }
 
   ngOnInit(): void {
     this.dictionary = this._localizationService.currentDictionary;
 
     this.currentLang = LocalizationService.currentLang();
+
+    // (all, mainPage, user)
+    this.newsApi.getListNews(this.newsPage, this.mainPage, this.user)
+      .subscribe(
+        res => { res['newsList'].map((news) => this.listNews.push(new NewsModel(news))); },
+      );
   }
 
 }

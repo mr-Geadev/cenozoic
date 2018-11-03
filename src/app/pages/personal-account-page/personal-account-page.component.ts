@@ -15,6 +15,7 @@ export class PersonalAccountPageComponent implements OnInit {
   public activeTab: string = null;
   public dictionary: any = null;
   public typeCurrentUser: string = null;
+  public currentUser: any = null;
 
   public listOfResponds: RespondModel[] = [];
   // [
@@ -31,16 +32,6 @@ export class PersonalAccountPageComponent implements OnInit {
   //   new RespondModel(5, 'offer', true),
   //   new RespondModel(6, 'offer', true),
   // ]
-
-  public listOfNews: NewsModel[] = [
-    new NewsModel(),
-    new NewsModel(),
-    new NewsModel(),
-    new NewsModel(),
-    new NewsModel(),
-    new NewsModel(),
-    new NewsModel(),
-  ];
 
   public listQuestionnaire: QuestionnaireModel[] = [
     // new QuestionnaireModel({title: 'Опросник 1', countOfQuestion: 15, fileQuestionnaire: false}),
@@ -68,7 +59,12 @@ export class PersonalAccountPageComponent implements OnInit {
 
     this._userService.user$
       .subscribe(
-        (user) => user ? this.typeCurrentUser = user.typeAccount : null,
+        (user) => {
+          if (user) {
+            this.typeCurrentUser = user.typeAccount;
+            this.currentUser = user;
+          }
+        }
       );
 
     this.respondsApi.listOffers$

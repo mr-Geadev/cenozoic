@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NewsApi } from 'api';
 import { NewsModel } from 'models';
 
 import { LocalizationService } from 'services';
@@ -12,11 +13,12 @@ import { LocalizationService } from 'services';
 export class FullNewsComponent implements OnInit {
 
   public dictionary: any = null;
-  public news: NewsModel = new NewsModel();
+  public news: NewsModel;
   private id: string = null;
   private currentLang: string = null;
 
   constructor(private activateRoute: ActivatedRoute,
+              private newsApi: NewsApi,
               private _localizationService: LocalizationService) {
     this.id = activateRoute.snapshot.params['id'];
   }
@@ -25,5 +27,8 @@ export class FullNewsComponent implements OnInit {
     this.dictionary = this._localizationService.currentDictionary;
 
     this.currentLang = LocalizationService.currentLang();
+
+    this.newsApi.getNewsById(this.id)
+      .subscribe(res => { this.news = new NewsModel(res['news']); });
   }
 }

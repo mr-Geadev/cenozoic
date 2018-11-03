@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NewsApi } from 'api';
 import { ListNewsComponent } from 'containers/list-news/list-news.component';
 
 @NgModule({
@@ -12,7 +13,7 @@ import { ListNewsComponent } from 'containers/list-news/list-news.component';
     ListNewsComponent,
   ],
   exports: [ListNewsComponent],
-  providers: [],
+  providers: [NewsApi],
 })
 export class ListNewsModule {
 }

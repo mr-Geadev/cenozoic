@@ -127,7 +127,7 @@
 
 <!--список новостей-->
 <list-news
-	[listNews]="listOfNews"
+	[user]="currentUser._id"
 	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_NEWS }"
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_NEWS"
 ></list-news>

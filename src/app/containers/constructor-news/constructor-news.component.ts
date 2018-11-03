@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NewsApi } from 'api';
 import { LocalizationService, SystemMessageService } from 'services';
 import * as moment from 'moment';
 
@@ -21,13 +23,15 @@ export class ConstructorNewsComponent implements OnInit {
   };
   public nameOfFile: string = null;
 
-  constructor(private _systemMessageService: SystemMessageService) {
+  constructor(private _systemMessageService: SystemMessageService,
+              private router: Router,
+              private newsApi: NewsApi) {
   }
 
   ngOnInit() {
     this.news = new FormGroup({
       title: new FormControl('', [Validators.required]),
-      shortDescription: new FormControl('', [Validators.required])
+      shortDescription: new FormControl('', [Validators.required]),
     });
     this.currentLang = LocalizationService.currentLang();
   }
@@ -57,12 +61,10 @@ export class ConstructorNewsComponent implements OnInit {
   public save() {
     console.log(this.news.value);
 
-    const formData: FormData = new FormData();
-
-    formData.append('fileToUpload', this.fileToUpload.file);
-    formData.append('news', { ...this.news.value, text: this.textNews});
-
-    console.log(formData);
+    this.newsApi.createNews(this.fileToUpload.file, { ...this.news.value, text: this.textNews })
+      .subscribe(
+        res => { this.router.navigate(['/personal-account']);},
+      );
   }
 
 }

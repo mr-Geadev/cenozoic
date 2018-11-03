@@ -3,7 +3,7 @@
 		<div class="row list">
 
 			<a class="news" *ngFor="let news of listNews" [routerLink]="['/news', news._id]">
-				<div class="photo-of-news" [style.backgroundImage]="'url(' + news.photoUrl + ')'"></div>
+				<div class="photo-of-news" [style.backgroundImage]="'url(' + news.photoURL + ')'"></div>
 
 				<div class="info">
 					<div class="title">
@@ -20,7 +20,7 @@
 				</div>
 			</a>
 
-			<a class="news add" routerLink="/create-news">
+			<a *ngIf="user" class="news add" routerLink="/create-news">
 				<div class="inner">
 					<div class="circle">
 						<div class="plus">
