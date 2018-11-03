@@ -57,7 +57,7 @@ export class NewsApi {
   }
 
   // список новостей
-  getListNews(newsPage?, mainPage?, user?): Observable<any> {
+  getListNews(newsPage?, mainPage?, user?, searchString?): Observable<any> {
     let filters = {};
 
     if (newsPage) {
@@ -76,6 +76,10 @@ export class NewsApi {
       filters = {
         userId: user,
       };
+    }
+
+    if (searchString) {
+      filters = Object.assign(filters, { search: searchString});
     }
 
     return this.http.post('/api/v1/news/get/all', { offset: 0, limit: 100, filters });

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { NewsApi } from 'api';
 import { NewsModel } from 'models/news.model';
 
@@ -9,11 +9,13 @@ import { LocalizationService } from 'services';
   templateUrl: './list-news.component.html',
   styleUrls: ['./list-news.component.scss'],
 })
-export class ListNewsComponent implements OnInit {
+export class ListNewsComponent implements OnInit, OnChanges {
 
   @Input() newsPage?: boolean = false;
   @Input() mainPage?: boolean = false;
   @Input() user?: string = null;
+  @Input() searchString?: string = null;
+  @Input() reverse?: boolean = null;
 
   public listNews: NewsModel[] = [];
 
@@ -29,10 +31,23 @@ export class ListNewsComponent implements OnInit {
 
     this.currentLang = LocalizationService.currentLang();
 
-    // (all, mainPage, user)
-    this.newsApi.getListNews(this.newsPage, this.mainPage, this.user)
+    this.getNews();
+  }
+
+  ngOnChanges() {
+    this.getNews();
+  }
+
+  getNews() {
+    this.newsApi.getListNews(this.newsPage, this.mainPage, this.user, this.searchString)
       .subscribe(
-        res => { res['newsList'].map((news) => this.listNews.push(new NewsModel(news))); },
+        res => {
+          this.listNews = [];
+          res['newsList'].map((news) => this.listNews.push(new NewsModel(news)));
+          if (this.reverse) {
+            this.listNews.reverse();
+          }
+        },
       );
   }
 

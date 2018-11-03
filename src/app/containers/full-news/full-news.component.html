@@ -19,7 +19,7 @@
 					<img src="{{news.photoURL}}" alt="{{news.title}}">
 				</div>
 				<div class="manage">
-					<ng-container *ngIf="currentUser.typeAccount === 'admin'">
+					<ng-container *ngIf="currentUser && currentUser.typeAccount === 'admin'">
 						<button class="button" *ngIf="!news.publicateToNewsPage" (click)="publish('toNews')">
 							Опубликовать
 						</button>
@@ -37,7 +37,7 @@
 						</button>
 					</ng-container>
 
-					<ng-container *ngIf="currentUser._id === news.userId">
+					<ng-container *ngIf="currentUser && currentUser._id === news.userId">
 						<a class="button" [routerLink]="['/edit-news', news._id]">
 							Редактировать
 						</a>

@@ -7,7 +7,15 @@ import { Component } from '@angular/core';
 })
 export class ListNewsPageComponent {
 
+  public searchInput: string = '';
+  public searchSubmit: string = '';
+  public order: string = 'line';
+
   constructor() {
+  }
+
+  setFilter() {
+    this.searchSubmit = this.searchInput;
   }
 
 }
