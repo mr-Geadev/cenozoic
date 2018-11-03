@@ -4,8 +4,20 @@
 
 :host {
   display: block;
+  width: 100%;
 
   .list-news {
+    width: 100%;
+
+    .mainPage {
+      overflow: hidden;
+      width: 100%;
+
+      .list {
+        flex-wrap: nowrap;
+        @include animation(margin-left);
+      }
+    }
 
     .list {
       display: flex;

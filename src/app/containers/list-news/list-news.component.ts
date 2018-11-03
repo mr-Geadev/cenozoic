@@ -14,7 +14,9 @@ export class ListNewsComponent implements OnInit, OnChanges {
   @Input() newsPage?: boolean = false;
   @Input() mainPage?: boolean = false;
   @Input() user?: string = null;
+
   @Input() searchString?: string = null;
+  @Input() offset?: number = 0;
   @Input() reverse?: boolean = null;
 
   public listNews: NewsModel[] = [];
