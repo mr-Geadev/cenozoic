@@ -19,8 +19,42 @@
     font-weight: 400;
   }
 
-  .photo {
+  .photo-block {
     margin-top: 29px;
+    display: flex;
+    justify-content: space-between;
+
+    .photo {
+      width: calc(100% - 300px);
+    }
+
+    .manage {
+      width: 200px;
+
+      .button {
+        margin-top: 20px;
+
+        width: 242px;
+        height: 46px;
+        background-color: $orange;
+        border-radius: 3px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: #ffffff;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 30px;
+
+        @include animation(background-color);
+        &:hover:not(:disabled) {
+          background-color: $hover-orange;
+        }
+      }
+    }
   }
 
   .text-news {

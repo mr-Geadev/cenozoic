@@ -10,7 +10,36 @@
 				{{ news.title }}
 			</div>
 
-			<img class="photo" src="{{news.photoURL}}" alt="{{news.title}}">
+			<div class="photo-block">
+				<div class="photo">
+					<img src="{{news.photoURL}}" alt="{{news.title}}">
+				</div>
+				<div class="manage">
+					<ng-container *ngIf="currentUser.typeAccount === 'admin'">
+						<button class="button" *ngIf="!news.publicateToNewsPage" (click)="publish('toNews')">
+							Опубликовать
+						</button>
+
+						<button class="button" *ngIf="news.publicateToNewsPage" (click)="publish('fromNews')">
+							Убрать с публикации
+						</button>
+
+						<button class="button" *ngIf="!news.publicateToMainPage" (click)="publish('toMain')">
+							Опубликовать на главной
+						</button>
+
+						<button class="button" *ngIf="news.publicateToMainPage" (click)="publish('fromMainPage')">
+							Убрать с главной
+						</button>
+					</ng-container>
+
+					<ng-container *ngIf="currentUser._id === news.userId">
+						<a class="button" [routerLink]="['/edit-news', news._id]">
+							Редактировать
+						</a>
+					</ng-container>
+				</div>
+			</div>
 
 			<div class="text-news" [innerHTML]="news.text">
 

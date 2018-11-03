@@ -59,5 +59,43 @@ export class NewsApi {
     return this.http.post('/api/v1/news/get/all', { offset: 0, limit: 100, filters });
   }
 
-  // измение статуса в админке
+  // измение статуса новости
+  publishTo(id: string, status: string): Observable<any> {
+    let publicTo = {};
+
+    if (status === 'toNews') {
+      publicTo = {
+        publicateToNewsPage: true,
+        publicateToMainPage: false,
+      };
+    }
+
+    if (status === 'toMain') {
+      publicTo = {
+        publicateToNewsPage: true,
+        publicateToMainPage: true,
+      };
+    }
+
+    if (status === 'fromNews') {
+      publicTo = {
+        publicateToNewsPage: false,
+        publicateToMainPage: false,
+      };
+    }
+
+    if (status === 'fromMainPage') {
+      publicTo = {
+        publicateToNewsPage: true,
+        publicateToMainPage: false,
+      };
+    }
+
+    const body = {
+      newsId: id,
+      ...publicTo,
+    };
+
+    return this.http.post('/api/v1/admin/news/publish', { publishInfo: body });
+  }
 }
