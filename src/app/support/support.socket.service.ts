@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 
 @Injectable()
-export class FaqSocketService {
+export class SupportSocketService {
 
   private host: string = `http://134.0.119.98:4200`;
   private socket: any;

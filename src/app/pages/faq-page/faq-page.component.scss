@@ -1,0 +1,99 @@
+@import "animations";
+@import "colors";
+
+:host {
+  display: block;
+  margin: 60px;
+
+  .title {
+    color: #000000;
+    font-family: "Bebas";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 36px;
+  }
+
+  .list-faq {
+    margin-top: 50px;
+
+    li {
+      border-bottom: 1px solid $light-gray;
+      &:last-child {
+        border-bottom: none
+      }
+
+      .question {
+        height: 50px;
+        display: flex;
+        align-items: center;
+
+        color: #000000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 700;
+
+        cursor: pointer;
+
+        .icon {
+          margin-left: 15px;
+          transform: rotate(0deg);
+          @include animation(transform);
+
+          &.visible {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      .answer {
+        color: #000000;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 10px 0 50px;
+      }
+    }
+  }
+
+  .not-found {
+    margin-top: 100px;
+    color: #000000;
+    font-family: "Bebas";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 36px;
+  }
+
+  .not-found-subtitle {
+    color: #000000;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .button {
+    margin-top: 50px;
+
+    width: 200px;
+    height: 46px;
+    background-color: $orange;
+    border-radius: 3px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+
+    cursor: pointer;
+
+    @include animation(background-color);
+    &:hover:not(:disabled) {
+      background-color: $hover-orange;
+    }
+  }
+}

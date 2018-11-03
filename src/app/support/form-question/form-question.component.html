@@ -1,11 +1,11 @@
-<div class="faq-subtitle">
+<div class="support-subtitle">
 	Отправить свой вопрос
 </div>
 
 <form class="send-question" (submit)="createIssue()">
 
 	<div class="field">
-		<label class="field-title faq-subtitle" for="change-reason">
+		<label class="field-title support-subtitle" for="change-reason">
 			Выберите одну из причин
 		</label>
 
@@ -17,16 +17,16 @@
 	</div>
 
 	<div class="field">
-		<label class="field-title faq-subtitle" for="description">
+		<label class="field-title support-subtitle" for="description">
 			описание (пожалуйста опишите свою проблему подробно)
 		</label>
 
 		<textarea name="description" id="description" class="description"  [(ngModel)]="issue.description"></textarea>
 	</div>
 
-	<div class="field faq-read">
-		<input type="checkbox" id="faq-is-reading" name="faq-is-reading" (value)="true" [(ngModel)]="isReading">
-		<label for="faq-is-reading">Я прочитал(а)&nbsp;<a href="/">часто задаваемые воопросы</a></label>
+	<div class="field support-read">
+		<input type="checkbox" id="support-is-reading" name="support-is-reading" (value)="true" [(ngModel)]="isReading">
+		<label for="support-is-reading">Я прочитал(а)&nbsp;<a href="/">часто задаваемые воопросы</a></label>
 	</div>
 
 	<button type="submit" class="field send-button" [disabled]="!issue.description || !isReading">

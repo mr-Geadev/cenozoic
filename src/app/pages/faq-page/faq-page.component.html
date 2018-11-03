@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="title">
+				Часто задаваемые вопросы
+			</div>
+
+			<ul class="list-faq">
+				<li *ngFor="let faq of faqs; let i = index">
+					<div class="question" (click)="toggleVisible(i)">
+						{{faq.question}}
+						<img src="/assets/images/icon-orange-triungle.svg" class="icon" [class.visible]="!faq.hidden">
+					</div>
+					<div class="answer" *ngIf="!faq.hidden" [innerHTML]="faq.answer"></div>
+				</li>
+			</ul>
+
+			<div class="not-found">
+				Не нашли нужный ответ?
+			</div>
+			<div class="not-found-subtitle">
+				Отправьте свой вопрос и мы ответим вам
+			</div>
+			<div class="button" (click)="goToSupport()">
+				Задать вопрос
+			</div>
+		</div>
+	</div>
+</div>

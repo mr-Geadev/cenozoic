@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FaqApi } from 'faq/faq.api';
-import { FaqSocketService } from 'faq/faq.socket.service';
+import { SupportApi } from 'support/support.api';
+import { SupportSocketService } from 'support/support.socket.service';
 
 @Component({
   selector: 'faq-root',
-  templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.scss'],
+  templateUrl: './support.component.html',
+  styleUrls: ['./support.component.scss'],
 })
-export class FaqComponent implements OnInit {
+export class SupportComponent implements OnInit {
 
   listIssue = [];
 
-  constructor(private faqApi: FaqApi,
-              private socket: FaqSocketService) {
+  constructor(private faqApi: SupportApi,
+              private socket: SupportSocketService) {
   }
 
   public ngOnInit() {

@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { FaqApi } from 'faq/faq.api';
-import { FaqComponent } from 'faq/faq.component';
-import { ChatModule } from 'faq/chat';
-import { FaqSocketService } from 'faq/faq.socket.service';
+import { SupportApi } from 'support/support.api';
+import { SupportComponent } from 'support/support.component';
+import { ChatModule } from 'support/chat';
+import { SupportSocketService } from 'support/support.socket.service';
 import { FormQuestionComponent } from './form-question';
 import { ListQuestionComponent } from './list-question';
 
 const ROUTERS = [
   {
     path: '',
-    component: FaqComponent,
+    component: SupportComponent,
     children: [],
   },
 
@@ -31,13 +31,13 @@ const ROUTERS = [
     MatSelectModule,
     ChatModule
   ],
-  providers: [FaqApi, FaqSocketService],
+  providers: [SupportApi, SupportSocketService],
   declarations: [
-    FaqComponent,
+    SupportComponent,
     FormQuestionComponent,
     ListQuestionComponent
   ]
 })
 
-export class FaqModule {
+export class SupportModule {
 }

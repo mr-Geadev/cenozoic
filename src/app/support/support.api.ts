@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class FaqApi {
+export class SupportApi {
 
   private listIssues: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   public listIssues$: Observable<any> = this.listIssues.asObservable();

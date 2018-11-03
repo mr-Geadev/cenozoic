@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FaqApi } from 'faq/faq.api';
+import { SupportApi } from 'support/support.api';
 
 @Component({
   selector: 'form-question',
@@ -14,7 +14,7 @@ export class FormQuestionComponent {
     description: ''
   }
 
-  constructor(private faqApi: FaqApi) {}
+  constructor(private faqApi: SupportApi) {}
 
   createIssue() {
     this.faqApi.createIssue(this.issue)

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
-import { ChatComponent } from 'faq/chat';
+import { ChatComponent } from 'support/chat';
 import { LocalizationService } from 'services';
 import * as moment from 'moment';
 

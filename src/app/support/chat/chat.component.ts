@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { FaqApi } from 'faq/faq.api';
+import { SupportApi } from 'support/support.api';
 import * as moment from 'moment';
 import { LocalizationService } from 'services';
 
@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
   newMessage = '';
 
   constructor(private dialog: MatDialog,
-              private faqApi: FaqApi,
+              private faqApi: SupportApi,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 

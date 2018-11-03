@@ -16,7 +16,7 @@ import {
   CreateVacancyPageModule, EditNewsPageModule,
   EditQuestionnairePageModule,
   EditVacancyPageModule,
-  EmailConfirmPageModule, ListNewsPageModule,
+  EmailConfirmPageModule, FaqPageModule, ListNewsPageModule,
   ListResumePageModule,
   ListVacancyPageModule,
   MainPageModule, NewsFullPageModule,
@@ -46,8 +46,8 @@ const ROUTES = [
     canActivate: [AdminGuard],
   },
   {
-    path: 'faq',
-    loadChildren: './faq/faq.module#FaqModule',
+    path: 'support',
+    loadChildren: './support/support.module#SupportModule',
     canActivate: [LogInGuard],
   },
   { path: '**', redirectTo: '/' },
@@ -82,6 +82,7 @@ const ROUTES = [
     NewsFullPageModule,
     ListNewsPageModule,
     EditNewsPageModule,
+    FaqPageModule,
 
     // Blocks
     PageHeaderModule,

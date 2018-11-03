@@ -2,7 +2,7 @@
 @import "animations";
 
 :host {
-  .faq {
+  .support {
     &-title {
       width: 100%;
       height: 100px;
@@ -26,7 +26,7 @@
     }
   }
 
-  .faq-subtitle {
+  .support-subtitle {
     color: #000000;
     font-family: "Bebas";
     font-size: 31px;
