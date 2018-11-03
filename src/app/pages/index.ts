@@ -16,3 +16,4 @@ export * from './questionnaire-page';
 export * from './constructor-news-page';
 export * from './news-full-page';
 export * from './list-news-page';
+export * from './edit-news-page';

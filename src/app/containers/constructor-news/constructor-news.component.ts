@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NewsApi } from 'api';
 import { LocalizationService, SystemMessageService } from 'services';
 import * as moment from 'moment';
@@ -11,6 +11,10 @@ import * as moment from 'moment';
   styleUrls: ['./constructor-news.component.scss'],
 })
 export class ConstructorNewsComponent implements OnInit {
+
+  @Input('edit') edit?: boolean;
+  public id: string = null;
+  public photoUrl: string = null;
 
   public news: FormGroup;
   public textNews: string;
@@ -24,16 +28,34 @@ export class ConstructorNewsComponent implements OnInit {
   public nameOfFile: string = null;
 
   constructor(private _systemMessageService: SystemMessageService,
+              private activateRoute: ActivatedRoute,
               private router: Router,
               private newsApi: NewsApi) {
+    this.id = activateRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
-    this.news = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      shortDescription: new FormControl('', [Validators.required]),
-    });
     this.currentLang = LocalizationService.currentLang();
+
+    if (this.id) {
+      this.newsApi.getNewsById(this.id)
+        .subscribe(
+          res => {
+            this.initForm(res['news'].title, res['news'].shortDescription);
+            this.textNews = res['news'].text;
+            this.photoUrl = res['news'].photoURL;
+          },
+        );
+    } else {
+      this.initForm('', '');
+    }
+  }
+
+  public initForm(title, shortDescription) {
+    this.news = new FormGroup({
+      title: new FormControl(title, [Validators.required]),
+      shortDescription: new FormControl(shortDescription, [Validators.required]),
+    });
   }
 
   public addFile(event): void {
@@ -61,10 +83,17 @@ export class ConstructorNewsComponent implements OnInit {
   public save() {
     console.log(this.news.value);
 
-    this.newsApi.createNews(this.fileToUpload.file, { ...this.news.value, text: this.textNews })
-      .subscribe(
-        res => { this.router.navigate(['/personal-account']);},
-      );
+   if (this.edit) {
+     this.newsApi.editNews(this.id, { ...this.news.value, text: this.textNews }, this.fileToUpload.file || null, )
+       .subscribe(
+         res => { this.router.navigate(['/personal-account']); },
+       );
+   } else {
+     this.newsApi.createNews(this.fileToUpload.file, { ...this.news.value, text: this.textNews })
+       .subscribe(
+         res => { this.router.navigate(['/personal-account']); },
+       );
+   }
   }
 
 }

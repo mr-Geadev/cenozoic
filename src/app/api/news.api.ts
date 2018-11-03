@@ -26,13 +26,28 @@ export class NewsApi {
     return this.http.post('/api/v1/employer/news/create', formData)
       .map(
         res => this.messages.info('Новость создана'),
-        err => this.messages.info('Создание неудачно'),
+        err => this.messages.info('Что-то пошло не так'),
       );
   }
 
   // создание комментария
 
   // редактирование новости
+  editNews(id, news, image?): Observable<any> {
+    const formData: FormData = new FormData();
+
+    formData.append('newsId', id);
+    formData.append('newsData', JSON.stringify(news));
+    if (image) {
+      formData.append('fileToUpload', image);
+    }
+
+    return this.http.post('/api/v1/employer/news/edit', formData)
+      .map(
+        res => this.messages.info('Успешно измненена'),
+        err => this.messages.info('Что-то пошло не так'),
+      );
+  }
 
   // список новостей
   getListNews(newsPage?, mainPage?, user?): Observable<any> {

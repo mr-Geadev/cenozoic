@@ -10,6 +10,10 @@
 				{{ news.title }}
 			</div>
 
+			<div class="not-public" *ngIf="!news.publicateToNewsPage">
+				Данная новость не опубликована. Она появится в общем списке новостей сразу после одобрения администрацией.
+			</div>
+
 			<div class="photo-block">
 				<div class="photo">
 					<img src="{{news.photoURL}}" alt="{{news.title}}">

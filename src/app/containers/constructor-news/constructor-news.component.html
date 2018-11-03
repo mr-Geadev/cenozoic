@@ -4,7 +4,7 @@
 			Создание новости
 		</div>
 
-		<div class="row">
+		<div class="row" *ngIf="news">
 			<form class="col-8  form" [formGroup]="news">
 
 				<div class="field title-news">
@@ -68,7 +68,11 @@
 					</div>
 				</div>
 
-				<button class="save-button" (click)="save()" [disabled]="!news.value.title || !news.value.shortDescription || !textNews || !fileToUpload.data">
+				<button class="save-button" *ngIf="!edit" (click)="save()" [disabled]="!news.value.title || !news.value.shortDescription || !textNews || !fileToUpload.data ">
+					Сохранить новость
+				</button>
+
+				<button class="save-button" *ngIf="edit" (click)="save()" [disabled]="!news.value.title || !news.value.shortDescription || !textNews ">
 					Сохранить новость
 				</button>
 			</form>
@@ -77,8 +81,9 @@
 				<h2>Так будет выглядеть новость в общем списке</h2>
 
 				<div class="card">
+					<div class="photo-of-news" *ngIf="!fileToUpload.data && photoUrl" [style.backgroundImage]="'url(' + photoUrl + ')'"></div>
 					<div class="photo-of-news" *ngIf="fileToUpload.data" [style.backgroundImage]="'url(' + fileToUpload.data + ')'"></div>
-					<div class="photo-of-news default"  *ngIf="!fileToUpload.data"></div>
+					<div class="photo-of-news default"  *ngIf="!fileToUpload.data  && !edit"></div>
 					<div class="info">
 						<div class="title">
 							{{ news.value.title }}
