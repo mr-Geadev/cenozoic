@@ -31,6 +31,13 @@ export class NewsApi {
   }
 
   // создание комментария
+  addComent(newsId, comment): Observable<any> {
+    return this.http.post('/api/v1/news/comment/create', { commentInfo: { newsId, comment } })
+      .map(
+        res => {},
+        err => this.messages.info('Что-то пошло не так'),
+      );
+  }
 
   // редактирование новости
   editNews(id, news, image?): Observable<any> {

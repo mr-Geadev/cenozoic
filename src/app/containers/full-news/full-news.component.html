@@ -73,7 +73,7 @@
 
 				<div class="comment" *ngFor="let comment of news.comments">
 					<div class="username">
-						{{ comment.userName }}
+						{{ comment.userName }} <span class="time">в {{ comment.creationDate.locale(currentLang).format('HH:mm, DD.MM.YY') }}</span>
 					</div>
 
 					<div class="text">
@@ -81,9 +81,9 @@
 					</div>
 				</div>
 
-				<div class="send-comment">
-					<textarea class="new-comment" name="new-comment" id="new-comment"></textarea>
-					<button class="send-button" type="submit">
+				<div class="send-comment" *ngIf="currentUser && news.publicateToNewsPage">
+					<textarea class="new-comment" name="new-comment" id="new-comment" [(ngModel)]="textComment"></textarea>
+					<button class="send-button" type="submit" (click)="sendComment()" [disabled]="!textComment" >
 						Добавить комментарий
 					</button>
 				</div>

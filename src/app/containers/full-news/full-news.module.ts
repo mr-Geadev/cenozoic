@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NewsApi } from 'api';
 import { FullNewsComponent } from 'containers/full-news/full-news.component';
@@ -7,7 +8,8 @@ import { FullNewsComponent } from 'containers/full-news/full-news.component';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   declarations: [
     FullNewsComponent,

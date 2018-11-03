@@ -17,6 +17,7 @@ export class FullNewsComponent implements OnInit {
   private id: string = null;
   private currentLang: string = null;
   public currentUser: UserModel = null;
+  public textComment: string = null;
 
   constructor(private activateRoute: ActivatedRoute,
               private newsApi: NewsApi,
@@ -50,6 +51,15 @@ export class FullNewsComponent implements OnInit {
       .subscribe(
         res => this.getNews()
       );
+  }
 
+  sendComment() {
+    this.newsApi.addComent(this.id, this.textComment)
+      .subscribe(
+        res => {
+          this.getNews()
+          this.textComment = '';
+        }
+      );
   }
 }

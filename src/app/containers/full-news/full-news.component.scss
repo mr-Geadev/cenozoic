@@ -150,13 +150,18 @@
         font-family: Roboto;
         font-size: 16px;
         font-weight: 400;
-        color: $black
+        color: $black;
+
+        .time {
+          color: $light-gray;
+          font-size: 13px;
+        }
       }
 
       .text {
         font-size: 16px;
         font-weight: 400;
-        line-height: 28px;
+        line-height: 1.05;
         color: $gray;
       }
     }

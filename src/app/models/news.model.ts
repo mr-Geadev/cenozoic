@@ -1,10 +1,17 @@
 import * as moment from 'moment';
 
 class Comment {
-  creationDate: any = moment(new Date());
-  userId: string = 'adadqemdasdq';
-  userName: string = 'Козлов Георгий';
-  text: string = 'Очень хорошая статья';
+  creationDate: any ;
+  userId: string;
+  userName: string ;
+  text: string;
+
+  constructor(comment) {
+    this.creationDate = moment(comment.creationDate);
+    this.userId = comment.userId;
+    this.userName = comment.userName;
+    this.text = comment.comment;
+  }
 }
 
 export class NewsModel {
@@ -18,7 +25,7 @@ export class NewsModel {
   publicateToNewsPage: boolean;
   text: string;
   userId: string;
-  comments: Comment[];
+  comments: Comment[] = [];
 
   constructor(news) {
     this._id = news._id;
@@ -31,6 +38,8 @@ export class NewsModel {
     this.publicateToNewsPage = news.publicateToNewsPage;
     this.text = news.text;
     this.userId = news.userId;
-    // comments: []
+    news.comments.map(comment => {
+      this.comments.push(new Comment(comment));
+    });
   }
 }
