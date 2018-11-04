@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 
@@ -8,14 +9,18 @@ export class SocketService {
   private host: string = `http://134.0.119.98:4200`;
   private socket: any;
 
-  constructor() {
-    console.log();
-    this.socket = io(this.host, {query: {sessionId: document.cookie} });
-    this.socket.on('connect', () => this.connected());
-    this.socket.on('disconnect', () => this.disconnected());
-    this.socket.on('error', (error: string) => {
-      console.log(`ERROR: "${error}" (${this.host})`);
-    });
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    if (typeof window !== 'undefined') {
+      if (isPlatformBrowser(this.platformId)) {
+        console.log('browser');
+        this.socket = io(this.host, {query: {sessionId: document.cookie} });
+        this.socket.on('connect', () => this.connected());
+        this.socket.on('disconnect', () => this.disconnected());
+        this.socket.on('error', (error: string) => {
+          console.log(`ERROR: "${error}" (${this.host})`);
+        });
+      }
+    }
   }
 
   connect () {
@@ -41,12 +46,17 @@ export class SocketService {
   }
 
   on(event_name) {
-    return new Observable<any>(observer => {
-      this.socket.off(event_name); // Если такое событие уже существует
-      this.socket.on(event_name, (data) => {
-        observer.next(data);
-      });
-    });
+
+    if (typeof window !== 'undefined') {
+      if (isPlatformBrowser(this.platformId)) {
+        return new Observable<any>(observer => {
+          this.socket.off(event_name); // Если такое событие уже существует
+          this.socket.on(event_name, (data) => {
+            observer.next(data);
+          });
+        });
+      }
+    }
   }
 
   // Вызывается при открытии соединения
