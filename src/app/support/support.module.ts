@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { SupportApi } from 'support/support.api';
 import { SupportComponent } from 'support/support.component';
 import { ChatModule } from 'support/chat';
-import { SupportSocketService } from 'support/support.socket.service';
+import { SocketService } from 'services/socket.service';
 import { FormQuestionComponent } from './form-question';
 import { ListQuestionComponent } from './list-question';
 
@@ -31,7 +31,7 @@ const ROUTERS = [
     MatSelectModule,
     ChatModule
   ],
-  providers: [SupportApi, SupportSocketService],
+  providers: [SupportApi, SocketService],
   declarations: [
     SupportComponent,
     FormQuestionComponent,

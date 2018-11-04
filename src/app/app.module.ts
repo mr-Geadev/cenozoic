@@ -32,7 +32,7 @@ import {
   CitiesService,
   ConfirmService,
   LocalizationService,
-  QuestionnaireService,
+  QuestionnaireService, SocketService,
   SystemMessageService,
   UserService,
 } from 'services';
@@ -106,6 +106,7 @@ const ROUTES = [
     ChangeCityService,
     PopupsService,
     QuestionnaireService,
+    SocketService,
 
     // Guards
     BlankAccountGuard,

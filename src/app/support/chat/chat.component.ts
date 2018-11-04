@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { SupportApi } from 'support/support.api';
 import * as moment from 'moment';
-import { LocalizationService } from 'services';
+import { LocalizationService, SocketService } from 'services';
 
 @Component({
   selector: 'chat',
@@ -18,6 +18,7 @@ export class ChatComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
               private faqApi: SupportApi,
+              private socket: SocketService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
@@ -34,6 +35,20 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.updateIssue();
+
+    this.socket.on('new-issue-comment').subscribe(
+      (data) => {
+        console.log('Success in chat', data);
+        if (this.data.id === data.comment.issueId) {
+          this.updateIssue();
+        }
+      },
+      (error) => {
+        console.log('Error', error);
+      },
+      () => {
+        console.log('complete');
+      });
   }
 
   sendMessage() {
