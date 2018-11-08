@@ -6,6 +6,7 @@
 			<mat-icon mat-list-icon>subject</mat-icon>
 
 			<h4 mat-line><b>Заголовок:</b> {{news.title}}</h4>
+			<h4 mat-line><b>Создана: </b> {{ this.news.creationDate.locale(currentLang).format('DD MMMM YYYY') }} </h4>
 			<p mat-line><b>Краткое описание:</b> {{news.shortDescription}}</p>
 			<p mat-line><b>ID создателя:</b> {{news.userId}}</p>
 			<p mat-line>

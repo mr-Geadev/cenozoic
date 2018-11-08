@@ -1,6 +1,6 @@
 <section class="list-news">
 	<div class="container" [class.mainPage]="mainPage">
-		<div class="list" [style.marginLeft]=" -375*offset+'px' ">
+		<div class="list" [style.marginLeft]=" -365*offset+'px' ">
 
 			<a class="news" *ngFor="let news of listNews" [routerLink]="['/news', news._id]">
 				<div class="photo-of-news" [style.backgroundImage]="'url(' + news.photoURL + ')'"></div>

@@ -3,7 +3,7 @@
 
 :host {
   display: block;
-  margin-bottom: 50px;
+  margin-bottom: -5px;
 
   .active {
     display: block !important;
@@ -103,5 +103,10 @@
     .manage .row {
       padding: 20px 0;
     }
+  }
+
+  last-news {
+    margin-top: 50px;
+    display: block;
   }
 }
