@@ -1,0 +1,20 @@
+{
+  "DELETE": "Delete",
+  "COLLAPSE": "Collapse",
+  "SAVE": "Save",
+  "EDIT": "Edit",
+  "YOUR": "Your",
+  "CHANGE_CITY": "Choose a city",
+  "CITY": "City",
+  "CHANGE_CITY_PLACEHOLDER": "Enter the name of the city",
+  "FROM": "from",
+  "TO": "to",
+  "MORE": "Learn More",
+  "NO_DATA": "no data",
+  "WAIT": "Wait",
+  "EURO": "Euro",
+  "DOLLARS": "Dollars",
+  "RUBLES": "Rubles",
+  "RUBLES_SHORT": "rub",
+  "POUNDS": "Pounds"
+}
