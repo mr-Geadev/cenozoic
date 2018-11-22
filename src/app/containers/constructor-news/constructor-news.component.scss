@@ -1,0 +1,194 @@
+@import "colors";
+@import "animations";
+@import "blocks";
+
+:host {
+  .create-vacancy {
+    padding: 50px 0;
+
+    .row.title {
+      color: $black;
+      font-family: "Bebas";
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 2.25rem;
+    }
+
+    .form {
+      padding: 0;
+    }
+
+    .required {
+      color: $dark-orange;
+      display: inline-block;
+      transform: translateY(-3px);
+    }
+
+    input {
+      width: 100%;
+      padding: 8px 0;
+      display: block;
+      border-bottom: 1px solid $light-gray;
+    }
+
+    label, .label {
+      color: #9b9b9b;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 27.99px;
+    }
+
+    .field {
+      margin-top: 30px;
+    }
+
+    .title-news {
+      margin-top: 50px;
+      width: 100%;
+      max-width: 600px;
+
+      input {
+        color: #000000;
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 8px 0;
+      }
+    }
+
+    .add-file {
+      display: flex;
+      align-items: center;
+
+      #load-file {
+        display: none;
+      }
+
+      .add-file-button {
+        width: 200px;
+        height: 46px;
+        border-radius: 5px;
+        border: 1px solid $orange;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: $orange;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 30px;
+
+        @include animation(all);
+        &:hover:not(:disabled) {
+          background-color: $orange;
+          color: $white;
+        }
+      }
+
+      .file-name {
+        margin-left: 20px;
+        color: #9b9b9b;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    .preview-card {
+      .card {
+        display: block;
+        margin-right: 15px;
+        margin-top: 14px;
+        @include card();
+        width: 360px;
+
+        .photo-of-news {
+          height: 267px;
+          background-size: cover;
+          background-position: center;
+
+          &.default {
+            background-image: url('/assets/images/icon-camera.svg');
+            background-size: 200px;
+            background-repeat: no-repeat;
+            background-color: $light-gray;
+          }
+        }
+
+        .info {
+          padding: 34px 30px;
+
+          .title {
+            color: #292b2c;
+            font-family: "Bebas";
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.2;
+            height: 50px;
+            overflow: hidden;
+          }
+
+          .description {
+            margin-top: 28px;
+            width: 100%;
+            height: 120px;
+            color: #292b2c;
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            overflow: hidden;
+          }
+
+          .date {
+            margin-top: 36px;
+            color: #9b9b9b;
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
+
+        &:hover {
+          transform: none;
+        }
+
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .save-button {
+      margin-top: 80px;
+
+      width: 364px;
+      height: 46px;
+      background-color: $orange;
+      border-radius: 3px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: #ffffff;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 30px;
+
+      @include animation(background-color);
+      &:hover:not(:disabled) {
+        background-color: $hover-orange;
+      }
+
+      &:disabled {
+        background-color: $light-gray;
+        cursor: default;
+      }
+    }
+  }
+}

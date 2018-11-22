@@ -10,35 +10,45 @@ import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
 import {
   AccountSettingsPageModule,
-  AuthPageModule, CreateQuestionnairePageModule,
+  AuthPageModule,
+  CreateQuestionnairePageModule,
   CreateResumePageModule,
-  CreateVacancyPageModule, EditQuestionnairePageModule, EditVacancyPageModule,
-  EmailConfirmPageModule,
+  CreateVacancyPageModule, EditNewsPageModule,
+  EditQuestionnairePageModule,
+  EditVacancyPageModule,
+  EmailConfirmPageModule, FaqPageModule, ListNewsPageModule,
   ListResumePageModule,
   ListVacancyPageModule,
-  MainPageModule,
-  PersonalAccountPageModule, QuestionnairePageModule,
+  MainPageModule, NewsFullPageModule,
+  PersonalAccountPageModule,
+  QuestionnairePageModule,
   ResumeFullPageModule,
   VacancyFullPageModule,
 } from 'pages';
+import { ConstructorNewsPageModule } from 'pages/constructor-news-page';
 import { ChangeCityModule, ChangeCityService, ConfirmModule } from 'pop-ups';
 import {
   BlankAccountService,
   CitiesService,
   ConfirmService,
   LocalizationService,
-  QuestionnaireService,
+  QuestionnaireService, SocketService,
   SystemMessageService,
   UserService,
 } from 'services';
 import { PageFooterModule, PageHeaderModule } from './containers';
-import { PopupsService } from "./services/popups.service";
+import { PopupsService } from 'services/popups.service';
 
 const ROUTES = [
   {
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule',
     canActivate: [AdminGuard],
+  },
+  {
+    path: 'support',
+    loadChildren: './support/support.module#SupportModule',
+    canActivate: [LogInGuard],
   },
   { path: '**', redirectTo: '/' },
 ];
@@ -68,6 +78,11 @@ const ROUTES = [
     EditVacancyPageModule,
     QuestionnairePageModule,
     EditQuestionnairePageModule,
+    ConstructorNewsPageModule,
+    NewsFullPageModule,
+    ListNewsPageModule,
+    EditNewsPageModule,
+    FaqPageModule,
 
     // Blocks
     PageHeaderModule,
@@ -91,6 +106,7 @@ const ROUTES = [
     ChangeCityService,
     PopupsService,
     QuestionnaireService,
+    SocketService,
 
     // Guards
     BlankAccountGuard,

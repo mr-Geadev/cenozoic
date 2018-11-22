@@ -6,7 +6,8 @@ export const MENU_LIST = [
     {name: 'Главная', link: './'},
     {name: 'Пользователи', link: 'users'},
     {name: 'Резюме', link: 'resumeList'},
-    {name: 'Настройки', link: 'settings'}
+    {name: 'Настройки', link: 'settings'},
+    {name: 'Новости', link: 'news'}
     // {name: 'Вакансии', link: '#'},
 ];
 

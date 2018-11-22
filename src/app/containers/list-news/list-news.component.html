@@ -1,0 +1,39 @@
+<section class="list-news">
+	<div class="container" [class.mainPage]="mainPage">
+		<div class="list" [style.marginLeft]=" -365*offset+'px' ">
+
+			<a class="news" *ngFor="let news of listNews" [routerLink]="['/news', news._id]">
+				<div class="photo-of-news" [style.backgroundImage]="'url(' + news.photoURL + ')'"></div>
+
+				<div class="info">
+					<div class="title">
+						{{ news.title }}
+					</div>
+
+					<div class="description" >
+						{{ news.shortDescription }}
+					</div>
+
+					<div class="date">
+						{{ this.news.creationDate.locale(currentLang).format('DD MMMM YYYY') }}
+					</div>
+				</div>
+			</a>
+
+			<a *ngIf="user" class="news add" routerLink="/create-news">
+				<div class="inner">
+					<div class="circle">
+						<div class="plus">
+							+
+						</div>
+					</div>
+				</div>
+
+				<div class="more-info add" >
+					Добавить новость
+				</div>
+			</a>
+
+		</div>
+	</div>
+</section>

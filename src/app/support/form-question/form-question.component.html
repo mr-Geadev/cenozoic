@@ -1,0 +1,36 @@
+<div class="support-subtitle">
+	Отправить свой вопрос
+</div>
+
+<form class="send-question" (submit)="createIssue()">
+
+	<div class="field">
+		<label class="field-title support-subtitle" for="change-reason">
+			Выберите одну из причин
+		</label>
+
+		<select id="change-reason" name="change-reason" class="change-reason field-input" [(ngModel)]="issue.category">
+			<option value="Сотрудничество">Сотрудничество</option>
+			<option value="Общие вопросы">Общие вопросы</option>
+			<option value="Проблемы с оплатой">Проблемы с оплатой</option>
+		</select>
+	</div>
+
+	<div class="field">
+		<label class="field-title support-subtitle" for="description">
+			описание (пожалуйста опишите свою проблему подробно)
+		</label>
+
+		<textarea name="description" id="description" class="description"  [(ngModel)]="issue.description"></textarea>
+	</div>
+
+	<div class="field support-read">
+		<input type="checkbox" id="support-is-reading" name="support-is-reading" (value)="true" [(ngModel)]="isReading">
+		<label for="support-is-reading">Я прочитал(а)&nbsp;<a href="/">часто задаваемые воопросы</a></label>
+	</div>
+
+	<button type="submit" class="field send-button" [disabled]="!issue.description || !isReading">
+		Отправить запрос
+	</button>
+
+</form>

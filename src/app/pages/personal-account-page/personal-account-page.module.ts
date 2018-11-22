@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import {
   FilterRespondModule,
-  FullResumeModule,
+  FullResumeModule, ListNewsModule,
   ListQuestionnaireModule,
   ListRespondModule,
   ListResumeModule,
@@ -15,6 +15,7 @@ import {
 } from 'containers';
 import { FilterRespondService } from 'containers/filter-respond';
 import { LogInGuard } from 'guards';
+import { LastNewsModule } from 'pages/main-page/last-news';
 import { LoginModalModule } from 'pop-ups';
 import { QuestionnairesApi, RespondsApi } from '../../api';
 import { PersonalAccountPageComponent } from './personal-account-page.component';
@@ -45,7 +46,9 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     ListVacancyModule,
     FullResumeModule,
     ListRespondModule,
-    FilterRespondModule
+    ListNewsModule,
+    FilterRespondModule,
+    LastNewsModule
   ],
   providers: [RespondsApi, QuestionnairesApi],
   exports: [PersonalAccountPageComponent],

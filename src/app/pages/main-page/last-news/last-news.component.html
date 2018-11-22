@@ -4,49 +4,20 @@
             Новости
         </div>
         <div class="list row">
-            <a href="#" class="item">
-                <img src="/assets/images/news-image.png">
-                <div class="description">
-                    <div class="title">США свернули нефтедобычу в Мексиканском заливе</div>
-                    <p class="text">Приближение тропического урагана «Нэйт» вынудило американских нефтепроизводителей
-                        сократить производство углеводородов практически до нуля, об этом сообщило Бюро по...
-                        безопасности и охране окружающей среды США.</p>
-                    <div class="date">23 сен 2017</div>
-                </div>
-            </a>
-            <a href="#" class="item">
-                <img src="/assets/images/news-image.png">
-                <div class="description">
-                    <div class="title">США свернули нефтедобычу в Мексиканском заливе</div>
-                    <p class="text">Приближение тропического урагана «Нэйт» вынудило американских нефтепроизводителей
-                        сократить производство углеводородов практически до нуля, об этом сообщило Бюро по...
-                        безопасности и охране окружающей среды США.</p>
-                    <div class="date">23 сен 2017</div>
-                </div>
-            </a>
-            <a href="#" class="item">
-                <img src="/assets/images/news-image.png">
-                <div class="description">
-                    <div class="title">США свернули нефтедобычу в Мексиканском заливе</div>
-                    <p class="text">Приближение тропического урагана «Нэйт» вынудило американских нефтепроизводителей
-                        сократить производство углеводородов практически до нуля, об этом сообщило Бюро по...
-                        безопасности и охране окружающей среды США.</p>
-                    <div class="date">23 сен 2017</div>
-                </div>
-            </a>
+            <list-news [offset]="offset" [mainPage]="true"></list-news>
         </div>
         <div class="row manage">
             <div class="steps">
-                <div class="step active"></div>
-                <div class="step"></div>
-                <div class="step"></div>
+                <div (click)="setOffset(0)" class="step" [class.active]="offset === 0"></div>
+                <div (click)="setOffset(3)" class="step" [class.active]="offset === 3"></div>
+                <div (click)="setOffset(6)" class="step" [class.active]="offset === 6"></div>
             </div>
             <div class="arrows">
-                <img class="prev" src="/assets/images/orange-arrow-prev.svg">
-                <img class="next" src="/assets/images/orange-arrow-next.svg">
+                <img class="prev" src="/assets/images/orange-arrow-prev.svg" (click)="removeOffset()">
+                <img class="next" src="/assets/images/orange-arrow-next.svg" (click)="addOffset()">
             </div>
             <a class="see-all" href="#">
-                Подписаться<img src="/assets/images/arrow-orange.svg"/>
+                <!--Подписаться<img src="/assets/images/arrow-orange.svg"/>-->
             </a>
         </div>
     </div>

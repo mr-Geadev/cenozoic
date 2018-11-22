@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="filters">
+		<div class="search-field">
+			<input type="text" name="search" placeholder="Я ищу..." [(ngModel)]="searchInput">
+			<button class="button-search" (click)="setFilter()">
+				Искать
+			</button>
+		</div>
+
+		<div class="order">
+			<mat-form-field>
+				<mat-select form="test" name="education" placeholder="По дате добавления"
+										(change)="setFilter()"
+										[(ngModel)]="order">
+					<mat-option value="line">Сначала новые</mat-option>
+					<mat-option value="reverse">Сначала старые</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+
+	<list-news [newsPage]="true" [searchString]="searchSubmit" [reverse]="order === 'reverse'"></list-news>
+</div>

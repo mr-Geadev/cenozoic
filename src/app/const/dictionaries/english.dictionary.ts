@@ -57,7 +57,7 @@ export const ENGLISH_DICTIONARY = {
   FOR_CANDIDATES: 'Vacancies',
   FOR_EMPLOYER: 'СV',
   FOR_PARTNERSHIPS: 'For partnerships',
-  SUPPORT: 'Support',
+  SUPPORT: 'FAQ',
   ACCOUNT: 'Account',
   PERSONAL_ACCOUNT_WORKER: 'Applicant\'s personal office',
   PERSONAL_ACCOUNT_EMPLOYER: 'Employer\'s private office',
@@ -147,6 +147,7 @@ export const ENGLISH_DICTIONARY = {
   ACCOUNT_PAGE_TAB_OFFERS: 'Invitations',
   ACCOUNT_PAGE_TAB_ARCHIVE: 'Archive',
   ACCOUNT_PAGE_TAB_QUESTIONNAIRES: 'Questionnaires',
+  ACCOUNT_PAGE_TAB_NEWS: 'News',
   ACCOUNT_PAGE_TAB_CV: 'CV',
   ACCOUNT_PAGE_TAB_CAREERS: 'Careers',
 
@@ -156,6 +157,7 @@ export const ENGLISH_DICTIONARY = {
   ACCOUNT_PAGE_TAB_OFFERS_DESC_EMPLOYER: 'This section shows the sentences you sent to the candidates',
   ACCOUNT_PAGE_TAB_ARCHIVE_DESC: 'This section contains your old responses/invitations.',
   ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC: 'This section shows all your questionnaires. You can view and edit the desired by clicking on it',
+  ACCOUNT_PAGE_TAB_NEWS_DESC: 'В этом разделе показаны все ваши новости. Вы можежет просмотреть и отредактировать нужную, кликнув по ней',
   ACCOUNT_PAGE_TAB_CV_DESC: 'This section shows all your CVs. You can view and edit CV by clicking on it.',
   ACCOUNT_PAGE_TAB_CAREERS_DESC: 'This section shows all your jobs. You can view and edit the desired one by clicking on it',
 

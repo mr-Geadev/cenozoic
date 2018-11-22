@@ -1,0 +1,42 @@
+<div class="chat-layout">
+
+	<div class="header">
+		Чат техподдержки
+		<img class="close" src="/assets/images/icon-white-cross.svg" (click)="closeChat()"/>
+	</div>
+
+	<div class="chat-window">
+
+		<div class="message" *ngFor="let comment of comments">
+			<div class="info">
+				<img class="avatar" *ngIf="comment.creator !== 'user'" src="/assets/images/support-user-icon.svg" />
+				<img class="avatar" *ngIf="comment.creator === 'user'" src="/assets/images/default-user.svg" />
+
+				<div class="name-and-data">
+					<div class="name">
+						{{ comment.creator === 'user' ? 'Вы' : '	Агент поддержки'}}
+					</div>
+
+					<div class="time">
+						{{ timeCreation(comment.creationDate) }}
+					</div>
+				</div>
+			</div>
+
+			<div class="message-text">
+				{{ comment.comment }}
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<form class="send-message" (submit)="sendMessage()" >
+		<input type="text" name="message" [(ngModel)]="newMessage">
+		<button type="submit">
+			Отправить
+		</button>
+	</form>
+
+</div>

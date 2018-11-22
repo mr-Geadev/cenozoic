@@ -57,7 +57,7 @@ export const RUSSIAN_DICTIONARY = {
   FOR_CANDIDATES: 'Вакансии',
   FOR_EMPLOYER: 'Резюме',
   FOR_PARTNERSHIPS: 'Сотрудничество',
-  SUPPORT: 'Поддержка',
+  SUPPORT: 'FAQ',
   ACCOUNT: 'Личный кабинет',
   PERSONAL_ACCOUNT_WORKER: 'Личный кабинет соискателя',
   PERSONAL_ACCOUNT_EMPLOYER: 'Личный кабинет работодателя',
@@ -147,6 +147,7 @@ export const RUSSIAN_DICTIONARY = {
   ACCOUNT_PAGE_TAB_OFFERS: 'Предложения',
   ACCOUNT_PAGE_TAB_ARCHIVE: 'Архив',
   ACCOUNT_PAGE_TAB_QUESTIONNAIRES: 'Опросные листы',
+  ACCOUNT_PAGE_TAB_NEWS: 'Новости',
   ACCOUNT_PAGE_TAB_CV: 'Резюме',
   ACCOUNT_PAGE_TAB_CAREERS: 'Вакансии',
 
@@ -156,6 +157,7 @@ export const RUSSIAN_DICTIONARY = {
   ACCOUNT_PAGE_TAB_OFFERS_DESC_EMPLOYER: 'В этом разделе показаны предложения которые вы отправили кандидатам',
   ACCOUNT_PAGE_TAB_ARCHIVE_DESC: 'В этом разделе содержатся ваши старые отклики/предложения',
   ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC: 'В этом разделе показаны все ваши опросные листы. Вы можежет просмотреть и отредактировать нужное, кликнув по нему',
+  ACCOUNT_PAGE_TAB_NEWS_DESC: 'В этом разделе показаны все ваши новости. Вы можежет просмотреть и отредактировать нужную, кликнув по ней',
   ACCOUNT_PAGE_TAB_CV_DESC: 'В этом разделе показаны все ваши резюме. Вы можежет просмотреть и отредактировать нужное, кликнув по нему',
   ACCOUNT_PAGE_TAB_CAREERS_DESC: 'В этом разделе показаны все ваши вакансии. Вы можежет просмотреть и отредактировать нужную, кликнув по нему',
 

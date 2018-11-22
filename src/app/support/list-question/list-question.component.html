@@ -1,0 +1,36 @@
+<div class="question" *ngFor="let issue of list">
+
+	<div class="field">
+		<div class="label">
+			Категория:
+		</div>
+		<div class="value">
+			{{issue.category}}
+		</div>
+	</div>
+
+	<div class="field">
+		<div class="label">
+			Описание проблемы:
+		</div>
+		<div class="value">
+			{{issue.description}}
+		</div>
+	</div>
+
+	<div class="info">
+		<div class="time">
+			{{ timeCreation(issue.creationDate) }}
+		</div>
+		<div class="status">
+			{{issue.status}}
+		</div>
+	</div>
+
+	<div class="button-container">
+		<button class="open-chat" (click)="openChat(issue._id)">
+			Перейти в чат с оператором
+		</button>
+	</div>
+
+</div>

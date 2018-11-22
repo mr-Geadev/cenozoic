@@ -3,7 +3,7 @@
 
 @mixin card($add-card: false) {
   width: 262px;
-  box-shadow: 1px 0 1.875rem rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 0 1rem rgba(0, 0, 0, 0.15);
   position: relative;
   background-color: $white;
   @include animation(transform);
