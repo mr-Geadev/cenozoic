@@ -10,6 +10,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
 } from '@angular/material';
+import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news';
 import { NewsApi } from 'api';
 
@@ -23,7 +24,8 @@ import { ItemUserComponent } from './pages/users/item-user/item-user.component';
 import { UsersApi } from './pages/users/users.api';
 import { UsersComponent } from './pages/users/users.component';
 import { SettingsComponent } from './pages/settings/settings.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LocalizationApi } from '../api/localization.api';
 
 @NgModule({
   imports: [
@@ -31,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    FormsModule,
 
     // material
     MatDialogModule,
@@ -54,6 +57,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SettingsComponent,
     MainComponent,
     UsersComponent,
+    LocalizationComponent,
 
     // containers
     ItemUserComponent,
@@ -63,6 +67,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     UsersApi,
     NewsApi,
     AdminResumeApi,
+    LocalizationApi,
   ],
 })
 export class AdminModule {

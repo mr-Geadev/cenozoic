@@ -7,7 +7,8 @@ export const MENU_LIST = [
     {name: 'Пользователи', link: 'users'},
     {name: 'Резюме', link: 'resumeList'},
     {name: 'Настройки', link: 'settings'},
-    {name: 'Новости', link: 'news'}
+    {name: 'Новости', link: 'news'},
+    {name: 'Локализация', link: 'localization'}
     // {name: 'Вакансии', link: '#'},
 ];
 

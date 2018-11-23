@@ -1,0 +1,71 @@
+@import "colors";
+@import "animations";
+
+:host {
+
+  caption {
+    text-align: left;
+    padding: 20px 0;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  tr {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .key {
+    width: 250px;
+  }
+
+  td, th {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 0;
+  }
+
+  input {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding: 5px;
+    background-color: #dadada;
+
+    &:hover, &:focus {
+      background-color: #bababa;
+    }
+  }
+
+  .send-button {
+    margin-top: 80px;
+
+    width: 364px;
+    height: 46px;
+    background-color: $orange;
+    border-radius: 3px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+
+    @include animation(background-color);
+    &:hover:not(:disabled) {
+      background-color: $hover-orange;
+    }
+
+    &:disabled {
+      background-color: $light-gray;
+      cursor: default;
+    }
+  }
+
+}

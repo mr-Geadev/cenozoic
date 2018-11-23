@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news/news.component';
 import { AdminGuard } from '../guards';
 import { AdminComponent } from './admin.component';
@@ -28,6 +29,9 @@ const routes: Routes = [
       },
       {
         path: 'news', component: NewsComponent,
+      },
+      {
+        path: 'localization', component: LocalizationComponent,
       },
     ],
   },
