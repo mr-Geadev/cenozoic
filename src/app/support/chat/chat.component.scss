@@ -58,7 +58,7 @@
       width: 100%;
       padding-bottom: 10px;
       border-bottom: 1px solid $light-gray;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
 
       &:last-child {
         border-bottom: none;
@@ -71,8 +71,7 @@
         align-items: center;
 
         .avatar {
-          width: 52px;
-          height: 52px;
+          width: 30px;
 
           margin-right: 13px;
         }
@@ -100,7 +99,7 @@
       }
 
       .message-text {
-        margin-top: 20px;
+        margin-top: 10px;
         width: 100%;
         color: #000000;
         font-family: Roboto;

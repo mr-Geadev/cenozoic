@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { SupportApi } from 'support/support.api';
 import * as moment from 'moment';
@@ -11,7 +11,7 @@ import { LocalizationService, SocketService } from 'services';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewChecked {
 
   comments = [];
   newMessage = '';
@@ -29,7 +29,9 @@ export class ChatComponent implements OnInit {
   public updateIssue() {
     this.faqApi.getOneIssue(this.data.id)
       .subscribe(
-        res => { this.comments = res['issue'].comments; },
+        res => {
+          this.comments = res['issue'].comments;
+        },
       );
   }
 
@@ -51,9 +53,13 @@ export class ChatComponent implements OnInit {
       });
   }
 
+  ngAfterViewChecked() {
+    this.scroll();
+  }
+
   sendMessage() {
     this.faqApi.sendMessage(this.data.id, this.newMessage)
-      .subscribe( (res) => {
+      .subscribe((res) => {
         this.updateIssue();
         this.newMessage = '';
       });
@@ -62,5 +68,10 @@ export class ChatComponent implements OnInit {
   public timeCreation(time) {
     const local = LocalizationService.currentLang();
     return moment(time).locale(local).format('HH:mm, DD MMMM  YYYY');
+  }
+
+  scroll() {
+    const el = document.getElementById('chat-window');
+    el.scrollTop = el.scrollHeight;
   }
 }
