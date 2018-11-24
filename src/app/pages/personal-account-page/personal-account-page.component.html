@@ -8,6 +8,21 @@
 				dictionary.PERSONAL_ACCOUNT_EMPLOYER }}
 			</div>
 
+			<div class="paid-options" *ngIf="this.typeCurrentUser === 'employer'">
+				<div class="small-title">
+					Доступно:
+				</div>
+				<div class="parameter">
+					Вакансий: <b>{{currentUser.paidOptions.countPossibleCreateVacancy}}</b> <span class="pay">+</span>
+				</div>
+				<div class="parameter">
+					Рекламных баннеров: <b>{{currentUser.paidOptions.countPossibleCreateBanner}}</b> <span class="pay">+</span>
+				</div>
+				<div class="parameter">
+					Просмотров резюме: <b>{{currentUser.paidOptions.countPossibleViewResumeContacts}}</b> <span class="pay">+</span>
+				</div>
+			</div>
+
 			<ul class="list">
 
 				<li class="item">

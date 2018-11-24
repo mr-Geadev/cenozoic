@@ -1,6 +1,8 @@
 export class VacancyModel {
   _id: null;
-  userId: string = null
+  userId: string = null;
+
+  status: number = 0;
 
   answered: boolean = false;
   title: null;
@@ -51,6 +53,7 @@ export class VacancyModel {
     this.userId = vacancy.userId || null;
     this.title = vacancy.title || null;
     this.currency = vacancy.currency || null;
+    this.status = vacancy.status || null;
 
     this.salaryGROSS = vacancy.salaryGROSS || {
       from: 0,

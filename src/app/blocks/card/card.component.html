@@ -1,6 +1,15 @@
 <a class="wrapper" *ngIf="!respond && !questionnaire"
 	   routerLink="{{addRoute() || viewRoute()}}">
 
+	<div
+		*ngIf="vacancy && vacancy.status === 3"
+		class="timeout"
+	>
+		<div class="timeout-label">
+			Срок размещения истек
+		</div>
+	</div>
+
 	<resume-view
 			*ngIf="resume || (respond && typeUser === 'employer')"
 			[resume]="respond ? respond.resume : resume"

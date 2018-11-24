@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { VacancyApi } from 'api';
 import { UserModel } from 'models';
 
-import { LocalizationService, ResumeService, UserService } from 'services';
+import { ConfirmService, LocalizationService, ResumeService, UserService } from 'services';
 import { PopupsService } from '../../services/popups.service';
 import { FullVacancyService } from './full-vacancy.service';
 import { CitiesService } from 'services';
@@ -26,6 +27,8 @@ export class FullVacancyComponent implements OnInit {
               private _localizationService: LocalizationService,
               private vacancyApi: VacancyApi,
               public responds: PopupsService,
+              private confirmService: ConfirmService,
+              private _dialog: MatDialog,
               private userService: UserService,
               public citiesService: CitiesService,
               private activateRoute: ActivatedRoute) {
@@ -65,6 +68,24 @@ export class FullVacancyComponent implements OnInit {
     }
 
     return answer.join(', ');
+  }
+
+  public activateVacancy() {
+    if (this.user.paidOptions.countPossibleCreateVacancy) {
+      const confirm = this.confirmService.confirm('Вы хотите продлить размещение вакансии?')
+        .subscribe((res) => {
+          if (res) {
+            this.vacancyApi.activateVacancy(this.id)
+              .subscribe(() => {
+                this.vacancyApi.getVacancyById(this.id);
+                confirm.unsubscribe();
+              });
+          }
+          this._dialog.closeAll();
+        });
+    } else {
+      // cюда открытие модалки
+    }
   }
 
 }

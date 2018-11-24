@@ -4,7 +4,7 @@ import { CREATE_VACANCY, EDIT_VACANCY, GET_VACANCY_BY_ID } from 'const';
 import { RespondModel, VacancyModel } from 'models';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { LocalizationService } from 'services';
+import { LocalizationService, SystemMessageService, UserService } from 'services';
 
 @Injectable()
 export class VacancyApi {
@@ -16,7 +16,9 @@ export class VacancyApi {
     this.viewedVacancy.next(vacancy);
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private userService: UserService,
+              private messages: SystemMessageService) {
   }
 
   public getUserVacancy(): Observable<any> {
@@ -32,7 +34,8 @@ export class VacancyApi {
     return this.http.post(CREATE_VACANCY, {'vacancy': this.transformVacancy(vacancy)})
       .map(
         (res) => {
-          res['success'];
+          this.userService.getUserInfo();
+          return res['success'];
         },
         (err) => err
       );
@@ -41,8 +44,18 @@ export class VacancyApi {
   public editVacancy(vacancy: any, vacancyId: string): Observable<any> {
     return this.http.post(EDIT_VACANCY, { vacancyId, 'vacancy': this.transformVacancy(vacancy)})
       .map(
+        (res) => res['success'],
+        (err) => err
+      );
+  }
+
+  public activateVacancy(vacancyId: string): Observable<any> {
+    return this.http.get(`/api/v1/employer/vacancy/time-out/activate?vacancyId=${vacancyId}`)
+      .map(
         (res) => {
-          res['success'];
+          this.messages.info('Вакансия продлена');
+          this.userService.getUserInfo();
+          return res['success'];
         },
         (err) => err
       );
@@ -64,6 +77,6 @@ export class VacancyApi {
   }
 
   public getNationalities(): Observable<any> {
-    return this.http.get('/assets/json/nationalities.json')
+    return this.http.get('/assets/json/nationalities.json');
   }
 }

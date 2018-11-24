@@ -6,6 +6,8 @@
 			<div class="city gray text">{{currentVacancy.companyName}}</div>
 			<div class="page-title">{{currentVacancy.title}}</div>
 
+			<div class="vacancy-disactive" *ngIf="currentVacancy.status === 3">Данная вакансия более не активна</div>
+
 			<div class="salary"><span>от <b>{{currentVacancy.salaryGROSS.from}} до {{currentVacancy.salaryGROSS.to}} {{currentVacancy.currency === "rubles" ? "₽" : "$" }}</b></span>
 			</div>
 
@@ -93,6 +95,10 @@
 				<a class="button" routerLink="/edit-vacancy">
 					{{dictionary.EDIT}}
 				</a>
+
+				<button (click)="activateVacancy()" class="button" *ngIf="currentVacancy.status === 3">
+					Продлить
+				</button>
 			</ng-container>
 
 

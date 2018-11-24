@@ -5,6 +5,27 @@
 :host {
   @include card();
 
+  .timeout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .2);
+
+    .timeout-label {
+      background-color: $orange;
+      width: 100%;
+      height: 40px;
+      color: white;
+      font-family: Roboto;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   .wrapper.not-link {
     cursor: default;
   }
