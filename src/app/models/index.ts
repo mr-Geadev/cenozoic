@@ -4,3 +4,4 @@ export * from './user.model';
 export * from './respond.model';
 export * from './questionnaire.model';
 export * from './news.model';
+export * from './banner.model';

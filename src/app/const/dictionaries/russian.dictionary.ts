@@ -148,6 +148,7 @@ export const RUSSIAN_DICTIONARY = {
   ACCOUNT_PAGE_TAB_ARCHIVE: 'Архив',
   ACCOUNT_PAGE_TAB_QUESTIONNAIRES: 'Опросные листы',
   ACCOUNT_PAGE_TAB_NEWS: 'Новости',
+  ACCOUNT_PAGE_TAB_BANNERS: 'Баннеры',
   ACCOUNT_PAGE_TAB_CV: 'Резюме',
   ACCOUNT_PAGE_TAB_CAREERS: 'Вакансии',
 
@@ -158,6 +159,7 @@ export const RUSSIAN_DICTIONARY = {
   ACCOUNT_PAGE_TAB_ARCHIVE_DESC: 'В этом разделе содержатся ваши старые отклики/предложения',
   ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC: 'В этом разделе показаны все ваши опросные листы. Вы можежет просмотреть и отредактировать нужное, кликнув по нему',
   ACCOUNT_PAGE_TAB_NEWS_DESC: 'В этом разделе показаны все ваши новости. Вы можежет просмотреть и отредактировать нужную, кликнув по ней',
+  ACCOUNT_PAGE_TAB_BANNERS_DESC: 'В этом разделе показаны все ваши баннеры. Вы можежет просмотреть и отредактировать нужный, кликнув по ней',
   ACCOUNT_PAGE_TAB_CV_DESC: 'В этом разделе показаны все ваши резюме. Вы можежет просмотреть и отредактировать нужное, кликнув по нему',
   ACCOUNT_PAGE_TAB_CAREERS_DESC: 'В этом разделе показаны все ваши вакансии. Вы можежет просмотреть и отредактировать нужную, кликнув по нему',
 

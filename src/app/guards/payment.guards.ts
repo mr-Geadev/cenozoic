@@ -24,7 +24,22 @@ export class PaymentGuards implements CanActivate {
           return true;
         }
         this.router.navigate(['/personal-account']);
-        this.payingModalService.openBuyModal('vacancy');
+
+        let modal = null;
+
+        switch (typePayment) {
+          case 'countPossibleCreateVacancy':
+            modal = 'vacancy';
+            break;
+          case 'countPossibleCreateBanner':
+            modal = 'banner';
+            break;
+          default:
+            modal = 'resume';
+            break;
+        }
+
+        this.payingModalService.openBuyModal(modal);
         return false;
       });
   }

@@ -11,7 +11,7 @@ import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerG
 import { PaymentGuards } from 'guards/payment.guards';
 import {
   AccountSettingsPageModule,
-  AuthPageModule,
+  AuthPageModule, ConstructorBannerPageModule,
   CreateQuestionnairePageModule,
   CreateResumePageModule,
   CreateVacancyPageModule, EditNewsPageModule,
@@ -84,6 +84,7 @@ const ROUTES = [
     ListNewsPageModule,
     EditNewsPageModule,
     FaqPageModule,
+    ConstructorBannerPageModule,
 
     // Blocks
     PageHeaderModule,

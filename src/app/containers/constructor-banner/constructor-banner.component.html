@@ -1,0 +1,108 @@
+<div class="create-vacancy">
+	<div class="container">
+		<div class="row title">
+			Создание баннера
+		</div>
+
+		<div class="row" *ngIf="banner">
+			<form class="col-8  form" [formGroup]="banner">
+
+				<div class="field title-banner">
+					<label
+						for="title-banner"
+						class="title-banner"
+					>
+						Название баннера <span class="required">*</span>
+					</label>
+					<input
+						id="title-banner"
+						type="text"
+						class="title-banner-input"
+						formControlName="title"
+					>
+				</div>
+
+				<div class="field">
+					<label
+						for="short-description"
+						class="short-description"
+					>
+						Краткое описание баннера <span class="required">*</span>
+					</label>
+					<input
+						id="short-description"
+						type="text"
+						class="short-description-input"
+						formControlName="shortDescription"
+					>
+				</div>
+
+				<div class="field">
+					<label
+						for="name-questionnaire"
+						class="name-questionnaire"
+					>
+						Текст баннера <span class="required">*</span>
+					</label>
+					<editor [init]="textEditorConfig"
+									[(ngModel)]="textBanner"
+									[ngModelOptions]="{standalone: true}"
+					></editor>
+				</div>
+
+				<div class="field">
+					<div class="label">
+						Обложка баннера <span class="required">*</span>
+					</div>
+
+					<div class="add-file">
+						<input (change)="addFile($event)" id="load-file" type="file" size="0"
+									 accept="image/*,image/jpeg,image/png,image/gif">
+						<label class="add-file-button" for="load-file">
+							Прикрепите файл
+						</label>
+						<div class="file-name">
+							{{ nameOfFile || 'Форматы: PNG, JPG или GIF”. Предпочитаемый размер: 2 MB' }}
+						</div>
+					</div>
+				</div>
+
+				<button class="save-button" *ngIf="!edit" (click)="save()"
+								[disabled]="!banner.value.title || !banner.value.shortDescription || !textBanner || !fileToUpload.data ">
+					Сохранить баннера
+				</button>
+
+				<button class="save-button" *ngIf="edit" (click)="save()"
+								[disabled]="!banner.value.title || !banner.value.shortDescription || !textBanner ">
+					Сохранить баннера
+				</button>
+			</form>
+
+			<div class="col-3 offset-1 preview-card">
+				<h2>Так будет выглядеть баннер в общем списке</h2>
+
+				<div class="card">
+					<div class="photo-of-banner" *ngIf="!fileToUpload.data && photoUrl"
+							 [style.backgroundImage]="'url(' + photoUrl + ')'"></div>
+					<div class="photo-of-banner" *ngIf="fileToUpload.data"
+							 [style.backgroundImage]="'url(' + fileToUpload.data + ')'"></div>
+					<div class="photo-of-banner default" *ngIf="!fileToUpload.data  && !edit"></div>
+					<div class="info">
+						<div class="title">
+							{{ banner.value.title }}
+						</div>
+
+						<div class="description">
+							{{ banner.value.shortDescription }}
+						</div>
+
+						<div class="date">
+							{{ currentDate.locale(currentLang).format('DD MMMM YYYY') }}
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

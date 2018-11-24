@@ -1,0 +1,39 @@
+<section class="list-banner">
+	<div class="container">
+		<div class="list">
+
+			<a class="banner" *ngFor="let banner of listBanner" [routerLink]="['/banner', banner._id]">
+				<div class="photo-of-banner" [style.backgroundImage]="'url(' + banner.photoURL + ')'"></div>
+
+				<div class="info">
+					<div class="title">
+						{{ banner.title }}
+					</div>
+
+					<div class="description" >
+						{{ banner.shortDescription }}
+					</div>
+
+					<div class="date">
+						{{ this.banner.creationDate.locale(currentLang).format('DD MMMM YYYY') }}
+					</div>
+				</div>
+			</a>
+
+			<a *ngIf="user" class="banner add" routerLink="/create-banner">
+				<div class="inner">
+					<div class="circle">
+						<div class="plus">
+							+
+						</div>
+					</div>
+				</div>
+
+				<div class="more-info add" >
+					Добавить баннер
+				</div>
+			</a>
+
+		</div>
+	</div>
+</section>

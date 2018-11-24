@@ -5,3 +5,4 @@ export * from './questionnaires.api';
 export * from './news.api';
 export * from './localization.api';
 export * from './payment.api';
+export * from './banner.api';

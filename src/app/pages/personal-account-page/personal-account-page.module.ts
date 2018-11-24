@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import {
   FilterRespondModule,
-  FullResumeModule, ListNewsModule,
+  FullResumeModule, ListBannerModule, ListNewsModule,
   ListQuestionnaireModule,
   ListRespondModule,
   ListResumeModule,
@@ -48,7 +48,8 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     ListRespondModule,
     ListNewsModule,
     FilterRespondModule,
-    LastNewsModule
+    LastNewsModule,
+    ListBannerModule
   ],
   providers: [
     RespondsApi,
