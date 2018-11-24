@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
+import { PaymentGuards } from 'guards/payment.guards';
 import {
   AccountSettingsPageModule,
   AuthPageModule,
@@ -114,6 +115,7 @@ const ROUTES = [
     LogInGuard,
     NotEmployerGuard,
     NotWorkerGuard,
+    PaymentGuards
   ],
   bootstrap: [AppComponent],
 })

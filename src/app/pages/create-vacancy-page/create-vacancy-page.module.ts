@@ -3,6 +3,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { PaymentGuards } from 'guards/payment.guards';
 import {LogInGuard, NotWorkerGuard} from '../../guards';
 import {BlankAccountGuard} from '../../guards/blank-account.guard';
 
@@ -20,7 +21,8 @@ import {ConstructorVacancyModule} from '../../containers/constructor-vacancy';
                 path: 'create-vacancy',
                 component: CreateVacancyPageComponent,
                 pathMatch: 'full',
-                canActivate: [LogInGuard, NotWorkerGuard, BlankAccountGuard]
+                canActivate: [LogInGuard, NotWorkerGuard, BlankAccountGuard, PaymentGuards],
+                data: { type: 'countPossibleCreateVacancy'}
             },
         ]),
         CommonModule,

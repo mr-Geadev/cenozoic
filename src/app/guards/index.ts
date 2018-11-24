@@ -3,3 +3,4 @@ export * from './admin.guard';
 export * from './login.guard';
 export * from './not-employer.guard';
 export * from './not-worker.guard';
+export * from './payment.guards';
