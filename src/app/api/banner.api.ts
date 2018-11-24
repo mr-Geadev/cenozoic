@@ -54,4 +54,12 @@ export class BannerApi {
       }
     });
   }
+
+  getListAdminBanner(): Observable<any> {
+    return this.http.post('/api/v1/banners/get/all', {
+      limit: 100,
+      filter: {
+      }
+    });
+  }
 }

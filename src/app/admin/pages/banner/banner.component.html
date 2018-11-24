@@ -1,0 +1,34 @@
+<mat-card>
+	<mat-list *ngIf="listBanners">
+		<h3 mat-subheader>Список всех баннеров</h3>
+
+		<mat-list-item *ngFor="let banner of listBanners; let i = index;">
+			<mat-icon mat-list-icon>subject</mat-icon>
+
+			<h4 mat-line><b>Заголовок:</b> {{banner.title}}</h4>
+			<h4 mat-line><b>Создан: </b> {{ this.banner.creationDate.locale(currentLang).format('DD MMMM YYYY') }} </h4>
+			<p mat-line><b>Краткое описание:</b> {{banner.shortDescription}}</p>
+			<p mat-line><b>ID создателя:</b> {{banner.userId}}</p>
+			<p mat-line>
+				<b>Статус</b>
+				<ng-container *ngIf="!banner.publicate">
+					На рассмотрении
+				</ng-container>
+				<ng-container *ngIf="banner.publicate">
+					Опубликовано
+				</ng-container>
+			</p>
+
+			<button mat-mini-fab color="primary">
+				<a href="/banner/{{banner._id}}" target="_blank" color="white">
+					<mat-icon aria-label="iExample icon-button with a heart con">open_in_new</mat-icon>
+				</a>
+			</button>
+
+			<!--<button mat-mini-fab color="primary" (click)="deleteCurrentResume(banner._id, resume.userId)">-->
+			<!--<mat-icon aria-label="iExample icon-button with a heart con">delete</mat-icon>-->
+			<!--</button>-->
+		</mat-list-item>
+
+	</mat-list>
+</mat-card>

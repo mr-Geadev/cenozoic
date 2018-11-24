@@ -8,7 +8,8 @@ export const MENU_LIST = [
     {name: 'Резюме', link: 'resumeList'},
     {name: 'Настройки', link: 'settings'},
     {name: 'Новости', link: 'news'},
-    {name: 'Локализация', link: 'localization'}
+    {name: 'Локализация', link: 'localization'},
+    {name: 'Баннеры', link: 'banners'}
     // {name: 'Вакансии', link: '#'},
 ];
 

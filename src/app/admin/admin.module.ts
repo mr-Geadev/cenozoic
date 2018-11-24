@@ -10,6 +10,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
 } from '@angular/material';
+import { BannerComponent } from 'admin/pages/banner/banner.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news';
 import { NewsApi } from 'api';
@@ -58,6 +59,7 @@ import { LocalizationApi } from '../api/localization.api';
     MainComponent,
     UsersComponent,
     LocalizationComponent,
+    BannerComponent,
 
     // containers
     ItemUserComponent,
