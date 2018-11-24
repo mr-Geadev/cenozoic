@@ -21,6 +21,8 @@ export class FullResumeComponent implements OnInit {
   private id: string = null;
   public nationalitiesDefault: any[] = null;
 
+  public showContactData: boolean = false;
+
   constructor(public resumeService: ResumeService,
               public resumeApi: ResumeApi,
               public userService: UserService,
@@ -137,5 +139,9 @@ export class FullResumeComponent implements OnInit {
     }
 
     return answer.join(', ');
+  }
+
+  showContact() {
+    this.showContactData = true;
   }
 }

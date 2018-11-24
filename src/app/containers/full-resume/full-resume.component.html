@@ -324,7 +324,7 @@
                     </td>
                 </tr>
 
-                <tr>
+                <tr *ngIf="currentUser && currentUser.typeAccount === 'employer' && showContactData">
                     <td class="time-work">
                         <div class="text gray">E-mail:</div>
                     </td>
@@ -333,7 +333,7 @@
                     </td>
                 </tr>
 
-                <tr>
+                <tr *ngIf="showContactData">
                     <td class="time-work">
                         <div class="text gray">{{dictionary.PHONE}}:</div>
                     </td>
@@ -342,6 +342,11 @@
                     </td>
                 </tr>
             </table>
+
+            <div class="button" (click)="showContact()"
+                 *ngIf="currentUser && currentUser.typeAccount === 'employer' && !showContactData">
+                Показать контактные данные
+            </div>
         </div>
     </div>
 </div>
