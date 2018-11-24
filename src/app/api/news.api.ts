@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { SystemMessageService } from 'services';
+import 'rxjs-compat/add/operator/share';
 
 @Injectable()
 export class NewsApi {
@@ -123,5 +124,19 @@ export class NewsApi {
     };
 
     return this.http.post('/api/v1/admin/news/publish', { publishInfo: body });
+  }
+
+  removeNews(id: string): Observable<any> {
+    return this.http.get(`/api/v1/employer/news/remove?newsId=${id}`)
+      .map(res => {
+        this.messages.info('Новость удалена');
+      });
+  }
+
+  removeComment(newsId: string, indexComment: number): Observable<any> {
+    return this.http.get(`/api/v1/admin/news/comment/remove?newsId=${newsId}&commentId=${indexComment}`)
+      .map(res => {
+        this.messages.info('Комментарий удален');
+      });
   }
 }

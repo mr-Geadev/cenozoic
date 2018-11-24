@@ -37,7 +37,6 @@ export class QuestionnairesApi {
     this.http.get('api/v1/employer/questionnaire/all')
       .subscribe(
         res => {
-          console.log(res);
           const list = res['questionnaireList'].map(questionnaire => new QuestionnaireModel(questionnaire));
           this.setListQuestionnaire(list);
         });

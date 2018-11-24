@@ -80,8 +80,6 @@ export class FilterVacancyModel {
             }
         }
 
-        console.log(objectRequest);
-
         return objectRequest;
     }
 }

@@ -57,6 +57,66 @@
       }
     }
 
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+
+      .tag {
+        margin-top: 10px;
+        border-radius: 15px;
+        background-color: $orange;
+        color: white;
+        height: 30px;
+        font-family: Roboto;
+        display: flex;
+        margin-right: 5px;
+        padding: 5px 10px 5px 20px;
+        flex-shrink: 0;
+
+        img {
+          margin-left: 10px;
+          opacity: 0.5;
+          cursor: pointer;
+          @include animation(opacity);
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+
+      .add-tag {
+        display: flex;
+        height: 30px;
+        margin-top: 10px;
+
+        button {
+          border-radius: 5px;
+          color: $orange;
+          margin-left: 10px;
+          width: 100%;
+          display: block;
+          border: 1px solid $orange;
+          font-family: "Roboto";
+          font-size: 14px;
+
+          @include  animation();
+
+          &:hover {
+            background-color: $orange;
+            color: white;
+          }
+
+          &:disabled {
+            color: white;
+            border-color: $light-gray;
+            background-color: $light-gray;
+            cursor: default;
+          }
+        }
+      }
+    }
+
     .add-file {
       display: flex;
       align-items: center;

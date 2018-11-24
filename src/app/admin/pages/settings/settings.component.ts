@@ -39,7 +39,6 @@ export class SettingsComponent implements OnInit {
         this.listCities = this.citiesService.locations.listCity;
         this.listCountry = this.citiesService.locations.listCountry;
         this.createCityFormGroup();
-        console.log(this.listCities);
     }
 
     public saveCity() {

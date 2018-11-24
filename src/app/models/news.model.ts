@@ -26,6 +26,7 @@ export class NewsModel {
   text: string;
   userId: string;
   comments: Comment[] = [];
+  tags: string[] = [];
 
   constructor(news) {
     this._id = news._id;
@@ -38,6 +39,7 @@ export class NewsModel {
     this.publicateToNewsPage = news.publicateToNewsPage;
     this.text = news.text;
     this.userId = news.userId;
+    this.tags = news.tags;
     news.comments.map(comment => {
       this.comments.push(new Comment(comment));
     });

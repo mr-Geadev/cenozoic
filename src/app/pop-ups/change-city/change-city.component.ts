@@ -43,7 +43,6 @@ export class ChangeCityModalComponent implements OnInit {
     }
 
     public selectCity(cityCode: number) {
-        console.log(cityCode);
         this.offShowContextMenu();
         this._closeModal.setCity(
             this.data.getCityToCode(cityCode)

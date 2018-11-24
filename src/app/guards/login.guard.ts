@@ -20,7 +20,6 @@ export class LogInGuard implements CanActivate {
         return this.userService.user$
             .filter(user => user !== undefined)
             .map(user => {
-                console.log(user);
                 if (user) {
                     return true;
                 } else {

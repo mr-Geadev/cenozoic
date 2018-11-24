@@ -41,12 +41,23 @@
 						<a class="button" [routerLink]="['/edit-news', news._id]">
 							Редактировать
 						</a>
+
+						<button class="button" (click)="removeNews()">
+							Удалить
+						</button>
 					</ng-container>
 				</div>
 			</div>
 
 			<div class="text-news" [innerHTML]="news.text">
 
+			</div>
+
+			<div class="tags">
+				Теги:
+				<div class="tag" *ngFor="let tag of news.tags">
+					{{tag}}
+				</div>
 			</div>
 
 			<div class="share">
@@ -71,9 +82,17 @@
 					<b>{{news.comments.length}}</b> комментариев
 				</div>
 
-				<div class="comment" *ngFor="let comment of news.comments">
+				<div class="comment" *ngFor="let comment of news.comments; let i = index">
 					<div class="username">
 						{{ comment.userName }} <span class="time">в {{ comment.creationDate.locale(currentLang).format('HH:mm, DD.MM.YY') }}</span>
+					</div>
+
+					<div
+						class="delete"
+						*ngIf="currentUser && currentUser.typeAccount === 'admin'"
+						(click)="removeComment(i)"
+					>
+						<img src="/assets/images/icon-black-cross.svg">
 					</div>
 
 					<div class="text">

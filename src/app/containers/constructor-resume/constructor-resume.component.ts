@@ -120,7 +120,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
               training.documentName = null;
               this.nameImagesOfCertificate[index] = 'Выбрать фото';
             });
-            console.log(this.resumeForm);
           } else {
             this.type = DEFAULT_TYPE;
             this.resumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
@@ -166,8 +165,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       }
       this.resumeForm[nameSection].push(Object.assign({}, typeField));
       this.listVisibleElement[nameSection].push(true);
-      console.log(this.imagesOfCertificate);
-      console.log(this.nameImagesOfCertificate);
     } else {
       this._confirm.confirm('Вы действительно хотите удалить?')
         .subscribe((res) => {
@@ -235,8 +232,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
               this.resumeForm.trainings[index].photoURL = null;
             };
           }
-          console.log(this.imagesOfCertificate);
-          console.log(this.nameImagesOfCertificate);
         }
       } else {
         this._systemMessageService.info('Размер файла превышает 5мб');

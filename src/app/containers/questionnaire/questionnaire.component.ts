@@ -44,7 +44,6 @@ export class QuestionnaireComponent implements OnInit {
           this.questionnaire.sections.forEach(section => {
             this.questionnaireAnswer.push(section.questions.map(question => ''));
           });
-          console.log(this.questionnaireAnswer);
         });
     } else if (this.id === 'see-answer') {
       this.questionnaireService.questionnaire$
@@ -87,8 +86,6 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   public sendAnswers() {
-    console.log(this.questionnaireAnswer);
-
     this.questionnairesApi.answerToData(this.questionnaireAnswer)
       .subscribe(
         (res) => { this.router.navigate(['/personal-account']); },

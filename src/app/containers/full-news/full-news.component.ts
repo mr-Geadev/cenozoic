@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NewsApi } from 'api';
 import { NewsModel, UserModel } from 'models';
 
-import { LocalizationService, UserService } from 'services';
+import { ConfirmService, LocalizationService, UserService } from 'services';
+import 'rxjs-compat/add/operator/share';
+import 'rxjs-compat/add/operator/last';
 
 @Component({
   selector: 'full-news',
@@ -21,7 +24,10 @@ export class FullNewsComponent implements OnInit {
 
   constructor(private activateRoute: ActivatedRoute,
               private newsApi: NewsApi,
+              private router: Router,
               public userService: UserService,
+              private confirmService: ConfirmService,
+              private _dialog: MatDialog,
               private _localizationService: LocalizationService) {
     this.id = activateRoute.snapshot.params['id'];
   }
@@ -49,7 +55,7 @@ export class FullNewsComponent implements OnInit {
   publish(location) {
     this.newsApi.publishTo(this.id, location)
       .subscribe(
-        res => this.getNews()
+        res => this.getNews(),
       );
   }
 
@@ -57,9 +63,36 @@ export class FullNewsComponent implements OnInit {
     this.newsApi.addComent(this.id, this.textComment)
       .subscribe(
         res => {
-          this.getNews()
+          this.getNews();
           this.textComment = '';
-        }
+        },
       );
+  }
+
+  removeNews() {
+    this.confirmService.confirm('Вы действительно хотите удалить?')
+      .subscribe((res) => {
+        if (res) {
+          this.newsApi.removeNews(this.id)
+            .subscribe(() => {
+              this.router.navigate(['/personal-account']);
+            });
+        }
+        this._dialog.closeAll();
+      });
+  }
+
+  removeComment(indexComment: number) {
+    const confirm = this.confirmService.confirm('Вы действительно хотите удалить?')
+      .subscribe((res) => {
+        if (res) {
+          this.newsApi.removeComment(this.id, indexComment)
+            .subscribe(() => {
+              this.getNews();
+              confirm.unsubscribe();
+            });
+        }
+        this._dialog.closeAll();
+      });
   }
 }

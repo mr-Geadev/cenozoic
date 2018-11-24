@@ -18,6 +18,7 @@ export class ConstructorNewsComponent implements OnInit {
 
   public news: FormGroup;
   public textNews: string;
+  public newTag: string;
   public currentLang: string;
   public currentDate: any = moment(new Date());
   public textEditorConfig: any = {}; // для RichTextComponent'ы
@@ -41,21 +42,35 @@ export class ConstructorNewsComponent implements OnInit {
       this.newsApi.getNewsById(this.id)
         .subscribe(
           res => {
-            this.initForm(res['news'].title, res['news'].shortDescription);
+            this.initForm(res['news'].title, res['news'].shortDescription, res['news'].tags);
             this.textNews = res['news'].text;
             this.photoUrl = res['news'].photoURL;
           },
         );
     } else {
-      this.initForm('', '');
+      this.initForm('', '', []);
     }
   }
 
-  public initForm(title, shortDescription) {
+  public initForm(title, shortDescription, tags) {
     this.news = new FormGroup({
       title: new FormControl(title, [Validators.required]),
       shortDescription: new FormControl(shortDescription, [Validators.required]),
+      tags: new FormArray([], [Validators.minLength(1)]),
     });
+
+    tags.forEach(tag => this.addTag(tag));
+  }
+
+  public addTag(tag = this.newTag) {
+    (<FormArray>this.news.get('tags')).push(
+      new FormControl(tag, [Validators.required]),
+    );
+    this.newTag = '';
+  }
+
+  public removeTag(i: number) {
+    (<FormArray>this.news.get('tags')).removeAt(i);
   }
 
   public addFile(event): void {
@@ -83,17 +98,17 @@ export class ConstructorNewsComponent implements OnInit {
   public save() {
     console.log(this.news.value);
 
-   if (this.edit) {
-     this.newsApi.editNews(this.id, { ...this.news.value, text: this.textNews }, this.fileToUpload.file || null, )
-       .subscribe(
-         res => { this.router.navigate(['/personal-account']); },
-       );
-   } else {
-     this.newsApi.createNews(this.fileToUpload.file, { ...this.news.value, text: this.textNews })
-       .subscribe(
-         res => { this.router.navigate(['/personal-account']); },
-       );
-   }
+    if (this.edit) {
+      this.newsApi.editNews(this.id, { ...this.news.value, text: this.textNews }, this.fileToUpload.file || null)
+        .subscribe(
+          res => { this.router.navigate(['/personal-account']); },
+        );
+    } else {
+      this.newsApi.createNews(this.fileToUpload.file, { ...this.news.value, text: this.textNews })
+        .subscribe(
+          res => { this.router.navigate(['/personal-account']); },
+        );
+    }
   }
 
 }

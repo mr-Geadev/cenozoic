@@ -50,6 +50,42 @@
 					></editor>
 				</div>
 
+				<div class="field">
+					<label for="new-nag" class="new-nag">
+						Теги <span class="required">*</span>
+					</label>
+
+
+					<div class="tags">
+						<div
+							class="tag"
+							*ngFor="let tag of this.news.controls['tags'].value; let i = index"
+						>
+							{{ tag }}
+							<img
+								src="/assets/images/icon-black-cross.svg"
+								(click)="removeTag(i)"
+							>
+						</div>
+
+						<div class="add-tag">
+							<input
+								id="new-nag"
+								type="text"
+								class="short-description-input"
+								[ngModelOptions]="{standalone: true}"
+								[(ngModel)]="newTag"
+							>
+							<button
+								[disabled]="!newTag"
+								(click)="addTag()"
+							>
+								Добавить
+							</button>
+						</div>
+					</div>
+
+				</div>
 
 				<div class="field">
 					<div class="label">
@@ -68,11 +104,13 @@
 					</div>
 				</div>
 
-				<button class="save-button" *ngIf="!edit" (click)="save()" [disabled]="!news.value.title || !news.value.shortDescription || !textNews || !fileToUpload.data ">
+				<button class="save-button" *ngIf="!edit" (click)="save()"
+								[disabled]="!news.value.title || !news.value.shortDescription || !textNews || !fileToUpload.data ">
 					Сохранить новость
 				</button>
 
-				<button class="save-button" *ngIf="edit" (click)="save()" [disabled]="!news.value.title || !news.value.shortDescription || !textNews ">
+				<button class="save-button" *ngIf="edit" (click)="save()"
+								[disabled]="!news.value.title || !news.value.shortDescription || !textNews ">
 					Сохранить новость
 				</button>
 			</form>
@@ -81,9 +119,11 @@
 				<h2>Так будет выглядеть новость в общем списке</h2>
 
 				<div class="card">
-					<div class="photo-of-news" *ngIf="!fileToUpload.data && photoUrl" [style.backgroundImage]="'url(' + photoUrl + ')'"></div>
-					<div class="photo-of-news" *ngIf="fileToUpload.data" [style.backgroundImage]="'url(' + fileToUpload.data + ')'"></div>
-					<div class="photo-of-news default"  *ngIf="!fileToUpload.data  && !edit"></div>
+					<div class="photo-of-news" *ngIf="!fileToUpload.data && photoUrl"
+							 [style.backgroundImage]="'url(' + photoUrl + ')'"></div>
+					<div class="photo-of-news" *ngIf="fileToUpload.data"
+							 [style.backgroundImage]="'url(' + fileToUpload.data + ')'"></div>
+					<div class="photo-of-news default" *ngIf="!fileToUpload.data  && !edit"></div>
 					<div class="info">
 						<div class="title">
 							{{ news.value.title }}
