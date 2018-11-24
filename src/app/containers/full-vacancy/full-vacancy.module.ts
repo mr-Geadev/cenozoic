@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PayingModalService } from 'pop-ups/paying';
 import { FullVacancyComponent } from './full-vacancy.component';
 import { FullVacancyService } from './full-vacancy.service';
 import { YearsFromPipe } from './yearsFrom.pipe';
@@ -15,7 +16,10 @@ import { YearsFromPipe } from './yearsFrom.pipe';
     YearsFromPipe,
   ],
   exports: [FullVacancyComponent],
-  providers: [FullVacancyService],
+  providers: [
+    FullVacancyService,
+    PayingModalService
+  ],
 })
 export class FullVacancyModule {
 }

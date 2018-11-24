@@ -13,13 +13,16 @@
 					Доступно:
 				</div>
 				<div class="parameter">
-					Вакансий: <b>{{currentUser.paidOptions.countPossibleCreateVacancy}}</b> <span class="pay">+</span>
+					Вакансий: <b>{{currentUser.paidOptions.countPossibleCreateVacancy}}</b>
+					<span (click)="buy('vacancy')" class="pay">+</span>
 				</div>
 				<div class="parameter">
-					Рекламных баннеров: <b>{{currentUser.paidOptions.countPossibleCreateBanner}}</b> <span class="pay">+</span>
+					Рекламных баннеров: <b>{{currentUser.paidOptions.countPossibleCreateBanner}}</b>
+					<span (click)="buy('banner')" class="pay">+</span>
 				</div>
 				<div class="parameter">
-					Просмотров резюме: <b>{{currentUser.paidOptions.countPossibleViewResumeContacts}}</b> <span class="pay">+</span>
+					Просмотров резюме: <b>{{currentUser.paidOptions.countPossibleViewResumeContacts}}</b>
+					<span (click)="buy('resume')" class="pay">+</span>
 				</div>
 			</div>
 

@@ -26,7 +26,7 @@ import {
   VacancyFullPageModule,
 } from 'pages';
 import { ConstructorNewsPageModule } from 'pages/constructor-news-page';
-import { ChangeCityModule, ChangeCityService, ConfirmModule } from 'pop-ups';
+import { ChangeCityModule, ChangeCityService, ConfirmModule, PayingModule } from 'pop-ups';
 import {
   BlankAccountService,
   CitiesService,
@@ -91,7 +91,7 @@ const ROUTES = [
     // Modals
     ChangeCityModule,
     ConfirmModule,
-
+    PayingModule
   ],
   providers: [
     HttpClient,

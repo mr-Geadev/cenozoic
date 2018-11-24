@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionnaireModel, RespondModel } from 'models';
 import { NewsModel } from 'models/news.model';
+import { PayingModalService } from 'pop-ups/paying';
 import { QuestionnairesApi, RespondsApi } from '../../api';
 import { LocalizationService } from '../../services';
 import { UserService } from '../../services/user.service';
@@ -44,6 +45,7 @@ export class PersonalAccountPageComponent implements OnInit {
 
   constructor(private _localizationService: LocalizationService,
               private respondsApi: RespondsApi,
+              private payingModalService: PayingModalService,
               private questionnaireApi: QuestionnairesApi,
               private _userService: UserService) {
   }
@@ -86,6 +88,10 @@ export class PersonalAccountPageComponent implements OnInit {
       .subscribe(
         listQuestionnaire => this.listQuestionnaire = listQuestionnaire,
       );
+  }
+
+  public buy(type: string) {
+    this.payingModalService.openBuyModal(type);
   }
 
 }

@@ -16,7 +16,7 @@ import {
 import { FilterRespondService } from 'containers/filter-respond';
 import { LogInGuard } from 'guards';
 import { LastNewsModule } from 'pages/main-page/last-news';
-import { LoginModalModule } from 'pop-ups';
+import { LoginModalModule, PayingModalService } from 'pop-ups';
 import { QuestionnairesApi, RespondsApi } from '../../api';
 import { PersonalAccountPageComponent } from './personal-account-page.component';
 
@@ -50,7 +50,11 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     FilterRespondModule,
     LastNewsModule
   ],
-  providers: [RespondsApi, QuestionnairesApi],
+  providers: [
+    RespondsApi,
+    QuestionnairesApi,
+    PayingModalService
+  ],
   exports: [PersonalAccountPageComponent],
 })
 export class PersonalAccountPageModule {

@@ -1,0 +1,64 @@
+<form [formGroup]="payment" (submit)="buy()">
+	<div class="title">
+		Купить {{words.title}}
+	</div>
+
+	<div class="side-title">
+		Выберите количество:
+	</div>
+
+	<div class="options">
+		<div class="field">
+			<input type="radio" id="one" value="1" name="counter" formControlName="counter">
+			<label for="one">
+				<div class="checkbox"></div>
+				1 {{words.one}}
+			</label>
+		</div>
+
+		<div class="field">
+			<input type="radio" id="two" value="5" name="counter" formControlName="counter">
+			<label for="two">
+				<div class="checkbox"></div>
+				5 {{words.more}}
+			</label>
+		</div>
+
+		<div class="field">
+			<input type="radio" id="three" value="10" name="counter" formControlName="counter">
+			<label for="three">
+				<div class="checkbox"></div>
+				10 {{words.more}}
+			</label>
+		</div>
+
+		<div class="field">
+			<input type="radio" id="four" value="20" name="counter" formControlName="counter">
+			<label for="four">
+				<div class="checkbox"></div>
+				20 {{words.more}}
+			</label>
+		</div>
+
+		<div class="field">
+			<input type="radio" id="five" value="50" name="counter" formControlName="counter">
+			<label for="five">
+				<div class="checkbox"></div>
+				50 {{words.more}}
+			</label>
+		</div>
+
+		<div class="field">
+			<input type="radio" id="six" value="100" name="counter" formControlName="counter">
+			<label for="six">
+				<div class="checkbox"></div>
+				100 {{words.more}}
+			</label>
+		</div>
+
+	</div>
+
+	<button class="button" [disabled]="payment.invalid">
+		Купить
+	</button>
+</form>

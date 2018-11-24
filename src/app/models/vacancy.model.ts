@@ -43,6 +43,7 @@ export class VacancyModel {
   companyName: string = null;
   phone: string = null;
   email: string = null;
+  photoURL: string = null;
 
   clearVacancy: any = null; // содержит в себе ввакансию, пришедшую с сервака
 
@@ -54,6 +55,7 @@ export class VacancyModel {
     this.title = vacancy.title || null;
     this.currency = vacancy.currency || null;
     this.status = vacancy.status || null;
+    this.photoURL = vacancy.photoURL || null;
 
     this.salaryGROSS = vacancy.salaryGROSS || {
       from: 0,

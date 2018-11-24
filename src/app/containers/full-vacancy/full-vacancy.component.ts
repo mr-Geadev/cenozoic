@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { VacancyApi } from 'api';
 import { UserModel } from 'models';
+import { PayingModalService } from 'pop-ups/paying';
 
 import { ConfirmService, LocalizationService, ResumeService, UserService } from 'services';
 import { PopupsService } from '../../services/popups.service';
@@ -23,6 +24,7 @@ export class FullVacancyComponent implements OnInit {
   public user: UserModel = null;
 
   constructor(public resumeService: ResumeService,
+              public payingModalService: PayingModalService,
               private _vacancyFullService: FullVacancyService,
               private _localizationService: LocalizationService,
               private vacancyApi: VacancyApi,
@@ -84,7 +86,7 @@ export class FullVacancyComponent implements OnInit {
           this._dialog.closeAll();
         });
     } else {
-      // cюда открытие модалки
+      this.payingModalService.openBuyModal('vacancy');
     }
   }
 
