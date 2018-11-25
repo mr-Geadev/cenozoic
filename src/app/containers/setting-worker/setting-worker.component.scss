@@ -155,6 +155,7 @@
   }
 
   .rate {
+    visibility: hidden;
     width: 364px;
     box-shadow: 0 0.875rem 1.875rem rgba(0, 0, 0, 0.15);
     background-color: $white;

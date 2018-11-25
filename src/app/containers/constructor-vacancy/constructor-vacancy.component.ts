@@ -161,7 +161,7 @@ export class ConstructorVacancyComponent implements OnInit {
             [Validators.min(0), Validators.max(11)]),
         }),
       }),
-      nationalities: new FormControl(data.nationalities || []),
+      nationalities: new FormControl(data.nationalities || [], [Validators.required]),
       schedule: new FormControl(data.schedule || '', [Validators.required]),
       employmentType: new FormControl(data.employmentType || '', [Validators.required]),
       duties: new FormControl(data.duties || null),

@@ -3,6 +3,7 @@ import * as moment from 'moment';
 export class BannerModel {
   _id: string;
   title: string;
+  status: number = 0;
   shortDescription: string;
   creationDate: any;
   changeDate: any;
@@ -21,5 +22,6 @@ export class BannerModel {
     this.publicate = news.publicate;
     this.text = news.text;
     this.userId = news.userId;
+    this.status = news.status || 0;
   }
 }

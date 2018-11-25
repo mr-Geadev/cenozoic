@@ -27,8 +27,8 @@
     flex-wrap: wrap;
 
     .field {
-      width: 34%;
-      margin-top: 20px;
+      width: 50%;
+      margin-top: 40px;
     }
   }
 
@@ -78,7 +78,8 @@
 
   .button {
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
     display: flex;
     font-family: Roboto;

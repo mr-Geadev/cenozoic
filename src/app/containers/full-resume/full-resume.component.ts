@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ResumeApi } from 'api';
 import * as moment from 'moment';
+import { PayingModalService } from 'pop-ups/paying';
 
-import { LocalizationService, ResumeService, UserService } from '../../services';
+import { ConfirmService, LocalizationService, ResumeService, UserService } from '../../services';
 import { CitiesService } from '../../services/cities.service';
 import { PopupsService } from '../../services/popups.service';
 
@@ -30,6 +32,9 @@ export class FullResumeComponent implements OnInit {
               private activateRoute: ActivatedRoute,
               public responds: PopupsService,
               private http: HttpClient,
+              public confirmService: ConfirmService,
+              private _dialog: MatDialog,
+              private payingModalService: PayingModalService,
               private _localizationService: LocalizationService) {
     this.id = activateRoute.snapshot.params['id'];
   }
@@ -142,6 +147,16 @@ export class FullResumeComponent implements OnInit {
   }
 
   showContact() {
-    this.showContactData = true;
+    if (this.currentUser.paidOptions.countPossibleViewResumeContacts) {
+      const confirm = this.confirmService.confirm('Вы хотите посмотреть контактные данные?')
+        .subscribe((res) => {
+          if (res) {
+            this.showContactData = true;
+          }
+          this._dialog.closeAll();
+        });
+    } else {
+      this.payingModalService.openBuyModal('resume');
+    }
   }
 }

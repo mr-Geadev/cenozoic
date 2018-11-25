@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { SystemMessageService } from 'services';
+import { SystemMessageService, UserService } from 'services';
 
 @Injectable()
 export class BannerApi {
 
   constructor(private http: HttpClient,
+              private userService: UserService,
               private messages: SystemMessageService) {
   }
 
@@ -24,7 +25,10 @@ export class BannerApi {
 
     return this.http.post('/api/v1/employer/banner/create', formData)
       .map(
-        res => this.messages.info('Баннер создан'),
+        res => {
+          this.messages.info('Баннер создан');
+          this.userService.getUserInfo();
+        },
         err => this.messages.info('Что-то пошло не так'),
       );
   }
@@ -50,10 +54,17 @@ export class BannerApi {
     return this.http.get(`/api/v1/admin/banner/publish?bannerId=${bannerId}&publicate=${publicate}`);
   }
 
+  activate(bannerId: string): Observable<any> {
+    return this.http.get(`/api/v1/employer/banner/time-out/activate?bannerId=${bannerId}`)
+      .map(
+        res => this.userService.getUserInfo()
+      );
+  }
+
   getUserBanners(userId: string): Observable<any> {
     return this.http.post('/api/v1/banners/get/all', {
       limit: 100,
-      filter: {
+      filters: {
         userId,
       },
     });
@@ -62,14 +73,14 @@ export class BannerApi {
   getListAdminBanner(): Observable<any> {
     return this.http.post('/api/v1/banners/get/all', {
       limit: 100,
-      filter: {},
+      filters: {},
     });
   }
 
   getListBanner(main: boolean): Observable<any> {
     return this.http.post('/api/v1/banners/get/all', {
       limit: main ? 3 : 4,
-      filter: {
+      filters: {
         publicate: true
       },
     });
