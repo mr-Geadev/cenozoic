@@ -9,7 +9,8 @@ export const MENU_LIST = [
     {name: 'Настройки', link: 'settings'},
     {name: 'Новости', link: 'news'},
     {name: 'Локализация', link: 'localization'},
-    {name: 'Баннеры', link: 'banners'}
+    {name: 'Баннеры', link: 'banners'},
+    {name: 'Статистика', link: 'statistics'}
     // {name: 'Вакансии', link: '#'},
 ];
 

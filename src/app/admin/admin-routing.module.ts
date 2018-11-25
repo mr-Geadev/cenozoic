@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BannerComponent } from 'admin/pages/banner/banner.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news/news.component';
+import { StatisticsComponent } from 'admin/pages/statistics/statistics.component';
 import { AdminGuard } from '../guards';
 import { AdminComponent } from './admin.component';
 import { MainComponent } from './pages/main/main.component';
@@ -36,6 +37,9 @@ const routes: Routes = [
       },
       {
         path: 'banners', component: BannerComponent,
+      },
+      {
+        path: 'statistics', component: StatisticsComponent,
       },
     ],
   },

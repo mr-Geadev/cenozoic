@@ -10,9 +10,11 @@ import {
   MatTabsModule,
   MatToolbarModule,
 } from '@angular/material';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BannerComponent } from 'admin/pages/banner/banner.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news';
+import { StatisticsComponent } from 'admin/pages/statistics/statistics.component';
 import { NewsApi } from 'api';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -47,6 +49,7 @@ import { LocalizationApi } from '../api/localization.api';
     MatMenuModule,
     MatInputModule,
     MatSelectModule,
+    NgxChartsModule,
   ],
   declarations: [
     // core
@@ -60,6 +63,7 @@ import { LocalizationApi } from '../api/localization.api';
     UsersComponent,
     LocalizationComponent,
     BannerComponent,
+    StatisticsComponent,
 
     // containers
     ItemUserComponent,

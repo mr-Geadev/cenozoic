@@ -1,0 +1,59 @@
+<mat-card>
+	статистика
+
+	<p>
+		Количество откликов в день:
+	</p>
+	<ngx-charts-bar-vertical
+		[view]="[700, 400]"
+		[scheme]="{domain: ['#5AA454']}"
+		[results]="barChart"
+		[gradient]="false"
+		[xAxis]="true"
+		[yAxis]="true"
+		[legend]="true"
+		[legendTitle]="'Дни'"
+		[showXAxisLabel]="true"
+		[showYAxisLabel]="true"
+		[xAxisLabel]="'День'"
+		[yAxisLabel]="'Отклики'"
+		(select)="onSelect($event)"
+		style="height: 400px; display: block;"
+	>
+	</ngx-charts-bar-vertical>
+
+	<p>
+		Количество просмотренных резюме и количество купленных данных резюме:
+	</p>
+	<ngx-charts-line-chart
+		[view]="[700, 400]"
+		[scheme]="{domain: ['#a40b0d', '#5AA454']}"
+		[results]="lineChart"
+		[xAxis]="true"
+		[yAxis]="true"
+		[legend]="true"
+		[legendTitle]="false"
+		[showXAxisLabel]="true"
+		[showYAxisLabel]="true"
+		[xAxisLabel]="'День'"
+		[yAxisLabel]="'Отклики'"
+		(select)="onSelect($event)"
+		style="height: 400px; display: block;"
+	>
+	</ngx-charts-line-chart>
+
+	<p>
+		Сколько откликов  на рассмотрении у работодателя  - % от общего количества на рассмотрении всего сайта
+	</p>
+	<ngx-charts-pie-chart
+		[view]="[700, 400]"
+		[scheme]="{domain: ['#a40b0d', '#5AA454']}"
+		[results]="pieChart"
+		[legend]="true"
+		[legendTitle]="false"
+		(select)="onSelect($event)"
+		style="height: 400px; display: block;"
+	>
+	</ngx-charts-pie-chart>
+
+</mat-card>

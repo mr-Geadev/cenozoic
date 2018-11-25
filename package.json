@@ -42,6 +42,7 @@
     "@angular/router": "^6.1.0",
     "@nguniversal/express-engine": "^6.0.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "@swimlane/ngx-charts": "^10.0.0",
     "@tinymce/tinymce-angular": "^2.0.1",
     "angular2-text-mask": "^9.0.0",
     "core-js": "^2.5.4",
