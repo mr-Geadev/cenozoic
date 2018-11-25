@@ -39,7 +39,7 @@ export class BannerApi {
       formData.append('fileToUpload', image);
     }
 
-    return this.http.post('/api/v1/employer/news/edit', formData)
+    return this.http.post('/api/v1/employer/banner/edit', formData)
       .map(
         res => this.messages.info('Успешно измненена'),
         err => this.messages.info('Что-то пошло не так'),

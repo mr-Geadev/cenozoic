@@ -20,3 +20,4 @@ export * from './edit-news-page';
 export * from './faq-page';
 export * from './constructor-banner-page';
 export * from './full-banner-page';
+export * from './edit-banner-page';
