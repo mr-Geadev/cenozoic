@@ -17,7 +17,7 @@ import {
   CreateVacancyPageModule, EditNewsPageModule,
   EditQuestionnairePageModule,
   EditVacancyPageModule,
-  EmailConfirmPageModule, FaqPageModule, ListNewsPageModule,
+  EmailConfirmPageModule, FaqPageModule, FullBannerPageModule, ListNewsPageModule,
   ListResumePageModule,
   ListVacancyPageModule,
   MainPageModule, NewsFullPageModule,
@@ -85,6 +85,7 @@ const ROUTES = [
     EditNewsPageModule,
     FaqPageModule,
     ConstructorBannerPageModule,
+    FullBannerPageModule,
 
     // Blocks
     PageHeaderModule,

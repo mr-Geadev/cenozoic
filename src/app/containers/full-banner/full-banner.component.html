@@ -1,0 +1,46 @@
+<div class="container" *ngIf="banner">
+	<div class="row">
+		<div class="col">
+
+			<div class="time">
+				{{ banner.creationDate.locale(currentLang).format('DD.MM.YYYY HH:mm') }}
+			</div>
+
+			<div class="title">
+				{{ banner.title }}
+			</div>
+
+			<div class="not-public" *ngIf="!banner.publicate">
+				Данный баннера не опубликован. Он появится в общем списке сразу после одобрения администрацией.
+			</div>
+
+			<div class="photo-block">
+				<div class="photo">
+					<img src="{{banner.photoURL}}" alt="{{banner.title}}">
+				</div>
+				<div class="manage">
+					<ng-container *ngIf="currentUser && currentUser.typeAccount === 'admin'">
+						<button class="button" *ngIf="!banner.publicate" (click)="publicate(true)">
+							Опубликовать
+						</button>
+
+						<button class="button" *ngIf="banner.publicate" (click)="publicate(false)">
+							Убрать с публикации
+						</button>
+					</ng-container>
+
+					<ng-container *ngIf="currentUser && currentUser._id === banner.userId">
+						<a class="button" [routerLink]="['/edit-banner', banner._id]">
+							Редактировать
+						</a>
+					</ng-container>
+				</div>
+			</div>
+
+			<div class="text-news" [innerHTML]="banner.text">
+
+			</div>
+
+		</div>
+	</div>
+</div>

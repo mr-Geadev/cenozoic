@@ -18,3 +18,4 @@ export * from './constructor-news';
 export * from './full-news';
 export * from './constructor-banner';
 export * from './list-banner';
+export * from './full-banner';

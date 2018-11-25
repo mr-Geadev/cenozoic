@@ -1,0 +1,73 @@
+@import "colors";
+@import "animations";
+
+:host {
+  margin: 50px 0;
+  display: block;
+
+  .time {
+    color: $light-gray;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .title {
+    margin-top: 20px;
+    font-family: "Bebas";
+    font-size: 34px;
+    font-weight: 400;
+  }
+
+  .not-public {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bolder;
+    color: red;
+  }
+
+  .photo-block {
+    margin-top: 29px;
+    display: flex;
+    justify-content: space-between;
+
+    .photo {
+      width: calc(100% - 300px);
+    }
+
+    .manage {
+      width: 200px;
+
+      .button {
+        margin-top: 20px;
+
+        width: 242px;
+        height: 46px;
+        background-color: $orange;
+        border-radius: 3px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: #ffffff;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 30px;
+
+        @include animation(background-color);
+        &:hover:not(:disabled) {
+          background-color: $hover-orange;
+        }
+      }
+    }
+  }
+
+  .text-news {
+    margin-top: 43px;
+    padding-bottom: 37px;
+    border-bottom: 1px solid #999999;
+  }
+
+}

@@ -46,6 +46,10 @@ export class BannerApi {
       );
   }
 
+  publicate(bannerId: string, publicate: boolean): Observable<any> {
+    return this.http.get(`/api/v1/admin/banner/publish?bannerId=${bannerId}&publicate=${publicate}`);
+  }
+
   getUserBanners(userId: string): Observable<any> {
     return this.http.post('/api/v1/banners/get/all', {
       limit: 100,
