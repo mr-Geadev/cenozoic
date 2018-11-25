@@ -33,6 +33,28 @@
       width: 350px;
       cursor: pointer;
 
+      .timeout {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .2);
+        padding: 0 !important;
+
+        .timeout-label {
+          background-color: $orange;
+          width: 100%;
+          height: 40px;
+          color: white;
+          font-family: Roboto;
+          font-size: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
       .photo-of-banner {
         height: 267px;
         background-size: cover;

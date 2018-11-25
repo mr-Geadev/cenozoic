@@ -3,6 +3,16 @@
 		<div class="list">
 
 			<a class="banner" *ngFor="let banner of listBanner" [routerLink]="['/banner', banner._id]">
+
+				<div
+					*ngIf="banner.status === 3"
+					class="timeout"
+				>
+					<div class="timeout-label">
+						Срок размещения истек
+					</div>
+				</div>
+
 				<div class="photo-of-banner" [style.backgroundImage]="'url(' + banner.photoURL + ')'"></div>
 
 				<div class="info">
