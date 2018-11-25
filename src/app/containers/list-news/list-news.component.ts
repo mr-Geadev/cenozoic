@@ -1,6 +1,8 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { NewsApi } from 'api';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { BannerApi, NewsApi } from 'api';
+import { BannerModel } from 'models';
 import { NewsModel } from 'models/news.model';
+import { zip } from 'rxjs/internal/observable/zip';
 
 import { LocalizationService } from 'services';
 
@@ -20,11 +22,14 @@ export class ListNewsComponent implements OnInit, OnChanges {
   @Input() reverse?: boolean = null;
 
   public listNews: NewsModel[] = [];
+  public listBanner: BannerModel[] = [];
+  public list: any[] = [];
 
   public dictionary: any = null;
   private currentLang: string = null;
 
   constructor(private _localizationService: LocalizationService,
+              private bannerApi: BannerApi,
               private newsApi: NewsApi) {
   }
 
@@ -33,24 +38,56 @@ export class ListNewsComponent implements OnInit, OnChanges {
 
     this.currentLang = LocalizationService.currentLang();
 
-    this.getNews();
+    this.getList();
   }
 
-  ngOnChanges() {
-    this.getNews();
+  ngOnChanges(changes: SimpleChanges) {
+    if ((changes.searchString) || (changes.reverse)) {
+      this.getList();
+    }
   }
 
-  getNews() {
-    this.newsApi.getListNews(this.newsPage, this.mainPage, this.user, this.searchString)
-      .subscribe(
-        res => {
-          this.listNews = [];
-          res['newsList'].map((news) => this.listNews.push(new NewsModel(news)));
-          if (this.reverse) {
-            this.listNews.reverse();
+  getList() {
+    zip(
+      this.newsApi.getListNews(this.newsPage, this.mainPage, this.user, this.searchString),
+      this.bannerApi.getListBanner(this.mainPage),
+    ).subscribe(
+      ([newsRes, bannersRes]) => {
+        this.list = [];
+        this.listNews = [];
+        this.listBanner = [];
+
+        newsRes['newsList'].map((news) => this.listNews.push(new NewsModel(news)));
+        bannersRes['banners'].map((banner) => this.listBanner.push(new BannerModel(banner)));
+
+        if (this.reverse) {
+          this.listNews.reverse();
+        }
+
+        let indexBanner = 0;
+        let counterNews = 0;
+        this.listNews.forEach((news) => {
+          if (counterNews === 2 && this.listBanner[indexBanner] ) {
+            console.log(this.listBanner[indexBanner]);
+            this.list.push(this.listBanner[indexBanner]);
+            indexBanner += 1;
+            counterNews = 0;
+          } else {
+            this.list.push(news);
+            counterNews += 1;
+            console.log(news);
           }
-        },
-      );
+        });
+
+        if (counterNews === 2) {
+          console.log(this.listBanner[indexBanner]);
+          this.list.push(this.listBanner[indexBanner]);
+          indexBanner += 1;
+          counterNews = 0;
+        }
+        console.log(this.list);
+      },
+    );
   }
 
 }

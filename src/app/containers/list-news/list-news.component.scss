@@ -33,6 +33,24 @@
       width: 350px;
       cursor: pointer;
 
+      &.banner:not(:hover) {
+        padding: 20px 20px 40px;
+
+        .photo-of-news {
+          padding: 10px !important;
+          height: 80% !important;
+          width: 100%;
+        }
+
+        .info {
+          padding: 10px 10px 24px !important;
+        }
+
+        .description {
+          display: none !important;
+        }
+      }
+
       .photo-of-news {
         height: 267px;
         background-size: cover;

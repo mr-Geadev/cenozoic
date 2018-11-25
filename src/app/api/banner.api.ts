@@ -54,16 +54,24 @@ export class BannerApi {
     return this.http.post('/api/v1/banners/get/all', {
       limit: 100,
       filter: {
-        userId
-      }
+        userId,
+      },
     });
   }
 
   getListAdminBanner(): Observable<any> {
     return this.http.post('/api/v1/banners/get/all', {
       limit: 100,
+      filter: {},
+    });
+  }
+
+  getListBanner(main: boolean): Observable<any> {
+    return this.http.post('/api/v1/banners/get/all', {
+      limit: main ? 3 : 4,
       filter: {
-      }
+        publicate: true
+      },
     });
   }
 }

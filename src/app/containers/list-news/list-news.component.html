@@ -2,7 +2,7 @@
 	<div class="container" [class.mainPage]="mainPage">
 		<div class="list" [style.marginLeft]=" -365*offset+'px' ">
 
-			<a class="news" *ngFor="let news of listNews" [routerLink]="['/news', news._id]">
+			<a class="news" *ngFor="let news of list" [class.banner]="news?.publicate" [routerLink]="[news?.publicate ? '/banner' : '/news', news._id]">
 				<div class="photo-of-news" [style.backgroundImage]="'url(' + news.photoURL + ')'"></div>
 
 				<div class="info">
