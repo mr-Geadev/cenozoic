@@ -5,7 +5,7 @@ import { QuestionnaireViewComponent } from 'blocks/card/elements-card/questionna
 import { AnswerToOfferModule, AnswerToRespondModule } from 'pop-ups';
 import { RespondsApi } from 'api';
 import { AnswerTopQuestionnaireFileModule } from 'pop-ups/answer-top-questionnaire-file';
-import { ConfirmService } from "../../services";
+import { ConfirmService, UserService } from '../../services';
 import { CardComponent } from './card.component';
 import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatusComponent, DetailedStatusComponent } from './elements-card';
 
@@ -28,7 +28,7 @@ import { ResumeViewComponent, VacancyViewComponent, AddViewComponent, MainStatus
     MainStatusComponent,
     DetailedStatusComponent,
   ],
-  providers: [RespondsApi, ConfirmService],
+  providers: [RespondsApi, ConfirmService, UserService],
   exports: [CardComponent],
 })
 export class CardModule {

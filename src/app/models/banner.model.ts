@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 import * as moment from 'moment';
 
 export class BannerModel {
@@ -11,6 +12,7 @@ export class BannerModel {
   publicate: boolean;
   text: string;
   userId: string;
+  timeoutDate: Moment = null;
 
   constructor(news) {
     this._id = news._id;
@@ -23,5 +25,6 @@ export class BannerModel {
     this.text = news.text;
     this.userId = news.userId;
     this.status = news.status || 0;
+    this.timeoutDate =  moment(news.timeoutDate);
   }
 }

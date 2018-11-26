@@ -19,6 +19,9 @@
 					<div class="title">
 						{{ banner.title }}
 					</div>
+					<p style="color: black">
+						Опубликовано до: {{ banner.timeoutDate.locale('ru').format('DD.MM.YYYY') }}
+					</p>
 
 					<div class="description" >
 						{{ banner.shortDescription }}

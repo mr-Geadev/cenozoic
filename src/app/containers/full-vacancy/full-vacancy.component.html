@@ -96,6 +96,10 @@
 					{{dictionary.EDIT}}
 				</a>
 
+				<p *ngIf="currentVacancy.status !== 3">
+					Опубликовано до: {{ currentVacancy.timeoutDate.locale('ru').format('DD.MM.YYYY') }}
+				</p>
+
 				<button (click)="activateVacancy()" class="button" *ngIf="currentVacancy.status === 3">
 					Продлить
 				</button>

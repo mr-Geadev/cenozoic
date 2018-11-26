@@ -38,6 +38,10 @@
 							Редактировать
 						</a>
 
+						<p *ngIf="banner.status !== 3">
+							Опубликовано до: {{ banner.timeoutDate.locale('ru').format('DD.MM.YYYY') }}
+						</p>
+
 						<button (click)="activateBanner()" class="button" *ngIf="banner.status === 3">
 							Продлить
 						</button>

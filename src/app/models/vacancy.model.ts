@@ -1,3 +1,6 @@
+import { Moment } from 'moment';
+import * as moment from 'moment';
+
 export class VacancyModel {
   _id: null;
   userId: string = null;
@@ -44,6 +47,7 @@ export class VacancyModel {
   phone: string = null;
   email: string = null;
   photoURL: string = null;
+  timeoutDate: Moment = null;
 
   clearVacancy: any = null; // содержит в себе ввакансию, пришедшую с сервака
 
@@ -56,6 +60,7 @@ export class VacancyModel {
     this.currency = vacancy.currency || null;
     this.status = vacancy.status || null;
     this.photoURL = vacancy.photoURL || null;
+    this.timeoutDate =  moment(vacancy.timeoutDate);
 
     this.salaryGROSS = vacancy.salaryGROSS || {
       from: 0,
