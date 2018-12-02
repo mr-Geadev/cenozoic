@@ -22,7 +22,7 @@ import {SettingEmployerModule} from '../../containers/setting-employer';
                 pathMatch: 'full',
                 canActivate: [LogInGuard]
             },
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,

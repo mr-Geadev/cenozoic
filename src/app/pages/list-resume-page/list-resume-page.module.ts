@@ -17,7 +17,7 @@ import {ListResumePageComponent} from './list-resume-page.component';
     imports: [
         RouterModule.forRoot([
             {path: 'list-resume', component: ListResumePageComponent, pathMatch: 'full'},
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,

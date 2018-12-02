@@ -16,7 +16,7 @@ import {FullResumeModule} from '../../containers/full-resume/full-resume.module'
     imports: [
         RouterModule.forRoot([
             {path: 'resume/:id', component: ResumeFullPageComponent, pathMatch: 'full'},
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,

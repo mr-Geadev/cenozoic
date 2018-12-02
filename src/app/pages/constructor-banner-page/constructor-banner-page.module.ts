@@ -20,7 +20,7 @@ import { ConstructorBannerPageComponent } from 'pages/constructor-banner-page/co
         canActivate: [LogInGuard, NotWorkerGuard, BlankAccountGuard, PaymentGuards],
         data: { type: 'countPossibleCreateBanner'}
       },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

@@ -17,7 +17,7 @@ import {FilterVacancyModule} from '../../containers/filter-vacancy';
     imports: [
         RouterModule.forRoot([
             {path: 'list-vacancy', component: ListVacancyPageComponent, pathMatch: 'full'},
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,

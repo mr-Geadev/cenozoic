@@ -19,7 +19,7 @@ import { ConstructorNewsPageComponent } from './constructor-news-page.component'
         pathMatch: 'full',
         canActivate: [LogInGuard, NotWorkerGuard, BlankAccountGuard],
       },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

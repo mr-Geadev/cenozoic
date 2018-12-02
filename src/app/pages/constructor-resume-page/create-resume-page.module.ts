@@ -21,7 +21,7 @@ import { CreateResumePageComponent } from './create-resume-page.component';
                 pathMatch: 'full',
                 canActivate: [LogInGuard, NotEmployerGuard, BlankAccountGuard]
             },
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,

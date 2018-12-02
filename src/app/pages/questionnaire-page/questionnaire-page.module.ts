@@ -16,7 +16,7 @@ import {LoginModalModule} from '../../pop-ups';
   imports: [
     RouterModule.forRoot([
       {path: 'questionnaire/:id', component: QuestionnairePageComponent},
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

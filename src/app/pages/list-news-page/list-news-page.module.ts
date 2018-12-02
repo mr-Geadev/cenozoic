@@ -14,7 +14,7 @@ import { ListNewsPageComponent } from 'pages/list-news-page/list-news-page.compo
   imports: [
     RouterModule.forRoot([
       { path: 'list-news', component: ListNewsPageComponent, pathMatch: 'full' },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

@@ -10,7 +10,7 @@ import { FaqPageComponent } from 'pages/faq-page/faq-page.component';
   imports: [
     RouterModule.forRoot([
       { path: 'faq', component: FaqPageComponent },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     RouterModule,
   ],

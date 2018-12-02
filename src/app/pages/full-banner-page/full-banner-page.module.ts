@@ -16,7 +16,7 @@ import { LoginModalModule } from '../../pop-ups';
   imports: [
     RouterModule.forRoot([
       { path: 'banner/:id', component: FullBannerPageComponent, pathMatch: 'full' },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

@@ -24,7 +24,7 @@ import {ConstructorVacancyModule} from '../../containers/constructor-vacancy';
                 canActivate: [LogInGuard, NotWorkerGuard, BlankAccountGuard, PaymentGuards],
                 data: { type: 'countPossibleCreateVacancy'}
             },
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,

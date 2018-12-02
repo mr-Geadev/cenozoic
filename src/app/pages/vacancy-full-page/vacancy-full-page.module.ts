@@ -16,7 +16,7 @@ import {FullVacancyModule} from '../../containers/full-vacancy';
     imports: [
         RouterModule.forRoot([
             {path: 'vacancy/:id', component: VacancyFullPageComponent, pathMatch: 'full'},
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,

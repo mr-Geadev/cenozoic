@@ -16,7 +16,7 @@ import { LoginModalModule } from '../../pop-ups';
   imports: [
     RouterModule.forRoot([
       { path: 'news/:id', component: NewsFullPageComponent, pathMatch: 'full' },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

@@ -32,7 +32,7 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
         pathMatch: 'full',
         canActivate: [LogInGuard],
       },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

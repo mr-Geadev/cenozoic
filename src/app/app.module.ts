@@ -61,7 +61,7 @@ const ROUTES = [
   imports: [
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'cenozoic' }),
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, {scrollPositionRestoration: 'enabled'}),
     MatSnackBarModule,
     // Pages
     MainPageModule,

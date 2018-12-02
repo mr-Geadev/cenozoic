@@ -12,7 +12,7 @@ import {EmailConfirmPageComponent} from './email-confirm-page.component';
     imports: [
         RouterModule.forRoot([
             {path: 'account-email-confirm/:token', component: EmailConfirmPageComponent},
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule
 

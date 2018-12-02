@@ -21,7 +21,7 @@ import {BlankAccountGuard} from '../../guards/blank-account.guard';
         pathMatch: 'full',
         canActivate: [LogInGuard, NotWorkerGuard, BlankAccountGuard]
       },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

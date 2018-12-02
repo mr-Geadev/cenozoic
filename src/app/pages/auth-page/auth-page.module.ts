@@ -15,7 +15,7 @@ import {AuthPageComponent} from './auth-page.component';
     imports: [
         RouterModule.forRoot([
             {path: 'auth', component: AuthPageComponent, pathMatch: 'full'},
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,

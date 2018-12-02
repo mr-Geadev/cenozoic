@@ -20,7 +20,7 @@ import {MainBannerModule} from './main-banner';
     imports: [
         RouterModule.forRoot([
             {path: '', component: MainPageComponent, pathMatch: 'full'},
-        ]),
+        ], {scrollPositionRestoration: 'enabled'}),
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,
