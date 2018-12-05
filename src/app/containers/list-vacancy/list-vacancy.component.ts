@@ -16,7 +16,7 @@ export class ListVacancyComponent implements OnInit {
   @Input() offset?: number = 0;
 
   public listVacancy: any[] = [];
-  public dictionary: any = null;
+  public dictionary: any = {};
   private _offset: number = 0;
   public typeCurrentUser: string = null;
 
@@ -27,7 +27,10 @@ export class ListVacancyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this._userService.user$
       .subscribe(

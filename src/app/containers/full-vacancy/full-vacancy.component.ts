@@ -17,7 +17,7 @@ import { CitiesService } from 'services';
 })
 export class FullVacancyComponent implements OnInit {
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public currentVacancy: any = null;
   private id: string = null;
   public nationalitiesDefault: any[] = null;
@@ -38,7 +38,10 @@ export class FullVacancyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.userService.user$
       .subscribe((user) => {

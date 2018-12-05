@@ -12,7 +12,7 @@ export class EmailConfirmPageComponent implements OnInit {
 
     public token: string = null;
     public status: string = 'loading';
-    public dictionary: any = null;
+    public dictionary: any = {};
 
     constructor(private activateRoute: ActivatedRoute,
                 private _localizationService: LocalizationService,
@@ -23,7 +23,10 @@ export class EmailConfirmPageComponent implements OnInit {
 
     public ngOnInit() {
 
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
 
         this._http.get(`/api/v1/user/email/confirm?confirmToken=${this.token}`)
             .subscribe(

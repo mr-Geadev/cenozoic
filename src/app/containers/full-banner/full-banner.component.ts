@@ -16,7 +16,7 @@ import 'rxjs-compat/add/operator/last';
 })
 export class FullBannerComponent implements OnInit {
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public banner: BannerModel;
   private id: string = null;
   private currentLang: string = null;
@@ -34,7 +34,10 @@ export class FullBannerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.currentLang = LocalizationService.currentLang();
 

@@ -8,12 +8,15 @@ import { LocalizationService } from "../../../services/index";
     styleUrls: ['./main-partners.component.scss']
 })
 export class MainPartnersComponent implements OnInit {
-    public dictionary: any = null;
+    public dictionary: any = {};
 
     constructor(private _localizationService: LocalizationService) {
     }
 
     ngOnInit(): void {
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
     }
 }

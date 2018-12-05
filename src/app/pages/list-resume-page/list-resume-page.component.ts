@@ -9,7 +9,7 @@ import { LocalizationService } from 'services';
   styleUrls: ['./list-resume-page.component.scss'],
 })
 export class ListResumePageComponent implements OnInit {
-  public dictionary: any = null;
+  public dictionary: any = {};
   public selected = 'ascending';
 
   public sortParameter: SortModel = new SortModel({});
@@ -18,7 +18,10 @@ export class ListResumePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
   }
 
 }

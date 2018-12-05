@@ -12,12 +12,15 @@ export class ListRespondComponent implements OnInit {
   @Input('typeUser') typeUser: string;
   @Input('listRespond') listRespond: RespondModel[];
 
-  public dictionary: any = null;
+  public dictionary: any = {};
 
   constructor(private _localizationService: LocalizationService) {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
   }
 }

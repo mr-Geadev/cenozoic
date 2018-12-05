@@ -13,7 +13,7 @@ import { LocalizationService, SystemMessageService } from 'services';
 
 export class AnswerToRespondComponent implements OnInit {
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public answer: boolean = true;
   public isSendQuestionnaire: boolean = false;
 
@@ -33,7 +33,10 @@ export class AnswerToRespondComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.resume = this.data.respond ? this.data.respond.resume : this.data.resume;
     this.answer = this.data.respond ? !(this.data.respond.status === RESPOND_STATUSES.REJECTED) : true;

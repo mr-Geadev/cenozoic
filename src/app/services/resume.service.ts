@@ -34,7 +34,7 @@ export class ResumeService {
     this.http.get(`/api/v1/user/resume/remove?resumeId=${id}`)
       .subscribe((res: any) => {
         if (res.success) {
-          this._systemMessages.info(this._localizationService.currentDictionary.RESUME_WAS_DELETED);
+          this._systemMessages.info('Резюме было удалено');
           this.router.navigate(['list-resume']);
         } else {
           this._systemMessages.info(res.errorMessage);

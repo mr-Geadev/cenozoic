@@ -25,7 +25,7 @@ export class ListNewsComponent implements OnInit, OnChanges {
   public listBanner: BannerModel[] = [];
   public list: any[] = [];
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   private currentLang: string = null;
 
   constructor(private _localizationService: LocalizationService,
@@ -34,7 +34,10 @@ export class ListNewsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.currentLang = LocalizationService.currentLang();
 

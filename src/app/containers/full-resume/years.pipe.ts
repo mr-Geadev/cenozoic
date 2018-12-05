@@ -5,10 +5,13 @@ import {LocalizationService} from '../../services';
     name: 'howLong'
 })
 export class YearsPipe implements PipeTransform {
-    public dictionary: any = null;
+    public dictionary: any = {};
 
     constructor(private _localizationService: LocalizationService) {
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
     }
 
     transform(value: any, year: any): number {

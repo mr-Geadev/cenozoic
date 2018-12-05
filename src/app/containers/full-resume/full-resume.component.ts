@@ -17,7 +17,7 @@ import { PopupsService } from '../../services/popups.service';
 })
 export class FullResumeComponent implements OnInit {
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public currentResume: any;
   public currentUser: any;
   private id: string = null;
@@ -41,7 +41,10 @@ export class FullResumeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.http.get('/assets/json/nationalities.json')
       .subscribe(

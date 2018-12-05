@@ -1,31 +1,35 @@
-import { Component, OnInit } from "@angular/core";
-import { NavigationEnd, Router } from "@angular/router";
-import { LocalizationService } from "../../services";
-import { UserService } from "../../services/user.service";
-import "rxjs/add/operator/pairwise";
-import "rxjs/add/operator/filter";
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { LocalizationService } from '../../services';
+import { UserService } from '../../services/user.service';
+import 'rxjs/add/operator/pairwise';
+import 'rxjs/add/operator/filter';
 
 @Component({
-    selector: 'account-setting-page',
-    templateUrl: './account-settings-page.component.html',
-    styleUrls: ['./account-settings-page.component.scss']
+  selector: 'account-setting-page',
+  templateUrl: './account-settings-page.component.html',
+  styleUrls: ['./account-settings-page.component.scss'],
 })
 export class AccountSettingsPageComponent implements OnInit {
 
-    public typeCurrentUser: string = null;
-    public dictionary: any = null;
+  public typeCurrentUser: string = null;
+  public dictionary: any = {};
 
-    constructor(private _userService: UserService,
-                private _router: Router,
-                private _localizationService: LocalizationService) {
-    }
+  constructor(private _userService: UserService,
+              private _router: Router,
+              private _localizationService: LocalizationService) {
+  }
 
-    public ngOnInit() {
-        this.dictionary = this._localizationService.currentDictionary;
-        this._userService.user$
-            .subscribe(
-                (user) => user ? this.typeCurrentUser = user.typeAccount : null
-            )
-    }
+  public ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
+
+    this._userService.user$
+      .subscribe(
+        (user) => user ? this.typeCurrentUser = user.typeAccount : null,
+      );
+  }
 
 }

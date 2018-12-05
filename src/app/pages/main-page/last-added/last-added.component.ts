@@ -8,7 +8,7 @@ import { LocalizationService } from '../../../services/index';
   styleUrls: ['./last-added.component.scss'],
 })
 export class LastAddedComponent implements OnInit {
-  public dictionary: any = null;
+  public dictionary: any = {};
   public type: string = 'resume'; // vacancy
   public offset: number = 0;
 
@@ -17,7 +17,10 @@ export class LastAddedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
   }
 
   setType(newType) {

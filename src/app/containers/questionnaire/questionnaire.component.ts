@@ -15,7 +15,7 @@ import { ConfirmService, LocalizationService, QuestionnaireService, UserService 
 })
 export class QuestionnaireComponent implements OnInit {
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public questionnaire: QuestionnaireModel;
   public user: any;
   public id: string = null;
@@ -36,7 +36,10 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     if (this.id === 'answer') {
       this.questionnaireService.questionnaire$

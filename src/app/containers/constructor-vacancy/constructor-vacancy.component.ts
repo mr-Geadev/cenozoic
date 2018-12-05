@@ -18,7 +18,7 @@ export class ConstructorVacancyComponent implements OnInit {
 
   public vacancy: FormGroup;
   public vacancyId: string = null;
-  public dictionary: any = null;
+  public dictionary: any = {};
   public nameCity: string = null;
   public nationalitiesDefault: any[] = null;
   public currentUser = null;
@@ -39,7 +39,10 @@ export class ConstructorVacancyComponent implements OnInit {
   public ngOnInit(): void {
 
     // подключение локализцаии
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this._vacancyApi.getNationalities()
       .subscribe(

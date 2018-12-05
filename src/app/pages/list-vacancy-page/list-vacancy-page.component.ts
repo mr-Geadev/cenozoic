@@ -8,12 +8,15 @@ import {LocalizationService} from '../../services/localization.service';
 })
 export class ListVacancyPageComponent implements OnInit {
 
-    public dictionary: any = null;
+    public dictionary: any = {};
 
     constructor(private _localizationService: LocalizationService) {
     }
 
     public ngOnInit() {
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
     }
 }

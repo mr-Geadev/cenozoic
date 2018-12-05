@@ -14,7 +14,7 @@ export class ListBannerComponent implements OnInit {
   public listBanner: BannerModel[] = [];
   @Input() user?: any = null;
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   private currentLang: string = null;
 
   constructor(private _localizationService: LocalizationService,
@@ -22,7 +22,10 @@ export class ListBannerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.currentLang = LocalizationService.currentLang();
 

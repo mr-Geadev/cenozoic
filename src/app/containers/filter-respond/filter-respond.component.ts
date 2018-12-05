@@ -12,7 +12,7 @@ export class FilterRespondComponent implements OnInit {
 
   public STATUSES = STATUSES;
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public parameters = {
     filters: {
       status: null,
@@ -25,7 +25,10 @@ export class FilterRespondComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.filterRespondService.filter$
       .filter(parameters => !!parameters)

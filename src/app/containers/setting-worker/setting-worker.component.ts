@@ -19,7 +19,7 @@ export class SettingWorkerComponent implements OnInit {
     public currentUser: any = {};
     public passwords: FormGroup = null;
     public info: FormGroup = null;
-    public dictionary: any = null;
+    public dictionary: any = {};
     public phoneMask: any[] = ['+', '7', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
 
     constructor(public userService: UserService,
@@ -55,7 +55,10 @@ export class SettingWorkerComponent implements OnInit {
     }
 
     public ngOnInit() {
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
     }
 
     public formCreate(): void {

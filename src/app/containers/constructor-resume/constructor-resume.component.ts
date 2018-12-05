@@ -56,7 +56,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
   public textEditorConfig: any = {}; // для RichTextComponent'ы
   public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
   public imagesOfCertificate: any = []; // фотка сертификата
-  public dictionary: any = null;
+  public dictionary: any = {};
   public listVisibleElement: any = {
     experience: [],
     education: [],
@@ -88,7 +88,10 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
         });
 
     // подклюение локализцаии
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     // установка текста кнопки локализации из словаря
     this.loadingPhotoButton = this.dictionary.LOAD_PHOTO;

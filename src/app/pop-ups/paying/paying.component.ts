@@ -30,7 +30,7 @@ const WORDS = {
 })
 export class PayingComponent implements OnInit {
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public words: any = null;
 
   public payment: FormGroup = new FormGroup({
@@ -44,7 +44,10 @@ export class PayingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.words = WORDS[this.data.type];
   }

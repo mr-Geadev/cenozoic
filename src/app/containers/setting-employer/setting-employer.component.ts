@@ -18,7 +18,7 @@ import {BlankAccountService} from '../../services';
 })
 export class SettingEmployerComponent implements OnInit {
 
-    public dictionary: any = null;
+    public dictionary: any = {};
 
     public currentUser: any = {};
     public passwords: FormGroup = null;
@@ -67,7 +67,10 @@ export class SettingEmployerComponent implements OnInit {
 
     public ngOnInit() {
         // подклюение локализцаи
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
 
         // установка текста кнопки лоаклизации из словря
         this.loadingPhotoButton = this.dictionary.LOAD_COMPANY_LOGO;

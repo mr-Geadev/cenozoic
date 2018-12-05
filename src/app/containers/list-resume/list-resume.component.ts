@@ -16,7 +16,7 @@ export class ListResumeComponent implements OnInit {
   @Input() mainPage?: boolean = false;
   @Input('offset') offsetView?: number = 0;
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public listResume: any[];
   private offset: number = 0;
   public typeCurrentUser: string = null;
@@ -30,7 +30,10 @@ export class ListResumeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this._userService.user$
       .subscribe(

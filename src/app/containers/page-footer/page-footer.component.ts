@@ -8,12 +8,15 @@ import {LocalizationService} from '../../services';
     styleUrls: ['./page-footer.component.scss']
 })
 export class PageFooterComponent implements OnInit {
-    public dictionary: any = null;
+    public dictionary: any = {};
 
     constructor(private _localizationService: LocalizationService) {
     }
 
     ngOnInit(): void {
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
     }
 }

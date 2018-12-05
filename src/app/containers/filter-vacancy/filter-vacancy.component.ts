@@ -11,7 +11,7 @@ import {LocalizationService} from '../../services';
 export class FilterVacancyComponent implements OnInit {
 
     public showing: boolean = false; // view
-    public dictionary: any = null;
+    public dictionary: any = {};
     public nationalitiesDefault: any[] = null;
 
     constructor(public filterVacancyService: FilterVacancyService,
@@ -31,6 +31,9 @@ export class FilterVacancyComponent implements OnInit {
                     this.nationalitiesDefault = nationalities.list;
                 });
 
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
     }
 }

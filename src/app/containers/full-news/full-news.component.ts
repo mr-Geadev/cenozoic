@@ -16,7 +16,7 @@ import 'rxjs-compat/add/operator/last';
 })
 export class FullNewsComponent implements OnInit {
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public news: NewsModel;
   private id: string = null;
   private currentLang: string = null;
@@ -35,7 +35,10 @@ export class FullNewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this.currentLang = LocalizationService.currentLang();
 

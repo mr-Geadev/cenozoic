@@ -13,7 +13,7 @@ import { RESPOND_STATUSES } from '../../const';
 
 export class AnswerToOfferComponent implements OnInit {
 
-  public dictionary: any = null;
+  public dictionary: any = {};
   public answer: boolean = true;
   public vacancy: VacancyModel = null;
   public checkedResume: any = null;
@@ -29,7 +29,10 @@ export class AnswerToOfferComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
 
     this.vacancy = new VacancyModel(this.data.respond ? this.data.respond.vacancy : this.data.vacancy);
 

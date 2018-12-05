@@ -19,7 +19,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     public isAdmin: boolean = false;
 
     // For localization
-    public dictionary: any = null;
+    public dictionary: any = {};
     public language: string = null;
     public availableLanguages: any = LANGUAGES;
 
@@ -40,7 +40,10 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     ngOnInit(): void {
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
         this.language = this._localizationService.currentLanguage;
 
         this._subscriptions.push(

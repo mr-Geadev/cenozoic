@@ -27,7 +27,7 @@ export class PersonalAccountPageComponent implements OnInit {
   }
 
   public activeTab: string = null;
-  public dictionary: any = null;
+  public dictionary: any = {};
   public typeCurrentUser: string = null;
   public currentUser: any = null;
 
@@ -75,7 +75,10 @@ export class PersonalAccountPageComponent implements OnInit {
     this.questionnaireApi.getQuestionnaires();
     this.respondsApi.getArchive();
 
-    this.dictionary = this._localizationService.currentDictionary;
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     this._userService.user$
       .subscribe(

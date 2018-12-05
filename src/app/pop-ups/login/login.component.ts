@@ -13,7 +13,7 @@ import {AuthService, LocalizationService, SystemMessageService, UserService} fro
 export class LoginModalComponent implements OnInit {
 
     public type: string = 'entry';
-    public dictionary: any = null;
+    public dictionary: any = {};
 
     public registerForm: FormGroup = new FormGroup({
         typeAccount: new FormControl('worker', Validators.required),
@@ -35,7 +35,10 @@ export class LoginModalComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.dictionary = this._localizationService.currentDictionary;
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res
+        );
     }
 
     public logIn(): void {
