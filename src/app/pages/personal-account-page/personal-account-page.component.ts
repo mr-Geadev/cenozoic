@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { QuestionnaireModel, RespondModel } from 'models';
 import { NewsModel } from 'models/news.model';
 import { PayingModalService } from 'pop-ups/paying';
@@ -12,6 +13,18 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./personal-account-page.component.scss'],
 })
 export class PersonalAccountPageComponent implements OnInit {
+
+  readonly TABS = {
+    RESPONDS: 'responds',
+    OFFERS: 'offers',
+    ARCHIVE: 'archive',
+    QUESTIONNAIRE: 'questionnaire',
+    NEWS: 'news',
+    BANNERS: 'banners',
+    CONTACTS: 'contacts',
+    VACANCY: 'vacancy',
+    RESUME: 'resume'
+  }
 
   public activeTab: string = null;
   public dictionary: any = null;
@@ -45,6 +58,7 @@ export class PersonalAccountPageComponent implements OnInit {
 
   constructor(private _localizationService: LocalizationService,
               private respondsApi: RespondsApi,
+              private activateRoute: ActivatedRoute,
               private payingModalService: PayingModalService,
               private questionnaireApi: QuestionnairesApi,
               private _userService: UserService) {
@@ -52,12 +66,16 @@ export class PersonalAccountPageComponent implements OnInit {
 
   public ngOnInit(): void {
 
+    this.activateRoute.params.subscribe(params => {
+      this.activeTab = params['tab'] || 'responds';
+      console.log(this.activeTab);
+    });
+
     this.respondsApi.initializeResponds();
     this.questionnaireApi.getQuestionnaires();
     this.respondsApi.getArchive();
 
     this.dictionary = this._localizationService.currentDictionary;
-    this.activeTab = this.dictionary.ACCOUNT_PAGE_TAB_RESPOND;
 
     this._userService.user$
       .subscribe(

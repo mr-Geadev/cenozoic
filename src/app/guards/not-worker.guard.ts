@@ -20,7 +20,7 @@ export class NotWorkerGuard implements CanActivate {
             .map(user => {
                 if (this.userService.isType('worker')) {
                     this._message.info('Действие не доступно для вашего аккаунта');
-                    this.router.navigate(['/personal-account']);
+                    this.router.navigate(['/personal-account', 'responds']);
                 } else {
                     return true;
                 }

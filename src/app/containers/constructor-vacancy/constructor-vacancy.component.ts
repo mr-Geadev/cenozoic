@@ -110,7 +110,7 @@ export class ConstructorVacancyComponent implements OnInit {
         .subscribe(
           (res) => {
             this._msg.info('Ваша вакансия сохранена');
-            this.router.navigate(['personal-account']);
+            this.router.navigate(['personal-account', 'vacancy'] );
           },
           (err) => {
             this._msg.info(err.error.errorMessage);

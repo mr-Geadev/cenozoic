@@ -96,11 +96,9 @@
         display: flex;
         justify-content: space-between;
 
-        input {
-          display: none;
-        }
 
-        label {
+        a {
+          text-decoration: none;
           display: block;
           color: $light-gray;
           border-bottom: 3px solid transparent;
@@ -110,17 +108,16 @@
           text-transform: uppercase;
           @include tr-color;
 
+          &.active {
+            color: $black;
+            border-bottom: 3px solid $dark-orange;
+            cursor: default;
+          }
+
           &:hover {
             color: $black;
           }
         }
-
-        input:checked + label {
-          color: $black;
-          border-bottom: 3px solid $dark-orange;
-          cursor: default;
-        }
-
       }
 
     }

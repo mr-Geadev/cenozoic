@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionnairesApi } from 'api';
 import { QuestionnaireModel } from 'models';
 import { SystemMessageService } from 'services';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'constructor-questionnaire',
@@ -25,6 +26,7 @@ export class ConstructorQuestionnaireComponent implements OnInit {
 
   constructor(private _systemMessageService: SystemMessageService,
               private router: Router,
+              private _location: Location,
               private questionnaireApi: QuestionnairesApi,
               private activateRoute: ActivatedRoute) {
     this.id = activateRoute.snapshot.params['id'];
@@ -137,7 +139,7 @@ export class ConstructorQuestionnaireComponent implements OnInit {
       this.questionnaireApi.editQuestionnaire(this.id, this.questionnaire.value)
         .subscribe(
           res => {
-            this.router.navigate(['/personal-account']);
+            this._location.back();
           },
           err => console.log(err),
         );
@@ -146,7 +148,7 @@ export class ConstructorQuestionnaireComponent implements OnInit {
         this.questionnaireApi.createQuestionnaire(this.questionnaire.value)
           .subscribe(
             res => {
-              this.router.navigate(['/personal-account']);
+              this.router.navigate(['/personal-account', 'questionnaire']);
             },
             err => console.log(err),
           );
@@ -159,7 +161,7 @@ export class ConstructorQuestionnaireComponent implements OnInit {
         this.questionnaireApi.createWithFileQuestionnaire(formData)
           .subscribe(
             res => {
-              this.router.navigate(['/personal-account']);
+              this.router.navigate(['/personal-account', 'questionnaire']);
             },
             err => console.log(err),
           );

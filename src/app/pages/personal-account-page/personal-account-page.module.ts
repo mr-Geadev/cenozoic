@@ -28,8 +28,11 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     RouterModule.forRoot([
       {
         path: 'personal-account',
+        redirectTo: 'personal-account/responds'
+      },
+      {
+        path: 'personal-account/:tab',
         component: PersonalAccountPageComponent,
-        pathMatch: 'full',
         canActivate: [LogInGuard],
       },
     ], {scrollPositionRestoration: 'enabled'}),

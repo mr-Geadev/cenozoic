@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionnairesApi, RespondsApi } from 'api';
 import { RESPOND_STATUSES } from 'const';
 import { QuestionnaireModel } from 'models';
+import { Location } from '@angular/common';
 
 import { ConfirmService, LocalizationService, QuestionnaireService, UserService } from 'services';
 
@@ -28,6 +29,7 @@ export class QuestionnaireComponent implements OnInit {
               private _dialog: MatDialog,
               private activateRoute: ActivatedRoute,
               private router: Router,
+              private _location: Location,
               private questionnaireService: QuestionnaireService,
               private _localizationService: LocalizationService) {
     this.id = activateRoute.snapshot.params['id'];
@@ -79,7 +81,7 @@ export class QuestionnaireComponent implements OnInit {
         if (confirm) {
           this.questionnairesApi.removeQuestionnaire(this.id)
             .subscribe(
-              res => this.router.navigate(['/personal-account']));
+              res => this._location.back());
         }
         this._dialog.closeAll();
       });
@@ -88,13 +90,13 @@ export class QuestionnaireComponent implements OnInit {
   public sendAnswers() {
     this.questionnairesApi.answerToData(this.questionnaireAnswer)
       .subscribe(
-        (res) => { this.router.navigate(['/personal-account']); },
+        (res) => { this._location.back(); },
         err => console.log(err),
       );
   }
 
   public setStatus(status: boolean) {
     this.respondsApi.setStatusAfterQuestionnaire(status ? RESPOND_STATUSES.APPROVED : RESPOND_STATUSES.REJECTED);
-    this.router.navigate(['/personal-account']);
+    this._location.back();
   }
 }

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -31,6 +32,7 @@ export class ConstructorBannerComponent implements OnInit {
   constructor(private _systemMessageService: SystemMessageService,
               private activateRoute: ActivatedRoute,
               private router: Router,
+              private _location: Location,
               private bannerApi: BannerApi) {
     this.id = activateRoute.snapshot.params['id'];
   }
@@ -87,12 +89,12 @@ export class ConstructorBannerComponent implements OnInit {
     if (this.edit) {
       this.bannerApi.editBanner(this.id, { ...this.banner.value, text: this.textBanner }, this.fileToUpload.file || null)
         .subscribe(
-          res => { this.router.navigate(['/personal-account']); },
+          res => { this._location.back(); },
         );
     } else {
       this.bannerApi.createBanner(this.fileToUpload.file, { ...this.banner.value, text: this.textBanner })
         .subscribe(
-          res => { this.router.navigate(['/personal-account']); },
+          res => { this.router.navigate(['/personal-account', 'banners']); },
         );
     }
   }

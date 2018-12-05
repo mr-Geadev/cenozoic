@@ -1,246 +1,204 @@
-<div class="manage">
-	<div class="container">
+<ng-container *ngIf="activeTab">
+	<div class="manage">
+		<div class="container">
 
+			<div class="row">
+				<div class="title">
+					{{ typeCurrentUser === 'worker' ?
+					dictionary.PERSONAL_ACCOUNT_WORKER :
+					dictionary.PERSONAL_ACCOUNT_EMPLOYER }}
+				</div>
+
+				<div class="paid-options" *ngIf="this.typeCurrentUser === 'employer'">
+					<div class="small-title">
+						Платный функционал:
+					</div>
+					<div class="parameter">
+						Вакансий: <b>{{currentUser.paidOptions.countPossibleCreateVacancy}}</b>
+						<span (click)="buy('vacancy')" class="pay">+</span>
+					</div>
+					<div class="parameter">
+						Рекламных баннеров: <b>{{currentUser.paidOptions.countPossibleCreateBanner}}</b>
+						<span (click)="buy('banner')" class="pay">+</span>
+					</div>
+					<div class="parameter">
+						Просмотров резюме: <b>{{currentUser.paidOptions.countPossibleViewResumeContacts}}</b>
+						<span (click)="buy('resume')" class="pay">+</span>
+					</div>
+				</div>
+
+				<ul class="list">
+
+					<li class="item">
+						<a routerLink="/personal-account/{{TABS.RESPONDS}}" [class.active]="activeTab === TABS.RESPONDS">{{ dictionary.ACCOUNT_PAGE_TAB_RESPOND }}</a>
+					</li>
+
+					<li class="item">
+						<a routerLink="/personal-account/{{TABS.OFFERS}}" [class.active]="activeTab === TABS.OFFERS">{{ dictionary.ACCOUNT_PAGE_TAB_OFFERS }}</a>
+					</li>
+
+					<li class="item">
+						<a routerLink="/personal-account/{{TABS.ARCHIVE}}" [class.active]="activeTab === TABS.ARCHIVE">{{ dictionary.ACCOUNT_PAGE_TAB_ARCHIVE }}</a>
+					</li>
+
+					<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
+						<a routerLink="/personal-account/{{TABS.QUESTIONNAIRE}}" [class.active]="activeTab === TABS.QUESTIONNAIRE">{{dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES}}</a>
+					</li>
+
+					<li class="item" *ngIf="typeCurrentUser === 'employer'">
+						<a routerLink="/personal-account/{{TABS.NEWS}}" [class.active]="activeTab === TABS.NEWS">{{dictionary.ACCOUNT_PAGE_TAB_NEWS}}</a>
+					</li>
+
+					<li class="item" *ngIf="typeCurrentUser === 'employer'">
+						<a routerLink="/personal-account/{{TABS.BANNERS}}" [class.active]="activeTab === TABS.BANNERS">{{dictionary.ACCOUNT_PAGE_TAB_BANNERS}}</a>
+					</li>
+
+					<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
+						<a routerLink="/personal-account/{{TABS.CONTACTS}}" [class.active]="activeTab === TABS.CONTACTS">{{dictionary.ACCOUNT_PAGE_TAB_CONTACTS}}</a>
+					</li>
+
+					<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
+						<a routerLink="/personal-account/{{TABS.VACANCY}}" [class.active]="activeTab === TABS.VACANCY">{{dictionary.ACCOUNT_PAGE_TAB_CAREERS}}</a>
+					</li>
+
+					<li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
+						<a routerLink="/personal-account/{{TABS.RESUME}}" [class.active]="activeTab === TABS.RESUME">{{ dictionary.ACCOUNT_PAGE_TAB_CV }}</a>
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+
+	<!--<div class="container">-->
+		<!--<div class="row" *ngIf=" dictionary.MY !== 'My'">-->
+			<!--<div class="side-title" *ngIf="activeTab !== 'Архив'">Мои {{ activeTab }}</div>-->
+			<!--<div class="side-title" *ngIf="activeTab === 'Архив'">Мой {{ activeTab }}</div>-->
+		<!--</div>-->
+		<!--<div class="row" *ngIf=" dictionary.MY === 'My'">-->
+			<!--<div class="side-title">My {{ activeTab }}</div>-->
+		<!--</div>-->
+	<!--</div>-->
+
+	<div class="container description">
 		<div class="row">
-			<div class="title">
-				{{ typeCurrentUser === 'worker' ?
-				dictionary.PERSONAL_ACCOUNT_WORKER :
-				dictionary.PERSONAL_ACCOUNT_EMPLOYER }}
+			<div class="message" [ngClass]="{ 'active': activeTab === TABS.RESPONDS }">
+				{{ typeCurrentUser === 'worker' ? dictionary.ACCOUNT_PAGE_TAB_RESPOND_DESC_WORKER : null }}
+				{{ typeCurrentUser === 'employer' ? dictionary.ACCOUNT_PAGE_TAB_RESPOND_DESC_EMPLOYER : null }}
 			</div>
-
-			<div class="paid-options" *ngIf="this.typeCurrentUser === 'employer'">
-				<div class="small-title">
-					Платный функционал:
-				</div>
-				<div class="parameter">
-					Вакансий: <b>{{currentUser.paidOptions.countPossibleCreateVacancy}}</b>
-					<span (click)="buy('vacancy')" class="pay">+</span>
-				</div>
-				<div class="parameter">
-					Рекламных баннеров: <b>{{currentUser.paidOptions.countPossibleCreateBanner}}</b>
-					<span (click)="buy('banner')" class="pay">+</span>
-				</div>
-				<div class="parameter">
-					Просмотров резюме: <b>{{currentUser.paidOptions.countPossibleViewResumeContacts}}</b>
-					<span (click)="buy('resume')" class="pay">+</span>
-				</div>
+			<div class="message" [ngClass]="{ 'active': activeTab === TABS.OFFERS }">
+				{{ typeCurrentUser === 'worker' ? dictionary.ACCOUNT_PAGE_TAB_OFFERS_DESC_WORKER : null }}
+				{{ typeCurrentUser === 'employer' ? dictionary.ACCOUNT_PAGE_TAB_OFFERS_DESC_EMPLOYER : null }}
 			</div>
-
-			<ul class="list">
-
-				<li class="item">
-					<input type="radio"
-								 id="responses"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_RESPOND">
-					<label for="responses">{{ dictionary.ACCOUNT_PAGE_TAB_RESPOND }}</label>
-				</li>
-
-				<li class="item">
-					<input type="radio"
-								 id="suggestions"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_OFFERS">
-					<label for="suggestions">{{ dictionary.ACCOUNT_PAGE_TAB_OFFERS }}</label>
-				</li>
-
-				<li class="item">
-					<input type="radio"
-								 id="archive"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_ARCHIVE">
-					<label for="archive">{{ dictionary.ACCOUNT_PAGE_TAB_ARCHIVE }}</label>
-				</li>
-
-				<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
-					<input type="radio"
-								 id="interview"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES">
-					<label for="interview">{{dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES}}</label>
-				</li>
-
-				<li class="item" *ngIf="typeCurrentUser === 'employer'">
-					<input type="radio"
-								 id="news"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_NEWS">
-					<label for="news">{{dictionary.ACCOUNT_PAGE_TAB_NEWS}}</label>
-				</li>
-
-				<li class="item" *ngIf="typeCurrentUser === 'employer'">
-					<input type="radio"
-								 id="banner"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_BANNERS">
-					<label for="banner">{{dictionary.ACCOUNT_PAGE_TAB_BANNERS}}</label>
-				</li>
-
-				<li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
-					<input type="radio"
-								 id="summary"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_CV">
-					<label for="summary">{{ dictionary.ACCOUNT_PAGE_TAB_CV }}</label>
-				</li>
-
-				<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
-					<input type="radio"
-								 id="contacts"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_CONTACTS">
-					<label for="contacts">{{dictionary.ACCOUNT_PAGE_TAB_CONTACTS}}</label>
-				</li>
-
-				<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
-					<input type="radio"
-								 id="vacancy"
-								 name="manager"
-								 [(ngModel)]="activeTab"
-								 [value]="dictionary.ACCOUNT_PAGE_TAB_CAREERS">
-					<label for="vacancy">{{dictionary.ACCOUNT_PAGE_TAB_CAREERS}}</label>
-				</li>
-
-			</ul>
-
-		</div>
-
-	</div>
-</div>
-
-<div class="container">
-	<div class="row" *ngIf=" dictionary.MY !== 'My'">
-		<div class="side-title" *ngIf="activeTab !== 'Архив'">Мои {{ activeTab }}</div>
-		<div class="side-title" *ngIf="activeTab === 'Архив'">Мой {{ activeTab }}</div>
-	</div>
-	<div class="row" *ngIf=" dictionary.MY === 'My'">
-		<div class="side-title">My {{ activeTab }}</div>
-	</div>
-</div>
-
-<div class="container description">
-	<div class="row">
-		<div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND }">
-			{{ typeCurrentUser === 'worker' ? dictionary.ACCOUNT_PAGE_TAB_RESPOND_DESC_WORKER : null }}
-			{{ typeCurrentUser === 'employer' ? dictionary.ACCOUNT_PAGE_TAB_RESPOND_DESC_EMPLOYER : null }}
-		</div>
-		<div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS }">
-			{{ typeCurrentUser === 'worker' ? dictionary.ACCOUNT_PAGE_TAB_OFFERS_DESC_WORKER : null }}
-			{{ typeCurrentUser === 'employer' ? dictionary.ACCOUNT_PAGE_TAB_OFFERS_DESC_EMPLOYER : null }}
-		</div>
-		<div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_ARCHIVE }">
-			{{ dictionary.ACCOUNT_PAGE_TAB_ARCHIVE_DESC }}
-		</div>
-		<div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES }">
-			{{ dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC }}
-		</div>
-		<div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_NEWS }">
-			{{ dictionary.ACCOUNT_PAGE_TAB_NEWS_DESC }}
-		</div>
-		<div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_BANNERS }">
-			{{ dictionary.ACCOUNT_PAGE_TAB_BANNERS_DESC }}
-		</div>
-		<div class="message" [ngClass]="{ 'active': activeTab ===  dictionary.ACCOUNT_PAGE_TAB_CV }">
-			{{ dictionary.ACCOUNT_PAGE_TAB_CV_DESC }}
-		</div>
-		<div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CAREERS }">
-			{{ dictionary.ACCOUNT_PAGE_TAB_CAREERS_DESC }}
-		</div>
-		<div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CONTACTS }">
-			{{ dictionary.ACCOUNT_PAGE_TAB_CONTACTS_DESC }}
+			<div class="message" [ngClass]="{ 'active': activeTab === TABS.ARCHIVE }">
+				{{ dictionary.ACCOUNT_PAGE_TAB_ARCHIVE_DESC }}
+			</div>
+			<div class="message" [ngClass]="{ 'active': activeTab ===  TABS.QUESTIONNAIRE }">
+				{{ dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC }}
+			</div>
+			<div class="message" [ngClass]="{ 'active': activeTab ===  TABS.NEWS}">
+				{{ dictionary.ACCOUNT_PAGE_TAB_NEWS_DESC }}
+			</div>
+			<div class="message" [ngClass]="{ 'active': activeTab ===  TABS.BANNERS }">
+				{{ dictionary.ACCOUNT_PAGE_TAB_BANNERS_DESC }}
+			</div>
+			<div class="message" [ngClass]="{ 'active': activeTab ===  TABS.RESUME }">
+				{{ dictionary.ACCOUNT_PAGE_TAB_CV_DESC }}
+			</div>
+			<div class="message" [ngClass]="{ 'active': activeTab === TABS.VACANCY }">
+				{{ dictionary.ACCOUNT_PAGE_TAB_CAREERS_DESC }}
+			</div>
+			<div class="message" [ngClass]="{ 'active': activeTab === TABS.CONTACTS }">
+				{{ dictionary.ACCOUNT_PAGE_TAB_CONTACTS_DESC }}
+			</div>
 		</div>
 	</div>
-</div>
 
-<filter-respond
-	class="block resume"
-	[ngClass]="{ 'active': (activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS) || (activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND) }"
-	*ngIf="(activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS) || (activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND)"
-></filter-respond>
-
-
-<!--список новостей-->
-<list-news
-	[user]="currentUser._id"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_NEWS }"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_NEWS"
-></list-news>
-
-<!--список купленных резюме-->
-<list-resume
-	class="block resume"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CONTACTS }"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_CONTACTS"
-	[payedResume]="true"
-></list-resume>
+	<filter-respond
+		class="block resume"
+		[ngClass]="{ 'active': (activeTab === TABS.OFFERS) || (activeTab === TABS.RESPONDS) }"
+		*ngIf="(activeTab === TABS.OFFERS) || (activeTab === TABS.RESPONDS)"
+	></filter-respond>
 
 
-<!--список баннеров-->
-<list-banner
-	[user]="currentUser"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_BANNERS }"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_BANNERS"
-></list-banner>
+	<!--список новостей-->
+	<list-news
+		[user]="currentUser._id"
+		[ngClass]="{ 'active': activeTab === TABS.NEWS }"
+		*ngIf="activeTab === TABS.NEWS"
+	></list-news>
 
-<!--опросники-->
-<list-questionnaire
-	class="block resume"
-	[typeUser]="typeCurrentUser"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES }"
-	[listQuestionnaire]="listQuestionnaire"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_QUESTIONNAIRES"
-></list-questionnaire>
-
-<!--отклики-->
-<list-respond
-	class="block resume"
-	[typeUser]="typeCurrentUser"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS }"
-	[listRespond]="listOfOffers"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_OFFERS"
-></list-respond>
-
-<!--предложения-->
-<list-respond
-	class="block resume"
-	[typeUser]="typeCurrentUser"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND }"
-	[listRespond]="listOfResponds"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_RESPOND"
-></list-respond>
-
-<!--архив-->
-<list-respond
-	class="block resume"
-	[typeUser]="typeCurrentUser"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_ARCHIVE }"
-	[listRespond]="listOfArchive"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_ARCHIVE"
-></list-respond>
-
-<!--резюме-->
-<list-resume
-	class="block resume"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CV }"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_CV"
-	[config]="'user'"
-></list-resume>
-
-<!--вакансии-->
-<list-vacancy
-	class="block vacancy"
-	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_CAREERS"
-	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CAREERS }"
-	[config]="'user'"
-></list-vacancy>
+	<!--список купленных резюме-->
+	<list-resume
+		class="block resume"
+		[ngClass]="{ 'active': activeTab === TABS.CONTACTS}"
+		*ngIf="activeTab === TABS.CONTACTS"
+		[payedResume]="true"
+	></list-resume>
 
 
-<last-news></last-news>
+	<!--список баннеров-->
+	<list-banner
+		[user]="currentUser"
+		[ngClass]="{ 'active': activeTab === TABS.BANNERS}"
+		*ngIf="activeTab === TABS.BANNERS"
+	></list-banner>
+
+	<!--опросники-->
+	<list-questionnaire
+		class="block resume"
+		[typeUser]="typeCurrentUser"
+		[ngClass]="{ 'active': activeTab === TABS.QUESTIONNAIRE }"
+		[listQuestionnaire]="listQuestionnaire"
+		*ngIf="activeTab === TABS.QUESTIONNAIRE"
+	></list-questionnaire>
+
+	<!--отклики-->
+	<list-respond
+		class="block resume"
+		[typeUser]="typeCurrentUser"
+		[ngClass]="{ 'active': activeTab === TABS.OFFERS }"
+		[listRespond]="listOfOffers"
+		*ngIf="activeTab === TABS.OFFERS"
+	></list-respond>
+
+	<!--предложения-->
+	<list-respond
+		class="block resume"
+		[typeUser]="typeCurrentUser"
+		[ngClass]="{ 'active': activeTab === TABS.RESPONDS }"
+		[listRespond]="listOfResponds"
+		*ngIf="activeTab === TABS.RESPONDS"
+	></list-respond>
+
+	<!--архив-->
+	<list-respond
+		class="block resume"
+		[typeUser]="typeCurrentUser"
+		[ngClass]="{ 'active': activeTab === TABS.ARCHIVE }"
+		[listRespond]="listOfArchive"
+		*ngIf="activeTab === TABS.ARCHIVE"
+	></list-respond>
+
+	<!--резюме-->
+	<list-resume
+		class="block resume"
+		[ngClass]="{ 'active': activeTab === TABS.RESUME }"
+		*ngIf="activeTab === TABS.RESUME"
+		[config]="'user'"
+	></list-resume>
+
+	<!--вакансии-->
+	<list-vacancy
+		class="block vacancy"
+		*ngIf="activeTab === TABS.VACANCY"
+		[ngClass]="{ 'active': activeTab === TABS.VACANCY}"
+		[config]="'user'"
+	></list-vacancy>
+
+
+	<last-news></last-news>
+
+</ng-container>

@@ -23,19 +23,21 @@ export class PaymentGuards implements CanActivate {
         if (user.paidOptions[typePayment]) {
           return true;
         }
-        this.router.navigate(['/personal-account']);
 
         let modal = null;
 
         switch (typePayment) {
           case 'countPossibleCreateVacancy':
             modal = 'vacancy';
+            this.router.navigate(['/personal-account', 'vacancy']);
             break;
           case 'countPossibleCreateBanner':
             modal = 'banner';
+            this.router.navigate(['/personal-account', 'banners']);
             break;
           default:
             modal = 'resume';
+            this.router.navigate(['/personal-account']);
             break;
         }
 

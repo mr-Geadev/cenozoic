@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,6 +31,7 @@ export class ConstructorNewsComponent implements OnInit {
 
   constructor(private _systemMessageService: SystemMessageService,
               private activateRoute: ActivatedRoute,
+              private _location: Location,
               private router: Router,
               private newsApi: NewsApi) {
     this.id = activateRoute.snapshot.params['id'];
@@ -101,12 +103,12 @@ export class ConstructorNewsComponent implements OnInit {
     if (this.edit) {
       this.newsApi.editNews(this.id, { ...this.news.value, text: this.textNews }, this.fileToUpload.file || null)
         .subscribe(
-          res => { this.router.navigate(['/personal-account']); },
+          res => { this._location.back(); }
         );
     } else {
       this.newsApi.createNews(this.fileToUpload.file, { ...this.news.value, text: this.textNews })
         .subscribe(
-          res => { this.router.navigate(['/personal-account']); },
+          res => { this.router.navigate(['/personal-account', 'news']); },
         );
     }
   }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewsApi } from 'api';
 import { NewsModel, UserModel } from 'models';
+import { Location } from '@angular/common';
 
 import { ConfirmService, LocalizationService, UserService } from 'services';
 import 'rxjs-compat/add/operator/share';
@@ -26,6 +27,7 @@ export class FullNewsComponent implements OnInit {
               private newsApi: NewsApi,
               private router: Router,
               public userService: UserService,
+              private _location: Location,
               private confirmService: ConfirmService,
               private _dialog: MatDialog,
               private _localizationService: LocalizationService) {
@@ -75,7 +77,7 @@ export class FullNewsComponent implements OnInit {
         if (res) {
           this.newsApi.removeNews(this.id)
             .subscribe(() => {
-              this.router.navigate(['/personal-account']);
+              this._location.back();
             });
         }
         this._dialog.closeAll();

@@ -36,7 +36,7 @@ export class FullResumeComponent implements OnInit {
               private _dialog: MatDialog,
               private payingModalService: PayingModalService,
               private _localizationService: LocalizationService) {
-    this.id = activateRoute.snapshot.params['id'];
+    this.id = activateRoute.snapshot.params['tab'];
   }
 
   ngOnInit(): void {
