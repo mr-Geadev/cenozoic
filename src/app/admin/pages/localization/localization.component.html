@@ -1,28 +1,26 @@
 <mat-card>
 
 
-	<mat-tab-group (selectedIndexChange)="changeLanguage()">
+	<table>
+		<caption>Список всех фраз на сайте</caption>
+		<tr>
+			<th>Ключ фразы</th>
+			<th>Фраза RU</th>
+			<th>Фраза EN</th>
+		</tr>
 
-		<mat-tab *ngFor="let currentLang of LANGUAGES" label="{{currentLang.description}}" >
-			<table>
-				<caption>Список всех фраз на сайте</caption>
-				<tr>
-					<th>Ключ фразы</th>
-					<th>Фраза</th>
-				</tr>
-
-				<tr *ngFor="let string of vocabularyArray">
-					<td class="key">
-						{{string.key}}
-					</td>
-					<td>
-						<input type="text" name="{{string.key}}" [(ngModel)]="string.value">
-					</td>
-				</tr>
-			</table>
-		</mat-tab>
-
-	</mat-tab-group>
+		<tr *ngFor="let key of keysOfLocalization">
+			<td class="key">
+				{{key}}
+			</td>
+			<td>
+				<input type="text" name="{{key}}-ru" [(ngModel)]="ruVocabulary[key]">
+			</td>
+			<td>
+				<input type="text" name="{{key}}-en" [(ngModel)]="enVocabulary[key]">
+			</td>
+		</tr>
+	</table>
 
 	<button class="send-button" (click)="send()">
 		Сохранить

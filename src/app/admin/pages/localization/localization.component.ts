@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalizationApi } from 'api';
+import { zip } from 'rxjs/internal/observable/zip';
 
 @Component({
   selector: 'localization.col',
@@ -8,12 +9,9 @@ import { LocalizationApi } from 'api';
 })
 export class LocalizationComponent implements OnInit {
 
-  public readonly LANGUAGES = [
-    { lang: 'ru', description: 'Русский' },
-    { lang: 'en', description: 'Английский' },
-  ];
-
-  public vocabularyArray: any[] = [];
+  public keysOfLocalization: string[] = [];
+  public enVocabulary: any = null;
+  public ruVocabulary: any = null;
   public lang: string = 'ru';
 
   constructor(private localizationApi: LocalizationApi) {
@@ -23,38 +21,38 @@ export class LocalizationComponent implements OnInit {
     this.initVocabulary();
   }
 
-  changeLanguage() {
-    this.lang = this.lang === 'en' ? 'ru' : 'en';
-    this.initVocabulary();
-  }
+  // changeLanguage() {
+  //   this.lang = this.lang === 'en' ? 'ru' : 'en';
+  //   this.initVocabulary();
+  // }
 
   initVocabulary() {
-    this.vocabularyArray = [];
-    this.localizationApi.getLocalization(this.lang)
+    this.keysOfLocalization = [];
+    zip(
+      this.localizationApi.getLocalization('ru'),
+      this.localizationApi.getLocalization('en'),
+    )
       .subscribe(res => {
-        this.createVocabularyArray(res['localizationConfig']);
+        this.createKeysOfLocalization(res[0]['localizationConfig']);
+        this.ruVocabulary = res[0]['localizationConfig'];
+        this.enVocabulary = res[1]['localizationConfig'];
       });
   }
 
-  createVocabularyArray(vocabulary): void {
+  createKeysOfLocalization(vocabulary): void {
     for (const key in vocabulary) {
-      this.vocabularyArray.push(
-        { key, value: vocabulary[key] },
+      this.keysOfLocalization.push(
+        key
       );
     }
   }
 
-  createVocabularyObject(): any {
-    const vocabulary = {};
-    this.vocabularyArray.forEach((string) => {
-      vocabulary[string.key] = string.value;
-    });
-    return vocabulary;
-  }
-
   send() {
-    this.localizationApi.updateLocalization(this.lang, this.createVocabularyObject())
-      .subscribe((res) => {
+    zip(
+      this.localizationApi.updateLocalization('ru', this.ruVocabulary),
+      this.localizationApi.updateLocalization('en', this.enVocabulary)
+    )
+      .subscribe(() => {
         this.initVocabulary();
       });
   }
