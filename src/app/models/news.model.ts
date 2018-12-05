@@ -4,6 +4,7 @@ class Comment {
   creationDate: any ;
   userId: string;
   userName: string ;
+  typeAccount: string ;
   text: string;
 
   constructor(comment) {
@@ -11,6 +12,7 @@ class Comment {
     this.userId = comment.userId;
     this.userName = comment.userName;
     this.text = comment.comment;
+    this.typeAccount = comment.typeAccount;
   }
 }
 

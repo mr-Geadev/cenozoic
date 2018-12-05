@@ -84,7 +84,7 @@
 
 				<div class="comment" *ngFor="let comment of news.comments; let i = index">
 					<div class="username">
-						{{ comment.userName }} <span class="time">в {{ comment.creationDate.locale(currentLang).format('HH:mm, DD.MM.YY') }}</span>
+						{{ getUserName(comment.userName, comment.typeAccount) }} <span class="time">в {{ comment.creationDate.locale(currentLang).format('HH:mm, DD.MM.YY') }}</span>
 					</div>
 
 					<div

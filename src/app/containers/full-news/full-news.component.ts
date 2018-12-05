@@ -95,4 +95,15 @@ export class FullNewsComponent implements OnInit {
         this._dialog.closeAll();
       });
   }
+
+  getUserName(name, type): string {
+    if (type) {
+      if (type === 'admin' || type === 'manager') {
+        return 'Администрация';
+      } else {
+        return name;
+      }
+    }
+    return 'Удаленный аккаунт';
+  }
 }
