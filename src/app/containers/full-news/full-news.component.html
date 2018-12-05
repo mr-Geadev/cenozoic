@@ -19,7 +19,8 @@
 					<img src="{{news.photoURL}}" alt="{{news.title}}">
 				</div>
 				<div class="manage">
-					<ng-container *ngIf="currentUser && currentUser.typeAccount === 'admin'">
+					<ng-container
+						*ngIf="currentUser && ( currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' )">
 						<button class="button" *ngIf="!news.publicateToNewsPage" (click)="publish('toNews')">
 							Опубликовать
 						</button>
@@ -89,20 +90,20 @@
 
 					<div
 						class="delete"
-						*ngIf="currentUser && currentUser.typeAccount === 'admin'"
+						*ngIf="currentUser && (currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager')"
 						(click)="removeComment(i)"
 					>
 						<img src="/assets/images/icon-black-cross.svg">
 					</div>
 
 					<div class="text">
-						 {{ comment.text }}
+						{{ comment.text }}
 					</div>
 				</div>
 
 				<div class="send-comment" *ngIf="currentUser && news.publicateToNewsPage">
 					<textarea class="new-comment" name="new-comment" id="new-comment" [(ngModel)]="textComment"></textarea>
-					<button class="send-button" type="submit" (click)="sendComment()" [disabled]="!textComment" >
+					<button class="send-button" type="submit" (click)="sendComment()" [disabled]="!textComment">
 						Добавить комментарий
 					</button>
 				</div>

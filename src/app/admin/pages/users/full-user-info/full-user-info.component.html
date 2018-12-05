@@ -30,8 +30,8 @@
 
 <mat-card-actions>
 
-    <button mat-button *ngIf="user.status !== 9" (click)="banUser()">Бан</button>
-    <button mat-button *ngIf="user.status === 9" (click)="banUser()">Разбан</button>
+    <button [disabled]="!isAdmin" mat-button *ngIf="user.status !== 9" (click)="banUser()">Бан</button>
+    <button [disabled]="!isAdmin" mat-button *ngIf="user.status === 9" (click)="banUser()">Разбан</button>
 
     <button mat-button>Написать</button>
     <button mat-icon-button [matMenuTriggerFor]="menu">

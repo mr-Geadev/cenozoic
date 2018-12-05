@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
     }
 
     public ngOnInit() {
-        if (!this._userService.isType('admin')) {
+        if (!(this._userService.isType('admin') || this._userService.isType('manager'))) {
             this._router.navigate(['/']);
         }
     }

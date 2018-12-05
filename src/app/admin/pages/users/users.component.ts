@@ -1,26 +1,31 @@
-import {Component, OnInit} from '@angular/core';
-import {UserModel} from '../../../models/user.model';
-import {UsersApi} from './users.api';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'services';
+import { UserModel } from '../../../models/user.model';
+import { UsersApi } from './users.api';
 
 @Component({
-    selector: 'users.col',
-    templateUrl: 'users.component.html',
-    styleUrls: ['./users.component.scss']
+  selector: 'users.col',
+  templateUrl: 'users.component.html',
+  styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
 
-    public checkedUser: UserModel = null;
-    public indexCheckedUser: number = null;
+  public checkedUser: UserModel = null;
+  public indexCheckedUser: number = null;
+  public currentUser: any = null;
 
-    constructor(public usersApi: UsersApi) {
-    }
+  constructor(public usersApi: UsersApi,
+              private _userService: UserService) {
+  }
 
-    public ngOnInit() {
-        this.usersApi.getUserList();
-    }
+  public ngOnInit() {
+    this.usersApi.getUserList();
+    this._userService.user$
+      .subscribe(res => this.currentUser = res);
+  }
 
-    public showFullInfo(user: UserModel, index?: number): void {
-        this.checkedUser = user;
-        this.indexCheckedUser = index;
-    }
+  public showFullInfo(user: UserModel, index?: number): void {
+    this.checkedUser = user;
+    this.indexCheckedUser = index;
+  }
 }

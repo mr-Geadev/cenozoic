@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {ConfirmService} from '../../../../services/confirm.service';
 import {UserModel} from '../../../../models/user.model';
-import {SystemMessageService} from '../../../../services';
+import { SystemMessageService, UserService } from '../../../../services';
 import {UsersApi} from '../users.api';
 
 @Component({
@@ -14,6 +14,7 @@ export class FullUserInfoComponent implements OnInit {
 
     @Input() user: UserModel;
     @Input() index: number;
+    @Input() isAdmin: boolean;
 
     constructor(private _usersApi: UsersApi,
                 private _confirm: ConfirmService,
@@ -21,8 +22,7 @@ export class FullUserInfoComponent implements OnInit {
                 private _dialog: MatDialog) {
     }
 
-    public ngOnInit() {
-    }
+    public ngOnInit() {}
 
     public banUser(): void {
         this._confirm.confirm(`Вы хотите забанить аккаунт ${this.user.email} ?`)

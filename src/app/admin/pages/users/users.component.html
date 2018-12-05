@@ -70,7 +70,7 @@
     <div class="full-info-user col-4" *ngIf="checkedUser">
         <mat-card>
             <mat-icon class="close-full-info" mat-list-icon (click)="showFullInfo(null)">close</mat-icon>
-            <full-user-info [user]="checkedUser" [index]="indexCheckedUser"></full-user-info>
+            <full-user-info [user]="checkedUser" [index]="indexCheckedUser" [isAdmin]="currentUser.typeAccount === 'admin'"></full-user-info>
         </mat-card>
     </div>
 

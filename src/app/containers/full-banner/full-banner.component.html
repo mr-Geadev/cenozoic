@@ -23,7 +23,7 @@
 					<img src="{{banner.photoURL}}" alt="{{banner.title}}">
 				</div>
 				<div class="manage">
-					<ng-container *ngIf="currentUser && currentUser.typeAccount === 'admin'">
+					<ng-container *ngIf="currentUser && (currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager')">
 						<button class="button" *ngIf="!banner.publicate" (click)="publicate(true)">
 							Опубликовать
 						</button>

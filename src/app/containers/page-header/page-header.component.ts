@@ -48,7 +48,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
                 .subscribe((user) => {
                     this.isAuthorized = !!user;
                     if (this.isAuthorized) {
-                        this.isAdmin = user.typeAccount === 'admin';
+                        this.isAdmin = user.typeAccount === 'admin' || user.typeAccount === 'manager';
                     }
                 })
         );
