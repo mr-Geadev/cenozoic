@@ -2,7 +2,7 @@
 	<mat-list *ngIf="listBanners">
 		<h3 mat-subheader>Список всех баннеров</h3>
 
-		<mat-list-item *ngFor="let banner of listBanners; let i = index;">
+		<mat-list-item *ngFor="let banner of listBanners; let i = index;" [ngClass]="{publicated: banner.publicate, unpublicated: !banner.publicate}">
 			<mat-icon mat-list-icon>subject</mat-icon>
 
 			<h4 mat-line><b>Заголовок:</b> {{banner.title}}</h4>
@@ -10,12 +10,12 @@
 			<p mat-line><b>Краткое описание:</b> {{banner.shortDescription}}</p>
 			<p mat-line><b>ID создателя:</b> {{banner.userId}}</p>
 			<p mat-line>
-				<b>Статус</b>
+				<b>Статус: </b>
 				<ng-container *ngIf="!banner.publicate">
 					На рассмотрении
 				</ng-container>
 				<ng-container *ngIf="banner.publicate">
-					Опубликовано
+					Опубликовано до <b>{{ banner.timeoutDate.locale('ru').format('DD.MM.YYYY') }}</b>
 				</ng-container>
 			</p>
 

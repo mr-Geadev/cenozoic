@@ -2,7 +2,7 @@
 	<mat-list *ngIf="listNews">
 		<h3 mat-subheader>Список всех новостей</h3>
 
-		<mat-list-item *ngFor="let news of listNews; let i = index;">
+		<mat-list-item *ngFor="let news of listNews; let i = index;" [ngClass]="{publicated: news.publicateToMainPage || news.publicateToNewsPage, unpublicated: !news.publicateToMainPage && !news.publicateToNewsPage}">
 			<mat-icon mat-list-icon>subject</mat-icon>
 
 			<h4 mat-line><b>Заголовок:</b> {{news.title}}</h4>
