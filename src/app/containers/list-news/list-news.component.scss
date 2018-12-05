@@ -15,7 +15,12 @@
 
       .list {
         flex-wrap: nowrap;
+        width: max-content;
         @include animation(margin-left);
+
+        .banner {
+          margin-right: 15px !important;
+        }
       }
     }
 
