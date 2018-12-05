@@ -64,6 +64,7 @@ export class FullResumeComponent implements OnInit {
         this.currentResume = resume;
         this.currentResume.age = this.getAge(this.currentResume.birthday);
         this.currentResume.birthdayNormal = this.setBirthday(this.currentResume.birthday);
+        this.showContactData = !!this.currentResume.email;
         this.calculateTimeRange();
       });
   }
@@ -151,7 +152,12 @@ export class FullResumeComponent implements OnInit {
       const confirm = this.confirmService.confirm('Вы хотите посмотреть контактные данные?')
         .subscribe((res) => {
           if (res) {
-            this.showContactData = true;
+            this.resumeService.buyResume(this.id)
+              .subscribe( () => {
+                this.resumeApi.getResumeById(this.id);
+                this.userService.getUserInfo();
+                this.showContactData = true;
+              });
           }
           this._dialog.closeAll();
         });

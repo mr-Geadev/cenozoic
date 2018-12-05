@@ -93,6 +93,15 @@
 
 				<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
 					<input type="radio"
+								 id="contacts"
+								 name="manager"
+								 [(ngModel)]="activeTab"
+								 [value]="dictionary.ACCOUNT_PAGE_TAB_CONTACTS">
+					<label for="contacts">{{dictionary.ACCOUNT_PAGE_TAB_CONTACTS}}</label>
+				</li>
+
+				<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
+					<input type="radio"
 								 id="vacancy"
 								 name="manager"
 								 [(ngModel)]="activeTab"
@@ -145,6 +154,9 @@
 		<div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CAREERS }">
 			{{ dictionary.ACCOUNT_PAGE_TAB_CAREERS_DESC }}
 		</div>
+		<div class="message" [ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CONTACTS }">
+			{{ dictionary.ACCOUNT_PAGE_TAB_CONTACTS_DESC }}
+		</div>
 	</div>
 </div>
 
@@ -161,6 +173,15 @@
 	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_NEWS }"
 	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_NEWS"
 ></list-news>
+
+<!--список купленных резюме-->
+<list-resume
+	class="block resume"
+	[ngClass]="{ 'active': activeTab === dictionary.ACCOUNT_PAGE_TAB_CONTACTS }"
+	*ngIf="activeTab === dictionary.ACCOUNT_PAGE_TAB_CONTACTS"
+	[payedResume]="true"
+></list-resume>
+
 
 <!--список баннеров-->
 <list-banner

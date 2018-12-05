@@ -151,6 +151,7 @@ export const ENGLISH_DICTIONARY = {
   ACCOUNT_PAGE_TAB_BANNERS: 'Banners',
   ACCOUNT_PAGE_TAB_CV: 'CV',
   ACCOUNT_PAGE_TAB_CAREERS: 'Careers',
+  ACCOUNT_PAGE_TAB_CONTACTS: 'Business contacts',
 
   ACCOUNT_PAGE_TAB_RESPOND_DESC_WORKER: 'This section shows the results of your responses to the vacancy. You can cancel the selected response or it move to the archive of your responses to which the employer has already responded.',
   ACCOUNT_PAGE_TAB_RESPOND_DESC_EMPLOYER: 'This section shows the answers to your vacancies. You can accept or reject the incoming response.',
@@ -162,6 +163,7 @@ export const ENGLISH_DICTIONARY = {
   ACCOUNT_PAGE_TAB_BANNERS_DESC: 'В этом разделе показаны все ваши новости. Вы можежет просмотреть и отредактировать нужную, кликнув по ней',
   ACCOUNT_PAGE_TAB_CV_DESC: 'This section shows all your CVs. You can view and edit CV by clicking on it.',
   ACCOUNT_PAGE_TAB_CAREERS_DESC: 'This section shows all your jobs. You can view and edit the desired one by clicking on it',
+  ACCOUNT_PAGE_TAB_CONTACTS_DESC: 'This section shows the summary whose information you bought',
 
   // вывод вакансии
   REQUIRED_EXPERIENCE: 'Required work experience',
