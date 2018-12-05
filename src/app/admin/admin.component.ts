@@ -10,7 +10,6 @@ export const MENU_LIST = [
     {name: 'Новости', link: 'news'},
     {name: 'Локализация', link: 'localization'},
     {name: 'Баннеры', link: 'banners'},
-    {name: 'Статистика', link: 'statistics'}
     // {name: 'Вакансии', link: '#'},
 ];
 
