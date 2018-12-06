@@ -29,6 +29,14 @@
 
 				<ul class="list">
 
+					<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
+						<a routerLink="/personal-account/{{TABS.VACANCY}}" [class.active]="activeTab === TABS.VACANCY">{{dictionary.ACCOUNT_PAGE_TAB_CAREERS}}</a>
+					</li>
+
+					<li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
+						<a routerLink="/personal-account/{{TABS.RESUME}}" [class.active]="activeTab === TABS.RESUME">{{ dictionary.ACCOUNT_PAGE_TAB_CV }}</a>
+					</li>
+
 					<li class="item">
 						<a routerLink="/personal-account/{{TABS.RESPONDS}}" [class.active]="activeTab === TABS.RESPONDS">{{ dictionary.ACCOUNT_PAGE_TAB_RESPOND }}</a>
 					</li>
@@ -54,15 +62,7 @@
 					</li>
 
 					<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
-						<a routerLink="/personal-account/{{TABS.CONTACTS}}" [class.active]="activeTab === TABS.CONTACTS">{{dictionary.ACCOUNT_PAGE_TAB_CONTACTS}}</a>
-					</li>
-
-					<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
-						<a routerLink="/personal-account/{{TABS.VACANCY}}" [class.active]="activeTab === TABS.VACANCY">{{dictionary.ACCOUNT_PAGE_TAB_CAREERS}}</a>
-					</li>
-
-					<li class="item" *ngIf="typeCurrentUser === 'worker' || typeCurrentUser === 'admin'">
-						<a routerLink="/personal-account/{{TABS.RESUME}}" [class.active]="activeTab === TABS.RESUME">{{ dictionary.ACCOUNT_PAGE_TAB_CV }}</a>
+						<a routerLink="/personal-account/{{TABS.CONTACTS}}" [class.active]="activeTab === TABS.CONTACTS">Деловые контакты</a>
 					</li>
 
 				</ul>
