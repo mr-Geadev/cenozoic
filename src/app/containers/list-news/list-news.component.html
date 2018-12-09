@@ -14,8 +14,12 @@
 						{{ news.shortDescription }}
 					</div>
 
-					<div class="date">
+					<div class="date" *ngIf="news?.publicate">
 						{{ this.news.creationDate.locale(currentLang).format('DD MMMM YYYY') }}
+					</div>
+
+					<div class="date" *ngIf="!news?.publicate">
+						Комментариев: {{ this.news.comments.length }}
 					</div>
 				</div>
 			</a>
