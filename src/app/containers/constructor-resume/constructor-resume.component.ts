@@ -361,7 +361,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
           if (res.success) {
             this.resumeForm = Object.assign({}, this.cleanResumeForm);
             this.resumeService.setResume(null);
-            this.router.navigate(['personal-account']);
+            this.router.navigate(['/personal-account', 'resume']);
           }
         });
     } else {
