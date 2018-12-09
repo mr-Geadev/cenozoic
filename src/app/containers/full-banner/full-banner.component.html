@@ -33,14 +33,16 @@
 						</button>
 					</ng-container>
 
+					<ng-container *ngIf="currentUser && (currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' || currentUser._id === banner.userId)">
+						<p *ngIf="banner.status !== 3">
+							Опубликовано до: {{ banner.timeoutDate.locale('ru').format('DD.MM.YYYY') }}
+						</p>
+					</ng-container>
+
 					<ng-container *ngIf="currentUser && currentUser._id === banner.userId">
 						<a class="button" [routerLink]="['/edit-banner', banner._id]">
 							Редактировать
 						</a>
-
-						<p *ngIf="banner.status !== 3">
-							Опубликовано до: {{ banner.timeoutDate.locale('ru').format('DD.MM.YYYY') }}
-						</p>
 
 						<button (click)="activateBanner()" class="button" *ngIf="banner.status === 3">
 							Продлить
