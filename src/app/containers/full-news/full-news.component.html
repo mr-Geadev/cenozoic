@@ -101,6 +101,12 @@
 					</div>
 				</div>
 
+				<div class="send-comment" *ngIf="!currentUser">
+					<p>
+						Чтобы оставить комментарий зарегестрируйтесь в системе
+					</p>
+				</div>
+
 				<div class="send-comment" *ngIf="currentUser && news.publicateToNewsPage">
 					<textarea class="new-comment" name="new-comment" id="new-comment" [(ngModel)]="textComment"></textarea>
 					<button class="send-button" type="submit" (click)="sendComment()" [disabled]="!textComment">
