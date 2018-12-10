@@ -1,10 +1,10 @@
 <form [formGroup]="payment" (submit)="buy()">
 	<div class="title">
-		Купить {{words.title}}
+		{{ dictionary.PAYING_TITLE }} {{words.title}}
 	</div>
 
 	<div class="side-title">
-		Выберите количество:
+		{{ dictionary.PAYING_CHANGE_COUNT }}:
 	</div>
 
 	<div class="options">
@@ -59,6 +59,6 @@
 	</div>
 
 	<button class="button" [disabled]="payment.invalid">
-		Купить
+		{{ dictionary.PAYING_BUY }}
 	</button>
 </form>

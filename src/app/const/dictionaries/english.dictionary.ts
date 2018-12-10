@@ -67,7 +67,7 @@ export const ENGLISH_DICTIONARY = {
   SIGN_IN: 'Sign in',
 
   // главная
-  HOME_BANNER_TITLE: `Job in Oil&Gas and Mining industries`,
+  HOME_BANNER_TITLE: 'Job in Oil&Gas and Mining industries',
   LOOKING_FOR: 'I\'m looking for...',
   IN_VACANCIES: 'In vacancies',
   IN_CV: 'In CVs',
@@ -85,7 +85,7 @@ export const ENGLISH_DICTIONARY = {
   HOME_PAGE_CONTENT_2_2: 'employee database ',
   HOME_PAGE_CONTENT_2_3: 'of the Oil&Gas and Mining industries. Just create vacancies and wait for the response of candidates.',
 
-  HOME_PAGE_CONTENT_3: `We invite you to mutually beneficial cooperation. <!--Please fill out the form<a href="#" class="inline-link"> for the desired cooperation  </a> and we will contact you as soon as possible.-->`,
+  HOME_PAGE_CONTENT_3: 'We invite you to mutually beneficial cooperation. <!--Please fill out the form<a href="#" class="inline-link"> for the desired cooperation  </a> and we will contact you as soon as possible.-->',
 
   HOME_PAGE_STEP_1: 'Sign up on the Portal',
   HOME_PAGE_STEP_2: 'Compose and Post your CV',
@@ -399,4 +399,108 @@ export const ENGLISH_DICTIONARY = {
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Your account has been successfully verified. Please fill in your profile in the settings and create a resume / vacancy',
   CONFIRM_FAIL: 'The link is not valid. Check the correctness of the link, or contact the administrator for assistance.',
+
+  // другое
+  ENTITY_TIME_IS_UP: 'Placement Expired',
+  TO_YOURS_VACANCY: 'For your vacancy',
+
+  // БАННЕРЫ
+  CREATE_BANNER_PAGE_TITLE: 'Creating a banner',
+  BANNER_ADD: 'Add banner',
+  BANNER_SHORT_DESCRIPTION: 'Brief description of the banner',
+  BANNER_TEXT: 'Banner text',
+  BANNER_COVER: 'Banner cover',
+  BANNER_ADD_COVER: 'Attach a file',
+  BANNER_ADD_COVER_FORMAT: 'Formats: PNG, JPG or GIF ". Preferred size: 800x600. File size limit: 2Mb',
+  SAVE_BANNER: 'Save banner',
+  BANNER_PREVIEW: 'This will look like a banner in the general list.',
+
+  BANNER_NOT_PUBLISH: 'This banner is not published. It will appear in the general list immediately after approval by the administration.',
+  BANNER_PUBLIC: 'Post',
+  BANNER_UNPUBLIC: 'Remove from publication',
+  BANNER_PUBLIC_TO_TIME: 'Posted to',
+  BANNER_EDIT: 'Edit',
+  BANNER_EXTEND: 'Extend',
+
+  // Новости
+  CREATE_NEWS_PAGE_TITLE: 'News creation',
+  NEWS_TITLE: 'News title',
+  NEWS_ADD: 'Add news',
+  NEWS_SHORT_DESCRIPTION: 'Short news description',
+  NEWS_TEXT: 'News text',
+  NEWS_TAGS: 'Tags',
+  NEWS_ADD_TAG: 'To add',
+  NEWS_COVER: 'Cover news',
+  NEWS_ADD_COVER: 'Attach a file',
+  NEWS_SAVE: 'Save news',
+  NEWS_PREVIEW: 'This is how the news will look in the general list.',
+
+  NEWS_NOT_PUBLISH: 'This news is not published. It will appear in the general list of news immediately after approval by the administration.',
+  NEWS_PUBLIC_MAIN: 'Post on homepage',
+  NEWS_UNPUBLIC_MAIN: 'Remove from main',
+  NEWS_PUBLIC_ALL: 'Post',
+  NEWS_UNPUBLIC_ALL: 'Remove from publication',
+  NEWS_PUBLIC_TO_TIME: 'Posted to',
+  NEWS_EDIT: 'Edit',
+  NEWS_DELETE: 'Delete',
+  NEWS_FULL_TAGS: 'Tags',
+  NEWS_SHARE: 'Share',
+  NEWS_COMMENTS: 'Comments',
+  NEWS_COMMENTS_COUNTER: 'comments',
+  NEWS_COMMENTS_ADD: 'Add a comment',
+  NEWS_REGISTER_TO_SEND_COMMENT: 'To leave a comment register in the system',
+
+  // опросные листы
+  CREATE_QUESTIONNAIRE_PAGE_TITLE: 'Questionnaire constructor',
+  QUESTIONNAIRE_TITLE: 'The name of the questionnaire',
+  CONSTRUCTOR_QUESTIONNAIRE: 'New questionnaire',
+  CONSTRUCTOR_QUESTIONNAIRE_DESC: 'Create a list of additional questions for the candidate.',
+  LOAD_QUESTIONNAIRE: 'Download the questionnaire file',
+  LOAD_QUESTIONNAIRE_DESC: 'Upload your questionnaire file to send it to the applicant.',
+
+  QUESTIONNAIRE_SECTION_NAME: 'Section name',
+  QUESTIONNAIRE_SECTION_DELETE: 'Delete section',
+  QUESTIONNAIRE_SECTION_ADD: 'New questions section',
+  QUESTIONNAIRE_QUESTION: 'Question',
+  QUESTIONNAIRE_QUESTION_ADD: 'One more question',
+  QUESTIONNAIRE_LOAD_FILE: 'Attach a file',
+  QUESTIONNAIRE_SAVE: 'Save the questionnaire',
+
+  QUESTIONNAIRE_EDIT: 'Edit questionnaire',
+  QUESTIONNAIRE_DELETE: 'Delete questionnaire',
+  QUESTIONNAIRE_PAGE_TITLE: 'Questionnaire',
+  QUESTIONNAIRE_PAGE_SEND_ANSWER: 'Submit Answers',
+  QUESTIONNAIRE_CANDIDATE_APPROVED: 'Candidate fit',
+  QUESTIONNAIRE_CANDIDATE_REJECTED: 'Candidate does not fit',
+
+  QUESTIONNAIRE_FILE_ANSWER_TITLE: 'Download questionnaire',
+  QUESTIONNAIRE_FILE_ANSWER_TITLE_DOWNLOAD: 'Download questionnaire',
+  QUESTIONNAIRE_FILE_ANSWER_TITLE_LOAD: 'Attach a file',
+  QUESTIONNAIRE_FILE_ANSWER_TITLE_LOAD_DESC: 'Formats: doc ”,“ docx ”,“ xls ”,“ xlsx ”. Size limit: 300kb',
+  EMPLOYER_SEND_QUESTIONNAIRE_FILE: 'The employer sent you a questionnaire',
+  QUESTIONNAIRE_FILE_ANSWER_SEND: 'Submit Answers',
+  QUESTIONNAIRE_FILE_DOWNLOAD_ANSWERS: 'Download answers',
+
+  // SUPPORT
+  FAQ_PAGE_TITLE: 'Frequently asked Questions',
+  FAQ_NOT_FOUND_ANSWER: 'Did not find the right answer?',
+  FAQ_SEND_QUESTION: 'Ask a Question',
+  FAQ_SEND_QUESTION_DESC: 'Send your question and we will answer you',
+  FAQ_SUPPORT_PAGE_TITLE: 'Feedback',
+  FAQ_SUPPORT_CHAT_TITLE: 'Technical Support Chat',
+  FAQ_SUPPORT_CHAT_SEND_MESSAGE: 'To send',
+  FAQ_SUPPORT_FORM_TITLE: 'Submit your question',
+  FAQ_SUPPORT_FORM_CHANGE_REASON: 'Choose one of the reasons',
+  FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL: 'Description (please describe your problem in detail)',
+  FAQ_SUPPORT_FORM_I_HAVE_READ: 'I have read)',
+  FAQ_SUPPORT_FORM_FAQ: 'frequently asked questions',
+  FAQ_SUPPORT_FORM_SEND_QUESTION: 'Send request',
+  FAQ_SUPPORT_LIST_CATEGORY: 'Category',
+  FAQ_SUPPORT_LIST_PROBLEM_DESC: 'Description of the problem',
+  FAQ_SUPPORT_LIST_GO_TO_CHAT: 'Go to chat with the operator',
+
+  // ОПЛАТА
+  PAYING_TITLE: 'Payment',
+  PAYING_CHANGE_COUNT: 'Choose quantity',
+  PAYING_BUY: 'Buy',
 };

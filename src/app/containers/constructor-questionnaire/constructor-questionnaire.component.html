@@ -1,7 +1,7 @@
 <div class="create-vacancy">
 	<div class="container">
 		<div class="row title">
-			Конструктор опросного листа
+			{{ dictionary.CREATE_QUESTIONNAIRE_PAGE_TITLE }}
 		</div>
 		<div class="row" *ngIf="questionnaire">
 			<form class="col form" [formGroup]="questionnaire">
@@ -11,7 +11,7 @@
 						for="name-questionnaire"
 						class="name-questionnaire"
 					>
-						Название опросного листа
+						{{ dictionary.QUESTIONNAIRE_TITLE }}
 					</label>
 					<input
 						id="name-questionnaire"
@@ -24,19 +24,19 @@
 				<div class="questionnaire-file" *ngIf="!edit">
 					<input type="radio" id="constructor" name="questionnaire-file" [value]="false" [(ngModel)]="isFromFile"
 								 [ngModelOptions]="{standalone: true}">
-					<label for="constructor">Новый опросный лист</label>
+					<label for="constructor">{{dictionary.CONSTRUCTOR_QUESTIONNAIRE}}</label>
 
 					<input type="radio" id="file" name="questionnaire-file" [value]="true" [(ngModel)]="isFromFile"
 								 [ngModelOptions]="{standalone: true}">
-					<label for="file">Загрузить файл опросного листа</label>
+					<label for="file">{{dictionary.LOAD_QUESTIONNAIRE}}</label>
 				</div>
 
 				<div class="description" *ngIf="!edit">
 					<ng-container *ngIf="!isFromFile">
-						Создайте список дополнительныйх вопросов для кандидата
+						{{ dictionary.CONSTRUCTOR_QUESTIONNAIRE_DESC }}
 					</ng-container>
 					<ng-container *ngIf="isFromFile">
-						Загрузите свой файл опросного листа, что бы отправить его соискателю.
+						{{ dictionary.LOAD_QUESTIONNAIRE_DESC }}
 					</ng-container>
 				</div>
 
@@ -49,7 +49,7 @@
 
 						<div class="name">
 							<label for="name-section-{{i}}" class="label-for-main-input">
-								Название раздела
+								{{ dictionary.QUESTIONNAIRE_SECTION_NAME }}
 							</label>
 
 							<div class="input">
@@ -65,7 +65,7 @@
 							</div>
 
 							<div class="delete-section" *ngIf="i > 0" (click)="removeSection(i)" >
-								Удалить раздел
+								{{ dictionary.QUESTIONNAIRE_SECTION_DELETE }}
 							</div>
 						</div>
 
@@ -76,7 +76,7 @@
 								formGroupName="{{j}}"
 							>
 								<label for="question-{{i}}-{{j}}" class="label-for-main-input">
-									Вопрос {{j+1}}
+									{{dictionary.QUESTIONNAIRE_QUESTION}} {{j+1}}
 								</label>
 								<input type="text" formControlName="question" id="question-{{i}}-{{j}}">
 								<img src="/assets/images/icon-black-cross.svg" class="delete-question" (click)="removeQuestion(i, j)" >
@@ -88,7 +88,7 @@
 									<span class="plus">
 										+
 									</span>
-									Еще вопрос
+									{{ dictionary.QUESTIONNAIRE_QUESTION_ADD }}
 								</div>
 							</div>
 						</fieldset>
@@ -96,7 +96,7 @@
 
 					<div class="add-section" (click)="addSection()">
 						<img src="/assets/images/icon-enter.svg">
-						Новый раздел вопросов
+						{{ dictionary.QUESTIONNAIRE_SECTION_ADD }}
 					</div>
 				</fieldset>
 
@@ -104,7 +104,7 @@
 					<input (change)="addFile($event)" id="load-file" type="file" size="0"
 								 accept=".xlsx,.xls,.doc, .docx">
 					<label class="add-file-button" for="load-file">
-						Прикрепите файл
+						{{ dictionary.QUESTIONNAIRE_LOAD_FILE }}
 					</label>
 					<div class="file-name">
 						{{ nameOfFile || 'Форматы: doc”,“docx”,“xls”,“xlsx”. Ограничение на размер: 300kb' }}
@@ -112,12 +112,12 @@
 				</div>
 
 				<button class="save-button" *ngIf="!isFromFile" (click)="save()" [disabled]="questionnaire.invalid">
-					Сохранить опросный лист
+					{{ dictionary.QUESTIONNAIRE_SAVE }}
 				</button>
 
 				<button class="save-button" *ngIf="isFromFile" (click)="save()"
 								[disabled]="questionnaire.controls['title'].invalid || !fileToUpload.data">
-					Сохранить опросный лист
+					{{ dictionary.QUESTIONNAIRE_SAVE }}
 				</button>
 			</form>
 		</div>

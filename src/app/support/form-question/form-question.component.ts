@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LocalizationService } from 'services';
 import { SupportApi } from 'support/support.api';
 
 @Component({
@@ -6,21 +7,30 @@ import { SupportApi } from 'support/support.api';
   templateUrl: './form-question.component.html',
   styleUrls: ['./form-question.component.scss'],
 })
-export class FormQuestionComponent {
+export class FormQuestionComponent implements OnInit {
 
   isReading = false;
   issue = {
     category: 'Сотрудничество',
-    description: ''
-  }
+    description: '',
+  };
+  public dictionary: any = {};
 
-  constructor(private faqApi: SupportApi) {}
+  constructor(private faqApi: SupportApi,
+              private _localizationService: LocalizationService) {}
 
   createIssue() {
     this.faqApi.createIssue(this.issue)
       .subscribe(
         res => console.log(res),
-        err => console.log(err)
+        err => console.log(err),
+      );
+  }
+
+  ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
       );
   }
 }

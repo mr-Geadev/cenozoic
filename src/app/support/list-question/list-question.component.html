@@ -2,7 +2,7 @@
 
 	<div class="field">
 		<div class="label">
-			Категория:
+			{{dictionary.FAQ_SUPPORT_LIST_CATEGORY}}:
 		</div>
 		<div class="value">
 			{{issue.category}}
@@ -11,7 +11,7 @@
 
 	<div class="field">
 		<div class="label">
-			Описание проблемы:
+			{{ dictionary.FAQ_SUPPORT_LIST_PROBLEM_DESC }}:
 		</div>
 		<div class="value">
 			{{issue.description}}
@@ -29,7 +29,7 @@
 
 	<div class="button-container">
 		<button class="open-chat" (click)="openChat(issue._id)">
-			Перейти в чат с оператором
+			{{ dictionary.FAQ_SUPPORT_LIST_GO_TO_CHAT }}
 		</button>
 	</div>
 

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { LocalizationService } from 'services';
 import { SupportApi } from 'support/support.api';
 import { SupportComponent } from 'support/support.component';
 import { ChatModule } from 'support/chat';
@@ -31,7 +32,7 @@ const ROUTERS = [
     MatSelectModule,
     ChatModule
   ],
-  providers: [SupportApi, SocketService],
+  providers: [SupportApi, SocketService, LocalizationService],
   declarations: [
     SupportComponent,
     FormQuestionComponent,

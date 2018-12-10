@@ -67,7 +67,7 @@ export const RUSSIAN_DICTIONARY = {
   SIGN_IN: 'Зарегистрироваться',
 
   // главная
-  HOME_BANNER_TITLE: `Работа в нефтяной, газовой <br> и горнодобывающей промышленностях`,
+  HOME_BANNER_TITLE: 'Работа в нефтяной, газовой <br> и горнодобывающей промышленностях',
   LOOKING_FOR: 'Я ищу...',
   IN_VACANCIES: 'В вакансиях',
   IN_CV: 'В резюме',
@@ -85,7 +85,7 @@ export const RUSSIAN_DICTIONARY = {
   HOME_PAGE_CONTENT_2_2: 'базу сотрудников ',
   HOME_PAGE_CONTENT_2_3: 'нефте-газовой и горнодобывающей промышленностях. Просто создайте вакансии и ждите отклика соискателей.',
 
-  HOME_PAGE_CONTENT_3: `Приглашаем Вас к взаимовыгодному сотрудничеству. Для каждого заинтересованного партнера мы подготовим предложение, основанное на анализе Ваших потребностей.​ <!--Если вам интересно сотрудничество <a href="#" class="inline-link">заполните форму</a> и мы свяжемся с вами в ближайшее время.-->`,
+  HOME_PAGE_CONTENT_3: 'Приглашаем Вас к взаимовыгодному сотрудничеству. Для каждого заинтересованного партнера мы подготовим предложение, основанное на анализе Ваших потребностей.​ <!--Если вам интересно сотрудничество <a href="#" class="inline-link">заполните форму</a> и мы свяжемся с вами в ближайшее время.-->',
 
   HOME_PAGE_STEP_1: 'Зарегистрируйтесь на сайте',
   HOME_PAGE_STEP_2: 'Составьте и Разместите свое резюме',
@@ -399,4 +399,108 @@ export const RUSSIAN_DICTIONARY = {
   //  подтверждение почты
   CONFIRM_SUCCESS: 'Ваш аккаунт успешно подтвержден. Заполните пожалуйста ваш профиль в настройках и создайте резюме/вакансию',
   CONFIRM_FAIL: 'Ссылка недействительна. Проверьте правильность ссылки, либо обратитесь за помощью к администратору.',
+
+  // другое
+  ENTITY_TIME_IS_UP: 'Срок размещения истек',
+  TO_YOURS_VACANCY: 'На вашу вакансию',
+
+  // БАННЕРЫ
+  CREATE_BANNER_PAGE_TITLE: 'Создание баннера',
+  BANNER_ADD: 'Добавить баннер',
+  BANNER_SHORT_DESCRIPTION: 'Краткое описание баннера',
+  BANNER_TEXT: 'Текст баннера',
+  BANNER_COVER: 'Обложка баннера',
+  BANNER_ADD_COVER: 'Прикрепите файл',
+  BANNER_ADD_COVER_FORMAT: 'Форматы: PNG, JPG или GIF”. Предпочитаемый размер: 800x600. Ограничение на размер файла: 2Mb',
+  SAVE_BANNER: 'Сохранить баннер',
+  BANNER_PREVIEW: 'Так будет выглядеть баннер в общем списке',
+
+  BANNER_NOT_PUBLISH: 'Данный баннера не опубликован. Он появится в общем списке сразу после одобрения администрацией.',
+  BANNER_PUBLIC: 'Опубликовать',
+  BANNER_UNPUBLIC: 'Убрать с публикации',
+  BANNER_PUBLIC_TO_TIME: 'Опубликовано до',
+  BANNER_EDIT: 'Редактировать',
+  BANNER_EXTEND: 'Продлить',
+
+  // Новости
+  CREATE_NEWS_PAGE_TITLE: 'Создание новости',
+  NEWS_TITLE: 'Название новости',
+  NEWS_ADD: 'Добавить новость',
+  NEWS_SHORT_DESCRIPTION: 'Краткое описание новости',
+  NEWS_TEXT: 'Текст новости',
+  NEWS_TAGS: 'Теги',
+  NEWS_ADD_TAG: 'Добавить',
+  NEWS_COVER: 'Обложка новости',
+  NEWS_ADD_COVER: 'Прикрепите файл',
+  NEWS_SAVE: 'Сохранить новость',
+  NEWS_PREVIEW: 'Так будет выглядеть новость в общем списке',
+
+  NEWS_NOT_PUBLISH: 'Данная новость не опубликована. Она появится в общем списке новостей сразу после одобрения администрацией.',
+  NEWS_PUBLIC_MAIN: 'Опубликовать на главной',
+  NEWS_UNPUBLIC_MAIN: 'Убрать с главной',
+  NEWS_PUBLIC_ALL: 'Опубликовать',
+  NEWS_UNPUBLIC_ALL: 'Убрать с публикации',
+  NEWS_PUBLIC_TO_TIME: 'Опубликовано до',
+  NEWS_EDIT: 'Редактировать',
+  NEWS_DELETE: 'Удалить',
+  NEWS_FULL_TAGS: 'Теги',
+  NEWS_SHARE: 'Поделиться',
+  NEWS_COMMENTS: 'Комментарии',
+  NEWS_COMMENTS_COUNTER: 'комментариев',
+  NEWS_COMMENTS_ADD: 'Добавить комментарий',
+  NEWS_REGISTER_TO_SEND_COMMENT: 'Чтобы оставить комментарий зарегестрируйтесь в системе',
+
+  // опросные листы
+  CREATE_QUESTIONNAIRE_PAGE_TITLE: 'Конструктор опросного листа',
+  QUESTIONNAIRE_TITLE: 'Название опросного листа',
+  CONSTRUCTOR_QUESTIONNAIRE: 'Новый опросный лист',
+  CONSTRUCTOR_QUESTIONNAIRE_DESC: 'Создайте список дополнительныйх вопросов для кандидата',
+  LOAD_QUESTIONNAIRE: 'Загрузить файл опросного листа',
+  LOAD_QUESTIONNAIRE_DESC: 'Загрузите свой файл опросного листа, что бы отправить его соискателю.',
+
+  QUESTIONNAIRE_SECTION_NAME: 'Название раздела',
+  QUESTIONNAIRE_SECTION_DELETE: 'Удалить раздел',
+  QUESTIONNAIRE_SECTION_ADD: 'Новый раздел вопросов',
+  QUESTIONNAIRE_QUESTION: 'Вопрос',
+  QUESTIONNAIRE_QUESTION_ADD: 'Еще вопрос',
+  QUESTIONNAIRE_LOAD_FILE: 'Прикрепите файл',
+  QUESTIONNAIRE_SAVE: 'Сохранить опросный лист',
+
+  QUESTIONNAIRE_EDIT: 'Редактировать опросный лист',
+  QUESTIONNAIRE_DELETE: 'Удалить опросный лист',
+  QUESTIONNAIRE_PAGE_TITLE: 'Опросный лист',
+  QUESTIONNAIRE_PAGE_SEND_ANSWER: 'Отправить ответы',
+  QUESTIONNAIRE_CANDIDATE_APPROVED: 'Кандидат подходит',
+  QUESTIONNAIRE_CANDIDATE_REJECTED: 'Кандидат не подходит',
+
+  QUESTIONNAIRE_FILE_ANSWER_TITLE: 'Скачать опросный лист',
+  QUESTIONNAIRE_FILE_ANSWER_TITLE_DOWNLOAD: 'Скачать опросный лист',
+  QUESTIONNAIRE_FILE_ANSWER_TITLE_LOAD: 'Прикрепите файл',
+  QUESTIONNAIRE_FILE_ANSWER_TITLE_LOAD_DESC: 'Форматы: doc”,“docx”,“xls”,“xlsx”. Ограничение на размер: 300kb',
+  EMPLOYER_SEND_QUESTIONNAIRE_FILE: 'Работодатель отправил вам опросный лист',
+  QUESTIONNAIRE_FILE_ANSWER_SEND: 'Отправить ответы',
+  QUESTIONNAIRE_FILE_DOWNLOAD_ANSWERS: 'Скачать ответы',
+
+  // SUPPORT
+  FAQ_PAGE_TITLE: 'Часто задаваемые вопросы',
+  FAQ_NOT_FOUND_ANSWER: 'Не нашли нужный ответ?',
+  FAQ_SEND_QUESTION: 'Задать вопрос',
+  FAQ_SEND_QUESTION_DESC: 'Отправьте свой вопрос и мы ответим вам',
+  FAQ_SUPPORT_PAGE_TITLE: 'Обратная связь',
+  FAQ_SUPPORT_CHAT_TITLE: 'Чат техподдержки',
+  FAQ_SUPPORT_CHAT_SEND_MESSAGE: 'Отправить',
+  FAQ_SUPPORT_FORM_TITLE: 'Отправить свой вопрос',
+  FAQ_SUPPORT_FORM_CHANGE_REASON: 'Выберите одну из причин',
+  FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL: 'Описание (пожалуйста опишите свою проблему подробно)',
+  FAQ_SUPPORT_FORM_I_HAVE_READ: 'Я прочитал(а)',
+  FAQ_SUPPORT_FORM_FAQ: 'часто задаваемые воопросы',
+  FAQ_SUPPORT_FORM_SEND_QUESTION: 'Отправить запрос',
+  FAQ_SUPPORT_LIST_CATEGORY: 'Категория',
+  FAQ_SUPPORT_LIST_PROBLEM_DESC: 'Описание проблемы',
+  FAQ_SUPPORT_LIST_GO_TO_CHAT: 'Перейти в чат с оператором',
+
+  // ОПЛАТА
+  PAYING_TITLE: 'Купить',
+  PAYING_CHANGE_COUNT: 'Выберите количество',
+  PAYING_BUY: 'Купить',
 };

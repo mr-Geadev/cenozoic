@@ -1,7 +1,7 @@
 <div class="chat-layout">
 
 	<div class="header">
-		Чат техподдержки
+		{{ dictionary.FAQ_SUPPORT_CHAT_TITLE }}
 		<img class="close" src="/assets/images/icon-white-cross.svg" (click)="closeChat()"/>
 	</div>
 
@@ -35,7 +35,7 @@
 	<form class="send-message" (submit)="sendMessage()" >
 		<input type="text" name="message" [(ngModel)]="newMessage">
 		<button type="submit">
-			Отправить
+			{{ dictionary.FAQ_SUPPORT_CHAT_SEND_MESSAGE }}
 		</button>
 	</form>
 

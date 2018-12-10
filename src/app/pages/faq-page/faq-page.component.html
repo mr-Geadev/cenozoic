@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col">
 			<div class="title">
-				Часто задаваемые вопросы
+				{{ dictionary.FAQ_PAGE_TITLE}}
 			</div>
 
 			<ul class="list-faq">
@@ -16,13 +16,13 @@
 			</ul>
 
 			<div class="not-found">
-				Не нашли нужный ответ?
+				{{ dictionary.FAQ_NOT_FOUND_ANSWER}}
 			</div>
 			<div class="not-found-subtitle">
-				Отправьте свой вопрос и мы ответим вам
+				{{ dictionary.FAQ_SEND_QUESTION_DESC}}
 			</div>
 			<div class="button" (click)="goToSupport()">
-				Задать вопрос
+				{{ dictionary.FAQ_SEND_QUESTION }}
 			</div>
 		</div>
 	</div>

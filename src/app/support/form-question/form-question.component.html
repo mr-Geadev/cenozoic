@@ -1,12 +1,12 @@
 <div class="support-subtitle">
-	Отправить свой вопрос
+	{{ dictionary.FAQ_SUPPORT_FORM_TITLE}}
 </div>
 
 <form class="send-question" (submit)="createIssue()">
 
 	<div class="field">
 		<label class="field-title support-subtitle" for="change-reason">
-			Выберите одну из причин
+			{{ dictionary.FAQ_SUPPORT_FORM_CHANGE_REASON }}
 		</label>
 
 		<select id="change-reason" name="change-reason" class="change-reason field-input" [(ngModel)]="issue.category">
@@ -18,7 +18,7 @@
 
 	<div class="field">
 		<label class="field-title support-subtitle" for="description">
-			описание (пожалуйста опишите свою проблему подробно)
+			{{ dictionary.FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL }}
 		</label>
 
 		<textarea name="description" id="description" class="description"  [(ngModel)]="issue.description"></textarea>
@@ -26,11 +26,11 @@
 
 	<div class="field support-read">
 		<input type="checkbox" id="support-is-reading" name="support-is-reading" (value)="true" [(ngModel)]="isReading">
-		<label for="support-is-reading">Я прочитал(а)&nbsp;<a target="_blank" routerLink="/faq">часто задаваемые воопросы</a></label>
+		<label for="support-is-reading"> {{dictionary.FAQ_SUPPORT_FORM_I_HAVE_READ }}&nbsp;<a target="_blank" routerLink="/faq">{{dictionary.FAQ_SUPPORT_FORM_FAQ}}</a></label>
 	</div>
 
 	<button type="submit" class="field send-button" [disabled]="!issue.description || !isReading">
-		Отправить запрос
+
 	</button>
 
 </form>

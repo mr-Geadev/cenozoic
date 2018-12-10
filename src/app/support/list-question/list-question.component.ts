@@ -12,8 +12,10 @@ import * as moment from 'moment';
 export class ListQuestionComponent {
 
   @Input('list') list;
+  public dictionary: any = {};
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,
+              private _localizationService: LocalizationService) {}
 
   public openChat(id): void {
     this.dialog.open(ChatComponent, {

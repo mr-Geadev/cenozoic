@@ -15,10 +15,12 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   comments = [];
   newMessage = '';
+  public dictionary: any = {};
 
   constructor(private dialog: MatDialog,
               private faqApi: SupportApi,
               private socket: SocketService,
+              private _localizationService: LocalizationService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
@@ -36,6 +38,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
+
     this.updateIssue();
 
     this.socket.on('new-issue-comment').subscribe(

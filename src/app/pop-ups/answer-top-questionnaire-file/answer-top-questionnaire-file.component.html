@@ -1,14 +1,14 @@
 <div class="wrap">
 
-	<div class="title">Скачать опросный лист</div>
+	<div class="title">{{dictionary.QUESTIONNAIRE_FILE_ANSWER_TITLE}}</div>
 
 	<div class="description">
-		Работодатель отправил вам опросный лист:
+		{{ dictionary.EMPLOYER_SEND_QUESTIONNAIRE_FILE }}:
 		<b>{{questionnaire.title}}</b>
 	</div>
 
 	<a href="{{questionnaire.fileURL}}" class="download-file" download target="_blank">
-		Скачать опросный лист
+		{{ dictionary.QUESTIONNAIRE_FILE_ANSWER_TITLE_DOWNLOAD }}
 	</a>
 
 
@@ -16,16 +16,16 @@
 		<input (change)="addFile($event)" id="load-file" type="file" size="0"
 					 accept=".xlsx,.xls,.doc, .docx">
 		<label class="add-file-button" for="load-file">
-			{{ nameOfFile || 'Прикрепите файл'}}
+			{{ nameOfFile || dictionary.QUESTIONNAIRE_FILE_ANSWER_TITLE_LOAD}}
 		</label>
 		<div class="file-name">
-			{{ 'Форматы: doc”,“docx”,“xls”,“xlsx”. Ограничение на размер: 300kb' }}
+			{{ dictionary.QUESTIONNAIRE_FILE_ANSWER_TITLE_LOAD_DESC }}
 		</div>
 	</div>
 
 
 	<button class="button" (click)="sendAnswer()" [disabled]="!fileToUpload.data">
-		Отправить ответы
+		{{ dictionary.QUESTIONNAIRE_FILE_ANSWER_SEND }}
 	</button>
 
 </div>

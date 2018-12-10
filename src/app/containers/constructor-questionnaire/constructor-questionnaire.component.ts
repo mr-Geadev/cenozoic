@@ -3,7 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionnairesApi } from 'api';
 import { QuestionnaireModel } from 'models';
-import { SystemMessageService } from 'services';
+import { LocalizationService, SystemMessageService } from 'services';
 import { Location } from '@angular/common';
 
 @Component({
@@ -22,17 +22,24 @@ export class ConstructorQuestionnaireComponent implements OnInit {
     file: null,
     data: null,
   };
+  public dictionary: any = {};
   public nameOfFile: string = null;
 
   constructor(private _systemMessageService: SystemMessageService,
               private router: Router,
               private _location: Location,
+              private _localizationService: LocalizationService,
               private questionnaireApi: QuestionnairesApi,
               private activateRoute: ActivatedRoute) {
     this.id = activateRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
+
     if (this.id) {
       this.questionnaireApi.getQuestionnaireById(this.id)
         .subscribe(

@@ -1,7 +1,7 @@
 <div class="create-vacancy">
 	<div class="container">
 		<div class="row title">
-			Создание баннера
+			{{ dictionary.CREATE_BANNER_PAGE_TITLE }}
 		</div>
 
 		<div class="row" *ngIf="banner">
@@ -12,7 +12,7 @@
 						for="title-banner"
 						class="title-banner"
 					>
-						Название баннера <span class="required">*</span>
+						{{dictionary.NAME_BANNER}} <span class="required">*</span>
 					</label>
 					<input
 						id="title-banner"
@@ -27,7 +27,7 @@
 						for="short-description"
 						class="short-description"
 					>
-						Краткое описание баннера <span class="required">*</span>
+						{{ dictionary.BANNER_SHORT_DESCRIPTION}} <span class="required">*</span>
 					</label>
 					<input
 						id="short-description"
@@ -42,7 +42,7 @@
 						for="name-questionnaire"
 						class="name-questionnaire"
 					>
-						Текст баннера <span class="required">*</span>
+						{{dictionary.BANNER_TEXT}} <span class="required">*</span>
 					</label>
 					<editor [init]="textEditorConfig"
 									[(ngModel)]="textBanner"
@@ -52,34 +52,34 @@
 
 				<div class="field">
 					<div class="label">
-						Обложка баннера <span class="required">*</span>
+						{{ dictionary.BANNER_COVER }} <span class="required">*</span>
 					</div>
 
 					<div class="add-file">
 						<input (change)="addFile($event)" id="load-file" type="file" size="0"
 									 accept="image/*,image/jpeg,image/png,image/gif">
 						<label class="add-file-button" for="load-file">
-							Прикрепите файл
+							{{ dictionary.BANNER_ADD_COVER}}
 						</label>
 						<div class="file-name">
-							{{ nameOfFile || 'Форматы: PNG, JPG или GIF”. Предпочитаемый размер: 800x600. Ограничение на размер файла: 2Mb'}}
+							{{ nameOfFile || dictionary.BANNER_ADD_COVER_FORMAT}}
 						</div>
 					</div>
 				</div>
 
 				<button class="save-button" *ngIf="!edit" (click)="save()"
 								[disabled]="!banner.value.title || !banner.value.shortDescription || !textBanner || !fileToUpload.data ">
-					Сохранить баннера
+					{{ dictionary.SAVE_BANNER }}
 				</button>
 
 				<button class="save-button" *ngIf="edit" (click)="save()"
 								[disabled]="!banner.value.title || !banner.value.shortDescription || !textBanner ">
-					Сохранить баннера
+					{{ dictionary.SAVE_BANNER }}
 				</button>
 			</form>
 
 			<div class="col-3 offset-1 preview-card">
-				<h2>Так будет выглядеть баннер в общем списке</h2>
+				<h2>{{ dictionary.BANNER_PREVIEW }}</h2>
 
 				<div class="card">
 					<div class="photo-of-banner" *ngIf="!fileToUpload.data && photoUrl"

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalizationService } from 'services';
 import { SupportApi } from 'support/support.api';
 import { SocketService } from 'services/socket.service';
 
@@ -10,12 +11,19 @@ import { SocketService } from 'services/socket.service';
 export class SupportComponent implements OnInit {
 
   listIssue = [];
+  public dictionary: any = {};
 
   constructor(private faqApi: SupportApi,
+              private _localizationService: LocalizationService,
               private socket: SocketService) {
   }
 
   public ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
+
     this.faqApi.getIssues();
 
     this.getIssueList();

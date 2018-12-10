@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserModel } from 'models';
-import { SystemMessageService, UserService } from 'services';
+import { LocalizationService, SystemMessageService, UserService } from 'services';
 
 const FAQS = [
   {
@@ -40,13 +40,20 @@ export class FaqPageComponent implements OnInit {
 
   public faqs = FAQS;
   public currentUser: UserModel = null;
+  public dictionary: any = {};
 
   constructor(private router: Router,
               private userService: UserService,
+              private _localizationService: LocalizationService,
               private messages: SystemMessageService) {
   }
 
   public ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
+
     this.userService.user$
       .subscribe((user) => {
         if (user) {

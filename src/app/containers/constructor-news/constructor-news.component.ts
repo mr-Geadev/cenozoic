@@ -27,10 +27,12 @@ export class ConstructorNewsComponent implements OnInit {
     file: null,
     data: null,
   };
+  public dictionary: any = {};
   public nameOfFile: string = null;
 
   constructor(private _systemMessageService: SystemMessageService,
               private activateRoute: ActivatedRoute,
+              private _localizationService: LocalizationService,
               private _location: Location,
               private router: Router,
               private newsApi: NewsApi) {
@@ -39,6 +41,11 @@ export class ConstructorNewsComponent implements OnInit {
 
   ngOnInit() {
     this.currentLang = LocalizationService.currentLang();
+
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
 
     if (this.id) {
       this.newsApi.getNewsById(this.id)

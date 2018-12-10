@@ -11,7 +11,7 @@
 			</div>
 
 			<div class="not-public" *ngIf="!news.publicateToNewsPage">
-				Данная новость не опубликована. Она появится в общем списке новостей сразу после одобрения администрацией.
+				{{ dictionary.NEWS_NOT_PUBLISH }}
 			</div>
 
 			<div class="photo-block">
@@ -22,29 +22,29 @@
 					<ng-container
 						*ngIf="currentUser && ( currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' )">
 						<button class="button" *ngIf="!news.publicateToNewsPage" (click)="publish('toNews')">
-							Опубликовать
+							{{ dictionary.NEWS_PUBLIC_ALL }}
 						</button>
 
 						<button class="button" *ngIf="news.publicateToNewsPage" (click)="publish('fromNews')">
-							Убрать с публикации
+							{{ dictionary.NEWS_UNPUBLIC_ALL }}
 						</button>
 
 						<button class="button" *ngIf="!news.publicateToMainPage" (click)="publish('toMain')">
-							Опубликовать на главной
+							{{ dictionary.NEWS_PUBLIC_MAIN }}
 						</button>
 
 						<button class="button" *ngIf="news.publicateToMainPage" (click)="publish('fromMainPage')">
-							Убрать с главной
+							{{ dictionary.NEWS_UNPUBLIC_MAIN }}
 						</button>
 					</ng-container>
 
 					<ng-container *ngIf="currentUser && currentUser._id === news.userId">
 						<a class="button" [routerLink]="['/edit-news', news._id]">
-							Редактировать
+							{{ dictionary.NEWS_EDIT }}
 						</a>
 
 						<button class="button" (click)="removeNews()">
-							Удалить
+							{{ dictionary.NEWS_DELETE }}
 						</button>
 					</ng-container>
 				</div>
@@ -55,7 +55,7 @@
 			</div>
 
 			<div class="tags">
-				Теги:
+				{{dictionary.NEWS_FULL_TAGS}}:
 				<div class="tag" *ngFor="let tag of news.tags">
 					{{tag}}
 				</div>
@@ -63,7 +63,7 @@
 
 			<div class="share">
 				<div class="label">
-					Поделиться
+					{{ dictionary.NEWS_SHARE }}
 				</div>
 				<div class="links">
 					<a href="#" class="link"><img src="/assets/images/facebook-share.png" alt=""></a>
@@ -76,11 +76,11 @@
 
 			<div class="comments">
 				<div class="title">
-					Комментарии:
+					{{dictionary.NEWS_COMMENTS}}:
 				</div>
 
 				<div class="count-comment">
-					<b>{{news.comments.length}}</b> комментариев
+					<b>{{news.comments.length}}</b> {{ dictionary.NEWS_COMMENTS_COUNTER }}
 				</div>
 
 				<div class="comment" *ngFor="let comment of news.comments; let i = index">
@@ -103,14 +103,14 @@
 
 				<div class="send-comment" *ngIf="!currentUser">
 					<p>
-						Чтобы оставить комментарий зарегестрируйтесь в системе
+						{{ dictionary.NEWS_REGISTER_TO_SEND_COMMENT }}
 					</p>
 				</div>
 
 				<div class="send-comment" *ngIf="currentUser && news.publicateToNewsPage">
 					<textarea class="new-comment" name="new-comment" id="new-comment" [(ngModel)]="textComment"></textarea>
 					<button class="send-button" type="submit" (click)="sendComment()" [disabled]="!textComment">
-						Добавить комментарий
+						{{ dictionary.NEWS_COMMENTS_ADD }}
 					</button>
 				</div>
 			</div>

@@ -9,7 +9,7 @@
 					class="timeout"
 				>
 					<div class="timeout-label">
-						Срок размещения истек
+						{{ dictionary.ENTITY_TIME_IS_UP }}
 					</div>
 				</div>
 
@@ -20,7 +20,7 @@
 						{{ banner.title }}
 					</div>
 					<p style="color: black">
-						Опубликовано до: {{ banner.timeoutDate.locale('ru').format('DD.MM.YYYY') }}
+						{{dictionary.BANNER_PUBLIC_TO_TIME}}: {{ banner.timeoutDate.locale('ru').format('DD.MM.YYYY') }}
 					</p>
 
 					<div class="description" >
@@ -43,7 +43,7 @@
 				</div>
 
 				<div class="more-info add" >
-					Добавить баннер
+					{{ dictionary.BANNER_ADD }}
 				</div>
 			</a>
 
