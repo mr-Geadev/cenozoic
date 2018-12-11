@@ -123,8 +123,8 @@
         </div>
 
         <div class="col-12 col-md-4 offset-md-1 right">
-            <div class="user-photo">
-                <img *ngIf="currentResume.photoURL" src="{{currentResume.photoURL}}">
+            <div class="user-photo" *ngIf="currentResume.photoURL">
+                <img src="{{currentResume.photoURL}}">
             </div>
             <div class="default-photo" *ngIf="!currentResume.photoURL">
                 <img src="/assets/images/icon-camera.svg">
