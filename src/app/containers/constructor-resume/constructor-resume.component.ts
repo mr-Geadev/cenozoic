@@ -188,7 +188,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
   }
 
   public changeCity(index: number, nameField: string): void {
-    this._changeCityService.changeCity()
+    const subscribe = this._changeCityService.changeCity()
       .subscribe((city: City) => {
         if (nameField === 'education') {
           this.resumeForm.education[index].city = city.code;
@@ -199,6 +199,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
           this.resumeForm.trainings[index].country = city.codeCountry;
           this.trainingsCityName[index] = city.name;
         }
+        console.log(this.educationCityName, this.trainingsCityName);
+        subscribe.unsubscribe();
       });
   }
 
