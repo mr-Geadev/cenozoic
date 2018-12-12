@@ -210,6 +210,7 @@
                                         <mat-form-field>
                                             <mat-select name="experience-startMonth-{{i}}" id="employment-start"
                                                         class="shortest-select"
+                                                        (blur)="checkExperienceTimeValid(i, resumeForm.experience[i].endYear > 2018)"
                                                         [(ngModel)]="resumeForm.experience[i].startMonth"
                                                         required>
                                                 <mat-option *ngFor="let month of dictionary.MONTHS; let number = index;"
@@ -218,7 +219,7 @@
                                             </mat-select>
                                         </mat-form-field>
                                         <input type="number" name="experience-startYear-{{i}}" id="start" required
-                                               (blur)="checkTimeValid(resumeForm.experience[i].startYear > 2018)"
+                                               (blur)="checkExperienceTimeValid(i, resumeForm.experience[i].startYear > 2018)"
                                                class="shortest-input" [(ngModel)]="resumeForm.experience[i].startYear">
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
                                         <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE_END_WORK}}</div>
@@ -242,6 +243,7 @@
                                                 <mat-select name="experience-endMonth-{{i}}"
                                                             id="employment-end"
                                                             class="shortest-select"
+                                                            (blur)="checkExperienceTimeValid(i, resumeForm.experience[i].endYear > 2018)"
                                                             [disabled]="resumeForm.experience[i].present"
                                                             [(ngModel)]="resumeForm.experience[i].endMonth"
                                                             required>
@@ -254,6 +256,7 @@
                                         </div>
                                         <input type="number" name="experience-endYear-{{i}}" id="end"
                                                class="shortest-input"
+                                               (blur)="checkExperienceTimeValid(i, resumeForm.experience[i].endYear > 2018)"
                                                [(ngModel)]="resumeForm.experience[i].endYear"
                                                [disabled]="resumeForm.experience[i].present"
                                                [required]="!resumeForm.experience[i].present">
@@ -265,7 +268,7 @@
                                         </div>
                                         <div class="word">{{dictionary.YEAR_WORK}}</div>
                                         <input type="checkbox" name="experience-name-{{i}}" value="true"
-                                               (blur)="checkTimeValid(resumeForm.experience[i].endYear > 2018)"
+                                               (change)="checkExperienceTimeValid(i, false)"
                                                id="present-{{i}}" [(ngModel)]="resumeForm.experience[i].present">
                                         <label for="present-{{i}}"
                                                class="word present mobile-hidden">{{dictionary.TILL_NOW_WORK}}</label>
@@ -273,6 +276,7 @@
 
                                     <div class="right mobile-visible">
                                         <input type="checkbox" name="experience-name-{{i}}" value="true"
+                                               (change)="checkExperienceTimeValid(i, false)"
                                                id="present-{{i}}" [(ngModel)]="resumeForm.experience[i].present">
                                         <label for="present-{{i}}"
                                                class="word present ">{{dictionary.TILL_NOW_WORK}}</label>
@@ -739,11 +743,15 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime && !isBirthdayInvalid">
+                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime && !isBirthdayInvalid && isValidExperienceTime">
                             {{ dictionary.SAVE }}
                         </button>
                         <button type="submit" class="save-button invalid"
                                 *ngIf="!myForm.invalid && invalidTime">
+                            {{ dictionary.BUTTON_SAVE_ALERT }}
+                        </button>
+                        <button type="submit" class="save-button invalid"
+                                *ngIf="!myForm.invalid && !isValidExperienceTime">
                             {{ dictionary.BUTTON_SAVE_ALERT }}
                         </button>
                         <button type="submit" class="save-button invalid"

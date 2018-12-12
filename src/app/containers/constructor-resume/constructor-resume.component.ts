@@ -52,6 +52,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
   public phoneMask: any[] = ['+', '7', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
   public nationalitiesDefault: any[] = null;
   public LocalizationService = LocalizationService;
+  public validExperienceTime: boolean[] = [];
+  public isValidExperienceTime: boolean = true;
 
   public textEditorConfig: any = {}; // для RichTextComponent'ы
   public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
@@ -118,6 +120,9 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             }
             this.resumeId = this.resumeForm._id;
             this.type = CHANGES_TYPE;
+            this.resumeForm.experience.forEach(() => {
+              this.validExperienceTime.push(true);
+            });
             this.resumeForm.trainings.forEach((training, index) => {
               training.document = false;
               training.documentName = null;
@@ -145,12 +150,23 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     console.log(this.invalidTime);
   }
 
+  public checkExperienceTimeValid(index, mustBeInvalid): void {
+    mustBeInvalid ? this.invalidTime = true : this.invalidTime = false;
+
+    const item = this.resumeForm.experience[index];
+    this.validExperienceTime[index] = this._calculateTime(item, item.present) > 0;
+    console.log(this.validExperienceTime.findIndex(exp => exp === false));
+    this.isValidExperienceTime = this.validExperienceTime.findIndex(exp => exp === false) > -1 ? false : true;
+    console.log(this.validExperienceTime, this.isValidExperienceTime);
+  }
+
   public manageFields(nameSection: string, index?: number): void {
     if (index === undefined) {
       let typeField: any = null;
       switch (nameSection) {
         case 'experience':
           typeField = DEFAULT_EXPERIENCE;
+          this.validExperienceTime.push(false);
           break;
         case 'education':
           typeField = DEFAULT_EDUCATION;
@@ -177,6 +193,9 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
               this.nameImagesOfCertificate.splice(index, 1);
               this.imagesOfCertificate.splice(index, 1);
               this.trainingsCityName.splice(index, 1);
+            }
+            if (nameSection === 'experience') {
+              this.validExperienceTime.splice(index, 1);
             }
             if (nameSection === 'education') {
               this.educationCityName.splice(index, 1);
