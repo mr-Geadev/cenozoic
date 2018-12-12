@@ -11,18 +11,18 @@
 
 				<div class="paid-options" *ngIf="this.typeCurrentUser === 'employer'">
 					<div class="small-title">
-						Платный функционал:
+						{{ dictionary.PAYING_FUNCTIONAL }}:
 					</div>
 					<div class="parameter">
-						Вакансий: <b>{{currentUser.paidOptions.countPossibleCreateVacancy}}</b>
+						{{ dictionary.PAYING_VACANCY }}: <b>{{currentUser.paidOptions.countPossibleCreateVacancy}}</b>
 						<span (click)="buy('vacancy')" class="pay">+</span>
 					</div>
 					<div class="parameter">
-						Рекламных баннеров: <b>{{currentUser.paidOptions.countPossibleCreateBanner}}</b>
+						{{ dictionary.PAYING_BANNERS }}: <b>{{currentUser.paidOptions.countPossibleCreateBanner}}</b>
 						<span (click)="buy('banner')" class="pay">+</span>
 					</div>
 					<div class="parameter">
-						Просмотров резюме: <b>{{currentUser.paidOptions.countPossibleViewResumeContacts}}</b>
+						{{ dictionary.PAYING_RESUME }}: <b>{{currentUser.paidOptions.countPossibleViewResumeContacts}}</b>
 						<span (click)="buy('resume')" class="pay">+</span>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 					</li>
 
 					<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">
-						<a routerLink="/personal-account/{{TABS.CONTACTS}}" [class.active]="activeTab === TABS.CONTACTS">Деловые контакты</a>
+						<a routerLink="/personal-account/{{TABS.CONTACTS}}" [class.active]="activeTab === TABS.CONTACTS">{{ dictionary.ACCOUNT_PAGE_TAB_CONTACTS }}</a>
 					</li>
 
 				</ul>

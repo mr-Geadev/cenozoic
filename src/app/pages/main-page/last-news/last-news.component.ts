@@ -1,14 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LocalizationService } from 'services';
 
 @Component({
   selector: 'last-news',
   templateUrl: './last-news.component.html',
   styleUrls: ['./last-news.component.scss'],
 })
-export class LastNewsComponent {
+export class LastNewsComponent implements OnInit {
   offset: number = 0;
+  public dictionary: any = {};
 
-  constructor() {
+  constructor(private _localizationService: LocalizationService) {
+  }
+
+  ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
   }
 
   addOffset() {

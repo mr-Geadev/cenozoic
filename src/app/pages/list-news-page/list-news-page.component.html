@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="filters">
 		<div class="search-field">
-			<input type="text" name="search" placeholder="Я ищу..." [(ngModel)]="searchInput">
+			<input type="text" name="search" placeholder="{{dictionary.I_FIND}}" [(ngModel)]="searchInput">
 			<button class="button-search" (click)="setFilter()">
-				Искать
+				{{ dictionary.SEARCH }}
 			</button>
 		</div>
 
@@ -12,8 +12,8 @@
 				<mat-select form="test" name="education" placeholder="По дате добавления"
 										(change)="setFilter()"
 										[(ngModel)]="order">
-					<mat-option value="line">Сначала новые</mat-option>
-					<mat-option value="reverse">Сначала старые</mat-option>
+					<mat-option value="line">{{ dictionary.START_FROM_NEW }}</mat-option>
+					<mat-option value="reverse">{{ dictionary.START_FROM_OLD }}</mat-option>
 				</mat-select>
 			</mat-form-field>
 		</div>

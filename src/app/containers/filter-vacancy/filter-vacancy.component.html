@@ -1,9 +1,9 @@
 <section class="filtr-summaryes">
     <div class="container">
         <div class="row search-field">
-            <input type="text" name="search" placeholder="Я ищу..." [(ngModel)]="filterVacancyService.parameters.search">
+            <input type="text" name="search" placeholder="{{dictionary.I_FIND}}" [(ngModel)]="filterVacancyService.parameters.search">
             <button class="button-search" (click)="filterVacancyService.changeForm()">
-                Искать
+                {{ dictionary.SEARCH }}
             </button>
         </div>
 

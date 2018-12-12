@@ -21,7 +21,7 @@
 					<a class="header-menu-item" [class.active]="currentPage === 'list-resume'"
 						 [routerLink]="['/list-resume']">{{ dictionary.FOR_EMPLOYER }}</a>
 					<a class="header-menu-item" [class.active]="currentPage === 'list-news'"
-						 [routerLink]="['/list-news']">Новости</a>
+						 [routerLink]="['/list-news']">{{ dictionary.HEADER_NEWS }}</a>
 					<a class="header-menu-item" *ngIf="!isAdmin" [routerLink]="['/faq']">{{ dictionary.SUPPORT }}</a>
 					<a class="header-menu-item" *ngIf="isAdmin" [routerLink]="['/admin']">Кабинет<br/> администратора</a>
 				</nav>
@@ -77,7 +77,7 @@
 					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-vacancy']">{{
 						dictionary.FOR_CANDIDATES }}</a></li>
 					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-news']">
-						Новости
+						{{ dictionary.HEADER_NEWS }}
 					</a></li>
 					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-resume']">{{
 						dictionary.FOR_EMPLOYER }}</a></li>

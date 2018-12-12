@@ -6,7 +6,7 @@ export const RUSSIAN_DICTIONARY = {
   SAVE: 'Сохранить',
   EDIT: 'Редактировать',
 
-  //общее
+  // общее
   YOUR: 'Ваши',
   CHANGE_CITY: 'Выберете город',
   CITY: 'Город',
@@ -16,8 +16,11 @@ export const RUSSIAN_DICTIONARY = {
   MORE: 'Подробнее',
   NO_DATA: 'нет данных',
   WAIT: 'Ожидайте',
+  I_FIND: 'Я ищу...',
+  START_FROM_NEW: 'Сначала новые',
+  START_FROM_OLD: 'Сначала старые',
 
-  //валюта
+  // валюта
   EURO: 'Евро',
   DOLLARS: 'Доллары',
   RUBLES: 'Рубли',
@@ -55,6 +58,7 @@ export const RUSSIAN_DICTIONARY = {
   // меню
   MAIN_PAGE: 'Главная',
   FOR_CANDIDATES: 'Вакансии',
+  HEADER_NEWS: 'Новости',
   FOR_EMPLOYER: 'Резюме',
   FOR_PARTNERSHIPS: 'Сотрудничество',
   SUPPORT: 'FAQ',
@@ -96,6 +100,7 @@ export const RUSSIAN_DICTIONARY = {
   CVS: 'Резюме',
   VACANCIES: 'Вакансии',
   SEE_ALL_VACANCIES: 'Смотреть все вакансии',
+  SEE_ALL_RESUME: 'Смотреть все вакансии',
   JOB_IN_TOP_COMPANIES: 'Работа в ведущих компаниях',
   FOUR_STEPS_OF_SUCCESS_CAREER: '4 шага для успешной карьеры',
 
@@ -407,6 +412,7 @@ export const RUSSIAN_DICTIONARY = {
   // БАННЕРЫ
   CREATE_BANNER_PAGE_TITLE: 'Создание баннера',
   BANNER_ADD: 'Добавить баннер',
+  BANNER_NAME: 'Заголовок баннера',
   BANNER_SHORT_DESCRIPTION: 'Краткое описание баннера',
   BANNER_TEXT: 'Текст баннера',
   BANNER_COVER: 'Обложка баннера',
@@ -489,6 +495,9 @@ export const RUSSIAN_DICTIONARY = {
   FAQ_SUPPORT_PAGE_TITLE: 'Обратная связь',
   FAQ_SUPPORT_CHAT_TITLE: 'Чат техподдержки',
   FAQ_SUPPORT_CHAT_SEND_MESSAGE: 'Отправить',
+  FAQ_SUPPORT_THEME_1: 'Сотрудничество',
+  FAQ_SUPPORT_THEME_2: 'Общие вопросы',
+  FAQ_SUPPORT_THEME_3: 'Проблемы с оплатой',
   FAQ_SUPPORT_FORM_TITLE: 'Отправить свой вопрос',
   FAQ_SUPPORT_FORM_CHANGE_REASON: 'Выберите одну из причин',
   FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL: 'Описание (пожалуйста опишите свою проблему подробно)',
@@ -503,4 +512,8 @@ export const RUSSIAN_DICTIONARY = {
   PAYING_TITLE: 'Купить',
   PAYING_CHANGE_COUNT: 'Выберите количество',
   PAYING_BUY: 'Купить',
+  PAYING_FUNCTIONAL: 'Платный функционал',
+  PAYING_VACANCY: 'Вакансий',
+  PAYING_BANNERS: 'Рекламных баннеров',
+  PAYING_RESUME: 'Просмотров резюме',
 };

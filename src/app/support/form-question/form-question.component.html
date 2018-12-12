@@ -10,9 +10,9 @@
 		</label>
 
 		<select id="change-reason" name="change-reason" class="change-reason field-input" [(ngModel)]="issue.category">
-			<option value="Сотрудничество">Сотрудничество</option>
-			<option value="Общие вопросы">Общие вопросы</option>
-			<option value="Проблемы с оплатой">Проблемы с оплатой</option>
+			<option value="Сотрудничество">{{ dictionary.FAQ_SUPPORT_THEME_1 }}</option>
+			<option value="Общие вопросы">{{ dictionary.FAQ_SUPPORT_THEME_2 }}</option>
+			<option value="Проблемы с оплатой">{{ dictionary.FAQ_SUPPORT_THEME_3 }}</option>
 		</select>
 	</div>
 
@@ -30,7 +30,7 @@
 	</div>
 
 	<button type="submit" class="field send-button" [disabled]="!issue.description || !isReading">
-
+		{{ dictionary.FAQ_SUPPORT_CHAT_SEND_MESSAGE }}
 	</button>
 
 </form>

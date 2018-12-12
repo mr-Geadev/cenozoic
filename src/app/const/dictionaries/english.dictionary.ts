@@ -16,6 +16,9 @@ export const ENGLISH_DICTIONARY = {
   MORE: 'Learn More',
   NO_DATA: 'no data',
   WAIT: 'Wait',
+  I_FIND: 'I search...',
+  START_FROM_NEW: 'New first',
+  START_FROM_OLD: 'Old first',
 
   //валюта
   EURO: 'Euro',
@@ -55,6 +58,7 @@ export const ENGLISH_DICTIONARY = {
   // меню
   MAIN_PAGE: 'Main',
   FOR_CANDIDATES: 'Vacancies',
+  HEADER_NEWS: 'News',
   FOR_EMPLOYER: 'СV',
   FOR_PARTNERSHIPS: 'For partnerships',
   SUPPORT: 'FAQ',
@@ -96,6 +100,7 @@ export const ENGLISH_DICTIONARY = {
   CVS: 'CV\'s',
   VACANCIES: 'Vacancies',
   SEE_ALL_VACANCIES: 'See all vacancies',
+  SEE_ALL_RESUME: 'See all CV',
   JOB_IN_TOP_COMPANIES: 'Job in the top companies',
   FOUR_STEPS_OF_SUCCESS_CAREER: '4 steps of success career',
 
@@ -159,8 +164,8 @@ export const ENGLISH_DICTIONARY = {
   ACCOUNT_PAGE_TAB_OFFERS_DESC_EMPLOYER: 'This section shows the sentences you sent to the candidates',
   ACCOUNT_PAGE_TAB_ARCHIVE_DESC: 'This section contains your old responses/invitations.',
   ACCOUNT_PAGE_TAB_QUESTIONNAIRES_DESC: 'This section shows all your questionnaires. You can view and edit the desired by clicking on it',
-  ACCOUNT_PAGE_TAB_NEWS_DESC: 'В этом разделе показаны все ваши новости. Вы можежет просмотреть и отредактировать нужную, кликнув по ней',
-  ACCOUNT_PAGE_TAB_BANNERS_DESC: 'В этом разделе показаны все ваши новости. Вы можежет просмотреть и отредактировать нужную, кликнув по ней',
+  ACCOUNT_PAGE_TAB_NEWS_DESC: 'This section shows all your news. You can view and edit the one you need by clicking on it.',
+  ACCOUNT_PAGE_TAB_BANNERS_DESC: 'This section shows all your banners. You can view and edit the one you need by clicking on it.',
   ACCOUNT_PAGE_TAB_CV_DESC: 'This section shows all your CVs. You can view and edit CV by clicking on it.',
   ACCOUNT_PAGE_TAB_CAREERS_DESC: 'This section shows all your jobs. You can view and edit the desired one by clicking on it',
   ACCOUNT_PAGE_TAB_CONTACTS_DESC: 'This section shows the summary whose information you bought',
@@ -407,6 +412,7 @@ export const ENGLISH_DICTIONARY = {
   // БАННЕРЫ
   CREATE_BANNER_PAGE_TITLE: 'Creating a banner',
   BANNER_ADD: 'Add banner',
+  BANNER_NAME: 'Banner title',
   BANNER_SHORT_DESCRIPTION: 'Brief description of the banner',
   BANNER_TEXT: 'Banner text',
   BANNER_COVER: 'Banner cover',
