@@ -49,7 +49,7 @@ export class AuthPageComponent implements OnInit {
             .subscribe(
                 (res) => {
                     this._userService.getUserInfo();
-                    this._systemMessageService.info('Вы вошли');
+                    this._systemMessageService.info(this.dictionary.INFO_MESSAGES_SUCCESS_LOG_IN);
                     this._router.navigate(['/']);
                     this._dialog.closeAll();
                 },
@@ -68,7 +68,7 @@ export class AuthPageComponent implements OnInit {
                         .subscribe((res) => {
                             this._userService.getUserInfo();
                         });
-                    this._systemMessageService.info('Вы зарегистрированы');
+                    this._systemMessageService.info(this.dictionary.INFO_MESSAGES_SUCCESS_LOG_UP);
                     this._dialog.closeAll();
                 },
                 (err) => {

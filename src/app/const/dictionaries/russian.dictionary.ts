@@ -440,6 +440,7 @@ export const RUSSIAN_DICTIONARY = {
   NEWS_ADD_COVER: 'Прикрепите файл',
   NEWS_SAVE: 'Сохранить новость',
   NEWS_PREVIEW: 'Так будет выглядеть новость в общем списке',
+  NEWS_FILTER_BY_DATE: 'По дате добавления',
 
   NEWS_NOT_PUBLISH: 'Данная новость не опубликована. Она появится в общем списке новостей сразу после одобрения администрацией.',
   NEWS_PUBLIC_MAIN: 'Опубликовать на главной',
@@ -516,4 +517,27 @@ export const RUSSIAN_DICTIONARY = {
   PAYING_VACANCY: 'Вакансий',
   PAYING_BANNERS: 'Рекламных баннеров',
   PAYING_RESUME: 'Просмотров резюме',
+
+  // INFO MESSAGES
+  INFO_MESSAGES_PLEASE_AUTH: 'Пожалуйста авторизируйтесь',
+  INFO_MESSAGES_SUCCESS_LOG_IN: 'Вы вошли',
+  INFO_MESSAGES_SUCCESS_LOG_UP: 'Вы зарегестрированы',
+  INFO_MESSAGES_SUCCESS_DATA_IS_CHANGED: 'Данные изменены',
+  INFO_MESSAGES_SUCCESS_BAD_REQUEST: 'Поля введены неверно, попробуйте еще раз',
+  INFO_MESSAGES_SUCCESS_PASSWORD_IS_CHANGED: 'Пароль изменен',
+  INFO_MESSAGES_SUCCESS_OLD_PASSWORD_INCORRECT: 'Старый пароль неверный',
+  INFO_MESSAGES_SUCCESS_ACCOUNT_DELETED: 'Аккаунт удален',
+
+  // Approved messages
+  APPROVED_MESSAGE_DELETE: 'Вы действительно хотите удалить?',
+  APPROVED_MESSAGE_CANCEL: 'Вы действительно хотите отменить?',
+  APPROVED_MESSAGE_ARCHIVE: 'Вы действительно хотите отправить в архив?',
+  APPROVED_MESSAGE_DELETE_ACCOUNT: 'Вы действительно хотите удалить аккаунт?',
+
+  // другое
+  SETTINGS_USER_NAME: 'Фамилия, имя, отчество',
+  SETTINGS_USER_NAME_COMPANY: 'Название компании',
+  SETTINGS_USER_IN_FORMAT: 'В формате',
+  HEADER_SECTION_ADMIN: 'Кабинет <br/> администратора'
+
 };

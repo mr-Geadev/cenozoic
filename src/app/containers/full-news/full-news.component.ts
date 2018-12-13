@@ -75,7 +75,7 @@ export class FullNewsComponent implements OnInit {
   }
 
   removeNews() {
-    this.confirmService.confirm('Вы действительно хотите удалить?')
+    this.confirmService.confirm(this.dictionary.APPROVED_MESSAGE_DELETE)
       .subscribe((res) => {
         if (res) {
           this.newsApi.removeNews(this.id)
@@ -88,7 +88,7 @@ export class FullNewsComponent implements OnInit {
   }
 
   removeComment(indexComment: number) {
-    const confirm = this.confirmService.confirm('Вы действительно хотите удалить?')
+    const confirm = this.confirmService.confirm(this.dictionary.APPROVED_MESSAGE_DELETE)
       .subscribe((res) => {
         if (res) {
           this.newsApi.removeComment(this.id, indexComment)

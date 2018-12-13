@@ -185,7 +185,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       this.resumeForm[nameSection].push(Object.assign({}, typeField));
       this.listVisibleElement[nameSection].push(true);
     } else {
-      this._confirm.confirm('Вы действительно хотите удалить?')
+      this._confirm.confirm(this.dictionary.APPROVED_MESSAGE_DELETE)
         .subscribe((res) => {
           if (res) {
             this.resumeForm[nameSection].splice(index, 1);

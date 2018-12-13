@@ -96,14 +96,14 @@ export class SettingWorkerComponent implements OnInit {
         this._http.post(CHANGE_PASSWORD, this.passwords.value)
             .subscribe(
                 (res: any) => {
-                    this.msg.info('Пароль изменен');
+                    this.msg.info(this.dictionary.INFO_MESSAGES_SUCCESS_PASSWORD_IS_CHANGED);
                     this.passwords.reset({
                         oldPasswords: '',
                         newPassword: ''
                     });
                 }, (error: any) => {
                     if (error.error.errorCode === 'ERROR_CANT_AUTHORIZE') {
-                        this.msg.info('Старый пароль неверный');
+                        this.msg.info(this.dictionary.INFO_MESSAGES_SUCCESS_OLD_PASSWORD_INCORRECT);
                     }
                 });
     }
@@ -112,17 +112,17 @@ export class SettingWorkerComponent implements OnInit {
         this._http.post(CHANGE_USER_INFO, this.info.value)
             .subscribe(
                 (res: any) => {
-                    this.msg.info('Данные изменены');
+                    this.msg.info(this.dictionary.INFO_MESSAGES_SUCCESS_DATA_IS_CHANGED);
                     if (this.blankAccountService.isProtector) {
                         this.blankAccountService.compleateFilled('worker');
                     }
                     this.userService.getUserInfo();
                 },
-                (err: any) => this.msg.info('Поля введены неверно, попробуйте еще раз'));
+                (err: any) => this.msg.info(this.dictionary.INFO_MESSAGES_SUCCESS_BAD_REQUEST));
     }
 
     public removeUser(): void {
-        this._confirm.confirm('Вы действительно хотите удалить аккаунт?')
+        this._confirm.confirm(this.dictionary.APPROVED_MESSAGE_DELETE_ACCOUNT)
             .subscribe(
                 res => {
                     if (res) {
@@ -130,7 +130,7 @@ export class SettingWorkerComponent implements OnInit {
                             .subscribe(
                                 (res) => {
                                     this.userService.setUser(null);
-                                    this.msg.info('Аккаунт удален');
+                                    this.msg.info(this.dictionary.INFO_MESSAGES_SUCCESS_ACCOUNT_DELETED);
                                     this.router.navigate(['/']);
                                 },
                                 (err) => this.msg.info(err.error.errorMessage)

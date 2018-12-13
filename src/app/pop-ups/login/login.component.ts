@@ -47,7 +47,6 @@ export class LoginModalComponent implements OnInit {
             .subscribe(
                 (res) => {
                     this._userService.getUserInfo();
-                    this._systemMessageService.info('Вы вошли');
                     this._dialog.closeAll();
                 },
                 (err) => {

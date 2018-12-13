@@ -70,7 +70,7 @@ export class FaqPageComponent implements OnInit {
     if (this.currentUser) {
       this.router.navigate(['/support']);
     } else {
-      this.messages.info('Пожалуйста авторизируйтесь');
+      this.messages.info(this.dictionary.INFO_MESSAGES_PLEASE_AUTH);
     }
   }
 

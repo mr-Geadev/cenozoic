@@ -440,6 +440,7 @@ export const ENGLISH_DICTIONARY = {
   NEWS_ADD_COVER: 'Attach a file',
   NEWS_SAVE: 'Save news',
   NEWS_PREVIEW: 'This is how the news will look in the general list.',
+  NEWS_FILTER_BY_DATE: 'By date',
 
   NEWS_NOT_PUBLISH: 'This news is not published. It will appear in the general list of news immediately after approval by the administration.',
   NEWS_PUBLIC_MAIN: 'Post on homepage',
@@ -495,6 +496,9 @@ export const ENGLISH_DICTIONARY = {
   FAQ_SUPPORT_PAGE_TITLE: 'Feedback',
   FAQ_SUPPORT_CHAT_TITLE: 'Technical Support Chat',
   FAQ_SUPPORT_CHAT_SEND_MESSAGE: 'To send',
+  FAQ_SUPPORT_THEME_1: 'Cooperation',
+  FAQ_SUPPORT_THEME_2: 'General issues',
+  FAQ_SUPPORT_THEME_3: 'Problems with payment',
   FAQ_SUPPORT_FORM_TITLE: 'Submit your question',
   FAQ_SUPPORT_FORM_CHANGE_REASON: 'Choose one of the reasons',
   FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL: 'Description (please describe your problem in detail)',
@@ -509,4 +513,31 @@ export const ENGLISH_DICTIONARY = {
   PAYING_TITLE: 'Payment',
   PAYING_CHANGE_COUNT: 'Choose quantity',
   PAYING_BUY: 'Buy',
+  PAYING_FUNCTIONAL: 'Paid functionality',
+  PAYING_VACANCY: 'Jobs',
+  PAYING_BANNERS: 'Advertising banners',
+  PAYING_RESUME: 'View summary',
+
+  // INFO MESSAGES
+  INFO_MESSAGES_PLEASE_AUTH: 'Please login',
+  INFO_MESSAGES_SUCCESS_LOG_IN: 'You entered',
+  INFO_MESSAGES_SUCCESS_LOG_UP: 'You are registered',
+  INFO_MESSAGES_SUCCESS_DATA_IS_CHANGED: 'Data changes',
+  INFO_MESSAGES_SUCCESS_BAD_REQUEST: 'Wrong fields, try again.',
+  INFO_MESSAGES_SUCCESS_PASSWORD_IS_CHANGED: 'Password changed',
+  INFO_MESSAGES_SUCCESS_OLD_PASSWORD_INCORRECT: 'Old password is incorrect',
+  INFO_MESSAGES_SUCCESS_ACCOUNT_DELETED: 'Account deleted',
+
+  // Approved messages
+  APPROVED_MESSAGE_DELETE: 'Do you really want to delete?',
+  APPROVED_MESSAGE_CANCEL: 'Do you really want to cancel?',
+  APPROVED_MESSAGE_ARCHIVE: 'Do you really want to send to the archive?',
+  APPROVED_MESSAGE_DELETE_ACCOUNT: 'Do you really want to delete an account?',
+
+  // другое
+  SETTINGS_USER_NAME: 'Full Name',
+  SETTINGS_USER_NAME_COMPANY: 'Company name',
+  SETTINGS_USER_IN_FORMAT: 'In format',
+  HEADER_SECTION_ADMIN: 'Administrator <br/> Cabinet',
+
 };

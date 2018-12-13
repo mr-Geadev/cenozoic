@@ -25,7 +25,7 @@ export class QuestionnaireViewComponent implements OnInit {
   }
 
   public removeQuestionnaire() {
-    this._confirm.confirm('Вы действительно хотите удалить?')
+    this._confirm.confirm(this.dictionary.APPROVED_MESSAGE_DELETE)
       .subscribe((confirm) => {
         if (confirm) {
           this.questionnairesApi.removeQuestionnaire(this.questionnaire._id)

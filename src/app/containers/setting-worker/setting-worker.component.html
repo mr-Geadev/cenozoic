@@ -57,7 +57,7 @@
                         </label>
                     </div>
                     <div class="right">
-                        <input type="text" id="fio" formControlName="fullName" placeholder="Фамилия, имя, отчество">
+                        <input type="text" id="fio" formControlName="fullName" placeholder={{dictionary.SETTINGS_USER_NAME}}>
                     </div>
                 </div>
                 <div class="parameter">
@@ -71,7 +71,7 @@
                                id="phone"
                                [textMask]="{mask: phoneMask, guide: false}"
                                formControlName="phone"
-                               placeholder="В формате: +79991112233">
+                               placeholder="{{dictionary.SETTINGS_USER_IN_FORMAT}}: +79991112233">
                     </div>
                 </div>
                 <div class="side-title">

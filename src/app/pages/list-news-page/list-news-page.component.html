@@ -9,7 +9,7 @@
 
 		<div class="order">
 			<mat-form-field>
-				<mat-select form="test" name="education" placeholder="По дате добавления"
+				<mat-select form="test" name="education" placeholder="{{dictionary.NEWS_FILTER_BY_DATE}}"
 										(change)="setFilter()"
 										[(ngModel)]="order">
 					<mat-option value="line">{{ dictionary.START_FROM_NEW }}</mat-option>

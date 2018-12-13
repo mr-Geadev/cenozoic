@@ -46,7 +46,7 @@ export class MainStatusComponent implements OnInit {
   }
 
   public cancel() {
-    this._confirm.confirm('Вы действительно хотите отменить?')
+    this._confirm.confirm(this.dictionary.APPROVED_MESSAGE_CANCEL)
       .subscribe((res) => {
         if (res) {
           if (this.isWorker()) {
@@ -58,7 +58,7 @@ export class MainStatusComponent implements OnInit {
   }
 
   public archive() {
-    this._confirm.confirm('Вы действительно хотите отправить в архив?')
+    this._confirm.confirm(this.dictionary.APPROVED_MESSAGE_ARCHIVE)
       .subscribe((res) => {
         if (res) {
           this.respondsApi.sendToArchive(this.respond, this.typeUser);
