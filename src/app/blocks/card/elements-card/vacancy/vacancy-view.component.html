@@ -6,7 +6,7 @@
 	{{vacancy.title}}
 </div>
 <div *ngIf="respondTitle" class="respond-title">На ваше резюме:  <b>{{ respondTitle }}</b></div>
-<div *ngIf="vacancy.userId === user._id" class="respond-title">Опубликовано до: {{ vacancy.timeoutDate.locale('ru').format('DD.MM.YYYY') }}</div>
+<div *ngIf="vacancy.userId === user?._id" class="respond-title">Опубликовано до: {{ vacancy.timeoutDate.locale('ru').format('DD.MM.YYYY') }}</div>
 
 <div class="description" [innerHtml]="vacancy.duties">
 
