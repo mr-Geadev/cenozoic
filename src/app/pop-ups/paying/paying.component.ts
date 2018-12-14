@@ -5,24 +5,6 @@ import { PaymentApi } from 'api';
 
 import { LocalizationService } from 'services';
 
-const WORDS = {
-  vacancy: {
-    title: 'вакансии',
-    more: 'вакансий',
-    one: 'вакансия',
-  },
-  banner: {
-    title: 'баннеры',
-    more: 'баннеров',
-    one: 'баннер',
-  },
-  resume: {
-    title: 'резюме',
-    more: 'резюме',
-    one: 'резюме',
-  },
-};
-
 @Component({
   selector: 'paying-modal',
   templateUrl: './paying.component.html',
@@ -31,6 +13,7 @@ const WORDS = {
 export class PayingComponent implements OnInit {
 
   public dictionary: any = {};
+  public wordsDefault: any = null;
   public words: any = null;
 
   public payment: FormGroup = new FormGroup({
@@ -46,10 +29,29 @@ export class PayingComponent implements OnInit {
   ngOnInit(): void {
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
-      );
+        res => {
+          this.dictionary = res;
+          this.wordsDefault = {
+            vacancy: {
+              title: this.dictionary.PAYING_MODAL_TITLE_VACANCY,
+              more: this.dictionary.PAYING_MODAL_VACANCY_MORE,
+              one: this.dictionary.PAYING_MODAL_VACANCY_ONE,
+            },
+            banner: {
+              title: this.dictionary.PAYING_MODAL_TITLE_BANNER,
+              more: this.dictionary.PAYING_MODAL_BANNER_MORE,
+              one: this.dictionary.PAYING_MODAL_BANNER_ONE,
+            },
+            resume: {
+              title: this.dictionary.PAYING_MODAL_TITLE_RESUME,
+              more: this.dictionary.PAYING_MODAL_RESUME_MORE,
+              one: this.dictionary.PAYING_MODAL_RESUME_ONE,
+            },
+          };
 
-    this.words = WORDS[this.data.type];
+          this.words = this.wordsDefault[this.data.type];
+        },
+      );
   }
 
   buy(): void {

@@ -438,6 +438,7 @@ export const ENGLISH_DICTIONARY = {
   NEWS_ADD_TAG: 'To add',
   NEWS_COVER: 'Cover news',
   NEWS_ADD_COVER: 'Attach a file',
+  NEWS_ADD_COVER_FORMAT: 'Formats: PNG, JPG or GIF ". Preferred size: 800x600. File size limit: 2Mb',
   NEWS_SAVE: 'Save news',
   NEWS_PREVIEW: 'This is how the news will look in the general list.',
   NEWS_FILTER_BY_DATE: 'By date',
@@ -517,6 +518,15 @@ export const ENGLISH_DICTIONARY = {
   PAYING_VACANCY: 'Jobs',
   PAYING_BANNERS: 'Advertising banners',
   PAYING_RESUME: 'View summary',
+  PAYING_MODAL_TITLE_VACANCY: 'вакансии',
+  PAYING_MODAL_TITLE_BANNER: 'banners',
+  PAYING_MODAL_TITLE_RESUME: 'summary',
+  PAYING_MODAL_VACANCY_MORE: 'vacancies',
+  PAYING_MODAL_BANNER_MORE: 'banners',
+  PAYING_MODAL_RESUME_MORE: 'summary',
+  PAYING_MODAL_VACANCY_ONE: 'vacancy',
+  PAYING_MODAL_BANNER_ONE: 'banner',
+  PAYING_MODAL_RESUME_ONE: 'summary',
 
   // INFO MESSAGES
   INFO_MESSAGES_PLEASE_AUTH: 'Please login',
@@ -533,6 +543,8 @@ export const ENGLISH_DICTIONARY = {
   APPROVED_MESSAGE_CANCEL: 'Do you really want to cancel?',
   APPROVED_MESSAGE_ARCHIVE: 'Do you really want to send to the archive?',
   APPROVED_MESSAGE_DELETE_ACCOUNT: 'Do you really want to delete an account?',
+  APPROVED_YES: 'Yes',
+  APPROVED_NO: 'No',
 
   // другое
   SETTINGS_USER_NAME: 'Full Name',

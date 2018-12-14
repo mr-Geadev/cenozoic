@@ -438,6 +438,7 @@ export const RUSSIAN_DICTIONARY = {
   NEWS_ADD_TAG: 'Добавить',
   NEWS_COVER: 'Обложка новости',
   NEWS_ADD_COVER: 'Прикрепите файл',
+  NEWS_ADD_COVER_FORMAT: 'Форматы: PNG, JPG или GIF”. Предпочитаемый размер: 800x600. Ограничение на размер файла: 2Mb',
   NEWS_SAVE: 'Сохранить новость',
   NEWS_PREVIEW: 'Так будет выглядеть новость в общем списке',
   NEWS_FILTER_BY_DATE: 'По дате добавления',
@@ -517,6 +518,15 @@ export const RUSSIAN_DICTIONARY = {
   PAYING_VACANCY: 'Вакансий',
   PAYING_BANNERS: 'Рекламных баннеров',
   PAYING_RESUME: 'Просмотров резюме',
+  PAYING_MODAL_TITLE_VACANCY: 'вакансии',
+  PAYING_MODAL_TITLE_BANNER: 'баннеры',
+  PAYING_MODAL_TITLE_RESUME: 'резюме',
+  PAYING_MODAL_VACANCY_MORE: 'вакансий',
+  PAYING_MODAL_BANNER_MORE: 'баннеров',
+  PAYING_MODAL_RESUME_MORE: 'резюме',
+  PAYING_MODAL_VACANCY_ONE: 'вакансия',
+  PAYING_MODAL_BANNER_ONE: 'баннер',
+  PAYING_MODAL_RESUME_ONE: 'резюме',
 
   // INFO MESSAGES
   INFO_MESSAGES_PLEASE_AUTH: 'Пожалуйста авторизируйтесь',
@@ -533,11 +543,13 @@ export const RUSSIAN_DICTIONARY = {
   APPROVED_MESSAGE_CANCEL: 'Вы действительно хотите отменить?',
   APPROVED_MESSAGE_ARCHIVE: 'Вы действительно хотите отправить в архив?',
   APPROVED_MESSAGE_DELETE_ACCOUNT: 'Вы действительно хотите удалить аккаунт?',
+  APPROVED_YES: 'Да',
+  APPROVED_NO: 'Нет',
 
   // другое
   SETTINGS_USER_NAME: 'Фамилия, имя, отчество',
   SETTINGS_USER_NAME_COMPANY: 'Название компании',
   SETTINGS_USER_IN_FORMAT: 'В формате',
-  HEADER_SECTION_ADMIN: 'Кабинет <br/> администратора'
+  HEADER_SECTION_ADMIN: 'Кабинет <br/> администратора',
 
 };

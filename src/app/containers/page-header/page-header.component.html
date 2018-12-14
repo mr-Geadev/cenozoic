@@ -23,7 +23,7 @@
 					<a class="header-menu-item" [class.active]="currentPage === 'list-news'"
 						 [routerLink]="['/list-news']">{{ dictionary.HEADER_NEWS }}</a>
 					<a class="header-menu-item" *ngIf="!isAdmin" [routerLink]="['/faq']">{{ dictionary.SUPPORT }}</a>
-					<a class="header-menu-item" *ngIf="isAdmin" [routerLink]="['/admin']">{{dictionary.HEADER_SECTION_ADMIN}}</a>
+					<a class="header-menu-item" *ngIf="isAdmin" [routerLink]="['/admin']" [innerHTML]="dictionary.HEADER_SECTION_ADMIN"></a>
 				</nav>
 
 				<a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">{{

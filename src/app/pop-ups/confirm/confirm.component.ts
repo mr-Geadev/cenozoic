@@ -1,24 +1,35 @@
-import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
-import {ResConfirmService} from './res-confirm.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { LocalizationService } from 'services';
+import { ResConfirmService } from './res-confirm.service';
 
 @Component({
-    selector: 'confirm-modal',
-    templateUrl: './confirm.component.html',
-    styleUrls: ['./confirm.component.scss']
+  selector: 'confirm-modal',
+  templateUrl: './confirm.component.html',
+  styleUrls: ['./confirm.component.scss'],
 })
 
-export class ConfirmComponent {
+export class ConfirmComponent implements OnInit {
 
-    constructor(private resConfirmService: ResConfirmService,
-                @Inject(MAT_DIALOG_DATA) public data: any) {
-    }
+  public dictionary: any = {};
 
-    public accept(): void {
-        this.resConfirmService.response.next(true);
-    }
+  constructor(private _localizationService: LocalizationService,
+              private resConfirmService: ResConfirmService,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
 
-    public renouncement(): void {
-        this.resConfirmService.response.next(false);
-    }
+  ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
+  }
+
+  public accept(): void {
+    this.resConfirmService.response.next(true);
+  }
+
+  public renouncement(): void {
+    this.resConfirmService.response.next(false);
+  }
 }
