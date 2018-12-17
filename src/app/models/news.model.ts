@@ -19,6 +19,7 @@ class Comment {
 export class NewsModel {
   _id: string;
   title: string;
+  language: string;
   shortDescription: string;
   creationDate: any;
   changeDate: any;
@@ -33,6 +34,7 @@ export class NewsModel {
   constructor(news) {
     this._id = news._id;
     this.title = news.title;
+    this.language = news.language;
     this.shortDescription = news.shortDescription;
     this.creationDate = moment(news.creationDate);
     this.changeDate = moment(news.changeDate);

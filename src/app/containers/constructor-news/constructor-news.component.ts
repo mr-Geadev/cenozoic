@@ -64,6 +64,7 @@ export class ConstructorNewsComponent implements OnInit {
   public initForm(title, shortDescription, tags) {
     this.news = new FormGroup({
       title: new FormControl(title, [Validators.required]),
+      language: new FormControl(LocalizationService.currentLang(), [Validators.required]),
       shortDescription: new FormControl(shortDescription, [Validators.required]),
       tags: new FormArray([], [Validators.minLength(1)]),
     });

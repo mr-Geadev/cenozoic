@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { LocalizationService } from 'services';
+import { LocalizationService } from 'services/localization.service';
 import { ResConfirmService } from './res-confirm.service';
 
 @Component({

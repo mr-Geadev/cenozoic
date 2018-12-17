@@ -22,6 +22,7 @@ export class FullNewsComponent implements OnInit {
   private currentLang: string = null;
   public currentUser: UserModel = null;
   public textComment: string = null;
+  public language: string = null;
 
   constructor(private activateRoute: ActivatedRoute,
               private newsApi: NewsApi,
@@ -54,11 +55,14 @@ export class FullNewsComponent implements OnInit {
 
   getNews() {
     this.newsApi.getNewsById(this.id)
-      .subscribe(res => { this.news = new NewsModel(res['news']); });
+      .subscribe(res => {
+        this.news = new NewsModel(res['news']);
+        this.language = this.news.language;
+      });
   }
 
   publish(location) {
-    this.newsApi.publishTo(this.id, location)
+    this.newsApi.publishTo(this.id, location, this.language)
       .subscribe(
         res => this.getNews(),
       );

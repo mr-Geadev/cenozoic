@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { SystemMessageService } from 'services';
+import { LocalizationService, SystemMessageService } from 'services';
 import 'rxjs-compat/add/operator/share';
 
 @Injectable()
@@ -64,12 +64,14 @@ export class NewsApi {
     if (newsPage) {
       filters = {
         publicateToNewsPage: true,
+        language: LocalizationService.currentLang()
       };
     }
 
     if (mainPage) {
       filters = {
         publicateToMainPage: true,
+        language: LocalizationService.currentLang()
       };
     }
 
@@ -87,7 +89,7 @@ export class NewsApi {
   }
 
   // измение статуса новости
-  publishTo(id: string, status: string): Observable<any> {
+  publishTo(id: string, status: string, lang: string): Observable<any> {
     let publicTo = {};
 
     if (status === 'toNews') {
@@ -120,6 +122,7 @@ export class NewsApi {
 
     const body = {
       newsId: id,
+      language: lang,
       ...publicTo,
     };
 
