@@ -61,7 +61,7 @@
 							class="tag"
 							*ngFor="let tag of this.news.controls['tags'].value; let i = index"
 						>
-							{{ tag }}
+							#{{ tag }}
 							<img
 								src="/assets/images/icon-black-cross.svg"
 								(click)="removeTag(i)"

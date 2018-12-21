@@ -42,11 +42,12 @@
       border-radius: 15px;
       background-color: $orange;
       color: white;
-      height: 30px;
+      height: 22px;
       font-family: Roboto;
       display: flex;
+      align-items: center;
       margin-right: 5px;
-      padding: 5px 10px;
+      padding: 5px;
       flex-shrink: 0;
 
       &:first-child {
