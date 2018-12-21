@@ -544,6 +544,7 @@ export const RUSSIAN_DICTIONARY = {
   APPROVED_MESSAGE_CANCEL: 'Вы действительно хотите отменить?',
   APPROVED_MESSAGE_ARCHIVE: 'Вы действительно хотите отправить в архив?',
   APPROVED_MESSAGE_DELETE_ACCOUNT: 'Вы действительно хотите удалить аккаунт?',
+  APPROVED_MESSAGE_GO_TO_PERSONAL_ACCOUNT: 'Перейти в личный кабинет?',
   APPROVED_YES: 'Да',
   APPROVED_NO: 'Нет',
 

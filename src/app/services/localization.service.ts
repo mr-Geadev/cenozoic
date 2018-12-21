@@ -21,11 +21,11 @@ export class LocalizationService {
     switch (this.currentLanguage) {
       case LANGUAGES.RUSSIAN:
         this.currentDictionary.next(RUSSIAN_DICTIONARY);
-        http.get('/api/v1/admin/localization/get?language=ru').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
+        // http.get('/api/v1/admin/localization/get?language=ru').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
         break;
       case LANGUAGES.ENGLISH:
         this.currentDictionary.next(ENGLISH_DICTIONARY);
-        http.get('/api/v1/admin/localization/get?language=en').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
+        // http.get('/api/v1/admin/localization/get?language=en').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
         break;
     }
   }

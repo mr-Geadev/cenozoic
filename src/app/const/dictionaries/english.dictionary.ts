@@ -544,6 +544,7 @@ export const ENGLISH_DICTIONARY = {
   APPROVED_MESSAGE_CANCEL: 'Do you really want to cancel?',
   APPROVED_MESSAGE_ARCHIVE: 'Do you really want to send to the archive?',
   APPROVED_MESSAGE_DELETE_ACCOUNT: 'Do you really want to delete an account?',
+  APPROVED_MESSAGE_GO_TO_PERSONAL_ACCOUNT: 'Go to your personal account?',
   APPROVED_YES: 'Yes',
   APPROVED_NO: 'No',
 
