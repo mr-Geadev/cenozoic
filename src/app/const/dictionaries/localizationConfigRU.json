@@ -427,6 +427,7 @@
   "FAQ_SUPPORT_THEME_1": "Сотрудничество",
   "FAQ_SUPPORT_THEME_2": "Общие вопросы",
   "FAQ_SUPPORT_THEME_3": "Проблемы с оплатой",
+  "FAQ_SUPPORT_THEME_4": "Пожелания к улучшению сервиса",
   "FAQ_SUPPORT_FORM_TITLE": "Отправить свой вопрос",
   "FAQ_SUPPORT_FORM_CHANGE_REASON": "Выберите одну из причин",
   "FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL": "Описание (пожалуйста опишите свою проблему подробно)",
@@ -464,10 +465,14 @@
   "APPROVED_MESSAGE_CANCEL": "Вы действительно хотите отменить?",
   "APPROVED_MESSAGE_ARCHIVE": "Вы действительно хотите отправить в архив?",
   "APPROVED_MESSAGE_DELETE_ACCOUNT": "Вы действительно хотите удалить аккаунт?",
+  "APPROVED_MESSAGE_GO_TO_PERSONAL_ACCOUNT": "Перейти в личный кабинет?",
   "APPROVED_YES": "Да",
   "APPROVED_NO": "Нет",
   "SETTINGS_USER_NAME": "Фамилия, имя, отчество",
   "SETTINGS_USER_NAME_COMPANY": "Название компании",
   "SETTINGS_USER_IN_FORMAT": "В формате",
-  "HEADER_SECTION_ADMIN": "Кабинет <br/> администратора"
+  "HEADER_SECTION_ADMIN": "Кабинет <br/> администратора",
+  "SIGN_UP_PRIVACY_WITH": "C",
+  "SIGN_UP_PRIVACY_POLITIC": "политикой конфиденциальности",
+  "SIGN_UP_PRIVACY_ACCEPTED": "ознакомлен"
 }
