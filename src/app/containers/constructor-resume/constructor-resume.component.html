@@ -336,9 +336,16 @@
                                     </div>
                                     <div class="right">
                                         <input type="text" name="duties-{{i}}" id="duties"
+                                               style="display: none"
                                                [(ngModel)]="resumeForm.experience[i].duties" required>
-                                        <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
+                                </div>
+
+                                <div class="parameter duties">
+                                    <editor [init]="textEditorConfig"
+                                            [(ngModel)]="resumeForm.experience[i].duties"
+                                            [ngModelOptions]="{standalone: true}"></editor>
+                                    <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 </div>
                             </div>
                         </div>

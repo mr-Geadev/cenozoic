@@ -171,8 +171,7 @@
                     <td class="work">
                         <div class="job side-title">{{item.job}}</div>
                         <div class="company text gray">{{item.organization}}</div>
-                        <div class="duties text black">
-                            {{item.duties}}
+                        <div class="duties text black" [innerHTML]="item.duties">
                         </div>
                     </td>
                 </tr>
