@@ -75,8 +75,6 @@ export class SettingWorkerComponent implements OnInit {
             ]),
             phone: new FormControl(this.currentUser.phone, [
                 Validators.required,
-                Validators.minLength(6),
-                Validators.pattern(`^(\\+7([0-9]){10})$`)
             ]),
             notifications: new FormGroup({
                 lk: new FormControl(this.currentUser.notifications.lk),
