@@ -500,6 +500,7 @@ export const ENGLISH_DICTIONARY = {
   FAQ_SUPPORT_THEME_1: 'Cooperation',
   FAQ_SUPPORT_THEME_2: 'General issues',
   FAQ_SUPPORT_THEME_3: 'Problems with payment',
+  FAQ_SUPPORT_THEME_4: 'Wishes to improve the service',
   FAQ_SUPPORT_FORM_TITLE: 'Submit your question',
   FAQ_SUPPORT_FORM_CHANGE_REASON: 'Choose one of the reasons',
   FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL: 'Description (please describe your problem in detail)',
