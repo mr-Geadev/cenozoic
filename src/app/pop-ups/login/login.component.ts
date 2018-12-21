@@ -14,6 +14,7 @@ export class LoginModalComponent implements OnInit {
 
     public type: string = 'entry';
     public dictionary: any = {};
+    public privacyPoliticAccepted: boolean = false;
 
     public registerForm: FormGroup = new FormGroup({
         typeAccount: new FormControl('worker', Validators.required),

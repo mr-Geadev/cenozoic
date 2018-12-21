@@ -132,7 +132,7 @@ export const ENGLISH_DICTIONARY = {
   PASSWORDS_ARE_NOT_THE_SAME: 'Passwords are not the same',
 
   // футер
-  ABOUT_COMPANY: 'About company',
+  ABOUT_COMPANY: 'About us',
   SERVICES: 'Services',
   CONTACTS: 'Contacts',
   PRIVACY_POLICY: 'Privacy policy',
@@ -551,5 +551,9 @@ export const ENGLISH_DICTIONARY = {
   SETTINGS_USER_NAME_COMPANY: 'Company name',
   SETTINGS_USER_IN_FORMAT: 'In format',
   HEADER_SECTION_ADMIN: 'Administrator <br/> Cabinet',
+  SIGN_UP_PRIVACY_WITH: 'I have read',
+  SIGN_UP_PRIVACY_POLITIC: 'the privacy policy',
+  SIGN_UP_PRIVACY_ACCEPTED: '',
+
 
 };

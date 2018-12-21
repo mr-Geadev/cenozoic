@@ -132,7 +132,7 @@ export const RUSSIAN_DICTIONARY = {
   PASSWORDS_ARE_NOT_THE_SAME: 'Пароли не совпадают',
 
   // футер
-  ABOUT_COMPANY: 'О компании',
+  ABOUT_COMPANY: 'О нас',
   SERVICES: 'Услуги',
   CONTACTS: 'Контакты',
   PRIVACY_POLICY: 'Политика конфеденциальности',
@@ -551,5 +551,9 @@ export const RUSSIAN_DICTIONARY = {
   SETTINGS_USER_NAME_COMPANY: 'Название компании',
   SETTINGS_USER_IN_FORMAT: 'В формате',
   HEADER_SECTION_ADMIN: 'Кабинет <br/> администратора',
+  SIGN_UP_PRIVACY_WITH: 'C',
+  SIGN_UP_PRIVACY_POLITIC: 'политикой конфиденциальности',
+  SIGN_UP_PRIVACY_ACCEPTED: 'ознакомлен',
+
 
 };

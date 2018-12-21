@@ -75,8 +75,21 @@
             </div>
         </div>
 
+        <div class="privacy-politic">
+            <div class="checkbox">
+                <input type="checkbox" id="privacy-politic" [(ngModel)]="privacyPoliticAccepted" [ngModelOptions]="{standalone: true}" name="privacy-politic">
+                <label for="privacy-politic">
+                    {{ dictionary.SIGN_UP_PRIVACY_WITH }}
+                    &nbsp;
+                    <a class="inline-link" href="#">{{ dictionary.SIGN_UP_PRIVACY_POLITIC }}</a>
+                    &nbsp;
+                    {{ dictionary.SIGN_UP_PRIVACY_ACCEPTED }}
+                </label>
+            </div>
+        </div>
+
         <button class="button" type="submit"
-                [disabled]="(registerForm.invalid) || (registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value)">
+                [disabled]="((registerForm.invalid) || (registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value)) || !privacyPoliticAccepted">
             {{ dictionary.SIGN_IN }}
         </button>
 

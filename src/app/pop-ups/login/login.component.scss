@@ -16,13 +16,13 @@
   }
 
   .error {
-    color: $orange;
+    color: red;
     font-family: Roboto;
     font-size: 0.75rem;
     font-weight: 400;
     position: absolute;
-    bottom: -86%;
-    left: 36%;
+    top: 26%;
+    right: 10px;
     line-height: 1;
     display: inline;
   }
@@ -117,7 +117,7 @@
     .type-account {
 
       & + .first {
-        margin-top: 20px;
+        margin-top: 15px;
       }
 
       .description {
@@ -175,7 +175,7 @@
     }
 
     .field {
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
       justify-content: space-between;
       position: relative;
@@ -208,6 +208,10 @@
         font-size: 0.75rem;
         line-height: 1;
       }
+    }
+
+    .privacy-politic {
+      margin-top: 10px;
     }
 
     .button {
