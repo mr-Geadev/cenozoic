@@ -32,7 +32,7 @@
       margin-top: 20px;
       color: $white;
       font-family: Roboto;
-      font-size: 0.875rem;
+      font-size: 0.7rem;
       font-weight: 400;
       line-height: 1.5rem;
       width: 259px;
@@ -51,7 +51,7 @@
         .link {
           color: $white;
           font-family: Arimo;
-          font-size: 0.875rem;
+          font-size: 0.975rem;
           font-weight: 400;
           line-height: 2rem;
           @include tr-color;
@@ -77,14 +77,15 @@
       flex-direction: row;
 
       .link {
-        margin: 3px;
+        margin: 7px;
         display: block;
-        width: 37px;
-        height: 37px;
-        border: 0.063rem solid $white;
+        width: 30px;
+        height: 30px;
+        border: 0.063rem solid #868686;
         background-image: url("/assets/images/social-network.png");
         background-position-y: center;
         background-repeat: no-repeat;
+        background-size: 279%;
         overflow: hidden;
         @include tr-all;
 
@@ -93,15 +94,15 @@
         }
 
         &.linkedin {
-          background-position-x: -18px;
+          background-position-x: -12px;
         }
 
         &.inst {
-          background-position-x: -47px;
+          background-position-x: -34px;
         }
 
         &.tg {
-          background-position-x: -75px;
+          background-position-x: -55px;
         }
 
         &:hover {
