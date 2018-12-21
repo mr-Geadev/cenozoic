@@ -71,7 +71,6 @@ export class ListNewsComponent implements OnInit, OnChanges {
         let counterNews = 0;
         this.listNews.forEach((news) => {
           if (counterNews === 2 && this.listBanner[indexBanner] ) {
-            console.log(this.listBanner[indexBanner]);
             this.list.push(this.listBanner[indexBanner]);
             indexBanner += 1;
             counterNews = 0;
@@ -83,7 +82,6 @@ export class ListNewsComponent implements OnInit, OnChanges {
         });
 
         if (counterNews === 2) {
-          console.log(this.listBanner[indexBanner]);
           this.list.push(this.listBanner[indexBanner]);
           indexBanner += 1;
           counterNews = 0;

@@ -44,7 +44,6 @@ export class SettingsComponent implements OnInit {
     public saveCity() {
         let req = this.city.value;
         req.codeCountry = +req.codeCountry;
-        console.log(req);
         this._http.post('/api/v1/admin/config/countries/city/add', req)
             .subscribe(
                 res => {

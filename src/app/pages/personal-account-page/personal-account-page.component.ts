@@ -68,7 +68,6 @@ export class PersonalAccountPageComponent implements OnInit {
 
     this.activateRoute.params.subscribe(params => {
       this.activeTab = params['tab'] || 'responds';
-      console.log(this.activeTab);
     });
 
     this.respondsApi.initializeResponds();

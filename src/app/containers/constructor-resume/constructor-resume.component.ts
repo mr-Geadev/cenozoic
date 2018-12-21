@@ -147,7 +147,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
   public checkTimeValid(mustBeInvalid): void {
     mustBeInvalid ? this.invalidTime = true : this.invalidTime = false;
-    console.log(this.invalidTime);
   }
 
   public checkExperienceTimeValid(index, mustBeInvalid): void {
@@ -155,9 +154,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
     const item = this.resumeForm.experience[index];
     this.validExperienceTime[index] = this._calculateTime(item, item.present) > 0;
-    console.log(this.validExperienceTime.findIndex(exp => exp === false));
     this.isValidExperienceTime = this.validExperienceTime.findIndex(exp => exp === false) > -1 ? false : true;
-    console.log(this.validExperienceTime, this.isValidExperienceTime);
   }
 
   public manageFields(nameSection: string, index?: number): void {

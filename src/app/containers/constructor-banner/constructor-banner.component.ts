@@ -91,8 +91,6 @@ export class ConstructorBannerComponent implements OnInit {
   }
 
   public save() {
-    console.log(this.banner.value);
-
     if (this.edit) {
       this.bannerApi.editBanner(this.id, { ...this.banner.value, text: this.textBanner }, this.fileToUpload.file || null)
         .subscribe(
