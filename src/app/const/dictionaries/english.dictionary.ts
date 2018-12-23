@@ -570,5 +570,12 @@ export const ENGLISH_DICTIONARY = {
   SIGN_UP_PRIVACY_POLITIC: 'the privacy policy',
   SIGN_UP_PRIVACY_ACCEPTED: '',
 
+  // функционал скрытия из поиска
+  HIDDEN_FROM_SEARCH: 'Hide from search',
+  VISIBLE_TO_SEARCH: 'Show in search',
+  RESUME_WAS_HIDDEN: 'Resume is hidden from the search',
+  RESUME_WILL_VIEW: 'The resume will be shown in the search.',
+  VACANCY_WAS_HIDDEN: 'Vacancy is hidden from search',
+  VACANCY_WILL_VIEW: 'Vacancy will be shown in the search'
 
 };

@@ -11,6 +11,7 @@ export class VacancyApi {
 
   private viewedVacancy: BehaviorSubject<VacancyModel> = new BehaviorSubject<VacancyModel>(null);
   public viewedVacancy$: Observable<any> = this.viewedVacancy.asObservable();
+  public dictionary: any = {};
 
   private setViewedVacancy(vacancy: VacancyModel): void {
     this.viewedVacancy.next(vacancy);
@@ -18,7 +19,12 @@ export class VacancyApi {
 
   constructor(private http: HttpClient,
               private userService: UserService,
+              private _localizationService: LocalizationService,
               private messages: SystemMessageService) {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
   }
 
   public getUserVacancy(): Observable<any> {
@@ -31,21 +37,21 @@ export class VacancyApi {
   }
 
   public createVacancy(vacancy: any): Observable<any> {
-    return this.http.post(CREATE_VACANCY, {'vacancy': this.transformVacancy(vacancy)})
+    return this.http.post(CREATE_VACANCY, { 'vacancy': this.transformVacancy(vacancy) })
       .map(
         (res) => {
           this.userService.getUserInfo();
           return res['success'];
         },
-        (err) => err
+        (err) => err,
       );
   }
 
   public editVacancy(vacancy: any, vacancyId: string): Observable<any> {
-    return this.http.post(EDIT_VACANCY, { vacancyId, 'vacancy': this.transformVacancy(vacancy)})
+    return this.http.post(EDIT_VACANCY, { vacancyId, 'vacancy': this.transformVacancy(vacancy) })
       .map(
         (res) => res['success'],
-        (err) => err
+        (err) => err,
       );
   }
 
@@ -56,7 +62,7 @@ export class VacancyApi {
           this.userService.getUserInfo();
           return res['success'];
         },
-        (err) => err
+        (err) => err,
       );
   }
 
@@ -77,5 +83,25 @@ export class VacancyApi {
 
   public getNationalities(): Observable<any> {
     return this.http.get('/assets/json/nationalities.json');
+  }
+
+  show(vacancyId: string): void {
+    this.http.get(`/api/v1/employer/vacancy/view/change?vacancyId=${vacancyId}&view=true`)
+      .subscribe(
+        res => {
+          this.messages.info(this.dictionary.VACANCY_WILL_VIEW);
+          this.getVacancyById(vacancyId);
+        }
+      );
+  }
+
+  hidden(vacancyId: string): void {
+    this.http.get(`/api/v1/employer/vacancy/view/change?vacancyId=${vacancyId}&view=false`)
+      .subscribe(
+        res => {
+          this.messages.info(this.dictionary.VACANCY_WAS_HIDDEN);
+          this.getVacancyById(vacancyId);
+        }
+      );
   }
 }

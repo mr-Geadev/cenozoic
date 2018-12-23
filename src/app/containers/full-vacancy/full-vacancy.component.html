@@ -103,6 +103,16 @@
 				<button (click)="activateVacancy()" class="button" *ngIf="currentVacancy.status === 3">
 					Продлить
 				</button>
+
+				<div class="button" (click)="vacancyApi.show(currentVacancy._id)"
+						 *ngIf="currentVacancy.status === 2">
+					{{dictionary.VISIBLE_TO_SEARCH}}
+				</div>
+
+				<div class="button" (click)="vacancyApi.hidden(currentVacancy._id)"
+						 *ngIf="currentVacancy.status !== 2">
+					{{dictionary.HIDDEN_FROM_SEARCH}}
+				</div>
 			</ng-container>
 
 

@@ -570,4 +570,12 @@ export const RUSSIAN_DICTIONARY = {
   SIGN_UP_PRIVACY_POLITIC: 'политикой конфиденциальности',
   SIGN_UP_PRIVACY_ACCEPTED: 'ознакомлен',
 
+  // функционал скрытия из поиска
+  HIDDEN_FROM_SEARCH: 'Скрыть из поиска',
+  VISIBLE_TO_SEARCH: 'Показать в поиске',
+  RESUME_WAS_HIDDEN: 'Резюме скрыто из поиска',
+  RESUME_WILL_VIEW: 'Резюме будет показываться в поиске',
+  VACANCY_WAS_HIDDEN: 'Вакансия скрыта из поиска',
+  VACANCY_WILL_VIEW: 'Вакансия будет показываться в поиске'
+
 };

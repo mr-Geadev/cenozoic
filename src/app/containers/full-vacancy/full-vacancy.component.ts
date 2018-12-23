@@ -27,7 +27,7 @@ export class FullVacancyComponent implements OnInit {
               public payingModalService: PayingModalService,
               private _vacancyFullService: FullVacancyService,
               private _localizationService: LocalizationService,
-              private vacancyApi: VacancyApi,
+              public vacancyApi: VacancyApi,
               public responds: PopupsService,
               private confirmService: ConfirmService,
               private _dialog: MatDialog,

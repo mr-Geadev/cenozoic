@@ -133,10 +133,18 @@
                  *ngIf="currentResume.userId == currentUser?._id">
                 {{dictionary.EDIT}}
             </div>
-            <div class="button" (click)="resumeService.delete(currentResume._id)"
-                 *ngIf="currentResume.userId == currentUser?._id">
-                {{dictionary.DELETE}}
-            </div>
+
+           <ng-container *ngIf="currentResume.userId == currentUser?._id">
+               <div class="button" (click)="resumeApi.show(currentResume._id)"
+                    *ngIf="currentResume.status === 2">
+                   {{dictionary.VISIBLE_TO_SEARCH}}
+               </div>
+
+               <div class="button" (click)="resumeApi.hidden(currentResume._id)"
+                    *ngIf="currentResume.status !== 2">
+                   {{dictionary.HIDDEN_FROM_SEARCH}}
+               </div>
+           </ng-container>
 
             <ng-container *ngIf="currentUser?.typeAccount === 'employer'">
 							<div class="button" (click)="responds.newOffer(currentResume)"
