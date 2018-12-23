@@ -17,7 +17,7 @@ import { ConstructorNewsPageComponent } from './constructor-news-page.component'
         path: 'create-news',
         component: ConstructorNewsPageComponent,
         pathMatch: 'full',
-        canActivate: [LogInGuard, NotWorkerGuard, BlankAccountGuard],
+        canActivate: [LogInGuard, BlankAccountGuard],
       },
     ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,

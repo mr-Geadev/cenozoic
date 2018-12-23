@@ -18,7 +18,7 @@ import { BlankAccountGuard } from 'guards';
         path: 'edit-news/:id',
         component: EditNewsPageComponent,
         pathMatch: 'full',
-        canActivate: [LogInGuard, NotWorkerGuard, BlankAccountGuard],
+        canActivate: [LogInGuard, BlankAccountGuard],
       },
     ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
