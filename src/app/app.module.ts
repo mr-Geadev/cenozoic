@@ -21,7 +21,7 @@ import {
   ListResumePageModule,
   ListVacancyPageModule,
   MainPageModule, NewsFullPageModule,
-  PersonalAccountPageModule,
+  PersonalAccountPageModule, PrivacyPoliticsPageModule,
   QuestionnairePageModule,
   ResumeFullPageModule,
   VacancyFullPageModule,
@@ -87,6 +87,7 @@ const ROUTES = [
     ConstructorBannerPageModule,
     FullBannerPageModule,
     EditBannerPageModule,
+    PrivacyPoliticsPageModule,
 
     // Blocks
     PageHeaderModule,
