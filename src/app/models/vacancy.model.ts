@@ -18,6 +18,11 @@ export class VacancyModel {
     from: 0,
     to: 0
   };
+  salary: {
+    from: 0,
+    to: 0,
+    note: ''
+  };
   city: null;
   country: null;
   experience: {
@@ -70,6 +75,12 @@ export class VacancyModel {
     this.salaryNET = vacancy.salaryNET || {
       from: 0,
       to: 0,
+    };
+
+    this.salary = vacancy.salary || {
+      from: 0,
+      to: 0,
+      note: ''
     };
 
     this.city = vacancy.city || null;

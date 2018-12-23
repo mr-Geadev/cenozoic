@@ -121,17 +121,14 @@ export class ConstructorVacancyComponent implements OnInit {
     }
   }
 
-  private createVacancy(data: any = { salaryGROSS: {}, salaryNET: {}, experience: { mining: {}, oil: {} } }): void { // дико костыльное решение, кооторое нудно будет потом заменить модлеью
+  private createVacancy(data: any = { salary: {}, experience: { mining: {}, oil: {} } }): void { // дико костыльное решение, кооторое нудно будет потом заменить модлеью
     this.vacancy = new FormGroup({
       title: new FormControl(data.title || '', [Validators.required]),
       currency: new FormControl(data.currency || ''),
-      salaryGROSS: new FormGroup({
-        from: new FormControl(data.salaryGROSS.from || 0),
-        to: new FormControl(data.salaryGROSS.to || 0),
-      }),
-      salaryNET: new FormGroup({
-        from: new FormControl(data.salaryNET.from || 0),
-        to: new FormControl(data.salaryNET.to || 0),
+      salary: new FormGroup({
+        from: new FormControl(data.salary.from || 0),
+        to: new FormControl(data.salary.to || 0),
+        note: new FormControl(data.salary.note || ''),
       }),
       country: new FormControl(data.country || null, [Validators.required]),
       city: new FormControl(data.city || null, [Validators.required]),

@@ -569,6 +569,9 @@ export const RUSSIAN_DICTIONARY = {
   SIGN_UP_PRIVACY_WITH: 'C',
   SIGN_UP_PRIVACY_POLITIC: 'политикой конфиденциальности',
   SIGN_UP_PRIVACY_ACCEPTED: 'ознакомлен',
+  SALARY_DIAPASON: 'Зарплатная вилка',
+  SALARY_NOTE: 'Примечание к зарплате',
+  SALARY_NOTE: 'Примечание к зарплате',
 
   // функционал скрытия из поиска
   HIDDEN_FROM_SEARCH: 'Скрыть из поиска',

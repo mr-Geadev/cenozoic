@@ -43,9 +43,9 @@
                             </div>
                         </div>
 
-                        <div class="parameter salary GROSS" formGroupName="salaryGROSS">
+                        <div class="parameter salary" formGroupName="salary">
                             <div class="left">
-                                <label>{{dictionary.BEFORE_TAXES}} (GROSS)</label>
+                                <label>{{dictionary.SALARY_DIAPASON}}</label>
 
                             </div>
                             <div class="right">
@@ -68,30 +68,16 @@
                             </div>
                         </div>
 
-                        <div class="parameter salary NET" formGroupName="salaryNET">
+                        <div class="parameter name-of-vacancy" formGroupName="salary">
                             <div class="left">
-                                <label>{{dictionary.AFTER_TAXES}} (NET)</label>
-
+                                <label for="salary-note">{{dictionary.SALARY_NOTE}}</label>
                             </div>
                             <div class="right">
-                                <div class="word from">
-                                    {{dictionary.FROM}}
-                                </div>
-                                <input type="number" name="salary-from"
-                                       formControlName="from">
-                                <div class="word before">
-                                    {{dictionary.TO}}
-                                </div>
-                                <input type="number" name="salary-before"
-                                       formControlName="to">
-                                <div class="word rub" *ngIf="!vacancy.value.currency || vacancy.value.currency === 'rubles' ">
-                                    {{dictionary.RUBLES_SHORT}}.
-                                </div>
-                                <div class="word rub" *ngIf="vacancy.value.currency === 'dollars' ">
-                                    $
-                                </div>
+                                <input type="text" name="name-of-vacancy" id="salary-note"
+                                       formControlName="note">
                             </div>
                         </div>
+
 
                         <!--<div class="parameter country">-->
                         <!--<div class="left">-->
