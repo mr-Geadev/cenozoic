@@ -7,8 +7,15 @@ import 'rxjs-compat/add/operator/share';
 @Injectable()
 export class NewsApi {
 
+  public dictionary: any = {};
+
   constructor(private http: HttpClient,
+              private _localizationService: LocalizationService,
               private messages: SystemMessageService) {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
   }
 
   // получение одной новости по id
@@ -26,8 +33,8 @@ export class NewsApi {
 
     return this.http.post('/api/v1/employer/news/create', formData)
       .map(
-        res => this.messages.info('Новость создана'),
-        err => this.messages.info('Что-то пошло не так'),
+        res => res,
+        err => this.messages.info(this.dictionary.INFO_MESSAGES_SOMETHING_WENT_WRONG),
       );
   }
 
@@ -36,7 +43,7 @@ export class NewsApi {
     return this.http.post('/api/v1/news/comment/create', { commentInfo: { newsId, comment } })
       .map(
         res => {},
-        err => this.messages.info('Что-то пошло не так'),
+        err => this.messages.info(this.dictionary.INFO_MESSAGES_SOMETHING_WENT_WRONG),
       );
   }
 
@@ -52,8 +59,8 @@ export class NewsApi {
 
     return this.http.post('/api/v1/employer/news/edit', formData)
       .map(
-        res => this.messages.info('Успешно измненена'),
-        err => this.messages.info('Что-то пошло не так'),
+        res => this.messages.info(this.dictionary.INFO_MESSAGES_CHANGES_IS_SAVED),
+        err => this.messages.info(this.dictionary.INFO_MESSAGES_SOMETHING_WENT_WRONG),
       );
   }
 
@@ -64,14 +71,14 @@ export class NewsApi {
     if (newsPage) {
       filters = {
         publicateToNewsPage: true,
-        language: LocalizationService.currentLang()
+        language: LocalizationService.currentLang(),
       };
     }
 
     if (mainPage) {
       filters = {
         publicateToMainPage: true,
-        language: LocalizationService.currentLang()
+        language: LocalizationService.currentLang(),
       };
     }
 
@@ -82,7 +89,7 @@ export class NewsApi {
     }
 
     if (searchString) {
-      filters = Object.assign(filters, { search: searchString});
+      filters = Object.assign(filters, { search: searchString });
     }
 
     return this.http.post('/api/v1/news/get/all', { offset: 0, limit: 100, filters });
@@ -132,7 +139,7 @@ export class NewsApi {
   removeNews(id: string): Observable<any> {
     return this.http.get(`/api/v1/employer/news/remove?newsId=${id}`)
       .map(res => {
-        this.messages.info('Новость удалена');
+        this.messages.info(this.dictionary.INFO_MESSAGES_SUCCESS_WAS_DELETED);
       });
   }
 

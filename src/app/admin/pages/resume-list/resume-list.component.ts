@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {ConfirmService} from '../../../services/confirm.service';
-import {SystemMessageService} from '../../../services';
+import { LocalizationService, SystemMessageService } from '../../../services';
 import {AdminResumeApi} from './admin-resume.api';
 
 @Component({
@@ -13,12 +13,18 @@ import {AdminResumeApi} from './admin-resume.api';
 export class ResumeListComponent implements OnInit {
 
     public listResume: any = null;
+  public dictionary: any = {};
 
     constructor(private _http: HttpClient,
                 private _confirmService: ConfirmService,
                 private _systemMessageService: SystemMessageService,
+                private _localizationService: LocalizationService,
                 private _dialog: MatDialog,
                 public resumeApi: AdminResumeApi) {
+      this._localizationService.currentDictionary
+        .subscribe(
+          res => this.dictionary = res,
+        );
     }
 
     ngOnInit() {
@@ -29,13 +35,13 @@ export class ResumeListComponent implements OnInit {
     }
 
     public deleteCurrentResume(idResume: string, idOwnerResume: string): void {
-        this._confirmService.confirm(`Удалить резюме ${idResume}?`)
+        this._confirmService.confirm(this.dictionary.APPROVED_MESSAGE_DELETE)
             .subscribe(
-                (res) => {
-                    if (res) {
+                (confirmRes) => {
+                    if (confirmRes) {
                         this.resumeApi.deleteResume(idResume, idOwnerResume)
                             .subscribe(
-                                res => this._systemMessageService.info('Успешно'),
+                                res => this._systemMessageService.info(this.dictionary.INFO_MESSAGES_SUCCESS_WAS_DELETED),
                                 err => this._systemMessageService.info(err.error.errorMessage)
                             );
                     }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SocketService, SystemMessageService, UserService } from './services';
+import { LocalizationService, SocketService, SystemMessageService, UserService } from './services';
 import { CitiesService } from './services/cities.service';
 
 @Component({
@@ -12,11 +12,13 @@ import { CitiesService } from './services/cities.service';
 export class AppComponent implements OnInit {
 
   public isAdminPanel: boolean = false;
+  public dictionary: any = {};
 
   constructor(private userService: UserService,
               private locations: CitiesService,
               private socket: SocketService,
               private messages: SystemMessageService,
+              private _localizationService: LocalizationService,
               private router: Router) {
 
     router.events.subscribe((event: any) => {
@@ -31,6 +33,11 @@ export class AppComponent implements OnInit {
     this.userService.getUserInfo();
     this.locations.getCities();
 
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res
+      );
+
     this.userService.user$
       .subscribe((user) => {
         if (user) {
@@ -43,7 +50,7 @@ export class AppComponent implements OnInit {
     this.socket.on('new-issue-comment').subscribe(
       (data) => {
         console.log('Success in m', data);
-        this.messages.info('Вам ответил агент техподдержки');
+        this.messages.info(this.dictionary.INFO_MESSAGES_SUPPORT_IS_ANSWERED);
       },
       (error) => {
         console.log('Error', error);

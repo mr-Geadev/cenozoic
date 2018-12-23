@@ -159,7 +159,7 @@ export class SettingEmployerComponent implements OnInit {
               .subscribe(
                 (res) => {
                   this.userService.setUser(null);
-                  this.msg.info('Аккаунт удален');
+                  this.msg.info(this.dictionary.INFO_MESSAGES_SUCCESS_ACCOUNT_DELETED);
                   this.router.navigate(['/']);
                 },
                 (err) => this.msg.info(err.error.errorMessage),
@@ -188,7 +188,7 @@ export class SettingEmployerComponent implements OnInit {
           };
         }
       } else {
-        this.msg.info('Размер файла превышает 5мб');
+        this.msg.info(this.dictionary.INFO_MESSAGES_SIZE_FILE_MORE_THAN + '5mb');
       }
     }
   }

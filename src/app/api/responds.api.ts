@@ -5,7 +5,7 @@ import { ResumeApi } from 'api/resume.api';
 import { VacancyApi } from 'api/vacancy.api';
 import { FilterRespondService } from 'containers/filter-respond';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { QuestionnaireService, SystemMessageService } from 'services';
+import { LocalizationService, QuestionnaireService, SystemMessageService } from 'services';
 import { NEW_STATUSES } from 'const';
 import { RespondModel } from 'models';
 
@@ -14,6 +14,7 @@ export class RespondsApi {
 
   private filters: any = {};
   private respond: any = null;
+  public dictionary: any = {};
 
   // TODO: вынести все это гавно в сервис состояния
   private listRespond: BehaviorSubject<RespondModel[]> = new BehaviorSubject<RespondModel[]>([]);
@@ -46,6 +47,7 @@ export class RespondsApi {
               private dialog: MatDialog,
               private vacancyApi: VacancyApi,
               private resumeApi: ResumeApi,
+              private _localizationService: LocalizationService,
               private questionnaireService: QuestionnaireService,
               private filterResponds: FilterRespondService,
               private messages: SystemMessageService) {
@@ -56,6 +58,11 @@ export class RespondsApi {
         this.getResponds();
         this.getOffers();
       });
+
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
 
     this.questionnaireService.respondId$
       .filter(respond => !!respond)
@@ -69,7 +76,7 @@ export class RespondsApi {
     this.http.post('/api/v1/worker/respond/create', { respond: { vacancyId, resumeId } })
       .subscribe(
         (res) => {
-          this.messages.info('Отклик отправлен');
+          this.messages.info(this.dictionary.INFO_MESSAGES_RESPOND_WAS_SEND);
           this.vacancyApi.getVacancyById(vacancyId);
           this.dialog.closeAll();
         });
@@ -89,7 +96,7 @@ export class RespondsApi {
     this.http.post('/api/v1/employer/offer/create', body)
       .subscribe(
         (res) => {
-          this.messages.info('Приглашение отправлено');
+          this.messages.info(this.dictionary.INFO_MESSAGES_OFFERS_WAS_SEND);
           this.resumeApi.getResumeById(resumeId);
           this.dialog.closeAll();
         });
@@ -123,7 +130,7 @@ export class RespondsApi {
   public cancelRespond(respondId: string): void {
     this.http.get(`/api/v1/worker/respond/cancel?respondId=${respondId}`)
       .subscribe((res) => {
-        this.messages.info('Отклик отменен');
+        this.messages.info(this.dictionary.INFO_MESSAGES_RESPOND_WAS_CANCEL);
         this.getResponds();
       });
   }

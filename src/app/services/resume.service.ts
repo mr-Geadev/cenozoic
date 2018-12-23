@@ -13,12 +13,17 @@ export class ResumeService {
   private _userId: string;
   private resumeSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   public resume$: Observable<any> = this.resumeSubject.asObservable();
+  public dictionary: any = {};
 
   constructor(private http: HttpClient,
               private userService: UserService,
               private _systemMessages: SystemMessageService,
               private _localizationService: LocalizationService,
               private router: Router) {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
   }
 
   public setResume(resume: any): void {
@@ -34,7 +39,7 @@ export class ResumeService {
     this.http.get(`/api/v1/user/resume/remove?resumeId=${id}`)
       .subscribe((res: any) => {
         if (res.success) {
-          this._systemMessages.info('Резюме было удалено');
+          this._systemMessages.info(this.dictionary.INFO_MESSAGES_SUCCESS_WAS_DELETED);
           this.router.navigate(['list-resume']);
         } else {
           this._systemMessages.info(res.errorMessage);

@@ -4,7 +4,7 @@
 
         <div class="col-12 col-md-7 left">
 
-            <div class="city gray text">Санкт-Петербург</div>
+            <!--<div class="city gray text">Санкт-Петербург</div>-->
             <div class="page-title">{{currentResume.job}}</div>
 
             <div class="salary"><span>{{dictionary.FROM}} <b>{{currentResume.salary.value}} {{currentResume.salary.currency === 'ru' ? '₽' : '$'}}</b></span></div>
@@ -195,7 +195,7 @@
                             dictionary.EDUCATION_STAGE_MIDDLE}}
                         </div>
                         <div class="text gray">{{dictionary.YEAR_OF_END_EDUCATION}}: {{item.end}}</div>
-                        <div class="text gray">{{item.end - item.start}} лет</div>
+                        <div class="text gray">{{item.end - item.start}} {{dictionary.YEARS}}</div>
                     </td>
                     <td class="education">
                         <div class="side-title">
@@ -261,7 +261,7 @@
                         <div class="side-title">{{item.name}}</div>
                         <div class="text gray">{{citiesService.locations.getCityToCode(item.city).name}}</div>
                         <div class="certificate-image">
-                            <div class="text gray">Сертификат:</div>
+                            <div class="text gray">{{ dictionary.TRAINING_CERTIFICATE }}:</div>
                             <img style="max-width: 300px" src="{{item.photoURL}}">
                         </div>
                     </td>

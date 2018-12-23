@@ -101,7 +101,7 @@ export class ConstructorVacancyComponent implements OnInit {
       this._vacancyApi.editVacancy(vacancy, this.vacancyId)
         .subscribe(
           (res) => {
-            this._msg.info('Измнения сохранены');
+            this._msg.info(this.dictionary.INFO_MESSAGES_CHANGES_IS_SAVED);
             this._location.back();
           },
           (err) => {
@@ -112,7 +112,6 @@ export class ConstructorVacancyComponent implements OnInit {
       this._vacancyApi.createVacancy(vacancy)
         .subscribe(
           (res) => {
-            this._msg.info('Ваша вакансия сохранена');
             this.router.navigate(['personal-account', 'vacancy'] );
           },
           (err) => {

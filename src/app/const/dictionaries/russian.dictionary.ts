@@ -538,6 +538,19 @@ export const RUSSIAN_DICTIONARY = {
   INFO_MESSAGES_SUCCESS_PASSWORD_IS_CHANGED: 'Пароль изменен',
   INFO_MESSAGES_SUCCESS_OLD_PASSWORD_INCORRECT: 'Старый пароль неверный',
   INFO_MESSAGES_SUCCESS_ACCOUNT_DELETED: 'Аккаунт удален',
+  INFO_MESSAGES_SUCCESS_WAS_DELETED: 'Успешно удалено',
+  INFO_MESSAGES_CLOSE: 'Закрыть',
+  INFO_MESSAGES_SIZE_FILE_MORE_THAN: 'Разамер файла больше чем',
+  INFO_MESSAGES_SUPPORT_IS_ANSWERED: 'Вам ответил агент техподдержки',
+  INFO_MESSAGES_ADD_PERSONAL_DATA: 'Заполните личные данные в разделе настроек',
+  INFO_MESSAGES_ACTION_NOT_SUPPORTED_YOUR_ACCOUNT_TYPE: 'Действие не доступно для вашего аккаунта',
+  INFO_MESSAGES_EMAIL_WAS_SENDED: 'Вам отправлено письмо на почтовый ящик, пожалуйста подтвердите почту',
+  INFO_MESSAGES_CHANGES_IS_SAVED: 'Измнения сохранены',
+  INFO_MESSAGES_SOMETHING_WENT_WRONG: 'Что-то пошло не так',
+  INFO_MESSAGES_RESPOND_WAS_SEND: 'Отклик отправлен',
+  INFO_MESSAGES_RESPOND_WAS_CANCEL: 'Отклик отменен',
+  INFO_MESSAGES_OFFERS_WAS_SEND: 'Приглашение  отправлен',
+  INFO_MESSAGES_VACANCY_IS_PROMOTE: 'Вакансия продлена',
 
   // Approved messages
   APPROVED_MESSAGE_DELETE: 'Вы действительно хотите удалить?',
@@ -556,6 +569,5 @@ export const RUSSIAN_DICTIONARY = {
   SIGN_UP_PRIVACY_WITH: 'C',
   SIGN_UP_PRIVACY_POLITIC: 'политикой конфиденциальности',
   SIGN_UP_PRIVACY_ACCEPTED: 'ознакомлен',
-
 
 };

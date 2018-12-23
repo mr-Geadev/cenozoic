@@ -43,7 +43,7 @@ export class FullResumeComponent implements OnInit {
 
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
+        res => this.dictionary = res,
       );
 
     this.http.get('/assets/json/nationalities.json')
@@ -83,9 +83,9 @@ export class FullResumeComponent implements OnInit {
 
       let years: any = Math.floor(diffMonths / 12);
       if ((Math.floor(years % 10) > 0) && (Math.floor(years % 10) < 5)) {
-        years = years + ' год ';
+        years = years + ((LocalizationService.currentLang() === 'ru') ? ' год ' : ' year ');
       } else {
-        years = years + ' лет ';
+        years = years + ((LocalizationService.currentLang() === 'ru') ? ' лет ' : ' years ');
       }
 
       let months: any = Math.floor(diffMonths % 12);
@@ -94,15 +94,15 @@ export class FullResumeComponent implements OnInit {
           months = '';
           break;
         case 1:
-          months = months + ' месяц';
+          months = months + ((LocalizationService.currentLang() === 'ru') ? ' месяц' : ' month');
           break;
         case 2:
         case 3:
         case 4:
-          months = months + ' месяца';
+          months = months + ((LocalizationService.currentLang() === 'ru') ? ' месяца' : ' months');
           break;
         default:
-          months = months + ' месяцев';
+          months = months + ((LocalizationService.currentLang() === 'ru') ? ' месяцев' : ' months');
           break;
       }
       const answer = years + months;
@@ -156,7 +156,7 @@ export class FullResumeComponent implements OnInit {
         .subscribe((res) => {
           if (res) {
             this.resumeService.buyResume(this.id)
-              .subscribe( () => {
+              .subscribe(() => {
                 this.resumeApi.getResumeById(this.id);
                 this.userService.getUserInfo();
                 this.showContactData = true;

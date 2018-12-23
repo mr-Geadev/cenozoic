@@ -55,7 +55,7 @@ export class AnswerTopQuestionnaireFileComponent implements OnInit {
           };
         }
       } else {
-        this._systemMessageService.info('Размер файла превышает 5мб');
+        this._systemMessageService.info(this.dictionary.INFO_MESSAGES_SIZE_FILE_MORE_THAN + '5mb');
       }
     }
   }

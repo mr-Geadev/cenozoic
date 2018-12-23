@@ -26,10 +26,8 @@ export class BannerApi {
     return this.http.post('/api/v1/employer/banner/create', formData)
       .map(
         res => {
-          this.messages.info('Баннер создан');
           this.userService.getUserInfo();
-        },
-        err => this.messages.info('Что-то пошло не так'),
+        }
       );
   }
 
@@ -44,10 +42,6 @@ export class BannerApi {
     }
 
     return this.http.post('/api/v1/employer/banner/edit', formData)
-      .map(
-        res => this.messages.info('Успешно измненена'),
-        err => this.messages.info('Что-то пошло не так'),
-      );
   }
 
   publicate(bannerId: string, publicate: boolean): Observable<any> {

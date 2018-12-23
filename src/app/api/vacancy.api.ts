@@ -53,7 +53,6 @@ export class VacancyApi {
     return this.http.get(`/api/v1/employer/vacancy/time-out/activate?vacancyId=${vacancyId}`)
       .map(
         (res) => {
-          this.messages.info('Вакансия продлена');
           this.userService.getUserInfo();
           return res['success'];
         },
