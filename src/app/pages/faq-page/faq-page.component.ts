@@ -51,13 +51,42 @@ export class FaqPageComponent implements OnInit {
   public ngOnInit() {
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
+        res => {
+          this.dictionary = res;
+        }
       );
 
     this.userService.user$
       .subscribe((user) => {
         if (user) {
           this.currentUser = user;
+          this.faqs = [
+            {
+              question: this.dictionary.FAQ_PAGE_QUESTION_1,
+              answer: this.dictionary.FAQ_PAGE_ANSWER_1,
+              hidden: true,
+            },
+            {
+              question: this.dictionary.FAQ_PAGE_QUESTION_2,
+              answer: this.dictionary.FAQ_PAGE_ANSWER_2,
+              hidden: true,
+            },
+            {
+              question: this.dictionary.FAQ_PAGE_QUESTION_3,
+              answer: this.dictionary.FAQ_PAGE_ANSWER_3,
+              hidden: true,
+            },
+            {
+              question: this.dictionary.FAQ_PAGE_QUESTION_4,
+              answer: this.dictionary.FAQ_PAGE_ANSWER_4,
+              hidden: true,
+            },
+            {
+              question: this.dictionary.FAQ_PAGE_QUESTION_5,
+              answer: this.dictionary.FAQ_PAGE_ANSWER_5,
+              hidden: true,
+            },
+          ];
         }
       });
   }

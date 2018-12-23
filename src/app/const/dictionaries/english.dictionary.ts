@@ -569,6 +569,8 @@ export const ENGLISH_DICTIONARY = {
   SIGN_UP_PRIVACY_WITH: 'I have read',
   SIGN_UP_PRIVACY_POLITIC: 'the privacy policy',
   SIGN_UP_PRIVACY_ACCEPTED: '',
+  SALARY_DIAPASON: 'Зарплатная вилка',
+  SALARY_NOTE: 'Примечание к зарплате',
 
   // функционал скрытия из поиска
   HIDDEN_FROM_SEARCH: 'Hide from search',
@@ -576,6 +578,17 @@ export const ENGLISH_DICTIONARY = {
   RESUME_WAS_HIDDEN: 'Resume is hidden from the search',
   RESUME_WILL_VIEW: 'The resume will be shown in the search.',
   VACANCY_WAS_HIDDEN: 'Vacancy is hidden from search',
-  VACANCY_WILL_VIEW: 'Vacancy will be shown in the search'
+  VACANCY_WILL_VIEW: 'Vacancy will be shown in the search',
+
+  FAQ_PAGE_QUESTION_1: 'I forgot password',
+  FAQ_PAGE_ANSWER_1: 'If you want to reset your password, please go to the Login page: <br> <br> Click "Forgot your password?" at the bottom of the selected login field. Click Submit. If you have an account, you will receive an email. If you have not received the letter, check the "Spam" folder. <br> <br> Follow the link as soon as you receive an email, as the link expires after 24 hours.',
+  FAQ_PAGE_QUESTION_2: 'Editing, updating and deactivating resume',
+  FAQ_PAGE_ANSWER_2: 'If you want to edit, update or deactivate your resume, log in to your account here. <br> <br> Click Edit or Add next to the field you want to edit. If you want to delete a change or a field - click the X next. All you need to do is add to the list of changes and additions. To deactivate or replace a resume, click Deactivate or replace a resume in a resume (in the upper right corner). You can create a new resume.',
+  FAQ_PAGE_QUESTION_3: 'There is an error in my response',
+  FAQ_PAGE_ANSWER_3: 'When you respond to a job, your resume is sent to your employer. How to correct errors in the response before sending? <br> <br> How to fix, recall a response after sending is impossible. Therefore, it is important to check and correct it before sending it to the employer. To open a response, click the button in the upper right corner. If errors have been saved, contact support. We will help you fix problems before sending a response.',
+  FAQ_PAGE_QUESTION_4: 'Change email address',
+  FAQ_PAGE_ANSWER_4: 'You can change your email address in the "Settings" tab. <br> <br> First log in to your account and click the Change email address link. If you have not received the letter, click on the "Spam" folder. <br> <br> Do not forget to follow the link in this. letter to confirm the change of mail address. After coming to the new email address.',
+  FAQ_PAGE_QUESTION_5: 'Account Closing Instructions',
+  FAQ_PAGE_ANSWER_5: 'To close your account, please go to the “Settings” page <br> <br> After you log in to your account, click on the link Close my account. You will be asked to confirm the action. If you are confident in your decision to close your account, click OK. If the account closure function is not available, you need to send a request to our support team for assistance.',
 
 };
