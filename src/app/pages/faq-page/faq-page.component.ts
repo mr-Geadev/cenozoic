@@ -53,13 +53,6 @@ export class FaqPageComponent implements OnInit {
       .subscribe(
         res => {
           this.dictionary = res;
-        }
-      );
-
-    this.userService.user$
-      .subscribe((user) => {
-        if (user) {
-          this.currentUser = user;
           this.faqs = [
             {
               question: this.dictionary.FAQ_PAGE_QUESTION_1,
@@ -87,6 +80,13 @@ export class FaqPageComponent implements OnInit {
               hidden: true,
             },
           ];
+        }
+      );
+
+    this.userService.user$
+      .subscribe((user) => {
+        if (user) {
+          this.currentUser = user;
         }
       });
   }

@@ -175,6 +175,7 @@ export const ENGLISH_DICTIONARY = {
   ANSWER_VACANCY: 'Apply for job',
 
   // конструктор вакансий
+  CONSTRUCTOR_VACANCY: 'Vacancy Constructor',
   ADD_NEW_VACANCY: 'Add a new vacancy',
   NAMED_VACANCY: 'Job title',
   VACANCY_EXPERIENCE: 'Work experience in industry:',
@@ -513,6 +514,7 @@ export const ENGLISH_DICTIONARY = {
 
   // ОПЛАТА
   PAYING_TITLE: 'Payment',
+  SHOW_CONTACT_DATA_OF_RESUME: 'Show contact details',
   PAYING_CHANGE_COUNT: 'Choose quantity',
   PAYING_BUY: 'Buy',
   PAYING_FUNCTIONAL: 'Paid functionality',
@@ -569,8 +571,8 @@ export const ENGLISH_DICTIONARY = {
   SIGN_UP_PRIVACY_WITH: 'I have read',
   SIGN_UP_PRIVACY_POLITIC: 'the privacy policy',
   SIGN_UP_PRIVACY_ACCEPTED: '',
-  SALARY_DIAPASON: 'Зарплатная вилка',
-  SALARY_NOTE: 'Примечание к зарплате',
+  SALARY_DIAPASON: 'Salary fork',
+  SALARY_NOTE: 'Salary note',
 
   // функционал скрытия из поиска
   HIDDEN_FROM_SEARCH: 'Hide from search',

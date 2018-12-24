@@ -1,7 +1,7 @@
 <div class="create-vacancy">
     <div class="container">
         <div class="row title">
-            Конструктор вакансии
+            {{ dictionary.CONSTRUCTOR_VACANCY }}
         </div>
         <div class="row">
             <div class="col form">
@@ -98,7 +98,7 @@
                             </div>
                             <div class="right">
                                 <button mat-raised-button color="primary" (click)="changeEducationCity()">
-                                    {{nameCity ? nameCity : 'Выберите город'}}
+                                    {{nameCity ? nameCity : dictionary.CHANGE_CITY }}
                                 </button>
                             </div>
                         </div>
@@ -119,9 +119,9 @@
                                         <label for="exp-oil">{{dictionary.IN_OIL}}</label>
                                     </div>
                                     <input type="number" formControlName="years">
-                                    <div class="word">лет</div>
+                                    <div class="word">{{dictionary.YEARS}}</div>
                                     <input type="number" formControlName="months">
-                                    <div class="word">месяцев</div>
+                                    <div class="word">{{dictionary.MONTHES}}</div>
                                 </div>
                             </div>
 

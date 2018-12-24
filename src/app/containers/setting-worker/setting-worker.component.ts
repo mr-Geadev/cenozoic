@@ -71,7 +71,6 @@ export class SettingWorkerComponent implements OnInit {
     this.info = new FormGroup({
       fullName: new FormControl(this.currentUser.fullName, [
         Validators.required,
-        Validators.minLength(10),
       ]),
       phone: new FormControl(this.currentUser.phone, [
         Validators.required,

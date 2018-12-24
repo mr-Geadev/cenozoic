@@ -352,7 +352,7 @@
 
             <div class="button" (click)="showContact()"
                  *ngIf="currentUser && currentUser.typeAccount === 'employer' && !showContactData">
-                Показать контактные данные
+                    {{ dictionary.SHOW_CONTACT_DATA_OF_RESUME }}
             </div>
         </div>
     </div>

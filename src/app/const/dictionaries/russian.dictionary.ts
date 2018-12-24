@@ -175,6 +175,7 @@ export const RUSSIAN_DICTIONARY = {
   ANSWER_VACANCY: 'Откликнуться на вакансию',
 
   // конструктор вакансий
+  CONSTRUCTOR_VACANCY: 'Конструктор вакансии',
   ADD_NEW_VACANCY: 'Добавить новую вакансию',
   NAMED_VACANCY: 'Название вакансии',
   VACANCY_EXPERIENCE: 'Опыт работы в промышленности:',
@@ -513,6 +514,7 @@ export const RUSSIAN_DICTIONARY = {
 
   // ОПЛАТА
   PAYING_TITLE: 'Купить',
+  SHOW_CONTACT_DATA_OF_RESUME: 'Показать контактные данные',
   PAYING_CHANGE_COUNT: 'Выберите количество',
   PAYING_BUY: 'Купить',
   PAYING_FUNCTIONAL: 'Платный функционал',
@@ -554,7 +556,7 @@ export const RUSSIAN_DICTIONARY = {
 
   // Approved messages
   APPROVED_MESSAGE_DELETE: 'Вы действительно хотите удалить?',
-  APPROVED_MESSAGE_CANCEL: 'Вы действительно хотите отменить?',
+  APPROVED_MESSAGE_CANCEL: 'Вы действительно хотитеКонструктор вакансии отменить?',
   APPROVED_MESSAGE_ARCHIVE: 'Вы действительно хотите отправить в архив?',
   APPROVED_MESSAGE_DELETE_ACCOUNT: 'Вы действительно хотите удалить аккаунт?',
   APPROVED_MESSAGE_GO_TO_PERSONAL_ACCOUNT: 'Перейти в личный кабинет?',
