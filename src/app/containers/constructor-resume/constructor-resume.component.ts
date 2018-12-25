@@ -18,7 +18,7 @@ import {
   DEFAULT_EXPERIENCE,
   DEFAULT_LANGUAGE,
   DEFAULT_RESUME_FORM,
-  DEFAULT_RESUME_IMAGE,
+  DEFAULT_RESUME_IMAGE, DEFAULT_SALARY,
   DEFAULT_TRAINING,
   DEFAULT_TYPE,
 } from './constructor-resume.constants';
@@ -37,7 +37,7 @@ import { City } from '../../pop-ups/change-city/cities.models';
 })
 export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
-  public resumeForm: any = DEFAULT_RESUME_FORM; // резюме, которое будет заполняться
+  public resumeForm: any = Object.assign({}, DEFAULT_RESUME_FORM); // резюме, которое будет заполняться
   public age: any = 1000;
   public resumeId: string = null;
   public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM); // схема незаполненнго резюме
@@ -83,6 +83,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    console.log('<--------------------------- init ----------------------->');
+
     this.http.get('/assets/json/nationalities.json')
       .subscribe(
         (nationalities: any) => {
@@ -112,6 +114,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.resumeService.resume$
         .subscribe((resume) => {
+          console.log('DEFAULT_RESUME_FORM', DEFAULT_RESUME_FORM);
           if (resume) {
             for (const key in resume) {
               if (resume.hasOwnProperty(key)) {
@@ -130,8 +133,29 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             });
           } else {
             this.type = DEFAULT_TYPE;
-            this.resumeForm = Object.assign({}, DEFAULT_RESUME_FORM);
+
+            for (const key in DEFAULT_RESUME_FORM) {
+              if (DEFAULT_RESUME_FORM.hasOwnProperty(key)) {
+                this.resumeForm[key] = DEFAULT_RESUME_FORM[key];
+              }
+            }
+
+            this.resumeForm.salary = Object.assign({}, DEFAULT_SALARY)
+            this.resumeForm.experience = [];
+            this.resumeForm.education = [];
+            this.resumeForm.trainings = [];
+            this.resumeForm.languages = [];
+
+            this.subscriptions.push(this.userService.user$
+              .filter(user => !!user)
+              .subscribe((user) => {
+                this.resumeForm.phoneNumber = user.phone;
+                this.resumeForm.email = user.email;
+              }),
+            );
           }
+
+          console.log(this.resumeForm);
         }));
   }
 
@@ -162,22 +186,22 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       let typeField: any = null;
       switch (nameSection) {
         case 'experience':
-          typeField = DEFAULT_EXPERIENCE;
+          typeField = Object.assign({}, DEFAULT_EXPERIENCE);
           this.validExperienceTime.push(false);
           break;
         case 'education':
-          typeField = DEFAULT_EDUCATION;
+          typeField = Object.assign({}, DEFAULT_EDUCATION);
           break;
         case 'languages':
-          typeField = DEFAULT_LANGUAGE;
+          typeField = Object.assign({}, DEFAULT_LANGUAGE);
           break;
         case 'trainings':
-          typeField = DEFAULT_TRAINING;
+          typeField = Object.assign({}, DEFAULT_TRAINING);
           this.nameImagesOfCertificate.push(this.dictionary.TRAINING_CERTIFICATE_LOAD);
           this.imagesOfCertificate.push(Object.assign({}, DEFAULT_CERTIFICATE_IMAGE));
           break;
         default:
-          null;
+          break;
       }
       this.resumeForm[nameSection].push(Object.assign({}, typeField));
       this.listVisibleElement[nameSection].push(true);
@@ -215,7 +239,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
           this.resumeForm.trainings[index].country = city.codeCountry;
           this.trainingsCityName[index] = city.name;
         }
-        console.log(this.educationCityName, this.trainingsCityName);
         subscribe.unsubscribe();
       });
   }
@@ -356,7 +379,9 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     // конец
 
     this.resumeForm.resumeLanguage = LocalizationService.currentLang();
+    console.log('DEFAULT_RESUME_FORM отправка до salary', DEFAULT_RESUME_FORM);
     this.resumeForm.salary.currency = LocalizationService.currentLang() === 'ru' ? 'rubles' : 'dollars';
+    console.log('DEFAULT_RESUME_FORM отправка после salary', DEFAULT_RESUME_FORM);
 
     if (this.type === DEFAULT_TYPE) {
       const formData: FormData = new FormData();
@@ -377,7 +402,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       this.http.post(CREATE_RESUME, formData)
         .subscribe((res: any) => {
           if (res.success) {
-            this.resumeForm = Object.assign({}, this.cleanResumeForm);
+            this.resumeForm = null;
             this.resumeService.setResume(null);
             this.router.navigate(['/personal-account', 'resume']);
           }
@@ -417,7 +442,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       this.http.post('/api/v1/user/resume/edit', formData)
         .subscribe((res: any) => {
           if (res.success) {
-            this.resumeForm = Object.assign({}, this.cleanResumeForm);
+            this.resumeForm = null;
             this.resumeService.setResume(null);
             this.router.navigate(['resume', this.resumeId]);
           }

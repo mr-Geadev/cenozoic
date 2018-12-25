@@ -39,12 +39,14 @@ export const DEFAULT_TRAINING = {
     documentName: null
 };
 
+export const DEFAULT_SALARY = {
+  currency: 'rubles',
+  value: null,
+};
+
 export const DEFAULT_RESUME_FORM = {
     job: null,
-    salary: {
-        currency: 'rubles',
-        value: null,
-    },
+    salary: null,
     birthday: null,
     fullName: null,
     resumeLanguage: 'ru',
