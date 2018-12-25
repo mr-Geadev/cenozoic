@@ -17,6 +17,8 @@
   }
 
   .privacy {
+    justify-content: start;
+
     .logo {
       width: 97px;
       height: 97px;
@@ -29,7 +31,7 @@
 
     .privacy-text {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 5px;
       color: $white;
       font-family: Roboto;
       font-size: 0.7rem;
