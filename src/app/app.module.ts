@@ -10,6 +10,7 @@ import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
 import { PaymentGuards } from 'guards/payment.guards';
 import {
+  AboutUsPageModule,
   AccountSettingsPageModule,
   AuthPageModule, ConstructorBannerPageModule,
   CreateQuestionnairePageModule,
@@ -88,6 +89,7 @@ const ROUTES = [
     FullBannerPageModule,
     EditBannerPageModule,
     PrivacyPoliticsPageModule,
+    AboutUsPageModule,
 
     // Blocks
     PageHeaderModule,

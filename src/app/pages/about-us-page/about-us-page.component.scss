@@ -1,0 +1,36 @@
+:host {
+
+  .col {
+    padding: 70px;
+  }
+
+  .title {
+    margin-top: 10px;
+  }
+
+  b {
+    font-weight: bold;
+  }
+
+  p {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ol {
+    margin-top: 20px;
+
+    & > li {
+      margin-top: 20px;
+    }
+  }
+
+
+  ul {
+    list-style-type: disc;
+  }
+}

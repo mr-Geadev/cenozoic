@@ -22,3 +22,4 @@ export * from './constructor-banner-page';
 export * from './full-banner-page';
 export * from './edit-banner-page';
 export * from './privacy-politics-page';
+export * from './about-us-page';
