@@ -35,19 +35,19 @@
 							</div>
 						</div>
 
-						<button class="button" *ngIf="!news.publicateToNewsPage" (click)="publish('toNews')">
+						<button class="button green" *ngIf="!news.publicateToNewsPage" (click)="publish('toNews')">
 							{{ dictionary.NEWS_PUBLIC_ALL }}
 						</button>
 
-						<button class="button" *ngIf="news.publicateToNewsPage" (click)="publish('fromNews')">
+						<button class="button red" *ngIf="news.publicateToNewsPage" (click)="publish('fromNews')">
 							{{ dictionary.NEWS_UNPUBLIC_ALL }}
 						</button>
 
-						<button class="button" *ngIf="!news.publicateToMainPage" (click)="publish('toMain')">
+						<button class="button green" *ngIf="!news.publicateToMainPage" (click)="publish('toMain')">
 							{{ dictionary.NEWS_PUBLIC_MAIN }}
 						</button>
 
-						<button class="button" *ngIf="news.publicateToMainPage" (click)="publish('fromMainPage')">
+						<button class="button red" *ngIf="news.publicateToMainPage" (click)="publish('fromMainPage')">
 							{{ dictionary.NEWS_UNPUBLIC_MAIN }}
 						</button>
 					</ng-container>

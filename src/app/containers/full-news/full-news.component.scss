@@ -94,9 +94,18 @@
         font-weight: 700;
         line-height: 30px;
 
+        &.green {
+          background-color: green;
+        }
+
+        &.red {
+          background-color: red;
+        }
+
         @include animation(background-color);
         &:hover:not(:disabled) {
-          background-color: $hover-orange;
+
+          text-decoration: underline;
         }
       }
     }
