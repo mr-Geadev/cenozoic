@@ -64,6 +64,7 @@ export class ConstructorBannerComponent implements OnInit {
   public initForm(title, shortDescription) {
     this.banner = new FormGroup({
       title: new FormControl(title, [Validators.required]),
+      language: new FormControl(LocalizationService.currentLang(), [Validators.required]),
       shortDescription: new FormControl(shortDescription, [Validators.required]),
     });
   }

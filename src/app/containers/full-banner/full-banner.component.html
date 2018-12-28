@@ -24,6 +24,20 @@
 				</div>
 				<div class="manage">
 					<ng-container *ngIf="currentUser && (currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager')">
+
+						<div class="change-lang">
+							<div class="lang">
+								<input type="radio" id="lang-ru" name="lang" [value]="'ru'" [(ngModel)]="language">
+								<label for="lang-ru">Ru</label>
+							</div>
+
+
+							<div class="lang">
+								<input type="radio" id="lang-en" name="lang" [value]="'en'" [(ngModel)]="language">
+								<label for="lang-en">En</label>
+							</div>
+						</div>
+
 						<button class="button" *ngIf="!banner.publicate" (click)="publicate(true)">
 							{{ dictionary.BANNER_PUBLIC }}
 						</button>

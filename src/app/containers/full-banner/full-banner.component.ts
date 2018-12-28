@@ -21,6 +21,7 @@ export class FullBannerComponent implements OnInit {
   private id: string = null;
   private currentLang: string = null;
   public currentUser: UserModel = null;
+  public language: string = null;
 
   constructor(private activateRoute: ActivatedRoute,
               private bannerApi: BannerApi,
@@ -36,7 +37,7 @@ export class FullBannerComponent implements OnInit {
   ngOnInit(): void {
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
+        res => this.dictionary = res,
       );
 
     this.currentLang = LocalizationService.currentLang();
@@ -53,11 +54,14 @@ export class FullBannerComponent implements OnInit {
 
   getBanner() {
     this.bannerApi.getBannerById(this.id)
-      .subscribe(res => { this.banner = new BannerModel(res['banner']); });
+      .subscribe(res => {
+        this.banner = new BannerModel(res['banner']);
+        this.language = this.banner.language;
+      });
   }
 
   publicate(publicate: boolean) {
-    this.bannerApi.publicate(this.id, publicate)
+    this.bannerApi.publicate(this.id, publicate, this.language)
       .subscribe(
         res => this.getBanner(),
       );

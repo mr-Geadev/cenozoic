@@ -5,6 +5,19 @@
   margin: 50px 0;
   display: block;
 
+  .change-lang {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .lang {
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
+
   .time {
     color: $light-gray;
     font-family: Roboto;

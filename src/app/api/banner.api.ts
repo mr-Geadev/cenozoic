@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { SystemMessageService, UserService } from 'services';
+import { LocalizationService, SystemMessageService, UserService } from 'services';
 
 @Injectable()
 export class BannerApi {
@@ -44,8 +44,8 @@ export class BannerApi {
     return this.http.post('/api/v1/employer/banner/edit', formData)
   }
 
-  publicate(bannerId: string, publicate: boolean): Observable<any> {
-    return this.http.get(`/api/v1/admin/banner/publish?bannerId=${bannerId}&publicate=${publicate}`);
+  publicate(bannerId: string, publicate: boolean, lang: string): Observable<any> {
+    return this.http.get(`/api/v1/admin/banner/publish?bannerId=${bannerId}&publicate=${publicate}&language=${lang}`);
   }
 
   activate(bannerId: string): Observable<any> {
@@ -75,7 +75,8 @@ export class BannerApi {
     return this.http.post('/api/v1/banners/get/all', {
       limit: main ? 3 : 4,
       filters: {
-        publicate: true
+        publicate: true,
+        language: LocalizationService.currentLang()
       },
     });
   }
