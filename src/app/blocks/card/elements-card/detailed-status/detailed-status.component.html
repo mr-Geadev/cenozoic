@@ -7,11 +7,10 @@
 
 	<ng-container *ngIf="isWorker()">
 		<ng-container *ngIf="entity === 'offer'">
-			<div class="status green" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.YOU_AGREED}}</div>
 			<div class="status gray" *ngIf="status === RESPOND_STATUS.QUESTIONNAIRE_DONE">{{dictionary.PENDING}}</div>
 			<a  class="status file link" (click)="goToAnswered()" *ngIf="status === RESPOND_STATUS.WAIT_QUESTIONNAIRE">{{dictionary.FILL_THE_INTERVIEW}}</a>
 			<div class="status red" *ngIf="status === RESPOND_STATUS.REJECTED">{{dictionary.YOU_REFUSED}}</div>
-			<div class="status red" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.OFFER_FOR_WORKER_POSITIVE}}</div>
+			<div class="status green" *ngIf="status === RESPOND_STATUS.APPROVED">{{dictionary.OFFER_FOR_WORKER_POSITIVE}}</div>
 		</ng-container>
 		<ng-container *ngIf="entity === 'respond'">
 			<div class="status gray" *ngIf="status === RESPOND_STATUS.AWAITING">{{dictionary.PENDING}}</div>
