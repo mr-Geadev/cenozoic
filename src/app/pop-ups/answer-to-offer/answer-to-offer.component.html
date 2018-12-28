@@ -1,6 +1,7 @@
 <div class="wrap">
 
-	<div class="title">{{ dictionary.ANSWER_TO_OFFER_TITLE }}</div>
+	<div class="title" *ngIf="data.respond">{{ dictionary.ANSWER_TO_OFFER_TITLE }}</div>
+	<div class="title" *ngIf="!data.respond">{{ dictionary.ANSWER_TO_VACANCY_TITLE }}</div>
 
 	<div class="type" *ngIf="data.respond">
 		<input type="radio" id="positive" name="type" [value]="true" [(ngModel)]="answer">
@@ -81,8 +82,12 @@
 		</div>
 	</div>
 
-	<button class="button" (click)="sendRespond()" [disabled]="!checkedResume">
+	<button *ngIf="data.respond" class="button" (click)="sendRespond()" [disabled]="!checkedResume">
 		{{dictionary.SEND_ANSWER}}
+	</button>
+
+	<button *ngIf="!data.respond" class="button" (click)="sendRespond()" [disabled]="!checkedResume">
+		{{dictionary.SEND_RESPONSE}}
 	</button>
 
 </div>
