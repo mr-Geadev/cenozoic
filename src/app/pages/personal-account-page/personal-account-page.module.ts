@@ -28,7 +28,7 @@ import { PersonalAccountPageComponent } from './personal-account-page.component'
     RouterModule.forRoot([
       {
         path: 'personal-account',
-        redirectTo: 'personal-account/responds'
+        redirectTo: 'personal-account/default'
       },
       {
         path: 'personal-account/:tab',

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionnaireModel, RespondModel } from 'models';
 import { NewsModel } from 'models/news.model';
 import { PayingModalService } from 'pop-ups/paying';
+import { combineLatest } from 'rxjs';
 import { QuestionnairesApi, RespondsApi } from '../../api';
 import { LocalizationService } from '../../services';
 import { UserService } from '../../services/user.service';
@@ -23,8 +24,8 @@ export class PersonalAccountPageComponent implements OnInit {
     BANNERS: 'banners',
     CONTACTS: 'contacts',
     VACANCY: 'vacancy',
-    RESUME: 'resume'
-  }
+    RESUME: 'resume',
+  };
 
   public activeTab: string = null;
   public dictionary: any = {};
@@ -59,6 +60,7 @@ export class PersonalAccountPageComponent implements OnInit {
   constructor(private _localizationService: LocalizationService,
               private respondsApi: RespondsApi,
               private activateRoute: ActivatedRoute,
+              private router: Router,
               private payingModalService: PayingModalService,
               private questionnaireApi: QuestionnairesApi,
               private _userService: UserService) {
@@ -66,8 +68,16 @@ export class PersonalAccountPageComponent implements OnInit {
 
   public ngOnInit(): void {
 
-    this.activateRoute.params.subscribe(params => {
-      this.activeTab = params['tab'] || 'responds';
+    const combined = combineLatest(
+      this.activateRoute.params,
+      this._userService.user$,
+    ).subscribe(([params, user]) => {
+      if (params['tab'] === 'default') {
+        this.router.navigate(['personal-account', this.detectFirstTab(user.typeAccount)]);
+      }
+      console.log('work', params, this.detectFirstTab(user.typeAccount));
+      const tabDefault = this.detectFirstTab(user.typeAccount);
+      this.activeTab = params['tab'] || tabDefault;
     });
 
     this.respondsApi.initializeResponds();
@@ -76,7 +86,7 @@ export class PersonalAccountPageComponent implements OnInit {
 
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
+        res => this.dictionary = res,
       );
 
     this._userService.user$
@@ -86,7 +96,7 @@ export class PersonalAccountPageComponent implements OnInit {
             this.typeCurrentUser = user.typeAccount;
             this.currentUser = user;
           }
-        }
+        },
       );
 
     this.respondsApi.listOffers$
@@ -112,6 +122,16 @@ export class PersonalAccountPageComponent implements OnInit {
 
   public buy(type: string) {
     this.payingModalService.openBuyModal(type);
+  }
+
+  detectFirstTab(typeAccount: string): string {
+    if (typeAccount === 'worker') {
+      return this.TABS.RESUME;
+    } else if (typeAccount === 'employer') {
+      return this.TABS.VACANCY;
+    } else {
+      return this.TABS.RESPONDS;
+    }
   }
 
 }

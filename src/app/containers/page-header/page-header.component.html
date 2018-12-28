@@ -32,7 +32,7 @@
 					<div class="blank-avatar"></div>
 					<img src="/assets/images/headerMenuStatus.png" class="status">
 					<ul class="little-menu">
-						<li class="item"><a class="link" [routerLink]="['/personal-account', 'responds']">{{ dictionary.ACCOUNT
+						<li class="item"><a class="link" [routerLink]="['/personal-account', 'default']">{{ dictionary.ACCOUNT
 							}}</a></li>
 						<li class="item"><a class="link" [routerLink]="['/setting']">{{ dictionary.SETTINGS }}</a></li>
 						<li class="item"><a class="link" [routerLink]="['/']" (click)="logOut()">{{ dictionary.LOG_OUT
@@ -84,7 +84,7 @@
 					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/admin']">{{
 						dictionary.SUPPORT }}</a></li>
 					<li class="item" *ngIf="isAuthorized"><a class="link" (click)="closeMobileMenu()"
-																									 [routerLink]="['/personal-account', 'responds']">{{ dictionary.ACCOUNT
+																									 [routerLink]="['/personal-account', 'default']">{{ dictionary.ACCOUNT
 						}}</a></li>
 					<li class="item" *ngIf="isAuthorized"><a class="link" (click)="closeMobileMenu()"
 																									 [routerLink]="['/setting']">{{ dictionary.SETTINGS }}</a>
