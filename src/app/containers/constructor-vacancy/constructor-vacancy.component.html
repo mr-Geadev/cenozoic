@@ -48,22 +48,27 @@
                                 <label>{{dictionary.SALARY_DIAPASON}}</label>
 
                             </div>
-                            <div class="right">
+                            <div class="right salary-to">
                                 <div class="word from">
                                     {{dictionary.FROM}}
                                 </div>
                                 <input type="number" name="salary-from"
+                                       (input)="salaryValidatorCheck()"
                                        formControlName="from">
                                 <div class="word before">
                                     {{dictionary.TO}}
                                 </div>
                                 <input type="number" name="salary-before"
+                                       (input)="salaryValidatorCheck()"
                                        formControlName="to">
                                 <div class="word rub" *ngIf="!vacancy.value.currency || vacancy.value.currency === 'rubles' ">
                                     {{dictionary.RUBLES_SHORT}}.
                                 </div>
                                 <div class="word rub" *ngIf="vacancy.value.currency === 'dollars' ">
                                     $
+                                </div>
+                                <div class="invalid" *ngIf="vacancy.controls['salary'].controls['to'].touched && isInvalidSalary">
+                                    {{ dictionary.CONSTRUCTOR_VACANCY_SALARY_INVALID}}
                                 </div>
                             </div>
                         </div>
@@ -207,7 +212,7 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" id="save" [disabled]="vacancy.invalid" (click)="sentVacancy()">
+                        <button type="submit" id="save" [disabled]="vacancy.invalid || isInvalidSalary" (click)="sentVacancy()">
                             {{dictionary.SAVE_VACANCY}}
                         </button>
                         <div class="message">

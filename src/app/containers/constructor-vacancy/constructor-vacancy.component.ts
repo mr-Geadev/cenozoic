@@ -22,6 +22,7 @@ export class ConstructorVacancyComponent implements OnInit {
   public nameCity: string = null;
   public nationalitiesDefault: any[] = null;
   public currentUser = null;
+  public isInvalidSalary: boolean = false; // корректная вилка
 
   @Input('edit') edit?: boolean;
 
@@ -167,6 +168,10 @@ export class ConstructorVacancyComponent implements OnInit {
       demands: new FormControl(data.demands || null),
       conditions: new FormControl(data.conditions || null),
     });
+  }
+
+  salaryValidatorCheck(): void {
+      this.isInvalidSalary = (<FormGroup>this.vacancy.controls['salary']).controls['to'].value < (<FormGroup>this.vacancy.controls['salary']).controls['from'].value;
   }
 }
 
