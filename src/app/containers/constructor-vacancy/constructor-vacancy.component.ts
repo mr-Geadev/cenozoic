@@ -23,6 +23,7 @@ export class ConstructorVacancyComponent implements OnInit {
   public nationalitiesDefault: any[] = null;
   public currentUser = null;
   public isInvalidSalary: boolean = false; // корректная вилка
+  public salaryTouched: boolean = false; // корректная вилка
 
   @Input('edit') edit?: boolean;
 
@@ -171,6 +172,7 @@ export class ConstructorVacancyComponent implements OnInit {
   }
 
   salaryValidatorCheck(): void {
+      this.salaryTouched = true;
       this.isInvalidSalary = (<FormGroup>this.vacancy.controls['salary']).controls['to'].value < (<FormGroup>this.vacancy.controls['salary']).controls['from'].value;
   }
 }

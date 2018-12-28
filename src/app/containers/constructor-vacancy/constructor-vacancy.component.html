@@ -67,7 +67,7 @@
                                 <div class="word rub" *ngIf="vacancy.value.currency === 'dollars' ">
                                     $
                                 </div>
-                                <div class="invalid" *ngIf="vacancy.controls['salary'].controls['to'].touched && isInvalidSalary">
+                                <div class="invalid" *ngIf="salaryTouched && isInvalidSalary">
                                     {{ dictionary.CONSTRUCTOR_VACANCY_SALARY_INVALID}}
                                 </div>
                             </div>
