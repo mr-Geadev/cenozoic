@@ -17,7 +17,7 @@
   }
 
   .privacy {
-    justify-content: start;
+    justify-content: space-around;
 
     .logo {
       width: 97px;
@@ -37,42 +37,10 @@
       font-size: 0.7rem;
       font-weight: 400;
       line-height: 1.5rem;
-      width: 259px;
       text-transform: uppercase;
-    }
-  }
-
-  .menu-bar {
-    .nav-menu {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-
-      .nav-menu-item {
-        .link {
-          color: $white;
-          font-family: Arimo;
-          font-size: 0.975rem;
-          font-weight: 400;
-          line-height: 2rem;
-          @include tr-color;
-
-          &:hover {
-            color: $orange;
-          }
-        }
-        @media (max-width: 1150px) {
-          &:last-child {
-            width: 100%;
-            text-align: center;
-          }
-        }
-      }
     }
 
     .social-network {
-      margin-top: 20px;
       justify-content: center;
       width: 100%;
       display: flex;
@@ -109,6 +77,36 @@
 
         &:hover {
           border-color: $orange;
+        }
+      }
+    }
+  }
+
+  .menu-bar {
+    .nav-menu {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .nav-menu-item {
+        .link {
+          color: $white;
+          font-family: Arimo;
+          font-size: 0.975rem;
+          font-weight: 400;
+          line-height: 2rem;
+          @include tr-color;
+
+          &:hover {
+            color: $orange;
+          }
+        }
+        @media (max-width: 1150px) {
+          &:last-child {
+            width: 100%;
+            text-align: center;
+          }
         }
       }
     }
