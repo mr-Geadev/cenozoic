@@ -99,7 +99,7 @@
 				</a>
 
 				<p *ngIf="currentVacancy.status !== 3">
-					Опубликовано до: {{ currentVacancy.timeoutDate.locale('ru').format('DD.MM.YYYY') }}
+					{{ dictionary.BANNER_PUBLIC_TO_TIME }}: {{ currentVacancy.timeoutDate.locale('ru').format('DD.MM.YYYY, HH:mm') }}
 				</p>
 
 				<button (click)="activateVacancy()" class="button" *ngIf="currentVacancy.status === 3">
