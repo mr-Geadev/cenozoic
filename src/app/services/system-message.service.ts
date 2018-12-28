@@ -16,7 +16,7 @@ export class SystemMessageService {
   }
 
   public info(message: string, duration: number = 2000, action: string = this.dictionary.INFO_MESSAGES_CLOSE, description?: string): void {
-    this._snackBar.open(message, action, {
+    this._snackBar.open(message, null, {
       duration: duration,
       horizontalPosition: 'left',
       verticalPosition: 'top',
