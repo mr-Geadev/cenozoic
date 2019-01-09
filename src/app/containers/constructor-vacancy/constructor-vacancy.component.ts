@@ -23,7 +23,7 @@ export class ConstructorVacancyComponent implements OnInit {
   public nationalitiesDefault: any[] = null;
   public currentUser = null;
   public isInvalidSalary: boolean = false; // корректная вилка
-  public salaryTouched: boolean = false; // корректная вилка
+  public salaryTouched: boolean = false; // поле зарплату тронуто
 
   @Input('edit') edit?: boolean;
 
