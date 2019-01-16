@@ -5,7 +5,7 @@ import { VacancyApi } from 'api';
 import { UserModel } from 'models';
 import { PayingModalService } from 'pop-ups/paying';
 
-import { ConfirmService, LocalizationService, ResumeService, UserService } from 'services';
+import { ConfirmService, LocalizationService, ResumeService, SystemMessageService, UserService } from 'services';
 import { PopupsService } from '../../services/popups.service';
 import { FullVacancyService } from './full-vacancy.service';
 import { CitiesService } from 'services';
@@ -33,6 +33,7 @@ export class FullVacancyComponent implements OnInit {
               private _dialog: MatDialog,
               private userService: UserService,
               public citiesService: CitiesService,
+              public messages: SystemMessageService,
               private activateRoute: ActivatedRoute) {
     this.id = activateRoute.snapshot.params['id'];
   }

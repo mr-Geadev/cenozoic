@@ -512,5 +512,6 @@
   "ANSWER_TO_VACANCY_TITLE": "Отклик на вакансию",
   "SEND_RESPONSE": "Отправить отклк",
   "BEFORE_CREATE_VACANCY": "Сначала создайте вакансию",
-  "BEFORE_CREATE_RESUME": "Сначала создайте резюме"
+  "BEFORE_CREATE_RESUME": "Сначала создайте резюме",
+  "TO_YOURS_RESUME": "На ваше резюме"
 }

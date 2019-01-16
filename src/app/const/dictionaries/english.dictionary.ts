@@ -592,5 +592,5 @@ export const ENGLISH_DICTIONARY = {
   FAQ_PAGE_ANSWER_4: 'You can change your email address in the "Settings" tab. <br> <br> First log in to your account and click the Change email address link. If you have not received the letter, click on the "Spam" folder. <br> <br> Do not forget to follow the link in this. letter to confirm the change of mail address. After coming to the new email address.',
   FAQ_PAGE_QUESTION_5: 'Account Closing Instructions',
   FAQ_PAGE_ANSWER_5: 'To close your account, please go to the “Settings” page <br> <br> After you log in to your account, click on the link Close my account. You will be asked to confirm the action. If you are confident in your decision to close your account, click OK. If the account closure function is not available, you need to send a request to our support team for assistance.',
-
+  TO_YOURS_RESUME: 'To your resume',
 };

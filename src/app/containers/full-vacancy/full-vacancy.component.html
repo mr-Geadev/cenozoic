@@ -89,7 +89,7 @@
 			<div class="user-photo" *ngIf="currentVacancy.photoURL">
 				<img src="{{currentVacancy.photoURL}}">
 			</div>
-			<div class="default-photo" *ngIf="!currentVacancy.photoURL">
+			<div class="default-photo" *ngIf="!currentVacancy.photoURL" (click)="messages.info('Уведомление', 100000)">
 				<img src="/assets/images/icon-camera.svg">
 			</div>
 
