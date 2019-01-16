@@ -19,7 +19,7 @@ export class SystemMessageService {
     this._snackBar.open(message, null, {
       duration: duration,
       horizontalPosition: 'left',
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
     } as MatSnackBarConfig);
   }
 }
