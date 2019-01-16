@@ -24,7 +24,7 @@ import {
   MainPageModule, NewsFullPageModule,
   PersonalAccountPageModule, PrivacyPoliticsPageModule,
   QuestionnairePageModule,
-  ResumeFullPageModule,
+  ResumeFullPageModule, ServicePageModule,
   VacancyFullPageModule,
 } from 'pages';
 import { ConstructorNewsPageModule } from 'pages/constructor-news-page';
@@ -90,6 +90,7 @@ const ROUTES = [
     EditBannerPageModule,
     PrivacyPoliticsPageModule,
     AboutUsPageModule,
+    ServicePageModule,
 
     // Blocks
     PageHeaderModule,
