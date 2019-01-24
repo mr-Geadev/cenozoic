@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   public checkedUser: UserModel = null;
   public indexCheckedUser: number = null;
   public currentUser: any = null;
+  public isShowAnalytics: boolean = false;
 
   constructor(public usersApi: UsersApi,
               private _userService: UserService) {
@@ -27,5 +28,13 @@ export class UsersComponent implements OnInit {
   public showFullInfo(user: UserModel, index?: number): void {
     this.checkedUser = user;
     this.indexCheckedUser = index;
+  }
+
+  onShowAnalytics() {
+    this.isShowAnalytics = !this.isShowAnalytics;
+  }
+
+  hiddenAnalytic() {
+    this.isShowAnalytics = false;
   }
 }

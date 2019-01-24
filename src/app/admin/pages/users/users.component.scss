@@ -36,12 +36,16 @@
 
   .full-info-user {
 
+
+  }
+
+  .pin-top {
     mat-card {
       position: sticky;
       top: 10px;
     }
 
-    .close-full-info {
+    .close-card {
       position: absolute;
       top: 29px;
       right: 30px;

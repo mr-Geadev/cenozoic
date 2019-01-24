@@ -1,77 +1,103 @@
 <div class="row">
-    <div class="col" [class.col-8]="checkedUser">
-        <mat-card>
-            <mat-tab-group>
+	<div class="col" [class.col-8]="checkedUser && !isShowAnalytics" [class.col-4]="checkedUser && isShowAnalytics">
+		<mat-card>
+			<mat-tab-group>
 
-                <mat-tab label="Все">
-                    <table>
-                        <caption>Список всех аккаунтов на сайте</caption>
-                        <tr>
-                            <th>Email</th>
-                            <th>Имя/Контактое лицо</th>
-                            <th>Количество <br/> резюме/вакансий</th>
-                            <th>Название компании</th>
-                        </tr>
-                        <item-user *ngFor="let user of usersApi.userList; let i = index;"
-                                   [user]="user"
-                                   [class.unconfirmed]="user.status === 1"
-                                   [class.banned]="user.status === 9"
-                                   (click)="showFullInfo(user, i)"></item-user>
-                    </table>
-                </mat-tab>
+				<mat-tab label="Все">
+					<table>
+						<caption>Список всех аккаунтов на сайте</caption>
+						<tr>
+							<th>Email</th>
+							<th *ngIf="!isShowAnalytics">Имя/Контактое лицо</th>
+							<th *ngIf="!isShowAnalytics">Количество <br/> резюме/вакансий</th>
+							<th *ngIf="!isShowAnalytics">Название компании</th>
+						</tr>
+						<item-user *ngFor="let user of usersApi.userList; let i = index;"
+											 [user]="user"
+											 [class.unconfirmed]="user.status === 1"
+											 [class.banned]="user.status === 9"
+											 [isShowAnalytics]="isShowAnalytics"
+											 (click)="showFullInfo(user, i)"></item-user>
+					</table>
+				</mat-tab>
 
-                <mat-tab label="Компании">
-                    <table>
-                        <caption>Список всех работодателей зарегестрированных на сайте</caption>
-                        <tr>
-                            <th>Email</th>
-                            <th>Контактое лицо</th>
-                            <th>Количество <br/>вакансий</th>
-                            <th>Название компании</th>
-                        </tr>
-                        <item-user *ngFor="let user of usersApi.userList; let i = index;"
-                                   [user]="user" [class.hidden]="user.typeAccount !== 'employer'"
-                                   [class.unconfirmed]="user.status === 1"
-                                   [class.banned]="user.status === 9"
-                                   (click)="showFullInfo(user, i)"></item-user>
-                    </table>
-                </mat-tab>
+				<mat-tab label="Компании">
+					<table>
+						<caption>Список всех работодателей зарегестрированных на сайте</caption>
+						<tr>
+							<th>Email</th>
+							<th *ngIf="!isShowAnalytics">Контактое лицо</th>
+							<th *ngIf="!isShowAnalytics">Количество <br/>вакансий</th>
+							<th *ngIf="!isShowAnalytics">Название компании</th>
+						</tr>
+						<item-user *ngFor="let user of usersApi.userList; let i = index;"
+											 [user]="user" [class.hidden]="user.typeAccount !== 'employer'"
+											 [class.unconfirmed]="user.status === 1"
+											 [class.banned]="user.status === 9"
+											 [isShowAnalytics]="isShowAnalytics"
+											 (click)="showFullInfo(user, i)"></item-user>
+					</table>
+				</mat-tab>
 
-                <mat-tab label="Соискатели">
-                    <table>
-                        <caption>Список всех соискателей зарегестрированных на сайте</caption>
-                        <tr>
-                            <th>Email</th>
-                            <th>Имя</th>
-                            <th>Количество <br/> резюме/вакансий</th>
-                            <th></th>
-                        </tr>
-                        <item-user *ngFor="let user of usersApi.userList; let i = index;"
-                                   [user]="user" [class.hidden]="user.typeAccount !== 'worker'"
-                                   [class.unconfirmed]="user.status === 1"
-                                   [class.banned]="user.status === 9"
-                                   (click)="showFullInfo(user, i)"></item-user>
-                    </table>
-                </mat-tab>
+				<mat-tab label="Соискатели">
+					<table>
+						<caption>Список всех соискателей зарегестрированных на сайте</caption>
+						<tr>
+							<th>Email</th>
+							<th *ngIf="!isShowAnalytics">Имя</th>
+							<th *ngIf="!isShowAnalytics">Количество <br/> резюме/вакансий</th>
+							<th *ngIf="!isShowAnalytics"></th>
+						</tr>
+						<item-user *ngFor="let user of usersApi.userList; let i = index;"
+											 [user]="user" [class.hidden]="user.typeAccount !== 'worker'"
+											 [class.unconfirmed]="user.status === 1"
+											 [class.banned]="user.status === 9"
+											 [isShowAnalytics]="isShowAnalytics"
+											 (click)="showFullInfo(user, i)"></item-user>
+					</table>
+				</mat-tab>
 
-                <mat-tab label="Модераторы">
-                    <mat-list>
-                        <h3 mat-subheader>Список модераторов</h3>
-                        <item-user *ngFor="let user of usersApi.userList; let i = index;"
-                                   [user]="user" [class.hidden]="user.typeAccount !== 'moderator'"
-                                   (click)="showFullInfo(user, i)"></item-user>
-                    </mat-list>
-                </mat-tab>
+				<mat-tab label="Модераторы">
+					<mat-list>
+						<h3 mat-subheader>Список модераторов</h3>
+						<item-user *ngFor="let user of usersApi.userList; let i = index;"
+											 [user]="user" [class.hidden]="user.typeAccount !== 'moderator'"
+											 (click)="showFullInfo(user, i)"></item-user>
+					</mat-list>
+				</mat-tab>
 
-            </mat-tab-group>
-        </mat-card>
-    </div>
+			</mat-tab-group>
+		</mat-card>
+	</div>
 
-    <div class="full-info-user col-4" *ngIf="checkedUser">
-        <mat-card>
-            <mat-icon class="close-full-info" mat-list-icon (click)="showFullInfo(null)">close</mat-icon>
-            <full-user-info [user]="checkedUser" [index]="indexCheckedUser" [isAdmin]="currentUser.typeAccount === 'admin'"></full-user-info>
-        </mat-card>
-    </div>
+	<div class="full-info-user pin-top col-4" *ngIf="checkedUser">
+		<mat-card>
+			<mat-icon class="close-card" mat-list-icon (click)="showFullInfo(null)">close</mat-icon>
+			<full-user-info
+				[isShowAnalytics]="isShowAnalytics"
+				(onShowAnalytics)="onShowAnalytics($event)"
+				[user]="checkedUser"
+				[index]="indexCheckedUser"
+				[isAdmin]="currentUser.typeAccount === 'admin'"></full-user-info>
+		</mat-card>
+	</div>
+
+	<div class="user-analytic pin-top col-4"
+			 *ngIf="checkedUser && isShowAnalytics && checkedUser.typeAccount === 'employer'">
+		<mat-card *ngIf="isShowAnalytics">
+			<mat-icon class="close-card" mat-list-icon (click)="hiddenAnalytic()">close</mat-icon>
+			<employer-analytics
+				[user]="checkedUser"></employer-analytics>
+		</mat-card>
+	</div>
+
+	<div class="user-analytic pin-top col-4"
+			 *ngIf="checkedUser && isShowAnalytics && checkedUser.typeAccount === 'worker'">
+		<mat-card *ngIf="isShowAnalytics">
+			<mat-icon class="close-card" mat-list-icon (click)="hiddenAnalytic()">close</mat-icon>
+			<worker-analytics
+				[user]="checkedUser"></worker-analytics>
+		</mat-card>
+	</div>
 
 </div>

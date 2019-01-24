@@ -1,11 +1,11 @@
 <ng-container>
     <td>{{user.email}}</td>
 
-    <td >{{user.fullName}}</td>
+    <td *ngIf="!isShowAnalytics" >{{user.fullName}}</td>
 
-    <td class="number">{{ user.resumeCount || user.vacancyCount || 0 }}</td>
+    <td *ngIf="!isShowAnalytics" class="number">{{ user.resumeCount || user.vacancyCount || 0 }}</td>
 
-    <td>{{user.companyName || ''}}</td>
+    <td *ngIf="!isShowAnalytics">{{user.companyName || ''}}</td>
 </ng-container>
 
 <!--Компании: -->

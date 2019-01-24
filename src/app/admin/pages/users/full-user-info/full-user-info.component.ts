@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {ConfirmService} from '../../../../services/confirm.service';
 import {UserModel} from '../../../../models/user.model';
@@ -15,6 +15,8 @@ export class FullUserInfoComponent implements OnInit {
     @Input() user: UserModel;
     @Input() index: number;
     @Input() isAdmin: boolean;
+    @Input() isShowAnalytics: boolean;
+    @Output() onShowAnalytics = new EventEmitter<void>();
 
     constructor(private _usersApi: UsersApi,
                 private _confirm: ConfirmService,
@@ -42,4 +44,8 @@ export class FullUserInfoComponent implements OnInit {
                 this._dialog.closeAll();
             });
     }
+
+  showAnalytics() {
+    this.onShowAnalytics.emit();
+  }
 }

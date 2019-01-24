@@ -14,6 +14,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BannerComponent } from 'admin/pages/banner/banner.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news';
+import { EmployerAnalyticsComponent } from 'admin/pages/users/employer-analytics/employer-analytics.component';
+import { WorkerAnalyticsComponent } from 'admin/pages/users/worker-analytics/worker-analytics.component';
 import { NewsApi } from 'api';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -66,6 +68,8 @@ import { LocalizationApi } from '../api/localization.api';
     // containers
     ItemUserComponent,
     FullUserInfoComponent,
+    EmployerAnalyticsComponent,
+    WorkerAnalyticsComponent
   ],
   providers: [
     UsersApi,

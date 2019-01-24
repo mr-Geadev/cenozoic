@@ -9,6 +9,7 @@ import {UserModel} from '../../../../models/user.model';
 export class ItemUserComponent implements OnInit {
 
     @Input() user: UserModel;
+    @Input() isShowAnalytics: boolean;
 
     constructor() {
     }

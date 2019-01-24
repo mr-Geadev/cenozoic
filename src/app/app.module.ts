@@ -5,6 +5,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { AnalyticsApi } from 'api';
 
 import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
@@ -115,6 +116,7 @@ const ROUTES = [
     PopupsService,
     QuestionnaireService,
     SocketService,
+    AnalyticsApi,
 
     // Guards
     BlankAccountGuard,
