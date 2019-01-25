@@ -1,9 +1,33 @@
 <mat-card-header>
 	<mat-card-title>Статистика по пользователю</mat-card-title>
-	<mat-card-subtitle>Пользователь: {{user.fullName || user._id}}</mat-card-subtitle>
 </mat-card-header>
 
 
 <mat-card-content class="analytic">
+
+	<p>Просмотренно вакансий за день</p>
+	<div class="center">
+		<div class="no-data"  *ngIf="statWorkerViewVacancyPerDay.length === 0" >
+			Нет данных
+		</div>
+
+		<ngx-charts-bar-vertical-2d
+			[view]="[700, 400]"
+			[scheme]="{domain: ['#a4000d', '#5AA454']}"
+			[results]="statWorkerViewVacancyPerDay"
+			[xAxis]="true"
+			[yAxis]="true"
+			[legend]="true"
+			[legendTitle]="'Сколько'"
+			[showXAxisLabel]="true"
+			[showYAxisLabel]="true"
+			[xAxisLabel]="'День'"
+			[yAxisLabel]="'Резюме'"
+			[barPadding]="4"
+			[groupPadding]="12"
+			style="height: 400px; display: block;"
+		>
+		</ngx-charts-bar-vertical-2d>
+	</div>
 
 </mat-card-content>
