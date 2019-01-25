@@ -40,9 +40,19 @@
   }
 
   .pin-top {
-    mat-card {
-      position: sticky;
-      top: 10px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+
+    .scroll-container {
+      height: 100%;
+      overflow-y: scroll;
+      position: relative;
+    }
+
+    .mat-card {
+      margin-top: 10px;
     }
 
     .close-card {

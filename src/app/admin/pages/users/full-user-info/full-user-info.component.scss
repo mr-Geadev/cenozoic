@@ -20,6 +20,16 @@
     }
   }
 
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      width: 45%;
+      height: 100%;
+    }
+  }
+
   .mat-card-actions {
     display: flex;
     justify-content: space-around;
