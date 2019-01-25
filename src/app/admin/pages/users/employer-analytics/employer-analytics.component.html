@@ -60,7 +60,7 @@
 
 
 			<div class="center">
-				<div class="no-data"  *ngIf="statEmployerResponds[0].value === 0 && statEmployerResponds[1].value === 0">Нет данных</div>
+				<div class="no-data"  *ngIf="statEmployerOffers[0].value === 0 && statEmployerOffers[1].value === 0">Нет данных</div>
 				<ngx-charts-pie-chart
 					[view]="[300, 300]"
 					[scheme]="{domain: ['#474747', '#a0a0a0']}"
@@ -165,6 +165,47 @@
 			[showYAxisLabel]="true"
 			[xAxisLabel]="'День'"
 			[yAxisLabel]="'Резюме'"
+			[barPadding]="4"
+			[groupPadding]="12"
+			style="height: 400px; display: block;"
+		>
+		</ngx-charts-bar-vertical-2d>
+	</div>
+
+	<p>Отклики работодателя по дням</p>
+	<div class="checkboxes-of-statuses line">
+		<input type="checkbox" id="statEmployerRespondsPerDayActiveStatusesall" [(ngModel)]="statEmployerRespondsPerDayActiveStatuses.all" (change)="getStatEmployerRespondsPerDay()">
+		<label for="statEmployerRespondsPerDayActiveStatusesall">Все</label>
+
+		<input type="checkbox" id="statEmployerRespondsPerDayActiveStatusesawaiting" [(ngModel)]="statEmployerRespondsPerDayActiveStatuses.awaiting" (change)="getStatEmployerRespondsPerDay()">
+		<label for="statEmployerRespondsPerDayActiveStatusesawaiting">Ожидают</label>
+
+		<input type="checkbox" id="statEmployerRespondsPerDayActiveStatusesquestionnaire" [(ngModel)]="statEmployerRespondsPerDayActiveStatuses.questionnaire" (change)="getStatEmployerRespondsPerDay()">
+		<label for="statEmployerRespondsPerDayActiveStatusesquestionnaire">Ожидаю опросника</label>
+
+		<input type="checkbox" id="statEmployerRespondsPerDayActiveStatusesapproved" [(ngModel)]="statEmployerRespondsPerDayActiveStatuses.approved" (change)="getStatEmployerRespondsPerDay()">
+		<label for="statEmployerRespondsPerDayActiveStatusesapproved">Подтвержедны</label>
+
+		<input type="checkbox" id="statEmployerRespondsPerDayActiveStatusesrejected" [(ngModel)]="statEmployerRespondsPerDayActiveStatuses.rejected" (change)="getStatEmployerRespondsPerDay()">
+		<label for="statEmployerRespondsPerDayActiveStatusesrejected">Отклонены</label>
+	</div>
+	<div class="center">
+
+		<div class="no-data"  *ngIf="statEmployerRespondsPerDay.length === 0" >
+			Нет данных
+		</div>
+
+		<ngx-charts-bar-vertical-2d
+			[view]="[700, 400]"
+			[results]="statEmployerRespondsPerDay"
+			[xAxis]="true"
+			[yAxis]="true"
+			[legend]="true"
+			[legendTitle]="'Статусы'"
+			[showXAxisLabel]="true"
+			[showYAxisLabel]="true"
+			[xAxisLabel]="'День'"
+			[yAxisLabel]="'Откликов'"
 			[barPadding]="4"
 			[groupPadding]="12"
 			style="height: 400px; display: block;"
