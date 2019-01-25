@@ -69,6 +69,15 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
   };
   public statEmployerRespondsPerDay = [];
 
+  public statEmployerOffersPerDayActiveStatuses = {
+    all: true,
+    awaiting: true,
+    questionnaire: true,
+    approved: true,
+    rejected: true,
+  };
+  public statEmployerOffersPerDay = [];
+
   constructor(private analyticsApi: AnalyticsApi) {
   }
 
@@ -81,7 +90,7 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
     this.getAttitudeOffers();
     this.getStatEmployerResumePerDay();
     this.getStatEmployerRespondsPerDay();
-    this.getStatEmployerRespondsPerDay();
+    this.getStatEmployerOffersPerDay();
   }
 
   getStatEmployerResponds() {
@@ -199,10 +208,40 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
               newDay.series.push({ name: 'Отклонено', value: day.REJECTED });
             }
 
-            return newDay
+            return newDay;
           });
+        },
+      );
+  }
 
-          console.log(this.statEmployerRespondsPerDay);
+  getStatEmployerOffersPerDay() {
+    this.analyticsApi.statEmployerOffersPerDay(this.user._id)
+      .subscribe(
+        res => {
+          this.statEmployerOffersPerDay = res.statistics.map((day) => {
+            const newDay = {
+              name: moment(day.date).format('YY.MM.YY'),
+              series: [],
+            };
+
+            if (this.statEmployerOffersPerDayActiveStatuses.all) {
+              newDay.series.push({ name: 'Всего', value: day.AWAITING + day.QUESTIONNAIRE_DONE + day.APPROVED + day.REJECTED });
+            }
+            if (this.statEmployerOffersPerDayActiveStatuses.awaiting) {
+              newDay.series.push({ name: 'Ожидание', value: day.AWAITING });
+            }
+            if (this.statEmployerOffersPerDayActiveStatuses.questionnaire) {
+              newDay.series.push({ name: 'Ожидает опросника', value: day.QUESTIONNAIRE_DONE });
+            }
+            if (this.statEmployerOffersPerDayActiveStatuses.approved) {
+              newDay.series.push({ name: 'Одобрено', value: day.APPROVED });
+            }
+            if (this.statEmployerOffersPerDayActiveStatuses.rejected) {
+              newDay.series.push({ name: 'Отклонено', value: day.REJECTED });
+            }
+
+            return newDay;
+          });
         },
       );
   }

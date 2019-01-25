@@ -181,10 +181,10 @@
 		<label for="statEmployerRespondsPerDayActiveStatusesawaiting">Ожидают</label>
 
 		<input type="checkbox" id="statEmployerRespondsPerDayActiveStatusesquestionnaire" [(ngModel)]="statEmployerRespondsPerDayActiveStatuses.questionnaire" (change)="getStatEmployerRespondsPerDay()">
-		<label for="statEmployerRespondsPerDayActiveStatusesquestionnaire">Ожидаю опросника</label>
+		<label for="statEmployerRespondsPerDayActiveStatusesquestionnaire">Ожидают опросника</label>
 
 		<input type="checkbox" id="statEmployerRespondsPerDayActiveStatusesapproved" [(ngModel)]="statEmployerRespondsPerDayActiveStatuses.approved" (change)="getStatEmployerRespondsPerDay()">
-		<label for="statEmployerRespondsPerDayActiveStatusesapproved">Подтвержедны</label>
+		<label for="statEmployerRespondsPerDayActiveStatusesapproved">Подтверждeны</label>
 
 		<input type="checkbox" id="statEmployerRespondsPerDayActiveStatusesrejected" [(ngModel)]="statEmployerRespondsPerDayActiveStatuses.rejected" (change)="getStatEmployerRespondsPerDay()">
 		<label for="statEmployerRespondsPerDayActiveStatusesrejected">Отклонены</label>
@@ -206,6 +206,47 @@
 			[showYAxisLabel]="true"
 			[xAxisLabel]="'День'"
 			[yAxisLabel]="'Откликов'"
+			[barPadding]="4"
+			[groupPadding]="12"
+			style="height: 400px; display: block;"
+		>
+		</ngx-charts-bar-vertical-2d>
+	</div>
+
+	<p>Предложения работодателя по дням</p>
+	<div class="checkboxes-of-statuses line">
+		<input type="checkbox" id="statEmployerOffersPerDayActiveStatusesall" [(ngModel)]="statEmployerOffersPerDayActiveStatuses.all" (change)="getStatEmployerOffersPerDay()">
+		<label for="statEmployerOffersPerDayActiveStatusesall">Все</label>
+
+		<input type="checkbox" id="statEmployerOffersPerDayActiveStatusesawaiting" [(ngModel)]="statEmployerOffersPerDayActiveStatuses.awaiting" (change)="getStatEmployerOffersPerDay()">
+		<label for="statEmployerOffersPerDayActiveStatusesawaiting">Ожидают</label>
+
+		<input type="checkbox" id="statEmployerOffersPerDayActiveStatusesquestionnaire" [(ngModel)]="statEmployerOffersPerDayActiveStatuses.questionnaire" (change)="getStatEmployerOffersPerDay()">
+		<label for="statEmployerOffersPerDayActiveStatusesquestionnaire">Ожидаюn опросника</label>
+
+		<input type="checkbox" id="statEmployerOffersPerDayActiveStatusesapproved" [(ngModel)]="statEmployerOffersPerDayActiveStatuses.approved" (change)="getStatEmployerOffersPerDay()">
+		<label for="statEmployerOffersPerDayActiveStatusesapproved">Подтверждeны</label>
+
+		<input type="checkbox" id="statEmployerOffersPerDayActiveStatusesrejected" [(ngModel)]="statEmployerOffersPerDayActiveStatuses.rejected" (change)="getStatEmployerOffersPerDay()">
+		<label for="statEmployerOffersPerDayActiveStatusesrejected">Отклонены</label>
+	</div>
+	<div class="center">
+
+		<div class="no-data"  *ngIf="statEmployerOffersPerDay.length === 0" >
+			Нет данных
+		</div>
+
+		<ngx-charts-bar-vertical-2d
+			[view]="[700, 400]"
+			[results]="statEmployerOffersPerDay"
+			[xAxis]="true"
+			[yAxis]="true"
+			[legend]="true"
+			[legendTitle]="'Статусы'"
+			[showXAxisLabel]="true"
+			[showYAxisLabel]="true"
+			[xAxisLabel]="'День'"
+			[yAxisLabel]="'Предложения'"
 			[barPadding]="4"
 			[groupPadding]="12"
 			style="height: 400px; display: block;"
