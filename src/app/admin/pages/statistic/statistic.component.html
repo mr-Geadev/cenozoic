@@ -131,5 +131,61 @@
 			</div>
 		</div>
 
+		<div class="graph">
+			<p class="desc">Количество созданных новостей в день</p>
+
+			<div class="center">
+				<p class="no-data" *ngIf="statCommonNewNewsPerDay.length === 0">
+					нет данных
+				</p>
+
+				<ngx-charts-bar-vertical-2d
+					[view]="[1000, 400]"
+					[scheme]="{domain: ['#a4000d', '#5AA454']}"
+					[results]="statCommonNewNewsPerDay"
+					[xAxis]="true"
+					[yAxis]="true"
+					[legend]="true"
+					[legendTitle]="'Сколько'"
+					[showXAxisLabel]="true"
+					[showYAxisLabel]="true"
+					[xAxisLabel]="'День'"
+					[yAxisLabel]="'Новостей'"
+					[barPadding]="4"
+					[groupPadding]="12"
+					style="height: 400px; display: block;"
+				>
+				</ngx-charts-bar-vertical-2d>
+			</div>
+		</div>
+
+		<div class="graph">
+			<p class="desc">Количество новых баннеров в день</p>
+
+			<div class="center">
+				<p class="no-data" *ngIf="statCommonNewBannersPerDay.length === 0">
+					нет данных
+				</p>
+
+				<ngx-charts-bar-vertical-2d
+					[view]="[1000, 400]"
+					[scheme]="{domain: ['#a4000d', '#5AA454']}"
+					[results]="statCommonNewBannersPerDay"
+					[xAxis]="true"
+					[yAxis]="true"
+					[legend]="true"
+					[legendTitle]="'Сколько'"
+					[showXAxisLabel]="true"
+					[showYAxisLabel]="true"
+					[xAxisLabel]="'День'"
+					[yAxisLabel]="'Баннеров'"
+					[barPadding]="4"
+					[groupPadding]="12"
+					style="height: 400px; display: block;"
+				>
+				</ngx-charts-bar-vertical-2d>
+			</div>
+		</div>
+
 	</mat-card-content>
 </mat-card>

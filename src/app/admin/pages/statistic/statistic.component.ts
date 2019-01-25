@@ -42,6 +42,10 @@ export class StatisticComponent implements OnInit {
     { name: 'Отклонено', value: 5 },
   ];
 
+  statCommonNewNewsPerDay = [];
+
+  statCommonNewBannersPerDay = [];
+
   constructor(private analyticsApi: AnalyticsApi) {}
 
   ngOnInit() {
@@ -49,6 +53,8 @@ export class StatisticComponent implements OnInit {
     this.getStatCommonNewRespondsPerDay();
     this.getAttitudeResponds();
     this.getAttitudeOffers();
+    this.getStatCommonNewNewsPerDay();
+    this.getStatCommonNewBannersPerDay();
   }
 
   getStatCommonResumeViewBuyPerDay() {
@@ -126,6 +132,36 @@ export class StatisticComponent implements OnInit {
       { name: 'Принято', value: this.attitudeOffersTemplate[3].active ? this.attitudeOffersTemplate[3].value : 0 },
       { name: 'Отклонено', value: this.attitudeOffersTemplate[4].active ? this.attitudeOffersTemplate[4].value : 0 },
     ];
+  }
+
+  getStatCommonNewNewsPerDay() {
+    this.analyticsApi.statCommonNewNewsPerDay()
+      .subscribe(res => {
+        console.log(res);
+        this.statCommonNewNewsPerDay = res.statistics.map(day => {
+          return {
+            name: moment(day.date).format('DD.MM.YY'),
+            series: [
+              { name: 'Создано', value: day.count },
+            ],
+          };
+        });
+      });
+  }
+
+  getStatCommonNewBannersPerDay() {
+    this.analyticsApi.statCommonNewBannersPerDay()
+      .subscribe(res => {
+        console.log(res);
+        this.statCommonNewBannersPerDay = res.statistics.map(day => {
+          return {
+            name: moment(day.date).format('DD.MM.YY'),
+            series: [
+              { name: 'Создано', value: day.count },
+            ],
+          };
+        });
+      });
   }
 
 }
