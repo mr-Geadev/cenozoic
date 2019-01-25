@@ -6,7 +6,7 @@
 	<mat-card-content class="analytic">
 
 		<div class="graph">
-			<p class="desc">Новых откликов в день</p>
+			<p class="desc">Статистика покупок/просмотров резюме по дням</p>
 
 			<div class="center">
 				<p class="no-data" *ngIf="statCommonResumeViewBuyPerDay.length === 0">
@@ -25,6 +25,34 @@
 					[showYAxisLabel]="true"
 					[xAxisLabel]="'День'"
 					[yAxisLabel]="'Резюме'"
+					[barPadding]="4"
+					[groupPadding]="12"
+					style="height: 400px; display: block;"
+				>
+				</ngx-charts-bar-vertical-2d>
+			</div>
+		</div>
+
+		<div class="graph">
+			<p class="desc">Количество новых откликов в день</p>
+
+			<div class="center">
+				<p class="no-data" *ngIf="statCommonNewRespondsPerDay.length === 0">
+					нет данных
+				</p>
+
+				<ngx-charts-bar-vertical-2d
+					[view]="[1000, 400]"
+					[scheme]="{domain: ['#a4000d', '#5AA454']}"
+					[results]="statCommonNewRespondsPerDay"
+					[xAxis]="true"
+					[yAxis]="true"
+					[legend]="true"
+					[legendTitle]="'Сколько'"
+					[showXAxisLabel]="true"
+					[showYAxisLabel]="true"
+					[xAxisLabel]="'День'"
+					[yAxisLabel]="'Откликов'"
 					[barPadding]="4"
 					[groupPadding]="12"
 					style="height: 400px; display: block;"
