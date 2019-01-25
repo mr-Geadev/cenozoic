@@ -147,4 +147,29 @@
 		</div>
 	</div>
 
+	<p>Просмотренно/куплено резюме за день</p>
+	<div class="center">
+		<div class="no-data"  *ngIf="statEmployerResumePerDay.length === 0" >
+			Нет данных
+		</div>
+
+		<ngx-charts-bar-vertical-2d
+			[view]="[700, 400]"
+			[scheme]="{domain: ['#a4000d', '#5AA454']}"
+			[results]="statEmployerResumePerDay"
+			[xAxis]="true"
+			[yAxis]="true"
+			[legend]="true"
+			[legendTitle]="'Сколько'"
+			[showXAxisLabel]="true"
+			[showYAxisLabel]="true"
+			[xAxisLabel]="'День'"
+			[yAxisLabel]="'Резюме'"
+			[barPadding]="4"
+			[groupPadding]="12"
+			style="height: 400px; display: block;"
+		>
+		</ngx-charts-bar-vertical-2d>
+	</div>
+
 </mat-card-content>

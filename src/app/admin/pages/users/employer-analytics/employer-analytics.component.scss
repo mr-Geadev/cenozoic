@@ -24,16 +24,16 @@
       float: none !important;
     }
 
-    .center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  }
 
-      .no-data {
-        position: absolute;
-      }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .no-data {
+      position: absolute;
     }
-
   }
 
 

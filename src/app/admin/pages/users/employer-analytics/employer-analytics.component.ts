@@ -1,10 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component, Input, OnChanges, OnInit, ViewEncapsulation } from '@angular/core';
 import { AnalyticsApi } from 'api';
-import { ConfirmService } from '../../../../services/confirm.service';
+import * as moment from 'moment';
 import { UserModel } from '../../../../models/user.model';
-import { SystemMessageService, UserService } from '../../../../services';
-import { UsersApi } from '../users.api';
 
 @Component({
   selector: 'employer-analytics',
@@ -61,6 +58,8 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
     { name: 'Отклонено', value: 5 },
   ];
 
+  public statEmployerResumePerDay: any[] = [];
+
   constructor(private analyticsApi: AnalyticsApi) {
   }
 
@@ -71,6 +70,7 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
     this.getStatEmployerOffers();
     this.getAttitudeResponds();
     this.getAttitudeOffers();
+    this.getEmployerResumePerDay();
   }
 
   getStatEmployerResponds() {
@@ -143,6 +143,23 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
       { name: 'Принято', value: this.attitudeOffersTemplate[3].active ? this.attitudeOffersTemplate[3].value : 0 },
       { name: 'Отклонено', value: this.attitudeOffersTemplate[4].active ? this.attitudeOffersTemplate[4].value : 0 },
     ];
+  }
+
+  getEmployerResumePerDay() {
+    this.analyticsApi.statEmployerResumePerDay(this.user._id)
+      .subscribe(
+        res => {
+          this.statEmployerResumePerDay = res.statistics.map(day => {
+            return {
+              name: moment(day.date).format('YY.MM.YY'),
+              series: [
+                { name: 'Просмотренно', value: day.resumeViewCount || 0 },
+                { name: 'Куплено', value: day.payResumeContactsCount || 0 },
+              ],
+            };
+          });
+        },
+      );
   }
 }
 
