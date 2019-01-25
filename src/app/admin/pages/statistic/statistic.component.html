@@ -59,7 +59,76 @@
 				>
 				</ngx-charts-bar-vertical-2d>
 			</div>
+		</div>
 
+		<div class="flex-container">
+			<div class="graph">
+				<p class="desc">Соотношение откликов по статусам</p>
+
+				<div class="checkboxes-of-statuses">
+					<input type="checkbox" id="statusRespond0" [(ngModel)]="attitudeRespondsTemplate[0].active" (change)="updateAttitudeResponds()">
+					<label for="statusRespond0">{{attitudeRespondsTemplate[0].name}}</label>
+
+					<input type="checkbox" id="statusRespond1" [(ngModel)]="attitudeRespondsTemplate[1].active" (change)="updateAttitudeResponds()">
+					<label for="statusRespond1">{{attitudeRespondsTemplate[1].name}}</label>
+
+					<input type="checkbox" id="statusRespond2" [(ngModel)]="attitudeRespondsTemplate[2].active" (change)="updateAttitudeResponds()">
+					<label for="statusRespond2">{{attitudeRespondsTemplate[2].name}}</label>
+
+					<input type="checkbox" id="statusRespond3" [(ngModel)]="attitudeRespondsTemplate[3].active" (change)="updateAttitudeResponds()">
+					<label for="statusRespond3">{{attitudeRespondsTemplate[3].name}}</label>
+
+					<input type="checkbox" id="statusRespond4" [(ngModel)]="attitudeRespondsTemplate[4].active" (change)="updateAttitudeResponds()">
+					<label for="statusRespond4">{{attitudeRespondsTemplate[4].name}}</label>
+				</div>
+				<div class="center">
+					<div class="no-data"  *ngIf="attitudeResponds[0].value === 0 && attitudeResponds[1].value === 0 && attitudeResponds[2].value === 0 && attitudeResponds[3].value === 0 && attitudeResponds[4].value === 0" >
+						Нет данных
+					</div>
+					<ngx-charts-pie-chart
+						[view]="[300, 300]"
+						[scheme]="{domain: ['#474747', '#a05713', '#a0a0a0', '#a01418', '#41a026']}"
+						[results]="attitudeResponds"
+						[legend]="false"
+						[trimLabels]="false"
+					>
+					</ngx-charts-pie-chart>
+				</div>
+			</div>
+
+			<div class="graph">
+				<p class="desc">Соотношение предложений по статусам</p>
+
+				<div class="checkboxes-of-statuses">
+					<input type="checkbox" id="statusOffers0" [(ngModel)]="attitudeOffersTemplate[0].active" (change)="updateAttitudeOffers()">
+					<label for="statusOffers0">{{attitudeOffersTemplate[0].name}}</label>
+
+					<input type="checkbox" id="statusOffers1" [(ngModel)]="attitudeOffersTemplate[1].active" (change)="updateAttitudeOffers()">
+					<label for="statusOffers1">{{attitudeOffersTemplate[1].name}}</label>
+
+					<input type="checkbox" id="statusOffers2" [(ngModel)]="attitudeOffersTemplate[2].active" (change)="updateAttitudeOffers()">
+					<label for="statusOffers2">{{attitudeOffersTemplate[2].name}}</label>
+
+					<input type="checkbox" id="statusOffers3" [(ngModel)]="attitudeOffersTemplate[3].active" (change)="updateAttitudeOffers()">
+					<label for="statusOffers3">{{attitudeOffersTemplate[3].name}}</label>
+
+					<input type="checkbox" id="statusOffers4" [(ngModel)]="attitudeOffersTemplate[4].active" (change)="updateAttitudeOffers()">
+					<label for="statusOffers4">{{attitudeOffersTemplate[4].name}}</label>
+				</div>
+				<div class="center">
+					<div class="no-data"  *ngIf="attitudeOffers[0].value === 0 && attitudeOffers[1].value === 0 && attitudeOffers[2].value === 0 && attitudeOffers[3].value === 0 && attitudeOffers[4].value === 0" >
+						Нет данных
+					</div>
+					<ngx-charts-pie-chart
+						[view]="[300, 300]"
+						[scheme]="{domain: ['#474747', '#a05713', '#a0a0a0', '#a01418', '#41a026']}"
+						[results]="attitudeOffers"
+						[legend]="false"
+						[trimLabels]="false"
+					>
+					</ngx-charts-pie-chart>
+				</div>
+			</div>
 		</div>
 
 	</mat-card-content>
