@@ -70,7 +70,7 @@
 		</mat-card>
 	</div>
 
-	<div class="full-info-user pin-top col-4" *ngIf="checkedUser">
+	<div class="full-info-user pin-top" [class.col-4]="!isShowAnalytics" [class.col-8]="isShowAnalytics" *ngIf="checkedUser">
 		<mat-card>
 			<mat-icon class="close-card" mat-list-icon (click)="showFullInfo(null)">close</mat-icon>
 			<full-user-info
@@ -80,24 +80,25 @@
 				[index]="indexCheckedUser"
 				[isAdmin]="currentUser.typeAccount === 'admin'"></full-user-info>
 		</mat-card>
+
+		<div class="user-analytic"
+				 *ngIf="checkedUser && isShowAnalytics && checkedUser.typeAccount === 'employer'">
+			<mat-card *ngIf="isShowAnalytics">
+				<mat-icon class="close-card" mat-list-icon (click)="hiddenAnalytic()">close</mat-icon>
+				<employer-analytics
+					[user]="checkedUser"></employer-analytics>
+			</mat-card>
+		</div>
+
+		<div class="user-analytic"
+				 *ngIf="checkedUser && isShowAnalytics && checkedUser.typeAccount === 'worker'">
+			<mat-card *ngIf="isShowAnalytics">
+				<mat-icon class="close-card" mat-list-icon (click)="hiddenAnalytic()">close</mat-icon>
+				<worker-analytics
+					[user]="checkedUser"></worker-analytics>
+			</mat-card>
+		</div>
 	</div>
 
-	<div class="user-analytic pin-top col-4"
-			 *ngIf="checkedUser && isShowAnalytics && checkedUser.typeAccount === 'employer'">
-		<mat-card *ngIf="isShowAnalytics">
-			<mat-icon class="close-card" mat-list-icon (click)="hiddenAnalytic()">close</mat-icon>
-			<employer-analytics
-				[user]="checkedUser"></employer-analytics>
-		</mat-card>
-	</div>
-
-	<div class="user-analytic pin-top col-4"
-			 *ngIf="checkedUser && isShowAnalytics && checkedUser.typeAccount === 'worker'">
-		<mat-card *ngIf="isShowAnalytics">
-			<mat-icon class="close-card" mat-list-icon (click)="hiddenAnalytic()">close</mat-icon>
-			<worker-analytics
-				[user]="checkedUser"></worker-analytics>
-		</mat-card>
-	</div>
 
 </div>
