@@ -1,0 +1,29 @@
+.analytic {
+
+  .graph {
+    margin-top: 50px;
+  }
+
+  .desc {
+    margin-bottom: 20px;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .no-data {
+      position: absolute;
+    }
+  }
+
+  .checkboxes-of-statuses.line {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+
+}

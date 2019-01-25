@@ -171,7 +171,7 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
         res => {
           this.statEmployerResumePerDay = res.statistics.map(day => {
             return {
-              name: moment(day.date).format('YY.MM.YY'),
+              name: moment(day.date).format('DD.MM.YY'),
               series: [
                 { name: 'Просмотренно', value: day.resumeViewCount || 0 },
                 { name: 'Куплено', value: day.payResumeContactsCount || 0 },
@@ -188,7 +188,7 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
         res => {
           this.statEmployerRespondsPerDay = res.statistics.map((day) => {
             const newDay = {
-              name: moment(day.date).format('YY.MM.YY'),
+              name: moment(day.date).format('DD.MM.YY'),
               series: [],
             };
 
@@ -220,7 +220,7 @@ export class EmployerAnalyticsComponent implements OnInit, OnChanges {
         res => {
           this.statEmployerOffersPerDay = res.statistics.map((day) => {
             const newDay = {
-              name: moment(day.date).format('YY.MM.YY'),
+              name: moment(day.date).format('DD.MM.YY'),
               series: [],
             };
 
