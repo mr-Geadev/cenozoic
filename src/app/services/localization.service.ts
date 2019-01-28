@@ -11,7 +11,7 @@ const LOCALIZATION = 'localization';
 
 @Injectable()
 export class LocalizationService {
-  public readonly currentDictionary: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  public readonly currentDictionary: BehaviorSubject<any> = new BehaviorSubject<any>(this._detectLanguage() === 'ru' ? RUSSIAN_DICTIONARY : ENGLISH_DICTIONARY);
   public readonly currentLanguage: string = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -20,11 +20,9 @@ export class LocalizationService {
 
     switch (this.currentLanguage) {
       case LANGUAGES.RUSSIAN:
-        this.currentDictionary.next(RUSSIAN_DICTIONARY);
         http.get('/api/v1/admin/localization/get?language=ru').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
         break;
       case LANGUAGES.ENGLISH:
-        this.currentDictionary.next(ENGLISH_DICTIONARY);
         http.get('/api/v1/admin/localization/get?language=en').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
         break;
     }
