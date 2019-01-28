@@ -27,12 +27,12 @@
 	<div class="title">
 		{{dictionary.EDUCATION}}
 	</div>
-	<div *ngFor="let education of resume.education; let j = index">
-		<div class="value" *ngIf="!education.faculty && j < 2">
-			{{education.university}}
+	<div>
+		<div class="value" *ngIf="!resume.education[0].faculty">
+			{{resume.education[0].university}}
 		</div>
-		<div class="value" *ngIf="education.faculty && j < 2">
-			{{education.university}}, {{education.faculty}}
+		<div class="value" *ngIf="resume.education[0].faculty">
+			{{resume.education[0].university}}, {{resume.education[0].faculty}}
 		</div>
 	</div>
 </div>
