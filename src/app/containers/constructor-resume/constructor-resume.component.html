@@ -586,10 +586,10 @@
                             <div class="hidden-wrapper" [class.hidden]="!listVisibleElement.trainings[i]">
                                 <div class="parameter year-training">
                                     <div class="left">
-                                        <label for="year-training">{{dictionary.TRAINING_YEAR}}</label>
+                                        <label for="year-training">{{dictionary.TRAINING_YEAR}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
-                                        <input type="text" name="training-year-{{i}}" id="year-training"
+                                        <input type="text" name="training-year-{{i}}" id="year-training" required
                                                class="short-input" [(ngModel)]="resumeForm.trainings[i].year">
                                         <div class="validation-alert">{{dictionary.VALID_ENTRY_DATE}}</div>
                                     </div>
@@ -597,11 +597,12 @@
 
                                 <div class="parameter durability-training">
                                     <div class="left">
-                                        <label for="durability-training">{{dictionary.TRAINING_DURABILITY}}</label>
+                                        <label for="durability-training">{{dictionary.TRAINING_DURABILITY}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="training-durability-{{i}}" id="durability-training"
                                                class="short-input"
+                                               required
                                                [(ngModel)]="resumeForm.trainings[i].durability">
                                         <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                     </div>
@@ -628,7 +629,7 @@
 
                                 <div class="parameter city-training">
                                     <div class="left">
-                                        <label for="city-training">{{dictionary.TRAINING_CITY}}</label>
+                                        <label for="city-training">{{dictionary.TRAINING_CITY}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <button mat-raised-button color="primary" (click)="changeCity(i, 'trainings')">
@@ -643,7 +644,7 @@
 
                                 <div class="parameter name-training">
                                     <div class="left">
-                                        <label for="name-training">{{dictionary.TRAINING_NAME}}</label>
+                                        <label for="name-training">{{dictionary.TRAINING_NAME}}<span class="required">*</span></label>
                                     </div>
                                     <div class="right">
                                         <input type="text" name="training-name-{{i}}" id="name-training"
@@ -749,7 +750,7 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime && !isBirthdayInvalid && isValidExperienceTime">
+                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime && !isBirthdayInvalid && isValidExperienceTime && isValidCityTrainings">
                             {{ dictionary.SAVE }}
                         </button>
                         <button type="submit" class="save-button invalid"
@@ -757,7 +758,7 @@
                             {{ dictionary.BUTTON_SAVE_ALERT }}
                         </button>
                         <button type="submit" class="save-button invalid"
-                                *ngIf="!myForm.invalid && !isValidExperienceTime">
+                                *ngIf="!myForm.invalid && (!isValidExperienceTime || !isValidCityTrainings)">
                             {{ dictionary.BUTTON_SAVE_ALERT }}
                         </button>
                         <button type="submit" class="save-button invalid"

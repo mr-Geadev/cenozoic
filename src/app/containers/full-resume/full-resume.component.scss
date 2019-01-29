@@ -177,6 +177,7 @@
 
       td.work {
         min-width: 400px;
+        max-width: calc(100% - 250px);
       }
 
       .time-work {

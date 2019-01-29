@@ -54,6 +54,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
   public LocalizationService = LocalizationService;
   public validExperienceTime: boolean[] = [];
   public isValidExperienceTime: boolean = true;
+  public validCityTrainings: boolean[] = [];
+  public isValidCityTrainings: boolean = true;
 
   public textEditorConfig: any = {}; // для RichTextComponent'ы
   public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
@@ -129,6 +131,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             this.resumeForm.trainings.forEach((training, index) => {
               training.document = false;
               training.documentName = null;
+              this.validCityTrainings.push(true);
               this.nameImagesOfCertificate[index] = 'Выбрать фото';
             });
           } else {
@@ -197,6 +200,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
           break;
         case 'trainings':
           typeField = Object.assign({}, DEFAULT_TRAINING);
+          this.validCityTrainings.push(false);
+          this.isValidCityTrainings = false;
           this.nameImagesOfCertificate.push(this.dictionary.TRAINING_CERTIFICATE_LOAD);
           this.imagesOfCertificate.push(Object.assign({}, DEFAULT_CERTIFICATE_IMAGE));
           break;
@@ -214,6 +219,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
               this.nameImagesOfCertificate.splice(index, 1);
               this.imagesOfCertificate.splice(index, 1);
               this.trainingsCityName.splice(index, 1);
+              this.validCityTrainings.splice(index, 1);
+              this.isValidCityTrainings = this.validCityTrainings.findIndex(elem => elem === false) === -1;
             }
             if (nameSection === 'experience') {
               this.validExperienceTime.splice(index, 1);
@@ -238,6 +245,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
           this.resumeForm.trainings[index].city = city.code;
           this.resumeForm.trainings[index].country = city.codeCountry;
           this.trainingsCityName[index] = city.name;
+          this.validCityTrainings[index] = true;
+          this.isValidCityTrainings = this.validCityTrainings.findIndex(elem => elem === false) === -1;
         }
         subscribe.unsubscribe();
       });

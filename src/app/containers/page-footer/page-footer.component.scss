@@ -113,23 +113,31 @@
   }
 
   .cenozoic-group {
+
+    .community {
+      max-width: 80%;
+    }
+
     @media (min-width: 768px) {
       .mobile {
         display: none;
+        margin: auto;
       }
     }
     @media (max-width: 768px) {
       flex-direction: row;
       justify-content: space-between;
+
+      .community {
+        max-width: 40%;
+        margin: auto;
+      }
     }
     @media (max-width: 400px) {
       margin-top: 20px;
 
       .rhinoceros {
         width: 60%;
-      }
-      .community {
-        width: 30%;
       }
     }
   }
