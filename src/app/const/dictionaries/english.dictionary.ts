@@ -178,6 +178,7 @@ export const ENGLISH_DICTIONARY = {
   'FULL_DAY': 'Full',
   'REMOTE': 'Remote',
   'SHIFT': 'Shift',
+  'SHIFT_WORK': 'Shift work',
   'EMPLOYMENT': 'Employment ',
   'FULL_EMPLOYMENT': 'Full',
   'PART': 'Part-time',

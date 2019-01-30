@@ -178,6 +178,7 @@ export const RUSSIAN_DICTIONARY = {
     'FULL_DAY': 'Полный день',
     'REMOTE': 'Удаленная работа',
     'SHIFT': 'Вахтовый метод',
+    'SHIFT_WORK': 'Сменный график',
     'EMPLOYMENT': 'Занятость',
     'FULL_EMPLOYMENT': 'Полная занятость',
     'PART': 'Частичная занятость',
