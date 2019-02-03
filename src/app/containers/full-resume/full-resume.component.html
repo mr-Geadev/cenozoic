@@ -161,7 +161,7 @@
         </div>
     </div>
 
-    <div class="row add-info" *ngIf="currentResume.experience.length > 0">
+    <div class="row add-info" *ngIf="currentUser && currentResume.experience.length > 0">
         <div class="col">
             <div class="title">
                 {{dictionary.EXPERIENCE}}
@@ -189,7 +189,7 @@
     </div>
 
 
-    <div class="row add-info education" *ngIf="currentResume.education.length > 0">
+    <div class="row add-info education" *ngIf="currentUser &&  currentResume.education.length > 0">
         <div class="col">
             <div class="title">
                 <!--Учебные заведения-->
@@ -221,7 +221,7 @@
         </div>
     </div>
 
-    <div class="row add-info languages" *ngIf="currentResume.languages.length > 0">
+    <div class="row add-info languages" *ngIf="currentUser &&  currentResume.languages.length > 0">
         <div class="col">
             <div class="title">
                 <!--Знание языков-->
@@ -253,7 +253,7 @@
         </div>
     </div>
 
-    <div class="row add-info trainings" *ngIf="currentResume.trainings.length > 0">
+    <div class="row add-info trainings" *ngIf="currentUser && currentResume.trainings.length > 0">
         <div class="col">
             <div class="title">
                 <!--Профессиональные компетенции, Курсы, тренинги, сертификаты-->
@@ -281,7 +281,7 @@
         </div>
     </div>
 
-    <div class="row add-info additional" *ngIf="currentResume.additionalInformation">
+    <div class="row add-info additional" *ngIf="currentUser && currentResume.additionalInformation">
         <div class="col">
             <div class="title">
                 <!--Дополнительная информация-->
@@ -292,7 +292,7 @@
         </div>
     </div>
 
-    <div class="row add-info personal-properties" *ngIf="currentResume.personalQualities">
+    <div class="row add-info personal-properties" *ngIf="currentUser &&  currentResume.personalQualities">
         <div class="col">
             <div class="title">
                 <!--Личные качества-->
@@ -303,7 +303,7 @@
         </div>
     </div>
 
-    <div class="row add-info hobbies" *ngIf="currentResume.hobbies">
+    <div class="row add-info hobbies" *ngIf="currentUser && currentResume.hobbies">
         <div class="col">
             <div class="title">
                 <!--Увлечения-->
@@ -314,7 +314,7 @@
         </div>
     </div>
 
-    <div class="row add-info contacts">
+    <div class="row add-info contacts" *ngIf="currentUser">
         <div class="col">
             <div class="title">
                 <!--Контактные данные-->
