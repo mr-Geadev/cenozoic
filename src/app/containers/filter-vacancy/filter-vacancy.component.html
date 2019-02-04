@@ -11,6 +11,7 @@
             <div class="row">
                 <mat-form-field>
                     <input matInput
+                           readonly
                            name="city"
                            placeholder="{{dictionary.REGION_OF_ACTIVITY}}"
                            value="{{ filterVacancyService.parameters.city ? citiesService.locations.getCityToCode(filterVacancyService.parameters.city).name : dictionary.CHANGE_CITY }}"

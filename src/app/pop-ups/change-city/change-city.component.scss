@@ -1,5 +1,7 @@
 :host {
   position: relative;
+  display: block;
+  height: 100%;
 
   .title {
     font-family: 'Bebas Neue Bold';
@@ -44,5 +46,13 @@
         background-color: rgba(0, 0, 0, .14);
       }
     }
+  }
+
+  .inline-link {
+    margin-top: -3px;
+    display: block;
+    position: absolute;
+    width: 290px;
+    top: 100%;
   }
 }
