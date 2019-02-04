@@ -430,6 +430,7 @@ export const RUSSIAN_DICTIONARY = {
   'FAQ_SUPPORT_THEME_2': 'Общие вопросы',
   'FAQ_SUPPORT_THEME_3': 'Проблемы с оплатой',
   'FAQ_SUPPORT_THEME_4': 'Пожелания к улучшению сервиса',
+  'FAQ_SUPPORT_THEME_5': 'Нет нужного города',
   'FAQ_SUPPORT_FORM_TITLE': 'Отправить свой вопрос',
   'FAQ_SUPPORT_FORM_CHANGE_REASON': 'Выберите одну из причин',
   'FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL': 'Описание (пожалуйста опишите свою проблему подробно)',
@@ -516,4 +517,5 @@ export const RUSSIAN_DICTIONARY = {
   'BEFORE_CREATE_RESUME': 'Сначала создайте резюме',
   'TO_YOURS_RESUME': 'На ваше резюме',
   'EXPORT_PDF': 'Сохранить в PDF',
+  'ADVERTISING_RECORD': 'Рекламная запись',
 };

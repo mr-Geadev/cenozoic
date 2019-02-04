@@ -10,6 +10,10 @@
 						{{ news.title }}
 					</div>
 
+					<div class="adds" *ngIf="news?.publicate">
+						{{ dictionary.ADVERTISING_RECORD}}
+					</div>
+
 					<div class="description" >
 						{{ news.shortDescription }}
 					</div>
@@ -19,7 +23,11 @@
 					<!--</div>-->
 
 					<div class="date" *ngIf="!news?.publicate">
-						{{ dictionary.NEWS_COMMENTS_COUNTER}}: {{ this.news?.comments.length }}
+						{{ dictionary.NEWS_COMMENTS_COUNTER}}: {{ news?.comments.length }}
+					</div>
+
+					<div class="date" *ngIf="news?.publicate">
+						{{ news?.companyName }}
 					</div>
 				</div>
 			</a>

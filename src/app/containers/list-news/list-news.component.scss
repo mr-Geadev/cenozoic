@@ -52,7 +52,7 @@
           padding: 10px 10px 24px !important;
         }
 
-        .description {
+        .description, .date, .adds {
           display: none !important;
         }
       }
@@ -74,6 +74,11 @@
           line-height: 1.2;
           height: 50px;
           overflow: hidden;
+        }
+
+        .adds {
+          color: $orange;
+          position: absolute;
         }
 
         .description {

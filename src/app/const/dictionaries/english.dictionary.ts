@@ -430,6 +430,7 @@ export const ENGLISH_DICTIONARY = {
   'FAQ_SUPPORT_THEME_2': 'General issues',
   'FAQ_SUPPORT_THEME_3': 'Issue with payment',
   'FAQ_SUPPORT_THEME_4': 'Wishes to improve the service',
+  'FAQ_SUPPORT_THEME_5': 'Not found city',
   'FAQ_SUPPORT_FORM_TITLE': 'Submit your question',
   'FAQ_SUPPORT_FORM_CHANGE_REASON': 'Choose one of the reasons',
   'FAQ_SUPPORT_FORM_PROBLEM_DESC_LABEL': 'Description (please describe your issue in detail)',
@@ -516,4 +517,5 @@ export const ENGLISH_DICTIONARY = {
   'BEFORE_CREATE_RESUME': 'First create a resume',
   'TO_YOURS_RESUME': 'To your resume',
   'EXPORT_PDF': 'Save resume as PDF',
+  'ADVERTISING_RECORD': 'Advertising record',
 };

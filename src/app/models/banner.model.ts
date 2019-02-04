@@ -13,6 +13,7 @@ export class BannerModel {
   text: string;
   userId: string;
   language: string;
+  companyName: string;
   timeoutDate: Moment = null;
 
   constructor(news) {
@@ -23,6 +24,7 @@ export class BannerModel {
     this.changeDate = moment(news.changeDate);
     this.photoURL = news.photoURL;
     this.publicate = news.publicate;
+    this.companyName = news.companyName;
     this.language = news.language;
     this.text = news.text;
     this.userId = news.userId;

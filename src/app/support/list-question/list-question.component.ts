@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ChatComponent } from 'support/chat';
 import { LocalizationService } from 'services';
@@ -9,7 +9,7 @@ import * as moment from 'moment';
   templateUrl: './list-question.component.html',
   styleUrls: ['./list-question.component.scss'],
 })
-export class ListQuestionComponent {
+export class ListQuestionComponent implements OnInit  {
 
   @Input('list') list;
   public dictionary: any = {};
@@ -29,5 +29,12 @@ export class ListQuestionComponent {
   public timeCreation(time) {
     const local = LocalizationService.currentLang();
     return moment(time).locale(local).format('HH:mm, DD MMMM  YYYY');
+  }
+
+  ngOnInit() {
+    this._localizationService.currentDictionary
+      .subscribe(
+        res => this.dictionary = res,
+      );
   }
 }
