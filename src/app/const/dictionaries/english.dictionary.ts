@@ -515,4 +515,5 @@ export const ENGLISH_DICTIONARY = {
   'BEFORE_CREATE_VACANCY': 'First create a job',
   'BEFORE_CREATE_RESUME': 'First create a resume',
   'TO_YOURS_RESUME': 'To your resume',
+  'EXPORT_PDF': 'Save resume as PDF',
 };
