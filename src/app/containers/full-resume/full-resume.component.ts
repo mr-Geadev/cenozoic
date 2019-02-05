@@ -1,5 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ResumeApi } from 'api';
@@ -9,8 +10,8 @@ import { PayingModalService } from 'pop-ups/paying';
 import { ConfirmService, LocalizationService, ResumeService, UserService } from '../../services';
 import { CitiesService } from '../../services/cities.service';
 import { PopupsService } from '../../services/popups.service';
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
+// import * as jspdf from 'jspdf';
+// import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'full-resume',
@@ -24,6 +25,7 @@ export class FullResumeComponent implements OnInit {
   public currentUser: any;
   private id: string = null;
   public nationalitiesDefault: any[] = null;
+  isBrowser;
 
   public showContactData: boolean = false;
 
@@ -37,8 +39,10 @@ export class FullResumeComponent implements OnInit {
               public confirmService: ConfirmService,
               private _dialog: MatDialog,
               private payingModalService: PayingModalService,
+              @Inject(PLATFORM_ID) private platformId: Object,
               private _localizationService: LocalizationService) {
     this.id = activateRoute.snapshot.params['id'];
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit(): void {
@@ -171,20 +175,25 @@ export class FullResumeComponent implements OnInit {
     }
   }
 
-  public captureScreen() {
-    const data = document.getElementById('contentToConvert');
-    html2canvas(data).then(canvas => {
-      // Few necessary setting options
-      let imgWidth = 208;
-      let pageHeight = 295;
-      let imgHeight = canvas.height * imgWidth / canvas.width;
-      let heightLeft = imgHeight;
+  // public captureScreen() {
+  //   if (this.isBrowser) {
+  //     const data = document.getElementById('contentToConvert');
+  //     html2canvas(data).then(canvas => {
+  //       // Few necessary setting options
+  //       let imgWidth = 208;
+  //       let pageHeight = 295;
+  //       let imgHeight = canvas.height * imgWidth / canvas.width;
+  //       let heightLeft = imgHeight;
+  //
+  //       const contentDataURL = canvas.toDataURL('image/png')
+  //       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+  //       let position = 0;
+  //       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+  //       pdf.save(`${this.currentResume.fullName}.pdf`); // Generated PDF
+  //     });
+  //   }
+  // }
 
-      const contentDataURL = canvas.toDataURL('image/png')
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-      let position = 0;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-      pdf.save(`${this.currentResume.fullName}.pdf`); // Generated PDF
-    });
-  }
+  // "jspdf": "^1.5.3",
+  // "html2canvas": "^1.0.0-alpha.12",
 }
