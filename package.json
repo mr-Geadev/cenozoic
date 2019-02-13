@@ -13,6 +13,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json --open",
+    "ngrok": "ng serve  --proxy-config proxy.conf.json --live-reload=false --host 0.0.0.0 --disableHostCheck true",
     "hmr": "ng serve --proxy-config proxy.conf.json --open --configuration hmr",
     "build": "ng build",
     "test": "ng test",
