@@ -3,3 +3,22 @@
 <router-outlet></router-outlet>
 
 <page-footer [hidden]="isAdminPanel"></page-footer>
+
+<div class="beta-modal" [class.hide]="isBetaModalHide === '1'">
+	<div class="bg" (click)="hideBetaModal()"></div>
+	<div class="window">
+		<div class="text" *ngIf="currentLang === 'ru'">
+			Интернет-ресурс находится в процессе начального тестирования и отладки функционала. <br>
+			Просьба ваши пожелания по улучшению Ресурса направлять нам на электронные адрес tech.support@cnzcommunity.com или через онлайн форму на
+			странице<a routerLink="/faq" target="_blank" class="inline-link"> Поддержка</a>
+		</div>
+
+		<div class="text" *ngIf="currentLang === 'en'">
+			The online resource is in the process of initial testing and debugging functionality. <br>
+			Please send your suggestions on improving the Resource to us at the email address tech.support@cnzcommunity.com or via the online form to
+			page <a routerLink="/faq" target="_blank" class="inline-link">Support</a>
+		</div>
+
+		<button class="button" (click)="hideBetaModal()">Ок</button>
+	</div>
+</div>

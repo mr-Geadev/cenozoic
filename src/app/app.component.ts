@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { LocalizationService, SocketService, SystemMessageService, UserService } from './services';
 import { CitiesService } from './services/cities.service';
@@ -13,10 +14,13 @@ export class AppComponent implements OnInit {
 
   public isAdminPanel: boolean = false;
   public dictionary: any = {};
+  public currentLang: string;
+  isBetaModalHide: string = '0';
 
   constructor(private userService: UserService,
               private locations: CitiesService,
               private socket: SocketService,
+              @Inject(PLATFORM_ID) private platformId: Object,
               private messages: SystemMessageService,
               private _localizationService: LocalizationService,
               private router: Router) {
@@ -33,6 +37,8 @@ export class AppComponent implements OnInit {
     this.userService.getUserInfo();
     this.locations.getCities();
 
+    this.currentLang = LocalizationService.currentLang();
+
     this._localizationService.currentDictionary
       .subscribe(
         res => this.dictionary = res
@@ -44,6 +50,14 @@ export class AppComponent implements OnInit {
           this.subscribeSockcet();
         }
       });
+
+    if (isPlatformBrowser(this.platformId)) {
+      if (typeof window !== 'undefined') {
+        if (localStorage.getItem('isBetaModalHide')) {
+          this.isBetaModalHide = '1';
+        }
+      }
+    }
   }
 
   subscribeSockcet() {
@@ -58,5 +72,15 @@ export class AppComponent implements OnInit {
       () => {
         console.log('complete');
       });
+  }
+
+  hideBetaModal() {
+    this.isBetaModalHide = '1';
+
+    if (isPlatformBrowser(this.platformId)) {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('isBetaModalHide', '1');
+      }
+    }
   }
 }
