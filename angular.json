@@ -116,14 +116,16 @@
           "options": {
             "outputPath": "dist/server",
             "main": "src/main.server.ts",
-            "optimization": false,
-            "aot": false,
-            "buildOptimizer": false,
             "tsConfig": "src/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/scss"
               ]
+            }
+          },
+          "configurations": {
+            "main": {
+              "aot": false
             }
           }
         }
