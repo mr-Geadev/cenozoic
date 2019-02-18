@@ -15,6 +15,7 @@ export class LoginModalComponent implements OnInit {
     public type: string = 'entry';
     public dictionary: any = {};
     public privacyPoliticAccepted: boolean = false;
+    public currentLang: string = null;
 
     public registerForm: FormGroup = new FormGroup({
         typeAccount: new FormControl('worker', Validators.required),
@@ -40,6 +41,8 @@ export class LoginModalComponent implements OnInit {
         .subscribe(
           res => this.dictionary = res
         );
+
+      this.currentLang = LocalizationService.currentLang();
     }
 
     public logIn(): void {

@@ -17,6 +17,7 @@ input[type="checkbox"] {
     border-radius: 0.188rem;
     border: 0.063rem solid #dadada;
     background-color: $white;
+    min-width: 20px;
     @include animation(background-color);
   }
   & + label:hover:before {

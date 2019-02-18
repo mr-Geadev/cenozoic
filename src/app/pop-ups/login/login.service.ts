@@ -14,8 +14,8 @@ export class LoginModalService {
 
     public openModal(): void {
         this.dialog.open(LoginModalComponent, {
-            width: '600px',
-            height: '400px'
+            width: '640px',
+            height: '430px'
         } as MatDialogConfig);
     };
 }
