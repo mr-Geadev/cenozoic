@@ -122,11 +122,6 @@
                 "src/scss"
               ]
             }
-          },
-          "configurations": {
-            "main": {
-              "aot": false
-            }
           }
         }
       }
