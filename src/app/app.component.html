@@ -4,7 +4,7 @@
 
 <page-footer [hidden]="isAdminPanel"></page-footer>
 
-<div class="beta-modal" [class.hide]="isBetaModalHide === '1'">
+<div class="beta-modal" [class.hide]="isBetaModalHide === '1'" *ngIf="dictionary">
 	<div class="bg" (click)="hideBetaModal()"></div>
 	<div class="window">
 		<div class="text" *ngIf="currentLang === 'ru'">
