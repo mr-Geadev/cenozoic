@@ -28,6 +28,10 @@
         width: max-content;
         @include animation(margin-left);
 
+        .news:nth-child(3n) {
+          margin-right: 15px !important;
+        }
+
         .banner {
           margin-right: 15px !important;
         }
