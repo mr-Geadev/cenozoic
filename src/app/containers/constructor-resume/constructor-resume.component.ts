@@ -84,9 +84,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
-    console.log('<--------------------------- init ----------------------->');
-
     this.http.get('/assets/json/nationalities.json')
       .subscribe(
         (nationalities: any) => {
@@ -134,6 +131,11 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
               this.validCityTrainings.push(true);
               this.nameImagesOfCertificate[index] = 'Выбрать фото';
             });
+
+            this.resumeForm.experience.forEach(() => this.listVisibleElement.experience.push(true));
+            this.resumeForm.education.forEach(() => this.listVisibleElement.education.push(true));
+            this.resumeForm.trainings.forEach(() => this.listVisibleElement.trainings.push(true));
+            this.resumeForm.languages.forEach(() => this.listVisibleElement.languages.push(true));
           } else {
             this.type = DEFAULT_TYPE;
 
