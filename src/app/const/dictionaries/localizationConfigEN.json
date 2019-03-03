@@ -518,4 +518,8 @@
   "TO_YOURS_RESUME": "To your resume",
   "EXPORT_PDF": "Save resume as PDF",
   "ADVERTISING_RECORD": "Advertising record",
+  "BANNER_LINK": "Link to the resource side",
+  "VERIFY_ACCOUNT": "Verify account",
+  "VERIFY_PIN_DOCUMENT_EMPLOYER": "Attaching a photo of your passport to verify your account",
+  "VERIFY_PIN_DOCUMENT_WORKER": "I attach the photo of the company registration document for account verification"
 }
