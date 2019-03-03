@@ -553,7 +553,7 @@
                                     </mat-select>
                                 </mat-form-field>
                                 <div class="validation-alert">{{dictionary.VALID_CHANGE_LANGUAGE}}</div>
-                                <span class="remove-language" (click)="manageFields('languages', i)">
+                                <span class="remove-language" (click)="manageFields('languages', i)" *ngIf="i !== 0">
                                     <img src="/assets/images/icon-garbage.svg">
                                 </span>
                             </div>

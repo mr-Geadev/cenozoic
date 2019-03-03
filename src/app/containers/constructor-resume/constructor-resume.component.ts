@@ -151,6 +151,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             this.resumeForm.trainings = [];
             this.resumeForm.languages = [];
 
+            this.manageFields('languages' );
+
             this.subscriptions.push(this.userService.user$
               .filter(user => !!user)
               .subscribe((user) => {
