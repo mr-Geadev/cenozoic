@@ -74,7 +74,7 @@ export class ListNewsComponent implements OnInit, OnChanges {
             this.list.push(this.listBanner[indexBanner]);
             this.list.push(news);
             indexBanner += 1;
-            counterNews = 0;
+            counterNews = 1;
           } else {
             this.list.push(news);
             counterNews += 1;

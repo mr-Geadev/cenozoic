@@ -23,6 +23,7 @@ export class UserModel {
   public vacancyCount: number = null;
   public companyName: string = null;
   public photoURL: string = null;
+  public verify: boolean = false;
 
   public confirmToken: string = null;
   public fullName: string;
@@ -38,6 +39,7 @@ export class UserModel {
 
     this._id = user._id;
     this.email = user.email;
+    this.verify = user.verify;
     this.typeAccount = user.typeAccount;
     this.status = user.status || 0;
     this.companyName = user.companyName || null;

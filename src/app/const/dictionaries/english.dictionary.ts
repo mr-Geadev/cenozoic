@@ -518,4 +518,9 @@ export const ENGLISH_DICTIONARY = {
   'TO_YOURS_RESUME': 'To your resume',
   'EXPORT_PDF': 'Save resume as PDF',
   'ADVERTISING_RECORD': 'Advertising record',
+  'BANNER_LINK': 'Link to the resource side',
+  'VERIFY_ACCOUNT': 'Verify account',
+  'VERIFY_PIN_DOCUMENT_EMPLOYER': 'I attach the photo of the company registration document for account verification',
+  'VERIFY_PIN_DOCUMENT_WORKER': 'Attaching a photo of your passport to verify your account',
+  'ACCOUNT_IS_VERIFIED': 'Account is verified',
 };

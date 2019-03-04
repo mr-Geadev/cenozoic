@@ -73,6 +73,9 @@
                                placeholder="{{dictionary.SETTINGS_USER_IN_FORMAT}}: +79991112233">
                     </div>
                 </div>
+                <div class="parameter" *ngIf="!currentUser.verify">
+                    <a style="color: #ff682a" href="mailto:wokrKozlov@yandex.ru?subject={{dictionary.VERIFY_ACCOUNT}}&body={{dictionary.VERIFY_PIN_DOCUMENT_WORKER}}">{{dictionary.VERIFY_ACCOUNT}}</a>
+                </div>
                 <div class="side-title">
                     {{dictionary.NOTIFICATIONS}}
                 </div>

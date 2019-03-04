@@ -9,6 +9,7 @@ export class BannerModel {
   creationDate: any;
   changeDate: any;
   photoURL: string;
+  imageUrl: string;
   publicate: boolean;
   text: string;
   userId: string;
@@ -23,6 +24,7 @@ export class BannerModel {
     this.creationDate = moment(news.creationDate);
     this.changeDate = moment(news.changeDate);
     this.photoURL = news.photoURL;
+    this.imageUrl = news.imageUrl || '';
     this.publicate = news.publicate;
     this.companyName = news.companyName;
     this.language = news.language;

@@ -35,7 +35,9 @@
 			<button [disabled]="!isAdmin" mat-button *ngIf="user.status !== 9" (click)="banUser()">Бан</button>
 			<button [disabled]="!isAdmin" mat-button *ngIf="user.status === 9" (click)="banUser()">Разбан</button>
 
-			<button mat-button>Написать</button>
+			<button mat-button *ngIf="!user.verify" (click)="verify(true)">Верифицировать</button>
+			<button mat-button *ngIf="user.verify" (click)="verify(false)">Убрать вериф.</button>
+
 			<button mat-button (click)="showAnalytics()">Подробнее</button>
 			<button mat-icon-button [matMenuTriggerFor]="menu">
 				<mat-icon>more_vert</mat-icon>

@@ -2,35 +2,73 @@
 	<div class="container" [class.mainPage]="mainPage">
 		<div class="list" [style.marginLeft]=" -365*offset+'px' ">
 
-			<a class="news" *ngFor="let news of list" [class.banner]="news?.publicate" [routerLink]="[news?.publicate ? '/banner' : '/news', news?._id]">
-				<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
+			<ng-container *ngFor="let news of list">
+				<a class="news" *ngIf="!news?.publicate"
+					 [routerLink]="['/news', news?._id]">
+					<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
 
-				<div class="info">
-					<div class="title">
-						{{ news.title }}
+					<div class="info">
+						<div class="title">
+							{{ news.title }}
+						</div>
+
+						<div class="description">
+							{{ news.shortDescription }}
+						</div>
+
+
+						<div class="date">
+							{{ dictionary.NEWS_COMMENTS_COUNTER}}: {{ news?.comments.length }}
+						</div>
 					</div>
+				</a>
 
-					<div class="adds" *ngIf="news?.publicate">
-						{{ dictionary.ADVERTISING_RECORD}}
+				<a class="news banner" *ngIf="news?.publicate && !news?.imageUrl "
+					 [routerLink]="['/banner', news?._id]">
+					<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
+
+					<div class="info">
+						<div class="title">
+							{{ news.title }}
+						</div>
+
+						<div class="adds">
+							{{ dictionary.ADVERTISING_RECORD}}
+						</div>
+
+						<div class="description">
+							{{ news.shortDescription }}
+						</div>
+
+						<div class="date">
+							{{ news?.companyName }}
+						</div>
 					</div>
+				</a>
 
-					<div class="description" >
-						{{ news.shortDescription }}
+				<a class="news banner" *ngIf="news?.publicate && news?.imageUrl"
+					 [href]="news?.imageUrl" target="_blank">
+					<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
+
+					<div class="info">
+						<div class="title">
+							{{ news.title }}
+						</div>
+
+						<div class="adds">
+							{{ dictionary.ADVERTISING_RECORD}}
+						</div>
+
+						<div class="description">
+							{{ news.shortDescription }}
+						</div>
+
+						<div class="date">
+							{{ news?.companyName }}
+						</div>
 					</div>
-
-					<!--<div class="date" *ngIf="news?.publicate">-->
-						<!--{{ this.news.creationDate.locale(currentLang).format('DD MMMM YYYY') }}-->
-					<!--</div>-->
-
-					<div class="date" *ngIf="!news?.publicate">
-						{{ dictionary.NEWS_COMMENTS_COUNTER}}: {{ news?.comments.length }}
-					</div>
-
-					<div class="date" *ngIf="news?.publicate">
-						{{ news?.companyName }}
-					</div>
-				</div>
-			</a>
+				</a>
+			</ng-container>
 
 			<a *ngIf="user" class="news add" routerLink="/create-news">
 				<div class="inner">
@@ -41,7 +79,7 @@
 					</div>
 				</div>
 
-				<div class="more-info add" >
+				<div class="more-info add">
 					{{ dictionary.NEWS_ADD }}
 				</div>
 			</a>

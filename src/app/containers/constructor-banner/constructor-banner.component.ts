@@ -51,19 +51,20 @@ export class ConstructorBannerComponent implements OnInit {
       this.bannerApi.getBannerById(this.id)
         .subscribe(
           res => {
-            this.initForm(res['banner'].title, res['banner'].shortDescription);
+            this.initForm(res['banner'].title, res['banner'].shortDescription, res['banner'].imageUrl || '');
             this.textBanner = res['banner'].text;
             this.photoUrl = res['banner'].photoURL;
           },
         );
     } else {
-      this.initForm('', '');
+      this.initForm('', '', '');
     }
   }
 
-  public initForm(title, shortDescription) {
+  public initForm(title, shortDescription, imageUrl) {
     this.banner = new FormGroup({
       title: new FormControl(title, [Validators.required]),
+      imageUrl: new FormControl(imageUrl),
       language: new FormControl(LocalizationService.currentLang(), [Validators.required]),
       shortDescription: new FormControl(shortDescription, [Validators.required]),
     });

@@ -518,4 +518,9 @@ export const RUSSIAN_DICTIONARY = {
   'TO_YOURS_RESUME': 'На ваше резюме',
   'EXPORT_PDF': 'Сохранить в PDF',
   'ADVERTISING_RECORD': 'Рекламная запись',
+  'BANNER_LINK': 'Ссылка на сторооний ресурс',
+  'VERIFY_ACCOUNT': 'Верификация аккаунта',
+  'VERIFY_PIN_DOCUMENT_EMPLOYER': 'Прикладываю фото документа о регистрации компании для верификации аккаунта',
+  'VERIFY_PIN_DOCUMENT_WORKER': 'Прикладываю фото своего паспорта для верификации аккаунта',
+  'ACCOUNT_IS_VERIFIED': 'Аккаунт верефицирован',
 };
