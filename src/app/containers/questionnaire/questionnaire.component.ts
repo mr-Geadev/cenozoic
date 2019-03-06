@@ -58,7 +58,6 @@ export class QuestionnaireComponent implements OnInit {
           this.questionnaire.sections.forEach(section => {
             this.questionnaireAnswer.push(section.questions.map(question => question.answer));
           });
-          console.log(this.questionnaireAnswer);
         });
     } else {
       this.questionnairesApi.getQuestionnaireById(this.id)

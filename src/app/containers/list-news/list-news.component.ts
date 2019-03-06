@@ -78,7 +78,6 @@ export class ListNewsComponent implements OnInit, OnChanges {
           } else {
             this.list.push(news);
             counterNews += 1;
-            console.log(news);
           }
         });
 

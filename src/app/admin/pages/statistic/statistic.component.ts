@@ -137,7 +137,6 @@ export class StatisticComponent implements OnInit {
   getStatCommonNewNewsPerDay() {
     this.analyticsApi.statCommonNewNewsPerDay()
       .subscribe(res => {
-        console.log(res);
         this.statCommonNewNewsPerDay = res.statistics.map(day => {
           return {
             name: moment(day.date).format('DD.MM.YY'),
@@ -152,7 +151,6 @@ export class StatisticComponent implements OnInit {
   getStatCommonNewBannersPerDay() {
     this.analyticsApi.statCommonNewBannersPerDay()
       .subscribe(res => {
-        console.log(res);
         this.statCommonNewBannersPerDay = res.statistics.map(day => {
           return {
             name: moment(day.date).format('DD.MM.YY'),

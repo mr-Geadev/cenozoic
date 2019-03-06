@@ -106,8 +106,6 @@ export class ConstructorNewsComponent implements OnInit {
   }
 
   public save() {
-    console.log(this.news.value);
-
     if (this.edit) {
       this.newsApi.editNews(this.id, { ...this.news.value, text: this.textNews }, this.fileToUpload.file || null)
         .subscribe(

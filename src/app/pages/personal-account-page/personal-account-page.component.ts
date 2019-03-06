@@ -75,7 +75,6 @@ export class PersonalAccountPageComponent implements OnInit {
       if (params['tab'] === 'default') {
         this.router.navigate(['personal-account', this.detectFirstTab(user.typeAccount)]);
       }
-      console.log('work', params, this.detectFirstTab(user.typeAccount));
       const tabDefault = this.detectFirstTab(user.typeAccount);
       this.activeTab = params['tab'] || tabDefault;
     });

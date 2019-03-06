@@ -1,5 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDialog, MatDialogConfig } from '@angular/material';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { Router } from '@angular/router';
@@ -24,6 +25,7 @@ import {
 } from './constructor-resume.constants';
 import { ChangeCityService } from '../../pop-ups/change-city/change-city.service';
 import { City } from '../../pop-ups/change-city/cities.models';
+import 'rxjs-compat/add/operator/take';
 
 @Component({
   selector: 'constructor-resume',
@@ -37,40 +39,44 @@ import { City } from '../../pop-ups/change-city/cities.models';
 })
 export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
-  public resumeForm: any = Object.assign({}, DEFAULT_RESUME_FORM); // резюме, которое будет заполняться
   public age: any = 1000;
   public resumeId: string = null;
   public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM); // схема незаполненнго резюме
   public isAuthorized = false; // проверка авторизации текущего пользователя
-  public invalid = false; // форма валидна/нет
-  public invalidTime = false; // форма не валидна по времени
   public loadingPhotoButton = ''; // текст кнопки загрузки фото
-  public nameImagesOfCertificate: string[] = [];
   public currentUser = null;
-  public educationCityName: string[] = [];
-  public trainingsCityName: string[] = [];
   public phoneMask: any[] = ['+', '7', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
   public nationalitiesDefault: any[] = null;
   public LocalizationService = LocalizationService;
-  public validExperienceTime: boolean[] = [];
-  public isValidExperienceTime: boolean = true;
-  public validCityTrainings: boolean[] = [];
-  public isValidCityTrainings: boolean = true;
 
   public textEditorConfig: any = {}; // для RichTextComponent'ы
-  public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
-  public imagesOfCertificate: any = []; // фотка сертификата
   public dictionary: any = {};
+  private subscriptions: Subscription[] = []; // для горчиях подписок
+  private type: string = DEFAULT_TYPE; // создание/редактирование
+  public resumeImage: any = DEFAULT_RESUME_IMAGE; // фотка по дефолту
+  public getResumeSubscribe;
+  public intervalEnd = false;
+
+  // данные о заполняемом резюме
+  public resumeForm: any = Object.assign({}, DEFAULT_RESUME_FORM); // само резюме
+  public invalid = false; // форма валидна/нет
+  public invalidTime = false; // в форме есть невалидное время
+  public imagesOfCertificate: any = []; // фотки сертификатов
+  public nameImagesOfCertificate: string[] = []; // имена фоток сертификатов
+  public educationCityName: string[] = []; // образование: имена городов
+  public trainingsCityName: string[] = []; // тренинги: имена городов
+  public validExperienceTime: boolean[] = []; // места работы: валидность дат по отдельности
+  public isValidExperienceTime: boolean = true; // места работы: валидность дат в общем
+  public validCityTrainings: boolean[] = [];
+  public isValidCityTrainings: boolean = true;
+  public isBirthdayInvalid: boolean = true;
+  public isBirthdayTouched: boolean = false;
   public listVisibleElement: any = {
     experience: [],
     education: [],
     languages: [],
     trainings: [],
   };
-  private subscriptions: Subscription[] = []; // для горчиях подписок
-  private type: string = DEFAULT_TYPE; // создание/редактирование
-  public isBirthdayInvalid: boolean = true;
-  public isBirthdayTouched: boolean = false;
 
   constructor(private http: HttpClient,
               private userService: UserService,
@@ -79,8 +85,55 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
               private _changeCityService: ChangeCityService,
               private _systemMessageService: SystemMessageService,
               private _dialog: MatDialog,
+              @Inject(PLATFORM_ID) private platformId: Object,
               private _confirm: ConfirmService,
               public _localizationService: LocalizationService) {
+  }
+
+  saveResumeStorage() {
+    if (isPlatformBrowser(this.platformId)) {
+      if (typeof window !== 'undefined') {
+        const resume = {
+          resumeForm: this.resumeForm,
+          invalid: this.invalid,
+          invalidTime: this.invalidTime,
+          imagesOfCertificate: this.imagesOfCertificate,
+          nameImagesOfCertificate: this.nameImagesOfCertificate,
+          educationCityName: this.educationCityName,
+          trainingsCityName: this.trainingsCityName,
+          validExperienceTime: this.validExperienceTime,
+          isValidExperienceTime: this.isValidExperienceTime,
+          validCityTrainings: this.validCityTrainings,
+          isValidCityTrainings: this.isValidCityTrainings,
+          isBirthdayInvalid: this.isBirthdayInvalid,
+          isBirthdayTouched: this.isBirthdayTouched,
+          listVisibleElement: this.listVisibleElement,
+        };
+        localStorage.setItem('resume', JSON.stringify(resume));
+      }
+    }
+  }
+
+  getResumeStorage() {
+    if (isPlatformBrowser(this.platformId)) {
+      if (typeof window !== 'undefined') {
+        const resume = JSON.parse(localStorage.getItem('resume'));
+        this.resumeForm = resume.resumeForm;
+        this.invalid = resume.invalid;
+        this.invalidTime = resume.invalidTime;
+        this.imagesOfCertificate = resume.imagesOfCertificate;
+        this.nameImagesOfCertificate = resume.nameImagesOfCertificate;
+        this.educationCityName = resume.educationCityName;
+        this.trainingsCityName = resume.trainingsCityName;
+        this.validExperienceTime = resume.validExperienceTime;
+        this.isValidExperienceTime = resume.isValidExperienceTime;
+        this.validCityTrainings = resume.validCityTrainings;
+        this.isValidCityTrainings = resume.isValidCityTrainings;
+        this.isBirthdayInvalid = resume.isBirthdayInvalid;
+        this.isBirthdayTouched = resume.isBirthdayTouched;
+        this.listVisibleElement = resume.listVisibleElement;
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -93,7 +146,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     // подклюение локализцаии
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
+        res => this.dictionary = res,
       );
 
     // установка текста кнопки локализации из словаря
@@ -110,66 +163,84 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       }),
     );
 
-    this.subscriptions.push(
-      this.resumeService.resume$
-        .subscribe((resume) => {
-          console.log('DEFAULT_RESUME_FORM', DEFAULT_RESUME_FORM);
-          if (resume) {
-            for (const key in resume) {
-              if (resume.hasOwnProperty(key)) {
-                this.resumeForm[key] = resume[key];
-              }
+    this.getResumeSubscribe = this.resumeService.resume$
+      .take(1)
+      .subscribe((resume) => {
+        console.log('DEFAULT_RESUME_FORM', DEFAULT_RESUME_FORM);
+        if (resume) {
+          for (const key in resume) {
+            if (resume.hasOwnProperty(key)) {
+              this.resumeForm[key] = resume[key];
             }
-            this.resumeId = this.resumeForm._id;
-            this.type = CHANGES_TYPE;
-            this.resumeForm.experience.forEach(() => {
-              this.validExperienceTime.push(true);
-            });
-            this.resumeForm.trainings.forEach((training, index) => {
-              training.document = false;
-              training.documentName = null;
-              this.validCityTrainings.push(true);
-              this.nameImagesOfCertificate[index] = 'Выбрать фото';
-            });
+          }
+          this.resumeId = this.resumeForm._id;
+          this.type = CHANGES_TYPE;
+          this.resumeForm.experience.forEach(() => {
+            this.validExperienceTime.push(true);
+          });
+          this.resumeForm.trainings.forEach((training, index) => {
+            training.document = false;
+            training.documentName = null;
+            this.validCityTrainings.push(true);
+            this.nameImagesOfCertificate[index] = 'Выбрать фото';
+          });
 
-            this.resumeForm.experience.forEach(() => this.listVisibleElement.experience.push(true));
-            this.resumeForm.education.forEach(() => this.listVisibleElement.education.push(true));
-            this.resumeForm.trainings.forEach(() => this.listVisibleElement.trainings.push(true));
-            this.resumeForm.languages.forEach(() => this.listVisibleElement.languages.push(true));
-          } else {
-            this.type = DEFAULT_TYPE;
+          this.resumeForm.experience.forEach(() => this.listVisibleElement.experience.push(true));
+          this.resumeForm.education.forEach(() => this.listVisibleElement.education.push(true));
+          this.resumeForm.trainings.forEach(() => this.listVisibleElement.trainings.push(true));
+          this.resumeForm.languages.forEach(() => this.listVisibleElement.languages.push(true));
+        } else {
+          this.type = DEFAULT_TYPE;
 
-            for (const key in DEFAULT_RESUME_FORM) {
-              if (DEFAULT_RESUME_FORM.hasOwnProperty(key)) {
-                this.resumeForm[key] = DEFAULT_RESUME_FORM[key];
-              }
+          for (const key in DEFAULT_RESUME_FORM) {
+            if (DEFAULT_RESUME_FORM.hasOwnProperty(key)) {
+              this.resumeForm[key] = DEFAULT_RESUME_FORM[key];
             }
-
-            this.resumeForm.salary = Object.assign({}, DEFAULT_SALARY)
-            this.resumeForm.experience = [];
-            this.resumeForm.education = [];
-            this.resumeForm.trainings = [];
-            this.resumeForm.languages = [];
-
-            this.manageFields('languages' );
-
-            this.subscriptions.push(this.userService.user$
-              .filter(user => !!user)
-              .subscribe((user) => {
-                this.resumeForm.phoneNumber = user.phone;
-                this.resumeForm.email = user.email;
-              }),
-            );
           }
 
-          console.log(this.resumeForm);
-        }));
+          this.resumeForm.salary = Object.assign({}, DEFAULT_SALARY);
+          this.resumeForm.experience = [];
+          this.resumeForm.education = [];
+          this.resumeForm.trainings = [];
+          this.resumeForm.languages = [];
+
+          this.manageFields('languages');
+
+          this.subscriptions.push(this.userService.user$
+            .filter(user => !!user)
+            .subscribe((user) => {
+              this.resumeForm.phoneNumber = user.phone;
+              this.resumeForm.email = user.email;
+            }),
+          );
+
+          if (isPlatformBrowser(this.platformId)) {
+            if (typeof window !== 'undefined') {
+              let savedResume = localStorage.getItem('resume');
+              savedResume = savedResume ? JSON.parse(savedResume) : null;
+              if (savedResume && savedResume['resumeForm']) {
+                this.getResumeStorage();
+              }
+            }
+          }
+
+
+          const interval = setInterval(() => {
+            this.saveResumeStorage();
+            if (this.intervalEnd) {
+              clearInterval(interval);
+            }
+          }, 1000);
+        }
+
+      });
   }
 
   ngOnDestroy(): void {
     this.resumeService.setResume(null);
     this.subscriptions.forEach(sub => sub.unsubscribe());
     this.type = DEFAULT_TYPE;
+    this.intervalEnd = true;
   }
 
   public showRequired(): void {
@@ -361,7 +432,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
   }
 
   public send(): void {
-
     // блок рассчета опыта
     let timeOil = 0;
     let timeMining = 0;
@@ -392,9 +462,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     // конец
 
     this.resumeForm.resumeLanguage = LocalizationService.currentLang();
-    console.log('DEFAULT_RESUME_FORM отправка до salary', DEFAULT_RESUME_FORM);
     this.resumeForm.salary.currency = LocalizationService.currentLang() === 'ru' ? 'rubles' : 'dollars';
-    console.log('DEFAULT_RESUME_FORM отправка после salary', DEFAULT_RESUME_FORM);
 
     if (this.type === DEFAULT_TYPE) {
       const formData: FormData = new FormData();
@@ -415,6 +483,12 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       this.http.post(CREATE_RESUME, formData)
         .subscribe((res: any) => {
           if (res.success) {
+            this.intervalEnd = true;
+            if (isPlatformBrowser(this.platformId)) {
+              if (typeof window !== 'undefined') {
+                localStorage.removeItem('resume');
+              }
+            }
             this.resumeForm = null;
             this.resumeService.setResume(null);
             this.router.navigate(['/personal-account', 'resume']);
