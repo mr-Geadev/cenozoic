@@ -1,140 +1,18 @@
-<div class="component" *ngIf="currentLang === 'ru'">
-
+<div class="component">
 	<div class="row">
-		<div class="col offset-sm-2">
-			<div class="title">
+		<div class="col-12 offset-md-2 col-md-8">
+
+			<div class="title" *ngIf="currentLang === 'ru'">
 				О нас
 			</div>
-		</div>
-	</div>
 
-	<div class="row">
-
-		<div class="col-12 offset-sm-2 col-sm-8 offset-lg-2 col-lg-6">
-			<p>
-				Проект Cenozoic Community это международная онлайн-рекрутмент платформа для полного цикла подбора персонала,
-				поиска работы и налаживания деловых контактов в горнодобывающей и нефтегазовой промышленностях. Основным
-				назначением проекта является помощь людям находить в их профессиональной жизни новые возможности, которые
-				сделают их счастливыми и успешными.
-			</p>
-
-			<p style="margin-top: 30px">
-				Эксклюзивность проекта — это интеллектуальная база данных специалистов профессионалов с опытом работ из
-				различных регионов мира, а также работодателей, прошедших определенные этапы верификации и имеющих положительную
-				репутацию на рынке. Широкая функциональность с применением технологий машинного обучения и умной обработки
-				данных для автоматического или ручного анализа и большой спектр интерактивных сервисов.
-			</p>
-		</div>
-
-		<div class="col-12 col-lg-2" style="justify-content: center; align-items: center; display: flex">
-			<img src="/assets/images/about-us-1.jpg" style="max-width: 300px; width: 100%; display: block;">
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-12 offset-sm-2 col-sm-8">
-			<img src="/assets/images/about-us-2.jpg" >
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-12 offset-sm-2 col-sm-8">
-			<p>
-				Также база данных ежедневно наполняется начинающими, молодыми и дипломированными специалистами, которые всегда
-				готовы к стажировкам у работодателей с возможным последующим трудоустройством.
-			</p>
-
-			<p>
-				Помогая в быстром и качественном поиске на основании онлайн анализа заданных потребностей Cenozoic Community
-				сделает Вас и Вашу компанию успешной и богатой.
-			</p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-12 offset-sm-2 col-sm-8">
-			<img src="/assets/images/about-us-3.jpg" style="margin:auto; display:block;">
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-12 offset-sm-2 col-sm-8">
-			<p>
-				Мы уделяем большое внимание безопасности систем проекта Cenozoic Community. В режиме реального времени
-				ведется мониторинг от внешних нежелательных и вредоносных воздействий, оборудование и программное обеспечение
-				поддерживается в актуальном состоянии, все доступы к интернет-ресурсу отслеживаются.
-			</p>
-		</div>
-	</div>
-
-</div>
-
-<div class="component" *ngIf="currentLang === 'en'">
-
-	<div class="row">
-		<div class="col offset-sm-2">
-			<div class="title">
-				About Us
+			<div class="title" *ngIf="currentLang === 'en'">
+				About us
 			</div>
+
+
+			<div [innerHTML]="html"></div>
+
 		</div>
 	</div>
-
-	<div class="row">
-
-		<div class="col-12 offset-sm-2 col-sm-8 offset-lg-2 col-lg-6">
-			<p>
-				The Cenozoic Community project is an international online recruitment platform for a full cycle of recruitment,
-				job search and business contacts in the mining and oil and gas industries. The main purpose of the project is to
-				help people find new opportunities in their professional lives that will make them happy and successful.
-			</p>
-
-			<p style="margin-top: 30px">
-				The project exclusivity is an intellectual database of professional professionals with work experience from
-				various regions of the world, as well as employers who have gone through certain stages of verification and have
-				a positive reputation in the market. Wide functionality with the use of machine learning technologies and
-				intelligent data processing for automatic or manual analysis and a wide range of interactive services.
-			</p>
-		</div>
-
-		<div class="col-12 col-lg-2" style="justify-content: center; align-items: center; display: flex">
-			<img src="/assets/images/about-us-1.jpg" style="max-width: 300px; width: 100%; display: block;">
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-12 offset-sm-2 col-sm-8">
-			<img src="/assets/images/about-us-2.jpg" >
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-12 offset-sm-2 col-sm-8">
-			<p>
-				Also, the database is filled daily with beginners, young and certified specialists who are always ready for
-				internships with employers with possible subsequent employment.
-			</p>
-
-			<p>
-				Assisting in fast and high-quality search based on the online analysis of the given needs of the Cenozoic
-				Community will make you and your company successful and wealthy.
-			</p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-12 offset-sm-2 col-sm-8">
-			<img src="/assets/images/about-us-3.jpg" style="margin:auto; display:block;">
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-12 offset-sm-2 col-sm-8">
-			<p>
-				We pay great attention to the security of the Cenozoic Commumity project systems. Real-time monitoring is
-				performed from external undesirable and harmful effects, equipment and software are kept up to date, all access
-				to the Internet resource is monitored.
-			</p>
-		</div>
-	</div>
-
 </div>

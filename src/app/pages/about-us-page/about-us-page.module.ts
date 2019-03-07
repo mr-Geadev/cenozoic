@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LocalizationApi } from 'api';
 import { AboutUsPageComponent } from 'pages/about-us-page/about-us-page.component';
 
 @NgModule({
@@ -14,6 +15,9 @@ import { AboutUsPageComponent } from 'pages/about-us-page/about-us-page.componen
     CommonModule,
   ],
   exports: [AboutUsPageComponent],
+  providers: [
+    LocalizationApi
+  ]
 })
 export class AboutUsPageModule {
 }

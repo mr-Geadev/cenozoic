@@ -11,9 +11,11 @@ import {
   MatToolbarModule,
 } from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { BannerComponent } from 'admin/pages/banner/banner.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news';
+import { StaticPageComponent } from 'admin/pages/static-page/static-page.component';
 import { StatisticComponent } from 'admin/pages/statistic/statistic.component';
 import { EmployerAnalyticsComponent } from 'admin/pages/users/employer-analytics/employer-analytics.component';
 import { WorkerAnalyticsComponent } from 'admin/pages/users/worker-analytics/worker-analytics.component';
@@ -39,6 +41,8 @@ import { LocalizationApi } from '../api/localization.api';
     ReactiveFormsModule,
     MatFormFieldModule,
     FormsModule,
+
+    EditorModule,
 
     // material
     MatDialogModule,
@@ -66,6 +70,7 @@ import { LocalizationApi } from '../api/localization.api';
     LocalizationComponent,
     BannerComponent,
     StatisticComponent,
+    StaticPageComponent,
 
     // containers
     ItemUserComponent,

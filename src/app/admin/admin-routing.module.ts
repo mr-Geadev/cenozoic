@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BannerComponent } from 'admin/pages/banner/banner.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news/news.component';
+import { StaticPageComponent } from 'admin/pages/static-page/static-page.component';
 import { StatisticComponent } from 'admin/pages/statistic/statistic.component';
 import { AdminGuard } from '../guards';
 import { AdminComponent } from './admin.component';
@@ -40,6 +41,9 @@ const routes: Routes = [
       },
       {
         path: 'statistic', component: StatisticComponent,
+      },
+      {
+        path: 'static-page', component: StaticPageComponent,
       }
     ],
   },

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalizationApi } from 'api';
 import { LocalizationService } from 'services';
 
 @Component({
@@ -9,12 +10,20 @@ import { LocalizationService } from 'services';
 export class AboutUsPageComponent implements OnInit {
 
   currentLang = 'ru';
+  html = '';
 
-  constructor() {
+  constructor(
+    public localizationApi: LocalizationApi,
+  ) {
   }
 
   ngOnInit() {
     this.currentLang = LocalizationService.currentLang();
+
+    this.localizationApi.getStaticPage(this.currentLang, 'aboutUs')
+      .subscribe((res) => {
+        this.html = res['page'];
+      });
   }
 
 }

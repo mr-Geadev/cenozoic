@@ -11,6 +11,7 @@ export const MENU_LIST = [
     {name: 'Локализация', link: 'localization'},
     {name: 'Баннеры', link: 'banners'},
     {name: 'Статистика по сайту', link: 'statistic'},
+    {name: 'Статичные страницы', link: 'static-page'},
     // {name: 'Вакансии', link: '#'},
 ];
 

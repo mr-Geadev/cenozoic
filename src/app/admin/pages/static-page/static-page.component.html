@@ -1,0 +1,45 @@
+<mat-card class="col-12">
+	<mat-card-header>
+		<mat-card-title>Статичные страницы</mat-card-title>
+	</mat-card-header>
+
+	<div *ngIf="data$ | async"></div>
+
+	<mat-card-content>
+		<div style="display: flex">
+			<mat-form-field style="margin-right: 30px">
+				<mat-select name="country"
+										placeholder="Язык"
+										[ngModelOptions]="{standalone: true}"
+										(selectionChange)="updateData.next()"
+										[(ngModel)]="language">
+					<mat-option value="ru">Русский</mat-option>
+					<mat-option value="en">Английский</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-select name="country"
+										placeholder="Страница"
+										[ngModelOptions]="{standalone: true}"
+										(selectionChange)="updateData.next()"
+										[(ngModel)]="page">
+					<mat-option value="aboutUs">О нас</mat-option>
+					<mat-option value="serviceUs">Услуги</mat-option>
+					<mat-option value="privacyPolicy">Политика конфиденциальности</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+
+		<editor [init]="textEditorConfig"
+						[(ngModel)]="html"
+						[ngModelOptions]="{standalone: true}"></editor>
+
+	</mat-card-content>
+
+	<mat-card-actions>
+		<button mat-button (click)="save.next()">Сохранить</button>
+	</mat-card-actions>
+
+
+</mat-card>

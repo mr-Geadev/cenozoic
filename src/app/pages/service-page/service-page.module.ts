@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LocalizationApi } from 'api';
 import { ServicePageComponent } from './service-page.component';
 
 @NgModule({
@@ -14,6 +15,9 @@ import { ServicePageComponent } from './service-page.component';
     CommonModule,
   ],
   exports: [ServicePageComponent],
+  providers: [
+    LocalizationApi
+  ]
 })
 export class ServicePageModule {
 }

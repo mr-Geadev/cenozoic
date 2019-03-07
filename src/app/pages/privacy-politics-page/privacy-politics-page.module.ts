@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LocalizationApi } from 'api';
 import { PrivacyPoliticsPageComponent } from 'pages/privacy-politics-page/privacy-politics-page.component';
 
 @NgModule({
@@ -14,6 +15,9 @@ import { PrivacyPoliticsPageComponent } from 'pages/privacy-politics-page/privac
     CommonModule,
   ],
   exports: [PrivacyPoliticsPageComponent],
+  providers: [
+    LocalizationApi
+  ]
 })
 export class PrivacyPoliticsPageModule {
 }
