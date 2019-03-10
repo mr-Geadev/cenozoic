@@ -11,7 +11,7 @@
 				<mat-select name="country"
 										placeholder="Язык"
 										[ngModelOptions]="{standalone: true}"
-										(selectionChange)="updateData.next()"
+										(selectionChange)="updateData.next(null)"
 										[(ngModel)]="language">
 					<mat-option value="ru">Русский</mat-option>
 					<mat-option value="en">Английский</mat-option>
@@ -22,7 +22,7 @@
 				<mat-select name="country"
 										placeholder="Страница"
 										[ngModelOptions]="{standalone: true}"
-										(selectionChange)="updateData.next()"
+										(selectionChange)="updateData.next(null)"
 										[(ngModel)]="page">
 					<mat-option value="aboutUs">О нас</mat-option>
 					<mat-option value="serviceUs">Услуги</mat-option>
