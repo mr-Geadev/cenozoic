@@ -1,6 +1,8 @@
 :host {
-  item-user {
+  .item-user {
     display: table-row;
+    color: black;
+
     &.hidden {
       display: none;
     }
@@ -12,7 +14,7 @@
       background-color: rgba(117, 111, 208, 0.47);
     }
   }
-  item-user:focus, item-user:hover {
+  .item-user:focus, .item-user:hover {
     //display: block;
     background-color: #dcdcdc;
     cursor: pointer;
@@ -35,7 +37,6 @@
   }
 
   .full-info-user {
-
 
   }
 

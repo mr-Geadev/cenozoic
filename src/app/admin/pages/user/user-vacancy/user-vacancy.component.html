@@ -1,0 +1,146 @@
+<div *ngIf="upload$ | async"></div>
+
+<div class="flex-container">
+	<div class="list-resume">
+		<p *ngFor="let vacancy of vacancyList" class="resume" (click)="currentVacancySubject.next(vacancy)">
+			{{ vacancy.title }}
+
+			<a href="/vacancy/{{vacancy._id}}" target="_blank">
+				открыть
+			</a>
+		</p>
+	</div>
+
+	<div class="line"></div>
+
+	<div class="resume-detailed">
+		<ng-container *ngIf="currentVacancySubject | async as currentVacancy">
+			<div class="block resume-info">
+				<div class="small-title">
+					{{ currentVacancy.job }}
+				</div>
+
+				<div class="info">
+					<b>Дата создания:</b> {{ moment(currentVacancy.creationDate).locale('ru').format('HH:mm, DD.MM.YYYY') }}
+				</div>
+
+				<table class="history">
+					<tr>
+						<th>Действие</th>
+						<th>Время</th>
+					</tr>
+					<tr *ngFor="let change of currentVacancy.history">
+						<td>{{ change.operation}}</td>
+						<td>{{ moment(change.data).locale('ru').format('HH:mm, DD.MM.YYYY') }}</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="block list response">
+				<div class="small-title">
+					Отлики: {{ currentVacancyResponse.length }}
+				</div>
+
+				<ng-container *ngFor="let response of currentVacancyResponse">
+					<div class="response-item" [class.active]="activeResponse && response._id === activeResponse._id"
+							 (click)="activeResponse = response">
+						<div class="title">
+							На вакансию: {{ response.employerId }}
+						</div>
+						<div class="creation-date">
+							Создан: {{ moment(response.creationDate).locale('ru').format('HH:mm, DD.MM.YYYY') }}
+						</div>
+					</div>
+				</ng-container>
+			</div>
+
+			<div class="block list offers">
+				<div class="small-title">
+					Предложение: {{ currentVacancyOffers.length }}
+				</div>
+
+				<ng-container *ngFor="let response of currentVacancyOffers">
+					<div class="response-item" [class.active]="activeResponse && response._id === activeResponse._id"
+							 (click)="activeResponse = response">
+						<div class="title">
+							От пользователя: {{ response.employerId }}
+						</div>
+						<div class="creation-date">
+							Создан: {{ moment(response.creationDate).locale('ru').format('HH:mm, DD.MM.YYYY') }}
+						</div>
+					</div>
+				</ng-container>
+			</div>
+		</ng-container>
+	</div>
+
+	<div class="line"></div>
+
+	<div class="response-detail">
+		<ng-container *ngIf="activeResponse">
+			<div class="small-title">
+				{{ activeResponse.entity === 'offer' ? 'Предложение' : 'Отклик' }} детально
+			</div>
+
+			<div class="info">
+				<div class="field">
+					<div class="name">Создан:</div>
+					<div class="value">{{ moment(activeResponse.creationDate).locale('ru').format('HH:mm, DD.MM.YYYY') }}</div>
+				</div>
+
+				<div class="field" *ngIf="changeDate">
+					<div class="name">Последнее изменение</div>
+					<div class="value">{{ moment(activeResponse.changeDate).locale('ru').format('HH:mm, DD.MM.YYYY') }}</div>
+				</div>
+
+				<div class="field">
+					<div class="name">Текущий статус</div>
+					<div class="value">{{ STATUSES_INIT[activeResponse.status] }}</div>
+				</div>
+
+				<div class="field">
+					<div class="name">Id резюме</div>
+					<div class="value">{{ activeResponse.resumeId }}</div>
+				</div>
+
+				<div class="field">
+					<div class="name">Id вакансии</div>
+					<div class="value">{{ activeResponse.vacancyId }}</div>
+				</div>
+
+				<div class="field">
+					<div class="name">Id Работодатель</div>
+					<div class="value">{{ activeResponse.employerId }}</div>
+				</div>
+
+				<div class="field">
+					<div class="name">Id Соискатель</div>
+					<div class="value">{{ activeResponse.workerId }}</div>
+				</div>
+
+				<div class="field">
+					<div class="name">Работодатель в архив</div>
+					<div class="value">{{ activeResponse.employerArchive ? 'да' : 'нет' }}</div>
+				</div>
+
+				<div class="field">
+					<div class="name">Соискатель в архив</div>
+					<div class="value">{{ activeResponse.workerArchive ? 'да' : 'нет' }}</div>
+				</div>
+
+				<table class="history">
+					<tr>
+						<th>Действие</th>
+						<th>Время</th>
+					</tr>
+					<tr *ngFor="let change of activeResponse.history">
+						<td>{{ change.operation}}</td>
+						<td>{{ moment(change.data).locale('ru').format('HH:mm, DD.MM.YYYY') }}</td>
+					</tr>
+				</table>
+
+
+			</div>
+		</ng-container>
+	</div>
+</div>

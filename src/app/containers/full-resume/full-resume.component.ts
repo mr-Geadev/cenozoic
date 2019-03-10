@@ -189,7 +189,7 @@ export class FullResumeComponent implements OnInit {
   //       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
   //       let position = 0;
   //       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-  //       pdf.save(`${this.currentResume.fullName}.pdf`); // Generated PDF
+  //       pdf.save(`${this.currentResumeSubject.fullName}.pdf`); // Generated PDF
   //     });
   //   }
   // }

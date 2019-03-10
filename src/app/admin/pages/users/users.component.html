@@ -12,12 +12,11 @@
 							<th *ngIf="!isShowAnalytics">Количество <br/> резюме/вакансий</th>
 							<th *ngIf="!isShowAnalytics">Название компании</th>
 						</tr>
-						<item-user *ngFor="let user of usersApi.userList; let i = index;"
-											 [user]="user"
-											 [class.unconfirmed]="user.status === 1"
-											 [class.banned]="user.status === 9"
-											 [isShowAnalytics]="isShowAnalytics"
-											 (click)="showFullInfo(user, i)"></item-user>
+						<a class="item-user" [routerLink]="['/admin/user', user._id]"
+							 *ngFor="let user of usersApi.userList; let i = index;"
+							 [user]="user"
+							 [class.unconfirmed]="user.status === 1"
+							 [class.banned]="user.status === 9"></a>
 					</table>
 				</mat-tab>
 
@@ -30,12 +29,11 @@
 							<th *ngIf="!isShowAnalytics">Количество <br/>вакансий</th>
 							<th *ngIf="!isShowAnalytics">Название компании</th>
 						</tr>
-						<item-user *ngFor="let user of usersApi.userList; let i = index;"
-											 [user]="user" [class.hidden]="user.typeAccount !== 'employer'"
-											 [class.unconfirmed]="user.status === 1"
-											 [class.banned]="user.status === 9"
-											 [isShowAnalytics]="isShowAnalytics"
-											 (click)="showFullInfo(user, i)"></item-user>
+						<a class="item-user" [routerLink]="['/admin/user', user._id]"
+							 *ngFor="let user of usersApi.userList; let i = index;"
+							 [user]="user" [class.hidden]="user.typeAccount !== 'employer'"
+							 [class.unconfirmed]="user.status === 1"
+							 [class.banned]="user.status === 9"></a>
 					</table>
 				</mat-tab>
 
@@ -48,53 +46,25 @@
 							<th *ngIf="!isShowAnalytics">Количество <br/> резюме/вакансий</th>
 							<th *ngIf="!isShowAnalytics"></th>
 						</tr>
-						<item-user *ngFor="let user of usersApi.userList; let i = index;"
-											 [user]="user" [class.hidden]="user.typeAccount !== 'worker'"
-											 [class.unconfirmed]="user.status === 1"
-											 [class.banned]="user.status === 9"
-											 [isShowAnalytics]="isShowAnalytics"
-											 (click)="showFullInfo(user, i)"></item-user>
+						<a class="item-user" [routerLink]="['/admin/user', user._id]"
+							 *ngFor="let user of usersApi.userList; let i = index;"
+							 [user]="user" [class.hidden]="user.typeAccount !== 'worker'"
+							 [class.unconfirmed]="user.status === 1"
+							 [class.banned]="user.status === 9"></a>
 					</table>
 				</mat-tab>
 
 				<mat-tab label="Модераторы">
 					<mat-list>
 						<h3 mat-subheader>Список модераторов</h3>
-						<item-user *ngFor="let user of usersApi.userList; let i = index;"
-											 [user]="user" [class.hidden]="user.typeAccount !== 'moderator'"
-											 (click)="showFullInfo(user, i)"></item-user>
+						<a class="item-user" [routerLink]="['/admin/user', user._id]"
+							 *ngFor="let user of usersApi.userList; let i = index;"
+							 [user]="user" [class.hidden]="user.typeAccount !== 'moderator'"></a>
 					</mat-list>
 				</mat-tab>
 
 			</mat-tab-group>
 		</mat-card>
 	</div>
-
-	<div class="full-info-user pin-top" [class.col-4]="!isShowAnalytics" [class.col-8]="isShowAnalytics" *ngIf="checkedUser">
-		<div class="scroll-container">
-			<mat-card>
-				<mat-icon class="close-card" mat-list-icon (click)="showFullInfo(null)">close</mat-icon>
-				<full-user-info
-					[isShowAnalytics]="isShowAnalytics"
-					(onShowAnalytics)="onShowAnalytics($event)"
-					[user]="checkedUser"
-					[index]="indexCheckedUser"
-					[isAdmin]="currentUser.typeAccount === 'admin'"></full-user-info>
-			</mat-card>
-
-			<mat-card *ngIf="checkedUser && isShowAnalytics && checkedUser.typeAccount === 'employer'">
-				<mat-icon class="close-card" mat-list-icon (click)="hiddenAnalytic()">close</mat-icon>
-				<employer-analytics
-					[user]="checkedUser"></employer-analytics>
-			</mat-card>
-
-			<mat-card *ngIf="checkedUser && isShowAnalytics && checkedUser.typeAccount === 'worker'">
-				<mat-icon class="close-card" mat-list-icon (click)="hiddenAnalytic()">close</mat-icon>
-				<worker-analytics
-					[user]="checkedUser"></worker-analytics>
-			</mat-card>
-		</div>
-	</div>
-
 
 </div>

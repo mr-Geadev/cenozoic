@@ -22,6 +22,10 @@ export class UsersApi {
       );
   }
 
+  public getUser(id: string) {
+    return this._http.get(`/api/v1/admin/user/info?userId=${id}`);
+  }
+
   public banUser(id: string): Observable<any> {
     return this._http.get(`/api/v1/admin/account/block?uid=${id}`)
       .map(

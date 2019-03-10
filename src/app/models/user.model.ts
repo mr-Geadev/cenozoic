@@ -24,6 +24,8 @@ export class UserModel {
   public companyName: string = null;
   public photoURL: string = null;
   public verify: boolean = false;
+  public resumeList: any = null;
+  public vacancyList: any = null;
 
   public confirmToken: string = null;
   public fullName: string;
@@ -48,6 +50,8 @@ export class UserModel {
     this.confirmToken = user.confirmToken || null;
     this.fullName = user.fullName || null;
     this.phone = user.phone || null;
+    this.resumeList = user.resumeList || null;
+    this.vacancyList = user.vacancyList || null;
 
     if (this.typeAccount === 'employer') {
       this.paidOptions = new PaidOptions(user.paidOptions);

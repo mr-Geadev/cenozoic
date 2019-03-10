@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { AnalyticsApi } from 'api';
+import { AnalyticsApi } from 'api/index';
 import * as moment from 'moment';
 import { ConfirmService } from '../../../../services/confirm.service';
 import { UserModel } from '../../../../models/user.model';
-import { SystemMessageService, UserService } from '../../../../services';
-import { UsersApi } from '../users.api';
+import { SystemMessageService, UserService } from '../../../../services/index';
+import { UsersApi } from '../../users/users.api';
 
 @Component({
   selector: 'worker-analytics',

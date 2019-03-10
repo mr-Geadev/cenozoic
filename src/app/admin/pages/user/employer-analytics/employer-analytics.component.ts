@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, ViewEncapsulation } from '@angular/core';
-import { AnalyticsApi } from 'api';
+import { AnalyticsApi } from 'api/index';
 import * as moment from 'moment';
 import { UserModel } from '../../../../models/user.model';
 

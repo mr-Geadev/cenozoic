@@ -5,6 +5,7 @@ import { LocalizationComponent } from 'admin/pages/localization/localization.com
 import { NewsComponent } from 'admin/pages/news/news.component';
 import { StaticPageComponent } from 'admin/pages/static-page/static-page.component';
 import { StatisticComponent } from 'admin/pages/statistic/statistic.component';
+import { UserComponent } from 'admin/pages/user/user.component';
 import { AdminGuard } from '../guards';
 import { AdminComponent } from './admin.component';
 import { MainComponent } from './pages/main/main.component';
@@ -44,6 +45,9 @@ const routes: Routes = [
       },
       {
         path: 'static-page', component: StaticPageComponent,
+      },
+      {
+        path: 'user/:id', component: UserComponent,
       }
     ],
   },

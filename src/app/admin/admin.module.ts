@@ -1,12 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
-  MatDialogModule, MatFormFieldModule,
-  MatIconModule, MatInputModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
   MatListModule,
-  MatMenuModule, MatSelectModule,
+  MatMenuModule,
+  MatSelectModule,
   MatTabsModule,
   MatToolbarModule,
 } from '@angular/material';
@@ -17,22 +21,23 @@ import { LocalizationComponent } from 'admin/pages/localization/localization.com
 import { NewsComponent } from 'admin/pages/news';
 import { StaticPageComponent } from 'admin/pages/static-page/static-page.component';
 import { StatisticComponent } from 'admin/pages/statistic/statistic.component';
-import { EmployerAnalyticsComponent } from 'admin/pages/users/employer-analytics/employer-analytics.component';
-import { WorkerAnalyticsComponent } from 'admin/pages/users/worker-analytics/worker-analytics.component';
+import { EmployerAnalyticsComponent } from 'admin/pages/user/employer-analytics/employer-analytics.component';
+import { UserResumeComponent } from 'admin/pages/user/user-resume/user-resume.component';
+import { UserVacancyComponent } from 'admin/pages/user/user-vacancy/user-vacancy.component';
+import { UserComponent } from 'admin/pages/user/user.component';
+import { WorkerAnalyticsComponent } from 'admin/pages/user/worker-analytics/worker-analytics.component';
 import { NewsApi } from 'api';
+import { LocalizationApi } from '../api/localization.api';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { MainComponent } from './pages/main/main.component';
 import { AdminResumeApi } from './pages/resume-list/admin-resume.api';
 import { ResumeListComponent } from './pages/resume-list/resume-list.component';
-import { FullUserInfoComponent } from './pages/users/full-user-info/full-user-info.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 import { ItemUserComponent } from './pages/users/item-user/item-user.component';
 import { UsersApi } from './pages/users/users.api';
 import { UsersComponent } from './pages/users/users.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LocalizationApi } from '../api/localization.api';
 
 @NgModule({
   imports: [
@@ -71,12 +76,14 @@ import { LocalizationApi } from '../api/localization.api';
     BannerComponent,
     StatisticComponent,
     StaticPageComponent,
+    UserComponent,
 
     // containers
     ItemUserComponent,
-    FullUserInfoComponent,
     EmployerAnalyticsComponent,
-    WorkerAnalyticsComponent
+    WorkerAnalyticsComponent,
+    UserResumeComponent,
+    UserVacancyComponent
   ],
   providers: [
     UsersApi,

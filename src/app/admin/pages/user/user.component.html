@@ -1,0 +1,74 @@
+<mat-card>
+	<a [routerLink]="['/admin/users']" class="close-icon">
+		<mat-icon class="close-card" mat-list-icon>close</mat-icon>
+	</a>
+
+	<div class="title">
+		{{ user?.fullName || 'Аккаунт не заполнен'}}
+	</div>
+
+	<div class="main-info">
+		<div class="avatar">
+			<img src="{{user?.photoURL || '/assets/images/icon-camera.svg'}}">
+		</div>
+
+		<div class="text-info">
+			<p>
+				<b>Номер:</b> {{user?.phone || 'не указан'}}
+			</p>
+
+			<p>
+				<b>Почта:</b> {{user?.email}} <br>
+			</p>
+
+			<p>
+				<b>Тип аккаунта:</b> {{user?.typeAccount}}
+			</p>
+
+			<p *ngIf="user?.resumeCount">
+				<b>Количество резюме:</b> {{user.resumeCount}}
+			</p>
+
+			<p *ngIf="user?.vacancyCount">
+				<b>Количество вакансий:</b> {{user.vacancyCount}}
+			</p>
+		</div>
+
+		<div class="actions">
+
+			<div class="action">
+				<button *ngIf="user?.status !== 9" (click)="banUser()">Бан</button>
+				<button disabled *ngIf="user?.status === 9" (click)="banUser()">Разбан</button>
+			</div>
+
+			<div class="action">
+				<button *ngIf="!user?.verify" (click)="verify(true)">Верифицировать</button>
+				<button *ngIf="user?.verify" (click)="verify(false)">Убрать вериф.</button>
+			</div>
+		</div>
+	</div>
+
+
+	<mat-tab-group>
+		<mat-tab label="Статистика">
+			<employer-analytics *ngIf="user && user.typeAccount === 'employer'"
+													[user]="user"></employer-analytics>
+
+			<worker-analytics *ngIf="user && user.typeAccount === 'worker'"
+												[user]="user"></worker-analytics>
+		</mat-tab>
+
+		<mat-tab label="Вакансии" *ngIf="user && user.typeAccount === 'employer'">
+			<ng-container *ngIf="!user.vacancyList">Нет вакансий</ng-container>
+
+			<user-vacancy *ngIf="user.vacancyList" [vacancyList]="user.vacancyList"></user-vacancy>
+		</mat-tab>
+
+		<mat-tab label="Резюме" *ngIf="user && user.typeAccount === 'worker'">
+			<ng-container *ngIf="!user.resumeList">Нет резюме</ng-container>
+
+			<user-resume *ngIf="user.resumeList" [resumeList]="user.resumeList"></user-resume>
+		</mat-tab>
+	</mat-tab-group>
+
+</mat-card>

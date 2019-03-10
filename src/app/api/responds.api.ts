@@ -248,4 +248,9 @@ export class RespondsApi {
       this.setStatusRespond(this.respond.id, status);
     }
   }
+
+  // список откликов/предложений по вакансии/резюме
+  public getRespondsForEntity(entityId: string) {
+    return this.http.get(`/api/v1/admin/vacancy-resume/offers-responds/get?entityId=${entityId}`);
+  }
 }
