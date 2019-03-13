@@ -42,4 +42,8 @@ export class ListBannerComponent implements OnInit {
       );
   }
 
+  checkViewed(bannerId) {
+    this.bannerApi.checkViewed(bannerId).subscribe();
+  }
+
 }

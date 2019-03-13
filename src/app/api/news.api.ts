@@ -149,4 +149,8 @@ export class NewsApi {
         this.messages.info('Комментарий удален');
       });
   }
+
+  checkViewed(newsId: string): Observable<any> {
+    return this.http.get(`/api/v1/employer/news/view?newsId=${newsId}`);
+  }
 }

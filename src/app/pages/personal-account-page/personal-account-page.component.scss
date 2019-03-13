@@ -5,6 +5,13 @@
   display: block;
   margin-bottom: -5px;
 
+  .counter {
+    color: $orange;
+    font-size: 1rem;
+    position: relative;
+    top: -14px;
+  }
+
   .active {
     display: block !important;
   }

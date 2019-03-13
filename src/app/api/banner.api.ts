@@ -80,4 +80,8 @@ export class BannerApi {
       },
     });
   }
+
+  checkViewed(bannerId) {
+    return this.http.get(`/api/v1/employer/banner/view?bannerId=${bannerId}`);
+  }
 }

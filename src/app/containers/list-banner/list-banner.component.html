@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="list">
 
-			<a class="banner" *ngFor="let banner of listBanner" [routerLink]="['/banner', banner._id]">
+			<a class="banner" *ngFor="let banner of listBanner" [routerLink]="['/banner', banner._id]" (click)="checkViewed(banner._id)">
 
 				<div
 					*ngIf="banner.status === 3"
@@ -11,6 +11,10 @@
 					<div class="timeout-label">
 						{{ dictionary.ENTITY_TIME_IS_UP }}
 					</div>
+				</div>
+
+				<div class="moderate-passed" *ngIf="!banner?.viewed">
+					{{ dictionary.MODERATION_PASSED }}
 				</div>
 
 				<div class="photo-of-banner" [style.backgroundImage]="'url(' + banner.photoURL + ')'"></div>

@@ -4,8 +4,12 @@
 
 			<ng-container *ngFor="let news of list">
 				<a class="news" *ngIf="!news?.publicate"
-					 [routerLink]="['/news', news?._id]">
+					 [routerLink]="['/news', news?._id]" (click)="checkViewed(news._id)">
 					<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
+
+					<div class="moderate-passed" *ngIf="!news?.viewed">
+						{{ dictionary.MODERATION_PASSED }}
+					</div>
 
 					<div class="info">
 						<div class="title">

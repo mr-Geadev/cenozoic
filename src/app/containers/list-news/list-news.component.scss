@@ -51,6 +51,20 @@
       @include card();
       width: 350px;
       cursor: pointer;
+      position: relative;
+
+      .moderate-passed {
+        position: absolute;
+        height: 40px;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Roboto';
+        background-color: $orange;
+        color: $white;
+      }
 
       &.banner:not(:hover) {
         padding: 20px 20px 40px;

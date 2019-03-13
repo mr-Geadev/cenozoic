@@ -55,7 +55,7 @@
 			*ngIf="respond"
 			[typeUser]="typeUser"
 			[entity]="respond.entity"
-			[viewed]="respond.viewed"
+			[viewed]="typeUser === 'worker' ? respond.workerViewed : respond.employerViewed"
 			[status]="respond.status"
 			[dictionary]="dictionary"
 			[respond]="respond"

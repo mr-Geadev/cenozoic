@@ -102,8 +102,9 @@ export class CardComponent implements OnInit {
   }
 
   public checkToViewed() {
-    if (this.respond && !this.respond.viewed) {
-      if (this.typeUser === 'worker') {
+    const viewed = this.typeUser === 'worker' ? this.respond.workerViewed : this.respond.employerViewed;
+    if (this.respond && !viewed) {
+      if (this.respond.entity === 'offer') {
         this.respondsApi.checkOfferToViewed(this.respond._id);
       } else {
         this.respondsApi.checkRespondToViewed(this.respond._id);

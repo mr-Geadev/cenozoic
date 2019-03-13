@@ -523,4 +523,6 @@ export const ENGLISH_DICTIONARY = {
   'VERIFY_PIN_DOCUMENT_EMPLOYER': 'I attach the photo of the company registration document for account verification',
   'VERIFY_PIN_DOCUMENT_WORKER': 'Attaching a photo of your passport to verify your account',
   'ACCOUNT_IS_VERIFIED': 'Account is verified',
+  'UPDATED': 'Updated',
+  'MODERATION_PASSED': 'Approved'
 };

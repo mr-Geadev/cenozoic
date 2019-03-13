@@ -30,6 +30,7 @@ export class NewsModel {
   userId: string;
   comments: Comment[] = [];
   tags: string[] = [];
+  viewed: boolean = true;
 
   constructor(news) {
     this._id = news._id;
@@ -44,6 +45,7 @@ export class NewsModel {
     this.text = news.text;
     this.userId = news.userId;
     this.tags = news.tags;
+    this.viewed = news.viewed;
     news.comments.map(comment => {
       this.comments.push(new Comment(comment));
     });

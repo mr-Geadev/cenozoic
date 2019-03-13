@@ -16,6 +16,7 @@ export class BannerModel {
   language: string;
   companyName: string;
   timeoutDate: Moment = null;
+  viewed: boolean = true;
 
   constructor(news) {
     this._id = news._id;
@@ -30,6 +31,7 @@ export class BannerModel {
     this.language = news.language;
     this.text = news.text;
     this.userId = news.userId;
+    this.viewed = news.viewed;
     this.status = news.status || 0;
     this.timeoutDate =  moment(news.timeoutDate);
   }

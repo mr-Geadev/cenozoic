@@ -4,7 +4,7 @@ import { QuestionnaireModel, RespondModel } from 'models';
 import { NewsModel } from 'models/news.model';
 import { PayingModalService } from 'pop-ups/paying';
 import { combineLatest } from 'rxjs';
-import { QuestionnairesApi, RespondsApi } from '../../api';
+import { BannerApi, NewsApi, QuestionnairesApi, RespondsApi } from '../../api';
 import { LocalizationService } from '../../services';
 import { UserService } from '../../services/user.service';
 
@@ -26,6 +26,15 @@ export class PersonalAccountPageComponent implements OnInit {
     VACANCY: 'vacancy',
     RESUME: 'resume',
   };
+
+  counters = {
+    workerrOffers: 0,
+    employerrOffers: 0,
+    workerResponds: 0,
+    employerResponds: 0,
+    banners: 0,
+    news: 0,
+  }
 
   public activeTab: string = null;
   public dictionary: any = {};
@@ -61,6 +70,8 @@ export class PersonalAccountPageComponent implements OnInit {
               private respondsApi: RespondsApi,
               private activateRoute: ActivatedRoute,
               private router: Router,
+              private newsApi: NewsApi,
+              private bannerApi: BannerApi,
               private payingModalService: PayingModalService,
               private questionnaireApi: QuestionnairesApi,
               private _userService: UserService) {
@@ -94,19 +105,47 @@ export class PersonalAccountPageComponent implements OnInit {
           if (user) {
             this.typeCurrentUser = user.typeAccount;
             this.currentUser = user;
+
+            this.newsApi.getListNews(false, false, user._id)
+              .subscribe(newsRes => {
+                newsRes.newsList.forEach((news) => {
+                  if (!news.viewed) { this.counters.news++; }
+                });
+              })
+
+            if (user.typeAccount === 'employer') {
+              this.bannerApi.getUserBanners(user._id)
+                .subscribe(banners => {
+                  banners.banners.forEach((banner) => {
+                    if (!banner.viewed) { this.counters.banners++; }
+                  });
+                });
+            }
           }
         },
       );
 
     this.respondsApi.listOffers$
-      .subscribe(
-        listOffers => this.listOfOffers = listOffers,
-      );
+      .subscribe(listOffers => {
+        this.listOfOffers = listOffers;
+        this.counters.workerrOffers = 0;
+        this.counters.employerrOffers = 0;
+        listOffers.forEach((offers) => {
+          if (!offers.workerViewed) { this.counters.workerrOffers++; }
+          if (!offers.employerViewed) { this.counters.employerrOffers++; }
+        });
+      });
 
     this.respondsApi.listRespond$
-      .subscribe(
-        listResponds => this.listOfResponds = listResponds,
-      );
+      .subscribe(listResponds => {
+        this.listOfResponds = listResponds;
+        this.counters.workerResponds = 0;
+        this.counters.employerResponds = 0;
+        listResponds.forEach((respond) => {
+          if (!respond.workerViewed) { this.counters.workerResponds++; }
+          if (!respond.employerViewed) { this.counters.employerResponds++; }
+        });
+      });
 
     this.respondsApi.listArchive$
       .subscribe(

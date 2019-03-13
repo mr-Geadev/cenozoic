@@ -523,4 +523,6 @@ export const RUSSIAN_DICTIONARY = {
   'VERIFY_PIN_DOCUMENT_EMPLOYER': 'Прикладываю фото документа о регистрации компании для верификации аккаунта',
   'VERIFY_PIN_DOCUMENT_WORKER': 'Прикладываю фото своего паспорта для верификации аккаунта',
   'ACCOUNT_IS_VERIFIED': 'Аккаунт верефицирован',
+  'UPDATED': 'Обновлено',
+  'MODERATION_PASSED': 'Одобрено'
 };

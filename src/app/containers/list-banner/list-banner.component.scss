@@ -32,6 +32,21 @@
       @include card();
       width: 350px;
       cursor: pointer;
+      position: relative;
+
+      .moderate-passed {
+        position: absolute;
+        padding: 0;
+        height: 40px;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Roboto';
+        background-color: $orange;
+        color: $white;
+      }
 
       .timeout {
         position: absolute;

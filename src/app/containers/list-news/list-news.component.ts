@@ -91,4 +91,8 @@ export class ListNewsComponent implements OnInit, OnChanges {
     );
   }
 
+  checkViewed(newsId) {
+    this.newsApi.checkViewed(newsId).subscribe()
+  }
+
 }

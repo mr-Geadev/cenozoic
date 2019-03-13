@@ -38,11 +38,17 @@
 					</li>
 
 					<li class="item">
-						<a routerLink="/personal-account/{{TABS.RESPONDS}}" [class.active]="activeTab === TABS.RESPONDS">{{ dictionary.ACCOUNT_PAGE_TAB_RESPOND }}</a>
+						<a routerLink="/personal-account/{{TABS.RESPONDS}}" [class.active]="activeTab === TABS.RESPONDS">
+							{{ dictionary.ACCOUNT_PAGE_TAB_RESPOND }}
+							<span class="counter">{{ currentUser.typeUser === 'worker' ? counters.workerResponds : counters.employerResponds}}</span>
+						</a>
 					</li>
 
 					<li class="item">
-						<a routerLink="/personal-account/{{TABS.OFFERS}}" [class.active]="activeTab === TABS.OFFERS">{{ dictionary.ACCOUNT_PAGE_TAB_OFFERS }}</a>
+						<a routerLink="/personal-account/{{TABS.OFFERS}}" [class.active]="activeTab === TABS.OFFERS">
+							{{ dictionary.ACCOUNT_PAGE_TAB_OFFERS }}
+							<span class="counter">{{ currentUser.typeUser === 'worker' ? counters.workerrOffers : counters.employerrOffers}}</span>
+						</a>
 					</li>
 
 					<li class="item">
@@ -54,11 +60,17 @@
 					</li>
 
 					<li class="item">
-						<a routerLink="/personal-account/{{TABS.NEWS}}" [class.active]="activeTab === TABS.NEWS">{{dictionary.ACCOUNT_PAGE_TAB_NEWS}}</a>
+						<a routerLink="/personal-account/{{TABS.NEWS}}" [class.active]="activeTab === TABS.NEWS">
+							{{dictionary.ACCOUNT_PAGE_TAB_NEWS}}
+							<span class="counter">{{ counters.news }}</span>
+						</a>
 					</li>
 
 					<li class="item" *ngIf="typeCurrentUser === 'employer'">
-						<a routerLink="/personal-account/{{TABS.BANNERS}}" [class.active]="activeTab === TABS.BANNERS">{{dictionary.ACCOUNT_PAGE_TAB_BANNERS}}</a>
+						<a routerLink="/personal-account/{{TABS.BANNERS}}" [class.active]="activeTab === TABS.BANNERS">
+							{{dictionary.ACCOUNT_PAGE_TAB_BANNERS}}
+							<span class="counter">{{ counters.banners }}</span>
+						</a>
 					</li>
 
 					<li class="item" *ngIf="typeCurrentUser === 'employer' || typeCurrentUser === 'admin'">

@@ -19,7 +19,8 @@ export class RespondModel {
 
   public workerArchive: boolean = false;
   public employerArchive: boolean = false;
-  public viewed: boolean = true;
+  public workerViewed: boolean = true;
+  public employerViewed: boolean = true;
 
   public creationDate: Moment = null;
   public changeDate: Moment = null;
@@ -38,7 +39,8 @@ export class RespondModel {
     this.entity = respond.entity;
     this.workerArchive = respond.workerArchive;
     this.employerArchive = respond.employerArchive;
-    this.viewed = respond.viewed;
+    this.workerViewed = respond.workerViewed;
+    this.employerViewed = respond.employerViewed;
     this.creationDate = moment(respond.creationDate);
     this.changeDate = respond.changeDate ? moment(respond.changeDate) : null;
     this.questionnaire = respond.questionnaire ? new QuestionnaireModel(respond.questionnaire) : null;

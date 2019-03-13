@@ -172,7 +172,7 @@ export class RespondsApi {
 
   // помечает отклик как просмотренный
   public checkRespondToViewed(respondId: string): void {
-    this.http.get(`/api/v1/employer/respond/view?respondId=${respondId}`)
+    this.http.get(`/api/v1/employer-worker/offer-respond/view?entityId=${respondId}&entityName=respond`)
       .subscribe((res) => {
         this.getResponds();
       });
@@ -180,7 +180,7 @@ export class RespondsApi {
 
   // помечает предложение как просмотренное
   public checkOfferToViewed(offerId: string): void {
-    this.http.get(`/api/v1/worker/offer/view?offerId=${offerId}`)
+    this.http.get(`/api/v1/employer-worker/offer-respond/view?entityId=${offerId}&entityName=offer`)
       .subscribe((res) => {
         this.getOffers();
       });
@@ -190,7 +190,7 @@ export class RespondsApi {
   public employerSendRespondToArchive(respond): void {
   }
 
-  // работодатель отправляет предложение в архив
+  // отправить в архив
   public sendToArchive(respond: RespondModel, typeUser: string): void {
     if (typeUser === 'employer') {
       if (respond.entity === 'offer') {
