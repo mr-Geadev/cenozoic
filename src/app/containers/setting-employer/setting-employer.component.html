@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="parameter" *ngIf="!currentUser.verify">
-					<a style="color: #ff682a"
+					<a class="verify-button"
 						 href="mailto:wokrKozlov@yandex.ru?subject={{dictionary.VERIFY_ACCOUNT}}&body={{dictionary.VERIFY_PIN_DOCUMENT_EMPLOYER}}">{{dictionary.VERIFY_ACCOUNT}}</a>
 				</div>
 				<div class="parameter" *ngIf="currentUser.verify">
@@ -125,7 +125,7 @@
 							 accept="image/*,image/jpeg,image/png,image/gif">
 				<label for="load-photo">{{loadingPhotoButton}}</label>
 
-				<div class="message" `="dictionary.LOAD_PHOTO_DESCRIPTION">
+				<div class="message" [innerHTML]="dictionary.LOAD_PHOTO_DESCRIPTION">
 				</div>
 			</div>
 			<div class="rate">

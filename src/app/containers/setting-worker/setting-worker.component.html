@@ -74,7 +74,10 @@
                     </div>
                 </div>
                 <div class="parameter" *ngIf="!currentUser.verify">
-                    <a style="color: #ff682a" href="mailto:wokrKozlov@yandex.ru?subject={{dictionary.VERIFY_ACCOUNT}}&body={{dictionary.VERIFY_PIN_DOCUMENT_WORKER}}">{{dictionary.VERIFY_ACCOUNT}}</a>
+                    <a class="verify-button" href="mailto:wokrKozlov@yandex.ru?subject={{dictionary.VERIFY_ACCOUNT}}&body={{dictionary.VERIFY_PIN_DOCUMENT_WORKER}}">{{dictionary.VERIFY_ACCOUNT}}</a>
+                </div>
+                <div class="parameter" *ngIf="currentUser.verify">
+                    {{dictionary.ACCOUNT_IS_VERIFIED}}
                 </div>
                 <div class="side-title">
                     {{dictionary.NOTIFICATIONS}}
