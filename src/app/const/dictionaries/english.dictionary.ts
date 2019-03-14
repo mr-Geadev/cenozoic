@@ -518,11 +518,12 @@ export const ENGLISH_DICTIONARY = {
   'TO_YOURS_RESUME': 'To your resume',
   'EXPORT_PDF': 'Save resume as PDF',
   'ADVERTISING_RECORD': 'Advertising record',
-  'BANNER_LINK': 'Link to the resource side',
+  'BANNER_LINK': 'Link to the resource side (must start with "http: //" or "https: //")',
   'VERIFY_ACCOUNT': 'Verify account',
   'VERIFY_PIN_DOCUMENT_EMPLOYER': 'I attach the photo of the company registration document for account verification',
   'VERIFY_PIN_DOCUMENT_WORKER': 'Attaching a photo of your passport to verify your account',
   'ACCOUNT_IS_VERIFIED': 'Account is verified',
   'UPDATED': 'Updated',
-  'MODERATION_PASSED': 'Approved'
+  'MODERATION_PASSED': 'Approved',
+  'INVALID_FIELD': 'The field is entered incorrectly'
 };

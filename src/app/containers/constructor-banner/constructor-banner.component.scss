@@ -39,8 +39,22 @@
       line-height: 27.99px;
     }
 
+    .ng-touched.ng-invalid:not(:disabled) ~ .validation-alert {
+      display: block;
+    }
+
+    .validation-alert {
+      position: absolute;
+      top: 100%;
+      margin-top: 2px;
+      font-size: 13px;
+      color: #ec3737;
+      display: none;
+    }
+
     .field {
       margin-top: 30px;
+      position: relative;
     }
 
     .title-banner {

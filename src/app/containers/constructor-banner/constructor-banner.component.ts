@@ -44,7 +44,10 @@ export class ConstructorBannerComponent implements OnInit {
 
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
+        res => {
+          this.dictionary = res;
+          this.currentLang = LocalizationService.currentLang();
+        }
       );
 
     if (this.id) {
@@ -64,7 +67,7 @@ export class ConstructorBannerComponent implements OnInit {
   public initForm(title, shortDescription, imageUrl) {
     this.banner = new FormGroup({
       title: new FormControl(title, [Validators.required]),
-      imageUrl: new FormControl(imageUrl),
+      imageUrl: new FormControl(imageUrl, [Validators.pattern('(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
       language: new FormControl(LocalizationService.currentLang(), [Validators.required]),
       shortDescription: new FormControl(shortDescription, [Validators.required]),
     });
