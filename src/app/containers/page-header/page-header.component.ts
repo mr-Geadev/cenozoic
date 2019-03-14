@@ -42,9 +42,11 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     ngOnInit(): void {
       this._localizationService.currentDictionary
         .subscribe(
-          res => this.dictionary = res
+          res => {
+            this.dictionary = res;
+            this.language = this._localizationService.currentLanguage;
+          }
         );
-        this.language = this._localizationService.currentLanguage;
 
         this._subscriptions.push(
             this._userService.user$

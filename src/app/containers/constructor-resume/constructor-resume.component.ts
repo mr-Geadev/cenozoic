@@ -214,23 +214,23 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             }),
           );
 
-          if (isPlatformBrowser(this.platformId)) {
-            if (typeof window !== 'undefined') {
-              let savedResume = localStorage.getItem('resume');
-              savedResume = savedResume ? JSON.parse(savedResume) : null;
-              if (savedResume && savedResume['resumeForm']) {
-                this.getResumeStorage();
-              }
-            }
-          }
-
-
-          const interval = setInterval(() => {
-            this.saveResumeStorage();
-            if (this.intervalEnd) {
-              clearInterval(interval);
-            }
-          }, 1000);
+          // if (isPlatformBrowser(this.platformId)) {
+          //   if (typeof window !== 'undefined') {
+          //     let savedResume = localStorage.getItem('resume');
+          //     savedResume = savedResume ? JSON.parse(savedResume) : null;
+          //     if (savedResume && savedResume['resumeForm']) {
+          //       this.getResumeStorage();
+          //     }
+          //   }
+          // }
+          //
+          //
+          // const interval = setInterval(() => {
+          //   this.saveResumeStorage();
+          //   if (this.intervalEnd) {
+          //     clearInterval(interval);
+          //   }
+          // }, 1000);
         }
 
       });
@@ -483,12 +483,12 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       this.http.post(CREATE_RESUME, formData)
         .subscribe((res: any) => {
           if (res.success) {
-            this.intervalEnd = true;
-            if (isPlatformBrowser(this.platformId)) {
-              if (typeof window !== 'undefined') {
-                localStorage.removeItem('resume');
-              }
-            }
+            // this.intervalEnd = true;
+            // if (isPlatformBrowser(this.platformId)) {
+            //   if (typeof window !== 'undefined') {
+            //     localStorage.removeItem('resume');
+            //   }
+            // }
             this.resumeForm = null;
             this.resumeService.setResume(null);
             this.router.navigate(['/personal-account', 'resume']);
@@ -498,6 +498,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       delete this.resumeForm.userId;
       delete this.resumeForm._id;
       delete this.resumeForm.birthdayNormal;
+      delete this.resumeForm.history;
 
       if (this.resumeForm.experience.length) {
         this.resumeForm.experience.forEach((experience) => {

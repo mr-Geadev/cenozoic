@@ -12,18 +12,22 @@ const LOCALIZATION = 'localization';
 @Injectable()
 export class LocalizationService {
   public readonly currentDictionary: BehaviorSubject<any> = new BehaviorSubject<any>(this._detectLanguage() === 'ru' ? RUSSIAN_DICTIONARY : ENGLISH_DICTIONARY);
-  public readonly currentLanguage: string = null;
+  public currentLanguage: string = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
-              http: HttpClient) {
+              public http: HttpClient) {
+    this.init();
+  }
+
+  public init() {
     this.currentLanguage = this._detectLanguage();
 
     switch (this.currentLanguage) {
       case LANGUAGES.RUSSIAN:
-        http.get('/api/v1/admin/localization/get?language=ru').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
+        this.http.get('/api/v1/admin/localization/get?language=ru').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
         break;
       case LANGUAGES.ENGLISH:
-        http.get('/api/v1/admin/localization/get?language=en').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
+        this.http.get('/api/v1/admin/localization/get?language=en').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
         break;
     }
   }
@@ -58,7 +62,8 @@ export class LocalizationService {
       if (isPlatformBrowser(this.platformId)) {
         if (typeof window !== 'undefined') {
           localStorage.setItem(LOCALIZATION, language);
-          window.location.href = String(window.location.href); // Refresh page
+          this.init();
+          // window.location.href = String(window.location.href); // Refresh page
         }
       }
     }
