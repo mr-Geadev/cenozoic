@@ -3,22 +3,22 @@
 		<mat-card>
 			<mat-tab-group>
 
-				<mat-tab label="Все">
-					<table>
-						<caption>Список всех аккаунтов на сайте</caption>
-						<tr>
-							<th>Email</th>
-							<th *ngIf="!isShowAnalytics">Имя/Контактое лицо</th>
-							<th *ngIf="!isShowAnalytics">Количество <br/> резюме/вакансий</th>
-							<th *ngIf="!isShowAnalytics">Название компании</th>
-						</tr>
-						<a class="item-user" [routerLink]="['/admin/user', user._id]"
-							 *ngFor="let user of usersApi.userList; let i = index;"
-							 [user]="user"
-							 [class.unconfirmed]="user.status === 1"
-							 [class.banned]="user.status === 9"></a>
-					</table>
-				</mat-tab>
+				<!--<mat-tab label="Все">-->
+					<!--<table>-->
+						<!--<caption>Список всех аккаунтов на сайте</caption>-->
+						<!--<tr>-->
+							<!--<th>Email</th>-->
+							<!--<th *ngIf="!isShowAnalytics">Имя/Контактое лицо</th>-->
+							<!--<th *ngIf="!isShowAnalytics">Количество <br/> резюме/вакансий</th>-->
+							<!--<th *ngIf="!isShowAnalytics">Название компании</th>-->
+						<!--</tr>-->
+						<!--<a class="item-user" [routerLink]="['/admin/user', user._id]"-->
+							 <!--*ngFor="let user of usersApi.userList; let i = index;"-->
+							 <!--[user]="user"-->
+							 <!--[class.unconfirmed]="user.status === 1"-->
+							 <!--[class.banned]="user.status === 9"></a>-->
+					<!--</table>-->
+				<!--</mat-tab>-->
 
 				<mat-tab label="Компании">
 					<table>
