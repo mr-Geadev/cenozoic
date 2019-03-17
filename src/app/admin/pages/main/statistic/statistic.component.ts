@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnalyticsApi } from 'api';
+import { AnalyticsApi } from 'api/index';
 import * as moment from 'moment';
 
 @Component({

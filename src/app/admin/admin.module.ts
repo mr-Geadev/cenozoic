@@ -20,7 +20,7 @@ import { BannerComponent } from 'admin/pages/banner/banner.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news';
 import { StaticPageComponent } from 'admin/pages/static-page/static-page.component';
-import { StatisticComponent } from 'admin/pages/statistic/statistic.component';
+import { StatisticComponent } from 'admin/pages/main/statistic/statistic.component';
 import { EmployerAnalyticsComponent } from 'admin/pages/user/employer-analytics/employer-analytics.component';
 import { UserResumeComponent } from 'admin/pages/user/user-resume/user-resume.component';
 import { UserVacancyComponent } from 'admin/pages/user/user-vacancy/user-vacancy.component';

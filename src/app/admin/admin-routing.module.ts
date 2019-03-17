@@ -4,7 +4,6 @@ import { BannerComponent } from 'admin/pages/banner/banner.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news/news.component';
 import { StaticPageComponent } from 'admin/pages/static-page/static-page.component';
-import { StatisticComponent } from 'admin/pages/statistic/statistic.component';
 import { UserComponent } from 'admin/pages/user/user.component';
 import { AdminGuard } from '../guards';
 import { AdminComponent } from './admin.component';
@@ -39,9 +38,6 @@ const routes: Routes = [
       },
       {
         path: 'banners', component: BannerComponent,
-      },
-      {
-        path: 'statistic', component: StatisticComponent,
       },
       {
         path: 'static-page', component: StaticPageComponent,
