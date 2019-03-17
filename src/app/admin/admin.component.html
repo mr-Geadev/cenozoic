@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <mat-toolbar>Админ панель</mat-toolbar>
+            <mat-toolbar>Админ панель {{ currentRoute.getValue() }}</mat-toolbar>
         </div>
     </div>
 </div>
@@ -14,6 +14,8 @@
                     <h3 mat-subheader>Меню:</h3>
                     <a mat-list-item
                        *ngFor="let menuItem of menuList; let i = index;"
+                       [class.active]="currentRoute.getValue() === menuItem.link"
+                       (click)="currentRoute.next(menuItem.link)"
                        routerLink="{{menuItem.link}}">
                         {{menuItem.name}}
                     </a>

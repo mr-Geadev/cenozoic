@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {UserService} from '../services';
 
 export const MENU_LIST = [
@@ -23,6 +24,7 @@ export const MENU_LIST = [
 export class AdminComponent implements OnInit {
 
     public menuList: any = MENU_LIST;
+    public currentRoute = new BehaviorSubject<string>('./');
 
     constructor(private _userService: UserService,
                 private _router: Router) {
