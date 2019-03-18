@@ -51,7 +51,7 @@ export class FilterVacancyModel {
         this.vacancyLanguage ? objectRequest['vacancyLanguage'] = this.vacancyLanguage : null;
         this.nationalities.length ? objectRequest['nationalities'] = this.nationalities.map(item => item) : null;
 
-        if (this.experienceType && this.experienceTime) {
+        if (this.experienceType) {
             switch (this.experienceTime) {
                 case ('littlest'): objectRequest['experienceTime']  = {from: 0, to: 1}; break;
                 case ('little'): objectRequest['experienceTime']  = {from: 1, to: 3}; break;
