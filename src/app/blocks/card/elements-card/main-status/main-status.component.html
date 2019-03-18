@@ -4,10 +4,10 @@
 	<!--обновлено-->
 	<div *ngIf="!viewed">
 		<img src="/assets/images/dott-orange.svg"/>
-		{{dictionary.UPDATED}}
+		{{dictionary.UPDATED}} &nbsp; <span class="viewed"> {{lastUpdate()}} </span>
 	</div>
 
-	<div class="viewed">
+	<div *ngIf="viewed" class="viewed">
 		{{lastUpdate()}}
 	</div>
 
