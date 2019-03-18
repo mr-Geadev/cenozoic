@@ -73,12 +73,13 @@
                                placeholder="{{dictionary.SETTINGS_USER_IN_FORMAT}}: +79991112233">
                     </div>
                 </div>
-                <div class="parameter" *ngIf="!currentUser.verify">
-                    <a class="verify-button" href="mailto:wokrKozlov@yandex.ru?subject={{dictionary.VERIFY_ACCOUNT}}&body={{dictionary.VERIFY_PIN_DOCUMENT_WORKER}}">{{dictionary.VERIFY_ACCOUNT}}</a>
-                </div>
-                <div class="parameter" *ngIf="currentUser.verify">
-                    {{dictionary.ACCOUNT_IS_VERIFIED}}
-                </div>
+                <!--выключен, но функционал этого есть-->
+                <!--<div class="parameter" *ngIf="!currentUser.verify">-->
+                    <!--<a class="verify-button" href="mailto:tech.support@cnzcommunity.com?subject={{dictionary.VERIFY_ACCOUNT}}&body={{dictionary.VERIFY_PIN_DOCUMENT_WORKER}}">{{dictionary.VERIFY_ACCOUNT}}</a>-->
+                <!--</div>-->
+                <!--<div class="parameter" *ngIf="currentUser.verify">-->
+                    <!--{{dictionary.ACCOUNT_IS_VERIFIED}}-->
+                <!--</div>-->
                 <div class="side-title">
                     {{dictionary.NOTIFICATIONS}}
                 </div>
