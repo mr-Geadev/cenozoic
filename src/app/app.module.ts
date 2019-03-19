@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AnalyticsApi } from 'api';
+import { MessagesApi } from 'api/messages.api';
 
 import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
@@ -28,6 +29,7 @@ import {
   ResumeFullPageModule, ServicePageModule,
   VacancyFullPageModule,
 } from 'pages';
+import { ChatsPageModule } from 'pages/chats-page';
 import { ConstructorNewsPageModule } from 'pages/constructor-news-page';
 import { ChangeCityModule, ChangeCityService, ConfirmModule, PayingModule } from 'pop-ups';
 import {
@@ -92,6 +94,7 @@ const ROUTES = [
     PrivacyPoliticsPageModule,
     AboutUsPageModule,
     ServicePageModule,
+    ChatsPageModule,
 
     // Blocks
     PageHeaderModule,
@@ -117,6 +120,7 @@ const ROUTES = [
     QuestionnaireService,
     SocketService,
     AnalyticsApi,
+    MessagesApi,
 
     // Guards
     BlankAccountGuard,
