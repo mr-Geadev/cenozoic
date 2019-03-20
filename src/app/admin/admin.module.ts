@@ -17,6 +17,7 @@ import {
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { BannerComponent } from 'admin/pages/banner/banner.component';
+import { ChatsAdminComponent } from 'admin/pages/chats/chats-admin.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news';
 import { StaticPageComponent } from 'admin/pages/static-page/static-page.component';
@@ -27,6 +28,7 @@ import { UserVacancyComponent } from 'admin/pages/user/user-vacancy/user-vacancy
 import { UserComponent } from 'admin/pages/user/user.component';
 import { WorkerAnalyticsComponent } from 'admin/pages/user/worker-analytics/worker-analytics.component';
 import { NewsApi } from 'api';
+import { ChatsModule } from 'containers/chats';
 import { LocalizationApi } from '../api/localization.api';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -48,6 +50,7 @@ import { UsersComponent } from './pages/users/users.component';
     FormsModule,
 
     EditorModule,
+    ChatsModule,
 
     // material
     MatDialogModule,
@@ -77,6 +80,7 @@ import { UsersComponent } from './pages/users/users.component';
     StatisticComponent,
     StaticPageComponent,
     UserComponent,
+    ChatsAdminComponent,
 
     // containers
     ItemUserComponent,

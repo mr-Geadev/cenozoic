@@ -42,6 +42,10 @@
 							</div>
 						</div>
 
+						<a class="button" [routerLink]="['/admin/chats', banner.userId]">
+							Написать
+						</a>
+
 						<button class="button" *ngIf="!banner.publicate" (click)="publicate(true)">
 							{{ dictionary.BANNER_PUBLIC }}
 						</button>

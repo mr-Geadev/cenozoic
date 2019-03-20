@@ -1,0 +1,154 @@
+@import "colors";
+@import "animations";
+
+:host {
+  display: block;
+  padding: 20px 0;
+
+  .chat-window {
+    margin-top: 40px;
+    width: 100%;
+    border: 2px solid $gray;
+    display: flex;
+    justify-content: space-between;
+    height: 70vh;
+
+    .chat-preview-block {
+      width: 300px;
+      flex-shrink: 0;
+    }
+
+    .current-chat {
+      width: 100%;
+    }
+  }
+
+  .chat-preview-block {
+    border-right: 1px solid $gray;
+    padding: 15px 10px;
+    overflow-y: scroll;
+
+    .chat-preview-item {
+      padding: 10px 5px;
+      border-bottom: 1px solid $gray;
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      .name-recipient {
+        font-family: 'Roboto';
+        font-weight: 600;
+      }
+
+      .last-message {
+        margin-top: 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: #e9e9e9;
+      }
+
+      &.active {
+        cursor: default;
+        background-color: rgba(255, 107, 44, 0.64);
+      }
+    }
+
+  }
+
+  .current-chat {
+    display: flex;
+    flex-direction: column;
+
+    .name-recipient {
+      font-family: "Bebas";
+      font-size: 1.2rem;
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid $gray;
+      flex-shrink: 0;
+    }
+
+    .messages {
+      height: 100%;
+      padding: 0 20px;
+      overflow-y: scroll;
+
+      .message {
+        padding: 20px 0 15px;
+        border-bottom: 1px solid $gray;
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+
+          .name {
+            font-weight: 600;
+          }
+
+          .date {
+            color: $gray
+          }
+        }
+
+        .text {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .new-message {
+      border-top: 1px solid $gray;
+      flex-shrink: 0;
+      height: 69px;
+      padding: 15px 20px;
+      box-sizing: border-box;
+
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        display: block;
+        width: calc(100% - 194px - 12px);
+        height: 100%;
+        border-radius: 5px;
+        border: 1px solid #676767;
+        background-color: #ffffff;
+        padding: 5px 10px;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 194px;
+        height: 100%;
+        box-shadow: 1px 3px 9px 1px rgba(0, 0, 0, 0.23);
+        border-radius: 5px;
+        background-color: $orange;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: #ffffff;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 700;
+        @include animation(background-color);
+
+        &:hover {
+          background-color: $hover-orange;
+        }
+
+        &:disabled {
+          background-color: $light-gray;
+        }
+      }
+    }
+  }
+}

@@ -45,6 +45,10 @@
 				<button *ngIf="!user?.verify" (click)="verify(true)">Верифицировать</button>
 				<button *ngIf="user?.verify" (click)="verify(false)">Убрать вериф.</button>
 			</div>
+
+			<div class="action">
+				<a class="button" [routerLink]="['/admin/chats', user._id]">Написать</a>
+			</div>
 		</div>
 	</div>
 

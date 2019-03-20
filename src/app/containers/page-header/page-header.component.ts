@@ -1,5 +1,6 @@
 import {Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
+import { MessagesApi } from 'api/messages.api';
 import {Subscription} from 'rxjs';
 
 import {LoginModalService} from '../../pop-ups/login';
@@ -17,6 +18,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
     public isMobileMenuOpen: boolean = false;
     public currentPage: string = null;
     public isAdmin: boolean = false;
+    public haveUnreadMessage: boolean = false;
 
     // For localization
     public dictionary: any = {};
@@ -29,6 +31,7 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
                 private _userService: UserService,
                 private _authService: AuthService,
                 private router: Router,
+                private messagesApi: MessagesApi,
                 private _localizationService: LocalizationService) {
 
         router.events.subscribe((event: any) => {
@@ -57,6 +60,10 @@ export class PageHeaderComponent implements OnInit, OnDestroy, DoCheck {
                     }
                 })
         );
+
+        this.messagesApi.getMessages().subscribe((res) => {
+          this.haveUnreadMessage = !!res.find(chat => !chat.viewedRecipient);
+        })
     }
 
     ngOnDestroy(): void {

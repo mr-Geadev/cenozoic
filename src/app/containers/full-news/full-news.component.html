@@ -39,6 +39,10 @@
 							{{ dictionary.NEWS_PUBLIC_ALL }}
 						</button>
 
+						<a class="button" [routerLink]="['/admin/chats', news.userId]">
+							Написать
+						</a>
+
 						<button class="button red" *ngIf="news.publicateToNewsPage" (click)="publish('fromNews')">
 							{{ dictionary.NEWS_UNPUBLIC_ALL }}
 						</button>

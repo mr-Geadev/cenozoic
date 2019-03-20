@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BannerComponent } from 'admin/pages/banner/banner.component';
+import { ChatsAdminComponent } from 'admin/pages/chats/chats-admin.component';
 import { LocalizationComponent } from 'admin/pages/localization/localization.component';
 import { NewsComponent } from 'admin/pages/news/news.component';
 import { StaticPageComponent } from 'admin/pages/static-page/static-page.component';
@@ -44,6 +45,12 @@ const routes: Routes = [
       },
       {
         path: 'user/:id', component: UserComponent,
+      },
+      {
+        path: 'chats', component: ChatsAdminComponent,
+      },
+      {
+        path: 'chats/:id', component: ChatsAdminComponent,
       }
     ],
   },

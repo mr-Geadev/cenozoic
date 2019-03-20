@@ -1,0 +1,63 @@
+<div class="chat-window">
+	<div class="chat-preview-block">
+
+		<ng-container *ngIf="type === 'create'">
+			<div class="chat-preview-item" [class.active]="type === 'create'">
+				<div class="name-recipient">
+					Новое сообщение
+				</div>
+
+				<div class="last-message">
+					&nbsp;
+				</div>
+			</div>
+		</ng-container>
+
+		<div class="chat-preview-item" *ngFor="let chat of chats" (click)="openChat(chat);" [class.active]="currentChat && chat._id === currentChat._id">
+			<div class="name-recipient">
+				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  chat.recipientId : 'Администрация'   }}
+				<img src="/assets/images/dott-orange.svg" *ngIf="chat.creatorId === currentUser._id ? !chat.viewedCreator : !chat.viewedRecipient "/>
+			</div>
+
+			<div class="last-message">
+				{{ chat.messages[chat.messages.length-1].message}}
+			</div>
+		</div>
+
+	</div>
+
+	<div class="current-chat">
+		<ng-container *ngIf="currentChat">
+			<div class="name-recipient">
+				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  currentChat.recipientId : 'Администрация'   }}
+			</div>
+
+			<div class="messages" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+				<div class="message" *ngFor="let message of currentChat.messages">
+					<div class="header">
+						<div class="name">
+							<ng-container *ngIf="currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ">{{ message.creatorId === currentUser._id ? 'Вы' : message.creatorId }}</ng-container>
+							<ng-container *ngIf="currentUser.typeAccount === 'employer' || currentUser.typeAccount === 'worker' ">{{ message.creatorId === currentUser._id ? 'Вы' : 'Администратор' }}</ng-container>
+						</div>
+
+						<div class="date">
+							{{ moment(message.date).locale('ru').format('HH:mm, DD.MM.YYYY') }}
+						</div>
+					</div>
+
+					<div class="text">
+						{{ message.message }}
+					</div>
+				</div>
+			</div>
+
+			<form  autocomplete="off" class="new-message" (submit)="sendMessage(currentChat.creatorId === currentUser._id ? currentChat.recipientId : currentChat.creatorId)" >
+				<input type="text" style="display: none;" autocomplete="false">
+				<input type="text" name="message" [(ngModel)]="newMessage">
+				<button type="submit" [disabled]="!newMessage">
+					{{ dictionary.FAQ_SUPPORT_CHAT_SEND_MESSAGE }}
+				</button>
+			</form>
+		</ng-container>
+	</div>
+</div>
