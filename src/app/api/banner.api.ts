@@ -76,6 +76,7 @@ export class BannerApi {
       limit: main ? 3 : 4,
       filters: {
         publicate: true,
+        status: 0,
         language: LocalizationService.currentLang()
       },
     });
