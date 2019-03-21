@@ -13,7 +13,11 @@
 </div>
 
 
-<div class="terms">
+<div class="terms" *ngIf="vacancy.salary.from">
 	{{dictionary.FROM}} <span class="number">{{vacancy.salary.from}}</span>
 	{{vacancy.currency === "rubles" ? "₽" : "$" }}
+</div>
+
+<div class="terms" *ngIf="!vacancy.salary.from">
+	З/П договорная
 </div>
