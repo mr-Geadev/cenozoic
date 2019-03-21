@@ -34,6 +34,14 @@ export class UsersApi {
       );
   }
 
+  public unbanUser(id: string): Observable<any> {
+    return this._http.get(`/api/v1/admin/account/unblock?uid=${id}`)
+      .map(
+        res => true,
+        err => err,
+      );
+  }
+
   public verificateUser(id: string, verify: boolean): Observable<any> {
     const body = {
       userId: id,

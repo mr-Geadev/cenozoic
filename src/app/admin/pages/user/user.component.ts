@@ -49,6 +49,26 @@ export class UserComponent implements OnInit {
             .subscribe(
               res => {
                 this._messages.info('Пользователь забанен');
+                this.getUser();
+              },
+              err => {
+                this._messages.info(err.error.errorMessage);
+              },
+            );
+        }
+        this._dialog.closeAll();
+      });
+  }
+
+  public unbanUser(): void {
+    this._confirm.confirm(`Вы хотите разбанить аккаунт ${this.user.email} ?`)
+      .subscribe((res) => {
+        if (res) {
+          this._usersApi.unbanUser(this.user._id)
+            .subscribe(
+              res => {
+                this._messages.info('Пользователь забанен');
+                this.getUser();
               },
               err => {
                 this._messages.info(err.error.errorMessage);
@@ -64,6 +84,7 @@ export class UserComponent implements OnInit {
       .subscribe(
         res => {
           this._messages.info('Успешно');
+          this.getUser();
           this.user.verify = verify;
         },
         err => {

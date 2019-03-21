@@ -38,7 +38,7 @@
 
 			<div class="action">
 				<button *ngIf="user?.status !== 9" (click)="banUser()">Бан</button>
-				<button disabled *ngIf="user?.status === 9" (click)="banUser()">Разбан</button>
+				<button *ngIf="user?.status === 9" (click)="unbanUser()">Разбан</button>
 			</div>
 
 			<div class="action">
