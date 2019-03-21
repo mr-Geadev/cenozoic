@@ -2,12 +2,16 @@
 	<!--статусы сосикателя-->
 
 	<!--обновлено-->
-	<div *ngIf="!viewed">
-		<img src="/assets/images/dott-orange.svg"/>
-		{{dictionary.UPDATED}} &nbsp; <span class="viewed"> {{lastUpdate()}} </span>
+	<div>
+		<ng-container *ngIf="!viewed">
+			<img src="/assets/images/dott-orange.svg"/>
+			{{dictionary.UPDATED}} &nbsp;
+		</ng-container>
+
+		<span  *ngIf="viewed" class="viewed"> {{lastUpdate()}} </span>
 	</div>
 
-	<div *ngIf="viewed" class="viewed">
+	<div *ngIf="!viewed" class="viewed">
 		{{lastUpdate()}}
 	</div>
 
