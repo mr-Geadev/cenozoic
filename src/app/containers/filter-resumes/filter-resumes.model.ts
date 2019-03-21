@@ -93,7 +93,7 @@ export class FilterResumesModel {
             };
 
             if (this.salary.to === 'other') {
-                objectRequest.salary.to = 600000;
+                objectRequest.salary.to =  LocalizationService.currentLang() === 'ru' ? 600000 : 10000;
                 delete objectRequest.salary.from;
             }
 

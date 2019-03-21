@@ -72,7 +72,7 @@ export class FilterVacancyModel {
             };
 
             if (this.salary.from === 'other') {
-                objectRequest.salary.from = 600000;
+                objectRequest.salary.from =  LocalizationService.currentLang() === 'ru' ? 600000 : 10000;
             }
 
             if (LocalizationService.currentLang() === 'ru' ) {

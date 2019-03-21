@@ -116,7 +116,7 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select name="salary" placeholder="{{dictionary.SALARY}}"
+                    <mat-select *ngIf="currentLang === 'ru'" name="salary" placeholder="{{dictionary.SALARY}}"
                                 (change)="filterResumesService.changeForm()"
                                 [(ngModel)]="filterResumesService.parameters.salary.to">
                         <mat-option value="60000">{{dictionary.TO}} 60 000</mat-option>
@@ -126,6 +126,18 @@
                         <mat-option value="420000">{{dictionary.TO}} 420 000</mat-option>
                         <mat-option value="600000">{{dictionary.TO}} 600 000</mat-option>
                         <mat-option value="other">{{dictionary.MORE_THAN}} 600 000</mat-option>
+                    </mat-select>
+
+                    <mat-select *ngIf="currentLang === 'en'" name="salary" placeholder="{{dictionary.SALARY}}"
+                                (change)="filterResumesService.changeForm()"
+                                [(ngModel)]="filterResumesService.parameters.salary.to">
+                        <mat-option value="1000">{{dictionary.TO}} 1000</mat-option>
+                        <mat-option value="2000">{{dictionary.TO}} 2000</mat-option>
+                        <mat-option value="3000">{{dictionary.TO}} 3000</mat-option>
+                        <mat-option value="5000">{{dictionary.TO}} 5000</mat-option>
+                        <mat-option value="7000">{{dictionary.TO}} 7000</mat-option>
+                        <mat-option value="10000">{{dictionary.TO}} 10000</mat-option>
+                        <mat-option value="other">{{dictionary.MORE_THAN}} 10000</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
