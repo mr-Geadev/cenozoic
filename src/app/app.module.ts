@@ -31,7 +31,10 @@ import {
 } from 'pages';
 import { ChatsPageModule } from 'pages/chats-page';
 import { ConstructorNewsPageModule } from 'pages/constructor-news-page';
-import { ChangeCityModule, ChangeCityService, ConfirmModule, PayingModule } from 'pop-ups';
+import { RestorePasswordPageModule } from 'pages/restore-password-page/restore-password-page.module';
+import { ChangeCityModule, ChangeCityService, ConfirmModule, LoginModalModule, PayingModule } from 'pop-ups';
+import { RestorePasswordService } from 'pop-ups/restore-password';
+import { RestorePasswordModule } from 'pop-ups/restore-password/restore-password.module';
 import {
   BlankAccountService,
   CitiesService,
@@ -95,6 +98,9 @@ const ROUTES = [
     AboutUsPageModule,
     ServicePageModule,
     ChatsPageModule,
+    LoginModalModule,
+    RestorePasswordModule,
+    RestorePasswordPageModule,
 
     // Blocks
     PageHeaderModule,
@@ -128,7 +134,8 @@ const ROUTES = [
     LogInGuard,
     NotEmployerGuard,
     NotWorkerGuard,
-    PaymentGuards
+    PaymentGuards,
+    RestorePasswordService
   ],
   bootstrap: [AppComponent],
 })

@@ -20,7 +20,7 @@
 		<div class="field">
 			<label for="password">{{ dictionary.PASSWORD }}</label>
 			<input id="password" type="password" name="password" formControlName="password">
-			<a href="#" class="forgot">{{ dictionary.FORGOT_PASSWORD }}</a>
+			<span (click)="restorePassword()" class="forgot">{{ dictionary.FORGOT_PASSWORD }}</span>
 		</div>
 
 		<button class="button " type="submit" [disabled]="loginForm.invalid">

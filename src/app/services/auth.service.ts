@@ -1,27 +1,37 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {UserService} from './user.service';
-import {LOG_OUT, SIGN_IN, SIGN_UP} from '../const/api.constant';
-import {Observable} from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
+import { LOG_OUT, SIGN_IN, SIGN_UP } from '../const/api.constant';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
 
-    constructor(private _http: HttpClient,
-                private _userService: UserService) {
-    }
+  constructor(private _http: HttpClient,
+              private _userService: UserService) {
+  }
 
-    public loginUser(dataUser: any): Observable<any> {
-        return this._http.post(SIGN_IN, dataUser);
-    }
+  public loginUser(dataUser: any): Observable<any> {
+    return this._http.post(SIGN_IN, dataUser);
+  }
 
-    public logOut(): Observable<boolean> {
-        return this._http.post(LOG_OUT, {})
-            .map(res => res['success']);
-    }
+  public logOut(): Observable<boolean> {
+    return this._http.post(LOG_OUT, {})
+      .map(res => res['success']);
+  }
 
-    public registerUser(dataUser: any): Observable<any> {
-        return this._http.post(SIGN_UP, dataUser);
-    }
+  public registerUser(dataUser: any): Observable<any> {
+    return this._http.post(SIGN_UP, dataUser);
+  }
 
+  public sendLinkToRestorePassword(email: string) {
+    return this._http.get(`/api/v1/user/get-password-token?email=${email}`);
+  }
+
+  saveNewPassword(token: string, newPassword: string) { // /api/v1/user/password/reset
+    return this._http.post('/api/v1/user/password/reset', {
+      changePasswordToken: token,
+      newPassword: newPassword,
+    });
+  }
 }

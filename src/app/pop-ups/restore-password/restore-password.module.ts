@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { RestorePasswordService } from 'pop-ups/restore-password';
-import { LoginModalComponent } from './login.component';
-import { LoginModalService } from './login.service';
+import { RestorePasswordComponent } from 'pop-ups/restore-password/restore-password.component';
+import { RestorePasswordService } from 'pop-ups/restore-password/restore-password.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { UserService } from '../../services';
 import { AuthService } from '../../services/auth.service';
 
 @NgModule({
@@ -16,15 +14,13 @@ import { AuthService } from '../../services/auth.service';
     ReactiveFormsModule,
     RouterModule,
   ],
-  declarations: [LoginModalComponent],
-  entryComponents: [LoginModalComponent],
+  declarations: [RestorePasswordComponent],
+  entryComponents: [RestorePasswordComponent],
   providers: [
-    LoginModalService,
-    UserService,
-    AuthService,
     RestorePasswordService,
+    AuthService,
   ],
-  exports: [LoginModalComponent],
+  exports: [RestorePasswordComponent],
 })
-export class LoginModalModule {
+export class RestorePasswordModule {
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material';
+import { RestorePasswordService } from 'pop-ups/restore-password/restore-password.service';
 
 import {AuthService, LocalizationService, SystemMessageService, UserService} from '../../services';
 
@@ -33,6 +34,7 @@ export class LoginModalComponent implements OnInit {
                 private _systemMessageService: SystemMessageService,
                 private _localizationService: LocalizationService,
                 private _userService: UserService,
+                private restorePasswordService: RestorePasswordService,
                 private _authService: AuthService) {
     }
 
@@ -75,5 +77,9 @@ export class LoginModalComponent implements OnInit {
                     this._systemMessageService.info(err.error.errorMessage);
                 });
 
+    }
+
+    public restorePassword() {
+      this.restorePasswordService.restorePassword();
     }
 }
