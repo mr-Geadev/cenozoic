@@ -35,9 +35,9 @@ export class ListBannerComponent implements OnInit {
   getBanners() {
     this.bannerApi.getUserBanners(this.user._id)
       .subscribe(
-        res => {
+        listBanner => {
           this.listBanner = [];
-          res['banners'].map((banner) => this.listBanner.push(new BannerModel(banner)));
+          listBanner.map((banner) => this.listBanner.push(new BannerModel(banner)));
         },
       );
   }

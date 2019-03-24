@@ -116,7 +116,7 @@ export class PersonalAccountPageComponent implements OnInit {
             if (user.typeAccount === 'employer') {
               this.bannerApi.getUserBanners(user._id)
                 .subscribe(banners => {
-                  banners.banners.forEach((banner) => {
+                  banners.forEach((banner) => {
                     if (!banner.viewed) { this.counters.banners++; }
                   });
                 });

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { LocalizationService, SystemMessageService, UserService } from 'services';
 
 @Injectable()
@@ -61,7 +62,14 @@ export class BannerApi {
       filters: {
         userId,
       },
-    });
+    }).pipe(
+      map(res => {
+        let banners = res['banners'];
+        banners = banners.sort( (a, b) => (a.status < b.status) ? -1 : ((a.status > b.status) ? 1 : 0) );
+        // banners = banners.sort( (a, b) => (a.timeoutDate > b.timeoutDate) ? -1 : ((a.timeoutDate < b.timeoutDate) ? 1 : 0) );
+        return banners;
+      })
+    );
   }
 
   getListAdminBanner(): Observable<any> {
