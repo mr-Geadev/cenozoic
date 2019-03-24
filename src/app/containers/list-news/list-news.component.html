@@ -7,7 +7,7 @@
 					 [routerLink]="['/news', news?._id]" (click)="checkViewed(news._id)">
 					<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
 
-					<div class="moderate-passed" *ngIf="!news?.viewed">
+					<div class="moderate-passed" *ngIf="!mainPage && !news?.viewed">
 						{{ dictionary.MODERATION_PASSED }}
 					</div>
 

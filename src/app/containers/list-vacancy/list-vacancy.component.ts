@@ -57,6 +57,9 @@ export class ListVacancyComponent implements OnInit {
             this._http.post(LIST_VACANCY, { offset: this._offset, count: 24 })
               .subscribe((res: any) => {
                 this.listVacancy = res.vacancyList;
+                if (this.mainPage) {
+                  this.listVacancy = this.listVacancy.filter(vacancy => vacancy.vacancyLanguage === LocalizationService.currentLang());
+                }
               });
           }
         });

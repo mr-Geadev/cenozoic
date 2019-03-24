@@ -62,6 +62,9 @@ export class ListResumeComponent implements OnInit {
               this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
                 .subscribe((res: any) => {
                   this.listResume = res.resumeList;
+                  if (this.mainPage) {
+                    this.listResume = this.listResume.filter(resume => resume.resumeLanguage === LocalizationService.currentLang());
+                  }
                 });
             }
           });
