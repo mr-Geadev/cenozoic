@@ -114,9 +114,9 @@ export class CardComponent implements OnInit {
 
   public getRespondTitle(): string {
     if (this.typeUser === 'worker') {
-      return this.respond.resume.job;
+      return this.respond.resume ? this.respond.resume.job : 'Резюме удалено';
     } else {
-      return this.respond.vacancy.title;
+      return this.respond.vacancy ? this.respond.vacancy.title : 'Вакансия удалена';
     }
   }
 

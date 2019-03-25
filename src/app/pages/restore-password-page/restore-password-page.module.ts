@@ -21,7 +21,7 @@ import { AuthService } from 'services';
   ],
   providers: [
     AuthService
-  ]
+  ],
   exports: [RestorePasswordPageComponent]
 })
 export class RestorePasswordPageModule {

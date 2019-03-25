@@ -1,23 +1,23 @@
 <div class="name-of-company">
-	{{vacancy.companyName }}
+	{{vacancy?.companyName ? vacancy?.companyName : 'Вакансия удалена'  }}
 </div>
 
 <div class="post">
-	{{vacancy.title}}
+	{{vacancy?.title}}
 </div>
 <div *ngIf="respondTitle" class="respond-title">{{ dictionary.TO_YOURS_RESUME }}:  <b>{{ respondTitle }}</b></div>
-<div *ngIf="vacancy.userId === user?._id" class="respond-title">{{ dictionary.BANNER_PUBLIC_TO_TIME}}: {{ vacancy.timeoutDate.locale('ru').format('DD.MM.YYYY, HH:mm') }}</div>
+<div *ngIf="vacancy?.userId === user?._id" class="respond-title">{{ dictionary.BANNER_PUBLIC_TO_TIME}}: {{ vacancy?.timeoutDate.locale('ru').format('DD.MM.YYYY, HH:mm') }}</div>
 
-<div class="description" [innerHtml]="vacancy.duties">
+<div class="description" [innerHtml]="vacancy?.duties">
 
 </div>
 
 
-<div class="terms" *ngIf="vacancy.salary.from">
-	{{dictionary.FROM}} <span class="number">{{vacancy.salary.from}}</span>
-	{{vacancy.currency === "rubles" ? "₽" : "$" }}
+<div class="terms" *ngIf="vacancy?.salary.from">
+	{{dictionary.FROM}} <span class="number">{{vacancy?.salary.from}}</span>
+	{{vacancy?.currency === "rubles" ? "₽" : "$" }}
 </div>
 
-<div class="terms" *ngIf="!vacancy.salary.from">
+<div class="terms" *ngIf="!vacancy?.salary.from">
 	З/П договорная
 </div>
