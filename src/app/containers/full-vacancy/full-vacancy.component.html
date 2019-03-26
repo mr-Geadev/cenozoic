@@ -9,7 +9,13 @@
 			<div class="vacancy-disactive" *ngIf="currentVacancy.status === 3">Данная вакансия более не активна</div>
 
 			<div class="salary">
-				<span> {{dictionary.FROM}} <b>{{currentVacancy.salary.from}} {{dictionary.TO}} {{currentVacancy.salary.to}} {{currentVacancy.currency === "rubles" ? "₽" : "$" }}</b></span> <br>
+				<span *ngIf="currentVacancy.salary.from || currentVacancy.salary.to">
+					<ng-container *ngIf="currentVacancy.salary.from">{{dictionary.FROM}} <b>{{currentVacancy.salary.from}}</b></ng-container>
+					<ng-container *ngIf="currentVacancy.salary.to">{{dictionary.TO}} <b>{{currentVacancy.salary.to}}</b></ng-container>
+					{{currentVacancy.currency === "rubles" ? "₽" : "$" }}
+					<br>
+				</span>
+
 				<p *ngIf="currentVacancy.salary.note" class="salary-note">{{currentVacancy.salary.note}}</p>
 			</div>
 
