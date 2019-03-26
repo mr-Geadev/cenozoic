@@ -10,9 +10,11 @@
 				{{ banner.title }}
 			</div>
 
-			<div class="not-public" *ngIf="!banner.publicate">
-				{{ dictionary.BANNER_NOT_PUBLISH }}
-			</div>
+			<ng-container *ngIf="currentUser && ( currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' || banner.userId === currentUser._id)">
+				<div class="not-public" *ngIf="!banner.publicate">
+					{{ dictionary.BANNER_NOT_PUBLISH }}
+				</div>
+			</ng-container>
 
 			<div class="not-public" *ngIf="banner.status === 3">
 				{{ dictionary.BANNER_NOT_PUBLISH }}

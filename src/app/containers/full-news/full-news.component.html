@@ -10,9 +10,11 @@
 				{{ news.title }}
 			</div>
 
-			<div class="not-public" *ngIf="!news.publicateToNewsPage">
-				{{ dictionary.NEWS_NOT_PUBLISH }}
-			</div>
+			<ng-container *ngIf="currentUser && ( currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' || news.userId === currentUser._id)">
+				<div class="not-public" *ngIf="!news.publicateToNewsPage">
+					{{ dictionary.NEWS_NOT_PUBLISH }}
+				</div>
+			</ng-container>
 
 			<div class="photo-block">
 				<div class="photo">
