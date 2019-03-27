@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {UserService} from '../services';
 
@@ -7,11 +7,10 @@ export const MENU_LIST = [
     {name: 'Главная', link: './'},
     {name: 'Пользователи', link: 'users'},
     {name: 'Резюме', link: 'resumeList'},
-    {name: 'Настройки', link: 'settings'},
+    {name: 'Города', link: 'cities'},
     {name: 'Новости', link: 'news'},
     {name: 'Локализация', link: 'localization'},
     {name: 'Баннеры', link: 'banners'},
-    // {name: 'Статистика по сайту', link: 'statistic'},
     {name: 'Статичные страницы', link: 'static-page'},
     {name: 'Переписки', link: 'chats'},
     // {name: 'Вакансии', link: '#'},

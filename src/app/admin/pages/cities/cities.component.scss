@@ -1,0 +1,25 @@
+@import "colors";
+
+:host {
+  display: block;
+  width: 100%;
+
+  .all-city .city {
+    padding: 3px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-gray;
+    }
+
+    &.active {
+      background-color: $orange;
+    }
+  }
+
+  .checked-city mat-card {
+    position: sticky;
+    top: 10px;
+  }
+}

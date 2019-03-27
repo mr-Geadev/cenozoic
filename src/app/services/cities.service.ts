@@ -17,4 +17,8 @@ export class CitiesService {
         this.locations = new Locations(res['config'], LocalizationService.currentLang());
       });
   }
+
+  public getCitiesObservable(): any {
+    this._http.get('/api/v1/common/countries/info')
+  }
 }

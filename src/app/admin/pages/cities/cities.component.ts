@@ -7,17 +7,19 @@ import {SystemMessageService} from '../../../services';
 
 @Component({
     selector: 'settings',
-    templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.scss']
+    templateUrl: './cities.component.html',
+    styleUrls: ['./cities.component.scss']
 })
 
 // TODO: вынести добавление города в компоненту
-export class SettingsComponent implements OnInit {
+export class CitiesComponent implements OnInit {
 
     public city: FormGroup;
 
     public listCities: City[] = [];
     public listCountry: Country[] = [];
+    checkedCity: {city: City, country: Country} = null;
+
 
     constructor(private citiesService: CitiesService,
                 private _messages: SystemMessageService,
@@ -54,6 +56,13 @@ export class SettingsComponent implements OnInit {
                     this._messages.info(err.error.errorCode);
                 }
                 );
+    }
+
+    checkCity(city: City) {
+      this.checkedCity = {
+        city: city,
+        country: this.listCountry.find(country =>  country.code === city.codeCountry)
+      };
     }
 
 }

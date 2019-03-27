@@ -36,7 +36,7 @@ import { AdminComponent } from './admin.component';
 import { MainComponent } from './pages/main/main.component';
 import { AdminResumeApi } from './pages/resume-list/admin-resume.api';
 import { ResumeListComponent } from './pages/resume-list/resume-list.component';
-import { SettingsComponent } from './pages/settings/settings.component';
+import { CitiesComponent } from './pages/cities/cities.component';
 import { ItemUserComponent } from './pages/users/item-user/item-user.component';
 import { UsersApi } from './pages/users/users.api';
 import { UsersComponent } from './pages/users/users.component';
@@ -72,7 +72,7 @@ import { UsersComponent } from './pages/users/users.component';
     // pages
     ResumeListComponent,
     NewsComponent,
-    SettingsComponent,
+    CitiesComponent,
     MainComponent,
     UsersComponent,
     LocalizationComponent,
