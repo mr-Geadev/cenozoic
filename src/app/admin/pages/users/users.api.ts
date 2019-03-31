@@ -7,17 +7,18 @@ import { SystemMessageService } from '../../../services';
 @Injectable()
 export class UsersApi {
 
-  public userList: UserModel[] = [];
-
   constructor(private _http: HttpClient,
               private _messages: SystemMessageService) {
   }
 
-  public getUserList(): void {
-    this.userList.length = 0;
-    this._http.get('/api/v1/admin/users/info')
-      .subscribe(
-        (res) => res['users'].forEach(user => this.userList.push(new UserModel(user))),
+  public getUserList(): Observable<any> {
+    return this._http.get('/api/v1/admin/users/info')
+      .map(
+        (res) => {
+          const users = [];
+          res['users'].forEach(user => users.push(new UserModel(user)))
+          return users;
+        },
         (err) => console.log(err),
       );
   }
