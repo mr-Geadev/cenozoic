@@ -51,7 +51,11 @@ export class ListResumeComponent implements OnInit {
 
         // фитрованные резюме
         this._filterResumesService.filter$
-          .subscribe((parameters: any) => {
+          .subscribe((res: any) => {
+            let parameters = res;
+            if (this.mainPage) {
+              parameters = Object.assign(parameters || {}, {resumeLanguage: LocalizationService.currentLang()})
+            }
             if (parameters != null) {
               this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, filters: parameters, count: 24 })
                 .subscribe((res: any) => {
@@ -62,9 +66,6 @@ export class ListResumeComponent implements OnInit {
               this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
                 .subscribe((res: any) => {
                   this.listResume = res.resumeList;
-                  if (this.mainPage) {
-                    this.listResume = this.listResume.filter(resume => resume.resumeLanguage === LocalizationService.currentLang());
-                  }
                 });
             }
           });
