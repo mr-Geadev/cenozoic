@@ -7,7 +7,8 @@
 			<!--<div class="city gray text">Санкт-Петербург</div>-->
 			<div class="page-title">{{currentResume.job}}</div>
 
-			<div class="salary"><span>{{dictionary.FROM}} <b>{{currentResume.salary.value}} {{currentResume.salary.currency === 'ru' ? '₽' : '$'}}</b></span>
+			<div class="salary"><span>{{dictionary.FROM}}
+				<b>{{currentResume.salary.value}} {{currentResume.salary.currency === 'ru' ? '₽' : '$'}}</b></span>
 			</div>
 
 			<div class="name">{{currentResume.fullName}}</div>
@@ -44,7 +45,7 @@
 						</div>
 						<div class="value black text">
 							{{currentResume.experienceTime.oil.years}} {{dictionary.OF_YEARS |
-							howLong:currentResume.experienceTime.oil.years}}
+                howLong:currentResume.experienceTime.oil.years}}
 						</div>
 					</div>
 					<div class="line" *ngIf="currentResume.experienceTime.mining.years">
@@ -54,7 +55,7 @@
 						</div>
 						<div class="value black text">
 							{{currentResume.experienceTime.mining.years}} {{dictionary.OF_YEARS |
-							howLong:currentResume.experienceTime.mining.years}}
+                howLong:currentResume.experienceTime.mining.years}}
 						</div>
 					</div>
 				</div>
@@ -139,19 +140,31 @@
 				{{dictionary.EDIT}}
 			</div>
 
-			<ng-container *ngIf="currentResume.userId == currentUser?._id">
+			<ng-container *ngIf="currentUser?.typeAccount === 'admin' || currentUser?.typeAccount === 'moderator'">
+				<div class="button" (click)="resumeApi.ban(currentResume._id)"
+						 *ngIf="currentResume.status !== 9">
+					Заблокировать резюме
+				</div>
+
+				<div class="button" (click)="resumeApi.unban(currentResume._id)"
+						 *ngIf="currentResume.status === 9">
+					Разблокировать резюме
+				</div>
+			</ng-container>
+
+			<ng-container *ngIf="currentResume.userId == currentUser?._id && currentResume.status !== 9">
 				<div class="button" (click)="resumeApi.show(currentResume._id)"
 						 *ngIf="currentResume.status === 2">
 					{{dictionary.VISIBLE_TO_SEARCH}}
 				</div>
 
 				<div class="button" (click)="resumeApi.hidden(currentResume._id)"
-						 *ngIf="currentResume.status !== 2">
+						 *ngIf="currentResume.status !== 2 && currentResume.status !== 9">
 					{{dictionary.HIDDEN_FROM_SEARCH}}
 				</div>
 			</ng-container>
 
-			<ng-container *ngIf="currentUser?.typeAccount === 'employer'">
+			<ng-container *ngIf="currentUser?.typeAccount === 'employer' && currentResume.status !== 9">
 				<div class="button" (click)="responds.newOffer(currentResume)"
 						 *ngIf="!currentResume.answered">
 					{{dictionary.SEND_INVITE}}
@@ -164,7 +177,7 @@
 			</ng-container>
 
 			<!--<div *ngIf="currentUser" class="export-pdf" (click)="captureScreen()">-->
-				<!--{{ dictionary.EXPORT_PDF }}-->
+			<!--{{ dictionary.EXPORT_PDF }}-->
 			<!--</div>-->
 		</div>
 	</div>
@@ -182,7 +195,7 @@
 						<div class="text black">{{item.time}}</div>
 						<div class="text gray">{{dictionary.MONTHS[item.startMonth]}} {{item.startYear}} —
 							{{dictionary.MONTHS[item.endMonth]}}
-							{{item.present? dictionary.TILL_NOW_WORK : item.endYear}}
+							{{item.present ? dictionary.TILL_NOW_WORK : item.endYear}}
 						</div>
 					</td>
 					<td class="work">
@@ -209,7 +222,7 @@
 				<tr *ngFor="let item of currentResume.education">
 					<td class="time-work">
 						<div class="text gray">{{item.stage === 'high' ? dictionary.EDUCATION_STAGE_HIGH :
-							dictionary.EDUCATION_STAGE_MIDDLE}}
+                dictionary.EDUCATION_STAGE_MIDDLE}}
 						</div>
 						<div class="text gray">{{dictionary.YEAR_OF_END_EDUCATION}}: {{item.end}}</div>
 						<div class="text gray">{{item.end - item.start}} {{dictionary.YEARS}}</div>

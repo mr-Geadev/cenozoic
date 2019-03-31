@@ -104,4 +104,18 @@ export class VacancyApi {
         }
       );
   }
+
+  ban(vacancyId: string): void {
+    this.http.get(`api/v1/admin/resume-vacancy/block/change?entityId=${vacancyId}&block=true&entity=vacancy`)
+      .subscribe(
+        res => { this.messages.info('Вакансия заблокирована'); this.getVacancyById(vacancyId); }
+      );
+  }
+
+  unban(vacancyId: string): void {
+    this.http.get(`api/v1/admin/resume-vacancy/block/change?entityId=${vacancyId}&block=false&entity=vacancy`)
+      .subscribe(
+        res => { this.messages.info('Вакансия разблокирована'); this.getVacancyById(vacancyId);}
+      );
+  }
 }

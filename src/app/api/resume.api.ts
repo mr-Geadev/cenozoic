@@ -48,4 +48,18 @@ export class ResumeApi {
         res => { this.messages.info(this.dictionary.RESUME_WAS_HIDDEN); this.getResumeById(resumeId); }
       );
   }
+
+  ban(resumeId: string): void {
+    this.http.get(`api/v1/admin/resume-vacancy/block/change?entityId=${resumeId}&block=true&entity=resume`)
+      .subscribe(
+        res => { this.messages.info('Резюме заблокировано'); this.getResumeById(resumeId); }
+      );
+  }
+
+  unban(resumeId: string): void {
+    this.http.get(`api/v1/admin/resume-vacancy/block/change?entityId=${resumeId}&block=false&entity=resume`)
+      .subscribe(
+        res => { this.messages.info('Резюме разблокировано'); this.getResumeById(resumeId); }
+      );
+  }
 }

@@ -105,7 +105,7 @@
 					{{dictionary.EDIT}}
 				</a>
 
-				<p *ngIf="currentVacancy.status !== 3">
+				<p *ngIf="currentVacancy.status !== 3 && currentVacancy.status !== 9">
 					{{ dictionary.BANNER_PUBLIC_TO_TIME }}: {{ currentVacancy.timeoutDate.locale('ru').format('DD.MM.YYYY, HH:mm') }}
 				</p>
 
@@ -119,18 +119,30 @@
 				</div>
 
 				<div class="button" (click)="vacancyApi.hidden(currentVacancy._id)"
-						 *ngIf="currentVacancy.status !== 2">
+						 *ngIf="currentVacancy.status !== 2 && currentVacancy.status !== 9">
 					{{dictionary.HIDDEN_FROM_SEARCH}}
 				</div>
 			</ng-container>
 
 
-			<ng-container *ngIf="user?.typeAccount === 'worker'">
+			<ng-container *ngIf="user?.typeAccount === 'worker' && currentVacancy.status !== 9">
 				<div class="button" *ngIf="!currentVacancy.answered" (click)="responds.newRespond(currentVacancy)">
 					{{dictionary.ANSWER_VACANCY}}
 				</div>
 				<div class="button disabled" *ngIf="currentVacancy.answered">
 					{{dictionary.SEND_ANSWER_YET}}
+				</div>
+			</ng-container>
+
+			<ng-container  *ngIf="user?.typeAccount === 'admin' || user?.typeAccount === 'moderator'">
+				<div class="button" (click)="vacancyApi.ban(currentVacancy._id)"
+						 *ngIf="currentVacancy.status !== 9">
+					Заблокировать вакансию
+				</div>
+
+				<div class="button" (click)="vacancyApi.unban(currentVacancy._id)"
+						 *ngIf="currentVacancy.status === 9">
+					Разблокировать вакансию
 				</div>
 			</ng-container>
 		</div>

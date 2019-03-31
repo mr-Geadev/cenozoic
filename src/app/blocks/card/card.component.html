@@ -10,6 +10,15 @@
 		</div>
 	</div>
 
+	<div
+		*ngIf="(vacancy && vacancy.status === 9) || (resume && resume.status === 9)"
+		class="timeout"
+	>
+		<div class="timeout-label">
+			Заблокировано
+		</div>
+	</div>
+
 	<resume-view
 			*ngIf="resume || (respond && typeUser === 'employer')"
 			[resume]="respond ? respond.resume : resume"
