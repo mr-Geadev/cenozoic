@@ -3,6 +3,13 @@
 <div class="container">
     <div class="row head">
         <div class="title">{{ dictionary.CVS }}</div>
+
+        <form class="sort">
+            <label for="">{{ dictionary.SORT_BY }}</label>
+            <select name="" id="">
+                <option value="date">{{ dictionary.SORT_BY_DATA }}</option>
+            </select>
+        </form>
         <!--<form class="sort" *ngIf="sortParameter"> -->
         <!--<label for="typeSort">Сортировать</label>-->
         <!--<mat-form-field >-->
