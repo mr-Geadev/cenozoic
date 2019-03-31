@@ -4,13 +4,34 @@
 :host {
 
   .header {
-    background-color: $dark-gray;
+
     height: 84px;
+    width: 100%;
+
+    background-color: transparent !important;
+    position: absolute;
     z-index: 10;
+    top: 0;
 
     .logo {
       height: 60px;
       width: 60px;
+      display: none;
+    }
+
+    &.notMainPage {
+
+      background-color: $dark-gray !important;
+      z-index: auto;
+      position: static;
+
+      .container > .row {
+        justify-content: space-between !important;
+      }
+
+      .logo {
+        display: block;
+      }
     }
 
     .row {
@@ -177,22 +198,6 @@
 
   .mobile-menu, .languages-mobile {
     display: none;
-  }
-
-  .mainPage.header {
-
-    background-color: transparent !important;
-    position: absolute;
-    top: 0;
-    width: 100%;
-
-    .container > .row {
-      justify-content: space-between !important;
-    }
-
-    .logo {
-      display: none;
-    }
   }
 
   .mobile-menu-button {
