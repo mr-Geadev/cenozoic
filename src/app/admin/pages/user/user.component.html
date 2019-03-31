@@ -1,35 +1,47 @@
-<mat-card>
+<mat-card *ngIf="user">
 	<a [routerLink]="['/admin/users']" class="close-icon">
 		<mat-icon class="close-card" mat-list-icon>close</mat-icon>
 	</a>
 
 	<div class="title">
-		{{ user?.fullName || 'Аккаунт не заполнен'}}
+		<ng-container *ngIf="user.typeAccount === 'worker'">
+			ФИО сосикателя: {{ user.fullName || 'Аккаунт не заполнен'}}
+		</ng-container>
+
+		<ng-container *ngIf="user.typeAccount === 'employer'">
+			Название компании: {{ user.companyName || 'Аккаунт не заполнен'}}
+		</ng-container>
 	</div>
+
+	<br>
 
 	<div class="main-info">
 		<div class="avatar">
-			<img src="{{user?.photoURL || '/assets/images/icon-camera.svg'}}">
+			<img src="{{user.photoURL || '/assets/images/icon-camera.svg'}}">
 		</div>
 
 		<div class="text-info">
 			<p>
-				<b>Номер:</b> {{user?.phone || 'не указан'}}
+				<b>Номер:</b> {{user.phone || 'не указан'}}
 			</p>
 
 			<p>
-				<b>Почта:</b> {{user?.email}} <br>
+				<b>Почта:</b> {{user.email}} <br>
+			</p>
+
+			<p *ngIf="user.typeAccount === 'employer'">
+				<b>ФИО контактного лица:</b> {{ user.fullName || 'Не заполнено'}}
 			</p>
 
 			<p>
-				<b>Тип аккаунта:</b> {{user?.typeAccount}}
+				<b>Тип аккаунта:</b> {{user.typeAccount}}
 			</p>
 
-			<p *ngIf="user?.resumeCount">
+			<p *ngIf="user.resumeCount">
 				<b>Количество резюме:</b> {{user.resumeCount}}
 			</p>
 
-			<p *ngIf="user?.vacancyCount">
+			<p *ngIf="user.vacancyCount">
 				<b>Количество вакансий:</b> {{user.vacancyCount}}
 			</p>
 		</div>
@@ -37,13 +49,13 @@
 		<div class="actions">
 
 			<div class="action">
-				<button *ngIf="user?.status !== 9" (click)="banUser()">Бан</button>
-				<button *ngIf="user?.status === 9" (click)="unbanUser()">Разбан</button>
+				<button *ngIf="user.status !== 9" (click)="banUser()">Бан</button>
+				<button *ngIf="user.status === 9" (click)="unbanUser()">Разбан</button>
 			</div>
 
-			<div class="action">
-				<button *ngIf="!user?.verify" (click)="verify(true)">Верифицировать</button>
-				<button *ngIf="user?.verify" (click)="verify(false)">Убрать вериф.</button>
+			<div class="action" *ngIf="user.typeAccount === 'employer'">
+				<button *ngIf="!user.verify" (click)="verify(true)">Верифицировать</button>
+				<button *ngIf="user.verify" (click)="verify(false)">Убрать вериф.</button>
 			</div>
 
 			<div class="action">
