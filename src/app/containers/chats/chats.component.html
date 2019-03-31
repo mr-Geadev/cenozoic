@@ -4,7 +4,7 @@
 		<ng-container *ngIf="type === 'create'">
 			<div class="chat-preview-item" [class.active]="type === 'create'">
 				<div class="name-recipient">
-					Новое сообщение
+					{{ dictionary.NEW_MESSAGE }}
 				</div>
 
 				<div class="last-message">
@@ -15,7 +15,7 @@
 
 		<div class="chat-preview-item" *ngFor="let chat of chats" (click)="openChat(chat);" [class.active]="currentChat && chat._id === currentChat._id">
 			<div class="name-recipient">
-				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  chat.recipientId : 'Администрация'   }}
+				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  chat.recipientId : dictionary.ADMIN   }}
 				<img src="/assets/images/dott-orange.svg" *ngIf="chat.creatorId === currentUser._id ? !chat.viewedCreator : !chat.viewedRecipient "/>
 			</div>
 
@@ -29,15 +29,15 @@
 	<div class="current-chat">
 		<ng-container *ngIf="currentChat">
 			<div class="name-recipient">
-				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  currentChat.recipientId : 'Администрация'   }}
+				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  currentChat.recipientId : dictionary.ADMIN   }}
 			</div>
 
 			<div class="messages" #scrollMe [scrollTop]="scrollMe.scrollHeight">
 				<div class="message" *ngFor="let message of currentChat.messages">
 					<div class="header">
 						<div class="name">
-							<ng-container *ngIf="currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ">{{ message.creatorId === currentUser._id ? 'Вы' : message.creatorId }}</ng-container>
-							<ng-container *ngIf="currentUser.typeAccount === 'employer' || currentUser.typeAccount === 'worker' ">{{ message.creatorId === currentUser._id ? 'Вы' : 'Администратор' }}</ng-container>
+							<ng-container *ngIf="currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ">{{ message.creatorId === currentUser._id ? dictionary.YOU : message.creatorId }}</ng-container>
+							<ng-container *ngIf="currentUser.typeAccount === 'employer' || currentUser.typeAccount === 'worker' ">{{ message.creatorId === currentUser._id ? dictionary.YOU : dictionary.ADMIN }}</ng-container>
 						</div>
 
 						<div class="date">

@@ -525,5 +525,19 @@
   "ACCOUNT_IS_VERIFIED": "Аккаунт верефицирован",
   "UPDATED": "Обновлено",
   "MODERATION_PASSED": "Одобрено",
-  "INVALID_FIELD": "Поле введено неверно"
+  "MY_CITY_DOESNOT_HAVE_IS_LIST": "Нужного города нет в списке?",
+  "ADMIN": "Администратор",
+  "YOU": "Вы",
+  "NEW_MESSAGE": "Новое сообщение",
+  "INVALID_FIELD": "Поле введено неверно",
+  "MESSAGES_PAGE_HEADER": "Сообщения",
+  "MESSAGES_PAGE_TITLE": "Переписки",
+  "VACANCY_WAS_DELETED": "Вакансия была удалена",
+  "SALARY_AFTER_MEETING": "З/П договорная",
+  "BLOCKED": "Заблокировано",
+  "RESTORE_PASSWORD_TITLE": "Восстановление пароля",
+  "RESTORE_PASSWORD_INPUT_NEW_PASSWORD": "Введите новый пароль",
+  "RESTORE_PASSWORD_SAVE_PASSWORD": "Сохранить пароль",
+  "RESTORE_PASSWORD_DESCRIPTION": "Введи почту от вашего аккаунта. Мы вышлем вам ссылку для восстановления пароля.",
+  "RESTORE_PASSWORD_SEND_LINK": "Отправить ссылку"
 }

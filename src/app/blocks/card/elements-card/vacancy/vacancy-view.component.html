@@ -1,5 +1,5 @@
 <div class="name-of-company">
-	{{vacancy?.companyName ? vacancy?.companyName : 'Вакансия удалена'  }}
+	{{vacancy?.companyName ? vacancy?.companyName : dictionary.VACANCY_WAS_DELETED  }}
 </div>
 
 <div class="post">
@@ -19,5 +19,5 @@
 </div>
 
 <div class="terms" *ngIf="!vacancy?.salary.from">
-	З/П договорная
+	{{ dictionary.SALARY_AFTER_MEETING }}
 </div>

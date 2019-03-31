@@ -35,7 +35,7 @@
 						<li class="item"><a class="link" [routerLink]="['/personal-account', 'default']">{{ dictionary.ACCOUNT
 							}}</a></li>
 						<li class="item"><a class="link" [routerLink]="['/chats']">
-							Сообщения <img src="/assets/images/dott-orange.svg" *ngIf="haveUnreadMessage"/>
+							{{ dictionary.MESSAGES_PAGE_HEADER }} <img src="/assets/images/dott-orange.svg" *ngIf="haveUnreadMessage"/>
 						</a></li>
 						<li class="item"><a class="link" [routerLink]="['/setting']">{{ dictionary.SETTINGS }}</a></li>
 						<li class="item"><a class="link" [routerLink]="['/']" (click)="logOut()">{{ dictionary.LOG_OUT
