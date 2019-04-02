@@ -27,7 +27,8 @@ export class UsersComponent implements OnInit {
         if (user.typeAccount === 'worker') {
           return user.fullName && user.fullName.toLowerCase().indexOf(search) > -1;
         } else {
-          return user.companyName && user.companyName.toLowerCase().indexOf(search) > -1;
+          return (user.companyName && user.companyName.toLowerCase().indexOf(search) > -1) ||
+            (user.fullName && user.fullName.toLowerCase().indexOf(search) > -1);
         }
       });
     }),
