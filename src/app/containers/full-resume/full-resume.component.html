@@ -293,7 +293,7 @@
 						<div class="text gray">{{citiesService.locations.getCityToCode(item.city).name}}</div>
 						<div class="certificate-image">
 							<div class="text gray">{{ dictionary.TRAINING_CERTIFICATE }}:</div>
-							<img style="max-width: 300px" src="{{item.photoURL}}">
+							<img style="max-width: 300px; cursor: pointer" src="{{item.photoURL}}" (click)="fullCertificate.next(item.photoURL)">
 						</div>
 					</td>
 				</tr>
@@ -379,4 +379,9 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="full-certificate" *ngIf="fullCertificate | async as certificate ">
+	<div class="bg" (click)="fullCertificate.next(null)"></div>
+	<img [src]="certificate" alt="" class="img">
 </div>

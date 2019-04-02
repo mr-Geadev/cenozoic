@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ResumeApi } from 'api';
 import * as moment from 'moment';
 import { PayingModalService } from 'pop-ups/paying';
+import { Subject } from 'rxjs/Subject';
 
 import { ConfirmService, LocalizationService, ResumeService, UserService } from '../../services';
 import { CitiesService } from '../../services/cities.service';
@@ -25,6 +26,7 @@ export class FullResumeComponent implements OnInit {
   public currentUser: any;
   private id: string = null;
   public nationalitiesDefault: any[] = null;
+  public fullCertificate = new Subject<string | null>();
   isBrowser;
 
   public showContactData: boolean = false;
