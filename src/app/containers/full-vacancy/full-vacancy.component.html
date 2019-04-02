@@ -16,6 +16,10 @@
 					<br>
 				</span>
 
+				<span *ngIf="!(currentVacancy.salary.from || currentVacancy.salary.to)">
+					<b>{{ dictionary.SALARY_AFTER_MEETING }}</b>
+				</span>
+
 				<p *ngIf="currentVacancy.salary.note" class="salary-note">{{currentVacancy.salary.note}}</p>
 			</div>
 
