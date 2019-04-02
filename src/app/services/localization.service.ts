@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
+import { CitiesService } from 'services/cities.service';
 
 import { ENGLISH_DICTIONARY, RUSSIAN_DICTIONARY } from '../const/dictionaries';
 import { LANGUAGES } from '../const';
@@ -15,6 +16,7 @@ export class LocalizationService {
   public currentLanguage: string = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
+              private citiesService: CitiesService,
               public http: HttpClient) {
     this.init();
   }
@@ -63,6 +65,7 @@ export class LocalizationService {
         if (typeof window !== 'undefined') {
           localStorage.setItem(LOCALIZATION, language);
           this.init();
+          this.citiesService.getCities(LocalizationService.currentLang());
           // window.location.href = String(window.location.href); // Refresh page
         }
       }

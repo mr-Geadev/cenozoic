@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUserInfo();
-    this.locations.getCities();
+    this.locations.getCities(LocalizationService.currentLang());
 
     this.currentLang = LocalizationService.currentLang();
 
