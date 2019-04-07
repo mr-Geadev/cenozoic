@@ -1,8 +1,9 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewsApi } from 'api';
+import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 import { LocalizationService, SystemMessageService } from 'services';
 import * as moment from 'moment';
 
@@ -29,6 +30,10 @@ export class ConstructorNewsComponent implements OnInit {
   };
   public dictionary: any = {};
   public nameOfFile: string = null;
+
+
+  @ViewChild(ImageCropperComponent) imageCropper: ImageCropperComponent;
+  imageChangedEvent: any = '';
 
   constructor(private _systemMessageService: SystemMessageService,
               private activateRoute: ActivatedRoute,
@@ -102,6 +107,21 @@ export class ConstructorNewsComponent implements OnInit {
       } else {
         this._systemMessageService.info(this.dictionary.INFO_MESSAGES_SIZE_FILE_MORE_THAN + '5mb');
       }
+    }
+
+    this.imageChangedEvent = event;
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    const reader = new FileReader();
+
+    this.fileToUpload.file = new File([event.file], this.nameOfFile, {type: 'image/png'});
+
+    if (new File([event.file], this.nameOfFile)) {
+      reader.readAsDataURL(this.fileToUpload.file);
+      reader.onload = () => {
+        this.fileToUpload.data = reader.result;
+      };
     }
   }
 

@@ -81,6 +81,19 @@
 							{{ nameOfFile || dictionary.BANNER_ADD_COVER_FORMAT}}
 						</div>
 					</div>
+
+					<image-cropper
+						[imageChangedEvent]="imageChangedEvent"
+						[maintainAspectRatio]="false"
+						[cropperMinWidth]="360"
+						[cropperMinHeight]="267"
+						[roundCropper]="false"
+						[imageQuality]="100"
+						format="png"
+						outputType="file"
+						(imageCropped)="imageCropped($event)"
+						style="max-width: 400px; margin-top: 30px"
+					></image-cropper>
 				</div>
 
 				<button class="save-button" *ngIf="!edit" (click)="save()"
@@ -101,7 +114,7 @@
 					<div class="photo-of-banner" *ngIf="!fileToUpload.data && photoUrl"
 							 [style.backgroundImage]="'url(' + photoUrl + ')'"></div>
 					<div class="photo-of-banner" *ngIf="fileToUpload.data"
-							 [style.backgroundImage]="'url(' + fileToUpload.data + ')'"></div>
+							 [style.background-image]="'url(' + fileToUpload.data + ')'"></div>
 					<div class="photo-of-banner default" *ngIf="!fileToUpload.data  && !edit"></div>
 					<div class="info">
 						<div class="title">
