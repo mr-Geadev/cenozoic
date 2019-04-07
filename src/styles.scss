@@ -126,3 +126,8 @@ a {
 	color: $white;
 	text-decoration: none;
 }
+
+full-banner .text-news a {
+  color: inherit !important;
+  pointer-events: none !important;
+}
