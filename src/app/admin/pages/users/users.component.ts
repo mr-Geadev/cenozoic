@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { publishReplay, refCount, tap } from 'rxjs/operators';
 import { UserService } from 'services';
 import { UserModel } from '../../../models/user.model';
@@ -18,6 +18,12 @@ export class UsersComponent implements OnInit {
   public isShowAnalytics: boolean = false;
   public userList: UserModel[] = [];
   public defaultUserList: UserModel[] = [];
+
+  public newUser = new FormGroup({
+    typeAccount: new FormControl('manager', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+  });
 
   public search: FormControl = new FormControl('');
   public search$ = this.search.valueChanges.pipe(
@@ -49,6 +55,14 @@ export class UsersComponent implements OnInit {
 
     this._userService.user$
       .subscribe(res => this.currentUser = res);
+  }
+
+  createUser() {
+    this.usersApi.createUser(this.newUser.value)
+      .subscribe(
+        res => this.newUser.reset({typeAccount: 'manager'}),
+        err => console.log(err)
+      );
   }
 
   public showFullInfo(user: UserModel, index?: number): void {

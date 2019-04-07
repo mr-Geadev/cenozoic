@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { publishReplay, refCount, tap } from 'rxjs/operators';
 import { UserModel } from '../../../models/user.model';
 import { SystemMessageService } from '../../../services';
 
@@ -41,6 +42,17 @@ export class UsersApi {
         res => true,
         err => err,
       );
+  }
+
+  public createUser(user: {typeAccount: string, email: string, password: string}): Observable<any> {
+    return this._http.post(`/api/v1/admin/create-account`, user).pipe(
+      tap(
+        res => this._messages.info('Пользователь создан'),
+        err => this._messages.info(err.error.errorMessage || 'Неизвестная ошибка')
+      ),
+      publishReplay(1),
+      refCount()
+    );
   }
 
   public verificateUser(id: string, verify: boolean): Observable<any> {

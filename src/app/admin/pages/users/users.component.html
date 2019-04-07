@@ -1,13 +1,51 @@
-<input
-	type="text"
-	class="search-field"
-	[formControl]="search"
-	placeholder="Поиск по ФИО"
->
+<div class="row add-user">
+	<form class="col" [formGroup]="newUser" (submit)="createUser()">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Добавить пользователя</mat-card-title>
+			</mat-card-header>
 
-<div *ngIf="search$ | async"></div>
+			<mat-card-content style="display: flex; flex-direction: column;">
+				<mat-form-field class="field">
+					<mat-select name="country"
+											placeholder="Выберете тип"
+											formControlName="typeAccount">
+						<mat-option [value]="'manager'" *ngIf="currentUser.typeAccount === 'admin'">Модератор</mat-option>
+						<mat-option [value]="'admin'" *ngIf="currentUser.typeAccount === 'admin' ">Администратор</mat-option>
+						<mat-option [value]="'employer'">Компания</mat-option>
+						<mat-option [value]="'worker'">Соискатель</mat-option>
+					</mat-select>
+				</mat-form-field>
 
-<div class="row">
+				<mat-form-field class="field">
+					<input matInput formControlName="email" placeholder="Email">
+					<div class="invalid-field-label">Поле введено неккоректно</div>
+				</mat-form-field>
+
+				<mat-form-field class="field">
+					<input matInput type="password" formControlName="password" placeholder="Пароль">
+					<div class="invalid-field-label">Пароль должен быть 8 символов или длинее</div>
+				</mat-form-field>
+			</mat-card-content>
+
+			<mat-card-actions>
+				<button mat-button type="submit" [disabled]="newUser.invalid">Сохранить</button>
+			</mat-card-actions>
+
+		</mat-card>
+	</form>
+</div>
+
+<div class="row users-list">
+	<input
+		type="text"
+		class="search-field"
+		[formControl]="search"
+		placeholder="Поиск по ФИО"
+	>
+
+	<div *ngIf="search$ | async"></div>
+
 	<div class="col" [class.col-8]="checkedUser && !isShowAnalytics" [class.col-4]="checkedUser && isShowAnalytics">
 		<mat-card>
 			<mat-tab-group>
