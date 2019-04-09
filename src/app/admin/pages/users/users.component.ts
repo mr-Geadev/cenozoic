@@ -47,20 +47,27 @@ export class UsersComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.usersApi.getUserList()
-      .subscribe((userList) => {
-        this.defaultUserList = userList;
-        this.userList = userList;
-      });
+    this.getUserList();
 
     this._userService.user$
       .subscribe(res => this.currentUser = res);
   }
 
+  getUserList() {
+    this.usersApi.getUserList()
+      .subscribe((userList) => {
+        this.defaultUserList = userList;
+        this.userList = userList;
+      });
+  }
+
   createUser() {
     this.usersApi.createUser(this.newUser.value)
       .subscribe(
-        res => this.newUser.reset({typeAccount: 'manager'}),
+        res => {
+          this.newUser.reset({typeAccount: 'manager'});
+          this.getUserList();
+        },
         err => console.log(err)
       );
   }

@@ -106,7 +106,7 @@
 						<h3 mat-subheader>Список модераторов</h3>
 						<a class="item-user" [routerLink]="['/admin/user', user._id]"
 							 *ngFor="let user of userList; let i = index;"
-							 [user]="user" [class.hidden]="user.typeAccount !== 'moderator'"></a>
+							 [user]="user" [class.hidden]="user.typeAccount !== 'manager'"></a>
 					</mat-list>
 				</mat-tab>
 
