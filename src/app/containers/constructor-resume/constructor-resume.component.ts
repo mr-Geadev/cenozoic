@@ -462,7 +462,6 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     // конец
 
     this.resumeForm.resumeLanguage = LocalizationService.currentLang();
-    this.resumeForm.salary.currency = LocalizationService.currentLang() === 'ru' ? 'rubles' : 'dollars';
 
     if (this.type === DEFAULT_TYPE) {
       const formData: FormData = new FormData();

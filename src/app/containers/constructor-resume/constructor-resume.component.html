@@ -38,12 +38,22 @@
                                 <input type="number" name="salary" id="salary-from" [(ngModel)]="resumeForm.salary.value"
                                        required>
                                 <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
-                                <div class="word rub">
-                                    {{ LocalizationService.currentLang() === 'ru' ? dictionary.RUBLES_SHORT : '$'}}.
-                                </div>
+                                <!--<div class="word rub">-->
+                                    <!--{{ resumeForm.salary.currency === 'rubles' ? dictionary.RUBLES_SHORT : '$'}}.-->
+                                <!--</div>-->
+
+                                <mat-form-field>
+                                    <mat-select name="currency" [(ngModel)]="resumeForm.salary.currency" required>
+                                        <mat-option value="dollars">
+                                            {{dictionary.DOLLARS}}
+                                        </mat-option>
+                                        <mat-option value="rubles">
+                                            {{dictionary.RUBLES}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                             </div>
                         </div>
-
 
                         <!--возраст-->
                         <div class="parameter age">

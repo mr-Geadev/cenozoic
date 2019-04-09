@@ -1,3 +1,5 @@
+import { LocalizationService } from 'services';
+
 export const DEFAULT_TYPE = 'Создание';
 export const CHANGES_TYPE = 'Изменение';
 
@@ -40,7 +42,7 @@ export const DEFAULT_TRAINING = {
 };
 
 export const DEFAULT_SALARY = {
-  currency: 'rubles',
+  currency: LocalizationService.currentLang() === 'ru' ? 'rubles' : 'dollars',
   value: null,
 };
 
