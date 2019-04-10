@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule,
+  MatMenuModule, MatNativeDateModule,
   MatSelectModule,
   MatTabsModule,
   MatToolbarModule,
@@ -64,6 +64,8 @@ import { UsersComponent } from './pages/users/users.component';
     MatInputModule,
     MatSelectModule,
     NgxChartsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [
     // core

@@ -7,6 +7,24 @@
 	<mat-card-title>Статистика по пользователю</mat-card-title>
 </mat-card-header>
 
+<div *ngIf="changeForm$ | async"></div>
+<form action="" [formGroup]="timePeriod">
+	<mat-form-field style="margin-right: 40px">
+		<input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="dpFrom" placeholder="Выберите дату начала" formControlName="from" (click)="dpFrom.open()" readonly>
+		<mat-datepicker-toggle matSuffix [for]="dpFrom"></mat-datepicker-toggle>
+		<mat-datepicker touchUi="true" #dpFrom ></mat-datepicker>
+	</mat-form-field>
+
+	<mat-form-field>
+		<input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="dpTo" placeholder="Выберите дату конца" formControlName="to" (click)="dpTo.open()" readonly>
+		<mat-datepicker-toggle matSuffix [for]="dpTo"></mat-datepicker-toggle>
+		<mat-datepicker touchUi="true" #dpTo ></mat-datepicker>
+	</mat-form-field>
+</form>
+
+<p style="margin-bottom: 30px;" class="inline-link" (click)="resetFilter()">Сбросить фильтр</p>
+
+
 <mat-card-content class="analytic">
 
 	<input type="checkbox" id="showLabels" [(ngModel)]="showLabels" >
