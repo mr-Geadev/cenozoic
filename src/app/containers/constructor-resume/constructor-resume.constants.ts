@@ -42,7 +42,7 @@ export const DEFAULT_TRAINING = {
 };
 
 export const DEFAULT_SALARY = {
-  currency: LocalizationService.currentLang() === 'ru' ? 'rubles' : 'dollars',
+  currency: 'dollars',
   value: null,
 };
 
