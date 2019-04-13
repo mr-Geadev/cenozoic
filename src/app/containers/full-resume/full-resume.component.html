@@ -4,7 +4,6 @@
 
 		<div class="col-12 col-md-7 left">
 
-			<!--<div class="city gray text">Санкт-Петербург</div>-->
 			<div class="page-title">{{currentResume.job}}</div>
 
 			<div class="salary"><span>{{dictionary.FROM}}
@@ -124,7 +123,7 @@
 					</div>
 				</div>
 
-				<div class="line">
+				<div class="line" *ngIf="currentResume?.employmentPurpose">
 					<div class="parameter gray text">
 						{{dictionary.EMPLOYMENT_PURPOSE}}
 					</div>
