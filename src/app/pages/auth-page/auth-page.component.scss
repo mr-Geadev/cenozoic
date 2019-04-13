@@ -17,15 +17,24 @@
   }
 
   .error {
-    color: $orange;
+    color: $alert;
     font-family: Roboto;
     font-size: 0.75rem;
     font-weight: 400;
     position: absolute;
-    bottom: -86%;
-    left: 36%;
+    top: 5px;
+    right: 0;
     line-height: 1;
     display: inline;
+  }
+
+  .privacy-politic {
+    max-width: 310px;
+    margin-top: 20px;
+
+    a {
+
+    }
   }
 
   .title {
@@ -67,7 +76,10 @@
       &:hover {
         color: $dark-gray;
       }
+    }
 
+    input:checked {
+      color: red;
     }
 
     input:checked + label {
@@ -102,8 +114,6 @@
       }
 
       &:checked {
-        color: red;
-
         & + label:hover {
           cursor: default;
         }
