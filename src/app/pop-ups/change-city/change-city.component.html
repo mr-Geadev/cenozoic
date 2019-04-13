@@ -13,4 +13,4 @@
     <!--<button (click)="handleClick()">{{dictionary.SAVE}}</button>-->
 </div>
 
-<a href="/support" class="inline-link" target="_blank">{{ dictionary.MY_CITY_DOESNOT_HAVE_IS_LIST }}</a>
+<a *ngIf="isUserAuth" href="/support" class="inline-link" target="_blank">{{ dictionary.MY_CITY_DOESNOT_HAVE_IS_LIST }}</a>

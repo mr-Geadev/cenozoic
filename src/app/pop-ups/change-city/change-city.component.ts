@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ChangeCityClose } from './change-city-close.service';
 import { City, Locations } from './cities.models';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { LocalizationService } from '../../services';
+import { LocalizationService, UserService } from '../../services';
 
 @Component({
   selector: 'change-city-modal',
@@ -15,8 +15,10 @@ export class ChangeCityModalComponent implements OnInit {
   public popularCities: City[] = [];
   public dictionary: any = {};
   public showContextMenu: boolean = false;
+  public isUserAuth: boolean = false;
 
   constructor(private _closeModal: ChangeCityClose,
+              private userService: UserService,
               private _localizationService: LocalizationService,
               @Inject(MAT_DIALOG_DATA) public data: Locations) {
   }
@@ -27,6 +29,9 @@ export class ChangeCityModalComponent implements OnInit {
       .subscribe(
         res => this.dictionary = res,
       );
+
+    this.userService.user$
+      .subscribe((user) => this.isUserAuth = !!user);
   }
 
   public onShowContextMenu(): void {

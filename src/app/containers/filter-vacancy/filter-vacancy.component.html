@@ -18,8 +18,8 @@
                            (click)="filterVacancyService.changeCity($event)">
                 </mat-form-field>
 
-                <mat-form-field>
-                    <mat-select *ngIf="currentLang === 'ru'" name="salary" placeholder="{{dictionary.SALARY}}"
+                <mat-form-field *ngIf="(currentLang | async) === 'ru'">
+                    <mat-select  name="salary" placeholder="{{dictionary.SALARY}}"
                                 (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.salary.from">
                         <mat-option value="60000">{{dictionary.FROM}} 60 000</mat-option>
@@ -30,8 +30,10 @@
                         <mat-option value="600000">{{dictionary.FROM}} 600 000</mat-option>
                         <mat-option value="other">{{dictionary.MORE_THAN}} 600 000</mat-option>
                     </mat-select>
+                </mat-form-field>
 
-                    <mat-select *ngIf="currentLang === 'en'" name="salary" placeholder="{{dictionary.SALARY}}"
+                <mat-form-field *ngIf="(currentLang | async) === 'en'">
+                    <mat-select name="salary" placeholder="{{dictionary.SALARY}}"
                                 (change)="filterVacancyService.changeForm()"
                                 [(ngModel)]="filterVacancyService.parameters.salary.from">
                         <mat-option value="1000">{{dictionary.FROM}} 1000</mat-option>

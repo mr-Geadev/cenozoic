@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { FilterVacancyService } from './filter-vacancy.service';
 import { CitiesService } from '../../services/cities.service';
 import { LocalizationService } from '../../services';
@@ -13,7 +14,7 @@ export class FilterVacancyComponent implements OnInit {
   public showing: boolean = false; // view
   public dictionary: any = {};
   public nationalitiesDefault: any[] = null;
-  currentLang = LocalizationService.currentLang();
+  currentLang = new BehaviorSubject<string>(null);
 
   constructor(public filterVacancyService: FilterVacancyService,
               private _localizationService: LocalizationService,
@@ -35,7 +36,8 @@ export class FilterVacancyComponent implements OnInit {
     this._localizationService.currentDictionary
       .subscribe(
         res => {
-          this.dictionary = res; this.currentLang = LocalizationService.currentLang();
+          this.dictionary = res;
+          this.currentLang.next(LocalizationService.currentLang());
         }
       );
   }

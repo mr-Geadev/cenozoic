@@ -80,7 +80,7 @@
       justify-content: center;
     }
 
-    #sign-up {
+    #sign-up-auth {
       & + label {
         z-index: 3;
       }
@@ -102,6 +102,8 @@
       }
 
       &:checked {
+        color: red;
+
         & + label:hover {
           cursor: default;
         }
