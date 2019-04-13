@@ -37,18 +37,20 @@ export class BirthdayComponent implements OnInit {
   public ngOnInit() {
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res,
+        res => {
+          this.dictionary = res;
+
+          if (LocalizationService.currentLang() === 'ru') {
+            this.adapter.setLocale('ru');
+          } else {
+            this.adapter.setLocale('en');
+          }
+        },
       );
 
     this.data = this.dictionary.CHANGE_BIRTHDAY;
     if (this.dataInput) {
       this.dateChanged(moment(this.dataInput));
-    }
-
-    if (LocalizationService.currentLang() === 'ru') {
-      this.adapter.setLocale('ru');
-    } else {
-      this.adapter.setLocale('en');
     }
   }
 
