@@ -11,7 +11,7 @@
 			<div class="salary">
 				<span *ngIf="currentVacancy.salary.from || currentVacancy.salary.to">
 					<ng-container *ngIf="currentVacancy.salary.from">{{dictionary.FROM}} <b>{{currentVacancy.salary.from}}</b></ng-container>
-					<ng-container *ngIf="currentVacancy.salary.to">{{dictionary.TO}} <b>{{currentVacancy.salary.to}}</b></ng-container>
+					<ng-container *ngIf="currentVacancy.salary.to"> {{dictionary.TO}} <b>{{currentVacancy.salary.to}}</b></ng-container>
 					{{currentVacancy.currency === "rubles" ? "₽" : "$" }}
 					<br>
 				</span>

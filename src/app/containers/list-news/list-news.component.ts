@@ -36,12 +36,12 @@ export class ListNewsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
+        res => {
+          this.dictionary = res;
+          this.currentLang = LocalizationService.currentLang();
+          this.getList();
+        }
       );
-
-    this.currentLang = LocalizationService.currentLang();
-
-    this.getList();
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -146,7 +146,24 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     // подклюение локализцаии
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res,
+        res => {
+          this.dictionary = res;
+
+          if (!this.resumeImage.data) {
+            this.loadingPhotoButton = res.LOAD_PHOTO;
+          }
+
+          this.nameImagesOfCertificate = this.nameImagesOfCertificate.map( (certificate, index) => {
+            if (this.imagesOfCertificate[index].data) {
+              return certificate;
+            } else {
+              return res.TRAINING_CERTIFICATE_LOAD;
+            }
+          })
+
+          // imagesOfCertificate
+          // nameImagesOfCertificate
+        }
       );
 
     // установка текста кнопки локализации из словаря
@@ -182,7 +199,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             training.document = false;
             training.documentName = null;
             this.validCityTrainings.push(true);
-            this.nameImagesOfCertificate[index] = 'Выбрать фото';
+            this.nameImagesOfCertificate[index] = this.dictionary.TRAINING_CERTIFICATE_LOAD;
           });
 
           this.resumeForm.experience.forEach(() => this.listVisibleElement.experience.push(true));

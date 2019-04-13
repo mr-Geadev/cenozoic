@@ -46,7 +46,7 @@
                                 </div>
 
                                 <input type="number" name="salary" id="salary-from" [(ngModel)]="resumeForm.salary.value"
-                                       required>
+                                       required [min]="0" >
                                 <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 <!--<div class="word rub">-->
                                     <!--{{ resumeForm.salary.currency === 'rubles' ? dictionary.RUBLES_SHORT : '$'}}.-->
