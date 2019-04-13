@@ -155,6 +155,7 @@ export const ENGLISH_DICTIONARY = {
   'YES': 'Yes',
   'NO': 'No',
   'EXPECTED_POSITION': 'Expected Position',
+  'EMPLOYMENT_PURPOSE': 'Цель трудоустройства',
   'CHANGE_BIRTHDAY': 'select birth date',
   'SALARY': 'Expected salary',
   'AGE': 'Age',

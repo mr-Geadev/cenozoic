@@ -48,6 +48,7 @@ export const DEFAULT_SALARY = {
 
 export const DEFAULT_RESUME_FORM = {
     job: null,
+    employmentPurpose: '',
     salary: null,
     birthday: null,
     fullName: null,

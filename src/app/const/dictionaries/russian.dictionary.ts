@@ -155,6 +155,7 @@ export const RUSSIAN_DICTIONARY = {
   'YES': 'Да',
   'NO': 'Нет',
   'EXPECTED_POSITION': 'Желаемая должность',
+  'EMPLOYMENT_PURPOSE': 'Цель трудоустройства',
   'CHANGE_BIRTHDAY': 'выберите дату рождения',
   'SALARY': 'Ожидаемая зарплата',
   'AGE': 'Возраст',
