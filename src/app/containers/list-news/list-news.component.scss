@@ -147,20 +147,9 @@
           background-color: white;
           @include animation();
           align-items: center;
-
-          .plus {
-            color: $orange;
-            font-family: "Bebas";
-            font-size: 3.75rem;
-            font-weight: 400;
-            width: 24px;
-            height: 24px;
-            @include animation(color);
-
-            display: flex;
-            align-items: center;
-            margin-top: 14px;
-          }
+          color: $orange;
+          font-family: "Bebas";
+          font-size: 1.75rem;
         }
       }
 
@@ -181,10 +170,7 @@
         .inner {
           .circle {
             background-color: $orange;
-
-            .plus {
-              color: $white
-            }
+            color: $white
           }
         }
 

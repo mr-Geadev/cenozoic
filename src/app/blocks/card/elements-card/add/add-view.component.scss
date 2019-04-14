@@ -18,20 +18,9 @@
       justify-content: center;
       @include animation();
       align-items: center;
-
-      .plus {
-        color: $orange;
-        font-family: "Bebas";
-        font-size: 3.75rem;
-        font-weight: 400;
-        width: 24px;
-        height: 24px;
-        @include animation(color);
-
-        display: flex;
-        align-items: center;
-        margin-top: 14px;
-      }
+      font-size: 1.75rem;
+      font-family: "Bebas";
+      color: $orange;
     }
   }
 
@@ -40,10 +29,7 @@
     .circle {
       background-color: $orange;
       transform: scale(1.1);
-
-      .plus {
-        color: $white !important;
-      }
+      color: $white !important;
     }
   }
 }
