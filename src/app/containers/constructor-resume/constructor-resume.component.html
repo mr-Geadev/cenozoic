@@ -548,17 +548,17 @@
                             <div class="right">
                                 <mat-form-field>
                                     <mat-select name="language-{{i}}" class="language"
-                                                [placeholder]="dictionary.LANGUAGE"
+                                                [placeholder]="dictionary.LANGUAGE" (blur)="setLangChecked()"
                                                 [(ngModel)]="resumeForm.languages[i].name" id="language" required>
-                                        <mat-option value="en">{{dictionary.LANGUAGE_EN}}</mat-option>
-                                        <mat-option value="ru">{{dictionary.LANGUAGE_RU}}</mat-option>
-                                        <mat-option value="chi">{{dictionary.LANGUAGE_CHI}}</mat-option>
-                                        <mat-option value="arab">{{dictionary.LANGUAGE_ARAB}}</mat-option>
-                                        <mat-option value="span">{{dictionary.LANGUAGE_SPAN}}</mat-option>
-                                        <mat-option value="port">{{dictionary.LANGUAGE_PORT}}</mat-option>
-                                        <mat-option value="ind">{{dictionary.LANGUAGE_IND}}</mat-option>
-                                        <mat-option value="fran">{{dictionary.LANGUAGE_FRAN}}</mat-option>
-                                        <mat-option value="dutch">{{dictionary.LANGUAGE_DEUTH}}</mat-option>
+                                        <mat-option value="en" *ngIf="resumeForm.languages[i].name === 'en' || !languages.en">{{dictionary.LANGUAGE_EN}}</mat-option>
+                                        <mat-option value="ru" *ngIf="resumeForm.languages[i].name === 'ru' || !languages.ru">{{dictionary.LANGUAGE_RU}}</mat-option>
+                                        <mat-option value="chi" *ngIf="resumeForm.languages[i].name === 'chi' || !languages.chi">{{dictionary.LANGUAGE_CHI}}</mat-option>
+                                        <mat-option value="arab" *ngIf="resumeForm.languages[i].name === 'arab' || !languages.arab">{{dictionary.LANGUAGE_ARAB}}</mat-option>
+                                        <mat-option value="span" *ngIf="resumeForm.languages[i].name === 'span' || !languages.span">{{dictionary.LANGUAGE_SPAN}}</mat-option>
+                                        <mat-option value="port" *ngIf="resumeForm.languages[i].name === 'port' || !languages.port">{{dictionary.LANGUAGE_PORT}}</mat-option>
+                                        <mat-option value="ind" *ngIf="resumeForm.languages[i].name === 'ind' || !languages.ind">{{dictionary.LANGUAGE_IND}}</mat-option>
+                                        <mat-option value="fran" *ngIf="resumeForm.languages[i].name === 'fran' || !languages.fran">{{dictionary.LANGUAGE_FRAN}}</mat-option>
+                                        <mat-option value="dutch" *ngIf="resumeForm.languages[i].name === 'dutch' || !languages.dutch">{{dictionary.LANGUAGE_DEUTH}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <div class="line"></div>
@@ -578,9 +578,9 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="add">
+                        <div class="add" *ngIf="resumeForm.languages.length < 9 ">
                             +
-                            <span class="add-button" (click)="manageFields('languages')">
+                            <span class="add-button"  (click)="manageFields('languages')">
                                 {{dictionary.LANGUAGE_ADD}}
                             </span>
                         </div>

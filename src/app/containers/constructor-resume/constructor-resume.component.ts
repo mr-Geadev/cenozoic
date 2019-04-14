@@ -39,6 +39,18 @@ import 'rxjs-compat/add/operator/take';
 })
 export class ConstructorResumeComponent implements OnInit, OnDestroy {
 
+  public languages = {
+    en: false,
+    ru: false,
+    chi: false,
+    arab: false,
+    span: false,
+    port: false,
+    ind: false,
+    fran: false,
+    dutch: false,
+  };
+
   public age: any = 1000;
   public resumeId: string = null;
   public cleanResumeForm = Object.assign({}, DEFAULT_RESUME_FORM); // схема незаполненнго резюме
@@ -153,17 +165,17 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             this.loadingPhotoButton = res.LOAD_PHOTO;
           }
 
-          this.nameImagesOfCertificate = this.nameImagesOfCertificate.map( (certificate, index) => {
+          this.nameImagesOfCertificate = this.nameImagesOfCertificate.map((certificate, index) => {
             if (this.imagesOfCertificate[index].data) {
               return certificate;
             } else {
               return res.TRAINING_CERTIFICATE_LOAD;
             }
-          })
+          });
 
           // imagesOfCertificate
           // nameImagesOfCertificate
-        }
+        },
       );
 
     // установка текста кнопки локализации из словаря
@@ -205,7 +217,10 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
           this.resumeForm.experience.forEach(() => this.listVisibleElement.experience.push(true));
           this.resumeForm.education.forEach(() => this.listVisibleElement.education.push(true));
           this.resumeForm.trainings.forEach(() => this.listVisibleElement.trainings.push(true));
-          this.resumeForm.languages.forEach(() => this.listVisibleElement.languages.push(true));
+          this.resumeForm.languages.forEach((lang) => {
+            this.listVisibleElement.languages.push(true);
+            this.languages[lang.name] = true;
+          });
         } else {
           this.type = DEFAULT_TYPE;
 
@@ -320,10 +335,23 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             if (nameSection === 'education') {
               this.educationCityName.splice(index, 1);
             }
+
+            if (nameSection === 'languages') {
+              this.setLangChecked();
+            }
           }
           this._dialog.closeAll();
         });
     }
+  }
+
+  setLangChecked() {
+    for (const key in this.languages) {
+      this.languages[key] = false;
+    }
+    this.resumeForm.languages.forEach((lang) => {
+      this.languages[lang.name] = true;
+    });
   }
 
   public changeCity(index: number, nameField: string): void {
