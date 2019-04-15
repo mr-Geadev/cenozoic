@@ -1,34 +1,40 @@
-import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatDialogModule} from '@angular/material';
-import {RouterModule} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { LogInGuard } from 'guards';
 
-import {LoginModalModule} from '../../pop-ups';
-import {ResumeFullPageComponent} from './resume-full-page.component';
-import {FullResumeModule} from '../../containers/full-resume/full-resume.module';
+import { LoginModalModule } from '../../pop-ups';
+import { ResumeFullPageComponent } from './resume-full-page.component';
+import { FullResumeModule } from '../../containers/full-resume/full-resume.module';
 
 @NgModule({
-    declarations: [
-        ResumeFullPageComponent,
-    ],
-    imports: [
-        RouterModule.forRoot([
-            {path: 'resume/:id', component: ResumeFullPageComponent, pathMatch: 'full'},
-        ], {scrollPositionRestoration: 'enabled'}),
-        CommonModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatDialogModule,
-        LoginModalModule,
+  declarations: [
+    ResumeFullPageComponent,
+  ],
+  imports: [
+    RouterModule.forRoot([
+      {
+        path: 'resume/:id',
+        component: ResumeFullPageComponent,
+        pathMatch: 'full',
+        canActivate: [LogInGuard],
+      },
+    ], { scrollPositionRestoration: 'enabled' }),
+    CommonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule,
+    LoginModalModule,
 
-        // Blocks
-        FullResumeModule
+    // Blocks
+    FullResumeModule,
 
-    ],
-    exports: [ResumeFullPageComponent]
+  ],
+  exports: [ResumeFullPageComponent],
 })
 export class ResumeFullPageModule {
 }
