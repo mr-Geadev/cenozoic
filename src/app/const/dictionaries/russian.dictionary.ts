@@ -421,9 +421,9 @@ export const RUSSIAN_DICTIONARY = {
   'QUESTIONNAIRE_FILE_ANSWER_SEND': 'Отправить ответы',
   'QUESTIONNAIRE_FILE_DOWNLOAD_ANSWERS': 'Скачать ответы',
   'FAQ_PAGE_TITLE': 'Часто задаваемые вопросы',
-  'FAQ_NOT_FOUND_ANSWER': 'Не нашли нужный ответ?',
-  'FAQ_SEND_QUESTION': 'Задать вопрос',
-  'FAQ_SEND_QUESTION_DESC': 'Отправьте свой вопрос и мы ответим вам',
+  'FAQ_NOT_FOUND_ANSWER': 'Не нашли нужный ответ или хотите оставить комментарий или пожелания об улучшениях портала?',
+  'FAQ_SEND_QUESTION': 'Написать',
+  'FAQ_SEND_QUESTION_DESC': 'Напишите свой вопрос и мы ответим вам',
   'FAQ_SUPPORT_PAGE_TITLE': 'Обратная связь',
   'FAQ_SUPPORT_CHAT_TITLE': 'Чат техподдержки',
   'FAQ_SUPPORT_CHAT_SEND_MESSAGE': 'Отправить',
@@ -541,4 +541,5 @@ export const RUSSIAN_DICTIONARY = {
   'RESTORE_PASSWORD_SAVE_PASSWORD': 'Сохранить пароль',
   'RESTORE_PASSWORD_DESCRIPTION': 'Введи почту от вашего аккаунта. Мы вышлем вам ссылку для восстановления пароля.',
   'RESTORE_PASSWORD_SEND_LINK': 'Отправить ссылку',
+  'CURRENCY': 'Валюта',
 };
