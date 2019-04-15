@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BannerApi } from 'api';
 import { FullBannerComponent } from 'containers/full-banner/full-banner.component';
+import { PipesModule } from 'pipes/pipes.module';
 import { PayingModalService } from 'pop-ups/paying';
 
 @NgModule({
@@ -11,6 +12,7 @@ import { PayingModalService } from 'pop-ups/paying';
     CommonModule,
     RouterModule,
     FormsModule,
+    PipesModule
   ],
   declarations: [
     FullBannerComponent,

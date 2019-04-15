@@ -10,8 +10,7 @@
 				About us
 			</div>
 
-
-			<div [innerHTML]="html"></div>
+			<div [innerHTML]="html | safeHtml"></div>
 
 		</div>
 	</div>

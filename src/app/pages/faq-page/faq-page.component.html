@@ -11,7 +11,7 @@
 						{{faq.question}}
 						<img src="/assets/images/icon-orange-triungle.svg" class="icon" [class.visible]="!faq.hidden">
 					</div>
-					<div class="answer" *ngIf="!faq.hidden" [innerHTML]="faq.answer"></div>
+					<div class="answer" *ngIf="!faq.hidden" [innerHTML]="faq.answer | safeHtml"></div>
 				</li>
 			</ul>
 

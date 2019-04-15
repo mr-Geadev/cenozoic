@@ -77,21 +77,21 @@
 				<div class="title row">
 					{{dictionary.DUTIES}}
 				</div>
-				<div class="row text-wrap" [innerHTML]="currentVacancy.duties"></div>
+				<div class="row text-wrap" [innerHTML]="currentVacancy.duties | safeHtml"></div>
 			</div>
 
 			<div class="info" *ngIf="currentVacancy.demands">
 				<div class="title row">
 					{{dictionary.REQUIREMENTS}}
 				</div>
-				<div class="row text-wrap" [innerHTML]="currentVacancy.demands"></div>
+				<div class="row text-wrap" [innerHTML]="currentVacancy.demands | safeHtml"></div>
 			</div>
 
 			<div class="info" *ngIf="currentVacancy.conditions">
 				<div class="title row">
 					{{dictionary.WORKING_CONDITIONS}}
 				</div>
-				<div class="row text-wrap" [innerHTML]="currentVacancy.conditions"></div>
+				<div class="row text-wrap" [innerHTML]="currentVacancy.conditions | safeHtml"></div>
 			</div>
 
 		</div>

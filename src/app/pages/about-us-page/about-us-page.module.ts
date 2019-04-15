@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LocalizationApi } from 'api';
 import { AboutUsPageComponent } from 'pages/about-us-page/about-us-page.component';
+import { PipesModule } from 'pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AboutUsPageComponent } from 'pages/about-us-page/about-us-page.componen
       { path: 'about', component: AboutUsPageComponent, pathMatch: 'full' },
     ], { scrollPositionRestoration: 'enabled' }),
     CommonModule,
+    PipesModule
   ],
   exports: [AboutUsPageComponent],
   providers: [

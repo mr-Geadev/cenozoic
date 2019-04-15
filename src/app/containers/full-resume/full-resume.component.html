@@ -209,7 +209,7 @@
 					<td class="work">
 						<div class="job side-title">{{item.job}}</div>
 						<div class="company text gray">{{item.organization}}</div>
-						<div class="duties text black" [innerHTML]="item.duties">
+						<div class="duties text black" [innerHTML]="item.duties | safeHtml">
 						</div>
 					</td>
 				</tr>
@@ -318,7 +318,7 @@
 				{{dictionary.ADDITIONAL_INFO}}
 			</div>
 
-			<div class="text black" [innerHTML]="currentResume.additionalInformation"></div>
+			<div class="text black" [innerHTML]="currentResume.additionalInformation | safeHtml"></div>
 		</div>
 	</div>
 
@@ -329,7 +329,7 @@
 				{{dictionary.PERSONAL_QUALITIES}}
 			</div>
 
-			<div class="text black" [innerHTML]="currentResume.personalQualities"></div>
+			<div class="text black" [innerHTML]="currentResume.personalQualities | safeHtml"></div>
 		</div>
 	</div>
 
@@ -340,7 +340,7 @@
 				{{dictionary.HOBBIES}}
 			</div>
 
-			<div class="text black" [innerHTML]="currentResume.hobbies"></div>
+			<div class="text black" [innerHTML]="currentResume.hobbies | safeHtml"></div>
 		</div>
 	</div>
 

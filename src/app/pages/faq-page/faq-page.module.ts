@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FaqPageComponent } from 'pages/faq-page/faq-page.component';
+import { PipesModule } from 'pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FaqPageComponent } from 'pages/faq-page/faq-page.component';
     ], {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     RouterModule,
+    PipesModule
   ],
   exports: [FaqPageComponent],
 })
