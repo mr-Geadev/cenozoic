@@ -128,8 +128,8 @@ export class ConstructorVacancyComponent implements OnInit {
       title: new FormControl(data.title || '', [Validators.required]),
       currency: new FormControl(data.currency || ''),
       salary: new FormGroup({
-        from: new FormControl(data.salary.from || 0),
-        to: new FormControl(data.salary.to || 0),
+        from: new FormControl(data.salary.from || 0, [Validators.required, Validators.min(0)]),
+        to: new FormControl(data.salary.to || 0, [Validators.required, Validators.min(0)]),
         note: new FormControl(data.salary.note || ''),
       }),
       country: new FormControl(data.country || null, [Validators.required]),
