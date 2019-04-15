@@ -15,7 +15,7 @@
 		{{dictionary.LAST_WORKPLACE}}
 	</div>
 	<div class="value">
-		{{resume?.experience[0]?.job}}, {{resume?.experience[0]?.organization}}
+		{{resume?.experience[0]?.job}}<ng-container *ngIf="userAuth">, {{resume?.experience[0]?.organization}}</ng-container>
 	</div>
 	<div class="value" *ngIf="resume.experience.length == 0">
 		-

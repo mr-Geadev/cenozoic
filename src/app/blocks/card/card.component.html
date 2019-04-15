@@ -21,6 +21,7 @@
 
 	<resume-view
 			*ngIf="resume || (respond && typeUser === 'employer')"
+			[userAuth]="!!typeUser"
 			[resume]="respond ? respond.resume : resume"
 			[dictionary]="dictionary"
 			[ngStyle]="{'height':heightContent+'px'}"
@@ -72,6 +73,7 @@
 
 	<resume-view
 			*ngIf="resume || (respond && typeUser === 'employer')"
+			[userAuth]="!!typeUser"
 			[resume]="respond ? respond.resume : resume"
 			[dictionary]="dictionary"
 			[ngStyle]="{'height':heightContent+'px'}"
