@@ -1,12 +1,13 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDialog, MatDialogConfig } from '@angular/material';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { Router } from '@angular/router';
 import { Moment } from 'moment';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/first';
+import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 import { Subscription } from 'rxjs/Subscription';
 
 import { CREATE_RESUME } from '../../const';
@@ -50,6 +51,9 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     fran: false,
     dutch: false,
   };
+
+  @ViewChild(ImageCropperComponent) imageCropper: ImageCropperComponent;
+  imageChangedEvent: any = '';
 
   public age: any = 1000;
   public resumeId: string = null;
@@ -409,6 +413,21 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       } else {
         this._systemMessageService.info(this.dictionary.INFO_MESSAGES_SIZE_FILE_MORE_THAN + '5mb');
       }
+    }
+
+    this.imageChangedEvent = event;
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    const reader = new FileReader();
+
+    this.resumeImage.file = new File([event.file], this.loadingPhotoButton, {type: 'image/png'});
+
+    if (new File([event.file], this.loadingPhotoButton)) {
+      reader.readAsDataURL(this.resumeImage.file);
+      reader.onload = () => {
+        this.resumeImage.data = reader.result;
+      };
     }
   }
 

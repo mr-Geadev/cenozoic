@@ -118,8 +118,22 @@
 				<div *ngIf="!companyLogo.data && !currentUser.photoURL" class="image default">
 					<img src="/assets/images/icon-camera.svg"/>
 				</div>
-				<div *ngIf="companyLogo.data || currentUser.photoURL" class="image user">
-					<img [src]="companyLogo.data || currentUser.photoURL">
+				<div *ngIf="currentUser.photoURL && !companyLogo.data" class="image user">
+					<img [src]="currentUser.photoURL">
+				</div>
+				<div *ngIf="companyLogo.data" style="width: 100%;">
+					<image-cropper
+						[imageChangedEvent]="imageChangedEvent"
+						[maintainAspectRatio]="false"
+						[cropperMinWidth]="260"
+						[cropperMinHeight]="260"
+						[roundCropper]="false"
+						[imageQuality]="100"
+						format="png"
+						outputType="file"
+						(imageCropped)="imageCropped($event)"
+						style="max-width: 100%; margin-top: 30px"
+					></image-cropper>
 				</div>
 				<input (change)="onImageChange($event)" id="load-photo" type="file" size="0"
 							 accept="image/*,image/jpeg,image/png,image/gif">

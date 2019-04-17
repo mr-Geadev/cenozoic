@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 import { CHANGE_PASSWORD } from '../../const/api.constant';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmService } from '../../services/confirm.service';
@@ -23,6 +24,9 @@ export class SettingEmployerComponent implements OnInit {
   public currentUser: any = {};
   public passwords: FormGroup = null;
   public info: FormGroup = null;
+
+  @ViewChild(ImageCropperComponent) imageCropper: ImageCropperComponent;
+  imageChangedEvent: any = '';
 
   public companyLogo: any = {
     file: null,
@@ -190,6 +194,21 @@ export class SettingEmployerComponent implements OnInit {
       } else {
         this.msg.info(this.dictionary.INFO_MESSAGES_SIZE_FILE_MORE_THAN + '5mb');
       }
+    }
+
+    this.imageChangedEvent = event;
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    const reader = new FileReader();
+
+    this.companyLogo.file = new File([event.file], this.loadingPhotoButton, {type: 'image/png'});
+
+    if (new File([event.file], this.loadingPhotoButton)) {
+      reader.readAsDataURL(this.companyLogo.file);
+      reader.onload = () => {
+        this.companyLogo.data = reader.result;
+      };
     }
   }
 

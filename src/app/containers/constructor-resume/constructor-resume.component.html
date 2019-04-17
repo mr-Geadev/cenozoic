@@ -802,8 +802,22 @@
                 <div *ngIf="!resumeImage.data && !resumeForm.photoURL" class="image default">
                     <img src="/assets/images/icon-camera.svg"/>
                 </div>
-                <div *ngIf="resumeImage.data || resumeForm.photoURL" class="image user">
-                    <img [src]="resumeImage.data || resumeForm.photoURL">
+                <div *ngIf="resumeForm.photoURL && !resumeImage.data" class="image user">
+                    <img [src]="resumeForm.photoURL">
+                </div>
+                <div *ngIf="resumeImage.data">
+                    <image-cropper
+                      [imageChangedEvent]="imageChangedEvent"
+                      [maintainAspectRatio]="false"
+                      [cropperMinWidth]="350"
+                      [cropperMinHeight]="350"
+                      [roundCropper]="false"
+                      [imageQuality]="100"
+                      format="png"
+                      outputType="file"
+                      (imageCropped)="imageCropped($event)"
+                      style="max-width: 400px; margin-top: 30px"
+                    ></image-cropper>
                 </div>
                 <input form="create-summary" (change)="onImageChange($event, 'avatar')" id="load-photo" type="file" size="0"
                        accept="image/*,image/jpeg,image/png,image/gif">
