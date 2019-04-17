@@ -25,6 +25,7 @@
 	<!--архивировать-->
 	<ng-container *ngIf="!archived()">
 		<div class="icon"
+				 alt="Отправить в архив"
 				 *ngIf="(status === RESPOND_STATUS.APPROVED) || (status === RESPOND_STATUS.REJECTED)">
 			<img class="default" src="/assets/images/icon-to-archive.svg"/>
 			<img class="hover" title="В архив" (click)="archive()" src="/assets/images/icon-to-archive-orange.svg"/>
