@@ -22,10 +22,10 @@
 
 			<div class="photo-block">
 				<div class="photo">
-					<img *ngIf="!banner.imageUrl" src="{{banner.photoURL}}" alt="{{banner.title}}">
+					<img *ngIf="!banner.imageUrl" src="{{imgUrl+banner.photoURL}}" alt="{{banner.title}}">
 
 					<a  *ngIf="banner.imageUrl" [href]="banner.imageUrl" target="_blank">
-						<img src="{{banner.photoURL}}" alt="{{banner.title}}">
+						<img src="{{imgUrl+banner.photoURL}}" alt="{{banner.title}}">
 					</a>
 				</div>
 				<div class="manage">

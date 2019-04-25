@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
-import { CHANGE_PASSWORD } from '../../const/api.constant';
+import { CHANGE_PASSWORD, IMG_URL } from '../../const/api.constant';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmService } from '../../services/confirm.service';
 import { AuthService } from '../../services/auth.service';
@@ -18,6 +18,8 @@ import { BlankAccountService } from '../../services';
   styleUrls: ['./setting-employer.component.scss'],
 })
 export class SettingEmployerComponent implements OnInit {
+
+  imgUrl = IMG_URL;
 
   public dictionary: any = {};
 

@@ -137,7 +137,7 @@
 
 		<div class="col-12 col-md-4 offset-md-1 right">
 			<div class="user-photo" *ngIf="currentResume.photoURL">
-				<img src="{{currentResume.photoURL}}">
+				<img src="{{imgUrl+currentResume.photoURL}}">
 			</div>
 			<div class="default-photo" *ngIf="!currentResume.photoURL">
 				<img src="/assets/images/icon-camera.svg">
@@ -301,7 +301,7 @@
 						<div class="text gray">{{citiesService.locations.getCityToCode(item.city).name}}</div>
 						<div class="certificate-image">
 							<div class="text gray">{{ dictionary.TRAINING_CERTIFICATE }}:</div>
-							<img style="max-width: 300px; cursor: pointer" src="{{item.photoURL}}" (click)="fullCertificate.next(item.photoURL)">
+							<img style="max-width: 300px; cursor: pointer" src="{{imgUrl+item.photoURL}}" (click)="fullCertificate.next(item.photoURL)">
 						</div>
 					</td>
 				</tr>
@@ -391,5 +391,5 @@
 
 <div class="full-certificate" *ngIf="fullCertificate | async as certificate ">
 	<div class="bg" (click)="fullCertificate.next(null)"></div>
-	<img [src]="certificate" alt="" class="img">
+	<img [src]="imgUrl+certificate" alt="" class="img">
 </div>

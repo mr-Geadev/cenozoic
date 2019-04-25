@@ -4,6 +4,7 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ResumeApi } from 'api';
+import { IMG_URL } from 'const';
 import * as moment from 'moment';
 import { PayingModalService } from 'pop-ups/paying';
 import { Subject } from 'rxjs/Subject';
@@ -20,6 +21,8 @@ import { PopupsService } from '../../services/popups.service';
   styleUrls: ['./full-resume.component.scss'],
 })
 export class FullResumeComponent implements OnInit {
+
+  imgUrl = IMG_URL;
 
   public dictionary: any = {};
   public currentResume: any;

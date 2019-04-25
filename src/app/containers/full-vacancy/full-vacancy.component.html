@@ -98,7 +98,7 @@
 
 		<div class="col-4 offset-1 right">
 			<div class="user-photo" *ngIf="currentVacancy.photoURL">
-				<img src="{{currentVacancy.photoURL}}">
+				<img src="{{imgUrl+currentVacancy.photoURL}}">
 			</div>
 			<div class="default-photo" *ngIf="!currentVacancy.photoURL">
 				<img src="/assets/images/icon-camera.svg">

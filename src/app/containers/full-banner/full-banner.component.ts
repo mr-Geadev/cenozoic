@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BannerApi, NewsApi } from 'api';
+import { IMG_URL } from 'const';
 import { BannerModel, NewsModel, UserModel } from 'models';
 import { PayingModalService } from 'pop-ups/paying';
 
@@ -22,6 +23,8 @@ export class FullBannerComponent implements OnInit {
   private currentLang: string = null;
   public currentUser: UserModel = null;
   public language: string = null;
+
+  imgUrl = IMG_URL;
 
   constructor(private activateRoute: ActivatedRoute,
               private bannerApi: BannerApi,

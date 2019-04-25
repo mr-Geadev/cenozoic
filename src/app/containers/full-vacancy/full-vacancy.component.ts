@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { VacancyApi } from 'api';
+import { IMG_URL } from 'const';
 import { UserModel } from 'models';
 import { PayingModalService } from 'pop-ups/paying';
 
@@ -16,6 +17,8 @@ import { CitiesService } from 'services';
   styleUrls: ['./full-vacancy.component.scss'],
 })
 export class FullVacancyComponent implements OnInit {
+
+  imgUrl = IMG_URL;
 
   public dictionary: any = {};
   public currentVacancy: any = null;

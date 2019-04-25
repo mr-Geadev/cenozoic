@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewsApi } from 'api';
+import { IMG_URL } from 'const';
 import { NewsModel, UserModel } from 'models';
 import { Location } from '@angular/common';
 
@@ -15,6 +16,8 @@ import 'rxjs-compat/add/operator/last';
   styleUrls: ['./full-news.component.scss'],
 })
 export class FullNewsComponent implements OnInit {
+
+  imgURL = IMG_URL;
 
   public dictionary: any = {};
   public news: NewsModel;

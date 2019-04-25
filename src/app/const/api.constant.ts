@@ -11,3 +11,5 @@ export const EDIT_VACANCY = '/api/v1/employer/vacancy/edit';
 export const LIST_VACANCY = '/api/v1/vacancy/get/all';
 export const LIST_VACANCY_USER = '/api/v1/employer/vacancy/all';
 export const GET_VACANCY_BY_ID = '/api/v1/vacancy/get/one';
+
+export const IMG_URL = 'http://134.0.119.98:8080';

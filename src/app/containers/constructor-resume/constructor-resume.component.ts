@@ -10,7 +10,7 @@ import 'rxjs/add/operator/first';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 import { Subscription } from 'rxjs/Subscription';
 
-import { CREATE_RESUME } from '../../const';
+import { CREATE_RESUME, IMG_URL } from '../../const';
 import { ConfirmService } from '../../services/confirm.service';
 import { ResumeService, SystemMessageService, UserService } from '../../services';
 import { LocalizationService } from '../../services/localization.service';
@@ -39,6 +39,8 @@ import 'rxjs-compat/add/operator/take';
   ],
 })
 export class ConstructorResumeComponent implements OnInit, OnDestroy {
+
+  imgUrl = IMG_URL;
 
   public languages = {
     en: false,

@@ -119,7 +119,7 @@
 					<img src="/assets/images/icon-camera.svg"/>
 				</div>
 				<div *ngIf="currentUser.photoURL && !companyLogo.data" class="image user">
-					<img [src]="currentUser.photoURL">
+					<img [src]="imgUrl+currentUser.photoURL">
 				</div>
 				<div *ngIf="companyLogo.data" style="width: 100%;">
 					<image-cropper

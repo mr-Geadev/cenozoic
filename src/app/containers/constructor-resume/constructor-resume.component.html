@@ -803,7 +803,7 @@
                     <img src="/assets/images/icon-camera.svg"/>
                 </div>
                 <div *ngIf="resumeForm.photoURL && !resumeImage.data" class="image user">
-                    <img [src]="resumeForm.photoURL">
+                    <img [src]="imgUrl+resumeForm.photoURL">
                 </div>
                 <div *ngIf="resumeImage.data">
                     <image-cropper
