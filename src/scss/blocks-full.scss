@@ -97,7 +97,7 @@ input[type="checkbox"] {
     background-color: $white;
 
     &:not(.active):hover {
-      background-color: $white - #111;
+      background-color: #bcbcbc;
       cursor: pointer;
     }
 
