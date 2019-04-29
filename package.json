@@ -21,7 +21,8 @@
     "e2e": "ng e2e",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/server",
-    "build:client-and-server-bundles": "ng build --prod && ng run testNg6SSRHMR:server",
+    "build-prod": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod",
+    "build:client-and-server-bundles": "npm run build-prod && ng run testNg6SSRHMR:server",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "prod-local": "npm run build:ssr && npm run serve:ssr",
     "prod": "npm run prod-local"

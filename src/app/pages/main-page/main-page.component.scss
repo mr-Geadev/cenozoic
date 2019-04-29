@@ -1,6 +1,4 @@
 :host {
-  margin-top: -54px;
-  display: block;
 
   @media (max-width: 640px) {
     .mobile-banner-wrapper {
@@ -14,4 +12,11 @@
     }
   }
 
+}
+
+@media(max-width: 765px) {
+  :host {
+    margin-top: -54px;
+    display: block;
+  }
 }
