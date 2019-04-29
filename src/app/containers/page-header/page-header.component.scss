@@ -22,7 +22,7 @@
     &.notMainPage {
 
       background-color: $dark-gray !important;
-      z-index: auto;
+      z-index: 1;
       position: static;
 
       .container > .row {
@@ -345,6 +345,5 @@
     margin-bottom: 54px;
     display: block;
   }
-
 }
 
