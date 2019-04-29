@@ -133,7 +133,7 @@
 
 				<div class="card">
 					<div class="photo-of-news" *ngIf="!fileToUpload.data && photoUrl"
-							 [style.backgroundImage]="'url(' + photoUrl + ')'"></div>
+							 [style.backgroundImage]="'url(' + IMG_URL + photoUrl + ')'"></div>
 					<div class="photo-of-news" *ngIf="fileToUpload.data"
 							 [style.backgroundImage]="'url(' + fileToUpload.data + ')'"></div>
 					<div class="photo-of-news default" *ngIf="!fileToUpload.data  && !edit"></div>

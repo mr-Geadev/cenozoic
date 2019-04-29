@@ -6,6 +6,7 @@ import { BannerApi } from 'api';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 import { LocalizationService, SystemMessageService } from 'services';
 import * as moment from 'moment';
+import { IMG_URL } from 'const/api.constant';
 
 @Component({
   selector: 'constructor-banner',
@@ -13,6 +14,8 @@ import * as moment from 'moment';
   styleUrls: ['./constructor-banner.component.scss'],
 })
 export class ConstructorBannerComponent implements OnInit {
+
+  public IMG_URL = IMG_URL;
 
   @Input('edit') edit?: boolean;
   public id: string = null;

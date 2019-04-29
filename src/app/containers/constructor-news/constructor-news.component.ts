@@ -3,6 +3,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewsApi } from 'api';
+import { IMG_URL } from 'const';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 import { LocalizationService, SystemMessageService } from 'services';
 import * as moment from 'moment';
@@ -13,6 +14,8 @@ import * as moment from 'moment';
   styleUrls: ['./constructor-news.component.scss'],
 })
 export class ConstructorNewsComponent implements OnInit {
+
+  IMG_URL = IMG_URL;
 
   @Input('edit') edit?: boolean;
   public id: string = null;

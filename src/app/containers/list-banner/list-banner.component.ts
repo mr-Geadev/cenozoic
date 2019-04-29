@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { BannerApi } from 'api';
+import { IMG_URL } from 'const';
 import { BannerModel } from 'models';
 
 import { LocalizationService } from 'services';
@@ -10,6 +11,8 @@ import { LocalizationService } from 'services';
   styleUrls: ['./list-banner.component.scss'],
 })
 export class ListBannerComponent implements OnInit {
+
+  IMG_URL = IMG_URL;
 
   public listBanner: BannerModel[] = [];
   @Input() user?: any = null;

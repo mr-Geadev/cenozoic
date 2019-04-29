@@ -112,7 +112,7 @@
 
 				<div class="card">
 					<div class="photo-of-banner" *ngIf="!fileToUpload.data && photoUrl"
-							 [style.backgroundImage]="'url(' + photoUrl + ')'"></div>
+							 [style.backgroundImage]="'url(' + IMG_URL + photoUrl + ')'"></div>
 					<div class="photo-of-banner" *ngIf="fileToUpload.data"
 							 [style.background-image]="'url(' + fileToUpload.data + ')'"></div>
 					<div class="photo-of-banner default" *ngIf="!fileToUpload.data  && !edit"></div>

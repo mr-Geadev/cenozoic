@@ -5,7 +5,7 @@
 			<ng-container *ngFor="let news of list">
 				<a class="news" *ngIf="!news?.publicate"
 					 [routerLink]="['/news', news?._id]" (click)="checkViewed(news._id)">
-					<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
+					<div class="photo-of-news" [style.backgroundImage]="'url(' + IMG_URL + news?.photoURL + ')'"></div>
 
 					<div class="moderate-passed" *ngIf="user && !news?.viewed">
 						{{ dictionary.MODERATION_PASSED }}
@@ -29,7 +29,7 @@
 
 				<a class="news banner" *ngIf="news?.publicate && !news?.imageUrl "
 					 [routerLink]="['/banner', news?._id]">
-					<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
+					<div class="photo-of-news" [style.backgroundImage]="'url(' + IMG_URL + news?.photoURL + ')'"></div>
 
 					<div class="info">
 						<div class="title">
@@ -52,7 +52,7 @@
 
 				<a class="news banner" *ngIf="news?.publicate && news?.imageUrl"
 					 [href]="news?.imageUrl" target="_blank">
-					<div class="photo-of-news" [style.backgroundImage]="'url(' + news?.photoURL + ')'"></div>
+					<div class="photo-of-news" [style.backgroundImage]="'url(' + IMG_URL + news?.photoURL + ')'"></div>
 
 					<div class="info">
 						<div class="title">

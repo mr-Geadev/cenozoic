@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BannerApi, NewsApi } from 'api';
+import { IMG_URL } from 'const';
 import { BannerModel } from 'models';
 import { NewsModel } from 'models/news.model';
 import { zip } from 'rxjs/internal/observable/zip';
@@ -12,6 +13,8 @@ import { LocalizationService } from 'services';
   styleUrls: ['./list-news.component.scss'],
 })
 export class ListNewsComponent implements OnInit, OnChanges {
+
+  IMG_URL = IMG_URL;
 
   @Input() newsPage?: boolean = false;
   @Input() mainPage?: boolean = false;
