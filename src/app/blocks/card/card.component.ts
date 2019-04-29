@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RespondsApi } from 'api';
+import { IMG_URL } from 'const';
 import { QuestionnaireModel, RespondModel, VacancyModel } from 'models';
 
 @Component({
@@ -78,7 +79,7 @@ export class CardComponent implements OnInit {
       if (this.questionnaire.type === 'data') {
         return `/questionnaire/${this.questionnaire._id}`;
       } else {
-        return this.questionnaire.fileURL;
+        return IMG_URL + this.questionnaire.fileURL;
       }
     }
 
