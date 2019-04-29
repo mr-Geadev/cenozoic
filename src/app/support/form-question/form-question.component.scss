@@ -6,11 +6,12 @@
     font-family: "Bebas";
     font-size: 31px;
     font-weight: 400;
-    line-height: 78.97px;
+    line-height: 1.2;
     text-transform: uppercase;
   }
   .send-question {
-    width: 829px;
+    max-width: 829px;
+    width: 100%;
     border-radius: 8px;
     background-color: #d0d0d0;
     padding: 30px 25px;
@@ -54,7 +55,6 @@
         font-family: Roboto;
         font-size: 18px;
         font-weight: 400;
-        line-height: 47.47px;
         text-decoration: underline;
       }
 
@@ -92,6 +92,10 @@
       &:disabled {
         background-color: $light-gray !important;
       }
+    }
+
+    label {
+      line-height: 1;
     }
 
 

@@ -135,6 +135,15 @@
       display: flex;
       align-items: center;
 
+      @media (max-width: 600px) {
+        flex-wrap: wrap;
+
+        .file-name {
+          margin: 20px 0 0;
+          margin-left: 0;
+        }
+      }
+
       #load-file {
         display: none;
       }
@@ -172,6 +181,10 @@
     }
 
     .preview-card {
+      @media (max-width: 1024px) {
+        display: none;
+      }
+
       .card {
         display: block;
         margin-right: 15px;

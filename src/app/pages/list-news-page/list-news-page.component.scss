@@ -9,12 +9,21 @@
     display: flex;
     justify-content: space-between;
     margin: 30px 0;
+
+    @media (max-width: 768px) {
+      padding: 30px 0;
+      flex-wrap: wrap;
+    }
   }
 
   .search-field {
     position: relative;
     margin-right: 40px;
     width: 100%;
+
+    @media (max-width: 768px) {
+     margin-right: 0;
+    }
 
     input {
       width: 100%;
@@ -60,6 +69,17 @@
 
     }
 
+  }
+
+  .order {
+    @media (max-width: 768px) {
+      width: 100%;
+      margin-top: 20px;
+
+      .mat-form-field {
+        width: 100%;
+      }
+    }
   }
 
 }

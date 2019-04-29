@@ -8,8 +8,10 @@
   .counter {
     color: $orange;
     font-size: 1rem;
-    position: relative;
-    top: -14px;
+    position: absolute;
+    top: 1px;
+    z-index: 9;
+    right: 8px;
   }
 
   .active {
@@ -45,10 +47,18 @@
       justify-content: space-between;
       position: relative;
 
+      .item {
+        color: red;
+      }
+
       .paid-options {
         position: absolute;
         top: 40px;
         right: 0;
+
+        @media (max-width: 600px) {
+          display: none;
+        }
 
         .small-title {
           font-family: Roboto;
@@ -109,7 +119,9 @@
           display: block;
           color: $light-gray;
           border-bottom: 3px solid transparent;
-          padding: 0 1rem 0.5rem;
+          padding: 8px 1rem 0.5rem;
+          position: relative;
+          white-space: nowrap;
           font-family: "Bebas";
           font-size: 1.5rem;
           text-transform: uppercase;
@@ -141,7 +153,7 @@
     display: none;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1024px) {
     .list {
       width: 100% !important;
       overflow-x: scroll;

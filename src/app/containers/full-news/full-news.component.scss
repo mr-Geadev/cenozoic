@@ -10,6 +10,7 @@
     font-family: Roboto;
     font-size: 14px;
     font-weight: 400;
+    margin-top: 20px;
   }
 
   .title {
@@ -71,10 +72,18 @@
 
     .photo {
       width: calc(100% - 300px);
+
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
     }
 
     .manage {
       width: 200px;
+
+      @media (max-width: 1024px) {
+        display: none;
+      }
 
       .button {
         margin-top: 20px;

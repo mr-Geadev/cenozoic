@@ -1,103 +1,177 @@
-<header class="header" [ngClass]="{notMainPage: !isMainPage}">
-	<div class="container">
+<header class="header"
+        [ngClass]="{notMainPage: !isMainPage}">
+  <div class="container">
 
-		<div class="row justify-content-between align-items-center">
+    <div class="row justify-content-between align-items-center">
 
 
-			<div class="mobile-menu-bg" [class.active]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
+      <div class="mobile-menu-bg"
+           [class.active]="isMobileMenuOpen"
+           (click)="closeMobileMenu()"></div>
 
-			<div class="mobile-menu-button modal">
-				<a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">{{
-					dictionary.ACCOUNT }}</a>
-			</div>
+      <div class="mobile-menu-button modal">
+        <a (click)="openLoginModal()"
+           class="personal-area col-md-auto"
+           *ngIf="!isAuthorized">{{
+            dictionary.ACCOUNT }}</a>
+      </div>
 
-			<a class="logo-wrapper" [routerLink]="['/']"><img class="logo" src="/assets/images/logo.png" alt=""></a>
+      <a class="logo-wrapper"
+         [routerLink]="['/']"><img class="logo"
+                                   src="/assets/images/logo.png"
+                                   alt=""></a>
 
-			<div class="menu row align-items-center justify-content-between">
+      <div class="menu row align-items-center justify-content-between">
 
-				<nav class="header-menu row col-md-auto justify-content-between">
-					<a class="header-menu-item" [class.active]="currentPage === 'list-vacancy'"
-						 [routerLink]="['/list-vacancy']">{{ dictionary.FOR_CANDIDATES }}</a>
-					<a class="header-menu-item" [class.active]="currentPage === 'list-resume'"
-						 [routerLink]="['/list-resume']">{{ dictionary.FOR_EMPLOYER }}</a>
-					<a class="header-menu-item" [class.active]="currentPage === 'list-news'"
-						 [routerLink]="['/list-news']">{{ dictionary.HEADER_NEWS }}</a>
-					<a class="header-menu-item" *ngIf="!isAdmin" [routerLink]="['/faq']">{{ dictionary.SUPPORT }}</a>
-					<a class="header-menu-item" *ngIf="isAdmin" [routerLink]="['/admin']" [innerHTML]="dictionary.HEADER_SECTION_ADMIN"></a>
-				</nav>
+        <nav class="header-menu row col-md-auto justify-content-between">
+          <a class="header-menu-item"
+             [class.active]="currentPage === 'list-vacancy'"
+             [routerLink]="['/list-vacancy']">{{ dictionary.FOR_CANDIDATES }}</a>
+          <a class="header-menu-item"
+             [class.active]="currentPage === 'list-resume'"
+             [routerLink]="['/list-resume']">{{ dictionary.FOR_EMPLOYER }}</a>
+          <a class="header-menu-item"
+             [class.active]="currentPage === 'list-news'"
+             [routerLink]="['/list-news']">{{ dictionary.HEADER_NEWS }}</a>
+          <a class="header-menu-item"
+             *ngIf="!isAdmin"
+             [routerLink]="['/faq']">{{ dictionary.SUPPORT }}</a>
+          <a class="header-menu-item"
+             *ngIf="isAdmin"
+             [routerLink]="['/admin']"
+             [innerHTML]="dictionary.HEADER_SECTION_ADMIN"></a>
+        </nav>
 
-				<a (click)="openLoginModal()" class="personal-area col-md-auto" *ngIf="!isAuthorized">{{
-					dictionary.ACCOUNT }}</a>
-				<div class="authorize col-md-auto" *ngIf="isAuthorized">
-					<div class="blank-avatar"></div>
-					<img src="/assets/images/headerMenuStatus.png" class="status">
-					<ul class="little-menu">
-						<li class="item"><a class="link" [routerLink]="['/personal-account', 'default']">{{ dictionary.ACCOUNT
-							}}</a></li>
-						<li class="item"><a class="link" [routerLink]="['/chats']">
-							{{ dictionary.MESSAGES_PAGE_HEADER }} <img src="/assets/images/dott-orange.svg" *ngIf="haveUnreadMessage"/>
-						</a></li>
-						<li class="item"><a class="link" [routerLink]="['/setting']">{{ dictionary.SETTINGS }}</a></li>
-						<li class="item"><a class="link" [routerLink]="['/']" (click)="logOut()">{{ dictionary.LOG_OUT
-							}}</a>
-						</li>
-					</ul>
-				</div>
+        <a (click)="openLoginModal()"
+           class="personal-area col-md-auto"
+           *ngIf="!isAuthorized">{{
+            dictionary.ACCOUNT }}</a>
+        <div class="authorize col-md-auto"
+             *ngIf="isAuthorized">
+          <div class="blank-avatar"></div>
+          <img src="/assets/images/headerMenuStatus.png"
+               class="status">
+          <ul class="little-menu">
+            <li class="item"><a class="link"
+                                [routerLink]="['/personal-account', 'default']">{{ dictionary.ACCOUNT
+              }}</a></li>
+            <li class="item"><a class="link"
+                                [routerLink]="['/chats']">
+              {{ dictionary.MESSAGES_PAGE_HEADER }} <img src="/assets/images/dott-orange.svg"
+                                                         *ngIf="haveUnreadMessage"/>
+            </a></li>
+            <li class="item"><a class="link"
+                                [routerLink]="['/setting']">{{ dictionary.SETTINGS }}</a></li>
+            <li class="item"><a class="link"
+                                [routerLink]="['/']"
+                                (click)="logOut()">{{ dictionary.LOG_OUT
+              }}</a>
+            </li>
+          </ul>
+        </div>
 
-				<div class="languages col-md-auto">
-					<a class="change-language"
-						 [ngClass]="{ 'active': language === availableLanguages.RUSSIAN }"
-						 (click)="changeLanguage(availableLanguages.RUSSIAN)">RU</a>
+        <div class="languages col-md-auto">
+          <a class="change-language"
+             [ngClass]="{ 'active': language === availableLanguages.RUSSIAN }"
+             (click)="changeLanguage(availableLanguages.RUSSIAN)">RU</a>
 
-					<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 
-					<a class="change-language"
-						 [ngClass]="{ 'active': language === availableLanguages.ENGLISH }"
-						 (click)="changeLanguage(availableLanguages.ENGLISH)">EN</a>
-				</div>
+          <a class="change-language"
+             [ngClass]="{ 'active': language === availableLanguages.ENGLISH }"
+             (click)="changeLanguage(availableLanguages.ENGLISH)">EN</a>
+        </div>
 
-			</div>
+      </div>
 
-			<div class="languages-mobile">
-				<a class="change-language"
-					 [ngClass]="{ 'active': language === availableLanguages.RUSSIAN }"
-					 (click)="changeLanguage(availableLanguages.ENGLISH)">EN</a>
+      <div class="languages-mobile">
+        <a class="change-language"
+           [ngClass]="{ 'active': language === availableLanguages.RUSSIAN }"
+           (click)="changeLanguage(availableLanguages.ENGLISH)">EN</a>
 
-				<a class="change-language"
-					 [ngClass]="{ 'active': language === availableLanguages.ENGLISH }"
-					 (click)="changeLanguage(availableLanguages.RUSSIAN)">RU</a>
-			</div>
+        <a class="change-language"
+           [ngClass]="{ 'active': language === availableLanguages.ENGLISH }"
+           (click)="changeLanguage(availableLanguages.RUSSIAN)">RU</a>
+      </div>
 
-			<div class="mobile-menu-button" (click)="toggleMobileMenu()">
-				<mat-icon *ngIf="!isMobileMenuOpen" style="transform: scale(1.5);">menu</mat-icon>
-				<mat-icon *ngIf="isMobileMenuOpen" style="transform: scale(1.5);">close</mat-icon>
-			</div>
+      <div class="mobile-menu-button"
+           (click)="toggleMobileMenu()">
+        <mat-icon *ngIf="!isMobileMenuOpen"
+                  style="transform: scale(1.5);">menu
+        </mat-icon>
+        <mat-icon *ngIf="isMobileMenuOpen"
+                  style="transform: scale(1.5);">close
+        </mat-icon>
+      </div>
 
-			<div class="mobile-menu" [class.active]="isMobileMenuOpen">
-				<ul class="list">
-					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/']">{{
-						dictionary.MAIN_PAGE }}</a></li>
-					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-vacancy']">{{
-						dictionary.FOR_CANDIDATES }}</a></li>
-					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-news']">
-						{{ dictionary.HEADER_NEWS }}
-					</a></li>
-					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/list-resume']">{{
-						dictionary.FOR_EMPLOYER }}</a></li>
-					<li class="item"><a class="item" (click)="closeMobileMenu()" [routerLink]="['/admin']">{{
-						dictionary.SUPPORT }}</a></li>
-					<li class="item" *ngIf="isAuthorized"><a class="link" (click)="closeMobileMenu()"
-																									 [routerLink]="['/personal-account', 'default']">{{ dictionary.ACCOUNT
-						}}</a></li>
-					<li class="item" *ngIf="isAuthorized"><a class="link" (click)="closeMobileMenu()"
-																									 [routerLink]="['/setting']">{{ dictionary.SETTINGS }}</a>
-					</li>
-					<li class="item" *ngIf="isAuthorized"><a class="link" [routerLink]="['/']" (click)="logOut()">{{
-						dictionary.LOG_OUT }}</a>
-					<li class="item" *ngIf="!isAuthorized"><a class="link" [routerLink]="['/auth']" (click)="closeMobileMenu()">{{
-						dictionary.LOG_IN }}</a>
-				</ul>
-			</div>
-		</div>
-	</div>
+      <div class="mobile-menu"
+           [class.active]="isMobileMenuOpen">
+        <ul class="list">
+          <li class="item">
+            <a class="item"
+               (click)="closeMobileMenu()"
+               [routerLink]="['/']">
+              {{ dictionary.MAIN_PAGE }}
+            </a>
+          </li>
+          <li class="item">
+            <a class="item"
+               (click)="closeMobileMenu()"
+               [routerLink]="['/list-vacancy']">
+              {{ dictionary.FOR_CANDIDATES }}
+            </a>
+          </li>
+          <li class="item">
+            <a class="item"
+               (click)="closeMobileMenu()"
+               [routerLink]="['/list-news']">
+              {{ dictionary.HEADER_NEWS }}
+            </a>
+          </li>
+          <li class="item">
+            <a class="item"
+               (click)="closeMobileMenu()"
+               [routerLink]="['/list-resume']">
+              {{ dictionary.FOR_EMPLOYER }}
+            </a>
+          </li>
+          <li class="item" *ngIf="!isAdmin">
+            <a class="item"
+               (click)="closeMobileMenu()"
+               [routerLink]="['/faq']">
+              {{ dictionary.SUPPORT }}
+            </a>
+          </li>
+          <li class="item"
+              *ngIf="isAuthorized">
+            <a class="link"
+               (click)="closeMobileMenu()"
+               [routerLink]="['/personal-account', 'default']">
+              {{ dictionary.ACCOUNT}}</a>
+          </li>
+          <li class="item"
+              *ngIf="isAuthorized">
+            <a class="link"
+               (click)="closeMobileMenu()"
+               [routerLink]="['/setting']">
+              {{ dictionary.SETTINGS }}</a>
+          </li>
+          <li class="item"
+              *ngIf="isAuthorized">
+            <a class="link"
+               [routerLink]="['/']"
+               (click)="logOut()">
+              {{ dictionary.LOG_OUT }}</a>
+          <li class="item"
+              *ngIf="!isAuthorized">
+            <a class="link"
+               [routerLink]="['/auth']"
+               (click)="closeMobileMenu()">
+              {{
+                dictionary.LOG_IN }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </header>

@@ -5,6 +5,10 @@
   display: block;
   margin: 60px;
 
+  @media (max-width: 1024px) {
+    margin: 80px 0 40px;
+  }
+
   .title {
     color: #000000;
     font-family: "Bebas";

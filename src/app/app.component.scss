@@ -43,6 +43,11 @@
     flex-direction: column;
     justify-content: space-between;
 
+    @media (max-width: 1024px) {
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
     .button {
       align-self: flex-end;
       display: inline-flex;

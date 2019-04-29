@@ -28,7 +28,11 @@
 
 	<div class="field support-read">
 		<input type="checkbox" id="support-is-reading" name="support-is-reading" (value)="true" [(ngModel)]="isReading">
-		<label for="support-is-reading"> {{dictionary.FAQ_SUPPORT_FORM_I_HAVE_READ }}&nbsp;<a target="_blank" routerLink="/faq">{{dictionary.FAQ_SUPPORT_FORM_FAQ}}</a></label>
+		<label for="support-is-reading">
+			<div>
+				{{dictionary.FAQ_SUPPORT_FORM_I_HAVE_READ }}&nbsp;<a target="_blank" routerLink="/faq">{{dictionary.FAQ_SUPPORT_FORM_FAQ}}</a>
+			</div>
+		</label>
 	</div>
 
 	<button type="submit" class="field send-button" [disabled]="!issue.description || !isReading">
