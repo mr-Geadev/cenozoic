@@ -151,4 +151,42 @@
       }
     }
   }
+
+  .icon-back {
+    display: none;
+  }
+
+  @media (max-width: 1024px) {
+    .icon-back {
+      display: inline;
+      margin-right: 10px;
+      transform: rotate(180deg);
+    }
+
+    .chat-preview-block {
+      width: 100% !important;
+    }
+
+    .mobile-hidden {
+      display: none;
+    }
+
+    .active {
+      cursor: default;
+      background: none !important;
+    }
+
+    .new-message {
+      flex-wrap: wrap;
+
+      input {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  }
 }

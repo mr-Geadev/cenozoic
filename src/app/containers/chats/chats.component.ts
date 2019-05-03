@@ -2,6 +2,7 @@ import { AfterViewChecked, Component, ElementRef, Input, OnChanges, OnInit, View
 import { Router } from '@angular/router';
 import { Chat, Message, MessagesApi } from 'api/messages.api';
 import { UserModel } from 'models';
+import { BehaviorSubject } from 'rxjs';
 import { LocalizationService, SystemMessageService, UserService } from 'services';
 import * as moment from 'moment';
 
@@ -22,6 +23,8 @@ export class ChatsComponent implements OnInit, OnChanges {
   public dictionary: any = {};
   public newMessage: string = '';
   public type: string = 'open';
+
+  isChatOpen = new BehaviorSubject(false);
 
   constructor(private router: Router,
               private userService: UserService,
@@ -91,6 +94,8 @@ export class ChatsComponent implements OnInit, OnChanges {
     this.currentChat = chat;
     this.type = 'open';
     this.checkViewed(chat._id);
+
+    this.isChatOpen.next(true);
   }
 
   checkViewed(idChat) {

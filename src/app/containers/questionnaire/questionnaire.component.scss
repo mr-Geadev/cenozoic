@@ -142,6 +142,15 @@
   .final-accept {
     display: flex;
 
+    @media (max-width: 1024px) {
+      flex-wrap: wrap;
+
+      .button {
+        width: 100%;
+        margin: 10px 0 0 !important;
+      }
+    }
+
     div {
       margin-right: 40px;
     }

@@ -153,6 +153,13 @@
               *ngIf="isAuthorized">
             <a class="link"
                (click)="closeMobileMenu()"
+               [routerLink]="['/chats']">
+              {{ dictionary.MESSAGES_PAGE_HEADER}}</a>
+          </li>
+          <li class="item"
+              *ngIf="isAuthorized">
+            <a class="link"
+               (click)="closeMobileMenu()"
                [routerLink]="['/setting']">
               {{ dictionary.SETTINGS }}</a>
           </li>

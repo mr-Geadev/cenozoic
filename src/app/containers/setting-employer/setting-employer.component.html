@@ -1,6 +1,6 @@
 <div class="container" *ngIf="!(passwords == null || info == null)">
 	<div class="row">
-		<div class="col-8" *ngIf="currentUser">
+		<div class="col col-xm-8" *ngIf="currentUser">
 			<form [formGroup]="passwords" validate (submit)="changePassword()">
 				<div class="side-title">
 					{{dictionary.PARAMETERS_ENTER}}

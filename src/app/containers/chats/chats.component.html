@@ -1,5 +1,5 @@
 <div class="chat-window">
-	<div class="chat-preview-block">
+	<div class="chat-preview-block" [class.mobile-hidden]="(isChatOpen | async)">
 
 		<ng-container *ngIf="type === 'create'">
 			<div class="chat-preview-item" [class.active]="type === 'create'">
@@ -26,9 +26,15 @@
 
 	</div>
 
-	<div class="current-chat">
+	<div class="current-chat" [class.mobile-hidden]="!(isChatOpen | async)">
 		<ng-container *ngIf="currentChat">
 			<div class="name-recipient">
+				<img
+						class="icon-back"
+						src="/assets/images/arrow.svg"
+						(click)="this.isChatOpen.next(false);"
+				>
+
 				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  currentChat.recipientId : dictionary.ADMIN   }}
 			</div>
 
