@@ -44,10 +44,18 @@ export interface Message {
   date: string;
 }
 
+export interface Recipient {
+  companyName?: string;
+  fullName?: string;
+  typeAccount?: string;
+}
+
 export interface Chat {
   _id: string;
   creatorId: string;
+  creator?: Recipient;
   recipientId: string;
+  recipient?: Recipient;
   viewedCreator: boolean;
   viewedRecipient: boolean;
   messages: Message[];

@@ -15,7 +15,7 @@
 
 		<div class="chat-preview-item" *ngFor="let chat of chats" (click)="openChat(chat);" [class.active]="currentChat && chat._id === currentChat._id">
 			<div class="name-recipient">
-				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  chat.recipientId : dictionary.ADMIN   }}
+				{{ chat.recipient.typeAccount === 'admin' || chat.recipient.typeAccount === 'moderator' ?  dictionary.ADMIN : (name(chat.recipient) || (chat.creatorId === currentUser._id ? chat.recipientId : chat.creatorId))}}
 				<img src="/assets/images/dott-orange.svg" *ngIf="chat.creatorId === currentUser._id ? !chat.viewedCreator : !chat.viewedRecipient "/>
 			</div>
 
@@ -35,15 +35,20 @@
 						(click)="this.isChatOpen.next(false);"
 				>
 
-				{{ currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ?  currentChat.recipientId : dictionary.ADMIN   }}
+				{{ currentChat.recipient.typeAccount === 'admin' || currentChat.recipient.typeAccount === 'moderator' ?  dictionary.ADMIN : name(currentChat.recipient) || currentChat.recipientId    }}
 			</div>
 
 			<div class="messages" #scrollMe [scrollTop]="scrollMe.scrollHeight">
 				<div class="message" *ngFor="let message of currentChat.messages">
 					<div class="header">
 						<div class="name">
-							<ng-container *ngIf="currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'moderator' ">{{ message.creatorId === currentUser._id ? dictionary.YOU : message.creatorId }}</ng-container>
-							<ng-container *ngIf="currentUser.typeAccount === 'employer' || currentUser.typeAccount === 'worker' ">{{ message.creatorId === currentUser._id ? dictionary.YOU : dictionary.ADMIN }}</ng-container>
+							<ng-container *ngIf="message.creatorId === currentUser._id">
+								{{ dictionary.YOU }}
+							</ng-container>
+
+							<ng-container *ngIf="message.creatorId !== currentUser._id">
+								{{ currentChat.recipient.typeAccount === 'admin' ||  currentChat.recipient.typeAccount === 'moderator' ? dictionary.ADMIN : name(currentChat.recipient) || currentChat.recipientId  }}
+							</ng-container>
 						</div>
 
 						<div class="date">
@@ -57,11 +62,12 @@
 				</div>
 			</div>
 
-			<form  autocomplete="off" class="new-message" (submit)="sendMessage(currentChat.creatorId === currentUser._id ? currentChat.recipientId : currentChat.creatorId)" >
+			<form  autocomplete="off" class="new-message" (submit)="sendMessage(currentChat.recipientId)" >
 				<input type="text" style="display: none;" autocomplete="false">
 				<input type="text" name="message" [(ngModel)]="newMessage">
 				<button type="submit" [disabled]="!newMessage">
 					{{ dictionary.FAQ_SUPPORT_CHAT_SEND_MESSAGE }}
+<!--					{{ currentChat.recipientId }}-->
 				</button>
 			</form>
 		</ng-container>

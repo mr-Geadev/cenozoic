@@ -6,19 +6,22 @@ import { ChatsModule } from 'containers/chats';
 import { ChatsPageComponent } from 'pages/chats-page/chats-page.component';
 
 @NgModule({
-  declarations: [
-    ChatsPageComponent
-  ],
-  imports: [
-    RouterModule.forRoot([
-      { path: 'chats', component: ChatsPageComponent },
-    ], {scrollPositionRestoration: 'enabled'}),
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ChatsModule
-  ],
-  exports: [ChatsPageComponent],
+	declarations: [
+		ChatsPageComponent,
+	],
+	imports: [
+		RouterModule.forRoot([
+			{ path: 'chats', component: ChatsPageComponent },
+			{
+				path: 'chats/:id', component: ChatsPageComponent,
+			}
+		], { scrollPositionRestoration: 'enabled' }),
+		CommonModule,
+		RouterModule,
+		FormsModule,
+		ChatsModule,
+	],
+	exports: [ChatsPageComponent],
 })
 export class ChatsPageModule {
 }
