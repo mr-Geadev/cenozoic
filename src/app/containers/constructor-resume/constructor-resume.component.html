@@ -688,6 +688,9 @@
                                                 nameImagesOfCertificate[i]
                                             }}
                                         </label>
+                                        <div class="description-for-load-certificate">
+                                            {{ dictionary.BANNER_ADD_COVER_FORMAT }}
+                                        </div>
                                         <div class="button-for-delete"
                                              *ngIf="resumeForm.trainings[i].photoURL"
                                              (click)="deletePhotoCertificate(i)"

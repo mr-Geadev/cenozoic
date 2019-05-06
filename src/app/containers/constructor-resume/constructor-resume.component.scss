@@ -639,6 +639,12 @@
     display: none !important;
   }
 
+  .description-for-load-certificate {
+    margin-left: 15px;
+    color: $light-gray;
+    font-size: 0.8rem;
+  }
+
   @media (max-width: 600px) {
     .col-auto.add-photo {
       display: none !important;
