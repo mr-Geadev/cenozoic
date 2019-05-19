@@ -5,9 +5,12 @@ import { VacancyModel } from 'models';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { LocalizationService, SystemMessageService } from 'services';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ResumeApi {
+
+  url = environment.apiUrl;
 
   private viewedResume: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   public viewedResume$: Observable<any> = this.viewedResume.asObservable();
@@ -27,37 +30,37 @@ export class ResumeApi {
   }
 
   public getUserResume(): Observable<any> {
-    return this.http.get(`/api/v1/user/resume/all`);
+    return this.http.get(this.url + `/api/v1/user/resume/all`);
   }
 
   public getResumeById(id: string) {
-    this.http.get(`/api/v1/resume/get/one?resumeId=${id}`)
+    this.http.get(this.url + `/api/v1/resume/get/one?resumeId=${id}`)
       .subscribe(res => this.setViewedResume(res['resume']));
   }
 
   show(resumeId: string): void {
-    this.http.get(`/api/v1/worker/resume/view/change?resumeId=${resumeId}&view=true`)
+    this.http.get(this.url + `/api/v1/worker/resume/view/change?resumeId=${resumeId}&view=true`)
       .subscribe(
         res => { this.messages.info(this.dictionary.RESUME_WILL_VIEW); this.getResumeById(resumeId); }
       );
   }
 
   hidden(resumeId: string): void {
-    this.http.get(`/api/v1/worker/resume/view/change?resumeId=${resumeId}&view=false`)
+    this.http.get(this.url + `/api/v1/worker/resume/view/change?resumeId=${resumeId}&view=false`)
       .subscribe(
         res => { this.messages.info(this.dictionary.RESUME_WAS_HIDDEN); this.getResumeById(resumeId); }
       );
   }
 
   ban(resumeId: string): void {
-    this.http.get(`api/v1/admin/resume-vacancy/block/change?entityId=${resumeId}&block=true&entity=resume`)
+    this.http.get(this.url + `/api/v1/admin/resume-vacancy/block/change?entityId=${resumeId}&block=true&entity=resume`)
       .subscribe(
         res => { this.messages.info('Резюме заблокировано'); this.getResumeById(resumeId); }
       );
   }
 
   unban(resumeId: string): void {
-    this.http.get(`api/v1/admin/resume-vacancy/block/change?entityId=${resumeId}&block=false&entity=resume`)
+    this.http.get(this.url + `/api/v1/admin/resume-vacancy/block/change?entityId=${resumeId}&block=false&entity=resume`)
       .subscribe(
         res => { this.messages.info('Резюме разблокировано'); this.getResumeById(resumeId); }
       );

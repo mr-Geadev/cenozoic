@@ -4,6 +4,7 @@ import {CitiesService} from '../../../services/cities.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {SystemMessageService} from '../../../services';
+import { environment } from '../../../../environments/environment';
 
 @Component({
     selector: 'settings',
@@ -46,7 +47,7 @@ export class CitiesComponent implements OnInit {
     public saveCity() {
         let req = this.city.value;
         req.codeCountry = +req.codeCountry;
-        this._http.post('/api/v1/admin/config/countries/city/add', req)
+        this._http.post(environment.apiUrl + '/api/v1/admin/config/countries/city/add', req)
             .subscribe(
                 res => {
                     this._messages.info('Добавлен!');

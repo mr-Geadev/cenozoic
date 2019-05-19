@@ -4,16 +4,19 @@ import { Observable } from 'rxjs/Observable';
 import { publishReplay, refCount, tap } from 'rxjs/operators';
 import { UserModel } from '../../../models/user.model';
 import { SystemMessageService } from '../../../services';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class UsersApi {
+
+  url = environment.apiUrl;
 
   constructor(private _http: HttpClient,
               private _messages: SystemMessageService) {
   }
 
   public getUserList(): Observable<any> {
-    return this._http.get('/api/v1/admin/users/info')
+    return this._http.get(this.url + '/api/v1/admin/users/info')
       .map(
         (res) => {
           const users = [];
@@ -25,11 +28,11 @@ export class UsersApi {
   }
 
   public getUser(id: string) {
-    return this._http.get(`/api/v1/admin/user/info?userId=${id}`);
+    return this._http.get(this.url + `/api/v1/admin/user/info?userId=${id}`);
   }
 
   public banUser(id: string): Observable<any> {
-    return this._http.get(`/api/v1/admin/account/block?uid=${id}`)
+    return this._http.get(this.url + `/api/v1/admin/account/block?uid=${id}`)
       .map(
         res => true,
         err => err,
@@ -37,7 +40,7 @@ export class UsersApi {
   }
 
   public unbanUser(id: string): Observable<any> {
-    return this._http.get(`/api/v1/admin/account/unblock?uid=${id}`)
+    return this._http.get(this.url + `/api/v1/admin/account/unblock?uid=${id}`)
       .map(
         res => true,
         err => err,
@@ -45,7 +48,7 @@ export class UsersApi {
   }
 
   public createUser(user: {typeAccount: string, email: string, password: string}): Observable<any> {
-    return this._http.post(`/api/v1/admin/create-account`, user).pipe(
+    return this._http.post(this.url + `/api/v1/admin/create-account`, user).pipe(
       tap(
         res => this._messages.info('Пользователь создан'),
         err => this._messages.info(err.error.errorMessage || 'Неизвестная ошибка')
@@ -62,7 +65,7 @@ export class UsersApi {
         verify: verify
       }
     };
-    return this._http.post(`/api/v1/admin/account/change`, body)
+    return this._http.post(this.url + `/api/v1/admin/account/change`, body)
       .map(
         res => true,
         err => err,

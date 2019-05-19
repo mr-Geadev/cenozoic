@@ -8,6 +8,7 @@ import { CHANGE_PASSWORD, CHANGE_USER_INFO } from '../../const';
 import { ConfirmService } from '../../services/confirm.service';
 import { AuthService, LocalizationService, SystemMessageService, UserService } from '../../services';
 import { BlankAccountService } from '../../services/blank-account.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'setting-worker',
@@ -131,7 +132,7 @@ export class SettingWorkerComponent implements OnInit {
       .subscribe(
         res => {
           if (res) {
-            this._http.get('/api/v1/worker/account/delete')
+            this._http.get(environment.apiUrl + '/api/v1/worker/account/delete')
               .subscribe(
                 (res) => {
                   this.userService.setUser(null);

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 
 import { LocalizationService, ResumeService, UserService } from 'services';
+import { environment } from '../../../environments/environment';
 import { FilterResumesService } from '../filter-resumes';
 
 @Component({
@@ -10,6 +11,8 @@ import { FilterResumesService } from '../filter-resumes';
   styleUrls: ['./list-resume.component.scss'],
 })
 export class ListResumeComponent implements OnInit {
+
+  url = environment.apiUrl;
 
   @Input() config?: string;
   @Input() payedResume?: boolean;
@@ -43,7 +46,7 @@ export class ListResumeComponent implements OnInit {
     if (!this.payedResume) {
       // резюме пользоватля
       if (this.config === 'user') {
-        this._http.get(`/api/v1/user/resume/all`)
+        this._http.get(this.url + `/api/v1/user/resume/all`)
           .subscribe((res: any) => {
             this.listResume = res.resumeList;
           });
@@ -57,13 +60,13 @@ export class ListResumeComponent implements OnInit {
               parameters = Object.assign(parameters || {}, {resumeLanguage: LocalizationService.currentLang()})
             }
             if (parameters != null) {
-              this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, filters: parameters, count: 24 })
+              this._http.post(this.url + `/api/v1/resume/get/all`, { offset: this.offset, filters: parameters, count: 24 })
                 .subscribe((res: any) => {
                   this.listResume = res.resumeList;
                 });
             } else {
               // все резюме
-              this._http.post(`/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
+              this._http.post(this.url + `/api/v1/resume/get/all`, { offset: this.offset, count: 24 })
                 .subscribe((res: any) => {
                   this.listResume = res.resumeList;
                 });
@@ -71,7 +74,7 @@ export class ListResumeComponent implements OnInit {
           });
       }
     } else {
-      this._http.get(`/api/v1/employer/paid-resume/all`)
+      this._http.get(this.url + `/api/v1/employer/paid-resume/all`)
         .subscribe((res: any) => {
           this.listResume = res.resumeList;
         });

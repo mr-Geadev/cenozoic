@@ -5,9 +5,12 @@ import { RespondModel, VacancyModel } from 'models';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { LocalizationService, SystemMessageService, UserService } from 'services';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class VacancyApi {
+
+  url = environment.apiUrl;
 
   private viewedVacancy: BehaviorSubject<VacancyModel> = new BehaviorSubject<VacancyModel>(null);
   public viewedVacancy$: Observable<any> = this.viewedVacancy.asObservable();
@@ -28,7 +31,7 @@ export class VacancyApi {
   }
 
   public getUserVacancy(): Observable<any> {
-    return this.http.get(`/api/v1/employer/vacancy/all`);
+    return this.http.get(this.url + `/api/v1/employer/vacancy/all`);
   }
 
   public getVacancyById(id: string) {
@@ -56,7 +59,7 @@ export class VacancyApi {
   }
 
   public activateVacancy(vacancyId: string): Observable<any> {
-    return this.http.get(`/api/v1/employer/vacancy/time-out/activate?vacancyId=${vacancyId}`)
+    return this.http.get(this.url + `/api/v1/employer/vacancy/time-out/activate?vacancyId=${vacancyId}`)
       .map(
         (res) => {
           this.userService.getUserInfo();
@@ -86,7 +89,7 @@ export class VacancyApi {
   }
 
   show(vacancyId: string): void {
-    this.http.get(`/api/v1/employer/vacancy/view/change?vacancyId=${vacancyId}&view=true`)
+    this.http.get(this.url + `/api/v1/employer/vacancy/view/change?vacancyId=${vacancyId}&view=true`)
       .subscribe(
         res => {
           this.messages.info(this.dictionary.VACANCY_WILL_VIEW);
@@ -96,7 +99,7 @@ export class VacancyApi {
   }
 
   hidden(vacancyId: string): void {
-    this.http.get(`/api/v1/employer/vacancy/view/change?vacancyId=${vacancyId}&view=false`)
+    this.http.get(this.url + `/api/v1/employer/vacancy/view/change?vacancyId=${vacancyId}&view=false`)
       .subscribe(
         res => {
           this.messages.info(this.dictionary.VACANCY_WAS_HIDDEN);

@@ -14,6 +14,7 @@ import { CREATE_RESUME, IMG_URL } from '../../const';
 import { ConfirmService } from '../../services/confirm.service';
 import { ResumeService, SystemMessageService, UserService } from '../../services';
 import { LocalizationService } from '../../services/localization.service';
+import { environment } from '../../../environments/environment';
 import {
   CHANGES_TYPE, DEFAULT_CERTIFICATE_IMAGE,
   DEFAULT_EDUCATION,
@@ -592,7 +593,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       formData.append('resumeId', this.resumeId);
       formData.append('resume', JSON.stringify(this.resumeForm));
 
-      this.http.post('/api/v1/user/resume/edit', formData)
+      this.http.post(environment.apiUrl + '/api/v1/user/resume/edit', formData)
         .subscribe((res: any) => {
           if (res.success) {
             this.resumeForm = null;

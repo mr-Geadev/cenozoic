@@ -7,6 +7,7 @@ import { CitiesService } from 'services/cities.service';
 
 import { ENGLISH_DICTIONARY, RUSSIAN_DICTIONARY } from '../const/dictionaries';
 import { LANGUAGES } from '../const';
+import { environment } from '../../environments/environment';
 
 const LOCALIZATION = 'localization';
 
@@ -14,6 +15,8 @@ const LOCALIZATION = 'localization';
 export class LocalizationService {
   public readonly currentDictionary: BehaviorSubject<any> = new BehaviorSubject<any>(this._detectLanguage() === 'ru' ? RUSSIAN_DICTIONARY : ENGLISH_DICTIONARY);
   public currentLanguage: string = null;
+
+  url = environment.apiUrl;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private citiesService: CitiesService,
@@ -26,10 +29,10 @@ export class LocalizationService {
 
     switch (this.currentLanguage) {
       case LANGUAGES.RUSSIAN:
-        this.http.get('/api/v1/admin/localization/get?language=ru').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
+        this.http.get(this.url + '/api/v1/admin/localization/get?language=ru').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
         break;
       case LANGUAGES.ENGLISH:
-        this.http.get('/api/v1/admin/localization/get?language=en').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
+        this.http.get(this.url + '/api/v1/admin/localization/get?language=en').subscribe(res => this.currentDictionary.next(res['localizationConfig']));
         break;
     }
   }

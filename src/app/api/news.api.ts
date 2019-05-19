@@ -3,11 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { LocalizationService, SystemMessageService } from 'services';
 import 'rxjs-compat/add/operator/share';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class NewsApi {
 
   public dictionary: any = {};
+
+  url = environment.apiUrl;
 
   constructor(private http: HttpClient,
               private _localizationService: LocalizationService,
@@ -20,7 +23,7 @@ export class NewsApi {
 
   // получение одной новости по id
   getNewsById(id): Observable<any> {
-    return this.http.get(`/api/v1/news/get/one?newsId=${id}`);
+    return this.http.get(this.url + `/api/v1/news/get/one?newsId=${id}`);
   }
 
   // создание новости
@@ -31,7 +34,7 @@ export class NewsApi {
     formData.append('fileToUpload', file);
     formData.append('newsData', JSON.stringify(news));
 
-    return this.http.post('/api/v1/employer/news/create', formData)
+    return this.http.post(this.url + '/api/v1/employer/news/create', formData)
       .map(
         res => res,
         err => this.messages.info(this.dictionary.INFO_MESSAGES_SOMETHING_WENT_WRONG),
@@ -40,7 +43,7 @@ export class NewsApi {
 
   // создание комментария
   addComent(newsId, comment): Observable<any> {
-    return this.http.post('/api/v1/news/comment/create', { commentInfo: { newsId, comment } })
+    return this.http.post(this.url + '/api/v1/news/comment/create', { commentInfo: { newsId, comment } })
       .map(
         res => {},
         err => this.messages.info(this.dictionary.INFO_MESSAGES_SOMETHING_WENT_WRONG),
@@ -57,7 +60,7 @@ export class NewsApi {
       formData.append('fileToUpload', image);
     }
 
-    return this.http.post('/api/v1/employer/news/edit', formData)
+    return this.http.post(this.url + '/api/v1/employer/news/edit', formData)
       .map(
         res => this.messages.info(this.dictionary.INFO_MESSAGES_CHANGES_IS_SAVED),
         err => this.messages.info(this.dictionary.INFO_MESSAGES_SOMETHING_WENT_WRONG),
@@ -92,7 +95,7 @@ export class NewsApi {
       filters = Object.assign(filters, { search: searchString });
     }
 
-    return this.http.post('/api/v1/news/get/all', { offset: 0, limit: 100, filters });
+    return this.http.post(this.url + '/api/v1/news/get/all', { offset: 0, limit: 100, filters });
   }
 
   // измение статуса новости
@@ -133,24 +136,24 @@ export class NewsApi {
       ...publicTo,
     };
 
-    return this.http.post('/api/v1/admin/news/publish', { publishInfo: body });
+    return this.http.post(this.url + '/api/v1/admin/news/publish', { publishInfo: body });
   }
 
   removeNews(id: string): Observable<any> {
-    return this.http.get(`/api/v1/employer/news/remove?newsId=${id}`)
+    return this.http.get(this.url + `/api/v1/employer/news/remove?newsId=${id}`)
       .map(res => {
         this.messages.info(this.dictionary.INFO_MESSAGES_SUCCESS_WAS_DELETED);
       });
   }
 
   removeComment(newsId: string, indexComment: number): Observable<any> {
-    return this.http.get(`/api/v1/admin/news/comment/remove?newsId=${newsId}&commentId=${indexComment}`)
+    return this.http.get(this.url + `/api/v1/admin/news/comment/remove?newsId=${newsId}&commentId=${indexComment}`)
       .map(res => {
         this.messages.info('Комментарий удален');
       });
   }
 
   checkViewed(newsId: string): Observable<any> {
-    return this.http.get(`/api/v1/employer/news/view?newsId=${newsId}`);
+    return this.http.get(this.url + `/api/v1/employer/news/view?newsId=${newsId}`);
   }
 }

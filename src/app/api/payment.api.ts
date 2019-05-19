@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from 'services';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PaymentApi {
@@ -24,7 +25,7 @@ export class PaymentApi {
         break;
     }
 
-    return this.http.get(`/api/v1/user/paid-options/pay?paidOptionName=${type}&count=${count}`)
+    return this.http.get(environment.apiUrl + `/api/v1/user/paid-options/pay?paidOptionName=${type}&count=${count}`)
       .map(
         res => {
           this.userSerivce.getUserInfo();

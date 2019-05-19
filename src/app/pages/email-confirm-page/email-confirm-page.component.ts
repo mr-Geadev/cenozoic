@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {LocalizationService} from '../../services';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'account-email-confirm',
@@ -28,7 +29,7 @@ export class EmailConfirmPageComponent implements OnInit {
           res => this.dictionary = res
         );
 
-        this._http.get(`/api/v1/user/email/confirm?confirmToken=${this.token}`)
+        this._http.get(environment.apiUrl + `/api/v1/user/email/confirm?confirmToken=${this.token}`)
             .subscribe(
                 (res) => {
                     this.status = 'success';

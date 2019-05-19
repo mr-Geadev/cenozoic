@@ -3,9 +3,12 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { LocalizationService, SystemMessageService } from 'services';
 import 'rxjs-compat/add/operator/share';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MessagesApi {
+
+  url = environment.apiUrl;
 
   public dictionary: any = {};
 
@@ -19,7 +22,7 @@ export class MessagesApi {
   }
 
   sendMessage(userId: string, message: string) {
-    return this.http.post('/api/v1/message/create', {
+    return this.http.post(this.url + '/api/v1/message/create', {
       message: {
         userId,
         message,
@@ -28,13 +31,13 @@ export class MessagesApi {
   }
 
   getMessages() {
-    return this.http.get<{messages: Chat[]}>('/api/v1/user/message/get/all').pipe(
+    return this.http.get<{messages: Chat[]}>(this.url + '/api/v1/user/message/get/all').pipe(
       map($0 => $0.messages)
     );
   }
 
   checkViewed(messageId: string) {
-    return this.http.get(`/api/v1/user/message/view?messageId=${messageId}`);
+    return this.http.get(this.url + `/api/v1/user/message/view?messageId=${messageId}`);
   }
 }
 

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'admin-main.col',
@@ -14,7 +15,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._http.get('/api/v1/admin/statistics')
+    this._http.get(environment.apiUrl + '/api/v1/admin/statistics')
       .subscribe((res) => {
         this.statistics = res['statistics'];
       });

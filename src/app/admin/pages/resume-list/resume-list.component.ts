@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {ConfirmService} from '../../../services/confirm.service';
 import { LocalizationService, SystemMessageService } from '../../../services';
+import { environment } from '../../../../environments/environment';
 import {AdminResumeApi} from './admin-resume.api';
 
 @Component({
@@ -28,7 +29,7 @@ export class ResumeListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._http.post(`/api/v1/resume/get/all`, {offset: 0, count: 24})
+        this._http.post(environment.apiUrl + `/api/v1/resume/get/all`, {offset: 0, count: 24})
             .subscribe((res: any) => {
                 this.listResume = res.resumeList;
             });

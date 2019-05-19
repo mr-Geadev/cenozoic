@@ -8,9 +8,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { LocalizationService, QuestionnaireService, SystemMessageService } from 'services';
 import { NEW_STATUSES } from 'const';
 import { RespondModel } from 'models';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RespondsApi {
+
+  url = environment.apiUrl;
 
   private filters: any = {};
   private respond: any = null;
@@ -73,7 +76,7 @@ export class RespondsApi {
 
   // соискатель откликается на вакансию
   public createRespond(vacancyId: string, resumeId: string): void {
-    this.http.post('/api/v1/worker/respond/create', { respond: { vacancyId, resumeId } })
+    this.http.post(this.url + '/api/v1/worker/respond/create', { respond: { vacancyId, resumeId } })
       .subscribe(
         (res) => {
           this.messages.info(this.dictionary.INFO_MESSAGES_RESPOND_WAS_SEND);
@@ -93,7 +96,7 @@ export class RespondsApi {
     };
     questionnaireId ? body.questionnaireId = questionnaireId : delete body.questionnaireId;
 
-    this.http.post('/api/v1/employer/offer/create', body)
+    this.http.post(this.url + '/api/v1/employer/offer/create', body)
       .subscribe(
         (res) => {
           this.messages.info(this.dictionary.INFO_MESSAGES_OFFERS_WAS_SEND);
@@ -104,7 +107,7 @@ export class RespondsApi {
 
   // список откликов для юзверя
   public getResponds(): void {
-    this.http.post('/api/v1/user/respond/all', this.filters)
+    this.http.post(this.url + '/api/v1/user/respond/all', this.filters)
       .subscribe(
         res => {
           const list = res['responds'].map(respond => new RespondModel(respond));
@@ -119,7 +122,7 @@ export class RespondsApi {
 
   // список предложений юзверя
   public getOffers(): void {
-    this.http.post('/api/v1/user/offer/all', this.filters)
+    this.http.post(this.url + '/api/v1/user/offer/all', this.filters)
       .subscribe(res => {
         const list = res['offers'].map(offer => new RespondModel(offer));
         this.setListOffers(list);
@@ -128,7 +131,7 @@ export class RespondsApi {
 
   // отменить отклик
   public cancelRespond(respondId: string): void {
-    this.http.get(`/api/v1/worker/respond/cancel?respondId=${respondId}`)
+    this.http.get(this.url + `/api/v1/worker/respond/cancel?respondId=${respondId}`)
       .subscribe((res) => {
         this.messages.info(this.dictionary.INFO_MESSAGES_RESPOND_WAS_CANCEL);
         this.getResponds();
@@ -137,13 +140,13 @@ export class RespondsApi {
 
   // отменить предложение (изанчально в макетах этот метод не предусмотрен)
   public cancelOffer(respondId: string): void {
-    this.http.get(`/api/v1/employer/offer/cancel?offerId=${respondId}`);
+    this.http.get(this.url + `/api/v1/employer/offer/cancel?offerId=${respondId}`);
   }
 
   // изменить статус преложения (соискателем)
   public setStatusOffer(offerId: string, status: string): void {
     status = NEW_STATUSES[status];
-    this.http.get(`/api/v1/worker/offer/status/change?offerId=${offerId}&newStatus=${parseInt(status)}`)
+    this.http.get(this.url + `/api/v1/worker/offer/status/change?offerId=${offerId}&newStatus=${parseInt(status)}`)
       .subscribe((res) => {
         this.getOffers();
         this.dialog.closeAll();
@@ -153,7 +156,7 @@ export class RespondsApi {
   // изменить статус отклика (работодателем)
   public setStatusRespond(respondId: string, status: string): void {
     status = NEW_STATUSES[status];
-    this.http.get(`/api/v1/employer/respond/status/change?respondId=${respondId}&newStatus=${parseInt(status)}`)
+    this.http.get(this.url + `/api/v1/employer/respond/status/change?respondId=${respondId}&newStatus=${parseInt(status)}`)
       .subscribe((res) => {
         this.getResponds();
         this.dialog.closeAll();
@@ -163,7 +166,7 @@ export class RespondsApi {
   // изменить статус предложения (работодателем)
   public setStatusOfferEmployer(offerId: string, status: string): void {
     status = NEW_STATUSES[status];
-    this.http.get(`/api/v1/employer/offer/status/change?offerId=${offerId}&newStatus=${parseInt(status)}`)
+    this.http.get(this.url + `/api/v1/employer/offer/status/change?offerId=${offerId}&newStatus=${parseInt(status)}`)
       .subscribe((res) => {
         this.getResponds();
         this.dialog.closeAll();
@@ -172,7 +175,7 @@ export class RespondsApi {
 
   // помечает отклик как просмотренный
   public checkRespondToViewed(respondId: string): void {
-    this.http.get(`/api/v1/employer-worker/offer-respond/view?entityId=${respondId}&entityName=respond`)
+    this.http.get(this.url + `/api/v1/employer-worker/offer-respond/view?entityId=${respondId}&entityName=respond`)
       .subscribe((res) => {
         this.getResponds();
       });
@@ -180,7 +183,7 @@ export class RespondsApi {
 
   // помечает предложение как просмотренное
   public checkOfferToViewed(offerId: string): void {
-    this.http.get(`/api/v1/employer-worker/offer-respond/view?entityId=${offerId}&entityName=offer`)
+    this.http.get(this.url + `/api/v1/employer-worker/offer-respond/view?entityId=${offerId}&entityName=offer`)
       .subscribe((res) => {
         this.getOffers();
       });
@@ -194,13 +197,13 @@ export class RespondsApi {
   public sendToArchive(respond: RespondModel, typeUser: string): void {
     if (typeUser === 'employer') {
       if (respond.entity === 'offer') {
-        this.http.get(`/api/v1/employer/offer/archive?offerId=${respond._id}`)
+        this.http.get(this.url + `/api/v1/employer/offer/archive?offerId=${respond._id}`)
           .subscribe((res) => {
             this.getOffers();
             this.getArchive();
           });
       } else {
-        this.http.get(`/api/v1/employer/respond/archive?respondId=${respond._id}`)
+        this.http.get(this.url + `/api/v1/employer/respond/archive?respondId=${respond._id}`)
           .subscribe((res) => {
             this.getResponds();
             this.getArchive();
@@ -208,13 +211,13 @@ export class RespondsApi {
       }
     } else {
       if (respond.entity === 'offer') {
-        this.http.get(`/api/v1/worker/offer/archive?offerId=${respond._id}`)
+        this.http.get(this.url + `/api/v1/worker/offer/archive?offerId=${respond._id}`)
           .subscribe((res) => {
             this.getOffers();
             this.getArchive();
           });
       } else {
-        this.http.get(`/api/v1/worker/respond/archive?respondId=${respond._id}`)
+        this.http.get(this.url + `/api/v1/worker/respond/archive?respondId=${respond._id}`)
           .subscribe((res) => {
             this.getResponds();
             this.getArchive();
@@ -225,7 +228,7 @@ export class RespondsApi {
 
   // возвращает архив
   public getArchive(): void {
-    this.http.get(`/api/v1/user/archive/entities/all`)
+    this.http.get(this.url + `/api/v1/user/archive/entities/all`)
       .subscribe((res) => {
         const list = res['entities'].map(entity => new RespondModel(entity));
         this.setListArchive(list);
@@ -234,7 +237,7 @@ export class RespondsApi {
 
   // прикрепляет опросник к отклику
   public bindQuestionnaire(respondId: string, questionnaireId: string): void {
-    this.http.get(`/api/v1/employer/questionnaire/bind?respondId=${respondId}&questionnaireId=${questionnaireId}`)
+    this.http.get(this.url + `/api/v1/employer/questionnaire/bind?respondId=${respondId}&questionnaireId=${questionnaireId}`)
       .subscribe((res) => {
         this.getResponds();
         this.dialog.closeAll();
@@ -251,6 +254,6 @@ export class RespondsApi {
 
   // список откликов/предложений по вакансии/резюме
   public getRespondsForEntity(entityId: string) {
-    return this.http.get(`/api/v1/admin/vacancy-resume/offers-responds/get?entityId=${entityId}`);
+    return this.http.get(this.url + `/api/v1/admin/vacancy-resume/offers-responds/get?entityId=${entityId}`);
   }
 }

@@ -11,6 +11,7 @@ import { LocalizationService } from '../../services/localization.service';
 import { SystemMessageService } from '../../services/system-message.service';
 import { UserService } from '../../services/user.service';
 import { BlankAccountService } from '../../services';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'setting-employer',
@@ -20,6 +21,8 @@ import { BlankAccountService } from '../../services';
 export class SettingEmployerComponent implements OnInit {
 
   imgUrl = IMG_URL;
+
+  url = environment.apiUrl;
 
   public dictionary: any = {};
 
@@ -135,7 +138,7 @@ export class SettingEmployerComponent implements OnInit {
     const userParameter = Object.assign(this.info.value, { photoURL: photoURL });
 
     formData.append('userParameters', JSON.stringify(userParameter));
-    this._http.post('/api/v1/employer/profile/parameters/change', formData)
+    this._http.post(this.url + '/api/v1/employer/profile/parameters/change', formData)
       .subscribe(
         (res: any) => {
           this.msg.info(this.dictionary.INFO_MESSAGES_SUCCESS_DATA_IS_CHANGED);
@@ -161,7 +164,7 @@ export class SettingEmployerComponent implements OnInit {
       .subscribe(
         confirm => {
           if (confirm) {
-            this._http.get('/api/v1/employer/account/delete')
+            this._http.get(this.url + '/api/v1/employer/account/delete')
               .subscribe(
                 (res) => {
                   this.userService.setUser(null);
