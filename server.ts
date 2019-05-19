@@ -39,7 +39,7 @@ app.set('views', join(DIST_FOLDER, 'browser'));
 // app.get('/api/*', (req, res) => {
 //   res.status(404).send('data requests are not supported');
 // });
-app.use('/api', proxy({target: 'https://142.93.234.83:8080', changeOrigin: true}));
+app.use('/api', proxy({target: 'https://142.93.234.83:8080', changeOrigin: false}));
 
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
