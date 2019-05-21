@@ -198,17 +198,23 @@
                         <div class="parameter duties">
                             <label>{{dictionary.DUTIES}}</label>
                             <div class="description">{{dictionary.DUTIES_DESCRIPTION}}</div>
-                            <editor formControlName="duties"></editor>
+
+                            <quill-editor formControlName="duties"
+                                          [styles]="{height: '200px'}"></quill-editor>
                         </div>
                         <div class="parameter demands">
                             <label>{{dictionary.REQUIREMENTS}}</label>
                             <div class="description">{{dictionary.REQUIREMENTS_DESCRIPTION}}</div>
-                            <editor formControlName="demands"></editor>
+
+                            <quill-editor formControlName="demands"
+                                          [styles]="{height: '200px'}"></quill-editor>
                         </div>
                         <div class="parameter conditions">
                             <label>{{dictionary.WORKING_CONDITIONS}}</label>
                             <div class="description">{{dictionary.WORKING_CONDITIONS_DESCRIPTION}}</div>
-                            <editor formControlName="conditions"></editor>
+
+                            <quill-editor formControlName="conditions"
+                                          [styles]="{height: '200px'}"></quill-editor>
                         </div>
                     </div>
 

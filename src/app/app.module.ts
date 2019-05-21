@@ -11,6 +11,7 @@ import { MessagesApi } from 'api/messages.api';
 import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
 import { PaymentGuards } from 'guards/payment.guards';
+import { QuillModule } from 'ngx-quill';
 import {
   AboutUsPageModule,
   AccountSettingsPageModule,
@@ -70,6 +71,15 @@ const ROUTES = [
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'cenozoic' }),
     RouterModule.forRoot(ROUTES, {scrollPositionRestoration: 'enabled'}),
+    // QuillModule.forRoot({
+    //   modules: {
+    //     toolbar: {
+    //       handlers: {
+    //         image: () => { console.log('image'); }
+    //       }
+    //     }
+    //   }
+    // }),
     MatSnackBarModule,
     // Pages
     MainPageModule,

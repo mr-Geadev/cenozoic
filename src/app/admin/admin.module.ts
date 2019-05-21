@@ -30,6 +30,7 @@ import { WorkerAnalyticsComponent } from 'admin/pages/user/worker-analytics/work
 import { VerifyListComponent } from 'admin/pages/verify-list/verify-list.component';
 import { NewsApi } from 'api';
 import { ChatsModule } from 'containers/chats';
+import { QuillModule } from 'ngx-quill';
 import { LocalizationApi } from '../api/localization.api';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -51,6 +52,7 @@ import { UsersComponent } from './pages/users/users.component';
     FormsModule,
 
     EditorModule,
+    QuillModule,
     ChatsModule,
 
     // material

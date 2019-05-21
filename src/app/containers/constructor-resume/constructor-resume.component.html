@@ -363,9 +363,9 @@
                                 </div>
 
                                 <div class="parameter duties" style="display: block">
-                                    <editor [init]="textEditorConfig"
-                                            [(ngModel)]="resumeForm.experience[i].duties"
-                                            [ngModelOptions]="{standalone: true}"></editor>
+                                    <quill-editor [(ngModel)]="resumeForm.experience[i].duties"
+                                                  [ngModelOptions]="{standalone: true}"
+                                                  [styles]="{height: '200px'}"></quill-editor>
                                     <div class="validation-alert">{{dictionary.FIELD_SHOULD_BE_COMPLETED}}</div>
                                 </div>
                             </div>
@@ -718,27 +718,31 @@
                             <div class="description">
                                 {{dictionary.ADDITIONAL_INFO_DESCRIPTION}}
                             </div>
-                            <editor [init]="textEditorConfig"
-                                    [(ngModel)]="resumeForm.additionalInformation"
-                                    [ngModelOptions]="{standalone: true}"></editor>
+
+                            <quill-editor [(ngModel)]="resumeForm.additionalInformation"
+                                          [ngModelOptions]="{standalone: true}"
+                                          [styles]="{height: '200px'}"></quill-editor>
+
                         </div>
                         <div class="parameter">
                             <label>{{dictionary.PERSONAL_QUALITIES}}</label>
                             <div class="description">
                                 {{dictionary.PERSONAL_QUALITIES_DESCRIPTION}}
                             </div>
-                            <editor [init]="textEditorConfig"
-                                    [(ngModel)]="resumeForm.personalQualities"
-                                    [ngModelOptions]="{standalone: true}"></editor>
+
+                            <quill-editor [(ngModel)]="resumeForm.personalQualities"
+                                          [ngModelOptions]="{standalone: true}"
+                                          [styles]="{height: '200px'}"></quill-editor>
                         </div>
                         <div class="parameter">
                             <label>{{dictionary.HOBBIES}}</label>
                             <div class="description">
                                 {{dictionary.HOBBIES_DESCRIPTION}}
                             </div>
-                            <editor [init]="textEditorConfig"
-                                    [(ngModel)]="resumeForm.hobbies"
-                                    [ngModelOptions]="{standalone: true}"></editor>
+
+                            <quill-editor [(ngModel)]="resumeForm.hobbies"
+                                          [ngModelOptions]="{standalone: true}"
+                                          [styles]="{height: '200px'}"></quill-editor>
                         </div>
                     </div>
 

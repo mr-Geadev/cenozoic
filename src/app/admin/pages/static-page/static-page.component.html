@@ -31,9 +31,9 @@
 			</mat-form-field>
 		</div>
 
-		<editor [init]="textEditorConfig"
-						[(ngModel)]="html"
-						[ngModelOptions]="{standalone: true}"></editor>
+		<quill-editor [(ngModel)]="html"
+									[ngModelOptions]="{standalone: true}"
+									[styles]="{height: '200px'}"></quill-editor>
 
 	</mat-card-content>
 

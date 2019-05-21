@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { QuillModule } from 'ngx-quill';
 import {BirthdayModule} from '../../pop-ups/birthday';
 import {ConstructorResumeComponent} from './constructor-resume.component';
 import {TextMaskModule} from 'angular2-text-mask';
@@ -21,6 +22,7 @@ import {TextMaskModule} from 'angular2-text-mask';
         MatButtonModule,
         BirthdayModule,
         EditorModule,
+        QuillModule,
         TextMaskModule,
         ImageCropperModule
     ],

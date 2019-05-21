@@ -5,6 +5,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { NewsApi } from 'api';
 import { ConstructorNewsComponent } from 'containers/constructor-news/constructor-news.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     FormsModule,
     ReactiveFormsModule,
     EditorModule,
+    QuillModule,
     ImageCropperModule
   ],
   declarations: [ConstructorNewsComponent],

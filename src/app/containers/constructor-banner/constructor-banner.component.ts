@@ -131,5 +131,9 @@ export class ConstructorBannerComponent implements OnInit {
     }
   }
 
+  show() {
+    console.log(this.textBanner)
+  }
+
 }
 

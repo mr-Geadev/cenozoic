@@ -5,6 +5,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { BannerApi } from 'api';
 import { ConstructorBannerComponent } from 'containers/constructor-banner/constructor-banner.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     FormsModule,
     ReactiveFormsModule,
     EditorModule,
-    ImageCropperModule
+    ImageCropperModule,
+    QuillModule
   ],
   declarations: [ConstructorBannerComponent],
   providers: [BannerApi],

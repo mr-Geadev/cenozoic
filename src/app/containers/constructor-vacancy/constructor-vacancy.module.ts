@@ -4,6 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import { VacancyApi } from 'api';
+import { QuillModule } from 'ngx-quill';
 
 import {ConstructorVacancyComponent} from './constructor-vacancy.component';
 
@@ -14,6 +15,7 @@ import {ConstructorVacancyComponent} from './constructor-vacancy.component';
         MatSelectModule,
         ReactiveFormsModule,
         EditorModule,
+        QuillModule,
         MatButtonModule
     ],
     declarations: [ConstructorVacancyComponent],

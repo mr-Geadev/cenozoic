@@ -44,10 +44,10 @@
 					>
 						{{ dictionary.NEWS_TEXT }} <span class="required">*</span>
 					</label>
-					<editor [init]="textEditorConfig"
-									[(ngModel)]="textNews"
-									[ngModelOptions]="{standalone: true}"
-					></editor>
+
+					<quill-editor [(ngModel)]="textNews"
+												[ngModelOptions]="{standalone: true}"
+												[styles]="{height: '200px'}"></quill-editor>
 				</div>
 
 				<div class="field">
