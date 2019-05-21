@@ -13,6 +13,7 @@ export const MENU_LIST = [
     {name: 'Баннеры', link: 'banners'},
     {name: 'Статичные страницы', link: 'static-page'},
     {name: 'Переписки', link: 'chats'},
+    {name: 'Верификацию', link: 'verify-list'},
     // {name: 'Вакансии', link: '#'},
 ];
 

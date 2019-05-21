@@ -6,7 +6,7 @@ import * as io from 'socket.io-client';
 @Injectable()
 export class SocketService {
 
-  private host: string = `http://134.0.119.98:4200`;
+  private host: string = `http://142.93.234.83:4200`;
   private socket: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {

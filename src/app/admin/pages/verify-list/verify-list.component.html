@@ -1,0 +1,66 @@
+<div *ngIf="any$ | async"></div>
+
+<mat-card>
+  <mat-list *ngIf="activeRequest$ | async as verifyList">
+    <h3 mat-subheader>Список заявок на верификацию</h3>
+
+    <h4 mat-subheader *ngIf="!verifyList.lenght">
+      Нет заявок
+    </h4>
+
+    <mat-list-item *ngFor="let verifyRequest of verifyList; let i = index;">
+      <mat-icon mat-list-icon>person_pin</mat-icon>
+      <h4 mat-line>{{verifyRequest.userInfo.companyName}}</h4>
+      <p mat-line style="white-space: inherit;">{{verifyRequest.comment}}</p>
+
+
+      <a [routerLink]="['/admin/chats', verifyRequest.userId]">
+        <button mat-button color="primary">
+          Написать
+        </button>
+      </a>
+
+      <button mat-raised-button color="primary" *ngIf="verifyRequest.status !== 5" (click)="this.accept.next(verifyRequest._id)">
+        Подтвердить
+      </button>
+
+      <button mat-raised-button color="warn" *ngIf="verifyRequest.status !== 6" (click)="this.reject.next(verifyRequest._id)">
+        Отклонить
+      </button>
+
+      <button mat-mini-fab color="primary" class="icon">
+        <a [href]="imgUrl+verifyRequest.photoURL" target="_blank" color="white">
+          <mat-icon aria-label="iExample icon-button with a heart con">open_in_new</mat-icon>
+        </a>
+      </button>
+
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+
+<mat-card style="margin-top: 20px;">
+  <mat-list *ngIf="historyRequest$ | async as verifyList">
+    <h3 mat-subheader>Обработанные заявки</h3>
+    <mat-list-item *ngFor="let verifyRequest of verifyList; let i = index;">
+      <mat-icon mat-list-icon>person_pin</mat-icon>
+      <h4 mat-line>{{verifyRequest.userInfo.companyName}}</h4>
+      <p mat-line style="white-space: inherit;">
+        {{ verifyRequest.status === 5 ? 'Принята' : 'Отклонена' }}
+      </p>
+      <p mat-line style="white-space: inherit;">{{verifyRequest.comment}}</p>
+
+      <a [routerLink]="['/admin/chats', verifyRequest.userId]">
+        <button mat-button color="primary">
+          Написать
+        </button>
+      </a>
+
+      <button mat-mini-fab color="primary" class="icon">
+        <a [href]="imgUrl+verifyRequest.photoURL" target="_blank" color="white">
+          <mat-icon aria-label="iExample icon-button with a heart con">open_in_new</mat-icon>
+        </a>
+      </button>
+
+    </mat-list-item>
+  </mat-list>
+</mat-card>

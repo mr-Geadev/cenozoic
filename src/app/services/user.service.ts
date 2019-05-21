@@ -62,5 +62,9 @@ export class UserService {
         return this.userSubject.value;
     }
 
+    public sendRequestVerify(body: FormData) {
+        return this.http.post('/api/v1/user/verification-request/create', body);
+    }
+
 
 }

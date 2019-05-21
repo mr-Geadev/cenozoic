@@ -27,6 +27,7 @@ import { UserResumeComponent } from 'admin/pages/user/user-resume/user-resume.co
 import { UserVacancyComponent } from 'admin/pages/user/user-vacancy/user-vacancy.component';
 import { UserComponent } from 'admin/pages/user/user.component';
 import { WorkerAnalyticsComponent } from 'admin/pages/user/worker-analytics/worker-analytics.component';
+import { VerifyListComponent } from 'admin/pages/verify-list/verify-list.component';
 import { NewsApi } from 'api';
 import { ChatsModule } from 'containers/chats';
 import { LocalizationApi } from '../api/localization.api';
@@ -83,6 +84,7 @@ import { UsersComponent } from './pages/users/users.component';
     StaticPageComponent,
     UserComponent,
     ChatsAdminComponent,
+    VerifyListComponent,
 
     // containers
     ItemUserComponent,

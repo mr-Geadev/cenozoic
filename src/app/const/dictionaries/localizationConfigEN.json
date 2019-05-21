@@ -541,5 +541,8 @@
   "RESTORE_PASSWORD_SAVE_PASSWORD": "Save password",
   "RESTORE_PASSWORD_DESCRIPTION": "Enter mail from your account. We will send you a link to reset your password.",
   "RESTORE_PASSWORD_SEND_LINK": "Send link",
-  "CURRENCY": "Currency"
+  "CURRENCY": "Currency",
+  "AWAITING_VERIFY": "Verification on review",
+  "VERIFY_COMMENT_LABEL": "Transmittal letter",
+  "SEND_VERIFY_REQUEST": "Send request"
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
+import { VerifyAccountModalService } from 'pop-ups/verify-account/verify-account-modal.service';
 import { CHANGE_PASSWORD, IMG_URL } from '../../const/api.constant';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmService } from '../../services/confirm.service';
@@ -43,6 +44,7 @@ export class SettingEmployerComponent implements OnInit {
               private _dialog: MatDialog,
               private _confirm: ConfirmService,
               private _authService: AuthService,
+              private verifyAccountModalService: VerifyAccountModalService,
               private blankAccountService: BlankAccountService,
               private _localizationService: LocalizationService) {
 

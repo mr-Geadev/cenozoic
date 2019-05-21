@@ -35,6 +35,7 @@ import { RestorePasswordPageModule } from 'pages/restore-password-page/restore-p
 import { ChangeCityModule, ChangeCityService, ConfirmModule, LoginModalModule, PayingModule } from 'pop-ups';
 import { RestorePasswordService } from 'pop-ups/restore-password';
 import { RestorePasswordModule } from 'pop-ups/restore-password/restore-password.module';
+import { VerifyAccountModule } from 'pop-ups/verify-account/verify-account.module';
 import {
   BlankAccountService,
   CitiesService,
@@ -109,7 +110,8 @@ const ROUTES = [
     // Modals
     ChangeCityModule,
     ConfirmModule,
-    PayingModule
+    PayingModule,
+    VerifyAccountModule
   ],
   providers: [
     HttpClient,

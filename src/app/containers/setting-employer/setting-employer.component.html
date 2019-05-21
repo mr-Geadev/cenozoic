@@ -83,13 +83,24 @@
 									 placeholder="{{dictionary.SETTINGS_USER_NAME}}">
 					</div>
 				</div>
-				<div class="parameter" *ngIf="!currentUser.verify">
-					<a class="verify-button"
-						 href="mailto:tech.support@cnzcommunity.com?subject={{dictionary.VERIFY_ACCOUNT}}&body={{dictionary.VERIFY_PIN_DOCUMENT_EMPLOYER + '%0d%0aE-mail: ' + currentUser.email}}">{{dictionary.VERIFY_ACCOUNT}}</a>
+
+				<div class="parameter" *ngIf="!currentUser.verifyRequestAllow">
+					{{ dictionary.AWAITING_VERIFY }}
 				</div>
+
+				<div class="parameter" *ngIf="!currentUser.verify && currentUser.verifyRequestAllow">
+					<a class="verify-button"
+						 (click)="verifyAccountModalService.openVerifyModal('employer')"
+						 >
+<!--						href="mailto:tech.support@cnzcommunity.com?subject={{dictionary.VERIFY_ACCOUNT}}&body={{dictionary.VERIFY_PIN_DOCUMENT_EMPLOYER + '%0d%0aE-mail: ' + currentUser.email}}"-->
+						{{dictionary.VERIFY_ACCOUNT}}
+					</a>
+				</div>
+
 				<div class="parameter" *ngIf="currentUser.verify">
 					{{dictionary.ACCOUNT_IS_VERIFIED}}
 				</div>
+
 				<div class="side-title">
 					{{dictionary.NOTIFICATIONS}}
 				</div>

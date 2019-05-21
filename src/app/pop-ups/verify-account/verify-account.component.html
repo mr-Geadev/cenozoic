@@ -1,0 +1,28 @@
+<form [formGroup]="verifyForm" (submit)="sendRequest()">
+  <div class="title">
+    {{ dictionary.VERIFY_ACCOUNT }}
+  </div>
+
+  <div class="side-title">
+    <!--		{{ dictionary.PAYING_CHANGE_COUNT }}-->
+    {{ dictionary.VERIFY_COMMENT_LABEL}}:
+  </div>
+
+  <textarea
+      formControlName="comment"></textarea>
+
+  <div class="load-photo">
+    <input (change)="onImageChange($event)" id="load-photo-verify" name="load-photo" type="file" size="0"
+           accept="image/*,image/jpeg,image/png,image/gif">
+    <label class="load-button" for="load-photo-verify">
+      {{ loadPhotoButton }}
+    </label>
+    <div class="name-file" *ngIf="nameImage">
+      {{ nameImage }}
+    </div>
+  </div>
+
+  <button class="button" [disabled]="verifyForm.invalid || !nameImage">
+    {{ dictionary.SEND_VERIFY_REQUEST }}
+  </button>
+</form>
