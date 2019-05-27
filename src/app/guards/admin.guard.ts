@@ -12,7 +12,7 @@ export class AdminGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (this.userService.isType('admin') || this.userService.isType('manager')) {
+        if (this.userService.isType('admin') || this.userService.isType('manager')|| this.userService.isType('newsManager')|| this.userService.isType('resumeManager')) {
             return true;
         } else {
             this.router.navigate(['/']);

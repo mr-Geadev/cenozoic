@@ -1,5 +1,5 @@
 <div class="row add-user">
-	<form class="col" [formGroup]="newUser" (submit)="createUser()">
+	<form class="col" [formGroup]="newUser" (submit)="createUser()" *ngIf="currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' ">
 		<mat-card>
 			<mat-card-header>
 				<mat-card-title>Добавить пользователя</mat-card-title>
@@ -11,6 +11,8 @@
 											placeholder="Выберете тип"
 											formControlName="typeAccount">
 						<mat-option [value]="'manager'" *ngIf="currentUser.typeAccount === 'admin'">Модератор</mat-option>
+						<mat-option [value]="'newsManager'" *ngIf="currentUser.typeAccount === 'admin' ">Модератор Рекламы</mat-option>
+						<mat-option [value]="'resumeManager'" *ngIf="currentUser.typeAccount === 'admin' ">Модератор Вакансий/Резюме</mat-option>
 						<mat-option [value]="'admin'" *ngIf="currentUser.typeAccount === 'admin' ">Администратор</mat-option>
 						<mat-option [value]="'employer'">Компания</mat-option>
 						<mat-option [value]="'worker'">Соискатель</mat-option>

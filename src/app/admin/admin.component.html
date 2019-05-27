@@ -16,13 +16,15 @@
             <mat-card>
                 <mat-nav-list>
                     <h3 mat-subheader>Меню:</h3>
-                    <a mat-list-item
-                       *ngFor="let menuItem of menuList; let i = index;"
-                       [class.active]="currentRoute.getValue() === menuItem.link"
-                       (click)="currentRoute.next(menuItem.link)"
-                       routerLink="{{menuItem.link}}">
-                        {{menuItem.name}}
-                    </a>
+                    <ng-container  *ngFor="let menuItem of menuList; let i = index;">
+                        <a mat-list-item
+                           *ngIf="menuItem.accessDenied !== user.typeAccount"
+                           [class.active]="currentRoute.getValue() === menuItem.link"
+                           (click)="currentRoute.next(menuItem.link)"
+                           routerLink="{{menuItem.link}}">
+                            {{menuItem.name}}
+                        </a>
+                    </ng-container>
                 </mat-nav-list>
             </mat-card>
         </div>

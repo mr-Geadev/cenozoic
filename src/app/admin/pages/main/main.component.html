@@ -6,7 +6,7 @@
 				Всего: {{statistics.totalUserAmount}} <br>
 				Подтвержденных: {{statistics.activeUserAmount}}
 			</mat-card-content>
-			<mat-card-actions>
+			<mat-card-actions *ngIf="user.typeAccount !== 'newsManager'">
 				<a [routerLink]="['/admin/users']" mat-button>Смотреть всех</a>
 			</mat-card-actions>
 		</mat-card>

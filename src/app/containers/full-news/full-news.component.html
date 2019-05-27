@@ -22,7 +22,7 @@
 				</div>
 				<div class="manage">
 					<ng-container
-						*ngIf="currentUser && ( currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' )">
+						*ngIf="currentUser && ( currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' || currentUser.typeAccount === 'newsManager' )">
 
 						<div class="change-lang">
 							<div class="lang">
@@ -110,7 +110,7 @@
 
 					<div
 						class="delete"
-						*ngIf="currentUser && (currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager')"
+						*ngIf="currentUser && (currentUser.typeAccount === 'admin' || currentUser.typeAccount === 'manager' || currentUser.typeAccount === 'newsManager')"
 						(click)="removeComment(i)"
 					>
 						<img src="/assets/images/icon-black-cross.svg">

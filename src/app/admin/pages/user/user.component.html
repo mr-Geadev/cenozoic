@@ -48,7 +48,7 @@
 
 		<div class="actions">
 
-			<div class="action">
+			<div class="action" *ngIf="currentUser.typeAccount === 'admin'">
 				<button *ngIf="user.status !== 9" (click)="banUser()">Бан</button>
 				<button *ngIf="user.status === 9" (click)="unbanUser()">Разбан</button>
 			</div>

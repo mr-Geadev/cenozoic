@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'services';
 
 @Component({
   selector: 'admin-main.col',
@@ -9,11 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   public statistics: any = null;
+  user;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient,
+  private userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.user$
+      .subscribe(user => this.user = user);
+
     this._http.get('/api/v1/admin/statistics')
       .subscribe((res) => {
         this.statistics = res['statistics'];

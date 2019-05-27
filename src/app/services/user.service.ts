@@ -59,7 +59,7 @@ export class UserService {
     }
 
     public getUser(): any {
-        return this.userSubject.value;
+        return this.userSubject.getValue();
     }
 
     public sendRequestVerify(body: FormData) {

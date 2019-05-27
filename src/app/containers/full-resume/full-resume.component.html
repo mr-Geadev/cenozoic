@@ -148,7 +148,7 @@
 				{{dictionary.EDIT}}
 			</div>
 
-			<ng-container *ngIf="currentUser?.typeAccount === 'admin' || currentUser?.typeAccount === 'moderator'">
+			<ng-container *ngIf="currentUser?.typeAccount === 'admin' || currentUser?.typeAccount === 'moderator' || currentUser?.typeAccount === 'resumeManager'">
 				<div class="button" (click)="resumeApi.ban(currentResume._id)"
 						 *ngIf="currentResume.status !== 9">
 					Заблокировать резюме

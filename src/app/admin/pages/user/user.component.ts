@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsersApi } from 'admin/pages/users/users.api';
 import { IMG_URL } from 'const';
 import { UserModel } from 'models';
-import { ConfirmService, SystemMessageService } from 'services';
+import { ConfirmService, SystemMessageService, UserService } from 'services';
 
 @Component({
   selector: 'user.col-12',
@@ -17,9 +17,11 @@ export class UserComponent implements OnInit {
   public user: UserModel = null;
 
   imgUrl = IMG_URL;
+  currentUser;
 
   constructor(
     private activateRoute: ActivatedRoute,
+    private userService: UserService,
     private _usersApi: UsersApi,
     private _confirm: ConfirmService,
     private _messages: SystemMessageService,
@@ -35,6 +37,9 @@ export class UserComponent implements OnInit {
         this.getUser();
         console.log('new');
       });
+
+    this.userService.user$
+      .subscribe(user => this.currentUser = user)
   }
 
   public getUser() {
