@@ -10,8 +10,8 @@ export class VerifyAccountModalService {
 
 	public openVerifyModal(typeAccount: string): void {
 		this.dialog.open(VerifyAccountComponent, {
-			width: '600px',
-			height: '400px',
+			width: '700px',
+			height: '600px',
 			data: { typeAccount },
 		} as MatDialogConfig);
 	}

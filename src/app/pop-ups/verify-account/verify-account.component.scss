@@ -15,6 +15,16 @@
     text-align: center;
   }
 
+  .description {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: $light-gray;
+
+    ul {
+      list-style-type: initial;
+    }
+  }
+
   .side-title {
     margin-top: 20px;
     color: $black;
