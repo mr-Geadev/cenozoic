@@ -84,7 +84,7 @@
 					</div>
 				</div>
 
-				<div class="parameter" *ngIf="!currentUser.verifyRequestAllow">
+				<div class="parameter" *ngIf="!currentUser.verify && !currentUser.verifyRequestAllow">
 					{{ dictionary.AWAITING_VERIFY }}
 				</div>
 
