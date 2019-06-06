@@ -12,4 +12,4 @@ export const LIST_VACANCY = '/api/v1/vacancy/get/all';
 export const LIST_VACANCY_USER = '/api/v1/employer/vacancy/all';
 export const GET_VACANCY_BY_ID = '/api/v1/vacancy/get/one';
 
-export const IMG_URL = 'http://142.93.234.83:8080';
+export const IMG_URL = 'https://142.93.234.83:8080';
