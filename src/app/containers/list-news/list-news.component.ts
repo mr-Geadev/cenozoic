@@ -22,7 +22,7 @@ export class ListNewsComponent implements OnInit, OnChanges {
 
   @Input() searchString?: string = null;
   @Input() offset?: number = 0;
-  @Input() reverse?: boolean = null;
+  @Input() order: string;
 
   public listNews: NewsModel[] = [];
   public listBanner: BannerModel[] = [];
@@ -48,14 +48,14 @@ export class ListNewsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if ((changes.searchString) || (changes.reverse)) {
+    if ((changes.searchString) || (changes.order)) {
       this.getList();
     }
   }
 
   getList() {
     zip(
-      this.newsApi.getListNews(this.newsPage, this.mainPage, this.user, this.searchString),
+      this.newsApi.getListNews(this.newsPage, this.mainPage, this.user, this.searchString, this.order),
       this.bannerApi.getListBanner(this.mainPage),
     ).subscribe(
       ([newsRes, bannersRes]) => {
@@ -65,10 +65,6 @@ export class ListNewsComponent implements OnInit, OnChanges {
 
         newsRes['newsList'].map((news) => this.listNews.push(new NewsModel(news)));
         bannersRes['banners'].map((banner) => this.listBanner.push(new BannerModel(banner)));
-
-        if (this.reverse) {
-          this.listNews.reverse();
-        }
 
         let indexBanner = 0;
         let counterNews = 0;

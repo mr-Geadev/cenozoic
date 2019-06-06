@@ -65,7 +65,7 @@ export class NewsApi {
   }
 
   // список новостей
-  getListNews(newsPage?, mainPage?, user?, searchString?): Observable<any> {
+  getListNews(newsPage?, mainPage?, user?, searchString?, order?: string): Observable<any> {
     let filters = {};
 
     if (newsPage) {
@@ -88,11 +88,25 @@ export class NewsApi {
       };
     }
 
+    const sort: { _id?: number; commentsCount?: number} = {};
+    // const sort = {
+    //   _id: -1, // сначала новые и наоборот если передать 1,
+    //   commentsCount: -1 // сначала комментируемые и наоборот если передать 1,
+    // }
+
+    if (order === 'new') { sort._id = -1  }
+    if (order === 'old') { sort._id = 1 }
+    if (order === 'mostCommented') { sort.commentsCount = 1 }
+
+
+
+    console.log('order', order);
+
     if (searchString) {
       filters = Object.assign(filters, { search: searchString });
     }
 
-    return this.http.post('/api/v1/news/get/all', { offset: 0, limit: 100, filters });
+    return this.http.post('/api/v1/news/get/all', { offset: 0, limit: 100, filters, sort });
   }
 
   // измение статуса новости
