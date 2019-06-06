@@ -242,7 +242,7 @@
 					<td class="education">
 						<div class="side-title">
 							<!--{{item.country}}, -->
-							{{citiesService.locations.getCityToCode(item.city).name}}
+							{{ citiesService.locations?.getCityToCode(item.city).name }}
 						</div>
 						<div class="side-title">{{item.university}}</div>
 						<div class="text black" *ngIf="item.faculty">{{item.faculty}}</div>
@@ -302,7 +302,7 @@
 					</td>
 					<td class="education">
 						<div class="side-title">{{item.name}}</div>
-						<div class="text gray">{{citiesService.locations.getCityToCode(item.city).name}}</div>
+						<div class="text gray">{{citiesService.locations?.getCityToCode(item.city).name}}</div>
 						<div class="certificate-image" *ngIf="item.photoURL">
 							<div class="text gray">{{ dictionary.TRAINING_CERTIFICATE }}:</div>
 							<img style="max-width: 300px; cursor: pointer" src="{{imgUrl+item.photoURL}}" (click)="fullCertificate.next(item.photoURL)">
