@@ -299,7 +299,7 @@
 					<td class="education">
 						<div class="side-title">{{item.name}}</div>
 						<div class="text gray">{{citiesService.locations.getCityToCode(item.city).name}}</div>
-						<div class="certificate-image">
+						<div class="certificate-image" *ngIf="item.photoURL">
 							<div class="text gray">{{ dictionary.TRAINING_CERTIFICATE }}:</div>
 							<img style="max-width: 300px; cursor: pointer" src="{{imgUrl+item.photoURL}}" (click)="fullCertificate.next(item.photoURL)">
 						</div>
