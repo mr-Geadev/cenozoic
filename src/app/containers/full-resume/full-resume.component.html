@@ -123,11 +123,15 @@
 					</div>
 				</div>
 
-				<div class="line" *ngIf="currentResume?.employmentPurpose">
+<!--				цель трудоустройства -->
+				<div *ngIf="currentResume?.employmentPurpose">
 					<div class="parameter gray text">
-						{{dictionary.EMPLOYMENT_PURPOSE}}
+						{{dictionary.EMPLOYMENT_PURPOSE}}:
 					</div>
-					<div class="value black text">
+				</div>
+
+				<div *ngIf="currentResume?.employmentPurpose">
+					<div class="parameter black text">
 						{{ currentResume.employmentPurpose }}
 					</div>
 				</div>
