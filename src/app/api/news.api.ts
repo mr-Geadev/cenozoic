@@ -96,7 +96,7 @@ export class NewsApi {
 
     if (order === 'new') { sort._id = -1  }
     if (order === 'old') { sort._id = 1 }
-    if (order === 'mostCommented') { sort.commentsCount = 1 }
+    if (order === 'mostCommented') { sort.commentsCount = -1 }
 
 
 
