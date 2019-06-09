@@ -9,8 +9,10 @@ export class ChangeCityOpen {
 
     public open(locations): void {
         this._dialog.open(ChangeCityModalComponent, {
-            width: '500px',
-            height: '300px',
+            maxWidth: '500px',
+            maxHeight: '400px',
+            width: '90%',
+            height: '90%',
             overflow: 'visible',
             data: locations
         } as MatDialogConfig);

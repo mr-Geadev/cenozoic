@@ -30,7 +30,8 @@
 
   .context-menu-cities {
     left: 0;
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
     height: auto;
     max-height: 215px;
     background-color: #fff;
