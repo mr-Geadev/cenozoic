@@ -56,6 +56,10 @@
 						<button class="button red" *ngIf="news.publicateToMainPage" (click)="publish('fromMainPage')">
 							{{ dictionary.NEWS_UNPUBLIC_MAIN }}
 						</button>
+
+						<button class="button" (click)="removeNews()">
+							{{ dictionary.NEWS_DELETE }}
+						</button>
 					</ng-container>
 
 					<ng-container *ngIf="currentUser && currentUser._id === news.userId">
