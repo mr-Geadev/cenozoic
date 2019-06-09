@@ -166,7 +166,7 @@
 
             @media (max-width: 600px) {
               .right {
-                
+
               }
             }
           }
@@ -249,7 +249,7 @@
             background-color: $hover-orange;
           }
 
-          &:disabled {
+          &:disabled, &.disabled {
             background-color: $light-gray;
             cursor: default;
           }
@@ -405,5 +405,11 @@
 
   .mobile-visibl {
     display: none;
+  }
+
+  .always-visability-hidden {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
   }
 }

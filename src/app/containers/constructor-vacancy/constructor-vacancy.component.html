@@ -105,6 +105,9 @@
                                 <button mat-raised-button color="primary" (click)="changeEducationCity()">
                                     {{nameCity ? nameCity : dictionary.CHANGE_CITY }}
                                 </button>
+                                <input type="text"
+                                       formControlName="city"
+                                       class="always-visability-hidden">
                             </div>
                         </div>
 
@@ -220,7 +223,11 @@
 
                     <div class="additionally">
                         <ng-container *ngIf="!isSaving">
-                            <button type="submit" id="save" [disabled]="vacancy.invalid || isInvalidSalary" (click)="sentVacancy()">
+                            <button id="save" type="submit" *ngIf="!(vacancy.invalid || isInvalidSalary)" (click)="sentVacancy()">
+                                {{dictionary.SAVE_VACANCY}}
+                            </button>
+
+                            <button id="save" class="disabled" *ngIf="vacancy.invalid || isInvalidSalary" (click)="showInvalidField()">
                                 {{dictionary.SAVE_VACANCY}}
                             </button>
                         </ng-container>

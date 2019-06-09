@@ -72,6 +72,7 @@
                             </div>
                             <div class="right">
                                 <birthday-date-picker
+                                        [class.ng-invalid]="isBirthdayInvalid"
                                         [dataInput]="this.resumeForm.birthday"
                                         (changed)="birthdayChanged($event);">
                                 </birthday-date-picker>

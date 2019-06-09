@@ -131,7 +131,7 @@ export class ConstructorVacancyComponent implements OnInit {
   private createVacancy(data: any = { salary: {}, experience: { mining: {}, oil: {} } }): void { // дико костыльное решение, кооторое нудно будет потом заменить модлеью
     this.vacancy = new FormGroup({
       title: new FormControl(data.title || '', [Validators.required]),
-      currency: new FormControl(data.currency || ''),
+      currency: new FormControl(data.currency || '', [Validators.required]),
       salary: new FormGroup({
         from: new FormControl(data.salary.from || 0, [Validators.required, Validators.min(0)]),
         to: new FormControl(data.salary.to || 0, [Validators.required, Validators.min(0)]),
@@ -179,6 +179,32 @@ export class ConstructorVacancyComponent implements OnInit {
   salaryValidatorCheck(): void {
       this.salaryTouched = true;
       this.isInvalidSalary = (<FormGroup>this.vacancy.controls['salary']).controls['to'].value < (<FormGroup>this.vacancy.controls['salary']).controls['from'].value;
+  }
+
+  public showInvalidField(): void {
+    const firstInvalid = document.querySelectorAll('form .ng-invalid')[0];
+    scrollToElement(firstInvalid);
+
+    function focus(theElement) {
+      theElement.focus();
+    }
+
+    function scrollToElement(theElement) {
+      let selectedPosY = 0;
+
+      while (theElement != null) {
+        selectedPosY += theElement.offsetTop;
+        theElement = theElement.offsetParent;
+      }
+
+      selectedPosY -= 20;
+      window.scroll({
+        top: selectedPosY,
+        behavior: 'smooth',
+      });
+
+      setTimeout(focus, 500, firstInvalid);
+    }
   }
 }
 
