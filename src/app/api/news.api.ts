@@ -94,13 +94,11 @@ export class NewsApi {
     //   commentsCount: -1 // сначала комментируемые и наоборот если передать 1,
     // }
 
-    if (order === 'new') { sort._id = -1  }
-    if (order === 'old') { sort._id = 1 }
-    if (order === 'mostCommented') { sort.commentsCount = -1 }
-
-
-
-    console.log('order', order);
+    switch (order) {
+      case ('old'): { sort._id = 1 ; break; }
+      case ('mostCommented'): { sort.commentsCount = -1 ; break; }
+      default: { sort._id = -1  }; break
+    }
 
     if (searchString) {
       filters = Object.assign(filters, { search: searchString });

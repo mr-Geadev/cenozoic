@@ -111,13 +111,23 @@
 					</div>
 				</div>
 
-				<button class="save-button" *ngIf="!isFromFile" (click)="save()" [disabled]="questionnaire.invalid">
-					{{ dictionary.QUESTIONNAIRE_SAVE }}
-				</button>
+				<ng-container *ngIf="!isSaving">
+					<button class="save-button" *ngIf="!isFromFile" (click)="save()" [disabled]="questionnaire.invalid">
+						{{ dictionary.QUESTIONNAIRE_SAVE }}
+					</button>
 
-				<button class="save-button" *ngIf="isFromFile" (click)="save()"
-								[disabled]="questionnaire.controls['title'].invalid || !fileToUpload.data">
-					{{ dictionary.QUESTIONNAIRE_SAVE }}
+					<button class="save-button" *ngIf="isFromFile" (click)="save()"
+									[disabled]="questionnaire.controls['title'].invalid || !fileToUpload.data">
+						{{ dictionary.QUESTIONNAIRE_SAVE }}
+					</button>
+				</ng-container>
+
+				<button class="save-button" *ngIf="isSaving">
+					<mat-progress-spinner
+							class="example-margin"
+							[diameter]="20"
+							[mode]="'indeterminate'">
+					</mat-progress-spinner>
 				</button>
 			</form>
 		</div>

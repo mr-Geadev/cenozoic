@@ -94,14 +94,24 @@
 					></image-cropper>
 				</div>
 
-				<button class="save-button" *ngIf="!edit" (click)="save()"
-								[disabled]="!banner.value.title || !banner.value.shortDescription || !textBanner || !fileToUpload.data ">
-					{{ dictionary.SAVE_BANNER }}
-				</button>
+				<ng-container *ngIf="!isSaving">
+					<button class="save-button" *ngIf="!edit" (click)="save()"
+									[disabled]="!banner.value.title || !banner.value.shortDescription || !textBanner || !fileToUpload.data ">
+						{{ dictionary.SAVE_BANNER }}
+					</button>
 
-				<button class="save-button" *ngIf="edit" (click)="save()"
-								[disabled]="!banner.value.title || !banner.value.shortDescription || !textBanner ">
-					{{ dictionary.SAVE_BANNER }}
+					<button class="save-button" *ngIf="edit" (click)="save()"
+									[disabled]="!banner.value.title || !banner.value.shortDescription || !textBanner ">
+						{{ dictionary.SAVE_BANNER }}
+					</button>
+				</ng-container>
+
+				<button class="save-button" *ngIf="isSaving">
+					<mat-progress-spinner
+							class="example-margin"
+							[diameter]="20"
+							[mode]="'indeterminate'">
+					</mat-progress-spinner>
 				</button>
 			</form>
 

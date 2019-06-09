@@ -117,14 +117,24 @@
 					></image-cropper>
 				</div>
 
-				<button class="save-button" *ngIf="!edit" (click)="save()"
-								[disabled]="!news.value.title || !news.value.shortDescription || !textNews || !fileToUpload.data ">
-					{{ dictionary.NEWS_SAVE }}
-				</button>
+				<ng-container *ngIf="!isSaving">
+					<button class="save-button" *ngIf="!edit" (click)="save()"
+									[disabled]="!news.value.title || !news.value.shortDescription || !textNews || !fileToUpload.data ">
+						{{ dictionary.NEWS_SAVE }}
+					</button>
 
-				<button class="save-button" *ngIf="edit" (click)="save()"
-								[disabled]="!news.value.title || !news.value.shortDescription || !textNews ">
-					{{ dictionary.NEWS_SAVE }}
+					<button class="save-button" *ngIf="edit" (click)="save()"
+									[disabled]="!news.value.title || !news.value.shortDescription || !textNews ">
+						{{ dictionary.NEWS_SAVE }}
+					</button>
+				</ng-container>
+
+				<button class="save-button" *ngIf="isSaving">
+					<mat-progress-spinner
+							class="example-margin"
+							[diameter]="20"
+							[mode]="'indeterminate'">
+					</mat-progress-spinner>
 				</button>
 			</form>
 

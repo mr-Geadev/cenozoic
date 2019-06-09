@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule, MatSpinner } from '@angular/material';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { NewsApi } from 'api';
 import { ConstructorNewsComponent } from 'containers/constructor-news/constructor-news.component';
@@ -11,6 +12,7 @@ import { QuillModule } from 'ngx-quill';
   imports: [
     CommonModule,
     FormsModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     EditorModule,
     QuillModule,

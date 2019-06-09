@@ -219,9 +219,20 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" id="save" [disabled]="vacancy.invalid || isInvalidSalary" (click)="sentVacancy()">
-                            {{dictionary.SAVE_VACANCY}}
+                        <ng-container *ngIf="!isSaving">
+                            <button type="submit" id="save" [disabled]="vacancy.invalid || isInvalidSalary" (click)="sentVacancy()">
+                                {{dictionary.SAVE_VACANCY}}
+                            </button>
+                        </ng-container>
+
+                        <button type="submit" id="save" *ngIf="isSaving">
+                            <mat-progress-spinner
+                                class="example-margin"
+                                [diameter]="20"
+                                [mode]="'indeterminate'">
+                            </mat-progress-spinner>
                         </button>
+
                         <div class="message">
                             {{dictionary.SAVE_VACANCY_DESCRIPTION}}
                         </div>

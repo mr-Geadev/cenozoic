@@ -33,6 +33,7 @@ export class ConstructorNewsComponent implements OnInit {
   };
   public dictionary: any = {};
   public nameOfFile: string = null;
+  public isSaving: boolean = false;
 
 
   @ViewChild(ImageCropperComponent) imageCropper: ImageCropperComponent;
@@ -129,15 +130,23 @@ export class ConstructorNewsComponent implements OnInit {
   }
 
   public save() {
+    this.isSaving = true;
+
     if (this.edit) {
       this.newsApi.editNews(this.id, { ...this.news.value, text: this.textNews }, this.fileToUpload.file || null)
         .subscribe(
-          res => { this._location.back(); }
+          res => {
+            this._location.back();
+             this.isSaving = false;
+          }
         );
     } else {
       this.newsApi.createNews(this.fileToUpload.file, { ...this.news.value, text: this.textNews })
         .subscribe(
-          res => { this.router.navigate(['/personal-account', 'news']); },
+          res => {
+            this.router.navigate(['/personal-account', 'news']);
+             this.isSaving = false;
+            },
         );
     }
   }

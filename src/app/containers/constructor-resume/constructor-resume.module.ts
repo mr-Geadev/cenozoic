@@ -1,7 +1,14 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+} from '@angular/material';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { QuillModule } from 'ngx-quill';
@@ -24,7 +31,8 @@ import {TextMaskModule} from 'angular2-text-mask';
         EditorModule,
         QuillModule,
         TextMaskModule,
-        ImageCropperModule
+        ImageCropperModule,
+        MatProgressSpinnerModule
     ],
     declarations: [ConstructorResumeComponent],
     exports: [ConstructorResumeComponent]

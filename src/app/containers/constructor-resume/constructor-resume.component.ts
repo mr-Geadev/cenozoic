@@ -95,6 +95,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     languages: [],
     trainings: [],
   };
+  public isSaving: boolean = false;
 
   constructor(private http: HttpClient,
               private userService: UserService,
@@ -503,6 +504,8 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
     let timeMining = 0;
     let timeOther = 0;
 
+    this.isSaving = true;
+
     this.resumeForm.experience.forEach((item) => {
       if (item.type === 'oil') {
         timeOil += this._calculateTime(item, item.present);
@@ -554,6 +557,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
             //     localStorage.removeItem('resume');
             //   }
             // }
+            this.isSaving = false;
             this.resumeForm = null;
             this.resumeService.setResume(null);
             this.router.navigate(['/personal-account', 'resume']);
@@ -595,6 +599,7 @@ export class ConstructorResumeComponent implements OnInit, OnDestroy {
       this.http.post('/api/v1/user/resume/edit', formData)
         .subscribe((res: any) => {
           if (res.success) {
+            this.isSaving = false;
             this.resumeForm = null;
             this.resumeService.setResume(null);
             this.router.navigate(['resume', this.resumeId]);

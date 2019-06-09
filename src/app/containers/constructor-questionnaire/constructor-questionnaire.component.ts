@@ -24,6 +24,7 @@ export class ConstructorQuestionnaireComponent implements OnInit {
   };
   public dictionary: any = {};
   public nameOfFile: string = null;
+  public isSaving: boolean = false;
 
   constructor(private _systemMessageService: SystemMessageService,
               private router: Router,
@@ -141,11 +142,13 @@ export class ConstructorQuestionnaireComponent implements OnInit {
   }
 
   save() {
+    this.isSaving = true;
 
     if (this.edit) {
       this.questionnaireApi.editQuestionnaire(this.id, this.questionnaire.value)
         .subscribe(
           res => {
+            this.isSaving = false;
             this._location.back();
           },
           err => console.log(err),
@@ -155,6 +158,7 @@ export class ConstructorQuestionnaireComponent implements OnInit {
         this.questionnaireApi.createQuestionnaire(this.questionnaire.value)
           .subscribe(
             res => {
+              this.isSaving = false;
               this.router.navigate(['/personal-account', 'questionnaire']);
             },
             err => console.log(err),
@@ -168,6 +172,7 @@ export class ConstructorQuestionnaireComponent implements OnInit {
         this.questionnaireApi.createWithFileQuestionnaire(formData)
           .subscribe(
             res => {
+              this.isSaving = false;
               this.router.navigate(['/personal-account', 'questionnaire']);
             },
             err => console.log(err),

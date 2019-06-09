@@ -778,27 +778,38 @@
                     </div>
 
                     <div class="additionally">
-                        <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime && !isBirthdayInvalid && isValidExperienceTime && isValidCityTrainings">
-                            {{ dictionary.SAVE }}
+                        <ng-container *ngIf="!isSaving">
+                            <button type="submit" (click)="send()" class="save-button valid" *ngIf="myForm.valid && !invalidTime && !isBirthdayInvalid && isValidExperienceTime && isValidCityTrainings">
+                                {{ dictionary.SAVE }}
+                            </button>
+                            <button type="submit" class="save-button invalid"
+                                    *ngIf="!myForm.invalid && invalidTime">
+                                {{ dictionary.BUTTON_SAVE_ALERT }}
+                            </button>
+                            <button type="submit" class="save-button invalid"
+                                    *ngIf="!myForm.invalid && (!isValidExperienceTime || !isValidCityTrainings)">
+                                {{ dictionary.BUTTON_SAVE_ALERT }}
+                            </button>
+                            <button type="submit" class="save-button invalid"
+                                    *ngIf="!myForm.invalid && isBirthdayInvalid">
+                                {{ dictionary.BUTTON_SAVE_ALERT }}
+                            </button>
+                            <button type="submit" (click)="showInvalidField()" class="save-button invalid"
+                                    *ngIf="myForm.invalid ">
+                                {{ dictionary.BUTTON_SAVE_ALERT }}
+                            </button>
+                        </ng-container>
+
+                        <button class="save-button valid" *ngIf="isSaving">
+                            <mat-progress-spinner
+                                class="example-margin"
+                                [diameter]="20"
+                                [mode]="'indeterminate'">
+                            </mat-progress-spinner>
                         </button>
-                        <button type="submit" class="save-button invalid"
-                                *ngIf="!myForm.invalid && invalidTime">
-                            {{ dictionary.BUTTON_SAVE_ALERT }}
-                        </button>
-                        <button type="submit" class="save-button invalid"
-                                *ngIf="!myForm.invalid && (!isValidExperienceTime || !isValidCityTrainings)">
-                            {{ dictionary.BUTTON_SAVE_ALERT }}
-                        </button>
-                        <button type="submit" class="save-button invalid"
-                                *ngIf="!myForm.invalid && isBirthdayInvalid">
-                            {{ dictionary.BUTTON_SAVE_ALERT }}
-                        </button>
-                        <button type="submit" (click)="showInvalidField()" class="save-button invalid"
-                                *ngIf="myForm.invalid ">
-                            {{ dictionary.BUTTON_SAVE_ALERT }}
-                        </button>
+
                         <div class="message">
-                            {{dictionary.BUTTON_SAVE_DESCRIPTION}}
+                            {{ dictionary.BUTTON_SAVE_DESCRIPTION }}
                         </div>
                     </div>
 

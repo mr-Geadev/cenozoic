@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { BannerApi } from 'api';
 import { ConstructorBannerComponent } from 'containers/constructor-banner/constructor-banner.component';
@@ -12,6 +13,7 @@ import { QuillModule } from 'ngx-quill';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     EditorModule,
     ImageCropperModule,
     QuillModule

@@ -33,6 +33,7 @@ export class ConstructorBannerComponent implements OnInit {
   };
   public dictionary: any = {};
   public nameOfFile: string = null;
+  public isSaving: boolean = false;
 
   @ViewChild(ImageCropperComponent) imageCropper: ImageCropperComponent;
   imageChangedEvent: any = '';
@@ -118,15 +119,23 @@ export class ConstructorBannerComponent implements OnInit {
   }
 
   public save() {
+    this.isSaving = true;
+
     if (this.edit) {
       this.bannerApi.editBanner(this.id, { ...this.banner.value, text: this.textBanner }, this.fileToUpload.file || null)
         .subscribe(
-          res => { this._location.back(); },
+          res => {
+            this._location.back();
+            this.isSaving = false;
+            },
         );
     } else {
       this.bannerApi.createBanner(this.fileToUpload.file, { ...this.banner.value, text: this.textBanner })
         .subscribe(
-          res => { this.router.navigate(['/personal-account', 'banners']); },
+          res => {
+            this.router.navigate(['/personal-account', 'banners']);
+            this.isSaving = false;
+            },
         );
     }
   }

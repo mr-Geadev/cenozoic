@@ -24,6 +24,7 @@ export class ConstructorVacancyComponent implements OnInit {
   public currentUser = null;
   public isInvalidSalary: boolean = false; // корректная вилка
   public salaryTouched: boolean = false; // поле зарплату тронуто
+  public isSaving: boolean = false;
 
   @Input('edit') edit?: boolean;
 
@@ -93,6 +94,8 @@ export class ConstructorVacancyComponent implements OnInit {
   }
 
   public sentVacancy(): void {
+    this.isSaving = true;
+
     const vacancy = {
       ...this.vacancy.value,
       companyName: this.currentUser.companyName,
@@ -103,6 +106,7 @@ export class ConstructorVacancyComponent implements OnInit {
       this._vacancyApi.editVacancy(vacancy, this.vacancyId)
         .subscribe(
           (res) => {
+            this.isSaving = false;
             this._msg.info(this.dictionary.INFO_MESSAGES_CHANGES_IS_SAVED);
             this._location.back();
           },
@@ -114,6 +118,7 @@ export class ConstructorVacancyComponent implements OnInit {
       this._vacancyApi.createVacancy(vacancy)
         .subscribe(
           (res) => {
+            this.isSaving = false;
             this.router.navigate(['personal-account', 'vacancy'] );
           },
           (err) => {
