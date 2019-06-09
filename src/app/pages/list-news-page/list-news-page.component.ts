@@ -10,7 +10,7 @@ export class ListNewsPageComponent implements OnInit {
 
   public searchInput: string = '';
   public searchSubmit: string = '';
-  public order: string = 'line';
+  public order: string = 'new';
   public dictionary: any = {};
 
   constructor(private _localizationService: LocalizationService) {

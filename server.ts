@@ -39,7 +39,9 @@ app.set('views', join(DIST_FOLDER, 'browser'));
 // app.get('/api/*', (req, res) => {
 //   res.status(404).send('data requests are not supported');
 // });
-app.use('/api', proxy({target: 'http://142.93.234.83:8080', changeOrigin: true}));
+app.use('/api', proxy({target: 'http://api.cnzcommunity.com', changeOrigin: true}));
+app.use('/public', proxy({target: 'http://api.cnzcommunity.com', changeOrigin: true}));
+app.use('/socket.io', proxy({target: 'http://142.93.234.83:4200', changeOrigin: true}));
 
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));

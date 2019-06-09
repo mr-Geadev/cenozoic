@@ -12,12 +12,13 @@
 				<mat-select form="test" name="education" placeholder="{{dictionary.NEWS_FILTER_BY_DATE}}"
 										(change)="setFilter()"
 										[(ngModel)]="order">
-					<mat-option value="line">{{ dictionary.START_FROM_NEW }}</mat-option>
-					<mat-option value="reverse">{{ dictionary.START_FROM_OLD }}</mat-option>
+					<mat-option value="new">{{ dictionary.START_FROM_NEW }}</mat-option>
+					<mat-option value="old">{{ dictionary.START_FROM_OLD }}</mat-option>
+					<mat-option value="mostCommented">{{ dictionary.SORT_BY_COMMENT }}</mat-option>
 				</mat-select>
 			</mat-form-field>
 		</div>
 	</div>
 
-	<list-news [newsPage]="true" [searchString]="searchSubmit" [reverse]="order === 'reverse'"></list-news>
+	<list-news [newsPage]="true" [searchString]="searchSubmit" [order]="order"></list-news>
 </div>
