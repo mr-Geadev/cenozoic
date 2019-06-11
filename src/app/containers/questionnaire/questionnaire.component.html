@@ -19,12 +19,13 @@
 						<label for="answer-{{i}}-{{j}}">
 							{{question.question}}
 						</label>
-						<input id="answer-{{i}}-{{j}}"
+						<textarea id="answer-{{i}}-{{j}}"
 									 type="text"
 									 class="answer"
 									 value="{{question.answer}}"
 									 [disabled]="user.typeAccount === 'employer'"
 									 [(ngModel)]="questionnaireAnswer[i][j]">
+						</textarea>
 					</div>
 				</div>
 			</ng-container>
