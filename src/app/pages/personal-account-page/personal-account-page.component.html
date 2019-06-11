@@ -40,14 +40,14 @@
 					<li class="item">
 						<a routerLink="/personal-account/{{TABS.RESPONDS}}" [class.active]="activeTab === TABS.RESPONDS">
 							{{ dictionary.ACCOUNT_PAGE_TAB_RESPOND }}
-							<span *ngIf="currentUser.typeUser === 'worker' ? counters.workerResponds : counters.employerResponds" class="counter">{{ currentUser.typeUser === 'worker' ? counters.workerResponds : counters.employerResponds}}</span>
+							<span *ngIf="typeCurrentUser === 'worker' ? counters.workerResponds : counters.employerResponds" class="counter">{{ typeCurrentUser === 'worker' ? counters.workerResponds : counters.employerResponds}}</span>
 						</a>
 					</li>
 
 					<li class="item">
 						<a routerLink="/personal-account/{{TABS.OFFERS}}" [class.active]="activeTab === TABS.OFFERS">
 							{{ dictionary.ACCOUNT_PAGE_TAB_OFFERS }}
-							<span *ngIf="currentUser.typeUser === 'worker' ? counters.workerrOffers : counters.employerrOffers" class="counter">{{ currentUser.typeUser === 'worker' ? counters.workerrOffers : counters.employerrOffers}}</span>
+							<span *ngIf="typeCurrentUser === 'worker' ? counters.workerrOffers : counters.employerrOffers" class="counter">{{ typeCurrentUser === 'worker' ? counters.workerrOffers : counters.employerrOffers}}</span>
 						</a>
 					</li>
 

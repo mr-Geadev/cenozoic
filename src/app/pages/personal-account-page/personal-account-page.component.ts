@@ -134,6 +134,8 @@ export class PersonalAccountPageComponent implements OnInit {
           if (!offers.workerViewed) { this.counters.workerrOffers++; }
           if (!offers.employerViewed) { this.counters.employerrOffers++; }
         });
+
+        console.log(this.counters);
       });
 
     this.respondsApi.listRespond$

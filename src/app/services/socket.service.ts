@@ -13,7 +13,10 @@ export class SocketService {
     if (typeof window !== 'undefined') {
       if (isPlatformBrowser(this.platformId)) {
         console.log('browser');
-        this.socket = io(this.host, {query: {sessionId: document.cookie} });
+        this.socket = io(this.host, {
+          rejectUnauthorized: false,
+          secure: true,
+          query: {sessionId: document.cookie} });
         this.socket.on('connect', () => this.connected());
         this.socket.on('disconnect', () => this.disconnected());
         this.socket.on('error', (error: string) => {
@@ -24,7 +27,7 @@ export class SocketService {
   }
 
   connect () {
-    this.socket.connect();
+    this.socket.connect(this.host, {rejectUnauthorized: false, secure: true,});
   }
   disconnect () {
     this.socket.disconnect();
