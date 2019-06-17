@@ -551,5 +551,6 @@
   "VERIFY_POINT_2": "Documents must necessarily be issued on the organization’s letterhead and must contain the full company name of the organization, contact details (office address, phone numbers, e-mail);",
   "VERIFY_POINT_3": "The documents must be signed by an authorized person with the appropriate formulations about the representation of the interests of the organization in your person;",
   "VERIFY_POINT_4": "Scanned copies of documents must be made in good quality (all characters are clearly readable and are not in doubt).",
-  "SORT_BY_COMMENT": "Most Commented"
+  "SORT_BY_COMMENT": "Most Commented",
+  "NOTIFICATIONS_LABEL": "By agreeing, you subscribe to the distribution of useful information about vacancies\\resumes and information from the administrator"
 }
