@@ -25,6 +25,7 @@ export class FullResumeComponent implements OnInit {
   imgUrl = IMG_URL;
 
   public dictionary: any = {};
+  public currentLang = 'en';
   public currentResume: any;
   public currentUser: any;
   private id: string = null;
@@ -54,7 +55,10 @@ export class FullResumeComponent implements OnInit {
 
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res,
+        res => {
+          this.dictionary = res;
+          this.currentLang = LocalizationService.currentLang();
+        }
       );
 
     this.http.get('/assets/json/nationalities.json')
@@ -178,6 +182,10 @@ export class FullResumeComponent implements OnInit {
     } else {
       this.payingModalService.openBuyModal('resume');
     }
+  }
+
+  public getTime() {
+    return moment(this.currentResume.creationDate).locale(this.currentLang).format('HH:mm DD MMMM YYYY')
   }
 
   // public captureScreen() {

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { VacancyApi } from 'api';
 import { IMG_URL } from 'const';
 import { UserModel } from 'models';
+import * as moment from 'moment';
 import { PayingModalService } from 'pop-ups/paying';
 
 import { ConfirmService, LocalizationService, ResumeService, SystemMessageService, UserService } from 'services';
@@ -21,6 +22,7 @@ export class FullVacancyComponent implements OnInit {
   imgUrl = IMG_URL;
 
   public dictionary: any = {};
+  public currentLang = 'en';
   public currentVacancy: any = null;
   private id: string = null;
   public nationalitiesDefault: any[] = null;
@@ -44,7 +46,10 @@ export class FullVacancyComponent implements OnInit {
   ngOnInit(): void {
     this._localizationService.currentDictionary
       .subscribe(
-        res => this.dictionary = res
+        res => {
+          this.dictionary = res;
+          this.currentLang = LocalizationService.currentLang();
+        }
       );
 
     this.userService.user$
@@ -95,6 +100,10 @@ export class FullVacancyComponent implements OnInit {
     } else {
       this.payingModalService.openBuyModal('vacancy');
     }
+  }
+
+  public getTime() {
+    return moment(this.currentVacancy.creationDate).locale(this.currentLang).format('HH:mm DD MMMM YYYY')
   }
 
 }

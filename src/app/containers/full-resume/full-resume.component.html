@@ -5,6 +5,7 @@
 		<div class="col-12 col-md-7 left">
 
 			<div class="page-title">{{currentResume.job}}</div>
+			<div class="city gray text">{{ dictionary.UPDATED }}: {{getTime()}}</div>
 
 			<div class="salary"><span>{{dictionary.FROM}}
 				<b>{{currentResume.salary.value}} {{currentResume.salary.currency === 'rubles' ? '₽' : '$'}}</b></span>

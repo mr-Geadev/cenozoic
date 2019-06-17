@@ -15,6 +15,7 @@ export class ForeignEntityGuard implements CanActivate {
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 		return this.userService.user$.pipe(
+			filter(user => !!user),
 			map(user => {
 				const { deniedForType } = route.data;
 				if (user.typeAccount === deniedForType) {
@@ -26,3 +27,9 @@ export class ForeignEntityGuard implements CanActivate {
 		);
 	}
 }
+
+// if (deniedForType === 'employer') {
+// 	this.router.navigate(['/list-vacancy']);
+// } else {
+// 	this.router.navigate(['/list-resume']);
+// }

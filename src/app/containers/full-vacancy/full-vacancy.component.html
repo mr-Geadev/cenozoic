@@ -5,6 +5,7 @@
 
 			<div class="city gray text">{{currentVacancy.companyName}}</div>
 			<div class="page-title">{{currentVacancy.title}}</div>
+			<div class="city gray text">{{ dictionary.UPDATED }}: {{getTime()}}</div>
 
 			<div class="vacancy-disactive" *ngIf="currentVacancy.status === 3">Данная вакансия более не активна</div>
 
