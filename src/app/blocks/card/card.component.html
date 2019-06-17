@@ -1,5 +1,5 @@
 <a class="wrapper" *ngIf="!respond && !questionnaire"
-	   routerLink="{{addRoute() || viewRoute()}}">
+	   routerLink="{{addRoute() || viewRoute()}}" [queryParams]="queryParams()">
 
 	<div
 		*ngIf="vacancy && vacancy.status === 3"

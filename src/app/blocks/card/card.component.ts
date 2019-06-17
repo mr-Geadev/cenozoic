@@ -58,6 +58,16 @@ export class CardComponent implements OnInit {
     return null;
   }
 
+  public queryParams(): any {
+    if (this.resume) {
+      return { creatorId: this.resume.userId };
+    } else if (this.vacancy) {
+      return { creatorId: this.vacancy.userId };
+    }
+
+    return null;
+  }
+
   public moreRoute(): string {
     if (this.typeUser === 'worker') {
       return `/vacancy/${this.respond.vacancyId}`;

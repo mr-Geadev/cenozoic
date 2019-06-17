@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LogInGuard } from 'guards';
+import { ForeignEntityGuard } from 'guards/foreign-entity.guard';
 
 import { LoginModalModule } from '../../pop-ups';
 import { ResumeFullPageComponent } from './resume-full-page.component';
@@ -20,7 +21,8 @@ import { FullResumeModule } from '../../containers/full-resume/full-resume.modul
         path: 'resume/:id',
         component: ResumeFullPageComponent,
         pathMatch: 'full',
-        canActivate: [LogInGuard],
+        canActivate: [LogInGuard, ForeignEntityGuard],
+        data: { deniedForType: 'worker' }
       },
     ], { scrollPositionRestoration: 'enabled' }),
     CommonModule,

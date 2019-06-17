@@ -6,7 +6,12 @@
   box-shadow: 1px 0 1rem rgba(0, 0, 0, 0.15);
   position: relative;
   background-color: $white;
+  border: 1px solid transparent;
   @include animation(transform);
+
+  &.myItem {
+    border-color: $orange;
+  }
 
   & > *:first-child {
     display: block;

@@ -10,6 +10,7 @@ import { MessagesApi } from 'api/messages.api';
 
 import { AppComponent } from 'app.component';
 import { AdminGuard, BlankAccountGuard, LogInGuard, NotEmployerGuard, NotWorkerGuard } from 'guards';
+import { ForeignEntityGuard } from 'guards/foreign-entity.guard';
 import { PaymentGuards } from 'guards/payment.guards';
 import { QuillModule } from 'ngx-quill';
 import {
@@ -142,6 +143,7 @@ const ROUTES = [
 
     // Guards
     BlankAccountGuard,
+    ForeignEntityGuard,
     AdminGuard,
     LogInGuard,
     NotEmployerGuard,

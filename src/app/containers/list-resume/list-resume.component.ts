@@ -20,6 +20,7 @@ export class ListResumeComponent implements OnInit {
   public listResume: any[];
   private offset: number = 0;
   public typeCurrentUser: string = null;
+  public currentUser: any = null;
 
   constructor(private _http: HttpClient,
               private _userService: UserService,
@@ -37,7 +38,14 @@ export class ListResumeComponent implements OnInit {
 
     this._userService.user$
       .subscribe(
-        (user) => user ? this.typeCurrentUser = user.typeAccount : null,
+        (user) => {
+          if (user) {
+            this.currentUser = user;
+            this.typeCurrentUser = user.typeAccount;
+          } else {
+            this.typeCurrentUser = null;
+          }
+        },
       );
 
     if (!this.payedResume) {

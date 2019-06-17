@@ -17,7 +17,7 @@
 				[typeUser]="typeCurrentUser"
 				[dictionary]="dictionary"
 				[heightContent]="320"
-				class="item"
+				class="item {{resume.userId === currentUser?._id ? 'myItem' : '' }}"
 			></card>
 		</div>
 

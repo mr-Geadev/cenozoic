@@ -17,7 +17,7 @@
 				[typeUser]="typeCurrentUser"
 				[dictionary]="dictionary"
 				[heightContent]="350"
-				class="item"
+				class="item {{vacancy.userId === currentUser?._id ? 'myItem' : '' }}"
 			></card>
 		</div>
 

@@ -19,6 +19,7 @@ export class ListVacancyComponent implements OnInit {
   public dictionary: any = {};
   private _offset: number = 0;
   public typeCurrentUser: string = null;
+  public currentUser: any = null;
 
   constructor(private _http: HttpClient,
               private _userService: UserService,
@@ -34,7 +35,14 @@ export class ListVacancyComponent implements OnInit {
 
     this._userService.user$
       .subscribe(
-        (user) => user ? this.typeCurrentUser = user.typeAccount : null
+        (user) => {
+          if (user) {
+            this.currentUser = user;
+            this.typeCurrentUser = user.typeAccount;
+          } else {
+            this.typeCurrentUser = null;
+          }
+        },
       );
 
     // резюме пользоватля
